@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class AddAzureRmContainerServiceAgentPoolProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -91,4 +91,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

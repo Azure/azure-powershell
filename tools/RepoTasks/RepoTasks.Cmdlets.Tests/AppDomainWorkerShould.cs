@@ -76,13 +76,14 @@ namespace RepoTasks.Cmdlets.Tests
         {
             var cmdlets = new[] { "Test-Dummy" };
             var types = ReturnCmdletTypesAndAssemblyName(cmdlets);
-            var conf = new AppDomainWorker().BuildXmlConfiguration(types);
+            var warnings = new List<string>();
+            var conf = new AppDomainWorker().BuildXmlConfiguration(types, warnings);
             Assert.Equal(4, conf.ViewDefinitions.Views.Length);
 
             var view0 = conf.ViewDefinitions.Views[0];
             Assert.Equal($"{ExpectedAssemblyName}.Models.PsDummyOutput1", view0?.ViewSelectedBy?.TypeName);
 
-            var expecterProps1 = new[] { "RequestId", "StatusCode", "Id", "Name", "Type" };
+            var expecterProps1 = new[] { "RequestId", "ScriptBlock", "StatusCode", "Id", "Name", "Type", "PsDummyOutput2" };
             var columnItems = view0?.TableControl?.TableRowEntries[0]?.TableColumnItems;
             Assert.NotNull(columnItems);
             Assert.Equal(expecterProps1.Length, columnItems.Length);
@@ -99,7 +100,7 @@ namespace RepoTasks.Cmdlets.Tests
             var assemblyFileName = Path.GetFileName(typeof(TestDummyCommand).Assembly.Location);
             var assemblyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, assemblyFileName);
             var cmdlets = new[] { "Test-Dummy" };
-            var filename =_reflectionWorker.BuildFormatPs1Xml(assemblyPath, cmdlets, false);
+            var filename =_reflectionWorker.BuildFormatPs1Xml(assemblyPath, cmdlets, false).Item1;
             Assert.NotNull(filename);
             Assert.Equal($"{ExpectedAssemblyName}.generated.format.ps1xml", filename);
         }

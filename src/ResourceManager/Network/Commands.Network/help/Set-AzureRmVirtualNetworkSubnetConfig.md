@@ -15,17 +15,22 @@ Configures the goal state for a subnet configuration in a virtual network.
 
 ### SetByResource (Default)
 ```
-Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
+Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
  [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
+ [-Delegation <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>]
- [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-NetworkSecurityGroupId <String>]
+ [-RouteTableId <String>] [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
+ [-Delegation <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -87,7 +92,7 @@ This example creates a resource group with one virtual network containing just o
 Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +107,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,11 +118,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Delegation
+List of services that have permission to perform operations on this subnet.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a subnet configuration that this cmdlet configures.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +152,7 @@ Accept wildcard characters: False
 Specifies a **NetworkSecurityGroup** object.
 
 ```yaml
-Type: PSNetworkSecurityGroup
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 Parameter Sets: SetByResource
 Aliases:
 
@@ -147,7 +167,7 @@ Accept wildcard characters: False
 Specifies the ID of a network security group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -162,7 +182,7 @@ Accept wildcard characters: False
 Specifies the route table object that is associated with the network security group.
 
 ```yaml
-Type: PSRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
 Parameter Sets: SetByResource
 Aliases:
 
@@ -177,7 +197,7 @@ Accept wildcard characters: False
 Specifies the ID of the route table object that is associated with the network security group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -203,11 +223,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ServiceEndpointPolicy
+Service Endpoint Policies
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetwork
 Specifies the **VirtualNetwork** object that contains the subnet configuration.
 
 ```yaml
-Type: PSVirtualNetwork
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 
@@ -223,8 +258,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetwork
-Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy, Microsoft.Azure.Commands.Network, Version=6.7.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSDelegation, Microsoft.Azure.Commands.Network, Version=6.7.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

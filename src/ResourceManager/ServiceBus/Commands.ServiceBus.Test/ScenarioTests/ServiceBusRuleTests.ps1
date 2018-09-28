@@ -68,8 +68,9 @@ function ServiceBusRuleTests
 	Assert-AreEqual $resultGetSub.Name $subName "Get-Sub, Created Subscription not found"
 
 	# Create Rule	
-	$createRule = New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -SqlExpression "myproperty='test'"
+	$createRule = New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -SqlExpression "myproperty='test'" -ActionSqlExpression "SET myAction='test'" -RequiresPreprocessing
 	Assert-AreEqual $createRule.Name $ruleName "Rule created earlier is not found."
+	Assert-AreEqual $createRule.Action.SqlExpression "SET myAction='test'" "Action SqlExpression is not found."
 	
 	# Get Rule
 	$getRule = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName
@@ -111,8 +112,8 @@ function ServiceBusRuleTests
 	Assert-AreEqual $ruleList_delete.Count 0 "Rule List: Rule count not equal to Zero delete"
 	
 	# Delete the created/Updated Subscription
-	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name
-	Assert-True {$ResultDeleteTopic} "Topic not deleted"
+	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name -PassThru
+	Assert-True {$ResultDeleteTopic} "Subscription not deleted"
 		 
 	# Cleanup
 	# Delete all Created Topic

@@ -16,20 +16,20 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using System.Threading;
 using System.Xml;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
     /// <summary>
     /// Get the list of metric definition for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmMetric"), OutputType(typeof(PSMetric[]))]
-    public class GetAzureRmMetricCommand : MonitorClientCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Metric", DefaultParameterSetName = GetAzureRmAMetricParamGroup), OutputType(typeof(PSMetric))]
+    public class GetAzureRmMetricCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";
         internal const string GetAzureRmAMetricFullParamGroup = "GetWithFullParameters";
@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
         [ValidateNotNullOrEmpty]
         public TimeSpan TimeGrain { get; set; }
@@ -64,14 +65,47 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time of the query")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time of the query")]
         public DateTime StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the endtime parameter of the cmdlet
         /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end time of the query")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end time of the query")]
         public DateTime EndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the top parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to retrieve (default:10), to be specified with $filter")]
+        [ValidateRange(1, int.MaxValue)]
+        public int? Top { get; set; }
+
+        /// <summary>
+        /// Gets or sets the orderby parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The aggregation to use for sorting results and the direction of the sort (Example: sum asc)")]
+        public string OrderBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the metricnamespace parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric namespace to query metrics for")]
+        public string MetricNamespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resulttype parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The result type to be returned (metadata or data)")]
+        public ResultType? ResultType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the metricfilter parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric dimension filter to query metrics for")]
+        public string MetricFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
@@ -89,62 +123,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         public SwitchParameter DetailedOutput { get; set; }
 
         /// <summary>
-        /// Process the general parameters (i.e. defined in this class). The particular parameters are a responsibility of the descendants after adding a method to process more parameters.
-        /// </summary>
-        /// <returns>The query filter to be used by the cmdlet</returns>
-        protected string ProcessParameters()
-        {
-            var buffer = new StringBuilder();
-            if (this.MetricName != null)
-            {
-                var metrics = this.MetricName.Select(n => string.Concat("name.value eq '", n, "'")).Aggregate((a, b) => string.Concat(a, " or ", b));
-
-                buffer.Append("(");
-                buffer.Append(metrics);
-                buffer.Append(")");
-
-                if (this.TimeGrain != default(TimeSpan))
-                {
-                    buffer.Append(" and timeGrain eq duration'");
-                    buffer.Append(XmlConvert.ToString(this.TimeGrain));
-                    buffer.Append("'");
-                }
-
-                // EndTime defaults to Now
-                if (this.EndTime == default(DateTime))
-                {
-                    this.EndTime = DateTime.UtcNow;
-                }
-
-                // StartTime defaults to EndTime - DefaultTimeRange  (NOTE: EndTime defaults to Now)
-                if (this.StartTime == default(DateTime))
-                {
-                    this.StartTime = this.EndTime.Subtract(DefaultTimeRange);
-                }
-
-                buffer.Append(" and startTime eq ");
-                buffer.Append(this.StartTime.ToUniversalTime().ToString("O"));
-                buffer.Append(" and endTime eq ");
-                buffer.Append(this.EndTime.ToUniversalTime().ToString("O"));
-
-                if (this.AggregationType != null)
-                {
-                    buffer.Append(" and aggregationType eq '");
-                    buffer.Append(this.AggregationType);
-                    buffer.Append("'");
-                }
-            }
-
-            string queryFilter = buffer.ToString();
-            if (queryFilter.StartsWith(" and "))
-            {
-                queryFilter = queryFilter.Substring(4);
-            }
-
-            return queryFilter.Trim();
-        }
-
-        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         protected override void ProcessRecordInternal()
@@ -153,13 +131,50 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 cmdletName: "Get-AzureRmMetric",
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
-            string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
+            // EndTime defaults to Now
+            if (this.EndTime == default(DateTime))
+            {
+                this.EndTime = DateTime.UtcNow;
+            }
+
+            // StartTime defaults to EndTime - DefaultTimeRange  (NOTE: EndTime defaults to Now)
+            if (this.StartTime == default(DateTime))
+            {
+                this.StartTime = this.EndTime.Subtract(DefaultTimeRange);
+            }
+
+            var odataquery = (this.MetricFilter == default(string)) ? null : new ODataQuery<MetadataValue>(this.MetricFilter);
+            string timespan = string.Concat(this.StartTime.ToUniversalTime().ToString("O"), "/", this.EndTime.ToUniversalTime().ToString("O"));
+            TimeSpan? timegrain = this.TimeGrain;
+            if (this.TimeGrain == default(TimeSpan))
+            {
+                timegrain = null;
+            }
+            string metricNames = (this.MetricName != null && this.MetricName.Count() > 0) ? string.Join(",", this.MetricName) : null;
+            string aggregation = (this.AggregationType != null && this.AggregationType.HasValue) ? this.AggregationType.Value.ToString() : null;
+            int? top = (this.Top == default(int?)) ? null : this.Top;
+            string orderBy = (this.OrderBy == default(string)) ? null : this.OrderBy;
+            ResultType? resultType = (this.ResultType == default(ResultType?)) ? null : this.ResultType;
+            string metricnamespace = (this.MetricNamespace == default(string)) ? null : this.MetricNamespace;
+
+            var records = this.MonitorManagementClient.Metrics.List(
+                resourceUri: this.ResourceId,
+                odataQuery: odataquery,
+                timespan: timespan,
+                interval: timegrain,
+                metricnames: metricNames,
+                aggregation: aggregation,
+                top: top,
+                orderby: orderBy,
+                resultType: resultType,
+                metricnamespace: metricnamespace);
+
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
-            var records = this.MonitorClient.Metrics.List(resourceUri: this.ResourceId, odataQuery: new ODataQuery<Metric>(queryFilter))
-                .Select(e => fullDetails ? new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
-            WriteObject(sendToPipeline: records, enumerateCollection: true);
+            var result = (records != null && records.Value != null)? (records.Value.Select(e => fullDetails ? new PSMetric(e) : new PSMetricNoDetails(e)).ToArray()) : null;
+
+            WriteObject(sendToPipeline: result, enumerateCollection: true);
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: C2EBCCF0-56CE-4D49-A138-74E52FC3A9AC
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragequeue
 schema: 2.0.0
@@ -14,12 +15,14 @@ Lists storage queues.
 
 ### QueueName (Default)
 ```
-Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### QueuePrefix
 ```
-Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,14 +58,29 @@ Specifies the Azure storage context.
 You can create it by using the **New-AzureStorageContext** cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -72,7 +90,7 @@ If no name is specified, the cmdlet gets a list of all the queues.
 If a full or partial name is specified, the cmdlet gets all queues that match the name pattern.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: QueueName
 Aliases: N, Queue
 
@@ -80,16 +98,16 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -Prefix
 Specifies a prefix used in the name of the queues you want to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: QueuePrefix
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -103,13 +121,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### System.String
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
-### String
-
-Parameter 'Name' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer
 schema: 2.0.0
@@ -15,7 +16,7 @@ Creates an Azure storage container.
 ```
 New-AzureStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,9 +47,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,9 +66,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,9 +81,9 @@ Accept wildcard characters: False
 Specifies a context for the new container.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,11 +92,26 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies a name for the new container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Container
 
@@ -112,7 +128,6 @@ By default, the container and any blobs in it can be accessed only by the owner 
 To grant anonymous users read permissions to a container and its blobs, you can set the container permissions to enable public access.
 Anonymous users can read blobs in a publicly available container without authenticating the request.
 The acceptable values for this parameter are:
-
 - Container.
 Provides full read access to a container and its blobs.
 Clients can enumerate blobs in the container through anonymous request, but cannot enumerate containers in the storage account. 
@@ -123,10 +138,10 @@ Clients cannot enumerate blobs in the container by using anonymous request.
 Which restricts access to only the storage account owner.
 
 ```yaml
-Type: BlobContainerPublicAccessType
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.Blob.BlobContainerPublicAccessType]
 Parameter Sets: (All)
 Aliases: PublicAccess
-Accepted values: Off, Container, Blob
+Accepted values: Off, Container, Blob, Unknown
 
 Required: False
 Position: 1
@@ -140,9 +155,9 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,13 +171,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### System.String
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
-### String
-
-Parameter 'Name' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 

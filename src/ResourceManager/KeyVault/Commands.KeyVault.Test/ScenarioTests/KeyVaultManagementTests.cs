@@ -22,17 +22,21 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
     public class KeyVaultManagementTests : IClassFixture<KeyVaultTestFixture>
     {
         private readonly KeyVaultTestFixture _data;
+        public XunitTracingInterceptor _logger;
 
-        public KeyVaultManagementTests(KeyVaultTestFixture fixture)
+        public KeyVaultManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            _data = fixture;
+            _data = new KeyVaultTestFixture();
             _data.Initialize(MethodBase.GetCurrentMethod().ReflectedType?.ToString());
         }
 
@@ -54,62 +58,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region New-AzureRmKeyVault        
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewVault()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-CreateNewVault", _data.ResourceGroupName, _data.Location, _data.TagName, _data.TagValue) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateNewPremiumVaultEnabledForDeployment()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateNewPremiumVaultEnabledForDeployment", _data.ResourceGroupName, _data.Location) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecreateVaultFails()
-        {
-
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2} {3}", "Test-RecreateVaultFails", _data.PreCreatedVault, _data.ResourceGroupName, _data.Location) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateVaultInUnknownResGrpFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-CreateVaultInUnknownResGrpFails", _data.Location) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateVaultPositionalParams()
-        {
-
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateVaultPositionalParams", _data.ResourceGroupName, _data.Location) }; },
+                _logger,
+                () => { return new[] { "Test-CreateNewVault" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
@@ -120,79 +75,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region Get-AzureRmKeyVault
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByNameAndResourceGroup()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-GetVaultByNameAndResourceGroup", _data.PreCreatedVault, _data.ResourceGroupName) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByNameAndResourceGroupPositionalParams()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-GetVaultByNameAndResourceGroupPositionalParams", _data.PreCreatedVault, _data.ResourceGroupName) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByName()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.PreCreatedVault) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByNameCapitalized()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.PreCreatedVault.ToUpper()) },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetUnknownVaultFails()
+        public void TestGetVault()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-GetUnknownVaultFails", _data.ResourceGroupName) }; },
+                _logger,
+                () => { return new[] { "Test-GetVault" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name,
                 Initialize);
 
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultFromUnknownResourceGroupFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-GetVaultFromUnknownResourceGroupFails", _data.PreCreatedVault) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name,
-                Initialize);
         }
 
         #endregion
@@ -201,74 +95,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListVaultsByResourceGroup()
+        public void TestListVaults()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-ListVaultsByResourceGroup", _data.ResourceGroupName) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name,
-                Initialize);
-        }
-
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListAllVaultsInSubscription()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { "Test-ListAllVaultsInSubscription" }; },
+                _logger,
+                () => { return new[] { "Test-ListVaults" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
                 );
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListVaultsByTag()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-ListVaultsByTag", _data.TagName, _data.TagValue) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListVaultsByUnknownResourceGroupFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { "Test-ListVaultsByUnknownResourceGroupFails" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
         #endregion
 
         #region Remove-AzureRmKeyVault 
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteVaultByName()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-DeleteVaultByName", _data.ResourceGroupName, _data.Location) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteUnknownVaultFails()
+        public void TestDeleteVault()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} ", "Test-DeleteUnknownVaultFails") }; },
+                _logger,
+                () => { return new[] { "Test-DeleteVaultByName" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
@@ -288,6 +136,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     var objId = GetUserObjectId(controller, upn);
@@ -306,6 +155,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             string upn = "";
             _data.ResetPreCreatedVault();
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByUPN", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
@@ -326,6 +176,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     var objId = GetUserObjectId(controller, upn);
@@ -349,6 +200,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     var objId = GetUserObjectId(controller, upn);
@@ -370,6 +222,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     var objId = GetUserObjectId(controller, upn);
@@ -391,6 +244,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             _data.ResetPreCreatedVault();
             controller.RunPsTestWorkflow(
+                _logger,
             //script builder
             () =>
             {
@@ -422,6 +276,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             _data.ResetPreCreatedVault();
 
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
 
@@ -442,6 +297,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             _data.ResetPreCreatedVault();
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDeployment", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
@@ -461,6 +317,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             _data.ResetPreCreatedVault();
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForTemplateDeployment", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
@@ -479,6 +336,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             _data.ResetPreCreatedVault();
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDiskEncryption", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
@@ -498,6 +356,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             _data.ResetPreCreatedVault();
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyNegativeCases", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
@@ -517,6 +376,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     var objId = GetUserObjectId(controller, upn);
@@ -536,6 +396,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestCreateDeleteVaultWithPiping()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                 _logger,
                 () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateDeleteVaultWithPiping", _data.ResourceGroupName, _data.Location) }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
@@ -544,6 +405,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
         #endregion
+
+        [Fact(Skip = "Fails in playback")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkSet()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                 _logger,
+                () => { return new[] { "Test-NetworkRuleSet" }; },
+                null,
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name
+                );
+        }
 
         #region Helper Methods
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)

@@ -18,7 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -26,9 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of jobs associated with this recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
-        OutputType(typeof(JobBase), typeof(IList<JobBase>))]
-    public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob"),OutputType(typeof(JobBase))]
+    public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Filter value for status of job.
@@ -84,6 +83,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
+
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 // initialize values to default
                 DateTime rangeStart = DateTime.UtcNow.AddDays(-1);
@@ -149,13 +152,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 int resultCount = 0;
 
-                var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
+                var adapterResponse = ServiceClientAdapter.GetJobs(
+                    JobId,
                     ServiceClientHelpers.GetServiceClientJobStatus(Status),
                     Operation.ToString(),
                     rangeStart,
                     rangeEnd,
                     ServiceClientHelpers.GetServiceClientBackupManagementType(
-                        BackupManagementType));
+                        BackupManagementType),
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
 
                 JobConversions.AddServiceClientJobsToPSList(
                     adapterResponse, result, ref resultCount);

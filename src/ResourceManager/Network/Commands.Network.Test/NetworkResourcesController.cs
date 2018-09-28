@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Storage;
@@ -27,7 +28,9 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Commands.Network.Test
 {
@@ -35,9 +38,13 @@ namespace Commands.Network.Test
     {
         private readonly EnvironmentSetupHelper _helper;
 
+        public SubscriptionClient SubscriptionClient { get; private set; }
+
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
+
+        public ContainerInstanceManagementClient ContainerInstanceManagementClient { get; set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
 
@@ -52,8 +59,9 @@ namespace Commands.Network.Test
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            _helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Compute", null);
@@ -89,19 +97,45 @@ namespace Commands.Network.Test
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-               var callingClassName = callingClassType
+                var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
+
+                string scenarioTestsDir = Path.Combine(Directory.GetCurrentDirectory(), "ScenarioTests");
+                string psScriptPath = null;
+
+                var testDirs = Directory.GetDirectories(scenarioTestsDir).ToList();
+                testDirs.Insert(0, scenarioTestsDir);
+
+                foreach (var dir in testDirs)
+                {
+                    var testPath = Path.Combine(dir, callingClassName + ".ps1");
+                    if (File.Exists(testPath))
+                    {
+                        psScriptPath = testPath;
+                        break;
+                    }
+                }
+
+                if (psScriptPath == null)
+                {
+                    throw new FileNotFoundException(string.Format("Couldn't find ps1 file for test class '{0}'", callingClassName));
+                }
+
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    psScriptPath,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    _helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
+#if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
+#else
+                    _helper.RMStorageModule,
+#endif
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
@@ -134,22 +168,31 @@ namespace Commands.Network.Test
             var resourceManagerResourceManagementClient = GetResourceManagerResourceManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
+            ContainerInstanceManagementClient = GetContainerInstanceManagementClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             RedisManagementClient = GetRedisManagementClient(context);
+            SubscriptionClient = GetSubscriptionClient(context);
             OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
 
             _helper.SetupManagementClients(
                 resourceManagerResourceManagementClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
+                ContainerInstanceManagementClient,
                 StorageManagementClient,
                 RedisManagementClient,
+                SubscriptionClient,
                 OperationalInsightsManagementClient);
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static SubscriptionClient GetSubscriptionClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<SubscriptionClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
@@ -170,6 +213,11 @@ namespace Commands.Network.Test
         private static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ContainerInstanceManagementClient GetContainerInstanceManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<ContainerInstanceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 }
 }

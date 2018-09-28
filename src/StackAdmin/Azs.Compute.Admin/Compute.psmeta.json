@@ -1,0 +1,1657 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "codeGenerator": "CSharp",
+      "nameSpacePrefix": "Microsoft.PowerShell.",
+      "noAssembly": false,
+      "powerShellCorePath": "",
+      "includeCoreFxAssembly": false,
+      "testBuild": false,
+      "confirmBootstrap": false,
+      "path": ".",
+      "symbolPath": ".",
+      "serviceType": "",
+      "customAuthCommand": "",
+      "hostOverrideCommand": "",
+      "noAuthChallenge": ""
+    },
+    "x-ps-module-info": {
+      "name": "ComputeAdminClient",
+      "moduleVersion": "0.0.1",
+      "guid": "def13417-4010-45e1-a226-780edaf4fc85",
+      "description": "Compute Admin Client",
+      "author": "",
+      "companyName": "",
+      "CopyRight": "",
+      "licenseUri": "",
+      "projectUri": "",
+      "helpInfoUri": "",
+      "iconUri": "",
+      "releaseNotes": "",
+      "defaultCommandPrefix": "",
+      "tags": [
+        
+      ]
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/VMExtension/publishers/{publisher}/types/{type}/versions/{version}": {
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-VMExtension",
+            "description": "Deletes specified Virtual Machine Extension Image.",
+            "defaultParameterSet": "VMExtensions_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-VMExtension",
+            "description": "Create a Virtual Machine Extension Image.",
+            "defaultParameterSet": "VMExtensions_Create",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-VMExtension",
+            "description": "Returns requested Virtual Machine Extension Image.",
+            "defaultParameterSet": "VMExtensions_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/quotas/{quotaName}": {
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Set-Quota",
+            "description": "Creates or Updates a Quota.",
+            "defaultParameterSet": "Quotas_CreateOrUpdate",
+            "generateCommand": true
+          },
+          {
+            "name": "New-Quota",
+            "description": "Creates or Updates a Quota.",
+            "defaultParameterSet": "Quotas_CreateOrUpdate",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-Quota",
+            "description": "Delete an existing quota.",
+            "defaultParameterSet": "Quotas_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Quota",
+            "description": "Get an existing Quota.",
+            "defaultParameterSet": "Quotas_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-DiskMigrationJob",
+            "description": "Returns a list of disk migration jobs.",
+            "defaultParameterSet": "DiskMigrationJobs_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs/{migrationId}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-DiskMigrationJob",
+            "description": "Returns the requested disk migration job.",
+            "defaultParameterSet": "DiskMigrationJobs_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-DiskMigrationJob",
+            "description": "Create a disk migration job.",
+            "defaultParameterSet": "DiskMigrationJobs_Create",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/providers/Microsoft.Compute.Admin/operations": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Operation",
+            "description": "Returns the list of supported REST operations.",
+            "defaultParameterSet": "Operations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/platformImage/publishers/{publisher}/offers/{offer}/skus/{sku}/versions/{version}": {
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-PlatformImage",
+            "description": "Delete a platform image",
+            "defaultParameterSet": "PlatformImages_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-PlatformImage",
+            "description": "Creates a new platform image.",
+            "defaultParameterSet": "PlatformImages_Create",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-PlatformImage",
+            "description": "Returns the requested platform image.",
+            "defaultParameterSet": "PlatformImages_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/platformImage": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-PlatformImage",
+            "description": "Returns a list of all platform images.",
+            "defaultParameterSet": "PlatformImages_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/disks": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Disk",
+            "description": "Returns a list of disks.",
+            "defaultParameterSet": "Disks_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/disks/{DiskId}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Disk",
+            "description": "Returns the disk.",
+            "defaultParameterSet": "Disks_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs/{migrationId}/Cancel": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Stop-DiskMigrationJob",
+            "description": "Cancel a disk migration job.",
+            "defaultParameterSet": "DiskMigrationJobs_Cancel",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/quotas": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Quota",
+            "description": "Get a list of existing quotas.",
+            "defaultParameterSet": "Quotas_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/VMExtension": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-VMExtension",
+            "description": "Returns a list of all Virtual Machine Extension Image.",
+            "defaultParameterSet": "VMExtensions_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+  },
+  "definitions": {
+    "VMExtension": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VMExtensionObject",
+          "description": "Virtual Machine Extension Image.",
+          "defaultParameterSet": "VMExtension",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "AccountType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AccountTypeObject",
+          "description": "Disk Sku.",
+          "defaultParameterSet": "AccountType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MigrationSubTaskList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MigrationSubTaskListObject",
+          "description": "List of disk migration tasks.",
+          "defaultParameterSet": "MigrationSubTaskList",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "PlatformImageProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-PlatformImagePropertiesObject",
+          "description": "Properties of platform image.",
+          "defaultParameterSet": "PlatformImageProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "osDisk": {
+          "x-ps-parameter-info": {
+            "name": "OsDisk",
+            "description": "Operating system used for this platform image."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "details": {
+          "x-ps-parameter-info": {
+            "name": "Details",
+            "description": "Information about the image."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "dataDisks": {
+          "x-ps-parameter-info": {
+            "name": "DataDisks",
+            "description": "Data disks used by the platform image."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "provisioningState": {
+          "x-ps-parameter-info": {
+            "name": "ProvisioningState",
+            "description": "Provisioning status of the platform image."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "QuotaProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-QuotaPropertiesObject",
+          "description": "Properties for a Quota",
+          "defaultParameterSet": "QuotaProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "coresLimit": {
+          "x-ps-parameter-info": {
+            "name": "CoresLimit",
+            "description": "Maximum number of core allowed."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "vmScaleSetCount": {
+          "x-ps-parameter-info": {
+            "name": "VmScaleSetCount",
+            "description": "Maximum number of scale sets allowed."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "virtualMachineCount": {
+          "x-ps-parameter-info": {
+            "name": "VirtualMachineCount",
+            "description": "Maximum number of virtual machines allowed."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "availabilitySetCount": {
+          "x-ps-parameter-info": {
+            "name": "AvailabilitySetCount",
+            "description": "Maximum number of availability sets allowed."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "VMExtensionParameters": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VMExtensionParametersObject",
+          "description": "Parameters used to create a new Virtual Machine Extension Image.",
+          "defaultParameterSet": "VMExtensionParameters",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "PlatformImage": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-PlatformImageObject",
+          "description": "Platform image represents a virtual machine.",
+          "defaultParameterSet": "PlatformImage",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "DiskMigrationJob": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskMigrationJobObject",
+          "description": "Disk migration job.",
+          "defaultParameterSet": "DiskMigrationJob",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "OsType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-OsTypeObject",
+          "description": "Operating system type.",
+          "defaultParameterSet": "OsType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "DiskMigrationJobList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskMigrationJobListObject",
+          "description": "List of disk migration jobs.",
+          "defaultParameterSet": "DiskMigrationJobList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of disk migration jobs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "VMExtensionProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VMExtensionPropertiesObject",
+          "description": "Properties of a Virtual Machine Extension Image.",
+          "defaultParameterSet": "VMExtensionProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "provisioningState": {
+          "x-ps-parameter-info": {
+            "name": "ProvisioningState",
+            "description": "Provisioning state of extension."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "sourceBlob": {
+          "x-ps-parameter-info": {
+            "name": "SourceBlob",
+            "description": "URI to Azure or AzureStack blob."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "computeRole": {
+          "x-ps-parameter-info": {
+            "name": "ComputeRole",
+            "description": "Compute role"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "vmOsType": {
+          "x-ps-parameter-info": {
+            "name": "VmOsType",
+            "description": "Target virtual machine operating system type necessary for deploying the extension handler."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "vmScaleSetEnabled": {
+          "x-ps-parameter-info": {
+            "name": "VmScaleSetEnabled",
+            "description": "Value indicating whether the extension is enabled for virtual machine scale set support."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "supportMultipleExtensions": {
+          "x-ps-parameter-info": {
+            "name": "SupportMultipleExtensions",
+            "description": "True if supports multiple extensions."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "isSystemExtension": {
+          "x-ps-parameter-info": {
+            "name": "IsSystemExtension",
+            "description": "Indicates if the extension is for the system."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DiskState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskStateObject",
+          "description": "Disk State.",
+          "defaultParameterSet": "DiskState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MigrationJobStatus": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MigrationJobStatusObject",
+          "description": "Migration job status.",
+          "defaultParameterSet": "MigrationJobStatus",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "DiskMigrationJobProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskMigrationJobPropertiesObject",
+          "description": "Disk migration job properties.",
+          "defaultParameterSet": "DiskMigrationJobProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "subtasks": {
+          "x-ps-parameter-info": {
+            "name": "Subtasks",
+            "description": "The list of child migration tasks."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "creationTime": {
+          "x-ps-parameter-info": {
+            "name": "CreationTime",
+            "description": "The job creation time."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "endTime": {
+          "x-ps-parameter-info": {
+            "name": "EndTime",
+            "description": "The job end time."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "targetShare": {
+          "x-ps-parameter-info": {
+            "name": "TargetShare",
+            "description": "The target share of migration job."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "startTime": {
+          "x-ps-parameter-info": {
+            "name": "StartTime",
+            "description": "The job start time."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "migrationId": {
+          "x-ps-parameter-info": {
+            "name": "MigrationId",
+            "description": "The disk migration id."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "status": {
+          "x-ps-parameter-info": {
+            "name": "Status",
+            "description": "The current status of disk migration job."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DiskList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskListObject",
+          "description": "List of disks.",
+          "defaultParameterSet": "DiskList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of disks."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "QuotaList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-QuotaListObject",
+          "description": "List of quotas",
+          "defaultParameterSet": "QuotaList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of quotas"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Disk": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskObject",
+          "description": "Managed Disk.",
+          "defaultParameterSet": "Disk",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "DiskProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskPropertiesObject",
+          "description": "Managed disk properties.",
+          "defaultParameterSet": "DiskProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "diskType": {
+          "x-ps-parameter-info": {
+            "name": "DiskType",
+            "description": "The type of the disk resource."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "managedBy": {
+          "x-ps-parameter-info": {
+            "name": "ManagedBy",
+            "description": "Compute resource Uri which owns this disk."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "actualSizeGB": {
+          "x-ps-parameter-info": {
+            "name": "ActualSizeGB",
+            "description": "The actual size of disk in GB."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "userResourceId": {
+          "x-ps-parameter-info": {
+            "name": "UserResourceId",
+            "description": "The disk resource Uri from user view."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "sharePath": {
+          "x-ps-parameter-info": {
+            "name": "SharePath",
+            "description": "The disk share path."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "provisionSizeGB": {
+          "x-ps-parameter-info": {
+            "name": "ProvisionSizeGB",
+            "description": "The provision size of disk in GB."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "diskSku": {
+          "x-ps-parameter-info": {
+            "name": "DiskSku",
+            "description": "the disk sku."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "status": {
+          "x-ps-parameter-info": {
+            "name": "Status",
+            "description": "The disk status."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "diskId": {
+          "x-ps-parameter-info": {
+            "name": "DiskId",
+            "description": "The disk id."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MigrationSubTaskProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MigrationSubTaskPropertiesObject",
+          "description": "Disk migration child task properties.",
+          "defaultParameterSet": "MigrationSubTaskProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "sourceShare": {
+          "x-ps-parameter-info": {
+            "name": "SourceShare",
+            "description": "The source share of migration task."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "migrationSubtaskStatus": {
+          "x-ps-parameter-info": {
+            "name": "MigrationSubtaskStatus",
+            "description": "The disk migration child task status."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "endTime": {
+          "x-ps-parameter-info": {
+            "name": "EndTime",
+            "description": "The task end time."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "targetDiskStateForMigration": {
+          "x-ps-parameter-info": {
+            "name": "TargetDiskStateForMigration",
+            "description": "The disk status."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "targetShare": {
+          "x-ps-parameter-info": {
+            "name": "TargetShare",
+            "description": "The target share of migration task."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "startTime": {
+          "x-ps-parameter-info": {
+            "name": "StartTime",
+            "description": "The task start time."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "reason": {
+          "x-ps-parameter-info": {
+            "name": "Reason",
+            "description": "The reason of task failure."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "diskId": {
+          "x-ps-parameter-info": {
+            "name": "DiskId",
+            "description": "The id of disk."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlatformImageParameters": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-PlatformImageParametersObject",
+          "description": "Parameters used to create a new platform image.",
+          "defaultParameterSet": "PlatformImageParameters",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "Quota": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-QuotaObject",
+          "description": "Holds quota information used to control resource allocation.",
+          "defaultParameterSet": "Quota",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MigrationSubTaskStatus": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MigrationSubTaskStatusObject",
+          "description": "Migration child task status.",
+          "defaultParameterSet": "MigrationSubTaskStatus",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "Resource": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceObject",
+          "description": "Base resource object.",
+          "defaultParameterSet": "Resource",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "ID of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "type": {
+          "x-ps-parameter-info": {
+            "name": "Type",
+            "description": "Type of Resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "Location of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ImageDetails": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ImageDetailsObject",
+          "description": "Information about the disk image.",
+          "defaultParameterSet": "ImageDetails",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "billingPartNumber": {
+          "x-ps-parameter-info": {
+            "name": "BillingPartNumber",
+            "description": "The part number is used to bill for software costs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Display": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DisplayObject",
+          "description": "Contains the localized display information for this particular operation or action.",
+          "defaultParameterSet": "Display",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "provider": {
+          "x-ps-parameter-info": {
+            "name": "Provider",
+            "description": "The localized, friendly version of the resource provider name. The provider name is expected to include the name of the publisher or company responsible. The provider name format should use title case and begin with \"Microsoft\" for first-party services. For example, the provider name may be\"Microsoft Monitoring Insights\" or \"Microsoft Compute.\""
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "The localized, friendly description for the operation. The description will be displayed to the user. It should be thorough and concise for used in both tooltips and detailed views."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "resource": {
+          "x-ps-parameter-info": {
+            "name": "Resource",
+            "description": "The localized, friendly version of the resource type related to this action or operation; the resource type should match the public documentation for the resource provider."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "operation": {
+          "x-ps-parameter-info": {
+            "name": "Operation",
+            "description": "The localized, friendly name for the operation. Use the name as it will displayed to the user."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "OperationList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-OperationListObject",
+          "description": "List of Operations",
+          "defaultParameterSet": "OperationList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of operations"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page of operations."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "OsDisk": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-OsDiskObject",
+          "description": "Operating system disk.",
+          "defaultParameterSet": "OsDisk",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "osType": {
+          "x-ps-parameter-info": {
+            "name": "OsType",
+            "description": "Operating system type."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "uri": {
+          "x-ps-parameter-info": {
+            "name": "Uri",
+            "description": "Location of the disk."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DiskListInput": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskListInputObject",
+          "description": "List of disks.",
+          "defaultParameterSet": "DiskListInput",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "DataDisk": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DataDiskObject",
+          "description": "Information about datadisk.",
+          "defaultParameterSet": "DataDisk",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "lun": {
+          "x-ps-parameter-info": {
+            "name": "Lun",
+            "description": "Logical unit number."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "uri": {
+          "x-ps-parameter-info": {
+            "name": "Uri",
+            "description": "Location of the disk template."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DiskResourceType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DiskResourceTypeObject",
+          "description": "Disk resource type.",
+          "defaultParameterSet": "DiskResourceType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "Operation": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-OperationObject",
+          "description": "Describes the supported REST operation.",
+          "defaultParameterSet": "Operation",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "The name of the operation being performed on this particular object. This name should match the name that appears in RBAC or the event service."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "display": {
+          "x-ps-parameter-info": {
+            "name": "Display",
+            "description": "Contains the localized display information for this particular operation or action."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlatformImageList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-PlatformImageListObject",
+          "description": "List of platform images.",
+          "defaultParameterSet": "PlatformImageList",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "VMExtensionList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VMExtensionListObject",
+          "description": "List of virtual machine extensions.",
+          "defaultParameterSet": "VMExtensionList",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ProvisioningState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ProvisioningStateObject",
+          "description": "The provisioning state of the resource.",
+          "defaultParameterSet": "ProvisioningState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MigrationSubTask": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MigrationSubTaskObject",
+          "description": "Disk migration child task.",
+          "defaultParameterSet": "MigrationSubTask",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "migrationSubTaskId": {
+          "x-ps-parameter-info": {
+            "name": "MigrationSubTaskId",
+            "description": "The id of migration child task."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "AzureBlob": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzureBlobObject",
+          "description": "Azure or AzureStack blob information.",
+          "defaultParameterSet": "AzureBlob",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "uri": {
+          "x-ps-parameter-info": {
+            "name": "Uri",
+            "description": "URI to Azure or AzureStack blob."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "PublisherParameter": {
+      "x-ps-parameter-info": {
+        "name": "Publisher",
+        "description": "Name of the publisher.",
+        "flatten": false
+      }
+    },
+    "MigrationJobStatusParameter": {
+      "x-ps-parameter-info": {
+        "name": "Status",
+        "description": "The parameters of disk migration job status.",
+        "flatten": false
+      }
+    },
+    "MigrationIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "MigrationId",
+        "description": "The migration job guid name.",
+        "flatten": false
+      }
+    },
+    "OfferParameter": {
+      "x-ps-parameter-info": {
+        "name": "Offer",
+        "description": "Name of the offer.",
+        "flatten": false
+      }
+    },
+    "UserSubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "UserSubscriptionId",
+        "description": "User Subscription Id which the resource belongs to.",
+        "flatten": false
+      }
+    },
+    "NewQuotaParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewQuota",
+        "description": "New quota to create.",
+        "flatten": false
+      }
+    },
+    "SubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        "flatten": false
+      }
+    },
+    "DiskStartParameter": {
+      "x-ps-parameter-info": {
+        "name": "Start",
+        "description": "The start index of disks in query.",
+        "flatten": false
+      }
+    },
+    "VMExtensionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Extension",
+        "description": "Virtual Machine Extension Image creation properties.",
+        "flatten": false
+      }
+    },
+    "TargetShareParameter": {
+      "x-ps-parameter-info": {
+        "name": "TargetShare",
+        "description": "The target share name.",
+        "flatten": false
+      }
+    },
+    "QuotaParameter": {
+      "x-ps-parameter-info": {
+        "name": "QuotaName",
+        "description": "Name of the quota.",
+        "flatten": false
+      }
+    },
+    "DiskListParameter": {
+      "x-ps-parameter-info": {
+        "name": "Disks",
+        "description": "The parameters of disk list.",
+        "flatten": false
+      }
+    },
+    "DiskIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "DiskId",
+        "description": "The disk guid as identity.",
+        "flatten": false
+      }
+    },
+    "SourceSharePathParameter": {
+      "x-ps-parameter-info": {
+        "name": "SharePath",
+        "description": "The source share which the resource belongs to.",
+        "flatten": false
+      }
+    },
+    "DiskStateParameter": {
+      "x-ps-parameter-info": {
+        "name": "Status",
+        "description": "The parameters of disk state.",
+        "flatten": false
+      }
+    },
+    "VersionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Version",
+        "description": "The version of the resource.",
+        "flatten": false
+      }
+    },
+    "NewPlatformImageParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewImage",
+        "description": "New platform image.",
+        "flatten": false
+      }
+    },
+    "DiskCountParameter": {
+      "x-ps-parameter-info": {
+        "name": "Count",
+        "description": "The maximum number of disks to return.",
+        "flatten": false
+      }
+    },
+    "LocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "Location",
+        "description": "Location of the resource.",
+        "flatten": false
+      }
+    },
+    "SkuParameter": {
+      "x-ps-parameter-info": {
+        "name": "Sku",
+        "description": "Name of the SKU.",
+        "flatten": false
+      }
+    },
+    "TypeParameter": {
+      "x-ps-parameter-info": {
+        "name": "Type",
+        "description": "Type of extension.",
+        "flatten": false
+      }
+    }
+  }
+}

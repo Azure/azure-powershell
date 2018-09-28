@@ -25,17 +25,39 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
+    using ServiceManagemenet.Common.Models;
     using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
-    public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
+    public class ApiManagementTests : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
-        private readonly ApiManagementTestsFixture _fixture;
+        public string Location { get; set; }
+        public string ResourceGroupName { get; set; }
+        public string ApiManagementServiceName { get; set; }
 
-        public ApiManagementTests(ApiManagementTestsFixture fixture)
+        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _fixture = fixture;
-            _helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper
+            {
+                TracingInterceptor = new XunitTracingInterceptor(output)
+            };
+            XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
+
+            using (MockContext context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
+            {
+                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
+                ResourceGroupName = "powershelltest";
+                Location = "West US";
+
+                if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                {
+                    ResourceGroupName = Azure.Test.TestUtilities.GenerateName("Api-Default");
+                    resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
+                }
+
+                ApiManagementServiceName = "powershellsdkservice";
+                ApiManagementHelper.GetApiManagementClient(context).TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
+            }
         }
 
         [Fact]
@@ -211,7 +233,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
 
-                scripts = scripts.Select(s => s + $" {_fixture.ResourceGroupName} {_fixture.ApiManagementServiceName}").ToArray();
+                scripts = scripts.Select(s => s + $" {ResourceGroupName} {ApiManagementServiceName}").ToArray();
                 _helper.RunPowerShellTest(scripts);
             }
         }

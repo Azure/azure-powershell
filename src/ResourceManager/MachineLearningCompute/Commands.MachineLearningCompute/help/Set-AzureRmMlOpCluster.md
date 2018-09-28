@@ -12,24 +12,25 @@ Sets the properties of an operationalization cluster.
 
 ## SYNTAX
 
+### SetByIndividualParameters (Default)
+```
+Set-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-AgentCount <Int32>] [-SslStatus <String>]
+ [-SslCertificate <String>] [-SslKey <String>] [-SslCName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### SetByInputObject
 ```
-Set-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+Set-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-AgentCount <Int32>] [-SslStatus <String>]
+ [-SslCertificate <String>] [-SslKey <String>] [-SslCName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzureRmMlOpCluster -ResourceId <String> [-AgentCount <Int32>] [-SslStatus <String>]
  [-SslCertificate <String>] [-SslKey <String>] [-SslCName <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
-```
-
-### SetByIndividualParameters
-```
-Set-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-AgentCount <Int32>] [-SslStatus <String>]
- [-SslCertificate <String>] [-SslKey <String>] [-SslCName <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,12 +42,14 @@ are currently updatable, as shown in the parameter sets.
 
 ### Example 1
 Update a cluster using individual parameters.
+
 ```
 PS C:\> Set-AzureRmMlOpCluster -ResourceGroupName my-rg -ClusterName my-cluster -AgentCount 5
 ```
 
 ### Example 2
 Update a cluster using an input object.
+
 ```
 PS C:\> $cluster = Get-AzureRmMlOpCluster -ResourceGroupName my-rg -ClusterName my-cluster
 PS C:\> $cluster.ContainerService.AgentCount = 5
@@ -59,9 +62,21 @@ PS C:\> Set-AzureRmMlOpCluster -InputObject $cluster
 The number of agent nodes in the ACS cluster.
 
 ```yaml
-Type: Int32
-Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
-Aliases: 
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByIndividualParameters, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByInputObject
+Aliases:
 
 Required: False
 Position: Named
@@ -74,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +104,7 @@ Accept wildcard characters: False
 The operationalization cluster properties.
 
 ```yaml
-Type: PSOperationalizationCluster
+Type: Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 Parameter Sets: SetByInputObject
 Aliases: Cluster
 
@@ -104,9 +119,9 @@ Accept wildcard characters: False
 The name of the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByIndividualParameters
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,9 +134,9 @@ Accept wildcard characters: False
 The name of the resource group for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByIndividualParameters
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -134,9 +149,9 @@ Accept wildcard characters: False
 The Azure resource id for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -149,9 +164,21 @@ Accept wildcard characters: False
 The SSL certificate data in PEM format.
 
 ```yaml
-Type: String
-Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
-Aliases: 
+Type: System.String
+Parameter Sets: SetByIndividualParameters, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByInputObject
+Aliases:
 
 Required: False
 Position: Named
@@ -164,9 +191,21 @@ Accept wildcard characters: False
 The CName for the SSL certificate.
 
 ```yaml
-Type: String
-Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
-Aliases: 
+Type: System.String
+Parameter Sets: SetByIndividualParameters, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByInputObject
+Aliases:
 
 Required: False
 Position: Named
@@ -179,9 +218,21 @@ Accept wildcard characters: False
 The SSL key data in PEM format.
 
 ```yaml
-Type: String
-Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
-Aliases: 
+Type: System.String
+Parameter Sets: SetByIndividualParameters, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByInputObject
+Aliases:
 
 Required: False
 Position: Named
@@ -195,9 +246,21 @@ SSL status.
 Possible values are 'Enabled' and 'Disabled'.
 
 ```yaml
-Type: String
-Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
-Aliases: 
+Type: System.String
+Parameter Sets: SetByIndividualParameters, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByInputObject
+Aliases:
 
 Required: False
 Position: Named
@@ -210,7 +273,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +289,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -237,19 +300,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-### System.String
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+Parameters: InputObject (ByValue)
 
+### System.String
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 
-
 ## NOTES
 
 ## RELATED LINKS
-

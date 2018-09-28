@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 6187F603-5298-4854-94F3-0C38FCF3125F
@@ -44,11 +44,8 @@ ErrorCode ErrorMessage                            Recommendations
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets failed jobs from the vault in $Vault, and then stores them in the $Jobs array variable.
-
 The third job gets details for the first job in the $Jobs variable, and then stores those details in the $JobDetails variable.
-
 The final command displays the **ErrorDetails** property of $JobDetails by using standard dot syntax.
 
 ### Example 2: Display the recommended action for a failed job
@@ -65,7 +62,7 @@ This command displays the recommended action from the $JobDetails variable that 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,9 +78,9 @@ Specifies a job for which this cmdlet gets details.
 To obtain an **AzureRmBackupJob** object, use the Get-AzureRmBackupJob cmdlet.
 
 ```yaml
-Type: AzureRMBackupJob
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 Parameter Sets: JobsFiltersSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,9 +95,9 @@ The ID is the **InstanceId** property of an **AzureRmBackupJob** object.
 To obtain an **AzureRmBackupJob** object, use Get-AzureRmBackupJob.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdFiltersSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -114,9 +111,9 @@ Specifies the Backup vault for which this cmdlet gets job details.
 To obtain an **AzureRmBackupVault** object, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: IdFiltersSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -130,14 +127,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJobDetails
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJobDetails
 
 ## NOTES
-* None
 
 ## RELATED LINKS
 

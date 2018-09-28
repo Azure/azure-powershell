@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.ServiceManagement.Dependencies.Test.targets" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BC0E3D3-6EDD-43AA-8F15-DCFED8ACC93D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Management.Storage.ScenarioTest</RootNamespace>
+    <AssemblyName>CLITest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>75466ccb</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Agent.cs" />
+    <Compile Include="AssemblyInitCleanup.cs" />
+    <Compile Include="BVT\CLICommonBVT.cs" />
+    <Compile Include="BVT\HTTPS\AnonymousBVT.cs" />
+    <Compile Include="BVT\HTTPS\AzureEnvironment.cs" />
+    <Compile Include="BVT\HTTPS\ConnectionStringBVT.cs" />
+    <Compile Include="BVT\HTTPS\EnvConnectionStringBVT.cs" />
+    <Compile Include="BVT\HTTPS\NameKeyContextBVT.cs" />
+    <Compile Include="BVT\HTTPS\SecondaryEndPointBVT.cs" />
+    <Compile Include="BVT\HTTPS\SubScriptionBVT.cs" />
+    <Compile Include="BVT\HTTP\AnonymousBVT.cs" />
+    <Compile Include="BVT\HTTP\AzureEmulatorBVT.cs" />
+    <Compile Include="BVT\HTTP\AzureEnvironment.cs" />
+    <Compile Include="BVT\HTTP\ConnectionStringBVT.cs" />
+    <Compile Include="BVT\HTTP\EnvConnectionStringBVT.cs" />
+    <Compile Include="BVT\HTTP\NameKeyContextBVT.cs" />
+    <Compile Include="BVT\HTTP\SecondaryEndPointBVT.cs" />
+    <Compile Include="BVT\StorageBVT.cs" />
+    <Compile Include="CLIBlobFunc.cs" />
+    <Compile Include="CLIContainerFunc.cs" />
+    <Compile Include="CLIContextFunc.cs" />
+    <Compile Include="CLIQueueFunc.cs" />
+    <Compile Include="CLITableFunc.cs" />
+    <Compile Include="Common\TestBase.cs" />
+    <Compile Include="Functional\Blob\GetBlob.cs" />
+    <Compile Include="Functional\Blob\GetBlobContent.cs" />
+    <Compile Include="Functional\Blob\GetContainer.cs" />
+    <Compile Include="Functional\Blob\GetCopyState.cs" />
+    <Compile Include="Functional\Blob\NewContainer.cs" />
+    <Compile Include="Functional\Blob\RemoveBlob.cs" />
+    <Compile Include="Functional\Blob\RemoveContainer.cs" />
+    <Compile Include="Functional\Blob\SetBlobContent.cs" />
+    <Compile Include="Functional\Blob\SetContainerAcl.cs" />
+    <Compile Include="Functional\Blob\StartCopy.cs" />
+    <Compile Include="Functional\Blob\StopCopy.cs" />
+    <Compile Include="Functional\Queue\GetQueue.cs" />
+    <Compile Include="Functional\Queue\RemoveQueue.cs" />
+    <Compile Include="Functional\StorageContext.cs" />
+    <Compile Include="GB18030Test\BlobContentTest.cs" />
+    <Compile Include="Functional\Table\RemoveTable.cs" />
+    <Compile Include="PowerShellAgent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PsTag.cs" />
+    <Compile Include="Util\PowerShellExtension.cs" />
+    <None Include="packages.config" />
+    <None Include="README" />
+    <Compile Include="StorageObjectType.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Util\CloudBlobUtil.cs" />
+    <Compile Include="Util\CloudQueueUtil.cs" />
+    <Compile Include="Util\CloudTableUtil.cs" />
+    <Compile Include="Util\FileUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\TestData.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ServiceManagement\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
+      <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
+      <Name>Commands.Test.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Storage.MsTest2\Commands.Storage.MsTest2.csproj">
+      <Project>{9d5a40ca-5594-4f5c-8230-7adf7cc0558e}</Project>
+      <Name>Commands.Storage.MsTest2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Storage\Commands.Storage.csproj">
+      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
+      <Name>Commands.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Storage.MsTestLib\Commands.Storage.MsTestLib.csproj">
+      <Project>{ce97967b-7479-43b9-9561-776232ac5d47}</Project>
+      <Name>Commands.Storage.MsTestLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Storage.StorageTestLib\Commands.Storage.StorageTestLib.csproj">
+      <Project>{0a513849-2690-4d07-8de7-0ace39645d12}</Project>
+      <Name>Commands.Storage.StorageTestLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deploy.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="storagetest.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

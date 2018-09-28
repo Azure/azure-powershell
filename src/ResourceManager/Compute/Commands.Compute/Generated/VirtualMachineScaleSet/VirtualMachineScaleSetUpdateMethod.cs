@@ -20,8 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -33,96 +31,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineScaleSetUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineScaleSetUpdate";
-            pParameters.ParameterType = typeof(VirtualMachineScaleSetUpdate);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineScaleSetUpdate", pParameters);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineScaleSetUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineScaleSetUpdate parameters = (VirtualMachineScaleSetUpdate)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineScaleSet parametersOrg = (VirtualMachineScaleSet)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = (parameters == null)
-                         ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parametersOrg)
-                         : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parameters);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineScaleSetUpdateParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-            VirtualMachineScaleSetUpdate parameters = new VirtualMachineScaleSetUpdate();
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName", "Parameters" },
-                 new object[] { resourceGroupName, vmScaleSetName, parameters });
-        }
-    }
-
-    [Cmdlet(VerbsData.Update, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsData.Update))
@@ -226,6 +141,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public bool AutomaticOSUpgrade { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public bool DisableAutoRollback { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -380,7 +299,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
                 }
-                this.VirtualMachineScaleSetUpdate.Identity.IdentityIds = this.IdentityId;
+
+                this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var id in this.IdentityId)
+                {
+                    if (!this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.ContainsKey(id))
+                    {
+                        this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    }
+                }
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
@@ -542,6 +470,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgrade = this.AutomaticOSUpgrade;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutoOSUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup"))
@@ -994,16 +939,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.Identity == null)
                 {
-                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                    this.VirtualMachineScaleSet.Identity = new PSVirtualMachineScaleSetIdentity();
                 }
-                this.VirtualMachineScaleSet.Identity.IdentityIds = this.IdentityId;
+
+                this.VirtualMachineScaleSet.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var id in this.IdentityId)
+                {
+                    if (!this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(id))
+                    {
+                        this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    }
+                }
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
             {
                 WriteWarning("Update-AzureRmVmss: The accepted values for parameter ManagedDiskStorageAccountType will change in an upcoming breaking change release " +
                              "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
-
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
@@ -1125,6 +1078,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgrade = this.AutomaticOSUpgrade;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
+            {
+                if (this.VirtualMachineScaleSet.UpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                if (this.VirtualMachineScaleSet.UpgradePolicy.AutoOSUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                }
+                this.VirtualMachineScaleSet.UpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup"))
@@ -1318,7 +1284,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.Identity == null)
                 {
-                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                    this.VirtualMachineScaleSet.Identity = new PSVirtualMachineScaleSetIdentity();
                 }
                 this.VirtualMachineScaleSet.Identity.Type = this.IdentityType;
             }

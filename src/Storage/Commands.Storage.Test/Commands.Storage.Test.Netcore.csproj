@@ -1,19 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+  <PropertyGroup>
+    <UseStorageDataPlane>true</UseStorageDataPlane>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
     <AssemblyName>Microsoft.WindowsAzure.Commands.Storage.Test</AssemblyName>
     <RootNamespace>Microsoft.WindowsAzure.Management.Storage.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -21,28 +24,21 @@
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.8.1" />
+  </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Microsoft.WindowsAzure.Commands.Storage">
-      <HintPath>..\..\Package\$(Configuration)\Storage\Azure.Storage.Netcore\Microsoft.WindowsAzure.Commands.Storage.dll</HintPath>
+      <HintPath>..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Storage\Microsoft.WindowsAzure.Commands.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
 

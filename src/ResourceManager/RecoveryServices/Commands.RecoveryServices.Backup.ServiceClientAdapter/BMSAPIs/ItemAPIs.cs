@@ -31,21 +31,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="request">Protected item create or update request</param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse CreateOrUpdateProtectedItem(
-                string containerName,
-                string protectedItemName,
-                ProtectedItemResource request)
+            string containerName,
+            string protectedItemName,
+            ProtectedItemResource request,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
-                AzureFabricName,
-                containerName,
-                protectedItemName,
-                request,
-                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+                 vaultName ?? BmsAdapter.GetResourceName(),
+                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                 AzureFabricName,
+                 containerName,
+                 protectedItemName,
+                 request,
+                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
         /// <summary>
@@ -55,15 +54,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse DeleteProtectedItem(
-                string containerName,
-                string protectedItemName)
+            string containerName,
+            string protectedItemName,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.ProtectedItems.DeleteWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -78,16 +76,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="queryFilter">Query filter</param>
         /// <returns>Protected item</returns>
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> GetProtectedItem(
-                string containerName,
-                string protectedItemName,
-           ODataQuery<GetProtectedItemQueryObject> queryFilter)
+            string containerName,
+            string protectedItemName,
+            ODataQuery<GetProtectedItemQueryObject> queryFilter,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.ProtectedItems.GetWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -103,16 +100,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="skipToken">Skip token used for pagination</param>
         /// <returns>List of protected items</returns>
         public List<ProtectedItemResource> ListProtectedItem(
-                ODataQuery<ProtectedItemQueryObject> queryFilter,
-            string skipToken = default(string))
+            ODataQuery<ProtectedItemQueryObject> queryFilter,
+            string skipToken = default(string),
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             Func<RestAzureNS.IPage<ProtectedItemResource>> listAsync =
                 () => BmsAdapter.Client.BackupProtectedItems.ListWithHttpMessagesAsync(
-                    resourceName,
-                    resourceGroupName,
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     skipToken,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
@@ -135,7 +131,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public RestAzureNS.AzureOperationResponse TriggerBackup(
             string containerName,
             string itemName,
-            DateTime? expiryDateTimeUtc)
+            DateTime? expiryDateTimeUtc,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
@@ -143,8 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             triggerBackupRequest.Properties = iaasVmBackupRequest;
 
             return BmsAdapter.Client.Backups.TriggerWithHttpMessagesAsync(
-                BmsAdapter.GetResourceName(),
-                BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
                 itemName,

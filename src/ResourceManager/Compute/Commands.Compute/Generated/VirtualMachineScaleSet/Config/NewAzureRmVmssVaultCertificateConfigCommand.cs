@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssVaultCertificateConfig", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVaultCertificateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VaultCertificate))]
     public partial class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -64,4 +64,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 3CE367B1-7685-4046-8E9C-CE680B5AE03F
@@ -31,7 +31,6 @@ PS C:\> $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyData
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
-
 The second command adds the public key to the location on VirtualMachine07 that the Path parameter specifies.
 
 ## PARAMETERS
@@ -40,7 +39,7 @@ The second command adds the public key to the location on VirtualMachine07 that 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +55,7 @@ Specifies a base 64 encoding of a public key.
 You can connect to a virtual machine by using SSH or by using the key that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +71,7 @@ Specifies the full path of a file, on the virtual machine, where this cmdlet sto
 If the file already exists, this cmdlet appends the key to the file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +88,7 @@ To obtain a virtual machine object, use the [Get-AzureRmVM](./Get-AzureRmVM.md) 
 You can use the [New-AzureRmVMConfig](./New-AzureRmVMConfig.md) cmdlet to create a virtual machine object.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -105,8 +104,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.String
 
 ## OUTPUTS
 

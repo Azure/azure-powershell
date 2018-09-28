@@ -52,18 +52,13 @@ function ServiceBusTopicTests
 	# Get all Topics
 	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 	Assert-True {$ResulListTopic.Count -gt 0} "no Topics were found in ListTopic"
-
-	# Delete the created Topic
-	$ResultDeleteTopic = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListTopic[0].Name
-	Assert-True {$ResultDeleteTopic} "Topic not deleted"
-
+		
 	# Cleanup
 	# Delete all Created Topic
 	Write-Debug " Delete the Topic"
-	for ($i = 0; $i -lt $ResulListTopic.Count; $i++)
-	{
-		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[$i].Name		
-	}
+	
+	Remove-AzureRmServiceBusTopic -ResourceId $resltSetTopic.Id
+
     Write-Debug " Delete namespaces"
     Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
@@ -179,12 +174,19 @@ function ServiceBusTopicAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey
-	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+	$namespaceRegenerateKeysDefault = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey
+	Assert-True {$namespaceRegenerateKeysDefault.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+
+	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
+	Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $namespaceListKeys.PrimaryKey
 
 	$policyKey1 = "SecondaryKey"
 
+	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
+	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
+
 	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey1
+	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey}
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
 	# Cleanup
@@ -199,7 +201,8 @@ function ServiceBusTopicAuthTests
     $createdTopics = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName 
 	for ($i = 0; $i -lt $createdTopics.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $createdTopics[$i].Name		
+		#$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $createdTopics[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusTopic -InputObject $createdTopics[$i]	
 	}
 
     Write-Debug "Delete NameSpace"
@@ -208,3 +211,4 @@ function ServiceBusTopicAuthTests
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
+
