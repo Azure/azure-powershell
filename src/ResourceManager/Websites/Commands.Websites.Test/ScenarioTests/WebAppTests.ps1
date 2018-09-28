@@ -781,12 +781,20 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			Write-Debug "Expected Message 1: $messageDNS"
 			Write-Debug "Expected Message 2: $messageUnavailable"
 		}
-
-		Write-Debug $PsVersionTable
 		
 		Write-Debug "Error: $Error[0]"
 		Write-Debug "Warnings: $wv"
 		
+		Write-Debug "Printing PsVersion"
+		foreach ($key in $PsVersionTable.Keys)
+		{
+			Write-Debug "$key"
+			foreach($v in $PsVersionTable[$key])
+			{
+				Write-Debug "   $v"
+			}
+		}
+
 		
 		If(!$resultError)
 		{
