@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Return a value indicating success or failure")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Create the PowerShell session without prompting for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
@@ -39,7 +42,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 SlotName = slot;
             }
 
-            WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName);
+            if (this.Force.IsPresent || ShouldProcess(Properties.Resources.EnterContainerPSSessionConfirmation))
+            {
+                WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName);
+            }
         }
     }
 }

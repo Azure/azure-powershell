@@ -173,4 +173,7 @@
   <data name="EnterCotnainerPSSessionBasicAuthWarning" xml:space="preserve">
     <value>WSMAN Basic authentication is not enabled. Run the following command and try again: "Set-Item WSMAN:\LocalHost\Client\Auth\Basic -Value $true"</value>
   </data>
+  <data name="EnterContainerPSSessionConfirmation" xml:space="preserve">
+    <value>Creating a new remote PowerShell session. Confirm?</value>
+  </data>
 </root>
