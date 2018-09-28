@@ -43,7 +43,8 @@ function ServiceBusTests
 	Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
 
     Write-Debug "Namespace name : $namespaceName2"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2    
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location "East US 2" -Name $namespaceName2 -SkuName "Premium" -EnableZoneRedundant 
+	Assert-True {$result.ZoneRedundant}
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName

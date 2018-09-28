@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                     }
                     else
                     {
-                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity, EnableZoneRedundant));
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
                     }
                 }
                 catch (ErrorResponseException ex)
