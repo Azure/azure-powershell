@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.2
 * Fixed issue with serializing id, name and type properties of resources.
 
 ## Version 4.1.1
