@@ -30,11 +30,25 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string RuleSetVersion { get; set; }
         public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? RequestBodyCheck { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? MaxRequestBodySizeInKb { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? FileUploadLimitInMb { get; set; }
+        public List<PSApplicationGatewayFirewallExclusion> Exclusions { get; set; }
+
 
         [JsonIgnore]
         public string DisabledRuleGroupsText
         {
             get { return JsonConvert.SerializeObject(this.DisabledRuleGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExclusionsText
+        {
+            get { return JsonConvert.SerializeObject(this.Exclusions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
