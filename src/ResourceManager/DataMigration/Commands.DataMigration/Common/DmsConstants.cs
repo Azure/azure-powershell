@@ -12,17 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.DataMigration.Models
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.DataMigration.Common
 {
-    public enum ResultTypeEnum
+    public class DmsConstants
     {
-        MigrationLevelOutput,
-        DatabaseLevelOutput,
-        TableLevelOutput,
-        MigrationValidationOutput,
-        MigrationValidationDatabaseLevelOutput,
-        LoginLevelOutput,
-        AgentJobLevelOutput,
-        Command
+        public static readonly IList<string> DeprecatingSkuNames = new List<string> { "Standard_A1_v2", "Standard_A2_v2" }.AsReadOnly();
     }
 }

@@ -14,15 +14,8 @@
 
 namespace Microsoft.Azure.Commands.DataMigration.Models
 {
-    public enum ResultTypeEnum
+    public enum CommandTypeEnum
     {
-        MigrationLevelOutput,
-        DatabaseLevelOutput,
-        TableLevelOutput,
-        MigrationValidationOutput,
-        MigrationValidationDatabaseLevelOutput,
-        LoginLevelOutput,
-        AgentJobLevelOutput,
-        Command
+        Complete
     }
 }

@@ -12,17 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.DataMigration.Models
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Microsoft.Azure.Commands.DataMigration.Common
 {
-    public enum ResultTypeEnum
+    public class Utils
     {
-        MigrationLevelOutput,
-        DatabaseLevelOutput,
-        TableLevelOutput,
-        MigrationValidationOutput,
-        MigrationValidationDatabaseLevelOutput,
-        LoginLevelOutput,
-        AgentJobLevelOutput,
-        Command
+        public static Dictionary<K, V> HashtableToDictionary<K, V>(Hashtable table)
+        {
+            if (table == null)
+            {
+                return new Dictionary<K, V>();
+            }
+
+            return table
+              .Cast<DictionaryEntry>()
+              .ToDictionary(kvp => (K)kvp.Key, kvp => (V)kvp.Value);
+        }
     }
 }
