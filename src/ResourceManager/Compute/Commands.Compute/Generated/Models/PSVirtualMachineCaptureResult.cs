@@ -19,11 +19,19 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineCaptureResult : VirtualMachineCaptureResult
+    public partial class PSVirtualMachineCaptureResult
     {
+        public string Schema { get; set; }
+        public string ContentVersion { get; set; }
+        public System.Object Parameters { get; set; }
+        public IList<Object> Resources { get; set; }
+        public string Id { get; set; }
+
     }
 }

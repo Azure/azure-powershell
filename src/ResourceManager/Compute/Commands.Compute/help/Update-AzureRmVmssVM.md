@@ -21,14 +21,14 @@ Update-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-
 
 ### ResourceIdParameter
 ```
-Update-AzureRmVmssVM [-DataDisk <PSVirtualMachineDataDisk[]>] -ResourceId <String> [-AsJob]
+Update-AzureRmVmssVM [-DataDisk <PSVirtualMachineDataDisk[]>] [-ResourceId] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Update-AzureRmVmssVM [-DataDisk <PSVirtualMachineDataDisk[]>]
- -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVM> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -148,7 +148,7 @@ Parameter Sets: ResourceIdParameter
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -163,7 +163,7 @@ Parameter Sets: ObjectParameter
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

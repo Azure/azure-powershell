@@ -19,11 +19,17 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSetInstanceView : VirtualMachineScaleSetInstanceView
+    public partial class PSVirtualMachineScaleSetInstanceView
     {
+        public VirtualMachineScaleSetInstanceViewStatusesSummary VirtualMachine { get; set; }
+        public IList<VirtualMachineScaleSetVMExtensionsSummary> Extensions { get; set; }
+        public IList<InstanceViewStatus> Statuses { get; set; }
+
     }
 }
