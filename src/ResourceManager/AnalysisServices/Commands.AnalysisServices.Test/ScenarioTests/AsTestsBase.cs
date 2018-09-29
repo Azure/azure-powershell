@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
     public class AsTestsBase : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
-        //private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         public NewResourceManagementClient NewResourceManagementClient { get; private set; }
 
@@ -85,8 +84,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
             {
                 SetupManagementClients(context);
 
-                // register the namespace.
-                //TryRegisterSubscriptionForResource();
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
@@ -132,30 +129,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             return context.GetServiceClient<AnalysisServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-
-        //private void TryRegisterSubscriptionForResource(string providerName = "Microsoft.DataLakeStore")
-        //{
-        //    var reg = ResourceManagementClient.Providers.Register(providerName);
-        //    ThrowIfTrue(reg == null, "resourceManagementClient.Providers.Register returned null.");
-        //    ThrowIfTrue(reg.StatusCode != HttpStatusCode.OK, string.Format("resourceManagementClient.Providers.Register returned with status code {0}", reg.StatusCode));
-
-        //    var resultAfterRegister = ResourceManagementClient.Providers.Get(providerName);
-        //    ThrowIfTrue(resultAfterRegister == null, "resourceManagementClient.Providers.Get returned null.");
-        //    ThrowIfTrue(string.IsNullOrEmpty(resultAfterRegister.Provider.Id), "Provider.Id is null or empty.");
-        //    ThrowIfTrue(!providerName.Equals(resultAfterRegister.Provider.Namespace), string.Format("Provider name is not equal to {0}.", providerName));
-        //    ThrowIfTrue(ProviderRegistrationState.Registered != resultAfterRegister.Provider.RegistrationState &&
-        //        ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
-        //        string.Format("Provider registration state was not 'Registered' or 'Registering', instead it was '{0}'", resultAfterRegister.Provider.RegistrationState));
-        //    ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
-        //}
-
-        //private void TryCreateResourceGroup(string resourceGroupName, string location)
-        //{
-        //    ResourceGroupCreateOrUpdateResult result = ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup { Location = location });
-        //    var newlyCreatedGroup = ResourceManagementClient.ResourceGroups.Get(resourceGroupName);
-        //    ThrowIfTrue(newlyCreatedGroup == null, "resourceManagementClient.ResourceGroups.Get returned null.");
-        //    ThrowIfTrue(!resourceGroupName.Equals(newlyCreatedGroup.ResourceGroup.Name), string.Format("resourceGroupName is not equal to {0}", resourceGroupName));
-        //}
 
         private static void ThrowIfTrue(bool condition, string message)
         {
