@@ -19,11 +19,25 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSetVMInstanceView : VirtualMachineScaleSetVMInstanceView
+    public partial class PSVirtualMachineScaleSetVMInstanceView
     {
+        public int? PlatformUpdateDomain { get; set; }
+        public int? PlatformFaultDomain { get; set; }
+        public string RdpThumbPrint { get; set; }
+        public VirtualMachineAgentInstanceView VmAgent { get; set; }
+        public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
+        public IList<DiskInstanceView> Disks { get; set; }
+        public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
+        public VirtualMachineHealthStatus VmHealth { get; set; }
+        public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
+        public IList<InstanceViewStatus> Statuses { get; set; }
+        public string PlacementGroupId { get; set; }
+
     }
 }

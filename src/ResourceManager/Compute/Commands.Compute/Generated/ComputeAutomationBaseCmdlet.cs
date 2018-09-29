@@ -292,22 +292,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return m.Success ? m.Groups["rgname"].Value : null;
         }
 
-        public static string GetResourceName(string resourceId, string resourceName, string instanceName = null)
+        public static string GetResourceName(string resourceId, string resourceName, string instanceName = null, string version = null)
         {
             if (string.IsNullOrEmpty(resourceId)) { return null; }
-            Regex r = (instanceName == null)
+            Regex r = (instanceName == null && version == null)
                       ? new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)", RegexOptions.IgnoreCase)
                       : new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
             Match m = r.Match(resourceId);
             return m.Success ? m.Groups["rgname"].Value : null;
         }
 
-        public static string GetInstanceId(string resourceId, string resourceName, string instanceName)
+        public static string GetInstanceId(string resourceId, string resourceName, string instanceName, string version = null)
         {
             if (string.IsNullOrEmpty(resourceId)) { return null; }
-            Regex r = new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
+            Regex r = (version == null)
+                    ? new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase)
+                    : new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)/" + version + @"/(?<version>\S+)", RegexOptions.IgnoreCase);
             Match m = r.Match(resourceId);
             return m.Success ? m.Groups["instanceId"].Value : null;
+        }
+
+        public static string GetVersion(string resourceId, string resourceName, string instanceName, string version)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)/" + version + @"/(?<version>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["version"].Value : null;
         }
     }
     public static class LocationStringExtensions

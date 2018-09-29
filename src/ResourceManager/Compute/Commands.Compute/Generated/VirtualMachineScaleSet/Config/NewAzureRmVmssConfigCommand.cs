@@ -302,7 +302,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
             }
-            vUpgradePolicy.AutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+            if (vUpgradePolicy.AutomaticOSUpgradePolicy == null)
+            {
+                vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+            }
+            vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
             {
@@ -310,11 +314,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
-                if (vUpgradePolicy.AutoOSUpgradePolicy == null)
+                if (vUpgradePolicy.AutomaticOSUpgradePolicy == null)
                 {
-                    vUpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                    vUpgradePolicy.AutomaticOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutomaticOSUpgradePolicy();
                 }
-                vUpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
+                vUpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback = this.DisableAutoRollback;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("OsProfile"))
@@ -464,7 +468,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
-                Identity = new PSVirtualMachineScaleSetIdentity(vIdentity),
+                Identity = (vIdentity == null) ? null : new PSVirtualMachineScaleSetIdentity(vIdentity),
             };
 
             WriteObject(vVirtualMachineScaleSet);

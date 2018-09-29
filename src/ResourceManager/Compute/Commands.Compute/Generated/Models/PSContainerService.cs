@@ -19,12 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSContainerService : ContainerService
+    public partial class PSContainerService
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
@@ -37,5 +39,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 return m.Success ? m.Groups["rgname"].Value : null;
             }
         }
+
+        public string ProvisioningState { get; set; }
+        public ContainerServiceOrchestratorProfile OrchestratorProfile { get; set; }
+        public ContainerServiceCustomProfile CustomProfile { get; set; }
+        public ContainerServiceServicePrincipalProfile ServicePrincipalProfile { get; set; }
+        public ContainerServiceMasterProfile MasterProfile { get; set; }
+        public IList<ContainerServiceAgentPoolProfile> AgentPoolProfiles { get; set; }
+        public ContainerServiceWindowsProfile WindowsProfile { get; set; }
+        public ContainerServiceLinuxProfile LinuxProfile { get; set; }
+        public ContainerServiceDiagnosticsProfile DiagnosticsProfile { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+
     }
 }
