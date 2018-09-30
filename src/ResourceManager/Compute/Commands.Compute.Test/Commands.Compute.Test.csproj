@@ -69,6 +69,7 @@
     <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
     <Compile Include="ScenarioTests\DiskRPTests.cs" />
+    <Compile Include="ScenarioTests\GalleryTests.cs" />
     <Compile Include="ScenarioTests\ImageTests.cs" />
     <Compile Include="ScenarioTests\LogAnalyticTests.cs" />
     <Compile Include="ScenarioTests\NewVhdVMTests.cs" />
@@ -175,6 +176,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\DummyConfig.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\GalleryTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ImageTests.ps1">

@@ -97,6 +97,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IGalleriesOperations GalleriesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Galleries;
+            }
+        }
+
+        public IGalleryImagesOperations GalleryImagesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GalleryImages;
+            }
+        }
+
+        public IGalleryImageVersionsOperations GalleryImageVersionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GalleryImageVersions;
+            }
+        }
+
         public IImagesOperations ImagesClient
         {
             get
