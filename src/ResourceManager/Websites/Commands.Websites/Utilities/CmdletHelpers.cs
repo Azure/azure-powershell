@@ -85,8 +85,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public static AzureStoragePropertyDictionaryResource ConvertToAzureStoragePropertyDictionary(this Hashtable hashtable)
         {
+            if (hashtable == null)
+                return null;
             AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
-
             result.Properties = hashtable.Cast<DictionaryEntry>()
                 .ToDictionary(
                 kvp => kvp.Key.ToString(), kvp =>
