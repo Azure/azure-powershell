@@ -32,49 +32,49 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFirewallRules()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFirewall -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFirewall -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsTrustedIdProvider()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreTrustedIdProvider -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreTrustedIdProvider -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsAccount()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreAccount -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreAccount -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsAccountTiers()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreAccountTiers -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreAccountTiers -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystem()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystemPermissions()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystemPermissions -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystemPermissions -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlsAccount()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-NegativeDataLakeStoreAccount -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-NegativeDataLakeStoreAccount -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
     }
 }
