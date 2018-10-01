@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public Guid SubscriptionId { get; set; }
 
         [Parameter(Mandatory = true)]
-        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux")]
+        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb")]
         [ValidateNotNullOrEmpty]
         public string ReservedResourceType { get; set; }
 
