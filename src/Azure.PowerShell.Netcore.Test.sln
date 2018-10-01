@@ -67,6 +67,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeAnalytics.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeStore.Test.Netcore", "ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\Commands.DataLakeStore.Test.Netcore.csproj", "{29D9CA83-5DCC-430B-8916-628A0D4D8A64}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.EventGrid.Test.Netcore", "ResourceManager\EventGrid\Commands.EventGrid.Test\Commands.EventGrid.Test.Netcore.csproj", "{2B05CE87-A4FE-44F1-8EAD-175928353D38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -461,6 +463,18 @@ Global
 		{29D9CA83-5DCC-430B-8916-628A0D4D8A64}.Release|x64.Build.0 = Release|Any CPU
 		{29D9CA83-5DCC-430B-8916-628A0D4D8A64}.Release|x86.ActiveCfg = Release|Any CPU
 		{29D9CA83-5DCC-430B-8916-628A0D4D8A64}.Release|x86.Build.0 = Release|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Debug|x64.Build.0 = Debug|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Release|x64.ActiveCfg = Release|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Release|x64.Build.0 = Release|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B05CE87-A4FE-44F1-8EAD-175928353D38}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
