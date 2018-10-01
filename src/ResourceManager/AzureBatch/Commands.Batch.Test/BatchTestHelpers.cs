@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
     {
         internal static readonly string TestCertificateFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/BatchTestCert01.cer");
         internal const string TestCertificateAlgorithm = "sha1";
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Fake password")]
         internal const string TestCertificatePassword = "Passw0rd";
         internal static readonly int DefaultQuotaCount = 20;
 
