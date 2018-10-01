@@ -55,6 +55,7 @@
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="ArgumentCompleters\PSArgumentCompleter.cs" />
     <Compile Include="ArgumentCompleters\ResourceIdCompleter.cs" />
+    <Compile Include="ArgumentCompleters\ResourceNameCompleter.cs" />
     <Compile Include="ArgumentCompleters\ResourceTypeCompleter.cs" />
     <Compile Include="ArgumentCompleters\ScopeCompleter.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
