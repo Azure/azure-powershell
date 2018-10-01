@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Network.Admin-help.xml
 Module Name: Azs.Network.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -41,14 +41,14 @@ Create or update a quota.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Set-AzsNetworkQuota -Name NetworkQuota1 -MaxVnetsPerSubscription 20
 ```
 
 Update a network quota by name.
 
-### EXAMPLE 2
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 Set-AzsNetworkQuota -Name NetworkQuota1 -MaxPublicIpsPerSubscription 75 -MaxNicsPerSubscription 100
 ```
@@ -57,17 +57,47 @@ Update a network quota by name.
 
 ## PARAMETERS
 
-### -Name
-Name of the resource.
+### -InputObject
+Posbbily modified network quota returned by Get-AzsNetworkQuota
 
 ```yaml
-Type: String
-Parameter Sets: Quotas
-Aliases:
+Type: Quota
+Parameter Sets: InputObject
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: String
+Parameter Sets: Quotas
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxLoadBalancersPerSubscription
+The maximum number of load balancers allowed per subscription.
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -78,7 +108,7 @@ The maximum NICs allowed per subscription.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -93,52 +123,7 @@ The maximum public IP addresses allowed per subscription.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxVirtualNetworkGatewayConnectionsPerSubscription
-The maximum number of virtual network gateway connections allowed per subscription.
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxVnetsPerSubscription
-The maxium number of virtual networks allowed per subscription.
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxVirtualNetworkGatewaysPerSubscription
-The maximum number of virtual network gateways allowed per subscription.
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -153,7 +138,7 @@ The maximum number of security groups allowed per subscription.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -162,13 +147,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxLoadBalancersPerSubscription
-The maximum number of load balancers allowed per subscription.
+### -MaxVirtualNetworkGatewayConnectionsPerSubscription
+The maximum number of virtual network gateway connections allowed per subscription.
 
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -177,15 +162,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource.
+### -MaxVirtualNetworkGatewaysPerSubscription
+The maximum number of virtual network gateways allowed per subscription.
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxVnetsPerSubscription
+The maxium number of virtual networks allowed per subscription.
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the resource.
 
 ```yaml
 Type: String
 Parameter Sets: Quotas
-Aliases:
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,7 +213,7 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -207,18 +222,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Posbbily modified network quota returned by Get-AzsNetworkQuota
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Quota
-Parameter Sets: InputObject
-Aliases:
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -230,21 +245,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -265,3 +265,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

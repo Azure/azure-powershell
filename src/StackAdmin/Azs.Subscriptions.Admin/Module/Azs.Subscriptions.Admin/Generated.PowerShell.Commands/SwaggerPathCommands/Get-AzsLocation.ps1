@@ -10,7 +10,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Get a list of all AzureStack location.
 
-.PARAMETER Location
+.PARAMETER Name
     The AzureStack location.
 
 .EXAMPLE

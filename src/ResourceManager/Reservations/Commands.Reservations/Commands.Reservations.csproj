@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Reservations">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Reservations.1.8.0-preview\lib\net452\Microsoft.Azure.Management.Reservations.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Reservations.1.9.0-preview\lib\net452\Microsoft.Azure.Management.Reservations.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
