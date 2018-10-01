@@ -100,6 +100,7 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual $imgRef.Skus $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
     Assert-AreEqual $imgRef.Version $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Version;
     Assert-AreEqual $imgRef.PublisherName $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
+    Assert-Null $vmss.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings;
 
     # Extension profile
     Assert-AreEqual $extname $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
@@ -123,4 +124,18 @@ function Test-VirtualMachineScaleSetProfile
 
     $vmss4 = New-AzureRmVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy ;
     Assert-Null $vmss4.Identity;
+
+    $vmss4 = $vmss4 | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName -OsDiskWriteAccelerator -ManagedDisk "Premium_LRS" -DiffDiskSetting "Local";
+
+    # Storage profile
+    Assert-AreEqual $createOption $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
+    Assert-AreEqual $osCaching $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.Caching;
+    Assert-AreEqual $imgRef.Offer $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
+    Assert-AreEqual $imgRef.Skus $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
+    Assert-AreEqual $imgRef.Version $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Version;
+    Assert-AreEqual $imgRef.PublisherName $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
+    Assert-AreEqual "Premium_LRS" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual "Local" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Option;
 }

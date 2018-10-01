@@ -127,14 +127,16 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $managedOsDiskId_0 $p.StorageProfile.OSDisk.ManagedDisk.Id;
     Assert-AreEqual "Standard_LRS" $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $true $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
+    Assert-Null $p.StorageProfile.OSDisk.DiffDiskSettings;
 
-    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1;
+    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1 -DiffDiskSetting "Local";
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
     Assert-Null $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $false $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
+    Assert-AreEqual "Local" $p.StorageProfile.OSDisk.DiffDiskSettings.Option;
 
     # Windows OS
     $user = "Foo12";
