@@ -211,7 +211,7 @@ Not Before           :
 Created              : 4/6/2018 8:39:15 PM
 Updated              : 4/6/2018 10:11:24 PM
 Content Type         : 
-Tags                 : 
+Tags                 :
 ```
 
 This command gets all the secrets that have been previously deleted, but not purged, in the key vault named Contoso.
@@ -244,7 +244,7 @@ This command will return metadata such as the deletion date, and the scheduled p
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -259,11 +259,10 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets all versions of a secret.
 The current version of a secret is the first one on the list.
 If you specify this parameter you must also specify the *Name* and *VaultName* parameters.
-
 If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the secret with the specified *Name*.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByResourceIdSecretVersions
 Aliases:
 
@@ -278,7 +277,7 @@ Accept wildcard characters: False
 KeyVault Object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectSecretName, ByInputObjectSecretVersions
 Aliases:
 
@@ -293,7 +292,7 @@ Accept wildcard characters: False
 Specifies whether to show the previously deleted secrets in the output
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
 Aliases:
 
@@ -308,7 +307,7 @@ Accept wildcard characters: False
 Specifies the name of the secret to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
 Aliases: SecretName
 
@@ -320,7 +319,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByResourceIdSecretName, ByResourceIdSecretVersions
 Aliases: SecretName
 
@@ -335,7 +334,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdVaultName, ByResourceIdSecretName, ByResourceIdSecretVersions
 Aliases:
 
@@ -351,7 +350,7 @@ Specifies the name of the key vault to which the secret belongs.
 This cmdlet constructs the fully qualified domain name (FQDN) of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName, BySecretName, BySecretVersions
 Aliases:
 
@@ -367,7 +366,7 @@ Specifies the secret version.
 This cmdlet constructs the FQDN of a secret based on the key vault name, your currently selected environment, the secret name, and the secret version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretName, ByInputObjectSecretName, ByResourceIdSecretName
 Aliases: SecretVersion
 
@@ -384,6 +383,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

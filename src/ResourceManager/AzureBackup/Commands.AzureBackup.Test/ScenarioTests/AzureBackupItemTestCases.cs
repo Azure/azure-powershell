@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,30 +20,33 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public class AzureBackupItemTestCases : AzureBackupTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureBackupItemTestCases(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListAzureBackupItemTests()
         {
-            this.RunPowerShellTest("Test-GetAzureBackupItemTests");
+            this.RunPowerShellTest(_logger, "Test-GetAzureBackupItemTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureBackupProtectionTest()
         {
-            this.RunPowerShellTest("Test-EnableAzureBackupProtection");
+            this.RunPowerShellTest(_logger, "Test-EnableAzureBackupProtection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureBackupProtectionTest()
         {
-            this.RunPowerShellTest("Test-DisableAzureBackupProtection");
+            this.RunPowerShellTest(_logger, "Test-DisableAzureBackupProtection");
         }
     }
 }

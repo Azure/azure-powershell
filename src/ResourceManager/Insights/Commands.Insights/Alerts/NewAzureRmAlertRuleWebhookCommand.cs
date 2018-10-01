@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create an AlertRuleWebhook action
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAlertRuleWebhook"), OutputType(typeof(RuleWebhookAction))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertRuleWebhook"), OutputType(typeof(Management.Monitor.Management.Models.RuleWebhookAction))]
     public class NewAzureRmAlertRuleWebhookCommand : MonitorCmdletBase
     {
         /// <summary>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 ? new Dictionary<string, string>()
                 : this.Property.Keys.Cast<object>().ToDictionary(key => (string)key, key => (string)this.Property[key]);
 
-            var action = new RuleWebhookAction
+            var action = new Management.Monitor.Management.Models.RuleWebhookAction
             {
                 ServiceUri = this.ServiceUri,
                 Properties = dictionary

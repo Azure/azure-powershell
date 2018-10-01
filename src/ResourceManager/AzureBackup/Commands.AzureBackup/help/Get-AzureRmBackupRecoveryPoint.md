@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 6778E018-B6CC-468A-823E-3DA047EA6B52
@@ -37,13 +37,10 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the **Get-AzureRmBackupContainer** cmdlet.
 The command stores that object in the $Container variable.
-
 The third command gets the backup item in the container in $Container by using the **Get-AzureRmBackupItem** cmdlet.
 The command stores that object in the $BackupItem variable.
-
 The final command gets recovery points for the item in $BackupItem.
 
 ## PARAMETERS
@@ -52,7 +49,7 @@ The final command gets recovery points for the item in $BackupItem.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,9 +65,9 @@ Specifies the item for which this cmdlet gets recovery points.
 To obtain an **AzureRmBackupItem**, use the Get-AzureRmBackupItem cmdlet.
 
 ```yaml
-Type: AzureRMBackupItem
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -83,9 +80,9 @@ Accept wildcard characters: False
 Specifies the ID of a recovery point that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -99,11 +96,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupRecoveryPoint
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint
 
 ## NOTES
 

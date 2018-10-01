@@ -18,6 +18,7 @@ New-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -Port <Int32> -P
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
+ [-TrustedRootCertificate <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate]>]
  [-PickHostNameFromBackendAddress] [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -42,7 +43,7 @@ The settings are stored in the $Setting variable.
 Cookie name to use for the affinity cookie
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +73,7 @@ Accept wildcard characters: False
 Connection draining of the backend http settings resource.
 
 ```yaml
-Type: PSApplicationGatewayConnectionDraining
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayConnectionDraining
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +88,7 @@ Accept wildcard characters: False
 Specifies whether cookie-based affinity should be enabled or disabled for the back-end server pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 Sets host header to be sent to the backend servers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +134,7 @@ Accept wildcard characters: False
 Specifies the name of the back-end HTTP settings that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +150,7 @@ Path which should be used as a prefix for all HTTP requests.
 If no value is provided for this parameter, then no path will be prefixed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +165,7 @@ Accept wildcard characters: False
 Flag if host header should be picked from the host name of the backend server.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +180,7 @@ Accept wildcard characters: False
 Specifies the port of the back-end server pool.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +195,7 @@ Accept wildcard characters: False
 Specifies a probe to associate with the back-end server pool.
 
 ```yaml
-Type: PSApplicationGatewayProbe
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +210,7 @@ Accept wildcard characters: False
 Specifies the ID of the probe to associate with the back-end server pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +226,7 @@ Specifies the protocol to use for communication between the application gateway 
 The acceptable values for this parameter are: Http and Https.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Https
@@ -241,7 +242,22 @@ Accept wildcard characters: False
 Specifies a request time-out value.
 
 ```yaml
-Type: Int32
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrustedRootCertificate
+Application gateway Trusted Root Certificates
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate]
 Parameter Sets: (All)
 Aliases:
 
@@ -257,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Management.Automation;
 
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [ValidateNotNullOrEmpty]
@@ -35,6 +36,8 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.RoleDefinition, HelpMessage = "Role definition.")]
         public PSRoleDefinition Role { get; set; }
+
+        public Guid RoleDefinitionId { get; set; } = default(Guid);
 
         public override void ExecuteCmdlet()
         {
@@ -66,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources
                 AuthorizationClient.ValidateScope(scope, false);
             }
 
-            WriteObject(PoliciesClient.CreateRoleDefinition(role));
+            WriteObject(PoliciesClient.CreateRoleDefinition(role, RoleDefinitionId));
         }
     }
 }

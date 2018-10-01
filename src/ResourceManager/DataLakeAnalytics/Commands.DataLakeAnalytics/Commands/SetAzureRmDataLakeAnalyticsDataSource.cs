@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsDataSource")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsDataSource"), OutputType(typeof(void))]
     [Alias("Set-AdlAnalyticsDataSource")]
     public class SetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
@@ -52,13 +52,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         public override void ExecuteCmdlet()
         {
             // We only support updates for Storage accounts.
-            var toAdd = new StorageAccountInfo
+            var toAdd = new UpdateStorageAccountParameters
             {
-                Name = Blob,
                 AccessKey = AccessKey
             };
 
-            DataLakeAnalyticsClient.SetStorageAccount(ResourceGroupName, Account, toAdd);
+            DataLakeAnalyticsClient.SetStorageAccount(ResourceGroupName, Account, Blob, toAdd);
         }
     }
 }

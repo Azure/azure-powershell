@@ -41,6 +41,10 @@
     - [InputObject](#inputobject)
 - [AsJob Parameter](#asjob-parameter)
 
+## Expected Patterns for Standard Cmdlets
+
+For information and examples on standard cmdlet implementation (`Get-*`, `New-*`, `Remove-*` and `Set/Update-*`) for resources and child resources, please see our [Expected Patterns for Standard Cmdlets](./patterns-for-standard-cmdlets.md) document.
+
 ## Cmdlet Guidelines
 
 ### Cmdlet Naming Conventions
@@ -154,7 +158,7 @@ Parameters of type `bool` are _strongly_ discouraged in PowerShell. The `SwitchP
 If there is a closed set of values applicable for a given parameter, use either a `ValidateSet`, enumeration type, or an `ArgumentCompleter`. This functionality allows users to tab through the different values they can provide. From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx):
 
 > _There are two ways to create a parameter whose value can be selected from a set of options._
-> 
+>
 > - _Define an enumeration type (or use an existing type) that specifies the valid values. Then, use the enumeration type to create a parameter of that type._
 > - _Add the **ValidateSet** attribute to the parameter declaration._
 
@@ -192,7 +196,7 @@ For PowerShell to determine which parameter set a user is intending to use with 
 
 It is possibile to call a PowerShell cmdlet without providing the parameter names, but just the values you would like to pass through. This is done by specifying the position at which the value of each parameter should be provided by using the `Position` property for a parameter.  However, when there are too many positional parameters in a single parameter set, it can be difficult for the user to remember the exact ordering in which the parameter values should be provided. From the remarks section of [Parameter Attribute Declaration](https://msdn.microsoft.com/en-us/library/ms714348(v=vs.85).aspx):
 
-> _When you specify positional parameters, limit the number of positional parameters in a parameter set to less than five. And, positional parameters do not have to be contiguous. Positions 5, 100, and 250 work the same as positions 0, 1, and 2._ 
+> _When you specify positional parameters, limit the number of positional parameters in a parameter set to less than five. And, positional parameters do not have to be contiguous. Positions 5, 100, and 250 work the same as positions 0, 1, and 2._
 
 In addition, there should be no two parameters with the same position in the same parameter set. From the remarks section of [Parameter Attribute Declaration](https://msdn.microsoft.com/en-us/library/ms714348(v=vs.85).aspx):
 
@@ -218,7 +222,7 @@ The interactive parameter set **will always be the default parameter set** for a
 
 This parameter set should be implemented by _every_ cmdlet - the user is able to provide a `ResourceId` string or GUID from the Azure Portal, or from one of the generic resources cmdlets (more information about that below in the piping section), and act upon the given resource associated with the id. The typical `Name` and `ResourceGroupName` parameters are replaced by a single `ResourceId` parameter of type string.
 
-#### InputObject Parameter Set 
+#### InputObject Parameter Set
 
 This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `InputObject` parameter for a cmdlet that acts upon the same resource. The typical `Name` and `ResourceGroupName` parameters are retrieved from the `InputObject` that the user is passing through.
 
@@ -236,7 +240,7 @@ In this scenario, the user is able to pipe the result of a generic resources cmd
 Find-AzureRmResource -ResourceType Microsoft.Foo/foo | Remove-AzureRmFoo
 ```
 
-For more information on enabling the `ResourceId` piping scenario and more examples, please see the ["Using the `ResourceId` parameter"](./piping-in-powershell.md#using-the-resourceid-parameter) section of the _Piping in PowerShell_ document. 
+For more information on enabling the `ResourceId` piping scenario and more examples, please see the ["Using the `ResourceId` parameter"](./piping-in-powershell.md#using-the-resourceid-parameter) section of the _Piping in PowerShell_ document.
 
 ### InputObject
 

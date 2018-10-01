@@ -25,8 +25,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzureAnalysisServicesServer))]
-    [Alias("Set-AzureAs")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzureAnalysisServicesServer))]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "As")]
     public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         private const string ParamSetDefault = "Default";

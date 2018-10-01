@@ -101,7 +101,7 @@ When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,7 +132,7 @@ Specifies the maximum number of pools to return.
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: ODataFilter
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the **PSCloudPool** for which to get node counts.
 
 ```yaml
-Type: PSCloudPool
+Type: Microsoft.Azure.Commands.Batch.Models.PSCloudPool
 Parameter Sets: ParentObject
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 The id of the pool for which to get node counts.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PoolId
 Aliases:
 
@@ -179,11 +179,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Batch.Models.PSCloudJob Microsoft.Azure.Commands.Batch.BatchAccountContext
+
+### Microsoft.Azure.Commands.Batch.Models.PSCloudPool
+Parameters: Pool (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.Models.PSTaskCounts
+### Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts
 
 ## NOTES
 

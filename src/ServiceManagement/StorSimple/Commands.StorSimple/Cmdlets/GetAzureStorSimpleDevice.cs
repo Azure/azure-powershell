@@ -22,7 +22,7 @@ using System.Collections.Generic;
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDevice", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),
-        OutputType(typeof(List<DeviceDetails>), typeof(IEnumerable<DeviceInfo>))]
+        OutputType(typeof(DeviceDetails), typeof(DeviceInfo))]
     public class GetAzureStorSimpleDevice : StorSimpleCmdletBase
     {
         [Alias("ID")]

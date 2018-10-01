@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 5AF6F70F-7137-48E2-96ED-2C509042F127
@@ -41,7 +41,6 @@ PS C:\> New-AzureRmAutomationVariable -AutomationAccountName "Contoso17" -Name "
 
 The first command gets a virtual machine by using the Get-AzureVM cmdlet.
 The command stores it in the $VirtualMachine variable.
-
 The second command creates a variable named ComplexVariable01 in the Automation account named Contoso17.
 This command uses a complex object for its value, in this case, the virtual machine in $VirtualMachine.
 
@@ -51,9 +50,9 @@ This command uses a complex object for its value, in this case, the virtual mach
 Specifies the name of the Automation account in which to store the variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -66,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,9 +80,9 @@ Accept wildcard characters: False
 Specifies a description for the variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,9 +95,9 @@ Accept wildcard characters: False
 Specifies whether this cmdlet encrypts the value of the variable for storage.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -111,9 +110,9 @@ Accept wildcard characters: False
 Specifies a name for the variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -126,9 +125,9 @@ Accept wildcard characters: False
 Specifies the resource group for which this cmdlet creates a variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -141,9 +140,9 @@ Accept wildcard characters: False
 Specifies a value for the variable.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -157,8 +156,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Boolean
+
+### System.Object
 
 ## OUTPUTS
 

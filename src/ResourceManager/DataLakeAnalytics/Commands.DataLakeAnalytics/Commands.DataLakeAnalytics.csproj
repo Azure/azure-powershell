@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,15 +39,18 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.1.2-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.3.0-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJobRecurrence.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJobPipeline.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsComputePolicy.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\UpdateAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsFirewallRule.cs" />
@@ -75,6 +79,7 @@
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\DataLakeAnalyticsFirewallRule.cs" />
+    <Compile Include="Models\PSDataLakeAnalyticsAcl.cs" />
     <Compile Include="Models\PSDataLakeAnalyticsAccountBasic.cs" />
     <Compile Include="Models\PSJobInformationBasic.cs" />
     <Compile Include="Models\PSJobRecurrenceInformation.cs" />
@@ -101,38 +106,27 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.DataLakeAnalytics.psd1">
-      <Link>AzureRM.DataLakeAnalytics.psd1</Link>
+    <None Include="AzureRM.DataLakeAnalytics.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

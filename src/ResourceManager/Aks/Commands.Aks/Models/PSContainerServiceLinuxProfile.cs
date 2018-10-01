@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Aks.Generated.Models;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Aks.Models

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/update-azurermadapplication
@@ -69,7 +69,7 @@ Gets the application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7' and p
 The application id of the application to update.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdWithUpdateParamsParameterSet
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 True if the application is shared with other tenants; otherwise, false.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The display name for the application to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The URL to the application's homepage.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 The URIs that identify the application.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
 Aliases: IdentifierUris
 
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases: IdentifierUris
 
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 The object representing the application to update.
 
 ```yaml
-Type: PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases:
 
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 The object id of the application to update.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet
 Aliases:
 
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
 Aliases: ReplyUrls
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases: ReplyUrls
 
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -280,7 +280,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -296,9 +296,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to update the provided application.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: InputObject (ByValue)
+
+### System.String
+
+### System.String[]
+
+### System.Boolean
 
 ## OUTPUTS
 

@@ -30,19 +30,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="recoveryPointId">ID of the recovery point</param>
         /// <returns>Recovery point response returned by the service</returns>
-        public RecoveryPointResource GetRecoveryPointDetails
-            (
+        public RecoveryPointResource GetRecoveryPointDetails(
             string containerName,
             string protectedItemName,
-            string recoveryPointId
-            )
+            string recoveryPointId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-            string resourceName = BmsAdapter.GetResourceName();
-
             var response = BmsAdapter.Client.RecoveryPoints.GetWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -62,15 +59,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public List<RecoveryPointResource> GetRecoveryPoints(
             string containerName,
             string protectedItemName,
-            ODataQuery<BMSRPQueryObject> queryFilter)
+            ODataQuery<BMSRPQueryObject> queryFilter,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-            string resourceName = BmsAdapter.GetResourceName();
-
             Func<RestAzureNS.IPage<RecoveryPointResource>> listAsync =
                 () => BmsAdapter.Client.RecoveryPoints.ListWithHttpMessagesAsync(
-                    resourceName,
-                    resourceGroupName,
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     AzureFabricName,
                     containerName,
                     protectedItemName,
@@ -94,23 +90,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="recoveryPointId">ID of the recovery point</param>
         /// <param name="registrationRequest">registration request for ILR</param>
         /// <returns>Azure operation response returned by the service</returns>
-        public RestAzureNS.AzureOperationResponse ProvisioninItemLevelRecoveryAccess
-            (
+        public RestAzureNS.AzureOperationResponse ProvisioninItemLevelRecoveryAccess(
             string containerName,
             string protectedItemName,
             string recoveryPointId,
-            ILRRequest registrationRequest
-            )
+            ILRRequest registrationRequest,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-            string resourceName = BmsAdapter.GetResourceName();
-
             ILRRequestResource provisionRequest = new ILRRequestResource();
             provisionRequest.Properties = registrationRequest;
 
             var response = BmsAdapter.Client.ItemLevelRecoveryConnections.ProvisionWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -128,19 +121,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="recoveryPointId">ID of the recovery point</param>
         /// <returns>Azure operation response returned by the service</returns>
-        public RestAzureNS.AzureOperationResponse RevokeItemLevelRecoveryAccess
-            (
+        public RestAzureNS.AzureOperationResponse RevokeItemLevelRecoveryAccess(
             string containerName,
             string protectedItemName,
-            string recoveryPointId
-            )
+            string recoveryPointId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-            string resourceName = BmsAdapter.GetResourceName();
-
             var response = BmsAdapter.Client.ItemLevelRecoveryConnections.RevokeWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,

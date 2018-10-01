@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotPublishingProfile")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlotPublishingProfile")]
+    [OutputType(typeof(string))]
     public class GetAzureWebAppSlotPublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
         private const string DefaultFormat = "WebDeploy";
@@ -35,19 +36,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateSet("WebDeploy", "FileZilla3", "Ftp", IgnoreCase = true)]
         public string Format { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Include the disaster recovery endpoints if true")]
+        public SwitchParameter IncludeDisasterRecoveryEndpoints { get; set; }
+
         public GetAzureWebAppSlotPublishingProfileCmdlet()
         {
             Format = Format ?? DefaultFormat;
+            IncludeDisasterRecoveryEndpoints = IncludeDisasterRecoveryEndpoints.IsPresent;
         }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format));
+            WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format, IncludeDisasterRecoveryEndpoints));
         }
 
     }
 }
-
-
-

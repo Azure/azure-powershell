@@ -58,7 +58,7 @@ This command get an API Management product by ID.
 Specifies an instance of a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the identifier of the product to search for.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
 Aliases:
 
@@ -104,7 +104,7 @@ Specifies the title of the product to look for.
 If specified, the cmdlet attempts to get the product by title.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByTitle
 Aliases:
 
@@ -120,16 +120,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct
-The details of the Product in API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct>
-The list of Product in API Management service.
 
 ## NOTES
 

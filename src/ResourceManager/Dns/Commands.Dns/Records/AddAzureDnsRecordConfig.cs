@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Adds a record to a record set object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class AddAzureDnsRecordConfig : DnsBaseCmdlet
     {
         private const string ParameterSetCaa = "Caa";

@@ -31,5 +31,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         internal const string ByFactoryNameByParameterObject = "ByFactoryNameByParameterObject";
         internal const string ByIntegrationRuntimeName = "ByIntegrationRuntimeName";
         internal const string ByIntegrationRuntimeObject = "ByIntegrationRuntimeObject";
+        internal const string ByLinkedIntegrationRuntimeName = "ByLinkedIntegrationRuntimeName";
+        internal const string ByLinkedIntegrationRuntimeResourceId = "ByLinkedIntegrationRuntimeResourceId";
+        internal const string ByLinkedIntegrationRuntimeObject = "ByLinkedIntegrationRuntimeObject";
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: A38D8BF6-D302-4586-B7AF-4C80B546E96F
@@ -43,9 +43,9 @@ This command adds a Data Lake Store data source to a Data Lake Analytics account
 Specifies the access key of the Azure Blob storage account to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddBlobStorageAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Blob Storage account to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddBlobStorageAccount
 Aliases: AzureBlob
 
@@ -88,9 +88,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure Data Lake Store account to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddDataLakeStorageAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -134,12 +134,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 

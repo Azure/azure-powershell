@@ -40,7 +40,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [After Development](#after-development)
 - [Misc](#misc)
     - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
-    - [AsJob Parameters](#asjob-parameters)
+    - [AsJob Parameter](#asjob-parameter)
     - [Argument Completers](#argument-completers)
         - [Resource Group Completer](#resource-group-completers)
         - [Location Completer](#location-completer)
@@ -50,14 +50,18 @@ The Azure PowerShell Developer Guide was created to help with the development an
 
 The following prerequisites should be completed before contributing to the Azure PowerShell repository:
 
-- Install [Visual Studio 2015](https://www.visualstudio.com/downloads/)
+- Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
-- Install the latest version of [WiX](http://wixtoolset.org/releases/)
-    - After installation, ensure that the path to "WiX Toolset\bin" has been added to your `PATH` environment variable
 - Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md#installing-platyps)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
+    
+**Note** The PowerShell Build requires the 64-bit version of MSBuild that ships with visual studio, so ensure that this version is the first version in your cmd path.  64-bit MSBuild could be installed in a couple of places on your machine:
+- ```%programfiles%\MSBuild\14.0\bin```
+- ```%programfiles(x86)%\MSBuild\14.0\bin\amd64```
+
+The MSBuild version in ```%windir%\Microsoft.Net\Framework\v4.0.30319``` **cannot** be used with the build.
     
 # Environment Setup
 
@@ -116,8 +120,6 @@ By default, we build the `dll-Help.xml` files (used to display the help content 
 msbuild build.proj /p:SkipHelp=true
 ```
 
-_Note_: when [updating the installer](#updating-the-installer), you **should not** skip the help generation step, as it removes the `dll-Help.xml` files from the wxi file.
-
 ## Running Tests
 
 With the same terminal open from the previous section, run the cmdlet `Invoke-CheckinTests` to run all of the tests in the project
@@ -142,10 +144,9 @@ Before development, you must meet with the Azure PowerShell team to have a desig
 
 Before submitting a design review, please be sure that you have read the [Azure PowerShell Design Guidelines](./azure-powershell-design-guidelines.md) document.
 
-Please email the **azdevxpsdr** alias to set up this review and include the following information:
-- Short description of the top-level scenarios
-- Proposed cmdlet syntax
-- Sample output of cmdlets
+Please submit a design review here: https://github.com/Azure/azure-powershell-cmdlet-review-pr
+
+_Note_: You will need to be part of the GitHub Azure org to see this repository.  Please go to [this link](aka.ms/azuregithub) to become part of the Azure org.
 
 We recommend using the `platyPS` module to easily generate markdown files that contains the above information and including the files in the email.
 
@@ -361,7 +362,7 @@ Create these environment variables for the AD scenario tests:
 ### Recording/Running Tests 
 
 - Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
-- [Run the test](#running-tests) and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
+- Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy this `SessionRecords` folder and place it inside the test project
     - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"
     -  Make sure that all of these JSON files appear in your `Commands.SERVICE.Test.csproj` file
