@@ -12,42 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Diagnostics;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.Internal.Resources;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.IotHub;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.IotHub;
-    using Microsoft.Azure.Subscriptions;
-    using Microsoft.Azure.Test;
-    using Microsoft.Azure.Test.HttpRecorder;
-    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using TestBase = Microsoft.Azure.Test.TestBase;
-    using TestUtilities = Microsoft.Azure.Test.TestUtilities;
-    using ServiceManagemenet.Common.Models;
-
     public sealed class IotHubController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public IotHubClient IotHubClient { get; private set; }
 
@@ -55,29 +40,22 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
         public string UserDomain { get; private set; }
 
-        public static IotHubController NewInstance
-        {
-            get
-            {
-                return new IotHubController();
-            }
-        }
+        public static IotHubController NewInstance => new IotHubController();
 
         public IotHubController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
                 logger,
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup
                 null,
                 callingClassType,
@@ -88,62 +66,52 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         public void RunPsTestWorkflow(
             XunitTracingInterceptor logger,
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            helper.TracingInterceptor = logger;
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            _helper.TracingInterceptor = logger;
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "Assert.ps1",
                     "Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
-                    helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
                 {
-                    if (scriptBuilder != null)
-                    {
-                        var psScripts = scriptBuilder();
+                    var psScripts = scriptBuilder?.Invoke();
 
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
+                    if (psScripts != null)
+                    {
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
@@ -151,39 +119,25 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient(context);
-            SubscriptionClient = GetSubscriptionClient();
             IotHubClient = GetIotHubClient(context);
-           EHClient = GetEHClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            EHClient = GetEHClient(context);
 
-            helper.SetupManagementClients(ResourceManagementClient,
-                SubscriptionClient,
+            _helper.SetupManagementClients(ResourceManagementClient,
                 IotHubClient,
-                EHClient,
-                AuthorizationManagementClient
-                );
+                EHClient);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-        private IotHubClient GetIotHubClient(MockContext context)
+        private static IotHubClient GetIotHubClient(MockContext context)
         {
             return context.GetServiceClient<IotHubClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
-        private EventHubManagementClient GetEHClient(MockContext context)
+
+        private static EventHubManagementClient GetEHClient(MockContext context)
         {
             return context.GetServiceClient<EventHubManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
