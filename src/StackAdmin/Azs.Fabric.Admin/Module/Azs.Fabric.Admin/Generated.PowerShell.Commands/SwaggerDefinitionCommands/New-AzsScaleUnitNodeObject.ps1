@@ -16,6 +16,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ComputerName
     Computer name of the physical machine.
 
+.EXAMPLE
+
+    New-AzsScaleUnitNodeObject -BMCIPv4Address 192.168.1.1 -ComputeName 'NodeName'
+
+    Create a new node object.
+
 #>
 function New-AzsScaleUnitNodeObject
 {

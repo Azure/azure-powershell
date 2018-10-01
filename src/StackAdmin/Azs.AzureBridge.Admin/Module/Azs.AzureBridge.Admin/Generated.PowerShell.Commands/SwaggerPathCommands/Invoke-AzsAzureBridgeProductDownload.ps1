@@ -13,7 +13,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ActivationName
     Name of the activation.
 
-.PARAMETER ProductName
+.PARAMETER Name
     Name of the product.
 
 .PARAMETER ResourceGroupName
@@ -22,9 +22,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     Resource identifier for azure bridge product.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
+.PARAMETER Force
+    Don't ask for confirmation.
+
 .EXAMPLE
 
-    Invoke-AzsAzureBridgeProductDownload -ActivationName 'myActivation' -ProductName 'microsoft.docker-arm.1.1.0' -ResourceGroupName 'activationRG'
+    Invoke-AzsAzureBridgeProductDownload -ActivationName 'myActivation' -Name 'microsoft.docker-arm.1.1.0' -ResourceGroupName 'activationRG'
 
     Download a product from Azure Marketplace
 #>

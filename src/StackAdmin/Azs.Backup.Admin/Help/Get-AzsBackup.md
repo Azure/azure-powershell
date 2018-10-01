@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Skip
-{{Fill Skip Description}}
+Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
@@ -145,7 +145,8 @@ Accept wildcard characters: False
 ```
 
 ### -Top
-{{Fill Top Description}}
+Return the top N items as specified by the parameter value.
+Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
