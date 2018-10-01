@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -31,32 +30,30 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs re-recorded")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () => { return new[] { "Test-AzureRmIotHubLifecycle" }; },
-                null,
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubLifecycle");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Requires New-SelfSignedCertificate, unavailable for PowerShell Core")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait("Requires", "Elevated Privileges")]
         public void TestAzureIotHubCertificateLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () => { return new[] { "Test-AzureRmIotHubCertificateLifecycle" }; },
-                null,
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubCertificateLifecycle");
         }
     }
 }
