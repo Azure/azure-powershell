@@ -14,128 +14,95 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.PowerBIEmbedded;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using TestBase = Microsoft.Azure.Test.TestBase;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 {
     public sealed class PowerBIController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public PowerBIEmbeddedManagementClient PowerBIClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
-        public static PowerBIController NewInstance
-        {
-            get
-            {
-                return new PowerBIController();
-            }
-        }
+        public static PowerBIController NewInstance => new PowerBIController();
 
         public PowerBIController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.TracingInterceptor = logger;
+            _helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
         }
 
-
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
                 SetupManagementClients(context);
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
@@ -143,35 +110,19 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient(context);
-            SubscriptionClient = GetSubscriptionClient();
             PowerBIClient = GetPowerBIClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
 
-            helper.SetupManagementClients(ResourceManagementClient,
-                SubscriptionClient,
-                PowerBIClient,
-                AuthorizationManagementClient
-                );
+            _helper.SetupManagementClients(ResourceManagementClient, PowerBIClient);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static PowerBIEmbeddedManagementClient GetPowerBIClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-        private PowerBIEmbeddedManagementClient GetPowerBIClient(MockContext context)
-        {
-            return context.GetServiceClient<PowerBIEmbeddedManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<PowerBIEmbeddedManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
