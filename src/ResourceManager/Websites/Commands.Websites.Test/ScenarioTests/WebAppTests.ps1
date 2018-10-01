@@ -725,7 +725,7 @@ function Test-SetAzureStorageWebAppHyperV
 		}
 
 		# set Azure Storage accounts
-        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -AzureStorageAccounts $azureStorageAccounts
+        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -AzureStorageAccountPath $azureStorageAccounts
 
 		# get the web app
 		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname

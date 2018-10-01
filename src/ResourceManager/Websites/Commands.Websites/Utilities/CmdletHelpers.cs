@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 });
         }
 
-        public static AzureStoragePropertyDictionaryResource ConvertToAzureStoragePropertyDictionary(this Hashtable hashtable)
+        public static AzureStoragePropertyDictionaryResource ConvertToAzureStorageAccountPathPropertyDictionary(this Hashtable hashtable)
         {
             if (hashtable == null)
                 return null;
