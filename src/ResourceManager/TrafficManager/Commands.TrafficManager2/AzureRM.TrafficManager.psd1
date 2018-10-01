@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.1.1'
+ModuleVersion = '4.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -128,15 +128,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added Support for the MultiValue routing method
-    - New parameter ''MaxReturn'' for MultiValue routing
-* Added Support for the Subnet routing method
-    - Support for IP address ranges (subnets) in endpoints
-* Added Support for Custom Headers in profiles
-* Added Support for Expected status code ranges in profiles
-* Added Support for Custom Headers in endpoints
-* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Fixed issue with serializing id, name and type properties of resources.'
 
         # Prerelease string of this module
         # Prerelease = ''
