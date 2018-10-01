@@ -12,86 +12,80 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Diagnostics;
+using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.NotificationHubs;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Collections.Generic;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System;
+using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.NotificationHubs.Test
 {
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.NotificationHubs;
-    using LegacyTest = Microsoft.Azure.Test;
-    using Microsoft.Azure.Test.HttpRecorder;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.WindowsAzure.Management;
-    using System.Collections.Generic;
-    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-    using System;
-    using System.Linq;
-    using System.IO;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
-
     public abstract class TestBaseClass : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
+        private readonly EnvironmentSetupHelper _helper;
 
         protected TestBaseClass()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients(MockContext context)
         {
             var resourceManagementClient = GetResourceManagementClient(context);
-            var gallaryClient = GetGalleryClient();
-            var authorizationManagementClient = GetAuthorizationManagementClient();
             var nhManagementClient = GetNotificationHubsManagementClient(context);
 
-            helper.SetupManagementClients(nhManagementClient, resourceManagementClient, gallaryClient,
-                                            authorizationManagementClient);
+            _helper.SetupManagementClients(nhManagementClient, resourceManagementClient);
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.TracingInterceptor = logger;
+            _helper.TracingInterceptor = logger;
 
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
-
                 SetupManagementClients(context);
 
-                var callingClassName = callingClassType
-                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                        .Last();
+                var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
 
-                List<string> modules = new List<string>();
-                //modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
-                modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");
-                modules.Add(helper.RMProfileModule);
-                modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));
-                modules.Add("AzureRM.Resources.ps1");
+                var modules = new List<string>
+                {
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"),
+                    "AzureRM.Resources.ps1"
+                };
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
 
                 if (scripts != null)
                 {
-                    helper.RunPowerShellTest(scripts);
+                    _helper.RunPowerShellTest(scripts);
                 }
             }
         }
@@ -101,28 +95,9 @@ namespace Commands.NotificationHubs.Test
             return context.GetServiceClient<NotificationHubsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private ManagementClient GetManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<ManagementClient>(new LegacyTest.RDFETestEnvironmentFactory());
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

@@ -54,6 +54,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Media" Version="0.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.20.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" PrivateAssets="All" />
