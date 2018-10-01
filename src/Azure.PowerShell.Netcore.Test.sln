@@ -73,6 +73,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.EventHubs.Test.Net
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.IotHub.Test.Netcore", "ResourceManager\IotHub\Commands.IotHub.Test\Commands.IotHub.Test.Netcore.csproj", "{FBBC6856-B46A-4C23-9E5B-6993855EC63A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Media.Test.Netcore", "ResourceManager\Media\Commands.Media.Test\Commands.Media.Test.Netcore.csproj", "{7FF59513-2E6C-457E-B59C-122022D653C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -503,6 +505,18 @@ Global
 		{FBBC6856-B46A-4C23-9E5B-6993855EC63A}.Release|x64.Build.0 = Release|Any CPU
 		{FBBC6856-B46A-4C23-9E5B-6993855EC63A}.Release|x86.ActiveCfg = Release|Any CPU
 		{FBBC6856-B46A-4C23-9E5B-6993855EC63A}.Release|x86.Build.0 = Release|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Debug|x64.Build.0 = Debug|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Debug|x86.Build.0 = Debug|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Release|x64.ActiveCfg = Release|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Release|x64.Build.0 = Release|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FF59513-2E6C-457E-B59C-122022D653C5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
