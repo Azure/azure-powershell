@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Add Location parameter to Get-AzureRmVM
 * Shared Gallery cmdlets
 
 ## Version 5.6.0
