@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         private static bool IsUserOperation(ProviderOperation operation)
         {
-            return operation.Origin == null || operation.Origin.Contains("user");
+            return operation.Origin == null || operation.Origin.IndexOf("user", StringComparison.OrdinalIgnoreCase) > -1;
         }
         private static PSResourceProviderOperation ToPSResourceProviderOperation(ProviderOperation operation, string provider, string resource = null)
         {

@@ -91,6 +91,12 @@ function Test-AzureProviderOperation
 	Assert-True { $insightsActions.Length -gt 0 }
 	Assert-True { $allActions.Length -gt $insightsActions.Length }
 
+	# Get all operations of microsoft.eventgrid provider
+	$eventgridActions = Get-AzureRmProviderOperation Microsoft.EventGrid/*
+	$eventgridActions
+	Assert-True { $eventgridActions.Length -gt 0 }
+	Assert-True { $allActions.Length -gt $eventgridActions.Length }
+
 	# Filter non-Microsoft.Insights operations and match the lengths
 	$nonInsightsActions = $allActions | Where-Object { $_.Operation.ToLower().StartsWith("microsoft.insights/") -eq $false }
 	$actualLength = $allActions.Length - $nonInsightsActions.Length;
