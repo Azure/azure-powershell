@@ -165,6 +165,11 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiffDiskSetting { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -247,6 +252,15 @@ namespace Microsoft.Azure.Commands.Compute
             this.VM.StorageProfile.OsDisk.ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType, this.VM.StorageProfile.OsDisk.ManagedDisk);
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("DiffDiskSetting"))
+            {
+                if (this.VM.StorageProfile.OsDisk.DiffDiskSettings == null)
+                {
+                    this.VM.StorageProfile.OsDisk.DiffDiskSettings = new DiffDiskSettings();
+                }
+                this.VM.StorageProfile.OsDisk.DiffDiskSettings.Option = this.DiffDiskSetting;
+            }
 
             WriteObject(this.VM);
         }

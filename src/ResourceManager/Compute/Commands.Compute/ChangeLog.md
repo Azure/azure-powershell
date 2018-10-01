@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add DiffDiskSetting parameter to Set-AzureRmVmOSDisk and Set-AzureRmVmssStorageProfile cmdlets
 * Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
 * Add Location parameter to Get-AzureRmVM
 * Shared Gallery cmdlets
