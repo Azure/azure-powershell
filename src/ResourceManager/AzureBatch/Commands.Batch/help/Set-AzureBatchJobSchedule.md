@@ -23,6 +23,17 @@ The **Set-AzureBatchJobSchedule** cmdlet sets a job schedule in the Azure Batch 
 
 ## EXAMPLES
 
+### Example 1: Update a job schedule
+```
+PS C:\> $JobSchedule = Get-AzureBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context
+PS C:\> $JobSchedule.Schedule.RecurrenceInterval = New-TimeSpan -Days 2
+PS C:\> Set-AzureBatchJobSchedule -JobSchedule $Job -BatchContext $Context
+```
+
+The first command gets a job by using **Get-AzureBatchJobSchedule**, and then stores it in the $JobSchedule variable.
+The second command modifies the recurrence interval on the `$JobSchedule.Schedule` object.
+The final command updates the Batch service to match the local object in $JobSchedule.
+
 ## PARAMETERS
 
 ### -BatchContext
