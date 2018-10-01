@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
             IEnumerable<Usage> usages;
             if (Location == null)
             {
+                WriteWarning("Get global storage usage is obsolete, please use get location usage with -Location Parameter instead.");
                 usages = this.StorageClient.Usages.List();
             }
             else
