@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Guest','VmPolicy', 'Vm Policy', 'Vm Guest Policy', 'VmGuestPolicy','Guest configuration','Guest initiative','Guest configuration initiative','Guest configuration policy','Guestconfiguration initiative'
+        Tags = 'Azure','ResourceManager','ARM','Guest','VmPolicy','VmGuestPolicy','GuestConfiguration','GuestInitiative','GuestConfigurationInitiative','GuestConfigurationPolicy'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
