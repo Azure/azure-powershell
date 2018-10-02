@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 
         internal ArtifactSource ToSdkType()
         {
-            var sasAuthentication = new SasAuthentication(((PSSasAuthentication)this.Authentication).SasUri);
+            var sasAuthentication = new SasAuthentication(((PSSasAuthentication)this.Authentication)?.SasUri);
             return new ArtifactSource(
                 this.Location, 
                 this.SourceType, 
