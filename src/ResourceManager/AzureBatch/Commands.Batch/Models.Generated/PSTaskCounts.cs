@@ -82,13 +82,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.Succeeded;
             }
         }
-        
-        public Microsoft.Azure.Batch.Common.TaskCountValidationStatus ValidationStatus
-        {
-            get
-            {
-                return this.omObject.ValidationStatus;
-            }
-        }
     }
 }

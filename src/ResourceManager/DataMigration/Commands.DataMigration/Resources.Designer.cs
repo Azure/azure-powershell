@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.DataMigration {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Command.
+        /// </summary>
+        public static string createCommand {
+            get {
+                return ResourceManager.GetString("createCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Connection Info.
         /// </summary>
         public static string createConnectionInfo {
@@ -255,6 +264,15 @@ namespace Microsoft.Azure.Commands.DataMigration {
         public static string removingTask {
             get {
                 return ResourceManager.GetString("removingTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} SKU in service {1} is marked for deprecation and will be discontinued from 08/31/2018..
+        /// </summary>
+        public static string SKUDeprecationWarningMessage {
+            get {
+                return ResourceManager.GetString("SKUDeprecationWarningMessage", resourceCulture);
             }
         }
         

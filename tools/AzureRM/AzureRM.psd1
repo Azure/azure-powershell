@@ -59,7 +59,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.8'; }, 
                @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '5.1.1'; }, 
                @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.10'; }, 
-               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.1.5'; }, 
+               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '5.0.0-preview'; }, 
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.6'; }, 
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.10'; }, 

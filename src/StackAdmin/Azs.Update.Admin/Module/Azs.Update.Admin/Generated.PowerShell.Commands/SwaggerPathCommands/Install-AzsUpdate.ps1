@@ -22,8 +22,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     The resource id.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
 .PARAMETER Force
-    Flag to remove the item without confirmation.
+    Don't ask for confirmation.
 
 .EXAMPLE
 

@@ -27,7 +27,7 @@ Get-AzureBatchTaskCounts [[-Job] <PSCloudJob>] -BatchContext <BatchAccountContex
 ## DESCRIPTION
 The **Get-AzureBatchTaskCounts** cmdlet gets the Azure Batch tasks count for a Batch job.
 Specify a job by either the *JobId* parameter or the *Job* parameter.
-Task counts provide a count of the tasks by active, running or completed task state, and a count of tasks which succeeded or failed. Tasks in the preparing state are counted as running. If the validationStatus is unvalidated, then the Batch service has not been able to check state counts against the task states as reported in the List Tasks API. The validationStatus may be unvalidated if the job contains more than 200,000 tasks.
+Task counts provide a count of the tasks by active, running or completed task state, and a count of tasks which succeeded or failed. Tasks in the preparing state are counted as running.
 
 ## EXAMPLES
 
@@ -39,7 +39,6 @@ Completed           : 0
 Failed              : 0
 Running             : 1
 Succeeded           : 5
-ValidationStatus    : Validated
 ```
 
 This command gets the task counts for job Job01.

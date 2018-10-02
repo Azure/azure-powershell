@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Update.Admin-help.xml
 Module Name: Azs.Update.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -34,14 +34,14 @@ Updates returned from this module may be piped to 'Install-AzsUpdate', if applic
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsUpdate | ft
 ```
 
 Get the list of available updates.
 
-### EXAMPLE 2
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsUpdate -Name Microsoft1.0.180305.1
 ```
@@ -49,6 +49,21 @@ Get-AzsUpdate -Name Microsoft1.0.180305.1
 Get the specific update.
 
 ## PARAMETERS
+
+### -Location
+The name of the update location.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the update.
@@ -65,28 +80,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The name of the update location.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group the resource is located under.
 
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -116,7 +116,7 @@ Skip the first N items as specified by the parameter value.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -132,7 +132,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -153,3 +153,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

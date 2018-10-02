@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
     {
         internal static readonly string TestCertificateFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/BatchTestCert01.cer");
         internal const string TestCertificateAlgorithm = "sha1";
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Fake password")]
         internal const string TestCertificatePassword = "Passw0rd";
         internal static readonly int DefaultQuotaCount = 20;
 
@@ -694,7 +695,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// Builds a TaskCountsGetResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
-            int active, int running, int succeeded, int failed, ProxyModels.TaskCountValidationStatus validationStatus)
+            int active, int running, int succeeded, int failed)
         {
             var response = new AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
@@ -705,7 +706,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             taskCounts.Succeeded = succeeded;
             taskCounts.Failed = failed;
             taskCounts.Completed = succeeded + failed;
-            taskCounts.ValidationStatus = validationStatus;
 
             response.Body = taskCounts;
 

@@ -1,14 +1,14 @@
 ---
 external help file: Azs.Fabric.Admin-help.xml
 Module Name: Azs.Fabric.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
 # Restart-AzsInfrastructureRole
 
 ## SYNOPSIS
-Restarts the requestd infrastructure role.
+Restarts the requested infrastructure role.
 
 ## SYNTAX
 
@@ -24,30 +24,45 @@ Restart-AzsInfrastructureRole -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [
 ```
 
 ## DESCRIPTION
-Restarts the requestd infrastructure role.
+Restarts the requested infrastructure role.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-Restart-AzsInfrastructureRole -Name "Active Directory Federation Services"
+Restart-AzsInfrastructureRole -Name "Compute Controller"
 ```
 
 Restart an infrastructure role which has crashed.
 
 ## PARAMETERS
 
-### -Name
-Infrastructure role name.
+### -AsJob
+Run asynchronous as a job and return the job object.
 
 ```yaml
-Type: String
-Parameter Sets: Restart
-Aliases:
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -58,9 +73,24 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: Restart
-Aliases:
+Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Infrastructure role name.
+
+```yaml
+Type: String
+Parameter Sets: Restart
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +103,7 @@ Resource group in which the resource provider has been registered.
 ```yaml
 Type: String
 Parameter Sets: Restart
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -97,32 +127,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AsJob
-Run asynchronous as a job and return the job object.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Don't ask for confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -143,21 +158,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -168,3 +168,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
