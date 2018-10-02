@@ -83,6 +83,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PowerBI.Test.Netco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RedisCache.Test.Netcore", "ResourceManager\RedisCache\Commands.RedisCache.Test\Commands.RedisCache.Test.Netcore.csproj", "{192D67A3-A97C-4430-9704-DF901A2FBD9D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Relay.Test.Netcore", "ResourceManager\Relay\Commands.Relay.Test\Commands.Relay.Test.Netcore.csproj", "{7E3D856C-B0D4-4913-85E8-2470F86D1B69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -573,6 +575,18 @@ Global
 		{192D67A3-A97C-4430-9704-DF901A2FBD9D}.Release|x64.Build.0 = Release|Any CPU
 		{192D67A3-A97C-4430-9704-DF901A2FBD9D}.Release|x86.ActiveCfg = Release|Any CPU
 		{192D67A3-A97C-4430-9704-DF901A2FBD9D}.Release|x86.Build.0 = Release|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Debug|x64.Build.0 = Debug|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Debug|x86.Build.0 = Debug|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x64.ActiveCfg = Release|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x64.Build.0 = Release|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x86.ActiveCfg = Release|Any CPU
+		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
