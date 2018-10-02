@@ -85,6 +85,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RedisCache.Test.Ne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Relay.Test.Netcore", "ResourceManager\Relay\Commands.Relay.Test\Commands.Relay.Test.Netcore.csproj", "{7E3D856C-B0D4-4913-85E8-2470F86D1B69}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StreamAnalytics.Test.Netcore", "ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\Commands.StreamAnalytics.Test.Netcore.csproj", "{19187AFD-3B1D-4946-BF5C-8E2FD496C886}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -587,6 +589,18 @@ Global
 		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x64.Build.0 = Release|Any CPU
 		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x86.ActiveCfg = Release|Any CPU
 		{7E3D856C-B0D4-4913-85E8-2470F86D1B69}.Release|x86.Build.0 = Release|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Debug|x64.Build.0 = Debug|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Debug|x86.Build.0 = Debug|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x64.ActiveCfg = Release|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x64.Build.0 = Release|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x86.ActiveCfg = Release|Any CPU
+		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
