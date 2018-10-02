@@ -26,3 +26,14 @@
 -->
 
 # Upcoming Breaking Changes
+
+## Release 5.0.0
+
+The following cmdlets were affected this release:
+
+**Get-AzureBatchTaskCounts**
+ - The `Microsoft.Azure.Commands.Batch.Models.PSTaskCounts` model returned by this cmdlet has had the `ValidationStatus` property
+   removed.
+
+**Add-AzureBatchPool**
+ - The `Caching` default for `Microsoft.Azure.Commands.Batch.Models.PSDataDisk` is now `ReadWrite` instead of `None`.
