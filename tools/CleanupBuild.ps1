@@ -66,7 +66,7 @@ foreach($RMPath in $resourceManagerPaths)
         }
         
         Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
-        $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("PreloadAssemblies")}
+        $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("Assemblies") }
         $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
         Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
@@ -77,7 +77,7 @@ foreach($RMPath in $resourceManagerPaths)
             $removedScripts = Get-ChildItem -Path "$($RMFolder.FullName)\StartupScripts" -Filter "*.ps1" | where { $_.FullName -ne $scriptName }
             $removedScripts | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
         }
-        $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Filter "*.psd1" | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
+        $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude "PsSwaggerUtility*.psd1" -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
         $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }
 }

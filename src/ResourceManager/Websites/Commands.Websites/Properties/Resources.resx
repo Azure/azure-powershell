@@ -162,4 +162,18 @@
     <value>Failed to add git remote to directory '{0}' with error '{1}'</value>
     <comment>{0} = directory, {1} = error message</comment>
   </data>
+  <data name="EnterContainerPSSessionFormatForTrustedHostsSuggestion" xml:space="preserve">
+    <value>Add your Container Web App to the trusted hosts. For example: "Set-Item WSMAN:\\LocalHost\\Client\\TrustedHosts -Value '{0}{1}.azurewebsites.net'"</value>
+    <comment>{0} = current trusted hosts if present, {1} = website or slot name</comment>
+  </data>
+  <data name="EnterContainerPSSessionFormatForTrustedHostsWarning" xml:space="preserve">
+    <value>Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App. Current settings: {0}</value>
+    <comment>{0} = Current trusted hosts if present, "&lt;empty" otherwise</comment>
+  </data>
+  <data name="EnterCotnainerPSSessionBasicAuthWarning" xml:space="preserve">
+    <value>WSMAN Basic authentication is not enabled. Run the following command and try again: "Set-Item WSMAN:\LocalHost\Client\Auth\Basic -Value $true"</value>
+  </data>
+  <data name="EnterContainerPSSessionConfirmation" xml:space="preserve">
+    <value>Creating a new remote PowerShell session. Confirm?</value>
+  </data>
 </root>

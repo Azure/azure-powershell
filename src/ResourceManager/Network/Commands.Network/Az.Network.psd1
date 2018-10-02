@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -399,7 +399,21 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzFirewallNatRule',
     'New-AzFirewallNetworkRuleCollection',
     'New-AzFirewallNetworkRule',
-    'Get-AzInterfaceEndpoint' 
+    'Get-AzNetworkProfile',
+    'New-AzNetworkProfile',
+    'Remove-AzNetworkProfile',
+    'Set-AzNetworkProfile',
+    'New-AzContainerNicConfig',
+    'New-AzContainerNicConfigIpConfig',
+    'Get-AzInterfaceEndpoint',
+    'Add-AzNetworkInterfaceTapConfig',
+    'Get-AzNetworkInterfaceTapConfig',
+    'Set-AzNetworkInterfaceTapConfig',
+    'Remove-AzNetworkInterfaceTapConfig',
+    'Get-AzVirtualNetworkTap',
+    'New-AzVirtualNetworkTap',
+    'Remove-AzVirtualNetworkTap',
+    'Set-AzVirtualNetworkTap'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
         MigrationValidationOutput,
         MigrationValidationDatabaseLevelOutput,
         LoginLevelOutput,
-        AgentJobLevelOutput
+        AgentJobLevelOutput,
+        Command
     }
 }
