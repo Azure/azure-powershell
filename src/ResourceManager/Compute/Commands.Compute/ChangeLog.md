@@ -23,6 +23,8 @@
 * Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
 * Add Location parameter to Get-AzureRmVM
 * Shared Gallery cmdlets
+* Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
+
 
 ## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies
