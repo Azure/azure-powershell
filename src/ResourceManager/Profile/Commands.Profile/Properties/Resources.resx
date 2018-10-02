@@ -423,4 +423,7 @@
   <data name="ProfilePathNull" xml:space="preserve">
     <value>Unable to set profile because environment variable '${0}' is null.</value>
   </data>
+  <data name="ServicePrincipalWarning" xml:space="preserve">
+    <value>The provided service principal secret will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
+  </data>
 </root>

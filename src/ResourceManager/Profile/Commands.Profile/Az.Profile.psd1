@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -69,9 +69,6 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
     '.\Microsoft.Azure.PowerShell.Websites.dll', 
     '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
     '.\Microsoft.Azure.Common.dll', 
-    '.\Microsoft.IdentityModel.Clients.ActiveDirectory.dll', 
-    '.\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll', 
-    '.\Microsoft.IdentityModel.Tokens.dll', 
     '.\Microsoft.Rest.ClientRuntime.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll', 

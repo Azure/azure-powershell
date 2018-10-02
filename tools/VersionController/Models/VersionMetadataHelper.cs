@@ -90,7 +90,7 @@ namespace VersionController.Models
 
                 if (!newTypeMetadataDictionary.ContainsKey(type))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdletMetadata,
                         severity: 0,
                         problemId: 0,
