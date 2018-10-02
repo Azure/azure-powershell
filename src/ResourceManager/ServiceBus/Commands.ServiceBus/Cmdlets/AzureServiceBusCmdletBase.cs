@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
         protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
+        protected const string IpFilterRuleInputObjectParameterSet = "IpFilterRuleInputObjectSet";
+        protected const string VnetRuleInputObjectParameterSet = "VNetRuleInputObjectSet";
 
         //Parameter sets for ResourceID
         protected const string MigrationConfigResourceIdParameterSet = "MigrationConfigResourceIdParameterSet";
@@ -84,6 +86,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicResourceIdParameterSet = "TopicResourceIdSet";
         protected const string SubscriptionResourceIdParameterSet = "SubscriptionResourceIdSet";
         protected const string RuleResourceIdParameterSet = "RuleResourceIdSet";
+        protected const string IpFilterRuleResourceIdParameterSet = "IpFilterRuleResourceIdParameterSet";
+        protected const string VnetRuleResourceIdParameterSet = "VNetRuleResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -94,6 +98,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
         protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
+
+        protected const string IpFilterRulePropertiesParameterSet = "IpFilterRulePropertiesSet";
+        protected const string VnetRulePropertiesParameterSet = "VNetRulePropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -132,16 +139,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         {
             internal const string PrimaryKey = "PrimaryKey";
             internal const string SecondaryKey = "SecondaryKey";
-        }
-        
-        protected static AccessRights ParseAccessRights(string rightsName)
-        {
-            AccessRights returnAccessRights;
-            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-            {
-                throw new ArgumentOutOfRangeException("AccessRights");
-            }
-            return returnAccessRights;
         }
         
         public static SkuName ParseSkuName(string skuName)

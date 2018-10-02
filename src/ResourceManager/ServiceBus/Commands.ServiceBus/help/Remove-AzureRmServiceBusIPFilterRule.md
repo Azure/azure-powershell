@@ -1,73 +1,60 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.ServiceBus/remove-azurermServiceBusnamespace
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermServiceBusipfilterrule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusNamespace
+# Remove-AzureRmServiceBusIPFilterRule
 
 ## SYNOPSIS
-Removes the specified Event Hubs namespace.
+removes the specified Ip Filter rule for the given namespace
 
 ## SYNTAX
 
-### NamespaceParameterSet (Default)
+### IpFilterRulePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
+Remove-AzureRmServiceBusIPFilterRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IpFilterRuleInputObjectSet
+```
+Remove-AzureRmServiceBusIPFilterRule [-InputObject] <PSIpFilterRuleAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NamespaceInputObjectSet
+### IpFilterRuleResourceIdParameterSet
 ```
-Remove-AzureRmServiceBusNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NamespaceResourceIdParameterSet
-```
-Remove-AzureRmServiceBusNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzureRmServiceBusIPFilterRule [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmServiceBusNamespace cmdlet removes and deletes the specified Event Hubs namespace.
+Cmdlet **Remove-AzureRmServiceBusIPFilterRule** deletes the specified Ip Filter Rule for the given namespace
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
-```
-
-Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
-
-### Example 2.1 - InputObject - Using Variable:
-```
-PS C:\> $inputObject = Get-AzureRmServiceBusNamespace <params> 
-PS C:\> Remove-AzureRmServiceBusNamespace -InputObject $inputObject
+```powershell
+PS C:\> Remove-AzureRmServiceBusIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame -Name ipfilterrulename
 ```
 
-### Example 2.1 - InputObject - Using Piping:
-```
-PS C:\> Get-AzureRmServiceBusNamespace <params> | Remove-AzureRmServiceBusNamespace
+removes the specified Ip Filter Rule
+
+### Example 2
+```powershell
+PS C:\> Get-AzureRmServiceBusIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame -Name ipfilterrulename | Remove-AzureRmServiceBusIPFilterRule
 ```
 
-### Example 3.1 - ResourceId - Using Variable
-```
-PS C:\> $resourceid = Get-AzureRmServiceBusNamespace <params>
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId $resourceid.Id
+removes the specified Ip Filter Rule through piping InputObject
+
+### Example 3
+```powershell
+PS C:\> Remove-AzureRmServiceBusIPFilterRule -ResourceId resourceIdOfIpFilterRule
 ```
 
-### Example 3.2 - ResourceId - Using Piping:
-```
-PS C:\> Get-AzureRmResource -ResourceType Microsoft.ServiceBus/Namespaces | Remove-AzureRmServiceBusNamespace
-```
-
-### Example 3.3 - ResourceId - Using String:
-```
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName"
-```
+removes the specified Ip Filter Rule using resource Id
 
 ## PARAMETERS
 
@@ -102,11 +89,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-ServiceBuss Namespace Object
+Ip Filter Rule Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSIpFilterRuleAttributes
+Parameter Sets: IpFilterRuleInputObjectSet
 Aliases:
 
 Required: True
@@ -117,11 +104,26 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ServiceBus Namespace Name
+Ip Filter Rule Name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceParameterSet
+Parameter Sets: IpFilterRulePropertiesSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name
+
+```yaml
+Type: System.String
+Parameter Sets: IpFilterRulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -151,7 +153,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceParameterSet
+Parameter Sets: IpFilterRulePropertiesSet
 Aliases:
 
 Required: True
@@ -162,11 +164,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ServiceBuss Namespace Resource Id
+Ip Filter Rule Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceResourceIdParameterSet
+Parameter Sets: IpFilterRuleResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -214,12 +216,12 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Microsoft.Azure.Commands.ServiceBus.Models.PSIpFilterRuleAttributes
 
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 
 ## NOTES

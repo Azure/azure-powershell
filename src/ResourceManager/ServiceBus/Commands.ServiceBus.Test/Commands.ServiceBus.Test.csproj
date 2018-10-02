@@ -40,99 +40,33 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.4.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\ServiceBusDRConfigurations.cs" />
+    <Compile Include="ScenarioTests\IpFilterRule.cs" />
     <Compile Include="ScenarioTests\ServiceBusController.cs" />
-    <Compile Include="ScenarioTests\ServiceBusMigrationConfigurationTests.cs" />
-    <Compile Include="ScenarioTests\ServiceBusPaginationTests.cs" />
-    <Compile Include="ScenarioTests\ServiceBusRuleTests.cs" />
-    <Compile Include="ScenarioTests\ServiceBusSubscriptionTests.cs" />
-    <Compile Include="ScenarioTests\ServiceBusTopicTests.cs" />
-    <Compile Include="ScenarioTests\ServiceBusQueueTests.cs" />
     <Compile Include="ScenarioTests\ServiceBusServiceTests.cs" />
+    <Compile Include="ScenarioTests\VNetRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\NewConsumerGroup.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\SetAuthorizationRule.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\NewAuthorizationRule.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\NewEventHub.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusDRConfigurationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusMigrationConfigurationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusPaginationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusRuleTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusSubscriptionTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusTopicTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceBusQueueTests.ps1">
+    <None Include="ScenarioTests\IpFilterRuleTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ServiceBusServiceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\ServiceBusDRConfigurationsCURD.json">
+    <None Include="ScenarioTests\VNetRuleTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\ServiceBusDRConfigurationsCURDAlterName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusMigrationConfigurationTests\ServiceBusMigrationConfigurationsCURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusPaginationTests\ServiceBusPaginationTests_CURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\ServiceBusQueueAuth_CURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\ServiceBusQueue_CURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusRuleTests\ServiceBusRule_CURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\ServiceBusNameSpaceAuth_CURD_Tests.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.IpFilterRuleTests\IpFilterRuleCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\ServiceBusNameSpace_CURD_Tests.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusSubscriptionTests\ServiceBusSubscription_CURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\ServiceBusTopicAuth_CURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\ServiceBusTopic_CURD.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.VNetRuleTests\VnetRuleCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -144,6 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.8.0-preview\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

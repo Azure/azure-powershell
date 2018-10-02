@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// EventHub Namespace Location.
+        /// ServiceBus Namespace Location.
         /// </summary>
         [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ServiceBus Namespace Location")]
         [LocationCompleter("Microsoft.ServiceBus/namespaces")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string Location { get; set; }
 
         /// <summary>
-        /// EventHub Namespace Name.
+        /// ServiceBus Namespace Name.
         /// </summary>
         [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "ServiceBus Namespace Name")]
         [Alias(AliasNamespaceName)]
@@ -74,6 +74,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public Hashtable Tag { get; set; }
 
         /// <summary>
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>        
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether ZoneRedundant is enabled")]
+        public SwitchParameter EnableZoneRedundant { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
@@ -85,7 +91,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             {
                 try
                 {
-                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                    if (EnableZoneRedundant.IsPresent)
+                    {
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity, EnableZoneRedundant));
+                    }
+                    else
+                    {
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                    }
                 }
                 catch (ErrorResponseException ex)
                 {

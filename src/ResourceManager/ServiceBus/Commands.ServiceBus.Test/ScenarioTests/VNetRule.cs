@@ -16,24 +16,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ScenarioTest;
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ServiceBusServiceTests : RMTestBase
+    public class VNetRuleTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public ServiceBusServiceTests(ITestOutputHelper output)
+        public VNetRuleTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
+            TestExecutionHelpers.SetUpSessionAndProfile();
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ServiceBusNameSpace_CURD_Tests()
+        public void VnetRuleCRUD()
         {
-            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusTests");
+            ServiceBusController.NewInstance.RunPsTest(_logger, "VNetRuleTests");
         }
+        
     }
 }
