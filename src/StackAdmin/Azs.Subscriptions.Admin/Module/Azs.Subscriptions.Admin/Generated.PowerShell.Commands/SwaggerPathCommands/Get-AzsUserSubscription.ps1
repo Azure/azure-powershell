@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Get the list of user subscriptions as administrator.
+    Get the list of user subscriptions as operator.
 
 .DESCRIPTION
-    Get the list of user subscriptions as administrator.
+    Get the list of user subscriptions as operator.
 
 .PARAMETER Filter
     OData filter parameter.
@@ -20,7 +20,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     PS C:\Windows\system32> Get-AzsUserSubscription
 
-    Get the list of user subscriptions as administrator.
+    Get the list of user subscriptions as operator.
 #>
 function Get-AzsUserSubscription {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Subscription])]
