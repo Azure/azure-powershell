@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,10 +24,15 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.5.0-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.RedisCache">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RedisCache\Microsoft.Azure.Commands.RedisCache.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
