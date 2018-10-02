@@ -29,7 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestMultiIpConfigCRUD()
@@ -37,7 +37,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-MultiIpConfigCRUD");
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         /// current error is: LoadBalancingRules are not supported for secondary IpConfigurations. 
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestAddNICToLBWithMultiIpConfig()
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AddNICToLBWithMultiIpConfig");
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         /// Public IP is not supported on secondary IpConfigurations

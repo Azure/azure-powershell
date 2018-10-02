@@ -18,9 +18,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 using System.Xml.Linq;
 
@@ -269,6 +271,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
             }
             return doc.ToString();
+        }
+
+        public User GetPublishingCredentials(string resourceGroupName, string webSiteName, string slotName = null)
+        {
+            string qualifiedSiteName;
+            return CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
+               WrappedWebsitesClient.WebApps().ListPublishingCredentialsSlot(resourceGroupName, webSiteName, slotName)
+               : WrappedWebsitesClient.WebApps().ListPublishingCredentials(resourceGroupName, webSiteName);
         }
 
         public string ResetWebAppPublishingCredentials(string resourceGroupName, string webSiteName, string slotName)
