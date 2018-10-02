@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUrl - Gets the Container Continuous Deployment Webhook URL
+* New Cmdlets New-AzureRMWebAppContainerPSSession and Enter-WebAppContainerPSSession  - Initiates a PowerShell remote session into a windows container app
 * Set-AzureRmWebApp and Set-AzureRmWebAppSlot - New parameter (-AzureStorageAccounts) added to specify Azure Storage accounts to be mounted in Windows and Linux container apps
 
 ## Version 5.1.0
