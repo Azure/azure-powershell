@@ -2395,6 +2395,8 @@
                         "Get-AzDeletedWebApp":  "Get-AzureRmDeletedWebApp",
                         "Restore-AzDeletedWebApp":  "Restore-AzureRmDeletedWebApp",
                         "Get-AzWebAppContainerContinuousDeploymentUrl":  "Get-AzureRmWebAppContainerContinuousDeploymentUrl",
-                        "Swap-AzWebAppSlot":  "Swap-AzureRmWebAppSlot"
+                        "Swap-AzWebAppSlot":  "Swap-AzureRmWebAppSlot",
+                        "Enter-AzWebAppContainerPSSession" : "Enter-AzureRmWebAppContainerPSSession",
+                        "New-AzWebAppContainerPSSession" : "New-AzureRmWebAppContainerPSSession"
                     }
 }
