@@ -1,4 +1,47 @@
-﻿## 6.9.0 - September 2018
+﻿## 6.10.0 - October 2018
+#### Azure.Storage
+* Fix Copy Blob/File won't copy metadata when destination has metadata issue
+    - Start-AzureStorageBlobCopy
+    - Start-AzureStorageFileCopy
+
+#### AzureRM.CognitiveServices
+* Support Get-AzureRmCognitiveServicesAccountSkus without an existing account.
+
+#### AzureRM.Compute
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Added an example of the 'SimpleParameterSet' to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+
+#### AzureRM.Network
+* Added NetworkProfile functionality. new cmdlets added
+    - Get-AzureRMNetworkProfile
+    - New-AzureRMNetworkProfile
+    - Remove-AzureRMNetworkProfile
+    - Set-AzureRMNetworkProfile
+    - New-AzureRMContainerNicConfig
+    - New-AzureRmContainerNicConfigIpConfig
+* Added service association link on Subnet Model
+* Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
+* Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
+
+#### AzureRM.RedisCache
+* Allow any string as Size parameter going forward. Add P5 in PSArgumentCompleter popup
+
+#### AzureRM.Resources
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+
+#### AzureRM.Sql
+* Fixed issue where some backup cmdlets would not recognize the current azure subscription
+
+#### AzureRM.Storage
+* Support get the Storage resource usage of a specific location, and add warning message for get global Storage resource usage is obsolete.
+    - Get-AzureRmStorageUsage
+
+#### AzureRM.Websites
+* New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUrl - Gets the Container Continuous Deployment Webhook URL
+* New Cmdlets New-AzureRMWebAppContainerPSSession and Enter-WebAppContainerPSSession  - Initiates a PowerShell remote session into a windows container app
+
+## 6.9.0 - September 2018
 #### General
 * AzureRM.SignalR was added to the AzureRM rollup module
 
