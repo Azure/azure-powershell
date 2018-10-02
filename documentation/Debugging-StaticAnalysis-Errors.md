@@ -51,4 +51,4 @@ Signature issues occur when your cmdlets do not follow PowerShell standards.  Pl
 - Push the changes to the .csv file and ensure the errors no longer show up in the `SignatureIssues.csv` file output from the Jenkins build.
 
 ### Help Issues
-Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/help-generation.md).  If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
+Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
