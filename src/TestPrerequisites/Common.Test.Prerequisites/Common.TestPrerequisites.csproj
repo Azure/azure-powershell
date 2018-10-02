@@ -60,6 +60,7 @@
     <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.10.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Relay" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="1.4.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0-preview" PrivateAssets="All" />
