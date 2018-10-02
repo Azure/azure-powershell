@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.6.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.6.1'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.14'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.4'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.1.5'; }, 
@@ -62,8 +62,8 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.1.5'; }, 
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.6'; }, 
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.6'; }, 
-               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.10'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.6.0'; }, 
+               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.11'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.7.0'; }, 
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.7'; }, 
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.2.10'; }, 
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '1.0.10'; }, 
@@ -84,7 +84,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.4.8'; }, 
                @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.5'; }, 
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.4'; }, 
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.8.0'; }, 
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.9.0'; }, 
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.3'; }, 
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.0.4'; }, 
@@ -92,20 +92,20 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.8'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.4.1'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.10'; }, 
-               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.6'; }, 
+               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.1.0'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.10'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.5.0'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.6.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.12'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.12'; }, 
                @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.11.3'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.1.0'; }, 
+               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.11.5'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.2.0'; }, 
                @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.10'; }, 
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.5'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.1.1'; }, 
                @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.5'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.1.0'; })
+               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.6.0
 * Add missing -Mode parameter to Set-AzureRmPolicyDefinition
 
 ## Version 6.5.0
