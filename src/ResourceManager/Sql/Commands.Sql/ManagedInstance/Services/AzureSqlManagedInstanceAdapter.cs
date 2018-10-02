@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             sku.Tier = resp.Sku.Tier;
 
             managedInstance.Sku = sku;
-            managedInstance.DnsZone = resp.DnsZOne;
+            managedInstance.DnsZone = resp.DnsZone;
 
             return managedInstance;
         }
