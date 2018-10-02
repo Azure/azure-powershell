@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             OsVolumeEncrypted = EncryptionStatus.NotEncrypted,
                             DataVolumesEncrypted = EncryptionStatus.NotEncrypted,
                             OsVolumeEncryptionSettings = null,
-                            ProgressMessage = "No Encryption extension or metada found on the VM"
+                            ProgressMessage = "No Encryption extension or metadata found on the VM"
                         };
                         break;
                 }
