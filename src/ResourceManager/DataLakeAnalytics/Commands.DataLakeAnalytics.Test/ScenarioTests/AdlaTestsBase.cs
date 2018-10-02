@@ -113,9 +113,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                     ResourceGroupName = TestUtilities.GenerateName("abarg1");
                     TryCreateResourceGroup(ResourceGroupName, ResourceGroupLocation);
                     AzureBlobStoreName = TestUtilities.GenerateName("azureblob01");
+                    string storageSuffix;
                     AzureBlobStoreAccessKey = TryCreateStorageAccount(ResourceGroupName,
                         AzureBlobStoreName,
-                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", ResourceGroupLocation, out _);
+                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", ResourceGroupLocation, out storageSuffix);
                 }
 
                 try
