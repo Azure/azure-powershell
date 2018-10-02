@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue where some backup cmdlets would not recognize the current azure subscription
+
+## Version 4.11.4-preview
 * New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
    - Add-AzureRmSqlManagedInstanceKeyVaultKey
    - Get-AzureRmSqlManagedInstanceKeyVaultKey

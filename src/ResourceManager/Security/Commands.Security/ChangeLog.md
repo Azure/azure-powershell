@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.0
+
+* Aligning AzureRm.Profile dependency with the rest of AzureRm and updating documentation notes
+
 ## Version 0.1.0
 
 * Public preview release of Security Center cmdlets

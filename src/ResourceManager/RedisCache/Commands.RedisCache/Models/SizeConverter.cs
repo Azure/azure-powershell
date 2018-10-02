@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string GB13 = "13GB";
         public const string GB26 = "26GB";
         public const string GB53 = "53GB";
+        public const string GB120 = "120GB";
 
         public const string C0String = "C0";
         public const string C1String = "C1";
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string P2String = "P2";
         public const string P3String = "P3";
         public const string P4String = "P4";
+        public const string P5String = "P5";
 
         private static Dictionary<string, string> skuStringToActualSize = new Dictionary<string, string>{
             { C0String, MB250 },
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             { P1String, GB6 },
             { P2String, GB13 },
             { P3String, GB26 },
-            { P4String, GB53 }
+            { P4String, GB53 },
+            { P5String, GB120 }
         };
 
         public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser, bool isPremiumCache)
@@ -100,6 +103,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     {
                         return C6String;
                     }
+                case GB120:
+                    return P5String;
                 // accepting C0, C1 etc.
                 default:
                     return actualSizeFromUser;
