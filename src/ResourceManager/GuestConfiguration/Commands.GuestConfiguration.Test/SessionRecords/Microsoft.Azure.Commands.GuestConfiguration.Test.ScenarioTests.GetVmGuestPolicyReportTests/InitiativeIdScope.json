@@ -1,0 +1,1799 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lTZXREZWZpbml0aW9ucy8zZmE3Y2JmNS1jMGE0LTRhNTktODVhNS1jY2E0ZDk5NmQ1YTY/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "19fe908f-a091-4f5a-aca2-3a1f2f022e27"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Password security settings inside Linux and Windows virtual machines\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"description\": \"http://aka.ms/gcpol. This policy will audit password security settings inside Linux and Windows virtual machines. For a list of individual settings, please follow the aka.ms link to Azure Policy documentation.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_PasswordPolicy_msid110\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/2d67222d-05fd-4526-a171-2ee132ad9e83\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_PasswordPolicy_msid110\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/ec49586f-4939-402d-a29e-6ff502b20592\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_PasswordPolicy_msid121\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/b18175dd-c599-4c64-83ba-bb018a06d35b\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_PasswordPolicy_msid121\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/f19aa1c1-6b91-4c27-ae6a-970279f03db9\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_PasswordPolicy_msid232\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/c40c9087-1981-4e73-9f53-39743eda9d05\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_PasswordPolicy_msid232\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/3470477a-b35a-49db-aca5-1073d04524fe\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_MaximumPasswordAge\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/24dde96d-f0b1-425e-884f-4a1421e2dcdc\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_MaximumPasswordAge\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/356a906e-05e5-4625-8729-90771e0ee934\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_MinimumPasswordAge\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/5aa11bbc-5c76-4302-80e5-aba46a4282e7\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_MinimumPasswordAge\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/16390df4-2f73-4b42-af13-c801066763df\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_PasswordMustMeetComplexityRequirements\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/f48b2913-1dc5-4834-8c72-ccc1dfd819bb\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_PasswordMustMeetComplexityRequirements\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/7ed40801-8a0f-4ceb-85c0-9fd25c1d61a8\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_StorePasswordsUsingReversibleEncryption\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/2d60d3b7-aa10-454c-88a8-de39d99d17c6\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_StorePasswordsUsingReversibleEncryption\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/8ff0b18b-262e-4512-857a-48ad0aeb9a78\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_EnforcePasswordHistory\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/cdbf72d9-ac9c-4026-8a3a-491a5ac59293\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_EnforcePasswordHistory\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/726671ac-c4de-4908-8c7d-6043ae62e3b6\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_MinimumPasswordLength\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/5aebc8d1-020d-4037-89a0-02043a7524ec\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_MinimumPasswordLength\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/23020aa6-1135-4be2-bae2-149982b06eca\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3860"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "6755da60-cfd5-41ed-a5d2-d0dfc9225595"
+        ],
+        "x-ms-request-id": [
+          "westus2:ba05d2da-3df2-41f6-8f60-8f45a655f617"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:6755da60-cfd5-41ed-a5d2-d0dfc9225595"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/2d67222d-05fd-4526-a171-2ee132ad9e83?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8yZDY3MjIyZC0wNWZkLTQ1MjYtYTE3MS0yZWUxMzJhZDllODM/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b85b90fd-37cc-4be1-b35b-46fe14967caa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Linux VM allowing remote connections from accounts with no passwords\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting verifies remote connections from accounts with empty passwords is disabled.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Canonical\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"UbuntuServer\"\r\n                  },\r\n                  {\r\n                    \"anyOf\": [\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"14.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"16.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"equals\": \"16.04-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"18.04-LTS\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Suse\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"SLES\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"equals\": \"12-SP3\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"RedHat\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"RHEL\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7-RAW\",\r\n                      \"7.4\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"credativ\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"Debian\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"9\",\r\n                      \"8\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"OpenLogic\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"CentOS\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7.5\",\r\n                      \"7.4\",\r\n                      \"7.3\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"PasswordPolicy_msid110\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/2d67222d-05fd-4526-a171-2ee132ad9e83\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"2d67222d-05fd-4526-a171-2ee132ad9e83\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2063"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "westus2:4337bb80-b9c7-4925-9ae7-aefbd0e3c309"
+        ],
+        "x-ms-correlation-request-id": [
+          "f68433f1-5d0c-41b2-bdaa-fbb46e1ab14b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:f68433f1-5d0c-41b2-bdaa-fbb46e1ab14b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/ec49586f-4939-402d-a29e-6ff502b20592?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy9lYzQ5NTg2Zi00OTM5LTQwMmQtYTI5ZS02ZmY1MDJiMjA1OTI/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "676c3e4a-38bc-479a-b295-40dc4761a920"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Linux VM allowing remote connections from accounts with no passwords\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration and Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. For Linux servers this includes Chef Inspec, Ruby, and Python. This security setting verifies remote connections from accounts with empty passwords is disabled.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Canonical\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"UbuntuServer\"\r\n                  },\r\n                  {\r\n                    \"anyOf\": [\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"14.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"16.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"equals\": \"16.04-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"18.04-LTS\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Suse\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"SLES\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"equals\": \"12-SP3\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"RedHat\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"RHEL\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7-RAW\",\r\n                      \"7.4\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"credativ\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"Debian\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"9\",\r\n                      \"8\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"OpenLogic\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"CentOS\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7.5\",\r\n                      \"7.4\",\r\n                      \"7.3\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"PasswordPolicy_msid110\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"PasswordPolicy_msid110\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforLinux')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforLinux\",\r\n                      \"typeHandlerVersion\": \"1.0\",\r\n                      \"autoUpgradeMinorVersion\": true\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/ec49586f-4939-402d-a29e-6ff502b20592\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ec49586f-4939-402d-a29e-6ff502b20592\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3848"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "westus2:444cbec9-caf3-4a0f-833f-770731101fc7"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a3ef869-d7d6-4a69-907c-03d4a91a77af"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:1a3ef869-d7d6-4a69-907c-03d4a91a77af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/b18175dd-c599-4c64-83ba-bb018a06d35b?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy9iMTgxNzVkZC1jNTk5LTRjNjQtODNiYS1iYjAxOGEwNmQzNWI/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9c4585c0-0433-449c-aad5-9d4674aa5018"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Linux VM /etc/passwd file permissions are set to 0644\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting verifies /etc/passwd file permissions are set to 0644 to prevent unauthorized changes that could allow access to the server.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Canonical\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"UbuntuServer\"\r\n                  },\r\n                  {\r\n                    \"anyOf\": [\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"14.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"16.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"equals\": \"16.04-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"18.04-LTS\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Suse\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"SLES\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"equals\": \"12-SP3\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"RedHat\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"RHEL\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7-RAW\",\r\n                      \"7.4\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"credativ\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"Debian\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"9\",\r\n                      \"8\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"OpenLogic\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"CentOS\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7.5\",\r\n                      \"7.4\",\r\n                      \"7.3\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"PasswordPolicy_msid121\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/b18175dd-c599-4c64-83ba-bb018a06d35b\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"b18175dd-c599-4c64-83ba-bb018a06d35b\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2097"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "westus2:8f96d529-3baf-4680-99f4-59db0d6591d2"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c7fe4dd-8832-408e-8fb5-ff24dd038341"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:7c7fe4dd-8832-408e-8fb5-ff24dd038341"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/f19aa1c1-6b91-4c27-ae6a-970279f03db9?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy9mMTlhYTFjMS02YjkxLTRjMjctYWU2YS05NzAyNzlmMDNkYjk/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4e276daa-8a75-4504-82b9-d58b0bc0739d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Linux VM passwd file permissions\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. For Linux servers this includes Chef Inspec, Ruby, and Python. This security setting verifies /etc/passwd file permissions are set to 0644 to prevent unauthorized changes that could allow access to the server.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Canonical\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"UbuntuServer\"\r\n                  },\r\n                  {\r\n                    \"anyOf\": [\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"14.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"16.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"equals\": \"16.04-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"18.04-LTS\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Suse\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"SLES\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"equals\": \"12-SP3\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"RedHat\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"RHEL\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7-RAW\",\r\n                      \"7.4\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"credativ\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"Debian\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"9\",\r\n                      \"8\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"OpenLogic\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"CentOS\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7.5\",\r\n                      \"7.4\",\r\n                      \"7.3\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"PasswordPolicy_msid121\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"PasswordPolicy_msid121\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforLinux')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforLinux\",\r\n                      \"typeHandlerVersion\": \"1.0\",\r\n                      \"autoUpgradeMinorVersion\": true\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/f19aa1c1-6b91-4c27-ae6a-970279f03db9\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"f19aa1c1-6b91-4c27-ae6a-970279f03db9\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3858"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "westus2:f28249e0-6ee8-4007-ae8c-7e8bba901f95"
+        ],
+        "x-ms-correlation-request-id": [
+          "b53700ab-4543-4989-b1c0-df26677792ae"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:b53700ab-4543-4989-b1c0-df26677792ae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/c40c9087-1981-4e73-9f53-39743eda9d05?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy9jNDBjOTA4Ny0xOTgxLTRlNzMtOWY1My0zOTc0M2VkYTlkMDU/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b2a5e980-1906-41bb-ab13-f1e2416c6b18"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Linux VM accounts with no passwords\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting verifies there are no accounts without passwords.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Canonical\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"UbuntuServer\"\r\n                  },\r\n                  {\r\n                    \"anyOf\": [\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"14.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"16.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"equals\": \"16.04-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"18.04-LTS\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Suse\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"SLES\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"equals\": \"12-SP3\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"RedHat\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"RHEL\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7-RAW\",\r\n                      \"7.4\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"credativ\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"Debian\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"9\",\r\n                      \"8\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"OpenLogic\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"CentOS\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7.5\",\r\n                      \"7.4\",\r\n                      \"7.3\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"PasswordPolicy_msid232\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/c40c9087-1981-4e73-9f53-39743eda9d05\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"c40c9087-1981-4e73-9f53-39743eda9d05\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2004"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "westus2:7f90bc26-634f-48fe-a8a5-bd7d2f03dfae"
+        ],
+        "x-ms-correlation-request-id": [
+          "8cc0facb-5904-46d7-a1c1-4c1239115598"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:8cc0facb-5904-46d7-a1c1-4c1239115598"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/3470477a-b35a-49db-aca5-1073d04524fe?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8zNDcwNDc3YS1iMzVhLTQ5ZGItYWNhNS0xMDczZDA0NTI0ZmU/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7e5ee55a-283f-45e6-91d2-20efb703d992"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Linux VM accounts with no passwords\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. For Linux servers this includes Chef Inspec, Ruby, and Python. This security setting verifies there are no accounts without passwords.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Canonical\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"UbuntuServer\"\r\n                  },\r\n                  {\r\n                    \"anyOf\": [\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"14.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"16.04.#-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"equals\": \"16.04-LTS\"\r\n                      },\r\n                      {\r\n                        \"field\": \"Microsoft.Compute/imageSKU\",\r\n                        \"match\": \"18.04-LTS\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"Suse\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"SLES\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"equals\": \"12-SP3\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"RedHat\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"RHEL\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7-RAW\",\r\n                      \"7.4\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"credativ\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"Debian\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"9\",\r\n                      \"8\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"OpenLogic\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"CentOS\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"in\": [\r\n                      \"7.5\",\r\n                      \"7.4\",\r\n                      \"7.3\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"PasswordPolicy_msid232\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"PasswordPolicy_msid232\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforLinux')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforLinux\",\r\n                      \"typeHandlerVersion\": \"1.0\",\r\n                      \"autoUpgradeMinorVersion\": true\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/3470477a-b35a-49db-aca5-1073d04524fe\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"3470477a-b35a-49db-aca5-1073d04524fe\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3786"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "westus2:6ff353fa-068b-43a0-ad0f-3aaa9a9388a2"
+        ],
+        "x-ms-correlation-request-id": [
+          "c1415bd7-a8ad-43cc-bdef-1d79ea2c83ba"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:c1415bd7-a8ad-43cc-bdef-1d79ea2c83ba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/24dde96d-f0b1-425e-884f-4a1421e2dcdc?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8yNGRkZTk2ZC1mMGIxLTQyNWUtODg0Zi00YTE0MjFlMmRjZGM/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a87c5696-3e0f-4f11-83cc-369d2fe43120"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Windows VM maximum password age 70 days\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting determines the period of time (in days) that a password can be used before the system requires the user to change it.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imagePublisher\",\r\n            \"equals\": \"MicrosoftWindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageOffer\",\r\n            \"equals\": \"WindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageSKU\",\r\n            \"in\": [\r\n              \"2012-Datacenter\",\r\n              \"2012-Datacenter-smalldisk\",\r\n              \"2012-R2-Datacenter\",\r\n              \"2012-R2-Datacenter-smalldisk\",\r\n              \"2016-Datacenter\",\r\n              \"2016-Datacenter-Server-Core\",\r\n              \"2016-Datacenter-Server-Core-smalldisk\",\r\n              \"2016-Datacenter-smalldisk\",\r\n              \"2016-Datacenter-with-Containers\",\r\n              \"2016-Datacenter-with-RDSH\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"MaximumPasswordAge\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/24dde96d-f0b1-425e-884f-4a1421e2dcdc\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"24dde96d-f0b1-425e-884f-4a1421e2dcdc\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1361"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "westus2:bc8113c7-fbda-40e3-9c4c-7ac0f441dcd6"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9fedae1-c27a-4054-9624-b63736b68008"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:c9fedae1-c27a-4054-9624-b63736b68008"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/356a906e-05e5-4625-8729-90771e0ee934?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8zNTZhOTA2ZS0wNWU1LTQ2MjUtODcyOS05MDc3MWUwZWU5MzQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "185e27a6-4e25-4bfb-a4f1-1607be48d46e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Windows VM maximum password age 70 days\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. This security setting determines the period of time (in days) that a password can be used before the system requires the user to change it.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"equals\": \"MicrosoftWindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageOffer\",\r\n                \"equals\": \"WindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageSKU\",\r\n                \"in\": [\r\n                  \"2012-Datacenter\",\r\n                  \"2012-Datacenter-smalldisk\",\r\n                  \"2012-R2-Datacenter\",\r\n                  \"2012-R2-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter\",\r\n                  \"2016-Datacenter-Server-Core\",\r\n                  \"2016-Datacenter-Server-Core-smalldisk\",\r\n                  \"2016-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter-with-Containers\",\r\n                  \"2016-Datacenter-with-RDSH\"\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"MaximumPasswordAge\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"MaximumPasswordAge\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/356a906e-05e5-4625-8729-90771e0ee934\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"356a906e-05e5-4625-8729-90771e0ee934\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3129"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "westus2:ce663ec3-3d91-4117-928d-142bb65bd65b"
+        ],
+        "x-ms-correlation-request-id": [
+          "2b0b97d6-3a7d-46fa-8e85-c2652bc87eeb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:2b0b97d6-3a7d-46fa-8e85-c2652bc87eeb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/5aa11bbc-5c76-4302-80e5-aba46a4282e7?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy81YWExMWJiYy01Yzc2LTQzMDItODBlNS1hYmE0NmE0MjgyZTc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9dd1f54e-5891-48bd-962a-08958dc4a14d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Windows VM minimum password age 1 day\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting determines the period of time (in days) that a password must be used before the user can change it.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imagePublisher\",\r\n            \"equals\": \"MicrosoftWindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageOffer\",\r\n            \"equals\": \"WindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageSKU\",\r\n            \"in\": [\r\n              \"2012-Datacenter\",\r\n              \"2012-Datacenter-smalldisk\",\r\n              \"2012-R2-Datacenter\",\r\n              \"2012-R2-Datacenter-smalldisk\",\r\n              \"2016-Datacenter\",\r\n              \"2016-Datacenter-Server-Core\",\r\n              \"2016-Datacenter-Server-Core-smalldisk\",\r\n              \"2016-Datacenter-smalldisk\",\r\n              \"2016-Datacenter-with-Containers\",\r\n              \"2016-Datacenter-with-RDSH\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"MinimumPasswordAge\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/5aa11bbc-5c76-4302-80e5-aba46a4282e7\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"5aa11bbc-5c76-4302-80e5-aba46a4282e7\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1341"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "westus2:88207f4c-e372-4907-bfc2-67d96ff9f0b1"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e3991c8-0cab-4aa7-bf6a-298b129a14e5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:1e3991c8-0cab-4aa7-bf6a-298b129a14e5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/16390df4-2f73-4b42-af13-c801066763df?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8xNjM5MGRmNC0yZjczLTRiNDItYWYxMy1jODAxMDY2NzYzZGY/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "52f4576a-a996-471d-b69d-cb44925629cd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Windows VM minimum password age 1 day\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. This security setting determines the period of time (in days) that a password must be used before the user can change it.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"equals\": \"MicrosoftWindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageOffer\",\r\n                \"equals\": \"WindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageSKU\",\r\n                \"in\": [\r\n                  \"2012-Datacenter\",\r\n                  \"2012-Datacenter-smalldisk\",\r\n                  \"2012-R2-Datacenter\",\r\n                  \"2012-R2-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter\",\r\n                  \"2016-Datacenter-Server-Core\",\r\n                  \"2016-Datacenter-Server-Core-smalldisk\",\r\n                  \"2016-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter-with-Containers\",\r\n                  \"2016-Datacenter-with-RDSH\"\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"MinimumPasswordAge\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"MinimumPasswordAge\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/16390df4-2f73-4b42-af13-c801066763df\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"16390df4-2f73-4b42-af13-c801066763df\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3109"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11989"
+        ],
+        "x-ms-request-id": [
+          "westus2:b4cfcb98-0b9d-458c-b861-29662323bdb4"
+        ],
+        "x-ms-correlation-request-id": [
+          "1684e716-6dc6-467c-b0e9-76ae113430cd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:1684e716-6dc6-467c-b0e9-76ae113430cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/f48b2913-1dc5-4834-8c72-ccc1dfd819bb?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy9mNDhiMjkxMy0xZGM1LTQ4MzQtOGM3Mi1jY2MxZGZkODE5YmI/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d4356b19-37cd-48bc-a430-95d8e0a0e474"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Windows VM enforces password complexity requirements\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"If this policy is enabled, passwords must meet minimum requirements.  See documentation for full details at URL http://aka.ms/gcpol.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imagePublisher\",\r\n            \"equals\": \"MicrosoftWindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageOffer\",\r\n            \"equals\": \"WindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageSKU\",\r\n            \"in\": [\r\n              \"2012-Datacenter\",\r\n              \"2012-Datacenter-smalldisk\",\r\n              \"2012-R2-Datacenter\",\r\n              \"2012-R2-Datacenter-smalldisk\",\r\n              \"2016-Datacenter\",\r\n              \"2016-Datacenter-Server-Core\",\r\n              \"2016-Datacenter-Server-Core-smalldisk\",\r\n              \"2016-Datacenter-smalldisk\",\r\n              \"2016-Datacenter-with-Containers\",\r\n              \"2016-Datacenter-with-RDSH\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"PasswordMustMeetComplexityRequirements\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/f48b2913-1dc5-4834-8c72-ccc1dfd819bb\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"f48b2913-1dc5-4834-8c72-ccc1dfd819bb\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1387"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11988"
+        ],
+        "x-ms-request-id": [
+          "westus2:8a6fa8dd-8dfa-4808-98e6-4bc2d678d4f6"
+        ],
+        "x-ms-correlation-request-id": [
+          "cffffa70-bdf6-4d5e-9dbc-333f87e9f862"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:cffffa70-bdf6-4d5e-9dbc-333f87e9f862"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/7ed40801-8a0f-4ceb-85c0-9fd25c1d61a8?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy83ZWQ0MDgwMS04YTBmLTRjZWItODVjMC05ZmQyNWMxZDYxYTg/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "26f537d6-7c4f-4da5-9713-8bb228e49bd6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Windows VM enforces password complexity requirements\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. If this policy is enabled, passwords must meet minimum requirements.  See documentation for full details at URL http://aka.ms/gcpol.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"equals\": \"MicrosoftWindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageOffer\",\r\n                \"equals\": \"WindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageSKU\",\r\n                \"in\": [\r\n                  \"2012-Datacenter\",\r\n                  \"2012-Datacenter-smalldisk\",\r\n                  \"2012-R2-Datacenter\",\r\n                  \"2012-R2-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter\",\r\n                  \"2016-Datacenter-Server-Core\",\r\n                  \"2016-Datacenter-Server-Core-smalldisk\",\r\n                  \"2016-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter-with-Containers\",\r\n                  \"2016-Datacenter-with-RDSH\"\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"PasswordMustMeetComplexityRequirements\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"PasswordMustMeetComplexityRequirements\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/7ed40801-8a0f-4ceb-85c0-9fd25c1d61a8\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"7ed40801-8a0f-4ceb-85c0-9fd25c1d61a8\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3175"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11987"
+        ],
+        "x-ms-request-id": [
+          "westus2:ac54ec9c-e3e1-4e53-9e36-6774fa486d84"
+        ],
+        "x-ms-correlation-request-id": [
+          "65150126-45a5-4651-9617-c4cc77850972"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:65150126-45a5-4651-9617-c4cc77850972"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/2d60d3b7-aa10-454c-88a8-de39d99d17c6?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8yZDYwZDNiNy1hYTEwLTQ1NGMtODhhOC1kZTM5ZDk5ZDE3YzY/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "71376faa-6878-4c33-9a32-cb73e0fbb45c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Windows VM should not store passwords using reversible encryption\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting determines whether the operating system stores passwords using reversible encryption.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imagePublisher\",\r\n            \"equals\": \"MicrosoftWindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageOffer\",\r\n            \"equals\": \"WindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageSKU\",\r\n            \"in\": [\r\n              \"2012-Datacenter\",\r\n              \"2012-Datacenter-smalldisk\",\r\n              \"2012-R2-Datacenter\",\r\n              \"2012-R2-Datacenter-smalldisk\",\r\n              \"2016-Datacenter\",\r\n              \"2016-Datacenter-Server-Core\",\r\n              \"2016-Datacenter-Server-Core-smalldisk\",\r\n              \"2016-Datacenter-smalldisk\",\r\n              \"2016-Datacenter-with-Containers\",\r\n              \"2016-Datacenter-with-RDSH\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"StorePasswordsUsingReversibleEncryption\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/2d60d3b7-aa10-454c-88a8-de39d99d17c6\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"2d60d3b7-aa10-454c-88a8-de39d99d17c6\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1376"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11986"
+        ],
+        "x-ms-request-id": [
+          "westus2:3fcf7cb2-4b09-4418-b2ec-7b10209ec6c8"
+        ],
+        "x-ms-correlation-request-id": [
+          "68cc0c52-3bab-45d2-90ed-d2511371222e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:68cc0c52-3bab-45d2-90ed-d2511371222e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/8ff0b18b-262e-4512-857a-48ad0aeb9a78?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy84ZmYwYjE4Yi0yNjJlLTQ1MTItODU3YS00OGFkMGFlYjlhNzg/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "04d2b7cd-7e96-4321-b062-e818ed1d7c5d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Windows VM should not store passwords using reversible encryption\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. This security setting determines whether the operating system stores passwords using reversible encryption.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"equals\": \"MicrosoftWindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageOffer\",\r\n                \"equals\": \"WindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageSKU\",\r\n                \"in\": [\r\n                  \"2012-Datacenter\",\r\n                  \"2012-Datacenter-smalldisk\",\r\n                  \"2012-R2-Datacenter\",\r\n                  \"2012-R2-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter\",\r\n                  \"2016-Datacenter-Server-Core\",\r\n                  \"2016-Datacenter-Server-Core-smalldisk\",\r\n                  \"2016-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter-with-Containers\",\r\n                  \"2016-Datacenter-with-RDSH\"\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"StorePasswordsUsingReversibleEncryption\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"StorePasswordsUsingReversibleEncryption\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/8ff0b18b-262e-4512-857a-48ad0aeb9a78\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"8ff0b18b-262e-4512-857a-48ad0aeb9a78\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11985"
+        ],
+        "x-ms-request-id": [
+          "westus2:02faf2b5-7184-4211-9359-80c5d9ce2ab1"
+        ],
+        "x-ms-correlation-request-id": [
+          "044ad88a-7d75-4a5d-b25e-69a3c4f4c27a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:044ad88a-7d75-4a5d-b25e-69a3c4f4c27a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/cdbf72d9-ac9c-4026-8a3a-491a5ac59293?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy9jZGJmNzJkOS1hYzljLTQwMjYtOGEzYS00OTFhNWFjNTkyOTM/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cd6571c5-a237-44da-8da6-0f41f5625b1c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Windows VM should not allow previous 24 passwords\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting determines the number of unique new passwords that have to be associated with a user account before an old password can be reused.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imagePublisher\",\r\n            \"equals\": \"MicrosoftWindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageOffer\",\r\n            \"equals\": \"WindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageSKU\",\r\n            \"in\": [\r\n              \"2012-Datacenter\",\r\n              \"2012-Datacenter-smalldisk\",\r\n              \"2012-R2-Datacenter\",\r\n              \"2012-R2-Datacenter-smalldisk\",\r\n              \"2016-Datacenter\",\r\n              \"2016-Datacenter-Server-Core\",\r\n              \"2016-Datacenter-Server-Core-smalldisk\",\r\n              \"2016-Datacenter-smalldisk\",\r\n              \"2016-Datacenter-with-Containers\",\r\n              \"2016-Datacenter-with-RDSH\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"EnforcePasswordHistory\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/cdbf72d9-ac9c-4026-8a3a-491a5ac59293\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"cdbf72d9-ac9c-4026-8a3a-491a5ac59293\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1388"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11984"
+        ],
+        "x-ms-request-id": [
+          "westus2:1642d302-7683-434a-a64d-bf6c2f8896a5"
+        ],
+        "x-ms-correlation-request-id": [
+          "62b91091-3306-4172-ba30-012985e49362"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:62b91091-3306-4172-ba30-012985e49362"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/726671ac-c4de-4908-8c7d-6043ae62e3b6?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy83MjY2NzFhYy1jNGRlLTQ5MDgtOGM3ZC02MDQzYWU2MmUzYjY/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fc9fda98-c728-41cd-bb21-60a70cd19361"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Windows VM should not allow previous 24 passwords\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. This security setting determines the number of unique new passwords that have to be associated with a user account before an old password can be reused.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"equals\": \"MicrosoftWindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageOffer\",\r\n                \"equals\": \"WindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageSKU\",\r\n                \"in\": [\r\n                  \"2012-Datacenter\",\r\n                  \"2012-Datacenter-smalldisk\",\r\n                  \"2012-R2-Datacenter\",\r\n                  \"2012-R2-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter\",\r\n                  \"2016-Datacenter-Server-Core\",\r\n                  \"2016-Datacenter-Server-Core-smalldisk\",\r\n                  \"2016-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter-with-Containers\",\r\n                  \"2016-Datacenter-with-RDSH\"\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"EnforcePasswordHistory\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"EnforcePasswordHistory\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/726671ac-c4de-4908-8c7d-6043ae62e3b6\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"726671ac-c4de-4908-8c7d-6043ae62e3b6\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3160"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11983"
+        ],
+        "x-ms-request-id": [
+          "westus2:45fa10b5-4450-4c22-8470-859ea59338a3"
+        ],
+        "x-ms-correlation-request-id": [
+          "1c79316b-819f-43fb-9411-a2b7719c12bb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:1c79316b-819f-43fb-9411-a2b7719c12bb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/5aebc8d1-020d-4037-89a0-02043a7524ec?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy81YWViYzhkMS0wMjBkLTQwMzctODlhMC0wMjA0M2E3NTI0ZWM/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "88bee620-f6c8-41ee-826f-3ebaf5881dd7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit Windows VM passwords must be at least 14 characters\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"This security setting determines the least number of characters that a password for a user account may contain.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imagePublisher\",\r\n            \"equals\": \"MicrosoftWindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageOffer\",\r\n            \"equals\": \"WindowsServer\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.Compute/imageSKU\",\r\n            \"in\": [\r\n              \"2012-Datacenter\",\r\n              \"2012-Datacenter-smalldisk\",\r\n              \"2012-R2-Datacenter\",\r\n              \"2012-R2-Datacenter-smalldisk\",\r\n              \"2016-Datacenter\",\r\n              \"2016-Datacenter-Server-Core\",\r\n              \"2016-Datacenter-Server-Core-smalldisk\",\r\n              \"2016-Datacenter-smalldisk\",\r\n              \"2016-Datacenter-with-Containers\",\r\n              \"2016-Datacenter-with-RDSH\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"auditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"MinimumPasswordLength\",\r\n          \"existenceCondition\": {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"equals\": \"Compliant\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/5aebc8d1-020d-4037-89a0-02043a7524ec\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"5aebc8d1-020d-4037-89a0-02043a7524ec\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1348"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11982"
+        ],
+        "x-ms-request-id": [
+          "westus2:99fecee3-10e4-4a36-a2d3-a953eaf033bf"
+        ],
+        "x-ms-correlation-request-id": [
+          "79a78be8-2a36-4666-bb94-8650a96595e6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:79a78be8-2a36-4666-bb94-8650a96595e6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/23020aa6-1135-4be2-bae2-149982b06eca?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8yMzAyMGFhNi0xMTM1LTRiZTItYmFlMi0xNDk5ODJiMDZlY2E/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d144100e-188b-48e5-b105-1b79a7233a9c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.PolicyClient/1.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit Windows VM passwords must be at least 14 characters\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extensions for Microsoft Guest Configuration, Microsoft Azure Managed Service Identity, and required content to check settings inside the virtual machine. This security setting determines the least number of characters that a password for a user account may contain.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"equals\": \"MicrosoftWindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageOffer\",\r\n                \"equals\": \"WindowsServer\"\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/imageSKU\",\r\n                \"in\": [\r\n                  \"2012-Datacenter\",\r\n                  \"2012-Datacenter-smalldisk\",\r\n                  \"2012-R2-Datacenter\",\r\n                  \"2012-R2-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter\",\r\n                  \"2016-Datacenter-Server-Core\",\r\n                  \"2016-Datacenter-Server-Core-smalldisk\",\r\n                  \"2016-Datacenter-smalldisk\",\r\n                  \"2016-Datacenter-with-Containers\",\r\n                  \"2016-Datacenter-with-RDSH\"\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"name\": \"MinimumPasswordLength\",\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"MinimumPasswordLength\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-06-30-preview\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/23020aa6-1135-4be2-bae2-149982b06eca\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"23020aa6-1135-4be2-bae2-149982b06eca\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3119"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11981"
+        ],
+        "x-ms-request-id": [
+          "westus2:b80ab1b9-8ed9-4da1-a1b3-eaecb2aea6d2"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a03506f-10ad-4b89-a567-a918cf5c6f39"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161600Z:3a03506f-10ad-4b89-a567-a918cf5c6f39"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordPolicy_msid110?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9QYXNzd29yZFBvbGljeV9tc2lkMTEwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMzAtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8b148907-9e37-4726-b471-3cfd9398a551"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Message\": \"No Assignment has been found for this resource = https://oaasgcservice.azure-automation.net/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordPolicy_msid110?api-version=2018-06-30-preview\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "361"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "6eada3de-8aa9-4cf6-b535-9c6ddae7227b"
+        ],
+        "x-ms-correlation-request-id": [
+          "6eada3de-8aa9-4cf6-b535-9c6ddae7227b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161601Z:6eada3de-8aa9-4cf6-b535-9c6ddae7227b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordPolicy_msid121?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9QYXNzd29yZFBvbGljeV9tc2lkMTIxP2FwaS12ZXJzaW9uPTIwMTgtMDYtMzAtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b9929e28-50d8-4bcc-8469-ff126b15b29e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Message\": \"No Assignment has been found for this resource = https://oaasgcservice.azure-automation.net/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordPolicy_msid121?api-version=2018-06-30-preview\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "361"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "53b46686-7c2a-4a11-a9ca-8e540b3fb473"
+        ],
+        "x-ms-correlation-request-id": [
+          "53b46686-7c2a-4a11-a9ca-8e540b3fb473"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161601Z:53b46686-7c2a-4a11-a9ca-8e540b3fb473"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordPolicy_msid232?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9QYXNzd29yZFBvbGljeV9tc2lkMjMyP2FwaS12ZXJzaW9uPTIwMTgtMDYtMzAtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3d4809b-6e3e-4265-ad4f-19e534dee5d0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Message\": \"No Assignment has been found for this resource = https://oaasgcservice.azure-automation.net/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordPolicy_msid232?api-version=2018-06-30-preview\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "361"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "aaaacdbf-120b-4c3f-80e5-3c29f8851c94"
+        ],
+        "x-ms-correlation-request-id": [
+          "aaaacdbf-120b-4c3f-80e5-3c29f8851c94"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161601Z:aaaacdbf-120b-4c3f-80e5-3c29f8851c94"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9NYXhpbXVtUGFzc3dvcmRBZ2U/YXBpLXZlcnNpb249MjAxOC0wNi0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "08323277-2d1a-4dbf-9453-fc3900d464b8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge\",\r\n  \"name\": \"MaximumPasswordAge\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignmentHash\": \"88F262FFF3C38620B590CE5D87D31E464E6EA2CA4F20D92DE6AAD7BA16E59496.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n    \"latestReportId\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/32b494d3-6b26-4a6e-8181-ee7619a205b3\",\r\n    \"lastComplianceStatusChecked\": \"2018-09-20T18:55:07Z\",\r\n    \"context\": null,\r\n    \"guestConfiguration\": {\r\n      \"kind\": null,\r\n      \"name\": \"MaximumPasswordAge\",\r\n      \"version\": \"1.*\",\r\n      \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/MaximumPasswordAge/MaximumPasswordAge_1.0.0.0.zip\",\r\n      \"contentHash\": \"88F262FFF3C38620B590CE5D87D31E464E6EA2CA4F20D92DE6AAD7BA16E59496\",\r\n      \"configurationParameter\": [],\r\n      \"configurationSetting\": null\r\n    },\r\n    \"provisioningState\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1209"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "e7c77cc2-6aa8-422e-b4b8-a0e8aa3fac03"
+        ],
+        "x-ms-correlation-request-id": [
+          "e7c77cc2-6aa8-422e-b4b8-a0e8aa3fac03"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161601Z:e7c77cc2-6aa8-422e-b4b8-a0e8aa3fac03"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MinimumPasswordAge?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9NaW5pbXVtUGFzc3dvcmRBZ2U/YXBpLXZlcnNpb249MjAxOC0wNi0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "99283cfa-32f7-4315-ad0e-1dcfff82db68"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MinimumPasswordAge\",\r\n  \"name\": \"MinimumPasswordAge\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignmentHash\": \"53C76C0EA21666915E4139203D1D0A974FA0D53EA1565665362A8DBE7ED3C855.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n    \"latestReportId\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MinimumPasswordAge/reports/9abceb9d-c840-4c29-ad92-56cb20bc30d9\",\r\n    \"lastComplianceStatusChecked\": \"2018-09-20T18:55:02Z\",\r\n    \"context\": null,\r\n    \"guestConfiguration\": {\r\n      \"kind\": null,\r\n      \"name\": \"MinimumPasswordAge\",\r\n      \"version\": \"1.*\",\r\n      \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/MinimumPasswordAge/MinimumPasswordAge_1.0.0.0.zip\",\r\n      \"contentHash\": \"53C76C0EA21666915E4139203D1D0A974FA0D53EA1565665362A8DBE7ED3C855\",\r\n      \"configurationParameter\": [],\r\n      \"configurationSetting\": null\r\n    },\r\n    \"provisioningState\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1209"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "9fdea647-7eb8-489b-bc65-e93e3010e887"
+        ],
+        "x-ms-correlation-request-id": [
+          "9fdea647-7eb8-489b-bc65-e93e3010e887"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161601Z:9fdea647-7eb8-489b-bc65-e93e3010e887"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9QYXNzd29yZE11c3RNZWV0Q29tcGxleGl0eVJlcXVpcmVtZW50cz9hcGktdmVyc2lvbj0yMDE4LTA2LTMwLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eaebdc54-7447-4a63-8c9f-725413a0f41e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements\",\r\n  \"name\": \"PasswordMustMeetComplexityRequirements\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"Compliant\",\r\n    \"assignmentHash\": \"362ED79CC46DA750522A6F329499EEBA8A64B69E5FC8FED06B8487CF727B7A8D.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n    \"latestReportId\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements/reports/2b645514-7699-42b3-824c-6034b4f6bf86\",\r\n    \"lastComplianceStatusChecked\": \"2018-09-20T18:54:55Z\",\r\n    \"context\": null,\r\n    \"guestConfiguration\": {\r\n      \"kind\": null,\r\n      \"name\": \"PasswordMustMeetComplexityRequirements\",\r\n      \"version\": \"1.*\",\r\n      \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/PasswordMustMeetComplexityRequirements/PasswordMustMeetComplexityRequirements_1.0.0.0.zip\",\r\n      \"contentHash\": \"362ED79CC46DA750522A6F329499EEBA8A64B69E5FC8FED06B8487CF727B7A8D\",\r\n      \"configurationParameter\": [],\r\n      \"configurationSetting\": null\r\n    },\r\n    \"provisioningState\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1326"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "86ea7684-e092-4336-a4f4-f5fc0fad2d99"
+        ],
+        "x-ms-correlation-request-id": [
+          "86ea7684-e092-4336-a4f4-f5fc0fad2d99"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161601Z:86ea7684-e092-4336-a4f4-f5fc0fad2d99"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/StorePasswordsUsingReversibleEncryption?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9TdG9yZVBhc3N3b3Jkc1VzaW5nUmV2ZXJzaWJsZUVuY3J5cHRpb24/YXBpLXZlcnNpb249MjAxOC0wNi0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6c0c173f-af33-435d-9b87-337d134bdb01"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/StorePasswordsUsingReversibleEncryption\",\r\n  \"name\": \"StorePasswordsUsingReversibleEncryption\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"Compliant\",\r\n    \"assignmentHash\": \"BAE4DF52C1795DCE0C9EBBED86BF92420D174EF87962DFA237A52F86AB937986.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n    \"latestReportId\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/StorePasswordsUsingReversibleEncryption/reports/6f612990-2a63-4286-81e2-004f252a7ee7\",\r\n    \"lastComplianceStatusChecked\": \"2018-09-20T18:55:09Z\",\r\n    \"context\": null,\r\n    \"guestConfiguration\": {\r\n      \"kind\": null,\r\n      \"name\": \"StorePasswordsUsingReversibleEncryption\",\r\n      \"version\": \"1.*\",\r\n      \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/StorePasswordsUsingReversibleEncryption/StorePasswordsUsingReversibleEncryption_1.0.0.0.zip\",\r\n      \"contentHash\": \"BAE4DF52C1795DCE0C9EBBED86BF92420D174EF87962DFA237A52F86AB937986\",\r\n      \"configurationParameter\": [],\r\n      \"configurationSetting\": null\r\n    },\r\n    \"provisioningState\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1332"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "553ae87c-5710-4e38-90dd-44fd46424596"
+        ],
+        "x-ms-correlation-request-id": [
+          "553ae87c-5710-4e38-90dd-44fd46424596"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161602Z:553ae87c-5710-4e38-90dd-44fd46424596"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/EnforcePasswordHistory?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9FbmZvcmNlUGFzc3dvcmRIaXN0b3J5P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzAtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "480bf200-ec3e-405d-9668-cdebacfe4584"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/EnforcePasswordHistory\",\r\n  \"name\": \"EnforcePasswordHistory\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignmentHash\": \"78AF17F91D014C6F7313F37D0A828B3954119B8781E9625393B3EED73756DA2A.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n    \"latestReportId\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/EnforcePasswordHistory/reports/b2ab38a2-69b2-4662-8865-1635f0f1d979\",\r\n    \"lastComplianceStatusChecked\": \"2018-09-20T18:55:14Z\",\r\n    \"context\": null,\r\n    \"guestConfiguration\": {\r\n      \"kind\": null,\r\n      \"name\": \"EnforcePasswordHistory\",\r\n      \"version\": \"1.*\",\r\n      \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/EnforcePasswordHistory/EnforcePasswordHistory_1.0.0.0.zip\",\r\n      \"contentHash\": \"78AF17F91D014C6F7313F37D0A828B3954119B8781E9625393B3EED73756DA2A\",\r\n      \"configurationParameter\": [],\r\n      \"configurationSetting\": null\r\n    },\r\n    \"provisioningState\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1233"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "8f7ed8a2-5cfa-477d-9e0d-1b5b9b2236be"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f7ed8a2-5cfa-477d-9e0d-1b5b9b2236be"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161602Z:8f7ed8a2-5cfa-477d-9e0d-1b5b9b2236be"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MinimumPasswordLength?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjlkMDRkYTUtMWFiNS00Mzk2LTg4MWYtZWQzZGJjMGNjNDdlL3Jlc291cmNlR3JvdXBzL1ZpdnNDbWRsZXQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9WaXZzQ21kbGV0MC9wcm92aWRlcnMvTWljcm9zb2Z0Lkd1ZXN0Q29uZmlndXJhdGlvbi9ndWVzdENvbmZpZ3VyYXRpb25Bc3NpZ25tZW50cy9NaW5pbXVtUGFzc3dvcmRMZW5ndGg/YXBpLXZlcnNpb249MjAxOC0wNi0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "918c1c0f-08e4-44f5-b5b1-ab0a424d5242"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MinimumPasswordLength\",\r\n  \"name\": \"MinimumPasswordLength\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignmentHash\": \"5985CED976E6E895EF597E992673FD9F4E8108900D79B83349C21EE4CD8DE090.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n    \"latestReportId\": \"/subscriptions/f9d04da5-1ab5-4396-881f-ed3dbc0cc47e/resourceGroups/VivsCmdlet/providers/Microsoft.Compute/virtualMachines/VivsCmdlet0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MinimumPasswordLength/reports/03fc417a-ed3a-40f4-aa4f-105029028400\",\r\n    \"lastComplianceStatusChecked\": \"2018-09-20T18:54:44Z\",\r\n    \"context\": null,\r\n    \"guestConfiguration\": {\r\n      \"kind\": null,\r\n      \"name\": \"MinimumPasswordLength\",\r\n      \"version\": \"1.*\",\r\n      \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/MinimumPasswordLength/MinimumPasswordLength_1.0.0.0.zip\",\r\n      \"contentHash\": \"5985CED976E6E895EF597E992673FD9F4E8108900D79B83349C21EE4CD8DE090\",\r\n      \"configurationParameter\": [],\r\n      \"configurationSetting\": null\r\n    },\r\n    \"provisioningState\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1227"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "7cd12aca-b35e-4c8d-8712-e2dacf283261"
+        ],
+        "x-ms-correlation-request-id": [
+          "7cd12aca-b35e-4c8d-8712-e2dacf283261"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180927T161602Z:7cd12aca-b35e-4c8d-8712-e2dacf283261"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 27 Sep 2018 16:16:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f9d04da5-1ab5-4396-881f-ed3dbc0cc47e"
+  }
+}
