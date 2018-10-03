@@ -23,20 +23,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileContainer()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSContainer()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileContainer");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileUnregisterContainer()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSUnregisterContainer()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileUnregisterContainer");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSUnregisterContainer");
         }
     }
 }

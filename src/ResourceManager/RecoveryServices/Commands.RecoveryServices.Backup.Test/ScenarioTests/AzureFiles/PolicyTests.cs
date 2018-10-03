@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFilePolicy()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSPolicy()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFilePolicy");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSPolicy");
         }
     }
 }

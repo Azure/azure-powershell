@@ -12,54 +12,69 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$location = "westus"
+$resourceGroupName = "PSTestFSRGsisi"
+$vaultName = "PSTestFSvaultsisi"
+$fileShareFriendlyName = "pstestfileshare"
+$fileShareName = "AzureFileShare;pstestfileshare"
+$saName = "psteststorageac"
+$skuName="Standard_LRS"
+$policyName = "AFSBackupPolicy"
+
 #Setup Instructions:
 #1. Create a resource group
+#New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
 #2. Create a storage account and a recovery services vault
+#New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+#New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+
 #3. Create a file share in the storage account
-#4. Fill the below global variables accordingly
+#$storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+#New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
-$location = "westus"
-$resourceGroupName = "sisi-RSV"
-$vaultName = "sisi-RSV-29-6"
-$fileShareName = "pstestfileshare"
-$fileShareFullName = "AzureFileShare;pstestfileshare"
-$saName = "pstestsaa"
+#4. Create a backup policy for file shares
+#$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+#$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+#$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+#$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
+#		-Name $policyName `
+#		-WorkloadType AzureFiles `
+#		-RetentionPolicy $retentionPolicy `
+#		-SchedulePolicy $schedulePolicy
 
-function Test-AzureFileProtectionCheck
+function Test-AzureFSProtectionCheck
 {
-	$status = Get-AzureRmRecoveryServicesBackupStatus `
-		-Name $saName `
-		-ResourceGroupName $resourceGroupName `
-		-Type AzureFiles
+	try
+	{
+		$status = Get-AzureRmRecoveryServicesBackupStatus `
+			-Name $saName `
+			-ResourceGroupName $resourceGroupName `
+			-Type AzureFiles
 
-	Assert-NotNull $status
-	Assert-False { $status.BackedUp }
+		Assert-NotNull $status
+		Assert-False { $status.BackedUp }
 
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-	$item = Enable-Protection $vault $fileShareName $saName
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 		
-	$status = Get-AzureRmRecoveryServicesBackupStatus `
-		-Name $saName `
-		-ResourceGroupName $resourceGroupName `
-		-Type AzureFiles
+		$status = Get-AzureRmRecoveryServicesBackupStatus `
+			-Name $saName `
+			-ResourceGroupName $resourceGroupName `
+			-Type AzureFiles
 
-	Assert-NotNull $status
-	Assert-True { $status.BackedUp }
-	Assert-True { $status.VaultId -eq $vault.ID }
+		Assert-NotNull $status
+		Assert-True { $status.BackedUp }
+		Assert-True { $status.VaultId -eq $vault.ID }
 
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
-		-VaultId $vault.ID `
-		-ContainerType AzureStorage `
-		-Status Registered `
-		-Name $saName
-	
-	# Disable protection
-	Disable-AzureRmRecoveryServicesBackupProtection `
-		-VaultId $vault.ID `
-		-Item $item `
-		-RemoveRecoveryPoints `
-		-Force;
-	Unregister-AzureRmRecoveryServicesBackupContainer `
-	-VaultId $vault.ID `
-	-Container $container
+		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureStorage `
+			-Status Registered `
+			-Name $saName
+	}
+	finally
+	{
+		Cleanup-Vault $vault $item $container
+	}
 }

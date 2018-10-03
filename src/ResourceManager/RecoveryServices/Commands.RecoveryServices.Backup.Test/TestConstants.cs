@@ -29,6 +29,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         public const string MAB = "MAB";
 
-        public const string AzureFile = "AzureFile";
+        public const string AzureFS = "AzureFS";
     }
 }
