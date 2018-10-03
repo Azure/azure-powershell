@@ -94,7 +94,7 @@ PS C:\> Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-d
     Description       : New description
 ```
 
-The cmdlet adds the ADF to use the shared integration runtime. When using ```-SharedIntegrationRuntimeResourceId``` parameter the ```-Type``` must also be included. Note that the data factory need to be granted permission to use the integration runtime before running cmdlet.
+The cmdlet adds the ADF to use the shared integration runtime. When using `-SharedIntegrationRuntimeResourceId` parameter the `-Type` must also be included. Note that the data factory need to be granted permission to use the integration runtime before running cmdlet.
 
 ## PARAMETERS
 
