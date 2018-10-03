@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = false,
                HelpMessage = "The exclusion lists.")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayFirewallExclusion> Exclusions { get; set; }
+        public List<PSApplicationGatewayFirewallExclusion> Exclusion { get; set; }
 
         public override void ExecuteCmdlet()
         {
