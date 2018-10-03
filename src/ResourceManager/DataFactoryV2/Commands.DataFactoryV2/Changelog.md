@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Updated the ADF .Net SDK version to 2.3.0.
 
 ## Version 0.5.10
 * Fixed issue with default resource groups not being set.

@@ -21,6 +21,7 @@
 
 ## Version 6.6.0
 * Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
 
 ## Version 6.5.0
 * Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
