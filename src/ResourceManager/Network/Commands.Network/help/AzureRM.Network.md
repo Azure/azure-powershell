@@ -437,6 +437,9 @@ Creates a new connection draining configuration for back-end HTTP settings.
 ### [New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
+### [New-AzureRmApplicationGatewayFirewallExclusionConfig](New-AzureRmApplicationGatewayFirewallExclusionConfig.md)
+Placeholder for synopsis to check help validation
+
 ### [New-AzureRmApplicationGatewayFrontendIPConfig](New-AzureRmApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
 
