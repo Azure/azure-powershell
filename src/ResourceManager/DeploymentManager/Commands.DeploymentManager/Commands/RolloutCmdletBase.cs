@@ -238,6 +238,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     sb.AppendLine();
                     sb.AppendFormatWithLeftIndentAndNewLine(RolloutCmdletBase.StepIndentFactor, $"Step: {step.Name}");
                     sb.AppendFormatWithLeftIndentAndNewLine(RolloutCmdletBase.StepPropertiesIndentFactor, $"Status: {step.Status}");
+                    sb.AppendFormatWithLeftIndentAndNewLine(RolloutCmdletBase.StepPropertiesIndentFactor, $"StepGroup: {step.StepGroup}");
 
                     sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(
                         RolloutCmdletBase.StepPropertiesIndentFactor,
