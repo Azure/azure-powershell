@@ -27,19 +27,20 @@ function Test-CreateManagedInstance
  	$version = "12.0"
  	$managedInstanceLogin = "dummylogin"
  	$managedInstancePassword = "Un53cuRE!"
- 	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
+ 	$subnetId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/StdjordjTestResourceGroup/providers/Microsoft.Network/virtualNetworks/ziwa-vnet1s/subnets/default"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
  	$credentials = new-object System.Management.Automation.PSCredential($managedInstanceLogin, ($managedInstancePassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$dnsZonePartner = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/StdjordjTestResourceGroup/providers/Microsoft.Sql/managedInstances/ziwamitestprod2"
 
  	try
  	{
  		# With SKU name specified
  		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -DnsZonePartner $dnsZonePartner -AsJob 
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
