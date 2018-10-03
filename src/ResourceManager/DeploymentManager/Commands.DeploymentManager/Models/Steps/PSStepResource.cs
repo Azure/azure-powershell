@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         {
             return new StepResource(
                 location: this.Location,
-                properties: this.StepProperties.ToSdkType(),
+                properties: this.StepProperties?.ToSdkType(),
                 id: this.Id,
                 name: this.Name,
                 type: this.Type,
