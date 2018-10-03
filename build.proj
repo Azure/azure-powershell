@@ -262,9 +262,9 @@
     <MakeDir  Directories="$(StackPackageFolder)"
               Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
-    <Exec Command="dotnet build %(CmdletSolutionsToBuild) -c $(Configuration) /p:Platform=&quot;Any CPU&quot;" />
+    <Exec Command="dotnet build %(CmdletSolutionsToBuild.FullPath) -c $(Configuration) /p:Platform=&quot;Any CPU&quot;" />
 
-    <Exec Command="dotnet build %(StackSolution) -c $(Configuration) /p:Platform=&quot;Any CPU&quot;" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
+    <Exec Command="dotnet build %(StackSolution.FullPath) -c $(Configuration) /p:Platform=&quot;Any CPU&quot;" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
