@@ -76,23 +76,6 @@
 	}
  	return $vault
 }
- function Cleanup-ResourceGroup(
-	[string] $resourceGroupName)
-{
-	$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction Ignore
- 	if ($resourceGroup -ne $null)
-	{
-		# Cleanup Vaults
-		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
-		foreach ($vault in $vaults)
-		{
-			Delete-Vault $vault
-		}
-	
-		# Cleanup RG. This cleans up all VMs and Storage Accounts.
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-	}
-}
  function Create-SA(
 	[string] $resourceGroupName, 
 	[string] $location)

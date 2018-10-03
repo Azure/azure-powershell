@@ -23,38 +23,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileItem()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSItem()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileItem");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSItem");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileShareBackup()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSBackup()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileShareBackup");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSBackup");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //[Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        //public void TestAzureFileShareGetRPs()
-        //{
-        //    TestController.NewInstance.RunPsTest(
-        //        _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileShareGetRPs");
-        //}
+        [Fact(Skip = "Failing on service end")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSGetRPs()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSGetRPs");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileProtection()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSProtection()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileProtection");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSProtection");
         }
     }
 }

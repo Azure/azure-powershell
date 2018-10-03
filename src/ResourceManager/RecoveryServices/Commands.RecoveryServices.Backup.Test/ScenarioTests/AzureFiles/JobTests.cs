@@ -23,29 +23,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileJob()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSGetJob()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileJob");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSGetJob");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //[Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        //public void TestAzureFileCancelJob()
-        //{
-        //    TestController.NewInstance.RunPsTest(
-        //        _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileCancelJob");
-        //}
+        [Fact(Skip = "Jon not cancellable everytime")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSCancelJob()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSCancelJob");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileWaitJob()
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSWaitJob()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileWaitJob");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSWaitJob");
         }
     }
 }
