@@ -44,7 +44,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataFactory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.2.0.0\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.2.3.0\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
