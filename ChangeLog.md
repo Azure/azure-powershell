@@ -12,6 +12,9 @@
 * Added an example of the 'SimpleParameterSet' to New-AzureRmVmss cmdlet help.
 * Fixed a typo in the Azure Disk Encryption progress message
 
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 2.3.0.
+
 #### AzureRM.Network
 * Added NetworkProfile functionality. new cmdlets added
     - Get-AzureRMNetworkProfile
@@ -29,6 +32,7 @@
 
 #### AzureRM.Resources
 * Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
 
 #### AzureRM.Sql
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription
@@ -48,14 +52,14 @@
 #### AzureRM.Profile
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
-- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set
 
 #### Azure.Storage
-* Support create Storage Context with OAuth. 
+* Support create Storage Context with OAuth.
 	- New-AzureStorageContext
 
 #### AzureRM.Cdn
-* Added Standard_Microsoft in Cdn pricing sku. 
+* Added Standard_Microsoft in Cdn pricing sku.
 
 #### AzureRM.Compute
 * Move dependencies on Keyvault and Storage to the common dependencies
@@ -166,7 +170,7 @@
 * Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
 
 #### AzureRM.Storage
-* Support Immutability Policy in AzureRm.Storage 
+* Support Immutability Policy in AzureRm.Storage
     - Remove-AzureRmStorageAccountNetworkRule
     - Get-AzureRmStorageContainer
     - Update-AzureRmStorageContainer
@@ -194,7 +198,7 @@
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6603
     - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6879
-    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to
 	4.0.4-preview nuget
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6853
     - Fixed the Odata filter for Search by Name on Product
@@ -360,7 +364,7 @@
 * Update example for New-AzureRmDisk
 * Add example for 'New-AzureRmVM'
 * Update description for Set-AzureRmVMOSDisk
-* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix.
 
 #### AzureRM.DataFactoryV2
 * Updated the ADF .Net SDK version to 1.1.0.
