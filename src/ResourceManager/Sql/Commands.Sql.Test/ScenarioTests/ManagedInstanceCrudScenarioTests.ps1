@@ -22,23 +22,23 @@ function Test-CreateManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
+	$rgName = "mi-wcus-demo-rg" 	
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "dummylogin"
  	$managedInstancePassword = "Un53cuRE!"
- 	$subnetId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/StdjordjTestResourceGroup/providers/Microsoft.Network/virtualNetworks/ziwa-vnet1s/subnets/default"
+ 	$subnetId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Network/virtualNetworks/mi-wcus-vnet/subnets/mi-subnet-managed-instances"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
  	$credentials = new-object System.Management.Automation.PSCredential($managedInstanceLogin, ($managedInstancePassword | ConvertTo-SecureString -asPlainText -Force)) 
-	$dnsZonePartner = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/StdjordjTestResourceGroup/providers/Microsoft.Sql/managedInstances/ziwamitestprod2"
+	$dnsZonePartner = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Sql/managedInstances/milevamaric-pilot-gp-00"
 
  	try
  	{
  		# With SKU name specified
- 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rgName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -DnsZonePartner $dnsZonePartner -AsJob 
  		$job | Wait-Job
@@ -46,7 +46,7 @@ function Test-CreateManagedInstance
 
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance1.Location $rg.Location
-		Assert-AreEqual $managedInstance1.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $managedInstance1.ResourceGroupName $rgName
 		Assert-AreEqual $managedInstance1.Sku.Name $skuName
  		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstanceLogin
 		Assert-AreEqual $managedInstance1.SubnetId $subnetId
@@ -60,7 +60,7 @@ function Test-CreateManagedInstance
 		$managedInstanceName = Get-ManagedInstanceName
 
 		# With edition and computeGeneration specified
- 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rgName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -AsJob
  		$job | Wait-Job
@@ -68,7 +68,7 @@ function Test-CreateManagedInstance
 
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance1.Location $rg.Location
-		Assert-AreEqual $managedInstance1.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $managedInstance1.ResourceGroupName $rgName
 		Assert-AreEqual $managedInstance1.Sku.Name $skuName
  		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstanceLogin
 		Assert-AreEqual $managedInstance1.SubnetId $subnetId
