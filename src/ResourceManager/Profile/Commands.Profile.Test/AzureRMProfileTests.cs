@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondList[0]);
 
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
             Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
             Assert.Equal(subscriptionName, ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).Name);
         }
