@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmApplicationGatewayFirewallExclusionConfig
 
 ## SYNOPSIS
-Placeholder for synopsis to check help validation
+Creates a new exclusion rule list for application gateway waf
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzureRmApplicationGatewayFirewallExclusionConfig -MatchVariable <String> -Se
 ```
 
 ## DESCRIPTION
-Placeholder for description to check help validation
+The **New-AzureRmApplicationGatewayFirewallExclusionConfig** cmdlet a new exclusion rule list for application gateway waf.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Example placeholder
+PS C:\> $exclusion1 = New-AzureRmApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "StartsWith" -Selector "xyz"
 ```
 
-Example description placeholder
+This command creates a new exclusion rule lists configuration for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion list configuration is saved in $exclusion1.
 
 ## PARAMETERS
 
