@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
                     RequestBodyCheck = this.RequestBodyCheck,
                     MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
                     FileUploadLimitInMb = this.FileUploadLimitInMb,
-                    Exclusions = this.Exclusions
+                    Exclusions = this.Exclusion
                 };
 
                 WriteObject(firewallConfiguration);

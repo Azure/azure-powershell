@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.RequestBodyCheck = this.RequestBodyCheck;
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb;
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.FileUploadLimitInMb = this.FileUploadLimitInMb;
-                this.ApplicationGateway.WebApplicationFirewallConfiguration.Exclusions = this.Exclusions;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.Exclusions = this.Exclusion;
 
                 WriteObject(this.ApplicationGateway);
             }
