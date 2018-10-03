@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
 
 ## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies

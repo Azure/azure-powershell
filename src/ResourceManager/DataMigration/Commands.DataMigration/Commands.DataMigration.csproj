@@ -38,8 +38,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\CommandCmdlet.cs" />
+    <Compile Include="Cmdlets\CompleteCommandCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectionInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToSourceSqlServerSyncTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToSourceSqlServerTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToTargetSqlSqlDbSyncTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\GetUserTableSqlSyncCmdlet.cs" />
+    <Compile Include="Cmdlets\MigrateSqlServerSqlDbSyncTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\NewDataMigrationSyncSelectedDB.cs" />
     <Compile Include="Cmdlets\NewFileShare.cs" />
     <Compile Include="Cmdlets\ValidateSqlServerSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlDbMiTaskCmdlet.cs" />
@@ -63,11 +70,15 @@
     <Compile Include="Cmdlets\SqlConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\StartDataMigrationService.cs" />
     <Compile Include="Cmdlets\StopDataMigrationTask.cs" />
-    <Compile Include="Cmdlets\StopDataMingrationService.cs" />
+    <Compile Include="Cmdlets\StopDataMigrationService.cs" />
     <Compile Include="Cmdlets\TaskCmdlet.cs" />
+    <Compile Include="Cmdlets\ValidateSqlServerSqlDbSyncTaskCmdlet.cs" />
     <Compile Include="Common\DmsClient.cs" />
+    <Compile Include="Common\DmsConstants.cs" />
     <Compile Include="Common\DmsResourceIdentifier.cs" />
     <Compile Include="Common\PagingExtensions.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="Models\CommandTypeEnum.cs" />
     <Compile Include="Models\DatabaseInfo\PSSqlServerSqlDbSelectedDatabase.cs" />
     <Compile Include="Models\Exceptions\BadRequestException.cs" />
     <Compile Include="Models\Exceptions\InvalidConnectionTypeException.cs" />
@@ -90,6 +101,7 @@
     <Compile Include="Models\Exceptions\ServerConnectionFailedException.cs" />
     <Compile Include="Models\Exceptions\SetProjectArtifactsFailedException.cs" />
     <Compile Include="Cmdlets\DataMigrationCmdlet.cs" />
+    <Compile Include="Cmdlets\InvokeDataMigrationCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -98,6 +110,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="help\Invoke-AzureRmDataMigrationCommand.md" />
+    <None Include="help\New-AzureRmDataMigrationSelectedDBObject.md" />
+    <None Include="help\New-AzureRmDataMigrationSyncSelectedDBObject.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="AzureRM.DataMigration.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -121,11 +136,10 @@
     <None Include="help\Start-AzureRmDataMigrationService.md" />
     <None Include="help\Stop-AzureRmDataMigrationService.md" />
     <None Include="help\Stop-AzureRmDataMigrationTask.md" />
-    <None Include="help\New-AzureRmDataMigrationSelectedDB.md" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.3.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.4.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -137,6 +151,7 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
