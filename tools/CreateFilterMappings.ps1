@@ -16,7 +16,6 @@ function Initialize-Mappings
     )
 
     $Mappings = [ordered]@{}
-    Get-ChildItem -Path $Script:RootPath -File | % { $Mappings[$_.Name] = @() }
     Get-ChildItem -Path $Script:RootPath -Directory | where { $_.Name -ne "src" } | % { $Mappings[$_.Name] = @() }
     Get-ChildItem -Path $Script:SrcPath -File | % { $Mappings["src/$_.Name"] = @() }
 
