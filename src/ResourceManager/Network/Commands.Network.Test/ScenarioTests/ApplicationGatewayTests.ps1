@@ -172,7 +172,9 @@ function Test-ApplicationGatewayCRUD
 
 		$disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
 		$disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_35_bad_robots"
-		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
+		$exclusion1 = New-AzureRmApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "StartsWith" -Selector "xyz"
+		$exclusion2 = New-AzureRmApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestArgNames" -SelectorMatchOperator "Equals" -Selector "a"
+		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusion $exclusion1,$exclusion2
 
 		# Create Application Gateway
 		$job = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig -AsJob
@@ -271,6 +273,10 @@ function Test-ApplicationGatewayCRUD
 		Assert-AreEqual "OWASP"  $firewallConfig2.RuleSetType
 		Assert-AreEqual "3.0"  $firewallConfig2.RuleSetVersion
 		Assert-AreEqual $null  $firewallConfig2.DisabledRuleGroups
+		Assert-AreEqual $True  $firewallConfig2.RequestBodyCheck
+		Assert-AreEqual 128  $firewallConfig2.MaxRequestBodySizeInKb
+		Assert-AreEqual 100  $firewallConfig2.FileUploadLimitInMb
+		Assert-AreEqual $null  $firewallConfig2.Exclusions
 
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
@@ -657,6 +663,9 @@ function Compare-WebApplicationFirewallConfiguration($expected, $actual)
 		Assert-AreEqual $expected.FirewallMode $actual.FirewallMode
 		Assert-AreEqual $expected.RuleSetType $actual.RuleSetType
 		Assert-AreEqual $expected.RuleSetVersion $actual.RuleSetVersion
+		Assert-AreEqual $expected.RequestBodyCheck $actual.RequestBodyCheck
+		Assert-AreEqual $expected.MaxRequestBodySizeInKb $actual.MaxRequestBodySizeInKb
+		Assert-AreEqual $expected.FileUploadLimitInMb $actual.FileUploadLimitInMb
 
 		if($expected.DisabledRuleGroups) 
 		{
@@ -670,6 +679,20 @@ function Compare-WebApplicationFirewallConfiguration($expected, $actual)
 		else
 		{
 			Assert-Null $actual.DisabledRuleGroups
+		}
+
+		if($expected.Exclusions) 
+		{
+			Assert-NotNull $actual.Exclusions
+			Assert-AreEqual $expected.Exclusions.Count $actual.Exclusions.Count
+			for($i = 0; $i -lt $expected.Exclusions.Count; $i++) 
+			{
+				Compare-Exclusion $expected.Exclusions[$i] $actual.Exclusions[$i]
+			}
+		}
+		else
+		{
+			Assert-Null $actual.Exclusions
 		}
 	}
 	else
@@ -698,6 +721,25 @@ function Compare-DisabledRuleGroup($expected, $actual)
 		{
 			Assert-Null $actual.Rules
 		}
+	}
+	else
+	{
+		Assert-Null $actual
+	}
+}
+
+<#
+.SYNOPSIS
+Compare Exclusion List
+#>
+function Compare-Exclusion($expected, $actual) 
+{
+	if($expected) 
+	{
+		Assert-NotNull $actual
+		Assert-AreEqual $expected.MatchVariable $actual.MatchVariable
+		Assert-AreEqual $expected.SelectorMatchOperator $actual.SelectorMatchOperator
+		Assert-AreEqual $expected.Selector $actual.Selector
 	}
 	else
 	{

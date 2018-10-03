@@ -703,6 +703,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayConnectionDraining, MNM.ApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallDisabledRuleGroup, MNM.ApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallExclusion, MNM.ApplicationGatewayFirewallExclusion>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAvailableWafRuleSetsResult, MNM.ApplicationGatewayAvailableWafRuleSetsResult>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallRule, MNM.ApplicationGatewayFirewallRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallRuleGroup, MNM.ApplicationGatewayFirewallRuleGroup>();
@@ -748,6 +749,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayConnectionDraining, CNM.PSApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallDisabledRuleGroup, CNM.PSApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
+                cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallExclusion>();
                 cfg.CreateMap<MNM.ApplicationGatewayAvailableWafRuleSetsResult, CNM.PSApplicationGatewayAvailableWafRuleSetsResult>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallRule, CNM.PSApplicationGatewayFirewallRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallRuleGroup, CNM.PSApplicationGatewayFirewallRuleGroup>();
