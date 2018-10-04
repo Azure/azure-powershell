@@ -141,6 +141,11 @@ namespace StaticAnalysis
                 analysisLogger.WriteReports();
                 analysisLogger.CheckForIssues(2);
             }
+            catch(Exception ex)
+            {
+                analysisLogger?.WriteError(ex.ToString());
+                throw ex;
+            }
             finally
             {
                 foreach (var exceptionFileName in ExceptionFileNames)
