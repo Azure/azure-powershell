@@ -28,35 +28,35 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListProtectionPolicyTests()
         {
             this.RunPowerShellTest(_logger, "Test-GetAzureBackupProtectionPolicyTests");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProtectionPolicyTests()
         {
             this.RunPowerShellTest(_logger, "Test-NewAzureBackupProtectionPolicyTests");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListProtectionPolicyByNameTests()
         {
             this.RunPowerShellTest(_logger, "Test-GetAzureBackupProtectionPolicyByNameTests");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetProtectionPolicyTests()
         {
             this.RunPowerShellTest(_logger, "Test-SetAzureBackupProtectionPolicyTests");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveProtectionPolicyTests()
         {

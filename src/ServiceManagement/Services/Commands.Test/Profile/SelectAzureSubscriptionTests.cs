@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Test.Profile;
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
-    
+
     public class SelectAzureSubscriptionTests
     {
         [Fact]
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
             Assert.True(true);
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StorageAccountIsNotCleaned()
         {
             ProfileTestController.NewRdfeInstance.RunPsTest("Test-StorageAccountIsNotCleaned");
         }
-        
-        [Fact]
+
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionPipeToSetSubscription()
         {

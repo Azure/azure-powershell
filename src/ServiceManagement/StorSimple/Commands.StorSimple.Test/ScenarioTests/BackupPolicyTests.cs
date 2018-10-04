@@ -20,14 +20,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
     public class BackupPolicyTests:StorSimpleTestBase
     {
         #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyConfig()
         {
             RunPowerShellTest("Test-NewBackupPolicyAddConfig");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyAddConfigDefaultValues()
         {

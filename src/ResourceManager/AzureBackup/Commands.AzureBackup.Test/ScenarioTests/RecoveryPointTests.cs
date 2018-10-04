@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRecoveryPointsTests()
         {
             this.RunPowerShellTest(_logger, "Test-GetAzureRecoveryPoints");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRecoveryPointTests()
         {
