@@ -77,7 +77,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
                 return ResourceManager.GetString("AddDataLakeFirewallRule", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Store virtual network rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeVirtualNetworkRule
+        {
+            get
+            {
+                return ResourceManager.GetString("AddDataLakeVirtualNetworkRule", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Adding the Data Lake Store trusted identity provider: &apos;{0}&apos; ....
         /// </summary>
