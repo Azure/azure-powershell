@@ -87,6 +87,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Relay.Test.Netcore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StreamAnalytics.Test.Netcore", "ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\Commands.StreamAnalytics.Test.Netcore.csproj", "{19187AFD-3B1D-4946-BF5C-8E2FD496C886}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.LogicApp.Test.Netcore", "ResourceManager\LogicApp\Commands.LogicApp.Test\Commands.LogicApp.Test.Netcore.csproj", "{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -601,6 +603,18 @@ Global
 		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x64.Build.0 = Release|Any CPU
 		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x86.ActiveCfg = Release|Any CPU
 		{19187AFD-3B1D-4946-BF5C-8E2FD496C886}.Release|x86.Build.0 = Release|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Debug|x64.Build.0 = Debug|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Release|x64.Build.0 = Release|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB57DE11-5D6D-4DD4-B16E-B54DF67EE7C6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

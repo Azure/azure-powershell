@@ -49,6 +49,7 @@
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Logic" Version="3.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.MachineLearning" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.MachineLearningCompute" Version="0.3.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" PrivateAssets="All" />
