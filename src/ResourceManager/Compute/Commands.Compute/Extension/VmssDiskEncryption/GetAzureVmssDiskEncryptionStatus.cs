@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine scale set name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", new string[] { "ResourceGroupName" })]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The extension name. If this parameter is not specified, defaults to AzureDiskEncryption for Windows and AzureDiskEncryptionForLinux for Linux.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", new string[] { "ResourceGroupName", "VMScaleSetName" })]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
 
