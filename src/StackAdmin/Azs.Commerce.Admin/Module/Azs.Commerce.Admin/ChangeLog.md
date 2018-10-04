@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-AzureStack version of AzureRm.Resources module, Changes till Azure powershell version 6.0.0 are included in this module.
-
-The authorization client has been modified to support the api-version 2017-07-01
-
+## Version 0.2.0
+* Module dependencies updated
+	* AzureRM.Profile
+	* AzureRM.Resources
