@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.RunPowerShellTest("Test-CommitRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
+        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VaultUpgradeTest()
         {
