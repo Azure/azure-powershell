@@ -24,6 +24,8 @@
 * Add Location parameter to Get-AzureRmVM
 * Shared Gallery cmdlets
 * Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+
 
 
 ## Version 5.6.0
