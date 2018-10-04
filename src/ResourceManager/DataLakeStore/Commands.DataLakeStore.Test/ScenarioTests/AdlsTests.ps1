@@ -258,8 +258,8 @@ function Test-DataLakeStoreVirtualNetwork
 
 		# Get the virtual network rule
 		$result = Get-AzureRmDataLakeStoreVirtualNetworkRule -Account $accountName -Name $vnetName1
-		Assert-AreEqual $vnetName1 $result.Name
-		Assert-AreEqual $virtualNetworkSubnetId1 $result.SubnetId
+		Assert-AreEqual $vnetName1 $result.VirtualNetworkRuleName
+		Assert-AreEqual $virtualNetworkSubnetId1 $result.VirtualNetworkSubnetId
 
 		# remove the virtual network rule
 		Remove-AzureRmDataLakeStoreVirtualNetworkRule -Account $accountName -Name $vnetName1
@@ -962,7 +962,7 @@ function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = 
 	$subnetName = "Public"
 
 	$addressPrefix = "10.0.0.0/24"
-	$serviceEndpoint = "Microsoft.DataLakeStore"
+	$serviceEndpoint = "Microsoft.AzureActiveDirectory"
 
 	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
 	$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                string.Format(Resources.AddDataLakeFirewallRule, Name),
+                string.Format(Resources.AddDataLakeVirtualNetworkRule, Name),
                 Name,
                 () =>
                     WriteObject(new DataLakeStoreVirtualNetworkRule(DataLakeStoreClient.AddOrUpdateVirtualNetworkRule(

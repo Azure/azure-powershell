@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
@@ -35,7 +36,6 @@ using System.IO;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
