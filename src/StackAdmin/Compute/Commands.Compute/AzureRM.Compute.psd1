@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll',
@@ -210,8 +210,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue where long running POST operations return no results.'
-
+        ReleaseNotes = '* Compute module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack
+* Apiversion supported by the module is 2017-03-30
+* This module includes functionalities up to the existing AzureRm.Compute module version 4.0.1 with additional bug fixes'        
+        
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
 

@@ -754,8 +754,10 @@
     "Start-AzDataMigrationService": "Start-AzureRmDataMigrationService",
     "Stop-AzDataMigrationService": "Stop-AzureRmDataMigrationService",
     "Stop-AzDataMigrationTask": "Stop-AzureRmDataMigrationTask",
-    "New-AzDataMigrationSelectedDB": "New-AzureRmDataMigrationSelectedDB",
+    "New-AzDataMigrationSelectedDBObject": "New-AzureRmDataMigrationSelectedDBObject",
     "New-AzDataMigrationFileShare": "New-AzureRmDataMigrationFileShare",
+    "New-AzDataMigrationSyncSelectedDBObject": "New-AzureRmDataMigrationSyncSelectedDBObject",
+    "Invoke-AzDataMigrationCommand": "Invoke-AzureRmDataMigrationCommand",
     "Get-AzDms": "Get-AzureRmDms",
     "Get-AzDmsTask": "Get-AzureRmDmsTask",
     "Get-AzDmsProject": "Get-AzureRmDmsProject",
@@ -771,7 +773,13 @@
     "Stop-AzDmsTask": "Stop-AzureRmDmsTask",
     "Stop-AzDmsService": "Stop-AzureRmDmsService",
     "New-AzDmsSelectedDB": "New-AzureRmDmsSelectedDB",
-    "New-AzDmsFileShare": "New-AzureRmDmsFileShare"
+    "New-AzDmsSyncSelectedDB": "New-AzureRmDmsSyncSelectedDB",
+    "New-AzDmsFileShare": "New-AzureRmDmsFileShare",
+    "Invoke-AzDmsCommand": "Invoke-AzureRmDmsCommand",
+    "New-AzDataMigrationSelectedDB": "New-AzureRmDataMigrationSelectedDB",
+    "New-AzDataMigrationSyncSelectedDB": "New-AzureRmDataMigrationSyncSelectedDB",
+    "New-AzDmsSelectedDBObject": "New-AzureRmDmsSelectedDBObject",
+    "New-AzDmsSyncSelectedDBObject": "New-AzureRmDmsSyncSelectedDBObject"
   },
   "Az.DeviceProvisioningServices": {
     "New-AzIoTDeviceProvisioningService": "New-AzureRmIoTDeviceProvisioningService",
@@ -1514,7 +1522,6 @@
     "Add-AzNetworkInterfaceTapConfig": "Add-AzureRmNetworkInterfaceTapConfig",
     "Get-AzNetworkInterfaceTapConfig": "Get-AzureRmNetworkInterfaceTapConfig",
     "Set-AzNetworkInterfaceTapConfig": "Set-AzureRmNetworkInterfaceTapConfig",
-    "New-AzNetworkInterfaceTapConfig": "New-AzureRmNetworkInterfaceTapConfig",
     "Remove-AzNetworkInterfaceTapConfig": "Remove-AzureRmNetworkInterfaceTapConfig",
     "Get-AzVirtualNetworkTap": "Get-AzureRmVirtualNetworkTap",
     "New-AzVirtualNetworkTap": "New-AzureRmVirtualNetworkTap",
@@ -2393,6 +2400,8 @@
     "Get-AzDeletedWebApp": "Get-AzureRmDeletedWebApp",
     "Restore-AzDeletedWebApp": "Restore-AzureRmDeletedWebApp",
     "Get-AzWebAppContainerContinuousDeploymentUrl": "Get-AzureRmWebAppContainerContinuousDeploymentUrl",
+    "Enter-AzWebAppContainerPSSession": "Enter-AzureRmWebAppContainerPSSession",
+    "New-AzWebAppContainerPSSession": "New-AzureRmWebAppContainerPSSession",
     "Swap-AzWebAppSlot": "Swap-AzureRmWebAppSlot"
   }
 }
