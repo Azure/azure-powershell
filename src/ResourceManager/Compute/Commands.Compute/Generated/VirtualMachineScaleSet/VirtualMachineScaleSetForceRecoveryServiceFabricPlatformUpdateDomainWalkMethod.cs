@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", new string[] { "ResourceGroupName" })]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
 
