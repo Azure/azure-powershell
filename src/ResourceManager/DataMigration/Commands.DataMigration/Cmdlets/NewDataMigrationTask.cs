@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Alias("TaskName")]
         public string Name { get; set; }
 
-        private TaskCmdlet taskCmdlet = null;
+        private ITaskCmdlet taskCmdlet = null;
 
         public object GetDynamicParameters()
         {
@@ -141,6 +141,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         break;
                     case TaskTypeEnum.ValidateSqlServerSqlDbSync:
                         taskCmdlet = new ValidateSqlServerSqlDbSyncTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ConnectToSourceMongoDb:
+                        taskCmdlet = new ConnectToSourceMongoDbTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ConnectToTargetMongoDb:
+                        taskCmdlet = new ConnectToTargetMongoDbTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.MigrateMongoDb:
+                        taskCmdlet = new MigrateMongoDbTaskCmdlet(this.MyInvocation);
                         break;
                     default:
                         throw new PSArgumentException();

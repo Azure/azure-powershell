@@ -41,13 +41,21 @@
     <Compile Include="Cmdlets\CommandCmdlet.cs" />
     <Compile Include="Cmdlets\CompleteCommandCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectionInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToSourceMongoDbTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToSourceSqlServerSyncTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToSourceSqlServerTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToTargetMongoDbTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlSqlDbSyncTaskCmdlet.cs" />
     <Compile Include="Cmdlets\GetUserTableSqlSyncCmdlet.cs" />
+    <Compile Include="Cmdlets\ITaskCmdlet.cs" />
+    <Compile Include="Cmdlets\MigrateMongoDbTaskCmdlet.cs" />
     <Compile Include="Cmdlets\MigrateSqlServerSqlDbSyncTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\MongoDbConnectionInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\MongoDbMigrationSettingCmdlet.cs" />
     <Compile Include="Cmdlets\NewDataMigrationSyncSelectedDB.cs" />
     <Compile Include="Cmdlets\NewFileShare.cs" />
+    <Compile Include="Cmdlets\NewMongoDbCollectionSettingCmdlet.cs" />
+    <Compile Include="Cmdlets\NewMongoDbDatabaseSettingsCmdlet.cs" />
     <Compile Include="Cmdlets\ValidateSqlServerSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\GetUserTableSqlCmdlet.cs" />
@@ -79,6 +87,7 @@
     <Compile Include="Common\PagingExtensions.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Models\CommandTypeEnum.cs" />
+    <Compile Include="Models\DatabaseInfo\MongoDbConnectionInfo.cs" />
     <Compile Include="Models\DatabaseInfo\PSSqlServerSqlDbSelectedDatabase.cs" />
     <Compile Include="Models\Exceptions\BadRequestException.cs" />
     <Compile Include="Models\Exceptions\InvalidConnectionTypeException.cs" />
@@ -117,7 +126,9 @@
     <None Include="AzureRM.DataMigration.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="help\AzureRM.DataMigration.md" />
@@ -138,8 +149,8 @@
     <None Include="help\Stop-AzureRmDataMigrationTask.md" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.4.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.1.17-privatepreview, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.1.17-privatepreview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

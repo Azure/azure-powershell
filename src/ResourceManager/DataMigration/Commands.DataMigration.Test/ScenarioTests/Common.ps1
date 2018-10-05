@@ -108,6 +108,30 @@ function Create-Project($rg, $service, $targetPlatform)
 	return $project
 }
 
+function Create-ProjectMongoDbMongoDb($rg, $service)
+{
+	$ProjectName = Get-ProjectName
+	$sourceConnInfo = New-SourceMongoDbConnectionInfo
+	$targetConnInfo = New-TargetMongoDbConnectionInfo
+
+    $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType MongoDb -TargetType MongoDb -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo
+
+	return $project
+}
+
+function New-SourceMongoDbConnectionInfo
+{
+	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString "mongodb://azuredmstest.corp.microsoft.com/"
+	return $connectioninfo
+}
+
+function New-TargetMongoDbConnectionInfo
+{
+	$cosmosConn = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("COSMOSDB_TARGET_CONNECTIONSTRING")
+	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString $cosmosConn
+	return $connectioninfo
+}
+
 function getDmsAssetName($prefix)
 {    
     $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName("testName",$prefix+"-PsTestRun")

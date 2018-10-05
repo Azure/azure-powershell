@@ -87,6 +87,8 @@ CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo',
                'New-AzureRmDataMigrationSelectedDBObject', 
                'New-AzureRmDataMigrationFileShare', 
                'New-AzureRmDataMigrationSyncSelectedDBObject', 
+               'New-AzureRmDataMigrationMongoDbDatabaseSetting', 
+               'New-AzureRmDataMigrationMongoDbCollectionSetting', 
                'Invoke-AzureRmDataMigrationCommand'
 
 # Variables to export from this module
@@ -102,6 +104,7 @@ AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject
                'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsSyncSelectedDB', 
                'New-AzureRmDmsFileShare', 'Invoke-AzureRmDmsCommand', 
                'New-AzureRmDataMigrationSelectedDB', 'New-AzureRmDataMigrationSyncSelectedDB', 
+               'New-AzureRmDmsMongoDbDatabaseSetting', 'New-AzureRmDmsMongoDbCollectionSetting',
                'New-AzureRmDmsSelectedDBObject', 'New-AzureRmDmsSyncSelectedDBObject'
 
 # DSC resources to export from this module
