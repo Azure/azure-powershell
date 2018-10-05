@@ -16,7 +16,7 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 ### DtuBasedDatabase (Default)
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
+ [-ElasticPoolName <String>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
  -CopyDatabaseName <String> [-AsJob] [-LicenseType <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <Stri
 
 ### VcoreBasedDatabase
 ```
-New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
+New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-CopyResourceGroupName <String>]
  [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
  [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -213,22 +213,6 @@ Specifies the name of the service objective to assign to the copy.
 Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-Specifies the Key-value pairs in the form of a hash table to associate with the Azure SQL Database copy. For example:
-@{key0="value0";key1=$null;key2="value2"}
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: Tag
 
 Required: False
 Position: Named
