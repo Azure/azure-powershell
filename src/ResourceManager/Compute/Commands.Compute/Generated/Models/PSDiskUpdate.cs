@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public OperatingSystemTypes? OsType { get; set; }
         public int? DiskSizeGB { get; set; }
         public EncryptionSettings EncryptionSettings { get; set; }
-        public System.Int64? DiskIOPSReadWrite { get; set; }
+        public long? DiskIOPSReadWrite { get; set; }
         public int? DiskMBpsReadWrite { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public DiskSku Sku { get; set; }

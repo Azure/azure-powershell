@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public int? DiskSizeGB { get; set; }
         public EncryptionSettings EncryptionSettings { get; set; }
         public string ProvisioningState { get; set; }
-        public System.Int64? DiskIOPSReadWrite { get; set; }
+        public long? DiskIOPSReadWrite { get; set; }
         public int? DiskMBpsReadWrite { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }

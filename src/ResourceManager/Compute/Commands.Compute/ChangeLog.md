@@ -19,14 +19,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add DiskIOPSReadWrite and  DiskMBpsReadWrite parameters to New-AzureRmDiskConfig and New-AzureRmDiskUpdateConfig cmdlets 
 * Add DiffDiskSetting parameter to Set-AzureRmVmOSDisk and Set-AzureRmVmssStorageProfile cmdlets
 * Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
 * Add Location parameter to Get-AzureRmVM
 * Shared Gallery cmdlets
 * Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
 * Fixed a typo in the Azure Disk Encryption progress message
-
-
 
 ## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies
