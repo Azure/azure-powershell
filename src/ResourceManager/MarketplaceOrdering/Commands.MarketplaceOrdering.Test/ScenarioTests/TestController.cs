@@ -14,48 +14,29 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.MarketplaceOrdering;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {
-        private CSMTestEnvironmentFactory _csmTestFactory;
-
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
         public MarketplaceOrderingAgreementsClient MarketplaceOrderingManagementClient { get; private set; }
 
-        public static TestController NewInstance
-        {
-            get
-            {
-                return new TestController();
-            }
-        }
+        public static TestController NewInstance => new TestController();
 
         protected TestController()
         {
@@ -64,29 +45,20 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             MarketplaceOrderingManagementClient = GetMarketplaceOrderingManagementClient(context);
-
-
-            _helper.SetupManagementClients(
-                ResourceManagementClient,
-                SubscriptionClient,
-                GalleryClient,
-                AuthorizationManagementClient,
-                MarketplaceOrderingManagementClient);
+            _helper.SetupManagementClients(ResourceManagementClient, MarketplaceOrderingManagementClient);
         }
 
         public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -95,88 +67,57 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
 
-            var providers = new Dictionary<string, string>();
-            providers.Add("Microsoft.Resources", null);
-            providers.Add("Microsoft.Features", null);
-            providers.Add("Microsoft.Authorization", null);
-            providers.Add("Microsoft.Compute", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var providers = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
-
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-
-                _csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(_csmTestFactory);
-                }
-
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                   @"AzureRM.MarketplaceOrdering.psd1",
+                    _helper.GetRMModulePath(@"AzureRM.MarketplaceOrdering.psd1"),
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            _helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(_csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
-        }
-
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(_csmTestFactory);
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
-        }
-
-        private MarketplaceOrderingAgreementsClient GetMarketplaceOrderingManagementClient(MockContext context)
+        private static MarketplaceOrderingAgreementsClient GetMarketplaceOrderingManagementClient(MockContext context)
         {
             return context.GetServiceClient<MarketplaceOrderingAgreementsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }

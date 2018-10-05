@@ -53,6 +53,7 @@
     <PackageReference Include="Microsoft.Azure.Management.MachineLearning" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.MachineLearningCompute" Version="0.3.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.MarketplaceOrdering" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Media" Version="0.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.20.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" PrivateAssets="All" />
