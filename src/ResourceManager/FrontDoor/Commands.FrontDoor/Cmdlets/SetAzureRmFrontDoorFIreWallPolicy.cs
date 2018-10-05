@@ -26,7 +26,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
+using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy1;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>

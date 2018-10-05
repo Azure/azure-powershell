@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     Name,
                     ResourceGroupName));
             }
-            var updateParameters = new Management.FrontDoor.Models.WebApplicationFirewallPolicy
+            var updateParameters = new Management.FrontDoor.Models.WebApplicationFirewallPolicy1
             {
                 Location = "global",
                 CustomRules = new Management.FrontDoor.Models.CustomRules {
