@@ -31,7 +31,7 @@ PS C:\> $region1 = @{Name='West US';ReplicaCount=1}
 PS C:\> $region2 = @{Name='East US';ReplicaCount=2}
 PS C:\> $region3 = @{Name='Central US'}
 PS C:\> $targetRegions = @($region1,$region2,$region3)
-PS C:\> New-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageName $imageName -Name $versionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 2 -PublishingProfileExcludeFromLatest -PublishingProfileEndOfLifeDate $endOfLifeDate -TargetRegion $targetRegions
+PS C:\> New-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageName $imageName -Name $versionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 2 -PublishingProfileEndOfLifeDate $endOfLifeDate -TargetRegion $targetRegions
 ```
 
 Create a gallery image version.
