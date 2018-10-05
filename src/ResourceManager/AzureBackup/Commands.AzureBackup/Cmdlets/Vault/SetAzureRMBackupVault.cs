@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
-using System;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to update an azure backup vault in a subscription.
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupVault"), OutputType(typeof(CmdletModel.AzureRMBackupVault))]
     public class SetAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
