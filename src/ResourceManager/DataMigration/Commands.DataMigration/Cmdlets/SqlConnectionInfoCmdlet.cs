@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             this.SimpleParam(additionalSettings, typeof(string), "Gets or sets additional connection settings");
         }
 
-        public override ConnectionInfo ProcessConnectionInfoCmdlet()
+        public override object ProcessConnectionInfoCmdlet()
         {
             SqlConnectionInfo connectionInfo = new SqlConnectionInfo
             {

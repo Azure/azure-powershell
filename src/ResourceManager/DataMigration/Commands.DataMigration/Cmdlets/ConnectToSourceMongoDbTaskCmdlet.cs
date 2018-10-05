@@ -14,35 +14,36 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.DataMigration.Models;
+using PSModels = Microsoft.Azure.Commands.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class ConnectToSourceSqlServerSyncTaskCmdlet : TaskCmdlet<ConnectionInfo>
+    public class ConnectToSourceMongoDbTaskCmdlet : TaskCmdlet<PSModels.MongoDbConnectionInfo>
     {
-        public ConnectToSourceSqlServerSyncTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
+        public ConnectToSourceMongoDbTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
         }
 
         public override void CustomInit()
         {
-            this.SourceConnectionInfoParam(true);
+            this.SimpleParam(SourceConnection, typeof(PSModels.MongoDbConnectionInfo), "MongoDb Connection Detail ", true);
+            this.SimpleParam(SourceCred, typeof(PSCredential), "Credential Detail", false);
         }
 
         public override ProjectTaskProperties ProcessTaskCmdlet()
         {
-            ConnectToSourceSqlServerSyncTaskProperties properties = new ConnectToSourceSqlServerSyncTaskProperties();
-
+            var properties = new ConnectToMongoDbTaskProperties();
             if (MyInvocation.BoundParameters.ContainsKey(SourceConnection))
             {
-                properties.Input = new ConnectToSourceSqlServerTaskInput();
-                properties.Input.SourceConnectionInfo = (SqlConnectionInfo)MyInvocation.BoundParameters[SourceConnection];
-                PSCredential cred = (PSCredential)MyInvocation.BoundParameters[SourceCred];
-                properties.Input.SourceConnectionInfo.UserName = cred.UserName;
-                properties.Input.SourceConnectionInfo.Password = Decrypt(cred.Password);
-            }
-            else
-            {
-                throw new PSArgumentException("Invalid Argument List");
+                var conn = MyInvocation.BoundParameters[SourceConnection] as PSModels.MongoDbConnectionInfo;
+                if (MyInvocation.BoundParameters.ContainsKey(SourceCred))
+                {
+                    PSCredential cred = (PSCredential)MyInvocation.BoundParameters[SourceCred];
+                    conn.UserName = cred.UserName;
+                    conn.Password = Decrypt(cred.Password);
+                    conn.ConstructConnectionString();
+                }
+                properties.Input = new MongoDbConnectionInfo { ConnectionString = conn.ConnectionString };
             }
 
             return properties;

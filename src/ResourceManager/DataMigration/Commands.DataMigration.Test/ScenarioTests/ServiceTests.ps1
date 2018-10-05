@@ -813,3 +813,82 @@ function Test-MigrateSqlSqlDBSync
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Test-ConnectToSourceMongoDb
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectMongoDbMongoDb $rg $service
+		$taskName = Get-TaskName
+		$connectionInfo = New-SourceMongoDbConnectionInfo
+
+		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceMongoDb-ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo
+		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-MigrateMongoDb
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectMongoDbMongoDb $rg $service
+		$taskName = Get-TaskName
+
+		$sourceConnectionInfo = New-SourceMongoDbConnectionInfo
+
+		#Target Connection Details
+		$targetConnectionInfo = New-TargetMongoDbConnectionInfo
+
+		$colarticles = New-AzureRmDmsMongoDbCollectionSetting -Name articles -RU 1000 -CanDelete
+		$colusers = New-AzureRmDmsMongoDbCollectionSetting -Name users -ShardKeyFields '_id,email_1'
+		$dbmean = New-AzureRmDmsMongoDbDatabaseSetting -Name meandemo -collections @($colarticles, $colusers)
+
+		$migTask = New-AzureRmDmsTask -TaskType MigrateMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -TargetConnection $targetConnectionInfo  -SelectedDatabase  @($dbmean)
+
+		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
