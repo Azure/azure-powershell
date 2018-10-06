@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
@@ -21,7 +22,7 @@ using static Microsoft.WindowsAzure.Management.Models.SubscriptionServicePrincip
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, AzureSubscriptionServicePrincipalNounName, DefaultParameterSetName = ListAllServicePrincipalObjectIdsParameterSet)]
-    [OutputType(typeof(IList<ServicePrincipal>))]
+    [OutputType(typeof(ServicePrincipal[]))]
     public class GetAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
         protected const string ServicePrincipalObjectIdParameterSet = "ServicePrincipalObjectIdParameterSet";
@@ -39,16 +40,16 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            IList<ServicePrincipal> servicePrincipals = null;
+            ServicePrincipal[] servicePrincipals = null;
             if (string.IsNullOrEmpty(this.ServicePrincipalObjectId))
             {
                 var response = ManagementClient.SubscriptionServicePrincipals.List();
-                servicePrincipals = response.ServicePrincipals;
+                servicePrincipals = response.ServicePrincipals.ToArray();
             }
             else
             {
                 var response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
-                servicePrincipals = new List<ServicePrincipal>() { response.ToSubscriptionServicePrincipal() };
+                servicePrincipals = new ServicePrincipal[] { response.ToSubscriptionServicePrincipal() };
             }
             WriteObject(servicePrincipals, true);
         }
