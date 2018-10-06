@@ -28,6 +28,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceGroupName
     Resource group in which the resource provider has been registered.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
 .PARAMETER Tags
     List of key-value pairs.
 

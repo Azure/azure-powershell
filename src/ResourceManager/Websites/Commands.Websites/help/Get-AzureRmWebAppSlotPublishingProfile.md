@@ -15,15 +15,16 @@ Gets an Azure Web App slot publishing profile.
 
 ### S1
 ```
-Get-AzureRmWebAppSlotPublishingProfile [[-OutputFile] <String>] [[-Format] <String>]
+Get-AzureRmWebAppSlotPublishingProfile [[-OutputFile] <String>] [[-Format] <String>] [-IncludeDisasterRecoveryEndpoints]
  [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppSlotPublishingProfile [[-OutputFile] <String>] [[-Format] <String>] [-WebApp] <Site>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmWebAppSlotPublishingProfile [[-OutputFile] <String>] [[-Format] <String>]
+ [-IncludeDisasterRecoveryEndpoints] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +68,21 @@ Accepted values: WebDeploy, FileZilla3, Ftp
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDisasterRecoveryEndpoints
+Include the disaster recovery endpoints if true
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: None
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -136,7 +152,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: S2
 Aliases:
 
@@ -144,6 +160,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IncludeDisasterRecoveryEndpoints
+Include the disaster recovery endpoints if true
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: None
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

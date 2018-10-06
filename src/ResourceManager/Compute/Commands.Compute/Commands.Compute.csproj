@@ -54,7 +54,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.21.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.22.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -213,6 +213,7 @@
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineImageResource.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
+    <Compile Include="Models\PSVirtualMachineIdentity.cs" />
     <Compile Include="Models\PSVirtualMachineList.cs" />
     <Compile Include="Models\PSVirtualMachineListStatus.cs" />
     <Compile Include="Models\PSVirtualMachineScaleSetExtension.cs" />

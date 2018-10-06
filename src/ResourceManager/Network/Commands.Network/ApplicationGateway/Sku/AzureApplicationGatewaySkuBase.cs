@@ -33,10 +33,9 @@ namespace Microsoft.Azure.Commands.Network
         public string Tier { get; set; }
 
         [Parameter(
-               Mandatory = true,
                HelpMessage = "Application gateway instance count")]
         [ValidateNotNullOrEmpty]
-        public int Capacity { get; set; }
+        public int? Capacity { get; set; }
 
         public override void ExecuteCmdlet()
         {

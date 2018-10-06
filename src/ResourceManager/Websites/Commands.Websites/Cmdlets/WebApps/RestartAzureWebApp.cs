@@ -14,7 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you restart an Azure Web app
     /// </summary>
-    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(Site))]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             WebsitesClient.RestartWebApp(ResourceGroupName, Name, null);
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null)));
         }
     }
 }

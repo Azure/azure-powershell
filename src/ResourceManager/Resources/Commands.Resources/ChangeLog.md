@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+
+## Version 6.5.0
+* Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
+    - Add support for OnErrorDeployment with the new parameter.
+* Support managed identity on policy assignments.
+* Parameters with default values are no longer requred when assigning a policy with `New-AzureRmPolicyAssignment`
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
 ## Version 6.4.2
 * Fixed issue with creating managed applications from the MarketPlace.

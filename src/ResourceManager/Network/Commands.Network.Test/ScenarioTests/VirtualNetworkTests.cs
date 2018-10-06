@@ -54,6 +54,22 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetCRUD");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
+        public void TestVirtualNetworkSubnetDelegationCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetDelegationCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
+        public void TestVirtualNetworkMultiPrefixSubnetCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-multiPrefixSubnetCRUD");
+        }
+
         [Fact(Skip = "'The '1' auxiliary tokens are either not application token(s) or are from the application(s) ... which are different from the application of primary identity <...>.' StatusCode: 401; ReasonPhrase: Unauthorized.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]

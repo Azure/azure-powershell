@@ -27,7 +27,8 @@ script:
  - sudo dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG || travis_terminate 1
  - sudo dotnet tools/StaticAnalysis/bin/$CONFIG/netcoreapp2.1/StaticAnalysis.Netcore.dll -p src/Package/$CONFIG -r src/Package -u || travis_terminate 1
  - sudo pwsh -NonInteractive -NoLogo -NoProfile -File tools/TestModuleLoading.ps1 || travis_terminate 1
- - sudo dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $CONFIG
+ - sudo dotnet pack src/TestPrerequisites/Common.TestPrerequisites.sln --configuration $CONFIG || travis_terminate 1
+ - sudo dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $CONFIG --framework netcoreapp2.0
 
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

@@ -22,9 +22,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
     using Policy;
-    using System;
     using System.Collections;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Sets the policy assignment.
@@ -92,6 +93,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the policy assignment. Only required when assigning a resource identity to the assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentLocationHelp)]
+        [LocationCompleter("Microsoft.ManagedIdentity/userAssignedIdentities")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -135,6 +149,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Name = this.Name ?? resource.Name,
                 Sku = Sku?.ToDictionary(addValueLayer: false).ToJson().FromJson<PolicySku>(),  // only store Sku if it was provided by user
+                Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
+                Location = this.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),

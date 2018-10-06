@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <OmitJsonPackage>true</OmitJsonPackage>
+  </PropertyGroup>
+  
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>

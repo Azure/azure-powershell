@@ -54,7 +54,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private const string ApplicationServiceEnvironmentResourceIdFormat =
             "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
 
-        public static Dictionary<string, string> ConvertToStringDictionary(this Hashtable hashtable)
+
+		public const string DocerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
+		public const string DocerRegistryServerUserName = "DOCKER_REGISTRY_SERVER_USERNAME";
+		public const string DocerRegistryServerPassword = "DOCKER_REGISTRY_SERVER_PASSWORD";
+		public const string DockerEnableCI = "DOCKER_ENABLE_CI";
+		public const string DockerImagePrefix = "DOCKER|";
+
+		public static Dictionary<string, string> ConvertToStringDictionary(this Hashtable hashtable)
         {
             return hashtable == null ? null : hashtable.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal);
@@ -198,8 +205,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + workerSize + "V2";
                 return sku;
             }
-            else
-            {
+			else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
+			{
+				sku = "PC" + (workerSize + 1);
+				return sku;
+			}
+			else
+			{
                 sku = string.Empty + tier[0];
             }
 
@@ -210,19 +222,24 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         internal static string GetSkuName(string tier, string workerSize)
         {
             string sku;
-            if (string.Equals("Shared", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "D";
-            }
-            else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "P" + WorkerSizes[workerSize] + "V2";
-                return sku;
-            }
-            else
-            {
-                sku = string.Empty + tier[0];
-            }
+			if (string.Equals("Shared", tier, StringComparison.OrdinalIgnoreCase))
+			{
+				sku = "D";
+			}
+			else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
+			{
+				sku = "P" + WorkerSizes[workerSize] + "V2";
+				return sku;
+			}
+			else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
+			{
+				sku = "PC" + (WorkerSizes[workerSize] + 1);
+				return sku;
+			}
+			else
+			{
+				sku = string.Empty + tier[0];
+			}
 
             sku += WorkerSizes[workerSize];
             return sku;
@@ -375,6 +392,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
+				WindowsFxVersion = config.WindowsFxVersion
             };
         }
 
@@ -424,7 +442,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
-            };
+				WindowsFxVersion = config.WindowsFxVersion,
+			};
         }
     }
 }

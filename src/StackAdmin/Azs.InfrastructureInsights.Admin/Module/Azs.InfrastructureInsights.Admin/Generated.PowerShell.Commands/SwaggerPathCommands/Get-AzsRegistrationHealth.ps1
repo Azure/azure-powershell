@@ -19,8 +19,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Name of the region
 
-.PARAMETER ResourceGroupNameName
-    resourceGroupName.
+.PARAMETER ResourceGroupName
+    Resource group name which the resource resides.
 
 .PARAMETER Name
     The resource name of the health object which corresponds to the resource registration id.

@@ -442,15 +442,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
                 }
-                vIdentity.IdentityIds = this.IdentityId;
+
+                vIdentity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var id in this.IdentityId)
+                {
+                    vIdentity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                }
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
-                Overprovision = this.MyInvocation.BoundParameters.ContainsKey("Overprovision") ? this.Overprovision : (bool?) null,
-                SinglePlacementGroup = this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup") ? this.SinglePlacementGroup : (bool?) null,
+                Overprovision = this.MyInvocation.BoundParameters.ContainsKey("Overprovision") ? this.Overprovision : (bool?)null,
+                SinglePlacementGroup = this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup") ? this.SinglePlacementGroup : (bool?)null,
                 ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?)null,
-                PlatformFaultDomainCount = this.MyInvocation.BoundParameters.ContainsKey("PlatformFaultDomainCount") ? this.PlatformFaultDomainCount : (int?) null,
+                PlatformFaultDomainCount = this.MyInvocation.BoundParameters.ContainsKey("PlatformFaultDomainCount") ? this.PlatformFaultDomainCount : (int?)null,
                 Zones = this.MyInvocation.BoundParameters.ContainsKey("Zone") ? this.Zone : null,
                 Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
@@ -458,7 +464,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
-                Identity = vIdentity,
+                Identity = new PSVirtualMachineScaleSetIdentity(vIdentity),
             };
 
             WriteObject(vVirtualMachineScaleSet);

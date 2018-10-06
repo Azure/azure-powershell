@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataMigration.dll'
@@ -84,8 +84,10 @@ CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo',
                'Remove-AzureRmDataMigrationTask', 
                'Start-AzureRmDataMigrationService', 
                'Stop-AzureRmDataMigrationService', 'Stop-AzureRmDataMigrationTask', 
-               'New-AzureRmDataMigrationSelectedDB', 
-               'New-AzureRmDataMigrationFileShare'
+               'New-AzureRmDataMigrationSelectedDBObject', 
+               'New-AzureRmDataMigrationFileShare', 
+               'New-AzureRmDataMigrationSyncSelectedDBObject', 
+               'Invoke-AzureRmDataMigrationCommand'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -97,7 +99,10 @@ AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject
                'Remove-AzureRmDmsProject', 'Remove-AzureRmDms', 
                'Remove-AzureRmDmsTask', 'Start-AzureRmDmsService', 
                'Stop-AzureRmDmsTask', 'Stop-AzureRmDmsService', 
-               'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsFileShare'
+               'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsSyncSelectedDB', 
+               'New-AzureRmDmsFileShare', 'Invoke-AzureRmDmsCommand', 
+               'New-AzureRmDataMigrationSelectedDB', 'New-AzureRmDataMigrationSyncSelectedDB', 
+               'New-AzureRmDmsSelectedDBObject', 'New-AzureRmDmsSyncSelectedDBObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

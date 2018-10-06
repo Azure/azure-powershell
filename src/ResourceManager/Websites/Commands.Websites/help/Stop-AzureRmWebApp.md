@@ -21,7 +21,7 @@ Stop-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfi
 
 ### S2
 ```
-Stop-AzureRmWebApp [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Stop-AzureRmWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: S2
 Aliases:
 

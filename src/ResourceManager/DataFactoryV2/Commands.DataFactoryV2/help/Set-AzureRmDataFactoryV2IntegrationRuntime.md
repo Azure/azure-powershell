@@ -82,6 +82,20 @@ PS C:\> Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-d
 
 The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.
 
+### Example 2: Share Self-hosted integration runtime.
+```
+PS C:\> Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
+                                            -SharedIntegrationRuntimeResourceId '/subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir' -Type "SelfHosted"
+
+    Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
+    ResourceGroupName : rg-test-dfv2
+    DataFactoryName   : test-df-eu2
+    Name              : test-selfhost-ir
+    Description       : New description
+```
+
+The cmdlet adds the ADF to use the shared integration runtime. When using `-SharedIntegrationRuntimeResourceId` parameter the `-Type` must also be included. Note that the data factory need to be granted permission to use the integration runtime before running cmdlet.
+
 ## PARAMETERS
 
 ### -AuthKey

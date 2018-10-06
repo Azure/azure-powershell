@@ -52,5 +52,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineSetRunCommand");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetVMRunCommand()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineScaleSetVMRunCommand");
+        }
+
     }
 }
