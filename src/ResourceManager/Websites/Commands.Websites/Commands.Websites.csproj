@@ -82,10 +82,13 @@
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupConfiguration.cs" />
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupList.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\SwitchAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\WebApps\EnterAzureRmWebAppContainerPSSession.cs" />
+    <Compile Include="Cmdlets\WebApps\GetAzureRMWebAppContainerContinuousDeploymentUrl.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppMetrics.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebApp.cs" />
     <Compile Include="Cmdlets\BackupRestore\NewAzureWebAppBackup.cs" />
+    <Compile Include="Cmdlets\WebApps\NewAzureRmWebAppContainerPSSession.cs" />
     <Compile Include="Cmdlets\WebApps\RemoveAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\NewAzureWebApp.cs" />
     <Compile Include="Cmdlets\BackupRestore\RemoveAzureWebAppBackup.cs" />

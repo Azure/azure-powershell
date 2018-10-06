@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -9,6 +9,8 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Move subscriptions between delegated provider offers.
+This process will only perform a rebranding,
+the underlying offer, plans, quotas for the subscriptions will not be altered.
 
 ## SYNTAX
 
@@ -49,7 +51,7 @@ Specifies whether the move operation is to be executed as a job.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -65,7 +67,7 @@ NULL if the subscriptions are to be moved back to the Default Provider.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -81,7 +83,7 @@ cmdlet moves.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2

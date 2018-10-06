@@ -86,6 +86,10 @@
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
+  </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />

@@ -54,7 +54,17 @@ $FilteredCommands = %DEFAULTRGCOMMANDS%
 if ($Env:ACC_CLOUD -eq $null)
 {
     $FilteredCommands | ForEach-Object {
-        if (!$global:PSDefaultParameterValues.Contains($_))
+
+        $existingDefault = $false
+        foreach ($key in $global:PSDefaultParameterValues.Keys)
+        {
+    	    if ($_ -like "$key")
+    	        {
+        	    $existingDefault = $true
+    	        }
+	    }
+
+        if (!$existingDefault)
         {
             $global:PSDefaultParameterValues.Add($_,
                 {

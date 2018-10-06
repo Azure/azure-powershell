@@ -32,6 +32,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" />
   </ItemGroup>
