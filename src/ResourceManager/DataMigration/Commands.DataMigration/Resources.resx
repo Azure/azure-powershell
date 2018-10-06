@@ -198,4 +198,10 @@
   <data name="createSelectedDB" xml:space="preserve">
     <value>Create Databases Info for Migration</value>
   </data>
+  <data name="createCommand" xml:space="preserve">
+    <value>Creating Command</value>
+  </data>
+  <data name="SKUDeprecationWarningMessage" xml:space="preserve">
+    <value>The {0} SKU in service {1} is marked for deprecation and will be discontinued from 08/31/2018.</value>
+  </data>
 </root>

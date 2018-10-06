@@ -37,6 +37,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER MaxLoadBalancersPerSubscription
     The maximum number of load balancers allowed per subscription.
 
+.PARAMETER MigrationPhase
+    Deprecated.
+
 .EXAMPLE
 
     PS C:\> New-AzsNetworkQuota -Name NetworkQuotaDefaultValues
@@ -108,12 +111,16 @@ function New-AzsNetworkQuota {
 
     Process {
 
-
+        if ($PSBoundParameters.ContainsKey('MigrationPhase')) {
+            Write-Warning -Message "The parameter MigrationPhase will be deprecated in future release."
+        }
 
         # Add here, leave defaults above.
         if (-not $PSBoundParameters.ContainsKey('MigrationPhase')) {
             $PSBoundParameters.Add('MigrationPhase', $MigrationPhase)
         }
+
+        $MigrationPhase = 'Prepare'
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new network quota")) {
 
