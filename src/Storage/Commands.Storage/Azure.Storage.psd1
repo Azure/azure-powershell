@@ -56,7 +56,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.1'; }
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.WindowsAzure.Storage.dll', 
                '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
-               '.\Microsoft.Azure.KeyVault.Core.dll', 
+               '.\Microsoft.Azure.KeyVault.Core.dll', '.\Microsoft.Azure.ResourceManager.dll',
                '.\Microsoft.WindowsAzure.Management.dll', '.\Microsoft.Data.Edm.dll', 
                '.\Microsoft.Data.OData.dll', '.\System.Net.Http.Formatting.dll', 
                '.\System.Spatial.dll'
