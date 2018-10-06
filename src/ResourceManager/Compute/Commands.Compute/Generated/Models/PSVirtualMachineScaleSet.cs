@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         public Sku Sku { get; set; }
         public Plan Plan { get; set; }
-        public UpgradePolicy UpgradePolicy { get; set; }
+        public PSUpgradePolicy UpgradePolicy { get; set; }
         public VirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
         public string ProvisioningState { get; set; }
         public bool? Overprovision { get; set; }

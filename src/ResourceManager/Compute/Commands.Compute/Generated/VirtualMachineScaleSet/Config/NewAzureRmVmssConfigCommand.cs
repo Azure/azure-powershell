@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 Plan = vPlan,
-                UpgradePolicy = vUpgradePolicy,
+                UpgradePolicy = (vUpgradePolicy == null) ? null : new PSUpgradePolicy(vUpgradePolicy),
                 VirtualMachineProfile = vVirtualMachineProfile,
                 Identity = (vIdentity == null) ? null : new PSVirtualMachineScaleSetIdentity(vIdentity),
             };
