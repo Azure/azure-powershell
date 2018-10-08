@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsVirtualNetworkRules()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreVirtualNetwork -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreVirtualNetwork -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]
