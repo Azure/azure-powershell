@@ -15,80 +15,54 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.TrafficManager;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using System;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.TrafficManager;
-    using Microsoft.Azure.Subscriptions;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
-    using System;
-    using System.IO;
-    using System.Linq;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-
-    using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
     public class TestController : RMTestBase
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
         public TrafficManagerManagementClient TrafficManagerManagementClient { get; private set; }
 
-        public static TestController NewInstance
-        {
-            get
-            {
-                return new TestController();
-            }
-        }
+        public static TestController NewInstance => new TestController();
 
         protected TestController()
         {
-            this.helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            this.ResourceManagementClient = this.GetResourceManagementClient(context);
-            this.SubscriptionClient = this.GetSubscriptionClient();
-            this.GalleryClient = this.GetGalleryClient();
-            this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
-            this.TrafficManagerManagementClient = this.GetFeatureClient(context);
+            ResourceManagementClient = GetResourceManagementClient(context);
+            TrafficManagerManagementClient = GetFeatureClient(context);
 
-            this.helper.SetupManagementClients(
-                this.ResourceManagementClient,
-                this.SubscriptionClient,
-                this.GalleryClient,
-                this.AuthorizationManagementClient,
-                this.TrafficManagerManagementClient);
+            _helper.SetupManagementClients(
+                ResourceManagementClient,
+                TrafficManagerManagementClient);
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            string callingClassType = TestUtilities.GetCallingClass(2);
-            string mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.TracingInterceptor = logger;
+            _helper.TracingInterceptor = logger;
 
-            this.RunPsTestWorkflow(
+            RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup
                 null,
                 callingClassType,
@@ -97,62 +71,49 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (var context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
+                SetupManagementClients(context);
 
-                this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
 
-                this.SetupManagementClients(context);
-
-                string callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-
-                this.helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.TrafficManager.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.TrafficManager.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        string[] psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            this.helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
@@ -162,22 +123,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private TrafficManagerManagementClient GetFeatureClient(RestTestFramework.MockContext context)
+        private static TrafficManagerManagementClient GetFeatureClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<TrafficManagerManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
