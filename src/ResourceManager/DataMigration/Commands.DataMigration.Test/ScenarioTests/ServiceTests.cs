@@ -112,5 +112,40 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         {
             DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ValidateMigrationInputSqlSqlDbMi");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToSourceSqlServerSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToSourceSqlServerSync");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToTargetSqlDbSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetSqlDbSync");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUserTableSyncTask()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-GetUserTableSyncTask");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestValidateMigrationInputSqlSqlDbSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ValidateMigrationInputSqlSqlDbSync");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMigrateSqlSqlDBSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDBSync");
+        }
     }
 }
