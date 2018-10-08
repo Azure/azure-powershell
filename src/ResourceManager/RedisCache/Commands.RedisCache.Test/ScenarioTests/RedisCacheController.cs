@@ -15,28 +15,23 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Redis;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
 using System.Linq;
-using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using Microsoft.Azure.Management.Storage;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     public class RedisCacheController
     {
-        private EnvironmentSetupHelper helper;
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
-
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
+        private readonly EnvironmentSetupHelper _helper;
 
         public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
 
@@ -48,91 +43,78 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         public RedisCacheController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
-        public static RedisCacheController NewInstance
-        {
-            get
-            {
-                return new RedisCacheController();
-            }
-        }
+        public static RedisCacheController NewInstance => new RedisCacheController();
 
         private void SetupManagementClients(MockContext context)
         {
             RedisManagementClient = GetRedisManagementClient(context);
             InsightsManagementClient = GetInsightsManagementClient(context);
-            ResourceManagementClient = GetResourceManagementClient();
             NewResourceManagementClient = GetResourceManagementClient(context);
             StorageClient = GetStorageManagementClient(context);
-            helper.SetupManagementClients(
+            _helper.SetupManagementClients(
                 RedisManagementClient,
                 StorageClient,
-                ResourceManagementClient,
                 NewResourceManagementClient,
                 InsightsManagementClient);
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.TracingInterceptor = logger;
+            _helper.TracingInterceptor = logger;
 
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
             var providersToIgnore = new Dictionary<string, string>();
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
                 SetupManagementClients(context);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
+                    _helper.RMProfileModule,
                     "AzureRM.Storage.ps1",
-                    helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"),
                     "AzureRM.Resources.ps1");
 
                 if (scripts != null)
                 {
-                    helper.RunPowerShellTest(scripts);
+                    _helper.RunPowerShellTest(scripts);
                 }
             }
         }
 
-        private StorageManagementClient GetStorageManagementClient(MockContext context)
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private RedisManagementClient GetRedisManagementClient(MockContext context)
+        private static RedisManagementClient GetRedisManagementClient(MockContext context)
         {
             return context.GetServiceClient<RedisManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private InsightsManagementClient GetInsightsManagementClient(MockContext context)
+        private static InsightsManagementClient GetInsightsManagementClient(MockContext context)
         {
             return context.GetServiceClient<InsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-        }
-
-        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
