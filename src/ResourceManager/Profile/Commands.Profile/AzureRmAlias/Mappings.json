@@ -1658,9 +1658,7 @@
     "Remove-AzRecoveryServicesVault": "Remove-AzureRmRecoveryServicesVault",
     "Set-AzRecoveryServicesBackupProperties": "Set-AzureRmRecoveryServicesBackupProperties",
     "Set-AzRecoveryServicesVaultContext": "Set-AzureRmRecoveryServicesVaultContext",
-    "Get-AzRecoveryServicesBackupProperties": "Get-AzureRmRecoveryServicesBackupProperties"
-  },
-  "Az.RecoveryServices.Backup": {
+    "Get-AzRecoveryServicesBackupProperties": "Get-AzureRmRecoveryServicesBackupProperties",
     "Backup-AzRecoveryServicesBackupItem": "Backup-AzureRmRecoveryServicesBackupItem",
     "Get-AzRecoveryServicesBackupManagementServer": "Get-AzureRmRecoveryServicesBackupManagementServer",
     "Get-AzRecoveryServicesBackupContainer": "Get-AzureRmRecoveryServicesBackupContainer",
@@ -1683,9 +1681,7 @@
     "Unregister-AzRecoveryServicesBackupManagementServer": "Unregister-AzureRmRecoveryServicesBackupManagementServer",
     "Get-AzRecoveryServicesBackupRPMountScript": "Get-AzureRmRecoveryServicesBackupRPMountScript",
     "Disable-AzRecoveryServicesBackupRPMountScript": "Disable-AzureRmRecoveryServicesBackupRPMountScript",
-    "Get-AzRecoveryServicesBackupStatus": "Get-AzureRmRecoveryServicesBackupStatus"
-  },
-  "Az.RecoveryServices.SiteRecovery": {
+    "Get-AzRecoveryServicesBackupStatus": "Get-AzureRmRecoveryServicesBackupStatus",
     "Edit-AzRecoveryServicesAsrRecoveryPlan": "Edit-AzureRmRecoveryServicesAsrRecoveryPlan",
     "Get-AzRecoveryServicesAsrAlertSetting": "Get-AzureRmRecoveryServicesAsrAlertSetting",
     "Get-AzRecoveryServicesAsrEvent": "Get-AzureRmRecoveryServicesAsrEvent",
