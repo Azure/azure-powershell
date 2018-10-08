@@ -21,32 +21,35 @@
 function Test-CreateManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
-	$rgName = "mi-wcus-demo-rg" 	
+    $rgName = "ps2110"
+	$rg = Create-ResourceGroupWithName($rgName)
+    $vnetName1 = "ps2255"
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "dummylogin"
  	$managedInstancePassword = "Un53cuRE!"
- 	$subnetId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Network/virtualNetworks/mi-wcus-vnet/subnets/mi-subnet-managed-instances"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
  	$credentials = new-object System.Management.Automation.PSCredential($managedInstanceLogin, ($managedInstancePassword | ConvertTo-SecureString -asPlainText -Force)) 
-	$dnsZonePartner = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Sql/managedInstances/milevamaric-pilot-gp-00"
 
  	try
  	{
+		# Setup VNET 
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $rg $vnetName1 $rg.Location
+		$subnetId = $virtualNetwork1.Subnets[0].Id
+	
  		# With SKU name specified
- 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rgName -Name $managedInstanceName `
+ 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -DnsZonePartner $dnsZonePartner -AsJob 
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob 
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance1.Location $rg.Location
-		Assert-AreEqual $managedInstance1.ResourceGroupName $rgName
+		Assert-AreEqual $managedInstance1.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $managedInstance1.Sku.Name $skuName
  		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstanceLogin
 		Assert-AreEqual $managedInstance1.SubnetId $subnetId
@@ -57,18 +60,19 @@ function Test-CreateManagedInstance
 
 		$edition = "GeneralPurpose"
 		$computeGeneration = "Gen4"
+		$dnsZonePartner = $managedInstance1.ResourceId
 		$managedInstanceName = Get-ManagedInstanceName
 
 		# With edition and computeGeneration specified
- 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rgName -Name $managedInstanceName `
+ 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -DnsZonePartner $dnsZonePartner  -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance1.Location $rg.Location
-		Assert-AreEqual $managedInstance1.ResourceGroupName $rgName
+		Assert-AreEqual $managedInstance1.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $managedInstance1.Sku.Name $skuName
  		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstanceLogin
 		Assert-AreEqual $managedInstance1.SubnetId $subnetId
@@ -383,4 +387,54 @@ function Test-CreateManagedInstanceWithIdentity
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetworkForManagedInstance ($resourceGroup, $vnetName, $location = "westcentralus")
+{
+	$vNetAddressPrefix = "10.0.0.0/16"
+	$defaultSubnetName = "default"
+	$defaultSubnetAddressPrefix = "10.0.0.0/24"
+
+	$virtualNetwork = New-AzureRmVirtualNetwork `
+						  -ResourceGroupName $resourceGroup.ResourceGroupName `
+						  -Location $location `
+						  -Name $vNetName `
+						  -AddressPrefix $vNetAddressPrefix
+
+	$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+						  -Name $defaultSubnetName `
+						  -AddressPrefix $defaultSubnetAddressPrefix `
+						  -VirtualNetwork $virtualNetwork
+
+	$virtualNetwork | Set-AzureRmVirtualNetwork
+
+	$routeTableMiManagementService = New-AzureRmRouteTable `
+						  -Name 'myRouteTableMiManagementService' `
+						  -ResourceGroupName $resourceGroup.ResourceGroupName `
+						  -location $location
+
+	Set-AzureRmVirtualNetworkSubnetConfig `
+						  -VirtualNetwork $virtualNetwork `
+						  -Name $defaultSubnetName `
+						  -AddressPrefix $defaultSubnetAddressPrefix `
+						  -RouteTable $routeTableMiManagementService | `
+						Set-AzureRmVirtualNetwork
+
+	Get-AzureRmRouteTable `
+						  -ResourceGroupName $resourceGroup.ResourceGroupName `
+						  -Name "myRouteTableMiManagementService" `
+						  | Add-AzureRmRouteConfig `
+						  -Name "ToManagedInstanceManagementService" `
+						  -AddressPrefix 0.0.0.0/0 `
+						  -NextHopType "Internet" `
+						 | Set-AzureRmRouteTable
+				
+	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup.ResourceGroupName
+	
+	return $getVnet
 }

@@ -483,6 +483,15 @@ function Get-ManagedDatabaseName
 
 <#
 .SYNOPSIS
+Gets valid managed instance name
+#>
+function Get-VNetName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-SqlTestMode {
@@ -538,6 +547,17 @@ function Create-ResourceGroupForTest ($location = "westcentralus")
 {
 	$rgName = Get-ResourceGroupName
 
+	$rg = New-AzureRmResourceGroup -Name $rgName -Location $location
+
+	return $rg
+}
+
+<#
+	.SYNOPSIS
+	Creates a resource group for tests
+#>
+function Create-ResourceGroupWithName ($rgName, $location = "westcentralus")
+{
 	$rg = New-AzureRmResourceGroup -Name $rgName -Location $location
 
 	return $rg
