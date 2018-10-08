@@ -90,6 +90,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public string ProjectName { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = ComponentNameParameterSet,
+            HelpMessage = "Whether to wait for the task to finish execution.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Wait { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the task.")]
         [ValidateNotNullOrEmpty]
@@ -97,6 +104,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public string Name { get; set; }
 
         private ITaskCmdlet taskCmdlet = null;
+        private string expandParameterOfTask = "output"; // default: $expand=output
 
         public object GetDynamicParameters()
         {
@@ -108,48 +116,63 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 {
                     case TaskTypeEnum.ConnectToSourceSqlServer:
                         taskCmdlet = new ConnectToSourceSqlServerTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.MigrateSqlServerSqlDb:
                         taskCmdlet = new MigrateSqlServerSqlDbTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = ""; // default not to get output upon wait.
                         break;
                     case TaskTypeEnum.ConnectToTargetSqlDb:
                         taskCmdlet = new ConnectToTargetSqlDbTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.GetUserTablesSql:
                         taskCmdlet = new GetUserTableSqlCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.ConnectToTargetSqlDbMi:
                         taskCmdlet = new ConnectToTargetSqlDbMiTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.MigrateSqlServerSqlDbMi:
                         taskCmdlet = new MigrateSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = ""; // default not to get output upon wait.
                         break;
                     case TaskTypeEnum.ValidateSqlServerSqlDbMi:
                         taskCmdlet = new ValidateSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.ConnectToSourceSqlServerSync:
                         taskCmdlet = new ConnectToSourceSqlServerSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.MigrateSqlServerSqlDbSync:
                         taskCmdlet = new MigrateSqlServerSqlDbSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = ""; // default not to get output upon wait.
                         break;
                     case TaskTypeEnum.ConnectToTargetSqlSync:
                         taskCmdlet = new ConnectToTargetSqlSqlDbSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.GetUserTablesSqlSync:
                         taskCmdlet = new GetUserTableSqlSyncCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.ValidateSqlServerSqlDbSync:
                         taskCmdlet = new ValidateSqlServerSqlDbSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.ConnectToSourceMongoDb:
                         taskCmdlet = new ConnectToSourceMongoDbTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.ConnectToTargetMongoDb:
                         taskCmdlet = new ConnectToTargetMongoDbTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     case TaskTypeEnum.MigrateMongoDb:
                         taskCmdlet = new MigrateMongoDbTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output($filter=ResultType eq 'Migration' or ResultType eq 'Database')";
                         break;
                     default:
                         throw new PSArgumentException();
@@ -182,6 +205,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         this.ProjectName = ids.ProjectName;
                     }
 
+                    if (this.ParameterSetName.Equals(ResourceIdParameterSet))
+                    {
+                        DmsResourceIdentifier ids = new DmsResourceIdentifier(this.ResourceId);
+                        this.ResourceGroupName = ids.ResourceGroupName;
+                        this.ServiceName = ids.ServiceName;
+                        this.ProjectName = ids.ProjectName;
+                    }
+
                     ProjectTask response = null;
                     try
                     {
@@ -191,6 +222,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         };
 
                         response = DataMigrationClient.Tasks.CreateOrUpdate(taskInput, ResourceGroupName, ServiceName, ProjectName, Name);
+
+                        // wait for the task to finish: not queued or running state:
+                        while (this.Wait.IsPresent && response !=null && response.Properties != null &&
+                            ( response.Properties.State == "Queued" || response.Properties.State == "Running" ) )
+                        {
+                            System.Threading.Thread.Sleep(5000);
+                            response = DataMigrationClient.Tasks.Get(ResourceGroupName, ServiceName, ProjectName, Name, this.expandParameterOfTask);
+                        }
                     }
                     catch (ApiErrorException ex)
                     {
