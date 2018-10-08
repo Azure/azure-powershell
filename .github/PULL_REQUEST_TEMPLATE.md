@@ -12,5 +12,5 @@
 - [ ] The PR does not introduce [breaking changes](https://github.com/Azure/azure-powershell/blob/preview/documentation/breaking-changes/breaking-changes-definition.md)
 - [ ] If applicable, the changes made in the PR have proper test coverage
 - [ ] For public API changes to cmdlets:
-    - [ ] the changes have gone through a [cmdlet design review](https://github.com/Azure/azure-powershell-cmdlet-review-pr)
+    - [ ] the changes have gone through a [cmdlet design review](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (Microsoft internal partners only)
     - [ ] the cmdlet markdown files were [generated using the `platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md)

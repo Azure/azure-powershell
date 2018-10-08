@@ -75,7 +75,7 @@ function Create-DataMigrationService($rg)
 	}else{
 		$serviceName = Get-ServiceName
 		$virtualSubNetId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("VIRTUAL_SUBNET_ID")
-		$sku = "Basic_2vCores"
+		$sku = "BusinessCritical_4vCores"
 		$service = New-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $ServiceName -Location $rg.Location -Sku $sku -VirtualSubnetId $virtualSubNetId
 	}
 
