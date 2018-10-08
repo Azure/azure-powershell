@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.2
+* Fixed issue with serializing id, name and type properties of resources.
+
 ## Version 4.1.1
 * Added Support for the MultiValue routing method
     - New parameter 'MaxReturn' for MultiValue routing

@@ -25,6 +25,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ParentResource
     Passing a backup location will return the list of all backups at that backup location.
 
+.PARAMETER Skip
+    Skip the first N items as specified by the parameter value.
+
+.PARAMETER Top
+    Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
+
 .EXAMPLE
 
     PS C:\> Get-AzsBackup

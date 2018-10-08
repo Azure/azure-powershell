@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -116,7 +116,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Storage module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack with the update 1808
+* Apiversion supported by the module is 2016-01-01
+* This module includes functionalities up to the existing AzureRm.Storage module version 1.1.0 with the changes for azure powersehll common dependencies'        
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
