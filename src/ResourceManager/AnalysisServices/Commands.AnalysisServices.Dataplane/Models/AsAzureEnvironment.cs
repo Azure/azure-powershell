@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             this.Endpoints = new Hashtable();
         }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
         public Hashtable Endpoints { get; set; }
 

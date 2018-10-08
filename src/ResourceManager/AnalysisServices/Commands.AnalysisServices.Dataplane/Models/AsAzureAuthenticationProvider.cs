@@ -25,16 +25,6 @@ using Microsoft.Rest.Azure.Authentication;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
-    [DataContract]
-    public class AsAzureAuthInfo
-    {
-        [DataMember]
-        public string DefaultResourceUriSuffix { get; set; }
-
-        [DataMember]
-        public string AuthorityUrl { get; set; }
-    }
-
     public interface IAsAzureAuthenticationProvider
     {
 #if NETSTANDARD
