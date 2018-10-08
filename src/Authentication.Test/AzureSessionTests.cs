@@ -23,6 +23,7 @@ using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Common.Authentication.Test
 {

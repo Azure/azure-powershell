@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Test;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit.Abstractions;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Common.Authentication.Test
 {

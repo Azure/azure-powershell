@@ -2,55 +2,44 @@
 <Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckSigningToolsPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
     <Description>Microsoft Azure PowerShell Common</Description>
     <Keywords>Microsoft Azure PowerShell Common</Keywords>
     <Certificates>72, 400</Certificates>
+    <OutputDir>$(Artifacts)$(Configuration)\</OutputDir>
   </PropertyGroup>
-
-  <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
-  <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
   <Target Name="CheckSigningToolsPath">
     <Error Text="SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' == ''" />
     <Error Text="The SigningToolsPath directory does not exist!" Condition="!Exists($(SigningToolsPath))" />
   </Target>
 
+  <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
+
   <Target Name="net452">
     <Message Importance="high" Text="Sign: net452 started" />
-    <PropertyGroup>
-      <OutputDir>$(Artifacts)$(Configuration)\net452\</OutputDir>
-    </PropertyGroup>
     <ItemGroup>
-      <Net452Files Include="$(OutputDir)Microsoft.Azure.Commands*.dll" />
-      <Net452Files Include="$(OutputDir)Microsoft.WindowsAzure.Commands*.dll" />
-      <Net452Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)Microsoft.Azure.PowerShell*.Test.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.Commands*.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.WindowsAzure.Commands*.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)net452\Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
-    <CodeSigningTask
-      Description="$(Description)"
-      Keywords="$(Keywords)"
-      UnsignedFiles="@(Net452Files)"
-      DestinationPath="$(OutputDir)"
-      BasePath="$(OutputDir)"
-      Certificates="$(Certificates)"
-      SigningLogPath="$(OutputDir)Signing.log"
-      ToolsPath="$(SigningToolsPath)" />
   </Target>
 
   <Target Name="netstandard20">
     <Message Importance="high" Text="Sign: netstandard20 started" />
-    <PropertyGroup>
-      <OutputDir>$(Artifacts)$(Configuration)</OutputDir>
-    </PropertyGroup>
     <ItemGroup>
-      <NetStandard20Files Include="$(OutputDir)\netstandard2.0\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)\netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll" />
-      <NetStandard20Files Include="$(OutputDir)\netcoreapp2.1\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)\netcoreapp2.1\Microsoft.Azure.PowerShell*.Test.dll" />
+      <UnsignedFiles Include="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
+  </Target>
+
+  <Target Name="SignFiles" AfterTargets="net452;netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
+    <Message Importance="high" Text="Sign: task started" />
     <CodeSigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
-      UnsignedFiles="@(NetStandard20Files)"
+      UnsignedFiles="@(UnsignedFiles)"
       DestinationPath="$(OutputDir)"
       BasePath="$(OutputDir)"
       Certificates="$(Certificates)"
@@ -58,5 +47,17 @@
       ToolsPath="$(SigningToolsPath)" />
   </Target>
 
-  <Target Name="All" DependsOnTargets="net452;netstandard20" />
+  <Target Name="BeforeAll">
+    <Message Importance="high" Text="Sign: BeforeAll started" />
+    <PropertyGroup>
+      <DisableSigning>true</DisableSigning>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="All" DependsOnTargets="BeforeAll;net452;netstandard20">
+    <Message Importance="high" Text="Sign: All started" />
+    <PropertyGroup>
+      <DisableSigning>false</DisableSigning>
+    </PropertyGroup>
+  </Target>
 </Project>

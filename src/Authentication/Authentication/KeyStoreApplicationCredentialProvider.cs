@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     internal sealed class KeyStoreApplicationCredentialProvider : IApplicationAuthenticationProvider
     {
         private string _tenantId;
+        private IServicePrincipalKeyStore _keyStore;
 
         /// <summary>
         /// Create a credential provider
@@ -36,6 +37,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public KeyStoreApplicationCredentialProvider(string tenant)
         {
             this._tenantId = tenant;
+        }
+
+        /// <summary>
+        /// Create a credential provider
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="keyStore"></param>
+        public KeyStoreApplicationCredentialProvider(string tenant, IServicePrincipalKeyStore keyStore)
+        {
+            this._tenantId = tenant;
+            this._keyStore = keyStore;
         }
 
         /// <summary>
@@ -49,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             var task = new Task<SecureString>(() =>
             {
-                return ServicePrincipalKeyStore.GetKey(clientId, _tenantId);
+                return _keyStore.GetKey(clientId, _tenantId);
             });
             task.Start();
             var key = await task.ConfigureAwait(false);

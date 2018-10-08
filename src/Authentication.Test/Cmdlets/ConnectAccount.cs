@@ -94,6 +94,13 @@ namespace Common.Authentication.Test.Cmdlets
                 Account.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
+#if NETSTANDARD
+            if (!string.IsNullOrEmpty(Password))
+            {
+                Account.SetProperty(AzureAccount.Property.ServicePrincipalSecret, Password);
+            }
+#endif
+
             if (AzureRmProfileProvider.Instance.Profile == null)
             {
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);

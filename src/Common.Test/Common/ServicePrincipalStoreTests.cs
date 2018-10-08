@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using System;
@@ -26,9 +27,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class ServicePrincipalStoreTests
     {
+        private IServicePrincipalKeyStore _keyStore;
+
         public ServicePrincipalStoreTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _keyStore = new AzureRmServicePrincipalKeyStore();
         }
 
         [Fact]
@@ -41,13 +45,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             using (SecureString secret = SecureStringFromString(password))
             {
-                ServicePrincipalKeyStore.SaveKey(appId, tenantId, secret);
+                _keyStore.SaveKey(appId, tenantId, secret);
             }
 
             try
             {
                 string retrievedPassword;
-                using (SecureString secret = ServicePrincipalKeyStore.GetKey(appId, tenantId))
+                using (SecureString secret = _keyStore.GetKey(appId, tenantId))
                 {
                     retrievedPassword = StringFromSecureString(secret);
                 }
@@ -56,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             }
             finally
             {
-                ServicePrincipalKeyStore.DeleteKey(appId, tenantId);
+                _keyStore.DeleteKey(appId, tenantId);
             }
         }
 
@@ -70,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             SecureString ss = null;
             try
             {
-                ss = ServicePrincipalKeyStore.GetKey(appId, tenantId);
+                ss = _keyStore.GetKey(appId, tenantId);
                 Assert.Null(ss);
             }
             finally
@@ -91,17 +95,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             using (SecureString ss = SecureStringFromString("sekret"))
             {
-                ServicePrincipalKeyStore.SaveKey(appId, tenantId, ss);
+                _keyStore.SaveKey(appId, tenantId, ss);
             }
 
-            using (SecureString ss = ServicePrincipalKeyStore.GetKey(appId, tenantId))
+            using (SecureString ss = _keyStore.GetKey(appId, tenantId))
             {
                 Assert.NotNull(ss);
             }
 
-            ServicePrincipalKeyStore.DeleteKey(appId, tenantId);
+            _keyStore.DeleteKey(appId, tenantId);
 
-            using (SecureString ss = ServicePrincipalKeyStore.GetKey(appId, tenantId))
+            using (SecureString ss = _keyStore.GetKey(appId, tenantId))
             {
                 Assert.Null(ss);
             }
@@ -119,29 +123,29 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             using (SecureString ss = SecureStringFromString(pwd1))
             {
-                ServicePrincipalKeyStore.SaveKey(appId, tenant1, ss);
+                _keyStore.SaveKey(appId, tenant1, ss);
             }
 
             using (SecureString ss = SecureStringFromString(pwd2))
             {
-                ServicePrincipalKeyStore.SaveKey(appId, tenant2, ss);
+                _keyStore.SaveKey(appId, tenant2, ss);
             }
             try
             {
-                using (SecureString ss = ServicePrincipalKeyStore.GetKey(appId, tenant1))
+                using (SecureString ss = _keyStore.GetKey(appId, tenant1))
                 {
                     Assert.Equal(pwd1, StringFromSecureString(ss));
                 }
 
-                using (SecureString ss = ServicePrincipalKeyStore.GetKey(appId, tenant2))
+                using (SecureString ss = _keyStore.GetKey(appId, tenant2))
                 {
                     Assert.Equal(pwd2, StringFromSecureString(ss));
                 }
             }
             finally
             {
-                ServicePrincipalKeyStore.DeleteKey(appId, tenant1);
-                ServicePrincipalKeyStore.DeleteKey(appId, tenant2);
+                _keyStore.DeleteKey(appId, tenant1);
+                _keyStore.DeleteKey(appId, tenant2);
             }
         }
 

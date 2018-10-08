@@ -63,6 +63,10 @@
     <EmbeddedResource Include="Resources\ResourceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj">
+      <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
+      <Name>Authentication.ResourceManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>ResourceManager</Name>
