@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,8 +24,14 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.1-preview" />
+  </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="3.0.0-preview" />
+    <Reference Include="Microsoft.Azure.Commands.Cdn">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Cdn\Microsoft.Azure.Commands.Cdn.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

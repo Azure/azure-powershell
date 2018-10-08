@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.2.0
 * New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUrl - Gets the Container Continuous Deployment Webhook URL
+* New Cmdlets New-AzureRMWebAppContainerPSSession and Enter-WebAppContainerPSSession  - Initiates a PowerShell remote session into a windows container app
 
 ## Version 5.1.0
 * Updating to use the latest .NET SDK version (2.0.0)
