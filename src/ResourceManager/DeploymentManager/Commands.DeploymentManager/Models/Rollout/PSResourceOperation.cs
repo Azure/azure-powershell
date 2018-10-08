@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
     {
         public PSResourceOperation(ResourceOperation resourceOperation)
         {
-            this.ResourceName = resourceOperation.ResourceName;
-            this.OperationId = resourceOperation.OperationId;
-            this.ResourceType = resourceOperation.ResourceType;
-            this.ProvisioningState = resourceOperation.ProvisioningState;
-            this.StatusCode = resourceOperation.StatusCode;
-            this.StatusMessage = resourceOperation.StatusMessage;
+            this.ResourceName = resourceOperation?.ResourceName;
+            this.OperationId = resourceOperation?.OperationId;
+            this.ResourceType = resourceOperation?.ResourceType;
+            this.ProvisioningState = resourceOperation?.ProvisioningState;
+            this.StatusCode = resourceOperation?.StatusCode;
+            this.StatusMessage = resourceOperation?.StatusMessage;
         }
 
 		/// <summary>

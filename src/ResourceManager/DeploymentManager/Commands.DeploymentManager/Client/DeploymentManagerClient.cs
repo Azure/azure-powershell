@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var artifactSource =_client.ArtifactSources.Create(
+            var artifactSource =_client.ArtifactSources.CreateOrUpdate(
                 psArtifactSource.ResourceGroupName, 
                 psArtifactSource.Name, 
                 psArtifactSource.ToSdkType());
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var serviceTopologyResource = _client.ServiceTopologies.Create(
+            var serviceTopologyResource = _client.ServiceTopologies.CreateOrUpdate(
                 psTopologyResource.ToSdkType(),
                 psTopologyResource.ResourceGroupName,
                 psTopologyResource.Name);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var serviceResource = _client.Services.Create(
+            var serviceResource = _client.Services.CreateOrUpdate(
                 psServiceResource.ResourceGroupName, 
                 psServiceResource.ServiceTopologyName, 
                 psServiceResource.Name, 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var serviceUnitResource = _client.ServiceUnits.Create(
+            var serviceUnitResource = _client.ServiceUnits.CreateOrUpdate(
                 psServiceUnitResource.ResourceGroupName, 
                 psServiceUnitResource.ServiceTopologyName, 
                 psServiceUnitResource.ServiceName, 
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var stepResource = _client.Steps.Create(
+            var stepResource = _client.Steps.CreateOrUpdate(
                 psStepResource.ResourceGroupName,
                 psStepResource.Name,
                 psStepResource.ToSdkType());

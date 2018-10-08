@@ -34,11 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.DeploymentManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DeploymentManager.0.9.0-preview\lib\net452\Microsoft.Azure.Management.DeploymentManager.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Client\DeploymentManagerClient.cs" />
     <Compile Include="Commands\DeploymentManagerBaseCmdlet.cs" />
     <Compile Include="Commands\GetArtifactSource.cs" />
@@ -59,6 +54,7 @@
     <Compile Include="Commands\RemoveServiceUnit.cs" />
     <Compile Include="Commands\RemoveStep.cs" />
     <Compile Include="Commands\RestartRollout.cs" />
+    <Compile Include="Commands\RolloutCmdletBase.cs" />
     <Compile Include="Commands\SetArtifactSource.cs" />
     <Compile Include="Commands\SetService.cs" />
     <Compile Include="Commands\SetServiceTopology.cs" />
@@ -72,6 +68,7 @@
     </Compile>
     <Compile Include="Models\ArtifactSource\PSArtifactSource.cs" />
     <Compile Include="Models\ArtifactSource\PSAuthentication.cs" />
+    <Compile Include="Models\Rollout\PSBaseOperationInfo.cs" />
     <Compile Include="Models\PSIdentity.cs" />
     <Compile Include="Models\Rollout\PSMessage.cs" />
     <Compile Include="Models\Rollout\PSResource.cs" />
@@ -90,6 +87,9 @@
     <Compile Include="Models\Steps\PSStepResource.cs" />
     <Compile Include="Models\Steps\PSWaitStepProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\DateTimeUtilities.cs" />
+    <Compile Include="Utilities\EnumerationUtilities.cs" />
+    <Compile Include="Utilities\StringUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.DeploymentManager.psd1">
@@ -103,6 +103,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.DeploymentManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DeploymentManager.0.9.0-preview\lib\net452\Microsoft.Azure.Management.DeploymentManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

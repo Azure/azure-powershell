@@ -34,23 +34,33 @@ Get-AzureRmDeploymentManagerRollout [-Rollout] <PSRollout> [-DefaultProfile <IAz
 The **Get-AzureRmDeploymentManagerRollout** cmdlet gets a rollout, and returns an object that represents that rollout with all the detailed information on the progress of the rollout.
 Specify the rollout by its name and resource group name. Alternately, you can provide the Rollout object or the ResourceId.
 
+The returned rollout object contains the services, service units and steps that have been deployed and the ones in progress. Those that are yet to be deployed are not in the response.
+
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get the rollout
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
+PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout 
 ```
 
-This command gets a rollout named ContosoRollout in the ContosoResourceGroup.
+This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
 
-### Example 2: Get a rollout using the resource identifier
+### Example 2 Get and display the rollout details
+```powershell
+PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -Verbose
+```
+
+This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
+The -Verbose switch displays all the rollout details hierarchically; showing the Services, the ServiceUnits and the steps under each ServiceUnit and contextual information for each step for a holistic view of the rollout.
+
+### Example 3: Get a rollout using the resource identifier
 ```powershell
 PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
 ```
 
 This command gets a rollout named ContosoRollout in the ContosoResourceGroup.
 
-### Example 3: Get a rollout using the rollout object.
+### Example 4: Get a rollout using the rollout object.
 ```powershell
 PS C:\> Get-AzureRmDeploymentManagerRollout -Rollout $rolloutObject
 ```
