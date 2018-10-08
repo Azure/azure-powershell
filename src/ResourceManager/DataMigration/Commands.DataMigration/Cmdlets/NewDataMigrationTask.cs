@@ -205,14 +205,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         this.ProjectName = ids.ProjectName;
                     }
 
-                    if (this.ParameterSetName.Equals(ResourceIdParameterSet))
-                    {
-                        DmsResourceIdentifier ids = new DmsResourceIdentifier(this.ResourceId);
-                        this.ResourceGroupName = ids.ResourceGroupName;
-                        this.ServiceName = ids.ServiceName;
-                        this.ProjectName = ids.ProjectName;
-                    }
-
                     ProjectTask response = null;
                     try
                     {
