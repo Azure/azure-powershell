@@ -1,3 +1,5 @@
+#Requires -modules AzureRM
+
 # .\UpdateAzureRM.ps1 -Release "December 2017"
 [CmdletBinding()]
 Param(
@@ -10,7 +12,7 @@ enum PSVersion
     NONE = 0
     PATCH = 1
     MINOR = 2
-    MAJOR = 3    
+    MAJOR = 3
 }
 
 function Get-VersionBump
