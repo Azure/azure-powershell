@@ -14,10 +14,13 @@
 
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.Rest.Azure.OData;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +37,7 @@ using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
 using Job = Microsoft.Azure.Management.Automation.Models.Job;
 using JobSchedule = Microsoft.Azure.Management.Automation.Models.JobSchedule;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
+using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -773,7 +777,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                             string actionAfterReboot,
                                             bool moduleOverwriteFlag,
                                             string azureVmResourceGroup,
-                                            string azureVmLocation)
+                                            string azureVmLocation,
+                                            IAzureContext azureContext)
         {
             // get the location from AutomationAccountName. This will validate the account too
             string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
@@ -790,50 +795,138 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 azureVmResourceGroup = resourceGroupName;
             }
 
-            var deploymentName = Guid.NewGuid().ToString();
-
             // get the endpoint and keys
             Model.AgentRegistration agentRegistrationInfo = this.GetAgentRegistration(
                 resourceGroupName,
                 automationAccountName);
 
-            // prepare the parameters to be used in New-AzureRmResourceGroupDeployment cmdlet
-            Hashtable templateParameters = new Hashtable();
-            templateParameters.Add("vmName", azureVMName);
-            templateParameters.Add("location", location);
-            templateParameters.Add("modulesUrl", Constants.ModulesUrl);
-            templateParameters.Add("configurationFunction", Constants.ConfigurationFunction);
-            templateParameters.Add("registrationUrl", agentRegistrationInfo.Endpoint);
-            templateParameters.Add("registrationKey", agentRegistrationInfo.PrimaryKey);
-            templateParameters.Add("nodeConfigurationName", nodeconfigurationName);
-            templateParameters.Add("configurationMode", configurationMode);
-            templateParameters.Add("configurationModeFrequencyMins", configurationModeFrequencyMins);
-            templateParameters.Add("refreshFrequencyMins", refreshFrequencyMins);
-            templateParameters.Add("rebootNodeIfNeeded", rebootFlag);
-            templateParameters.Add("actionAfterReboot", actionAfterReboot);
-            templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
-            templateParameters.Add("timestamp", DateTimeOffset.UtcNow.ToString("o"));
-
             // invoke the New-AzureRmResourceGroupDeployment cmdlet
             using (var pipe = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
-                Command invokeCommand = new Command("New-AzureRmResourceGroupDeployment");
-                invokeCommand.Parameters.Add("Name", deploymentName);
-                invokeCommand.Parameters.Add("ResourceGroupName", azureVmResourceGroup);
-                invokeCommand.Parameters.Add("TemplateParameterObject", templateParameters);
-                invokeCommand.Parameters.Add("TemplateFile", Constants.TemplateFile);
+                var parameters = GetDSCDeploymenttemplateParameters(resourceGroupName,
+                                             automationAccountName,
+                                             azureVMName,
+                                             nodeconfigurationName,
+                                             configurationMode,
+                                             configurationModeFrequencyMins,
+                                             refreshFrequencyMins,
+                                             rebootFlag,
+                                             actionAfterReboot,
+                                             moduleOverwriteFlag,
+                                             azureVmResourceGroup,
+                                             location,
+                                             agentRegistrationInfo.Endpoint,
+                                             agentRegistrationInfo.PrimaryKey);
 
-                pipe.AddCommand(invokeCommand.ToString());
+                var armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
+                
+                var deployment = new Management.ResourceManager.Models.Deployment
+                {
+                    Properties = new Management.ResourceManager.Models.DeploymentProperties
+                    {
+                        TemplateLink = new Management.ResourceManager.Models.TemplateLink(Constants.TemplateFile),
+                        Parameters = parameters
+                    }
+                };
 
-                pipe.AddCommand("Out-Default");
-
-                Collection<PSObject> results = pipe.Invoke();
+                armClient.Deployments.CreateOrUpdate(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment);                
             }
         }
 
-#endregion
+        private string GetDSCDeploymenttemplateParameters(string resourceGroupName,
+                                            string automationAccountName,
+                                            string azureVMName,
+                                            string nodeconfigurationName,
+                                            string configurationMode,
+                                            int configurationModeFrequencyMins,
+                                            int refreshFrequencyMins,
+                                            bool rebootFlag,
+                                            string actionAfterReboot,
+                                            bool moduleOverwriteFlag,
+                                            string azureVmResourceGroup,
+                                            string azureVmLocation,
+                                            string registrationEndPoint,
+                                            string registrationKey)
+        {
+            var template = new DeploymentTemplateParameters
+            {
+                ContentVersion = "1.0.0.0",
+                Schema = "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+                Parameters = new ParametersObj {
+                                actionAfterReboot = new TemplateParameters {
+                                    value = actionAfterReboot
+                                },
+                                allowModuleOverwrite = new TemplateParameters
+                                {
+                                    value = moduleOverwriteFlag
+                                },
+                                configurationFunction = new TemplateParameters
+                                {
+                                    value = Constants.ConfigurationFunction
+                                },
+                                configurationMode = new TemplateParameters
+                                {
+                                    value = configurationMode
+                                },
+                                configurationModeFrequencyMins = new TemplateParameters
+                                {
+                                    value = configurationModeFrequencyMins
+                                },
+                                location = new TemplateParameters
+                                {
+                                    value = azureVmLocation
+                                },
+                                modulesUrl = new TemplateParameters
+                                {
+                                    value = Constants.ModulesUrl
+                                },
+                                nodeConfigurationName = new TemplateParameters
+                                {
+                                    value = nodeconfigurationName
+                                },
+                                rebootNodeIfNeeded = new TemplateParameters
+                                {
+                                    value = rebootFlag
+                                },
+                                refreshFrequencyMins = new TemplateParameters
+                                {
+                                    value = refreshFrequencyMins
+                                },
+                                registrationKey = new TemplateParameters
+                                {
+                                    value = registrationKey
+                                },
+                                registrationUrl = new TemplateParameters
+                                {
+                                    value = registrationEndPoint
+                                },
+                                timestamp = new TemplateParameters
+                                {
+                                    value = DateTimeOffset.UtcNow.ToString("o")
+                                },
+                                vmName = new TemplateParameters
+                                {
+                                    value = azureVMName
+                                }
+                }
+            };
+           
+            var serializationSettings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
 
-#region compilationjob
+            var serializer = JsonSerializer.Create(serializationSettings);
+            var textWriter = new StringWriter();
+            serializer.Serialize(textWriter, template);
+            return textWriter.ToString();
+        }
+
+        
+        #endregion
+
+        #region compilationjob
 
         public Model.CompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid Id)
         {
@@ -1718,4 +1811,52 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
     }
+
+
+    internal class DeploymentTemplateParameters
+    {
+        [JsonProperty("$schema")]
+        public string Schema { get; set; }
+
+        public string ContentVersion { get; set; }
+
+        public ParametersObj Parameters { get; set; }
+    }
+
+    internal class ParametersObj
+    {
+        public TemplateParameters vmName { get; set; }
+
+        public TemplateParameters location { get; set; }
+
+        public TemplateParameters modulesUrl { get; set; }
+
+        public TemplateParameters configurationFunction { get; set; }
+
+        public TemplateParameters registrationKey { get; set; }
+
+        public TemplateParameters registrationUrl { get; set; }
+
+        public TemplateParameters nodeConfigurationName { get; set; }
+
+        public TemplateParameters configurationMode { get; set; }
+
+        public TemplateParameters configurationModeFrequencyMins { get; set; }
+
+        public TemplateParameters refreshFrequencyMins { get; set; }
+
+        public TemplateParameters rebootNodeIfNeeded { get; set; }
+
+        public TemplateParameters actionAfterReboot { get; set; }
+
+        public TemplateParameters allowModuleOverwrite { get; set; }
+
+        public TemplateParameters timestamp { get; set; }
+    }
+
+    internal class TemplateParameters
+    {
+        public object value { get; set; }
+    }
+
 }
