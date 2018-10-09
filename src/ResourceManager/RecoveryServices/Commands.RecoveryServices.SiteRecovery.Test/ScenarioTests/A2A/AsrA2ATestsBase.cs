@@ -101,7 +101,7 @@ namespace RecoveryServices.SiteRecovery.Test
 #if !NETSTANDARD
                     _helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"),
 #endif
-                    "AzureRm.Resources.ps1");
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
