@@ -32,10 +32,10 @@ namespace RecoveryServices.SiteRecovery.Test
             XunitTracingInterceptor.AddToContext(_logger);
             this.VaultSettingsFilePath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\V2A\\V2A.VaultCredentials");
+                "ScenarioTests", "V2A", "V2A.VaultCredentials");
             this.PowershellFile = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\V2A\\AsrV2ATests.ps1");
+                "ScenarioTests", "V2A", "AsrV2ATests.ps1");
             this.Initialize();
         }
 
