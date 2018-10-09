@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.6.1
 * Fix Copy Blob/File won't copy metadata when destination has metadata issue
     - Start-AzureStorageBlobCopy
     - Start-AzureStorageFileCopy

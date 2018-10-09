@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.2.5.0\lib\net452\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.2.5.2\lib\net452\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
