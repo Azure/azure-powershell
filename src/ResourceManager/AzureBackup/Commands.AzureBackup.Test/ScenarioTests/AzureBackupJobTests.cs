@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureRMBackupJobTests()
         {
             this.RunPowerShellTest(_logger, "Test-GetAzureRMBackupJob");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StopAzureRMBackupJobTests()
         {

@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
             Assert.True(true);
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StorageAccountIsNotCleaned()
         {
             ProfileTestController.NewRdfeInstance.RunPsTest("Test-StorageAccountIsNotCleaned");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionPipeToSetSubscription()
         {

@@ -28,28 +28,28 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupMarsContainerScenarioTests()
         {
             this.RunPowerShellTest(_logger, "Test-AzureBackupMarsContainerScenario");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupRegisterContainerScenarioTests()
         {
             this.RunPowerShellTest(_logger, "Test-RegisterAzureBackupContainer");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupUnregisterContainerScenarioTests()
         {
             this.RunPowerShellTest(_logger, "Test-UnregisterAzureBackupContainer");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupContainerScenarioTests()
         {

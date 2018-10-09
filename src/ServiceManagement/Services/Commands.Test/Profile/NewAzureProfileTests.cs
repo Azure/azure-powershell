@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
 {
     public class NewAzureProfileTests
     {
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithCertificate()
         {
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
             ProfileTestController.NewRdfeInstance.RunPsTest("Test-CreatesNewAzureProfileWithUserCredentials");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithAccessToken()
         {
             ProfileTestController.NewRdfeInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
         }
 
-        [Fact(Skip = "Latest version of HttpRecorder not compatible with current version of Microsoft.Azure.Test.Framework")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
