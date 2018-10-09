@@ -9,30 +9,30 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAzureStoragePath"), OutputType(typeof(WebAppAzureStoragePath))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAzureStoragePath", SupportsShouldProcess = true), OutputType(typeof(WebAppAzureStoragePath))]
     public class NewAzureRmWebAppAzureStoragePath: WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The identifier of the Azure Storage property. Must be unique within the Web App or Slot")]
+        [Parameter(Mandatory = true, HelpMessage = "The identifier of the Azure Storage property. Must be unique within the Web App or Slot")]
         [ValidateNotNullOrEmpty]
-        public string UniqueId { get; set; }
+        public string Name { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "Type of Azure Storage account. Windows Containers only supports Azure Files")]
+        [Parameter(Mandatory = true, HelpMessage = "Type of Azure Storage account. Windows Containers only supports Azure Files")]
         [ValidateNotNullOrEmpty]
         public AzureStorageType Type { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "Azure Storage account name. E.g.: myfilestorageaccount.file.core.windows.net")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure Storage account name. E.g.: myfilestorageaccount.file.core.windows.net")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "Name of the share to mount to the container")]
+        [Parameter(Mandatory = true, HelpMessage = "Name of the share to mount to the container")]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Access key to the Azure Storage account")]
+        [Parameter(Mandatory = true, HelpMessage = "Access key to the Azure Storage account")]
         [ValidateNotNullOrEmpty]
         public string AccessKey { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = "Path in the container where the share specified by ShareName will be exposed")]
+        [Parameter(Mandatory = true, HelpMessage = "Path in the container where the share specified by ShareName will be exposed")]
         [ValidateNotNullOrEmpty]
         public string MountPath { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 MountPath = MountPath,
                 ShareName = ShareName,
                 Type = Type,
-                UniqueId = UniqueId
+                Name = Name
             });
         }
     }
