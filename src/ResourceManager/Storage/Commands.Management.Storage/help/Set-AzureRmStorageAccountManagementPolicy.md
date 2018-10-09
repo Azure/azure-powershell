@@ -133,7 +133,7 @@ This command creates or updates the management policy of a Storage account..
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Management Object to Set
 
 ```yaml
-Type: PSManagementPolicy
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicy
 Parameter Sets: AccountNamePolicyObject
 Aliases: ManagementPolicy
 
@@ -164,9 +164,9 @@ The lifecycle management policy, it's a collection of rules in a JSON document.
 See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNamePolicyString, AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -179,9 +179,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNamePolicyString, AccountNamePolicyObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -194,9 +194,9 @@ Accept wildcard characters: False
 Storage account object
 
 ```yaml
-Type: PSStorageAccount
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 Storage Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNamePolicyString, AccountNamePolicyObject
 Aliases: AccountName
 
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -240,7 +240,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -265,4 +265,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -19,6 +19,7 @@ New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuNa
  [-UseSubDomain <Boolean>] [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableAzureFilesAadIntegrationForSMB <Boolean>]
  [-EnableHierarchicalNamespace <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,7 +154,7 @@ Accept wildcard characters: False
 Indicates whether or not the Storage account enabled Azure Files AAD Integration for SMB.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases: EnableFilesAADIntegration
 
@@ -168,7 +169,7 @@ Accept wildcard characters: False
 Indicates whether or not the Storage account enables Hierarchical Namespace.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
