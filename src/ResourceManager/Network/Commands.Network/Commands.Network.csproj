@@ -208,6 +208,7 @@
     <Compile Include="Cortex\ExpressRouteGateway\SetAzureRmExpressRouteGatewayCommand.cs" />
     <Compile Include="Cortex\ExpressRouteGateway\ExpressRouteGatewayBaseCmdlet.cs" />
     <Compile Include="Models\Cortex\PSExpressRouteCircuitPeeringId.cs" />
+    <Compile Include="Models\Cortex\PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds.cs" />
     <Compile Include="Models\Cortex\PSVirtualHubId.cs" />
     <Compile Include="InterfaceEndpoint\AzureInterfaceEndpointBaseCmdlet.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />

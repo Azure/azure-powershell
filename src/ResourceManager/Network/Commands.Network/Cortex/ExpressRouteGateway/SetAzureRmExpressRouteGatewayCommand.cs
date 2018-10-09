@@ -126,8 +126,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinBounds, this.MaxBounds));
             }
 
-            existingExpressRouteGateway.AutoScaleConfiguration.MinBounds = Convert.ToInt32(this.MinBounds);
-            existingExpressRouteGateway.AutoScaleConfiguration.MaxBounds = Convert.ToInt32(this.MaxBounds);
+            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.MinBounds = Convert.ToInt32(this.MinBounds);
+            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.MaxBounds = Convert.ToInt32(this.MaxBounds);
 
             //// Modify the connections
             if (this.ExpressRouteConnection != null)
