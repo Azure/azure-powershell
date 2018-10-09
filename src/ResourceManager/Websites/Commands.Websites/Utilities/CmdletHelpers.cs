@@ -106,6 +106,52 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return result;
         }
 
+        public static AzureStoragePropertyDictionaryResource ConvertToAzureStorageAccountPathPropertyDictionary(this WebAppAzureStoragePath[] webAppAzureStorageProperties)
+        {
+            if (webAppAzureStorageProperties == null)
+                return null;
+            AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
+            result.Properties = new Dictionary<string, AzureStorageInfoValue>();
+            foreach (var item in webAppAzureStorageProperties)
+            {
+                result.Properties.Add(
+                    new KeyValuePair<string, AzureStorageInfoValue>(
+                        item.UniqueId, 
+                        new AzureStorageInfoValue(
+                            item.Type,
+                            item.AccountName,
+                            item.ShareName,
+                            item.AccessKey,
+                            item.MountPath)));
+            }
+
+            return result;
+        }
+
+        public static WebAppAzureStoragePath[] ConvertToWebAppAzureStorageArray(this IDictionary<string, AzureStorageInfoValue> webAppAzureStorageDictionary)
+        {
+            if (webAppAzureStorageDictionary == null)
+                return null;
+            List<WebAppAzureStoragePath> result = new List<WebAppAzureStoragePath>();
+            foreach (var item in webAppAzureStorageDictionary)
+            {
+                var azureStoragePath = new WebAppAzureStoragePath()
+                {
+                    UniqueId = item.Key,
+                    AccessKey = item.Value.AccessKey,
+                    AccountName = item.Value.AccountName,
+                    ShareName = item.Value.ShareName,
+                    MountPath = item.Value.MountPath,
+                    Type = item.Value.Type
+                };
+
+                result.Add(azureStoragePath);
+            }
+
+            return result.ToArray();
+        }
+
+
         internal static bool ShouldUseDeploymentSlot(string webSiteName, string slotName, out string qualifiedSiteName)
         {
             bool result = false;

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Security;
@@ -62,6 +63,10 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   identity: other.Identity
                   )
         {
+            if (other.SiteConfig != null)
+            {
+                AzureStoragePaths = other.SiteConfig.AzureStorageAccounts.ConvertToWebAppAzureStorageArray();
+            }
         }
 
         public string GitRemoteName { get; set; }
@@ -71,5 +76,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
 
         [CmdletParameterBreakingChange("SnapshotInfo", ChangeDescription = "This property is deprecated and will be removed in a future releases.")]
         public string SnapshotInfo { get; set; }
+
+        public WebAppAzureStoragePath[] AzureStoragePaths { get; set; }
     }
 }

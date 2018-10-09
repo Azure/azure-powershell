@@ -2397,6 +2397,7 @@
                         "Get-AzWebAppContainerContinuousDeploymentUrl":  "Get-AzureRmWebAppContainerContinuousDeploymentUrl",
                         "Swap-AzWebAppSlot":  "Swap-AzureRmWebAppSlot",
                         "Enter-AzWebAppContainerPSSession" : "Enter-AzureRmWebAppContainerPSSession",
-                        "New-AzWebAppContainerPSSession" : "New-AzureRmWebAppContainerPSSession"
+                        "New-AzWebAppContainerPSSession" : "New-AzureRmWebAppContainerPSSession",
+                        "New-AzWebAppAzureStoragePath" : "New-AzureRmWebAppAzureStoragePath"
                     }
 }

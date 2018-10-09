@@ -949,18 +949,24 @@ function Test-SetAzureStorageWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/paltest/iis"
+    $containerImageName = "testcontainer.io/test/iis"
     $containerRegistryUrl = "https://testcontainer.azurecr.io"
     $ontainerRegistryUser = "testregistry"
     $pass = "7Dxo9p79Ins2K3ZU"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
-	$azureStorageAccountCustomId = "mystorageaccount"
-	$azureStorageAccountType = "AzureFiles"
-	$azureStorageAccountName = "myaccountname.file.core.windows.net"
-	$azureStorageAccountShareName = "myremoteshare"
-	$azureStorageAccountAccessKey = "AnAccessKey"
-	$azureStorageAccountMountPath = "C:\mymountpath"
+	$azureStorageAccountCustomId1 = "mystorageaccount"
+	$azureStorageAccountType1 = "AzureFiles"
+	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
+	$azureStorageAccountShareName1 = "myremoteshare"
+	$azureStorageAccountAccessKey1 = "AnAccessKey"
+	$azureStorageAccountMountPath1 = "C:\mymountpath"
+	$azureStorageAccountCustomId2 = "mystorageaccount2"
+	$azureStorageAccountType2 = "AzureFiles"
+	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
+	$azureStorageAccountShareName2 = "myremoteshare2"
+	$azureStorageAccountAccessKey2 = "AnAccessKey2"
+	$azureStorageAccountMountPath2 = "C:\mymountpath2"
 
 	try
 	{
@@ -986,37 +992,61 @@ function Test-SetAzureStorageWebAppHyperV
         Assert-AreEqual $true $result.IsXenon
         Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
 
-        $azureStorageAccounts = @{ $azureStorageAccountCustomId = @{
-			"Type" = $azureStorageAccountType;
-			"AccountName" = $azureStorageAccountName;
-			"ShareName" = $azureStorageAccountShareName;
-			"AccessKey" = $azureStorageAccountAccessKey
-			"MountPath" = $azureStorageAccountMountPath;}
-		}
+		$testStorageAccount1 = New-AzureRmWebAppAzureStoragePath -UniqueId $azureStorageAccountCustomId1 -Type $azureStorageAccountType1 -AccountName $azureStorageAccountName1 -ShareName $azureStorageAccountShareName1 -AccessKey $azureStorageAccountAccessKey1 -MountPath $azureStorageAccountMountPath1
+		$testStorageAccount2 = New-AzureRmWebAppAzureStoragePath -UniqueId $azureStorageAccountCustomId2 -Type $azureStorageAccountType2 -AccountName $azureStorageAccountName2 -ShareName $azureStorageAccountShareName2 -AccessKey $azureStorageAccountAccessKey2 -MountPath $azureStorageAccountMountPath2
+
+		Write-Debug "Created the new storage account paths"
+
+		Write-Debug $testStorageAccount1.UniqueId
+		Write-Debug $testStorageAccount2.UniqueId
+
 
 		# set Azure Storage accounts
-        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -AzureStorageAccountPath $azureStorageAccounts
+        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -AzureStoragePaths $testStorageAccount1, $testStorageAccount2
+
+		Write-Debug "Set the new storage account paths"
+
 
 		# get the web app
 		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
-		$azureStorageAccounts = $result.SiteConfig.AzureStorageAccounts
+		$azureStorageAccounts = $result.AzureStoragePaths
 
 		# Assert
-		Assert-True {$azureStorageAccounts.Keys -contains $azureStorageAccountCustomId}
+		Write-Debug $azureStorageAccounts[0].UniqueId
+		Assert-AreEqual $azureStorageAccounts[0].UniqueId $azureStorageAccountCustomId1
+
+		Write-Debug $azureStorageAccounts[0].Type
+		Assert-AreEqual $azureStorageAccounts[0].Type $azureStorageAccountType1
 		
-		Write-Debug $azureStorageAccounts
-
-		# Get the Storage account details
-		$storageAccount = $azureStorageAccounts.GetEnumerator() | select -first 1
-
-		# Assert
-		Assert-AreEqual $storageAccount.Value.Type $azureStorageAccountType
-		Assert-AreEqual $storageAccount.Value.ShareName $azureStorageAccountShareName
-		Assert-AreEqual $storageAccount.Value.AccessKey $azureStorageAccountAccessKey
-		Assert-AreEqual $storageAccount.Value.MountPath $azureStorageAccountMountPath
-		Assert-AreEqual $storageAccount.Value.AccountName $azureStorageAccountName
+		Write-Debug $azureStorageAccounts[0].AccountName
+		Assert-AreEqual $azureStorageAccounts[0].AccountName $azureStorageAccountName1
 		
+		Write-Debug $azureStorageAccounts[0].ShareName
+		Assert-AreEqual $azureStorageAccounts[0].ShareName $azureStorageAccountShareName1
+		
+		Write-Debug $azureStorageAccounts[0].AccessKey 
+		Assert-AreEqual $azureStorageAccounts[0].AccessKey $azureStorageAccountAccessKey1
+		
+		Write-Debug $azureStorageAccounts[0].MountPath
+		Assert-AreEqual $azureStorageAccounts[0].MountPath $azureStorageAccountMountPath1
 
+		Write-Debug $azureStorageAccounts[1].UniqueId
+		Assert-AreEqual $azureStorageAccounts[1].UniqueId $azureStorageAccountCustomId2
+
+		Write-Debug $azureStorageAccounts[1].Type
+		Assert-AreEqual $azureStorageAccounts[1].Type $azureStorageAccountType2
+
+		Write-Debug $azureStorageAccounts[1].AccountName
+		Assert-AreEqual $azureStorageAccounts[1].AccountName $azureStorageAccountName2
+
+		Write-Debug $azureStorageAccounts[1].ShareName
+		Assert-AreEqual $azureStorageAccounts[1].ShareName $azureStorageAccountShareName2
+
+		Write-Debug $azureStorageAccounts[1].AccessKey
+		Assert-AreEqual $azureStorageAccounts[1].AccessKey $azureStorageAccountAccessKey2
+
+		Write-Debug $azureStorageAccounts[1].MountPath
+		Assert-AreEqual $azureStorageAccounts[1].MountPath $azureStorageAccountMountPath2
 	}
 	finally
 	{
@@ -1099,7 +1129,8 @@ function Test-SetWebApp
 		
 		# Create new web app
 		$webApp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -Location $location -AppServicePlan $appServicePlanName1 
-		
+		Write-Debug "DEBUG: Created the Web App"
+
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
@@ -1110,6 +1141,8 @@ function Test-SetWebApp
 		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
+
+		Write-Debug "DEBUG: Changed service plan"
 
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
@@ -1122,6 +1155,8 @@ function Test-SetWebApp
 
 		# Set site properties
 		$webApp = $webApp | Set-AzureRmWebApp
+
+		Write-Debug "DEBUG: Changed site properties"
 
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
