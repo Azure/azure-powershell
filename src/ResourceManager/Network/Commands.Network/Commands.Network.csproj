@@ -615,6 +615,7 @@
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayLearnedRouteCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVpnClientConfigurationCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVpnClientConfigurationCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\ResetAzureVirtualNetworkGatewayVpnClientSharedKey.cs" />
     <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayParameterSets.cs" />
     <Compile Include="ServiceEndpointPolicy\AzureServiceEndpointPolicyBaseCmdlet.cs" />
     <Compile Include="ServiceEndpointPolicy\GetAzureServiceEndpointPolicyCommand.cs" />

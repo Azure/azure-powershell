@@ -659,9 +659,7 @@ function Test-VirtualNetworkGatewayOpenVPN
 		$vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get OpenVPN virtualnetworkgateway
-		New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
-		$actual = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-		Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN
+		New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientProtocol OpenVPN
 		$actual = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
@@ -669,6 +667,9 @@ function Test-VirtualNetworkGatewayOpenVPN
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "OpenVPN" $protocols[0]
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
+
+		# Reset OpenVPN shared key should succeed internally
+		Reset-AzureRmVirtualNetworkGatewayVpnClientSharedKey -VirtualNetworkGateway $actual
 	}
 	finally
     {
