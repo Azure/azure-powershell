@@ -285,17 +285,26 @@
   <data name="ParentVpnGatewayNotFound" xml:space="preserve">
     <value>The parent VpnGateway for this connection cannot be found.</value>
   </data>
+  <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
+    <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
+  </data>
   <data name="RemovingVirtualHubWarning" xml:space="preserve">
     <value>Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
   <data name="RemovingVpnGatewayWarning" xml:space="preserve">
     <value>Removing a VpnGateway will also remove all VpnConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
+  <data name="RemovingExpressRouteGatewayWarning" xml:space="preserve">
+    <value>Removing an ExpressRouteGateway will also remove all ExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
   <data name="ResouceGroupNameMustBeSpecified" xml:space="preserve">
     <value>ResourceGroupName must be specified if ResourceName is specified.</value>
   </data>
   <data name="VirtualHubRequiredForVpnGateway" xml:space="preserve">
     <value>A valid VirtualHub reference is required to create a VpnGateway.</value>
+  </data>
+  <data name="VirtualHubRequiredForExpressRouteGateway" xml:space="preserve">
+    <value>A valid VirtualHub reference is required to create an ExpressRouteGateway.</value>
   </data>
   <data name="VirtualNetworkReferenceRequiredToCreateHubVnetConnection" xml:space="preserve">
     <value>A remote virtual network reference is required to create a HubVirtualNetworkConnection.</value>
@@ -339,10 +348,22 @@
   <data name="VpnGatewayRequiredToCreateVpnConnection" xml:space="preserve">
     <value>A valid VpnGateway reference is required to create a VpnConnection.</value>
   </data>
+  <data name="ExpressRouteGatewayRequiredToCreateExpressRouteConnection" xml:space="preserve">
+    <value>A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection.</value>
+  </data>
   <data name="UpdatingLongRunningOperationMessage" xml:space="preserve">
     <value>Updating resource with ResourceGroupName {0}, ResourceName {1}.</value>
   </data>
   <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
     <value>trustedRootCertificates</value>
+  </data>
+  <data name="InvalidAutoScaleConfiguration" xml:space="preserve">
+    <value>MinBounds {0} cannot be greater than MaxBounds {1}.</value>
+  </data>
+  <data name="ExpressRouteGatewayNotFound" xml:space="preserve">
+    <value>The ExpressRouteGateway to modify could not be found</value>
+  </data>
+  <data name="ExpressRouteConnectionNotFound" xml:space="preserve">
+    <value>The ExpressRouteConnection could not be found.</value>
   </data>
 </root>

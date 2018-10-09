@@ -804,6 +804,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 //// SDWAN
                 cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>();
+                cfg.CreateMap<CNM.PSVirtualHubId, MNM.VirtualHubId>();
                 cfg.CreateMap<CNM.PSVirtualWan, MNM.VirtualWAN>();
                 cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>();
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
@@ -812,9 +813,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVpnConnection, MNM.VpnConnection>();
                 cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>();
                 cfg.CreateMap<CNM.PSVpnSiteDeviceProperties, MNM.DeviceProperties>();
+                cfg.CreateMap<CNM.PSExpressRouteGateway, MNM.ExpressRouteGateway>();
+                cfg.CreateMap<CNM.PSExpressRouteConnection, MNM.ExpressRouteConnection>();
+                cfg.CreateMap<CNM.PSExpressRouteGatewayAutoscaleConfiguration, MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration>();
+                cfg.CreateMap<CNM.PSExpressRouteCircuitPeeringId, MNM.ExpressRouteCircuitPeeringId>();
 
                 cfg.CreateMap<MNM.VirtualWAN, CNM.PSVirtualWan>();
                 cfg.CreateMap<MNM.VirtualHub, CNM.PSVirtualHub>();
+                cfg.CreateMap<MNM.VirtualHubId, CNM.PSVirtualHubId>();
                 cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>();
                 cfg.CreateMap<MNM.VirtualHubRouteTable, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>();
@@ -822,6 +828,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
                 cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>();
                 cfg.CreateMap<MNM.DeviceProperties, CNM.PSVpnSiteDeviceProperties>();
+                cfg.CreateMap<MNM.ExpressRouteGateway, CNM.PSExpressRouteGateway>();
+                cfg.CreateMap<MNM.ExpressRouteConnection, CNM.PSExpressRouteConnection>();
+                cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration, CNM.PSExpressRouteGatewayAutoscaleConfiguration>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitPeeringId, CNM.PSExpressRouteCircuitPeeringId>();
 
                 // Azure Firewalls
                 // CNM to MNM
