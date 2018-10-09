@@ -158,7 +158,21 @@ namespace Microsoft.Azure.Commands.Compute
                             .GetAwaiter().GetResult();
 
                     var psResultListStatus = new List<PSVirtualMachineListStatus>();
-                    psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                    while (vmListResult != null)
+                    {
+                        psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                        {
+                            vmListResult = this.VirtualMachineClient.ListNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
+                                .GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            vmListResult = null;
+                        }
+                    }
 
                     if (this.Status.IsPresent)
                     {
