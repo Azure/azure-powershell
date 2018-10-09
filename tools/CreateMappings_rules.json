@@ -25,6 +25,8 @@
     { "regex": "NetworkWatcher", "group": "Network", "alias": "Network Watcher" },
     { "regex": "Network","group": "Network",  "alias": "Networking" },
 
+    { "regex": "FrontDoor", "alias": "Front Door" },
+
     { "regex": "AppService", "group": "App Service", "alias": "App Service" },
     { "regex": "Websites", "group": "App Service", "alias": "App Service" },
     { "regex": "WebApp", "group": "App Service", "alias": "App Service" },

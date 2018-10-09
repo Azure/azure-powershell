@@ -19,14 +19,17 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Name of the location.
 
-.PARAMETER ResourceGroupNameName
-    resourceGroupName.
+.PARAMETER ResourceGroupName
+    Resource group name which the resource resides.
 
 .PARAMETER ResourceId
     The resource id.
 
 .PARAMETER InputObject
     An alert returned from Get-AzsAlert.
+
+.PARAMETER Force
+    Don't ask for confirmation.
 
 .EXAMPLE
 

@@ -1,7 +1,7 @@
 ---
 external help file: Azs.InfrastructureInsights.Admin-help.xml
-Module Name: Azs.Infrastructureinsights.Admin
-online version:
+Module Name: Azs.InfrastructureInsights.Admin
+online version: 
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Returns a list of each resource's health under a service.
 
 ### List (Default)
 ```
-Get-AzsRegistrationHealth -ServiceRegistrationId <String> [-Location <String>] [-ResourceGroupName <String>]
+Get-AzsRegistrationHealth -ServiceRegistrationName <String> [-Location <String>] [-ResourceGroupName <String>]
  [-Filter <String>] [-Top <Int32>] [-Skip <Int32>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzsRegistrationHealth -ServiceRegistrationId <String> -ResourceRegistrationId <String> [-Location <String>]
+Get-AzsRegistrationHealth -ServiceRegistrationName <String> -Name <String> [-Location <String>]
  [-ResourceGroupName <String>] [-Filter <String>] [<CommonParameters>]
 ```
 
@@ -34,46 +34,31 @@ Returns a list of each resource's health under a service.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsRegistrationHealth -ServiceRegistrationId e56bc7b8-c8b5-4e25-b00c-4f951effb22c
+Get-AzsRegistrationHealth -ServiceRegistrationName e56bc7b8-c8b5-4e25-b00c-4f951effb22c
 ```
 
 Returns a list of each resource's health under a service.
 
-### EXAMPLE 2
+### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsRPHealth | Where {$_.NamespaceProperty -eq 'Microsoft.Fabric.Admin'} | % { Get-AzsRegistrationHealth -ServiceRegistrationId $_.RegistrationId } | select ResourceName, HealthState
+Get-AzsRPHealth | Where {$_.NamespaceProperty -eq 'Microsoft.Fabric.Admin'} | % { Get-AzsRegistrationHealth -ServiceRegistrationName $_.RegistrationId } | select ResourceName, HealthState
 ```
 
 Returns health status under a for Microsoft.Fabric.Admin.
 
 ## PARAMETERS
 
-### -ServiceRegistrationId
-Service registration id.
+### -Filter
+OData filter parameter.
 
 ```yaml
 Type: String
-Parameter Sets: List, Get
-Aliases:
+Parameter Sets: (All)
+Aliases: 
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceRegistrationId
-
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -86,7 +71,7 @@ Name of the region
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -95,13 +80,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The resource name of the health object which corresponds to the resource registration id.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases: ResourceRegistrationId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Name of the resource group.
+Resource group name which the resource resides.
 
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -125,17 +125,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Filter
-OData filter parameter.
+### -ServiceRegistrationName
+Service registration id.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: List, Get
+Aliases: ServiceRegistrationId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Skip the first N items as specified by the parameter value.
+
+```yaml
+Type: Int32
+Parameter Sets: List
+Aliases: 
 
 Required: False
 Position: Named
-Default value: None
+Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -147,22 +162,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Skip
-Skip the first N items as specified by the parameter value.
-
-```yaml
-Type: Int32
-Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -183,3 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
