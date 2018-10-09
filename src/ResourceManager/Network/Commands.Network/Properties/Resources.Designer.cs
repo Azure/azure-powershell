@@ -205,20 +205,20 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
-        /// </summary>
-        public static string ContainerNetworkInterfaceConfigurationNameNotSet {
-            get {
-                return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
         public static string ChildResourceAlreadyPresentInResourceGroup {
             get {
                 return ResourceManager.GetString("ChildResourceAlreadyPresentInResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
+        /// </summary>
+        public static string ContainerNetworkInterfaceConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
             }
         }
         
@@ -250,11 +250,47 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The ExpressRouteConnection could not be found..
+        /// </summary>
+        public static string ExpressRouteConnectionNotFound {
+            get {
+                return ResourceManager.GetString("ExpressRouteConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ExpressRouteGateway to modify could not be found.
+        /// </summary>
+        public static string ExpressRouteGatewayNotFound {
+            get {
+                return ResourceManager.GetString("ExpressRouteGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        public static string ExpressRouteGatewayRequiredToCreateExpressRouteConnection {
+            get {
+                return ResourceManager.GetString("ExpressRouteGatewayRequiredToCreateExpressRouteConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>
         public static string HubVnetConnectionNotFound {
             get {
                 return ResourceManager.GetString("HubVnetConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MinBounds {0} cannot be greater than MaxBounds {1}..
+        /// </summary>
+        public static string InvalidAutoScaleConfiguration {
+            get {
+                return ResourceManager.GetString("InvalidAutoScaleConfiguration", resourceCulture);
             }
         }
         
@@ -376,6 +412,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parent ExpressRouteGateway for this connection cannot be found..
+        /// </summary>
+        public static string ParentExpressRouteGatewayNotFound {
+            get {
+                return ResourceManager.GetString("ParentExpressRouteGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
         /// </summary>
         public static string ParentVirtualHubNotFound {
@@ -408,6 +453,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string RemoveResourceMessage {
             get {
                 return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        public static string RemovingExpressRouteGatewayWarning {
+            get {
+                return ResourceManager.GetString("RemovingExpressRouteGatewayWarning", resourceCulture);
             }
         }
         
@@ -592,6 +646,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualHub reference is required to create an ExpressRouteGateway..
+        /// </summary>
+        public static string VirtualHubRequiredForExpressRouteGateway {
+            get {
+                return ResourceManager.GetString("VirtualHubRequiredForExpressRouteGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A valid VirtualHub reference is required to create a VpnGateway..
         /// </summary>
         public static string VirtualHubRequiredForVpnGateway {
@@ -644,7 +707,8 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
-
+        
+        /// <summary>
         ///   Looks up a localized string similar to A remote virtual network reference is required to create a HubVirtualNetworkConnection..
         /// </summary>
         public static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {
