@@ -910,7 +910,7 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 
 <#
 .SYNOPSIS
-Tests setting and Azure Storage Account in a new Windows container app.
+Tests setting and Azure Storage Account in a new Windows container app. Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed.
 .DESCRIPTION
 SmokeTest
 #>
@@ -946,6 +946,10 @@ function Test-SetAzureStorageWebAppHyperVSlot
 
 	try
 	{
+		###
+		# Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed.
+		###
+
 		#Setup
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
@@ -985,28 +989,28 @@ function Test-SetAzureStorageWebAppHyperVSlot
 		Assert-AreEqual $appWithSlotName $slot1.Name
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
 
-		$testStorageAccount1 = New-AzureRmWebAppAzureStoragePath -UniqueId $azureStorageAccountCustomId1 -Type $azureStorageAccountType1 -AccountName $azureStorageAccountName1 -ShareName $azureStorageAccountShareName1 -AccessKey $azureStorageAccountAccessKey1 -MountPath $azureStorageAccountMountPath1
-		$testStorageAccount2 = New-AzureRmWebAppAzureStoragePath -UniqueId $azureStorageAccountCustomId2 -Type $azureStorageAccountType2 -AccountName $azureStorageAccountName2 -ShareName $azureStorageAccountShareName2 -AccessKey $azureStorageAccountAccessKey2 -MountPath $azureStorageAccountMountPath2
+		$testStorageAccount1 = New-AzureRmWebAppAzureStoragePath -Name $azureStorageAccountCustomId1 -Type $azureStorageAccountType1 -AccountName $azureStorageAccountName1 -ShareName $azureStorageAccountShareName1 -AccessKey $azureStorageAccountAccessKey1 -MountPath $azureStorageAccountMountPath1
+		$testStorageAccount2 = New-AzureRmWebAppAzureStoragePath -Name $azureStorageAccountCustomId2 -Type $azureStorageAccountType2 -AccountName $azureStorageAccountName2 -ShareName $azureStorageAccountShareName2 -AccessKey $azureStorageAccountAccessKey2 -MountPath $azureStorageAccountMountPath2
 
 		Write-Debug "Created the new storage account paths"
 
-		Write-Debug $testStorageAccount1.UniqueId
-		Write-Debug $testStorageAccount2.UniqueId
+		Write-Debug $testStorageAccount1.Name
+		Write-Debug $testStorageAccount2.Name
 
 
 		# set Azure Storage accounts
-        $webApp = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname -AzureStoragePaths $testStorageAccount1, $testStorageAccount2
+        $webApp = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname -AzureStoragePath $testStorageAccount1, $testStorageAccount2
 
 		Write-Debug "Set the new storage account paths"
 
 
 		# get the web app
 		$result = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname
-		$azureStorageAccounts = $result.AzureStoragePaths
+		$azureStorageAccounts = $result.AzureStoragePath
 
 		# Assert
-		Write-Debug $azureStorageAccounts[0].UniqueId
-		Assert-AreEqual $azureStorageAccounts[0].UniqueId $azureStorageAccountCustomId1
+		Write-Debug $azureStorageAccounts[0].Name
+		Assert-AreEqual $azureStorageAccounts[0].Name $azureStorageAccountCustomId1
 
 		Write-Debug $azureStorageAccounts[0].Type
 		Assert-AreEqual $azureStorageAccounts[0].Type $azureStorageAccountType1
@@ -1023,8 +1027,8 @@ function Test-SetAzureStorageWebAppHyperVSlot
 		Write-Debug $azureStorageAccounts[0].MountPath
 		Assert-AreEqual $azureStorageAccounts[0].MountPath $azureStorageAccountMountPath1
 
-		Write-Debug $azureStorageAccounts[1].UniqueId
-		Assert-AreEqual $azureStorageAccounts[1].UniqueId $azureStorageAccountCustomId2
+		Write-Debug $azureStorageAccounts[1].Name
+		Assert-AreEqual $azureStorageAccounts[1].Name $azureStorageAccountCustomId2
 
 		Write-Debug $azureStorageAccounts[1].Type
 		Assert-AreEqual $azureStorageAccounts[1].Type $azureStorageAccountType2
