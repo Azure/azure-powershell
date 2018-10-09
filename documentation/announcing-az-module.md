@@ -91,7 +91,7 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.ContainerInstance | Az.ContainerInstance* |
 | AzureRM.ContainerRegistry | Az.ContainerRegistry* |
 | AzureRM.DataFactories | Az.DataFactories*** |
-| AzureRM.DataFactoryV2 | Az.FataFactoryV2* |
+| AzureRM.DataFactoryV2 | Az.DataFactoryV2* |
 | AzureRM.DataLakeAnalytics | Az.DataLakeAnalytics |
 | AzureRM.DataLakeStore | Az.DataLakeStore |
 | AzureRM.DataMigration | Az.DataMigration |
