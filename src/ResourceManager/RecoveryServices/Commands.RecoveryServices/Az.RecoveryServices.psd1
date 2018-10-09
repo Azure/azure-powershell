@@ -62,7 +62,8 @@ RequiredAssemblies = '.\AutoMapper.dll',
     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll', 
     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll',
     '.\Microsoft.Azure.Management.RecoveryServices.dll', 
-    '.\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll'
+    '.\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
+    '.\System.Configuration.ConfigurationManager.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
