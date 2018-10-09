@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         {
             if (other.SiteConfig != null)
             {
-                AzureStoragePaths = other.SiteConfig.AzureStorageAccounts.ConvertToWebAppAzureStorageArray();
+                AzureStoragePath = other.SiteConfig.AzureStorageAccounts.ConvertToWebAppAzureStorageArray();
             }
         }
 
@@ -77,6 +77,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         [CmdletParameterBreakingChange("SnapshotInfo", ChangeDescription = "This property is deprecated and will be removed in a future releases.")]
         public string SnapshotInfo { get; set; }
 
-        public WebAppAzureStoragePath[] AzureStoragePaths { get; set; }
+        public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
     }
 }

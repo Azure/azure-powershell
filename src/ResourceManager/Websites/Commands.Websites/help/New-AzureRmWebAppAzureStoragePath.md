@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzureRmWebAppAzureStoragePath [-UniqueId] <String> [-Type] <AzureStorageType> [-AccountName] <String>
+New-AzureRmWebAppAzureStoragePath [-Name <String> [-Type] <AzureStorageType> [-AccountName] <String>
  [-ShareName] <String> [-AccessKey] <String> [-MountPath] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -130,7 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UniqueId
+### -Name
 The identifier of the Azure Storage property.
 Must be unique within the Web App or Slot
 

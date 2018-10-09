@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 result.Properties.Add(
                     new KeyValuePair<string, AzureStorageInfoValue>(
-                        item.UniqueId, 
+                        item.Name, 
                         new AzureStorageInfoValue(
                             item.Type,
                             item.AccountName,
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 var azureStoragePath = new WebAppAzureStoragePath()
                 {
-                    UniqueId = item.Key,
+                    Name = item.Key,
                     AccessKey = item.Value.AccessKey,
                     AccountName = item.Value.AccountName,
                     ShareName = item.Value.ShareName,

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
 {
     public class WebAppAzureStoragePath
     {
-        public string UniqueId { get; set; }
+        public string Name { get; set; }
 
         public AzureStorageType? Type { get; set; }
 
