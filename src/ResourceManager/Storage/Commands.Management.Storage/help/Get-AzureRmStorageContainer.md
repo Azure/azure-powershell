@@ -31,14 +31,14 @@ The **Get-AzureRmStorageContainer** cmdlet gets or lists  Storage blob container
 
 ### Example 1: Get a Storage blob container with Storage account name and container name
 ```
-PS C:\>Get-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" 
+PS C:\>Get-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
 
 This command gets a Storage blob container with Storage account name and container name.
 
 ### Example 2: List  all Storage blob containers of a Storage account
 ```
-PS C:\>Get-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" 
+PS C:\>Get-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 ```
 
 This command lists all Storage blob containers of a Storage account with Storage account name.
@@ -46,7 +46,7 @@ This command lists all Storage blob containers of a Storage account with Storage
 ### Example 3: Get a Storage blob container with Storage account object and container name.
 ```
 PS C:\>$accountObject = Get-AzureRmStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>Get-AzureRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" 
+PS C:\>Get-AzureRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer"
 ```
 
 This command gets a Storage blob container with Storage account object and container name.
@@ -57,7 +57,7 @@ This command gets a Storage blob container with Storage account object and conta
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Container Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, ContainerName
 
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,9 +102,9 @@ Accept wildcard characters: False
 Storage account object
 
 ```yaml
-Type: PSStorageAccount
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Storage Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName
 Aliases: AccountName
 
@@ -142,4 +142,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

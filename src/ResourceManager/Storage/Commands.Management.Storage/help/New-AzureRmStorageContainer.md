@@ -33,7 +33,7 @@ The **New-AzureRmStorageContainer** cmdlet creates a Storage blob container
 
 ### Example 1: Create a Storage blob container with Storage account name and container name, with metadata
 ```
-PS C:\>New-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Metadata @{tag0="value0";tag1="value1";tag2="value2"} 
+PS C:\>New-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Metadata @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
 This command creates a Storage blob container with Storage account name and container name, with metadata.
@@ -52,7 +52,7 @@ This command creates a Storage blob container with Storage account object and co
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +67,9 @@ Accept wildcard characters: False
 Container Metadata
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Container Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, ContainerName
 
@@ -97,9 +97,9 @@ Accept wildcard characters: False
 Container PublicAccess
 
 ```yaml
-Type: PSPublicAccess
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Container, Blob
 
 Required: False
@@ -113,9 +113,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Storage account object
 
 ```yaml
-Type: PSStorageAccount
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Storage Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName
 Aliases: AccountName
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,4 +198,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -25,7 +25,7 @@ The **Get-AzureRmStorageUsage** cmdlet gets the resource usage for Azure Storage
 
 ### Example 1: Get the storage resources usage of specified location
 ```
-PS C:\>Get-AzureRmStorageUsage -Location "US West"
+PS C:\>Get-AzureRmStorageUsage -Location 'West US'
 ```
 
 This command gets the Storage resources usage of of specified location under the current subscription.
@@ -52,9 +52,9 @@ Indicate to get Storage resources usage on the specified location.
 If not specified, will get Storage resources usage on all locations under the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

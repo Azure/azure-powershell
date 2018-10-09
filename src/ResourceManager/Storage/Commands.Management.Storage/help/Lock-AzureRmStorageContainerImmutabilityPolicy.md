@@ -81,9 +81,9 @@ This command locks ImmutabilityPolicy of a Storage blob container, with Immutabi
 Storage container object
 
 ```yaml
-Type: PSContainer
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSContainer
 Parameter Sets: ContainerObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Container Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName, AccountObject
 Aliases: N
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Immutability policy etag.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName, AccountObject, ContainerObject
 Aliases: IfMatch
 
@@ -141,9 +141,9 @@ Accept wildcard characters: False
 Force to remove the ImmutabilityPolicy.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ImmutabilityPolicy Object to Remove
 
 ```yaml
-Type: PSImmutabilityPolicy
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy
 Parameter Sets: ImmutabilityPolicyObject
 Aliases: ImmutabilityPolicy
 
@@ -171,9 +171,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -186,9 +186,9 @@ Accept wildcard characters: False
 Storage account object
 
 ```yaml
-Type: PSStorageAccount
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Storage Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountName
 Aliases: AccountName
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -232,7 +232,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -258,4 +258,3 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy
 ## NOTES
 
 ## RELATED LINKS
-

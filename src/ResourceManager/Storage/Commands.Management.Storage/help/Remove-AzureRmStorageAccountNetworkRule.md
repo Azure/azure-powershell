@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmStorageAccountNetworkRule
 
 ## SYNOPSIS
-Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
+Removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
 
 ## SYNTAX
 
