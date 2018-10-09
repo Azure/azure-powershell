@@ -14,19 +14,15 @@
 //
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSExpressRouteGatewayAutoscaleConfiguration
+    public class PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds Bounds { get; set; }
+        public int MinBounds { get; set; }
 
-        [JsonIgnore]
-        public string BoundsText
-        {
-            get { return JsonConvert.SerializeObject(Bounds, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int MaxBounds { get; set; }
     }
 }

@@ -816,6 +816,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteGateway, MNM.ExpressRouteGateway>();
                 cfg.CreateMap<CNM.PSExpressRouteConnection, MNM.ExpressRouteConnection>();
                 cfg.CreateMap<CNM.PSExpressRouteGatewayAutoscaleConfiguration, MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration>();
+                cfg.CreateMap<CNM.PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds, MNM.ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitPeeringId, MNM.ExpressRouteCircuitPeeringId>();
 
                 cfg.CreateMap<MNM.VirtualWAN, CNM.PSVirtualWan>();
@@ -831,6 +832,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteGateway, CNM.PSExpressRouteGateway>();
                 cfg.CreateMap<MNM.ExpressRouteConnection, CNM.PSExpressRouteConnection>();
                 cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration, CNM.PSExpressRouteGatewayAutoscaleConfiguration>();
+                cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds, CNM.PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeeringId, CNM.PSExpressRouteCircuitPeeringId>();
 
                 // Azure Firewalls
