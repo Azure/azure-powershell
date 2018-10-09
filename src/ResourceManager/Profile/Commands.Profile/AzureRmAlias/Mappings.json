@@ -875,6 +875,26 @@
     "Set-AzEventHubGeoDRConfigurationFailOver": "Set-AzureRmEventHubGeoDRConfigurationFailOver",
     "Test-AzEventHubName": "Test-AzureRmEventHubName"
   },
+  "Az.FrontDoor": {
+    "New-AzFrontDoor": "New-AzureRmFrontDoor",
+    "Get-AzFrontDoor": "Get-AzureRmFrontDoor",
+    "Set-AzFrontDoor": "Set-AzureRmFrontDoor",
+    "Remove-AzFrontDoor": "Remove-AzureRmFrontDoor",
+    "New-AzFrontDoorRoutingRuleObject": "New-AzureRmFrontDoorRoutingRuleObject",
+    "New-AzFrontDoorBackendObject": "New-AzureRmFrontDoorBackendObject",
+    "New-AzFrontDoorBackendPoolObject": "New-AzureRmFrontDoorBackendPoolObject",
+    "New-AzFrontDoorFrontendEndpointObject": "New-AzureRmFrontDoorFrontendEndpointObject",
+    "New-AzFrontDoorHealthProbeSettingObject": "New-AzureRmFrontDoorHealthProbeSettingObject",
+    "New-AzFrontDoorLoadBalancingSettingObject": "New-AzureRmFrontDoorLoadBalancingSettingObject",
+    "New-AzFrontDoorMatchConditionObject": "New-AzureRmFrontDoorMatchConditionObject",
+    "New-AzFrontDoorCustomRuleObject": "New-AzureRmFrontDoorCustomRuleObject",
+    "New-AzFrontDoorManagedRuleObject": "New-AzureRmFrontDoorManagedRuleObject",
+    "New-AzFrontDoorFireWallPolicy": "New-AzureRmFrontDoorFireWallPolicy",
+    "Get-AzFrontDoorFireWallPolicy": "Get-AzureRmFrontDoorFireWallPolicy",
+    "Set-AzFrontDoorFireWallPolicy": "Set-AzureRmFrontDoorFireWallPolicy",
+    "Remove-AzFrontDoorFireWallPolicy": "Remove-AzureRmFrontDoorFireWallPolicy",
+    "New-AzFrontDoorRuleGroupOverrideObject": "New-AzureRmFrontDoorRuleGroupOverrideObject"
+  },
   "Az.HDInsight": {
     "Get-AzHDInsightJob": "Get-AzureRmHDInsightJob",
     "New-AzHDInsightSqoopJobDefinition": "New-AzureRmHDInsightSqoopJobDefinition",
