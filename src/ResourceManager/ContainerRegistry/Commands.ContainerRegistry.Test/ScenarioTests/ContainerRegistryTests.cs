@@ -34,21 +34,21 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureContainerRegistry()
+        public void TestContainerReg()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistry");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureContainerRegistryCredential()
+        public void TestContainerRegCredential()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryCredential");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureContainerRegistryNameAvailability()
+        public void TestContainerRegNameAvailability()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryNameAvailability");
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
-        public void TestAzureContainerRegistryReplication()
+        public void TestContainerRegReplication()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryReplication");
         }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
-        public void TestAzureContainerRegistryWebhook()
+        public void TestContainerRegWebhook()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryWebhook");
         }
