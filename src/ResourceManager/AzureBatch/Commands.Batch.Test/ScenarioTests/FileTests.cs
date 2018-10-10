@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Test succeeds locally but fails on Jenkins. Need to investigate failure.")]
+        [Fact(Skip = "Successful re-recording, but fails in playback. See issue https://github.com/Azure/azure-powershell/issues/7512")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestGetNodeFileContentByTask()
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the headers' error. Unable to reproduce when recording.")]
+        [Fact(Skip = "Successful re-recording, but fails in playback. See issue https://github.com/Azure/azure-powershell/issues/7512")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestGetNodeFileContentByComputeNode()

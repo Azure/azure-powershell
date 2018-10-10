@@ -89,7 +89,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact(Skip = "This test only applies to desktop")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the headers' error. Unable to reproduce when recording.")]
+        [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]

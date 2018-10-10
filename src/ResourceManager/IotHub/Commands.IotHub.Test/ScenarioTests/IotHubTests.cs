@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 #if NETSTANDARD
         [Fact(Skip = "Needs re-recorded")]
 #else
-        [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the headers' error. Unable to reproduce when recording.")]
+        [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         [Fact(Skip = "Requires New-SelfSignedCertificate, unavailable for PowerShell Core")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the headers' error. Unable to reproduce when recording.")]
+        [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
