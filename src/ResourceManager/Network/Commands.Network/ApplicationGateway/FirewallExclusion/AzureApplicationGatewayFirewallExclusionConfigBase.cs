@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The variable to be excluded.")]
         [ValidateNotNullOrEmpty]
-        public string MatchVariable { get; set; }
+        public string Variable { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.")]
         [ValidateNotNullOrEmpty]
-        public string SelectorMatchOperator { get; set; }
+        public string Operator { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             return new PSApplicationGatewayFirewallExclusion()
             {
-                MatchVariable = this.MatchVariable,
-                SelectorMatchOperator = this.SelectorMatchOperator,
+                MatchVariable = this.Variable,
+                SelectorMatchOperator = this.Operator,
                 Selector = this.Selector
             };
         }

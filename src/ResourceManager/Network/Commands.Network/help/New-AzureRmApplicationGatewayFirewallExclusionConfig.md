@@ -13,7 +13,7 @@ Creates a new exclusion rule list for application gateway waf
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayFirewallExclusionConfig -MatchVariable <String> -SelectorMatchOperator <String>
+New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable <String> -Operator <String>
  -Selector <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **New-AzureRmApplicationGatewayFirewallExclusionConfig** cmdlet a new exclus
 
 ### Example 1
 ```powershell
-PS C:\> $exclusion1 = New-AzureRmApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "StartsWith" -Selector "xyz"
+PS C:\> $exclusion1 = New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
 ```
 
 This command creates a new exclusion rule lists configuration for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion list configuration is saved in $exclusion1.
@@ -46,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MatchVariable
+### -Variable
 The variable to be excluded.
 
 ```yaml
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Selector
-When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
+When variable is a collection, operator used to specify which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
@@ -76,8 +76,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SelectorMatchOperator
-When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
+### -Operator
+When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
