@@ -32,7 +32,7 @@ This example retrieves all available FQDN Tags.
 ### 2:  Use first available FQDN Tag in an Application Rule
 ```
 $fqdnTags = Get-AzureRmFirewallFqdnTag
-New-AzureRmFirewallApplicationRule -Name AR -SourceAddress * -FqdnTag $fqdnTags[0]
+New-AzureRmFirewallApplicationRule -Name AR -SourceAddress * -FqdnTag $fqdnTags[0].FqdnTagName
 ```
 
 This example creates a Firewall Application Rule using the first available FQDN Tag
