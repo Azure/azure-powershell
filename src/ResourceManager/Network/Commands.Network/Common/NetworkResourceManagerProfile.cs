@@ -850,6 +850,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
 
+                // Azure Firewall FQDN Tags
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureFirewallFqdnTag, MNM.AzureFirewallFqdnTag>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
+
                 // Interface endpoint
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSInterfaceEndpoint, MNM.InterfaceEndpoint>();
