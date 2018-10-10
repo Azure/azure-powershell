@@ -85,10 +85,14 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FlowLog");
         }
 
-        [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the response' error. Unable to reproduce when recording.")]
+#if NETSTANDARD
+        [Fact(Skip = "This test only applies to desktop")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the headers' error. Unable to reproduce when recording.")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestConnectivityCheck()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectivityCheck");

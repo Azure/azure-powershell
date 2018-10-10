@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -31,18 +30,16 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs re-recorded")]
+#else
         [Fact(Skip = "Issue with version of Newtonsoft.Json used for tests causing 'Unable to deserialize the headers' error. Unable to reproduce when recording.")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubRoutingLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTestWorkflow(
-                 _logger,
-                () => { return new[] { "Test-AzureRmIotHubRoutingLifecycle" }; },
-                null,
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubRoutingLifecycle");
         }
     }
 }
