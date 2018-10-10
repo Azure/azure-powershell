@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Provides a database audit policy model for the given database
         /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroup, string serverName, string databaseName, out DatabaseAuditingPolicyModel model)
+        internal void GetDatabaseAuditingPolicy(string resourceGroup, string serverName, string databaseName, out DatabaseAuditingPolicyModel model)
         {
             DatabaseAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, out policy);
@@ -125,43 +125,53 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Provides a database audit policy model for the given database
         /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroup, string serverName, string databaseName, out DatabaseBlobAuditingPolicyModel model)
+        internal void GetDatabaseBlobAuditingPolicy(string resourceGroup, string serverName, string databaseName, DatabaseBlobAuditingSettingsModel model)
         {
-            BlobAuditingPolicy policy;
+            Management.Sql.Models.DatabaseBlobAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, out policy);
-            model = new DatabaseBlobAuditingPolicyModel();
             ModelizeDatabaseAuditPolicy(policy, model);
-            model.AuditType = AuditType.Blob;
             model.ResourceGroupName = resourceGroup;
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
         }
 
-        /// <summary>
-        /// Provides a database audit policy model for the given database
-        /// </summary>
-        public void GetDatabaseBlobAuditingPolicyV2(string resourceGroup, string serverName, string databaseName, out DatabaseBlobAuditingSettingsModel model)
+        internal void GetDatabaseExtendedBlobAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out DatabaseExtendedBlobAuditingSettingsModel model)
         {
-            BlobAuditingPolicy policy;
-            model = new DatabaseBlobAuditingSettingsModel();
-            Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, out policy);
+            Management.Sql.Models.ExtendedDatabaseBlobAuditingPolicy policy;
+            Communicator.GetExtendedDatabaseAuditingPolicy(resourceGroupName, serverName, databaseName, out policy);
+            model = new DatabaseExtendedBlobAuditingSettingsModel()
+            {
+                ResourceGroupName = resourceGroupName,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                PredicateExpression = string.IsNullOrEmpty(policy.PredicateExpression) ? policy.PredicateExpression : null
+            };
             ModelizeDatabaseAuditPolicy(policy, model);
-            model.ResourceGroupName = resourceGroup;
-            model.ServerName = serverName;
-            model.DatabaseName = databaseName;
         }
 
         /// <summary>
         /// Provides a database server audit policy model for the given database
         /// </summary>
-        public void GetServerBlobAuditingPolicyV2(string resourceGroup, string serverName, out ServerBlobAuditingSettingsModel model)
+        internal void GetServerBlobAuditingPolicy(string resourceGroup, string serverName, ServerBlobAuditingSettingsModel model)
         {
-            BlobAuditingPolicy policy;
-            model = new ServerBlobAuditingSettingsModel();
+            Management.Sql.Models.ServerBlobAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, out policy);
             ModelizeServerAuditPolicy(policy, model);
             model.ResourceGroupName = resourceGroup;
             model.ServerName = serverName;
+        }
+
+        internal void GetServerExtendedBlobAuditingPolicy(string resourceGroup, string serverName, out ServerExtendedBlobAuditingSettingsModel model)
+        {
+            Management.Sql.Models.ExtendedServerBlobAuditingPolicy policy;
+            Communicator.GetExtendedServerAuditingPolicy(resourceGroup, serverName, out policy);
+            model = new ServerExtendedBlobAuditingSettingsModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                PredicateExpression = string.IsNullOrEmpty(policy.PredicateExpression) ? policy.PredicateExpression : null
+            };
+            ModelizeServerAuditPolicy(policy, model);
         }
 
         /// <summary>
@@ -185,20 +195,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         }
 
         /// <summary>
-        /// Provides a database server audit policy model for the given database
-        /// </summary>
-        public void GetServerAuditingPolicy(string resourceGroup, string serverName, out ServerBlobAuditingPolicyModel model)
-        {
-            BlobAuditingPolicy policy;
-            model = new ServerBlobAuditingPolicyModel();
-            Communicator.GetServerAuditingPolicy(resourceGroup, serverName, out policy);
-            ModelizeServerAuditPolicy(policy, model);
-            model.AuditType = AuditType.Blob;
-            model.ResourceGroupName = resourceGroup;
-            model.ServerName = serverName;
-        }
-
-        /// <summary>
         /// Transforms the given database policy object to its cmdlet model representation
         /// </summary>
         private DatabaseAuditingPolicyModel ModelizeDatabaseAuditPolicy(DatabaseAuditingPolicy policy)
@@ -213,60 +209,67 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return dbPolicyModel;
         }
 
-        private void ModelizeDatabaseAuditPolicy(BlobAuditingPolicy policy, DatabaseBlobAuditingSettingsModel dbPolicyModel)
+        private void ModelizeDatabaseAuditPolicy(dynamic policy, DatabaseBlobAuditingSettingsModel dbPolicyModel)
         {
-            var properties = policy.Properties;
-            dbPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse, properties.StorageAccountSubscriptionId);
-            ModelizeAuditActionGroups(dbPolicyModel, properties.AuditActionsAndGroups);
-            ModelizeAuditActions(dbPolicyModel, properties.AuditActionsAndGroups);
-            ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays);
+            dbPolicyModel.AuditState = ModelizeAuditState(policy.State.ToString());
+            ModelizeStorageInfo(dbPolicyModel, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId);
+            ModelizeAuditActionGroups(dbPolicyModel, policy.AuditActionsAndGroups);
+            ModelizeAuditActions(dbPolicyModel, policy.AuditActionsAndGroups);
+            ModelizeRetentionInfo(dbPolicyModel, policy.RetentionDays);
         }
 
         private void ModelizeAuditActionGroups(BaseBlobAuditingPolicyModel policyModel, IEnumerable<string> auditActionsAndGroups)
         {
             var groups = new List<AuditActionGroups>();
-            auditActionsAndGroups.ForEach(item =>
+            if (auditActionsAndGroups != null)
             {
-                AuditActionGroups group;
-                if (Enum.TryParse(item, true, out group))
+                auditActionsAndGroups.ForEach(item =>
                 {
-                    groups.Add(group);
-                }
-            });
+                    AuditActionGroups group;
+                    if (Enum.TryParse(item, true, out group))
+                    {
+                        groups.Add(group);
+                    }
+                });
+            }
+
             policyModel.AuditActionGroup = groups.ToArray();
         }
 
         private void ModelizeAuditActions(DatabaseBlobAuditingSettingsModel policyModel, IEnumerable<string> auditActionsAndGroups)
         {
             var actions = new List<string>();
-            auditActionsAndGroups.ForEach(item =>
+            if (auditActionsAndGroups != null)
             {
-                AuditActionGroups group;
-                if (!Enum.TryParse(item, true, out group))
+                auditActionsAndGroups.ForEach(item =>
                 {
-                    actions.Add(item);
-                }
-            });
+                    AuditActionGroups group;
+                    if (!Enum.TryParse(item, true, out group))
+                    {
+                        actions.Add(item);
+                    }
+                });
+            }
+
             policyModel.AuditAction = actions.ToArray();
         }
 
-        private void ModelizeRetentionInfo(BaseBlobAuditingPolicyModel model, int retentionDays)
+        private void ModelizeRetentionInfo(BaseBlobAuditingPolicyModel model, int? retentionDays)
         {
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint, bool isSecondary, string storageAccountSubscriptionId)
+        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint, bool? isSecondary, Guid? storageAccountSubscriptionId)
         {
             if (string.IsNullOrEmpty(storageEndpoint))
             {
                 return;
             }
-            var accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase)? 8 : 7; // https:// or http://
+            var accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
             var accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
-            model.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex- accountNameStartIndex);
-            model.StorageKeyType = (isSecondary) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
-            model.StorageAccountSubscriptionId = Guid.Parse(storageAccountSubscriptionId);
+            model.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex - accountNameStartIndex);
+            model.StorageKeyType = (isSecondary ?? false) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
+            model.StorageAccountSubscriptionId = storageAccountSubscriptionId ?? Guid.Empty;
         }
 
         /// <summary>
@@ -286,13 +289,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Transforms the given server policy object to its cmdlet model representation
         /// </summary>
-        private void ModelizeServerAuditPolicy(BlobAuditingPolicy policy, ServerBlobAuditingSettingsModel serverPolicyModel)
+        private void ModelizeServerAuditPolicy(dynamic policy, ServerBlobAuditingSettingsModel serverPolicyModel)
         {
-            var properties = policy.Properties;
-            serverPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse, properties.StorageAccountSubscriptionId);
-            ModelizeAuditActionGroups(serverPolicyModel, properties.AuditActionsAndGroups);
-            ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays);
+            serverPolicyModel.AuditState = ModelizeAuditState(policy.State.ToString());
+            ModelizeStorageInfo(serverPolicyModel, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId);
+            ModelizeAuditActionGroups(serverPolicyModel, policy.AuditActionsAndGroups);
+            ModelizeRetentionInfo(serverPolicyModel, policy.RetentionDays);
         }
 
         /// <summary>
@@ -301,7 +303,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         private static AuditStateType ModelizeAuditState(string auditState)
         {
             AuditStateType value;
-            Enum.TryParse(auditState, true, out value);           
+            Enum.TryParse(auditState, true, out value);
             return value;
         }
 
@@ -381,8 +383,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
-            var parameters = PolicizeBlobAuditingModel(model, storageEndpointSuffix);
-            Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, parameters);
+            Management.Sql.Models.DatabaseBlobAuditingPolicy policy = new Management.Sql.Models.DatabaseBlobAuditingPolicy();
+            PolicizeBlobAuditingModel(model, storageEndpointSuffix, policy);
+            Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, policy);
         }
 
         /// <summary>
@@ -394,7 +397,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             Communicator.SetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, parameters);
         }
 
-
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
@@ -404,8 +406,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
-            var parameters = PolicizeBlobAuditingModel(model, storageEndpointSuffix);
-            Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, parameters);
+            var policy = new Management.Sql.Models.DatabaseBlobAuditingPolicy();
+            PolicizeBlobAuditingModel(model, storageEndpointSuffix, policy);
+            Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, policy);
+        }
+
+        internal void SetDatabaseExtendedBlobAuditingPolicy(DatabaseExtendedBlobAuditingSettingsModel model, string storageEndpointSuffix)
+        {
+            if (!IsDatabaseInServiceTierForPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName))
+            {
+                throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
+            }
+
+            var policy = new Management.Sql.Models.ExtendedDatabaseBlobAuditingPolicy
+            {
+                PredicateExpression = model.PredicateExpression
+            };
+            PolicizeBlobAuditingModel(model, storageEndpointSuffix, policy);
+            Communicator.SetExtendedDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, policy);
         }
 
         /// <summary>
@@ -413,10 +431,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void SetServerAuditingPolicy(ServerBlobAuditingSettingsModel model, string storageEndpointSuffix)
         {
-            var parameters = PolicizeBlobAuditingModel(model, storageEndpointSuffix);
-            Communicator.SetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, parameters);
+            var policy = new Management.Sql.Models.ServerBlobAuditingPolicy();
+            PolicizeBlobAuditingModel(model, storageEndpointSuffix, policy);
+            Communicator.SetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, policy);
         }
 
+        internal void SetServerExtendedAuditingPolicy(ServerExtendedBlobAuditingSettingsModel model, string storageEndpointSuffix)
+        {
+            var policy = new Management.Sql.Models.ExtendedServerBlobAuditingPolicy
+            {
+                PredicateExpression = model.PredicateExpression
+            };
+            PolicizeBlobAuditingModel(model, storageEndpointSuffix, policy);
+            Communicator.SetExtendedServerAuditingPolicy(model.ResourceGroupName, model.ServerName, policy);
+        }
 
         private bool IsDatabaseInServiceTierForPolicy(string resourceGroupName, string serverName, string databaseName)
         {
@@ -461,30 +489,27 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         /// <param name="model">The AuditingPolicy model object</param>
         /// <param name="storageEndpointSuffix">The suffix of the storage endpoint</param>
+        /// <param name="policy">The policy to be modified</param>
         /// <returns>The communication model object</returns>
-        private BlobAuditingCreateOrUpdateParameters PolicizeBlobAuditingModel(BaseBlobAuditingPolicyModel model, string storageEndpointSuffix)
+        private void PolicizeBlobAuditingModel(BaseBlobAuditingPolicyModel model, string storageEndpointSuffix, dynamic policy)
         {
-            var updateParameters = new BlobAuditingCreateOrUpdateParameters();
-            var properties = new BlobAuditingProperties();
-            updateParameters.Properties = properties;
-            properties.State = model.AuditState.ToString();
+            policy.State = model.AuditState == AuditStateType.Disabled ? Management.Sql.Models.BlobAuditingPolicyState.Disabled :
+                Management.Sql.Models.BlobAuditingPolicyState.Enabled;
             if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
-                properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
-                properties.StorageAccountAccessKey = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
+                policy.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
+                policy.StorageAccountAccessKey = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
                     ExtractStorageAccountKey(model.StorageAccountName, model.StorageKeyType) :
                     ExtractStorageAccountKey(model.StorageAccountSubscriptionId, model.StorageAccountName, model.StorageKeyType);
-                properties.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
-                properties.StorageAccountSubscriptionId = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
-                    ExtractStorageAccountSubscriptionId(model.StorageAccountName) : model.StorageAccountSubscriptionId.ToString();
+                policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
+                policy.StorageAccountSubscriptionId = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
+                    Guid.Parse(ExtractStorageAccountSubscriptionId(model.StorageAccountName)) : model.StorageAccountSubscriptionId;
             }
-            properties.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);
+            policy.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);
             if (model.RetentionInDays != null)
             {
-                properties.RetentionDays = (int) model.RetentionInDays;
+                policy.RetentionDays = (int)model.RetentionInDays;
             }
-
-            return updateParameters;
         }
 
         private static IList<string> ExtractAuditActionsAndGroups(BaseBlobAuditingPolicyModel model)
@@ -495,7 +520,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 actionsAndGroups.AddRange(dbPolicyModel.AuditAction);
             }
-            
+
             model.AuditActionGroup.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
             if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
             {
@@ -646,7 +671,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountKey(string storageName, StorageKeyKind storageKeyKind)
         {
-                return AzureCommunicator.GetStorageKeys(storageName)[storageKeyKind];
+            return AzureCommunicator.GetStorageKeys(storageName)[storageKeyKind];
         }
 
         internal void ClearStorageDetailsCache()
