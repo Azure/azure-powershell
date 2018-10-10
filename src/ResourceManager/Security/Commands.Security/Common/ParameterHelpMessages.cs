@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string SubscriptionId = "Subscription ID.";
         public const string ResourceGroupName = "Resource group name.";
         public const string ResourceName = "Resource name.";
-        public const string ResourceId = "Resource ID.";
+        public const string ResourceId = "ID of the security resource that you want to invoke the command on.";
         public const string Scope = "Scope.";
         public const string Kind = "Kind.";
         public const string InputObject = "Input Object.";
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #region JIT Network Access Policies
 
-        public const string VirutalMachines = "Virutal Machines.";
+        public const string VirutalMachines = "Virtual Machines.";
 
         #endregion
     }

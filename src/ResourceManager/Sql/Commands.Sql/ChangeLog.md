@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue where some backup cmdlets would not recognize the current azure subscription
 
 ## Version 4.11.3
 * Fixed issue with default resource groups not being set.

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Allow any string as Size parameter going forward. Add P5 in PSArgumentCompleter popup
 
 ## Version 5.0.6
 * Updated Insights dependency.

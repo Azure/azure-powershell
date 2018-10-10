@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.6.1-preview
 * Shared Gallery cmdlets
 
 ## Version 5.6.0
