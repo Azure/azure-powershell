@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Backup.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the AzureStack backup operator module.  This module allows operators to monitor and manage backups.
 
 ## Azs.Backup.Admin Cmdlets
 ### [Get-AzsBackup](Get-AzsBackup.md)

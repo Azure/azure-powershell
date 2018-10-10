@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name or Id
+The name or id of the subscription that the context should be set to. This parameter has aliases to -SubscriptionName and -SubscriptionId, so, for clarity, either of these can be used instead of -Subscription when specifying name and id, respectively.
 
 ```yaml
 Type: System.String

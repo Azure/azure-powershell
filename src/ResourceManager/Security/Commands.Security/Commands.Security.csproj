@@ -125,6 +125,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="AzureRM.Security.psd1" />
+    <None Include="ChangeLog.md" />
     <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />

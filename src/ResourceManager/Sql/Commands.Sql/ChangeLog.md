@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.11.5
+* Fixed issue where some backup cmdlets would not recognize the current azure subscription
+
 ## Version 4.11.3
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
