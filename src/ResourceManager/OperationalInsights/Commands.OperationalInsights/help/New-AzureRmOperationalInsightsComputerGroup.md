@@ -199,10 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Category (ByPropertyName), DisplayName (ByPropertyName), Query (ByPropertyName), ResourceGroupName (ByPropertyName), SavedSearchId (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ### System.Int64
-Parameters: Version (ByPropertyName)
 
 ## OUTPUTS
 

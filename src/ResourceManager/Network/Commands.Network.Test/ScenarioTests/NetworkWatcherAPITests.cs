@@ -61,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VerifyIPFlow");
         }
 
-        [Fact(Skip = "There was a bug in API. After fix is deployed, we need to rerecord test.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestPacketCapture()
@@ -69,8 +69,8 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PacketCapture");
         }
 
-        [Fact(Skip = "Rerecord tests")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestTroubleshoot()
         {
@@ -85,7 +85,12 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FlowLog");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "This test only applies to desktop")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestConnectivityCheck()

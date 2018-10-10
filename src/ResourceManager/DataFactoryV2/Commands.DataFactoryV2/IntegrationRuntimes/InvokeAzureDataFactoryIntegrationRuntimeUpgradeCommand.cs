@@ -20,11 +20,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsLifecycle.Invoke,
-        Constants.IntegrationRuntimeUpgrade,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeUpgrade",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class InvokeAzureDataFactoryIntegrationRuntimeUpgradeCommand : IntegrationRuntimeCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]

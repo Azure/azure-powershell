@@ -21,11 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightConfigValues),
-    OutputType(
-        typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValues"),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
         private Dictionary<string, Hashtable> _configurations;

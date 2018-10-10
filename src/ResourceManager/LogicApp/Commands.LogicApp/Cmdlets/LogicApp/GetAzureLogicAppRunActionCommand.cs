@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the action in the workflow run
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppRunAction"), OutputType(typeof(WorkflowRunAction))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicAppRunAction"), OutputType(typeof(WorkflowRunAction))]
     public class GetAzureLogicAppRunActionCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters

@@ -28,8 +28,9 @@ namespace StaticAnalysis.SignatureVerifier
 {
     public class SignatureVerifier : IStaticAnalyzer
     {
+#if !NETSTANDARD
         private AppDomain _appDomain;
-        AnalysisLogger _logger;
+#endif
         string signatureIssueReportLoggerName;
         public SignatureVerifier()
         {
@@ -132,7 +133,12 @@ namespace StaticAnalysis.SignatureVerifier
                             {
                                 issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFile, "AssemblyFileName");
                                 processedHelpFiles.Add(assemblyFile);
-                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                                var proxy =
+#if !NETSTANDARD
+                                    EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#else
+                                    new CmdletLoader();
+#endif
                                 var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
                                 var cmdlets = module.Cmdlets;
 
@@ -296,7 +302,9 @@ namespace StaticAnalysis.SignatureVerifier
                                     }
                                 }
 
+#if !NETSTANDARD
                                 AppDomain.Unload(_appDomain);
+#endif
                                 issueLogger.Decorator.Remove("AssemblyFileName");
                             }
                         }

@@ -16,7 +16,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsData.Update, "AzureRmReservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
     public class PatchReservation : AzureReservationsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNull]
         public PSReservation Reservation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of Reservation")]
+        [ValidateNotNull]
+        public string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
@@ -68,11 +72,11 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     string subscriptionId = ValidateAndGetAppliedSubscription();
                     PreRegister(subscriptionId);
 
-                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility);
+                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility, Name);
                 }
                 else
                 {
-                    Patch = new Patch(AppliedScopeType, instanceFlexibility: InstanceFlexibility);
+                    Patch = new Patch(AppliedScopeType, instanceFlexibility: InstanceFlexibility, name: Name);
                 }
                 var response = new PSReservation(AzureReservationAPIClient.Reservation.Update(ReservationOrderId.ToString(), ReservationId.ToString(), Patch));
                 WriteObject(response);

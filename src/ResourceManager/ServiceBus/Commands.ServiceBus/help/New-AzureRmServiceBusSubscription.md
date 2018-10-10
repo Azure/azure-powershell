@@ -319,7 +319,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutoDeleteOnIdle (ByPropertyName), DefaultMessageTimeToLive (ByPropertyName), ForwardDeadLetteredMessagesTo (ByPropertyName), ForwardTo (ByPropertyName), LockDuration (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

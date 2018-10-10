@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Connection for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationConnectionFieldValue", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationConnectionFieldValue", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
     [OutputType(typeof(Connection))]
     public class SetAzureAutomationConnectionFieldValue : AzureAutomationBaseCmdlet
     {

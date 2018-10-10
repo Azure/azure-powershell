@@ -143,6 +143,27 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<PSRouteMetadata, RouteProperties>(psRouteProperty);
         }
 
+        public static IEnumerable<PSRouteProperties> ToPSRouteProperties(IEnumerable<RouteProperties> routeProperties)
+        {
+            return ConvertObject<IEnumerable<RouteProperties>, IEnumerable<PSRouteProperties>>(routeProperties);
+        }
+
+        public static IEnumerable<PSRouteProperties> ToPSRouteProperties(IEnumerable<MatchedRoute> routes)
+        {
+            var psRouteProperties = new List<PSRouteProperties>();
+            foreach (var route in routes)
+            {
+                psRouteProperties.Add(ConvertObject<RouteProperties, PSRouteProperties>(route.Properties));
+            }
+
+            return psRouteProperties;
+        }
+
+        public static PSRouteMetadata ToPSRouteMetadata(RouteProperties routeProperties)
+        {
+            return ConvertObject<RouteProperties, PSRouteMetadata>(routeProperties);
+        }
+
         public static FallbackRouteProperties ToFallbackRouteProperty(PSFallbackRouteMetadata psRouteProperty)
         {
             return ConvertObject<PSFallbackRouteMetadata, FallbackRouteProperties>(psRouteProperty);
@@ -220,6 +241,51 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return new TagsResource(tags);
         }
 
+        public static PSRoutingEventHubEndpoint ToPSRoutingEventHubEndpoint(RoutingEventHubProperties routingEventHubProperties)
+        {
+            return ConvertObject<RoutingEventHubProperties, PSRoutingEventHubEndpoint>(routingEventHubProperties);
+        }
+
+        public static PSRoutingServiceBusQueueEndpoint ToPSRoutingServiceBusQueueEndpoint(RoutingServiceBusQueueEndpointProperties routingServiceBusQueueEndpointProperties)
+        {
+            return ConvertObject<RoutingServiceBusQueueEndpointProperties, PSRoutingServiceBusQueueEndpoint>(routingServiceBusQueueEndpointProperties);
+        }
+
+        public static PSRoutingServiceBusTopicEndpoint ToPSRoutingServiceBusTopicEndpoint(RoutingServiceBusTopicEndpointProperties routingServiceBusTopicEndpointProperties)
+        {
+            return ConvertObject<RoutingServiceBusTopicEndpointProperties, PSRoutingServiceBusTopicEndpoint>(routingServiceBusTopicEndpointProperties);
+        }
+
+        public static PSRoutingStorageContainerEndpoint ToPSRoutingStorageContainerEndpoint(RoutingStorageContainerProperties routingStorageContainerProperties)
+        {
+            return ConvertObject<RoutingStorageContainerProperties, PSRoutingStorageContainerEndpoint>(routingStorageContainerProperties);
+        }
+
+        public static IEnumerable<PSRoutingEventHubProperties> ToPSRoutingEventHubProperties(IEnumerable<RoutingEventHubProperties> routingEventHubProperties)
+        {
+            return ConvertObject<IEnumerable<RoutingEventHubProperties>, IEnumerable<PSRoutingEventHubProperties>>(routingEventHubProperties.ToList());
+        }
+
+        public static IEnumerable<PSRoutingServiceBusQueueEndpointProperties> ToPSRoutingServiceBusQueueEndpointProperties(IEnumerable<RoutingServiceBusQueueEndpointProperties> routingServiceBusQueueEndpointProperties)
+        {
+            return ConvertObject<IEnumerable<RoutingServiceBusQueueEndpointProperties>, IEnumerable<PSRoutingServiceBusQueueEndpointProperties>>(routingServiceBusQueueEndpointProperties.ToList());
+        }
+
+        public static IEnumerable<PSRoutingServiceBusTopicEndpointProperties> ToPSRoutingServiceBusTopicEndpointProperties(IEnumerable<RoutingServiceBusTopicEndpointProperties> routingServiceBusTopicEndpointProperties)
+        {
+            return ConvertObject<IEnumerable<RoutingServiceBusTopicEndpointProperties>, IEnumerable<PSRoutingServiceBusTopicEndpointProperties>>(routingServiceBusTopicEndpointProperties.ToList());
+        }
+
+        public static IEnumerable<PSRoutingStorageContainerProperties> ToPSRoutingStorageContainerProperties(IEnumerable<RoutingStorageContainerProperties> routingStorageContainerProperties)
+        {
+            return ConvertObject<IEnumerable<RoutingStorageContainerProperties>, IEnumerable<PSRoutingStorageContainerProperties>>(routingStorageContainerProperties.ToList());
+        }
+
+        public static PSTestRouteResult ToPSTestRouteResult(TestRouteResult testRouteResult)
+        {
+            return ConvertObject<TestRouteResult, PSTestRouteResult>(testRouteResult);
+        }
+
         public static string GetResourceGroupName(string Id)
         {
             if (string.IsNullOrEmpty(Id)) return null;
@@ -242,6 +308,30 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             Regex r = new Regex(@"(.*?)/certificates/(?<iothubcertificatename>\S+)", RegexOptions.IgnoreCase);
             Match m = r.Match(Id);
             return m.Success ? m.Groups["iothubcertificatename"].Value : null;
+        }
+
+        public static string GetAzureResource(PSEndpointType psEndpointType, string connectionString, string containerName)
+        {
+            if (string.IsNullOrEmpty(connectionString)) return null;
+            Regex r = null;
+            string azureResource = string.Empty;
+            switch (psEndpointType)
+            {
+                case PSEndpointType.EventHub:
+                case PSEndpointType.ServiceBusQueue:
+                case PSEndpointType.ServiceBusTopic:
+                    r = new Regex(@"(.*?)sb://(?<resourceType>\S+).servicebus.windows.net(.*?)EntityPath=(?<name>\S+)", RegexOptions.IgnoreCase);
+                    Match match1 = r.Match(connectionString);
+                    azureResource = match1.Success ? string.Format("{0}/{1}", match1.Groups["resourceType"].Value, match1.Groups["name"].Value) : null;
+                    break;
+                case PSEndpointType.AzureStorageContainer:
+                    r = new Regex(@"(.*?)AccountName=(?<resourceType>\S+);AccountKey=(.*?)", RegexOptions.IgnoreCase);
+                    Match match2 = r.Match(connectionString);
+                    azureResource = match2.Success ? string.Format("{0}/{1}", match2.Groups["resourceType"].Value, containerName) : null;
+                    break;
+            }
+
+            return azureResource;
         }
     }
 }

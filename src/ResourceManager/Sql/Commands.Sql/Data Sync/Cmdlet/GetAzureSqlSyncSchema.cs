@@ -18,8 +18,7 @@ using Microsoft.Azure.Commands.Sql.DataSync.Model;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncSchema",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncFullSchemaModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncSchema",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncFullSchemaModel))]
     public class GetAzureSqlSyncSchema : AzureSqlSyncSchemaCmdletBase
     {
         /// <summary>

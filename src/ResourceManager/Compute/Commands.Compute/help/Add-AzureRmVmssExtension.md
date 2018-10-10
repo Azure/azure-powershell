@@ -240,15 +240,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
-Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: ForceUpdateTag (ByPropertyName), Name (ByPropertyName), Publisher (ByPropertyName), Type (ByPropertyName), TypeHandlerVersion (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Object
-Parameters: ProtectedSetting (ByPropertyName), Setting (ByPropertyName)
 
 ## OUTPUTS
 

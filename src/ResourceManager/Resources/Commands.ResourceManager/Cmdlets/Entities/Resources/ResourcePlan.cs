@@ -44,5 +44,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string Publisher { get; set; }
+
+        /// <summary>
+        /// Gets or sets the plan's version.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Version { get; set; }
     }
 }

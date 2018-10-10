@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuProperties": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuProperty]",
               "Restrictions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuRestriction]",
@@ -524,7 +524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -588,7 +588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
               "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -797,7 +797,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -901,7 +901,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -1131,7 +1131,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -1331,7 +1331,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -1395,7 +1395,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -1533,7 +1533,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
               "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -1611,7 +1611,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -1807,7 +1807,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
                     "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -1934,7 +1934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "NextPageLink": "System.String"
                   },
@@ -2100,7 +2100,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -2238,7 +2238,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
             "GenericTypeArguments": [],
@@ -2385,7 +2385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
                   "GenericTypeArguments": [],
@@ -2502,7 +2502,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -2694,7 +2694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3111,7 +3111,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3340,7 +3340,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3496,7 +3496,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3817,7 +3817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -4536,7 +4536,7 @@
     "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4548,7 +4548,7 @@
     "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder": {
       "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
       "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
         "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -5098,7 +5098,7 @@
     "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5110,7 +5110,7 @@
     "Microsoft.Azure.Commands.Reservations.Models.PSReservation": {
       "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
       "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
         "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",

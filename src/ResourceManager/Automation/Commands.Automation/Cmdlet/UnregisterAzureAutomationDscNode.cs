@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes the dsc node.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationDscNode", SupportsShouldProcess = true)]
+    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscNode", SupportsShouldProcess = true)]
     [OutputType(typeof(DscNode))]
     public class UnregisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {

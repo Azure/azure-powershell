@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Returns a retention policy PS object which can be modified in the PS shell 
     /// and fed to other cmdlets which accept it.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"),
-    OutputType(typeof(RetentionPolicyBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupRetentionPolicyObject"),OutputType(typeof(RetentionPolicyBase))]
     public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
         /// <summary>

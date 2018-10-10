@@ -25,6 +25,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ParentResource
     Passing a backup location will return the list of all backups at that backup location.
 
+.PARAMETER Skip
+    Skip the first N items as specified by the parameter value.
+
+.PARAMETER Top
+    Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
+
 .EXAMPLE
 
     PS C:\> Get-AzsBackup
@@ -93,8 +99,6 @@ function Get-AzsBackup {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
         }
@@ -144,6 +148,7 @@ function Get-AzsBackup {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $BackupAdminClient.'
             $TaskResult = $BackupAdminClient.Backups.ListWithHttpMessagesAsync($ResourceGroupName, $Location)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $BackupAdminClient.'
             $TaskResult = $BackupAdminClient.Backups.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } else {
@@ -175,7 +180,7 @@ function Get-AzsBackup {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and (Get-Member -InputObject $PageResult -Name Page) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
                 $TaskResult = $BackupAdminClient.Backups.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null

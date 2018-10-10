@@ -65,8 +65,6 @@ function Remove-AzsSubscriptionPlan {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}'

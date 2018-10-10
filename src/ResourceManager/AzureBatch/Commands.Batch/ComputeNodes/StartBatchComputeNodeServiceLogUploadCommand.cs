@@ -20,11 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Start, 
-        Constants.AzureBatchComputeNodeServiceLogUpload,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogUpload),         
-         OutputType(typeof(PSStartComputeNodeServiceLogUploadResult))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchComputeNodeServiceLogUpload",SupportsShouldProcess = true,DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogUpload),OutputType(typeof(PSStartComputeNodeServiceLogUploadResult))]
     public class StartBatchComputeNodeServiceLogUploadCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
         public void Dispose()
         {
             SynchronizationContext.SetSynchronizationContext(_synchronizationContext);
-            _controller.RunPsTest("Destroy-Test-ResourceGroup " + _resourceGroupName);
+            _controller?.RunPsTest("Destroy-Test-ResourceGroup " + _resourceGroupName);
         }
 
         private string GenerateName()

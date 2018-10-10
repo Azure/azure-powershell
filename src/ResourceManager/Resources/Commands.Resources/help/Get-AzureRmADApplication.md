@@ -231,10 +231,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
 ### System.String
-Parameters: DisplayName (ByPropertyName), DisplayNameStartWith (ByPropertyName), IdentifierUri (ByPropertyName)
 
 ## OUTPUTS
 

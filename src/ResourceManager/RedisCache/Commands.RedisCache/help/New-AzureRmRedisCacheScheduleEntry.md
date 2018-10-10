@@ -110,10 +110,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DayOfWeek (ByPropertyName)
 
 ### System.Int32
-Parameters: StartHourUtc (ByPropertyName)
 
 ### System.Nullable`1[[System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

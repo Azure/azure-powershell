@@ -154,6 +154,10 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListAlerts" -Skip:$('TestListAlerts' -in $global:SkippedTests) {
             $global:TestName = 'TestListAlerts'

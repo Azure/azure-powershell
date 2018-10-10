@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmActionGroup", DefaultParameterSetName = BySubscriptionOrResourceGroup)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup", DefaultParameterSetName = BySubscriptionOrResourceGroup)]
     [OutputType(typeof(PSActionGroupResource))]
     public class GetAzureRmActionGroupCommand : ManagementCmdletBase
     {

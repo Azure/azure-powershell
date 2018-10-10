@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-
+    Scale out a scale unit.
 
 .DESCRIPTION
-    Scale out a scale unit.
+    Add a new scale unit node to your scale unit cluster.
 
 .PARAMETER NodeList
     A list of input data that allows for adding a set of scale unit nodes.
@@ -22,25 +22,41 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Location of the resource.
 
+.PARAMETER AwaitStorageConvergence
+    Wait for storage replication to complete before returning success.
+
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
+.EXAMPLE
+
+    Add-AzsScaleUnitNode -NodeList $Nodes -ScaleUnit $ScaleUnitName
+
+    Adds a list of nodes to the scale unit.
+
 #>
 function Add-AzsScaleUnitNode
 {
-    [CmdletBinding(DefaultParameterSetName='ScaleUnits_ScaleOut')]
+    [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNull()]
         [Microsoft.AzureStack.Management.Fabric.Admin.Models.ScaleOutScaleUnitParameters[]]
         $NodeList,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $ResourceGroupName,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $ScaleUnit,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $false)]
         [System.String]
+        [ValidateNotNullOrEmpty()]
         $Location,
 
         [Parameter(Mandatory = $false)]
@@ -66,7 +82,8 @@ function Add-AzsScaleUnitNode
 
     Process {
 
-    $ErrorActionPreference = 'Stop'
+    $ScaleUnit = Get-ResourceName -ResourceName $ScaleUnit
+
 
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
@@ -82,16 +99,18 @@ function Add-AzsScaleUnitNode
 
     $FabricAdminClient = New-ServiceClient @NewServiceClient_params
 
-    $ParamList = New-ScaleOutScaleUnitParametersListObject -NodeList $NodeList -AwaitStorageConvergence $AwaitStorageConvergence:IsPresent
+    $ParamList = New-ScaleOutScaleUnitParametersListObject -NodeList $NodeList -AwaitStorageConvergence:$AwaitStorageConvergence:IsPresent
 
-
-    if ('ScaleUnits_ScaleOut' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ScaleOutWithHttpMessagesAsync on $FabricAdminClient.'
-        $TaskResult = $FabricAdminClient.ScaleUnits.ScaleOutWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $ParamList)
-    } else {
-        Write-Verbose -Message 'Failed to map parameter set to operation method.'
-        throw 'Module failed to find operation to execute.'
+    if ([System.String]::IsNullOrEmpty($Location)) {
+        $Location = (Get-AzureRmLocation).Location
     }
+
+    if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
+        $ResourceGroupName = "System.$Location"
+    }
+
+    Write-Verbose -Message 'Performing operation ScaleOutWithHttpMessagesAsync on $FabricAdminClient.'
+    $TaskResult = $FabricAdminClient.ScaleUnits.ScaleOutWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $ParamList)
 
     Write-Verbose -Message "Waiting for the operation to complete."
 

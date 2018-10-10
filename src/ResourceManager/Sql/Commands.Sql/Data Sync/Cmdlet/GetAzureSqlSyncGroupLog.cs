@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to get synchronization log of  a specified sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncGroupLog",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupLogModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncGroupLog",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupLogModel))]
     public class GetAzureSqlSyncGroupLog : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlSyncGroupLogModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>

@@ -73,7 +73,7 @@ Removes the subscription provided through ARM Id in $resourceid/string for -Reso
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Service Bus Subscription Object
 
 ```yaml
-Type: PSSubscriptionAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 Parameter Sets: SubscriptionInputObjectSet
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Subscription Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionPropertiesSet
 Aliases: SubscriptionName
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionPropertiesSet
 Aliases: NamespaceName
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionPropertiesSet
 Aliases: ResourceGroup
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Service Bus Subscription Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionResourceIdSet
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Topic Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionPropertiesSet
 Aliases: TopicName
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -224,7 +224,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -236,13 +236,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 Parameters: InputObject (ByValue)
@@ -250,7 +248,6 @@ Parameters: InputObject (ByValue)
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

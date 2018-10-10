@@ -101,10 +101,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: PfxPath (ByPropertyName), StoreName (ByPropertyName)
 
 ### System.Security.SecureString
-Parameters: PfxPassword (ByPropertyName)
 
 ## OUTPUTS
 

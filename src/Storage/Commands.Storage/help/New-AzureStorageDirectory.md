@@ -220,10 +220,8 @@ Parameters: Share (ByValue)
 Parameters: Directory (ByValue)
 
 ### System.String
-Parameters: Path (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

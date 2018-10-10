@@ -164,7 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSAvailabilitySet
-Parameters: AvailabilitySet (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

@@ -238,10 +238,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DataFactoryName (ByPropertyName), PipelineName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
-Parameters: DataFactory (ByPropertyName)
 
 ## OUTPUTS
 

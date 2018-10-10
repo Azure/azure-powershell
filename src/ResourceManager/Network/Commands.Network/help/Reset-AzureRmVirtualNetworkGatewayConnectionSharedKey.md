@@ -9,6 +9,7 @@ schema: 2.0.0
 # Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
 
 ## SYNOPSIS
+Resets the shared key of the virtual network gateway connection.
 
 ## SYNTAX
 
@@ -19,8 +20,19 @@ Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
+Resets the shared key of the virtual network gateway connection.
 
 ## EXAMPLES
+
+### Example 1:
+```
+Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName myRG -Name myConnection -KeyLength 32
+
+Confirm
+Are you sure you want to overwrite resource 'myConnection'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+h0FmZA3BzXHqRE00J0wie0Mti0cCZwJm
+```
 
 ## PARAMETERS
 
@@ -128,10 +140,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.UInt32
-Parameters: KeyLength (ByPropertyName)
 
 ## OUTPUTS
 

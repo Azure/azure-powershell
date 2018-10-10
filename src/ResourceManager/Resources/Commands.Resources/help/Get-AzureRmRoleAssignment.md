@@ -423,10 +423,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ObjectId (ByPropertyName), RoleDefinitionId (ByPropertyName)
 
 ### System.String
-Parameters: ParentResource (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceName (ByPropertyName), ResourceType (ByPropertyName), RoleDefinitionName (ByPropertyName), Scope (ByPropertyName), ServicePrincipalName (ByPropertyName), SignInName (ByPropertyName)
 
 ## OUTPUTS
 

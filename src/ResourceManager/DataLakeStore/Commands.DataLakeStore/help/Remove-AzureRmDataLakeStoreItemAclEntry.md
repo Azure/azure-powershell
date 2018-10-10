@@ -263,25 +263,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Path (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
-Parameters: Acl (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
-Parameters: AceType (ByPropertyName)
 
 ### System.Guid
-Parameters: Id (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Default (ByPropertyName), PassThru (ByPropertyName), Recurse (ByPropertyName)
 
 ### System.Int32
-Parameters: Concurrency (ByPropertyName)
 
 ## OUTPUTS
 

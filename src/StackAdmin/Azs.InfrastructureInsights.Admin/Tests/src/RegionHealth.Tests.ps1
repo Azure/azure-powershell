@@ -133,6 +133,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 			}
 		}
 
+        AfterEach {
+            $global:Client = $null
+        }
 
 		it "TestListRegionHealths" -Skip:$('TestListRegionHealths' -in $global:SkippedTests) {
 			$global:TestName = 'TestListRegionHealths'
@@ -150,9 +153,7 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
 			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
 			foreach($RegionHealth in $RegionHealths) {
-				$regionName = Extract-Name -Name $RegionHealth.Name
-
-				$retrieved = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+				$retrieved = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name
 				AssertRegionHealthsAreSame -Expected $RegionHealth -Found $retrieved
 				return
 			}
@@ -161,12 +162,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 		it "TestGetAllRegionHealths" -Skip:$('TestGetAllRegionHealths' -in $global:SkippedTests) {
 			$global:TestName = 'TestGetAllRegionHealths'
 
-
 			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
 			foreach($RegionHealth in $RegionHealths) {
-				$regionName = Extract-Name -Name $RegionHealth.Name
-
-				$retrieved = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+				$retrieved = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name
 				AssertRegionHealthsAreSame -Expected $RegionHealth -Found $retrieved
 			}
 		}

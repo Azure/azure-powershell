@@ -157,7 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), SyncGroupName (ByPropertyName), SyncMemberName (ByPropertyName)
 
 ## OUTPUTS
 

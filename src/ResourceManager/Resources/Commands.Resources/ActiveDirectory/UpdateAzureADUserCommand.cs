@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Updates an existing AD user.
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(PSADUser))]
-    [Alias("Set-AzureRmADUser")]
-    public class UpdateAzureADUserCommand: ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(PSADUser))]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser")]
+    public class UpdateAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.UPNOrObjectId, HelpMessage = "The userPrincipalName or ObjectId of the user to be updated.")]
         [ValidateNotNullOrEmpty]

@@ -27,11 +27,11 @@ The **Set-AzureRmPublicIpAddress** cmdlet sets the goal state for a public IP ad
 ```
 PS C:\> $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
-PS C:\> $publicIp.PublicIpAllocationMethod = "Dynamic"
+PS C:\> $publicIp.PublicIpAllocationMethod = "Static"
     
 PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 
-PS C:\> $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+PS C:\> Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
  First command gets the public IP address resource with name $publicIPName in the resource 

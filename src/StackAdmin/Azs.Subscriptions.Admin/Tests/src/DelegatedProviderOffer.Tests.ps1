@@ -68,13 +68,17 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListDelegatedProviderOffers" -Skip:$('TestListDelegatedProviderOffers' -in $global:SkippedTests) {
             $global:TestName = 'TestListDelegatedProviderOffers'
 
             $providers = Get-AzsDelegatedProvider
 
             foreach ($provider in $providers) {
-                $offers = Get-AzsDelegatedProviderManagedOffer -DelegatedProvider $provider.DelegatedProviderSubscriptionId
+                $offers = Get-AzsDelegatedProviderManagedOffer -DelegatedProviderId $provider.DelegatedProviderSubscriptionId
                 foreach ($offer in $offers) {
                     ValidateDelegatedProviderOffer $offer
                 }

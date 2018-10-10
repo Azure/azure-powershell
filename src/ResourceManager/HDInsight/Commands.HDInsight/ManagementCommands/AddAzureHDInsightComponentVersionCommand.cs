@@ -18,11 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightComponentVersion,
-        SupportsShouldProcess = true),
-    OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightComponentVersion",SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightComponentVersionCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

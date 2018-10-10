@@ -21,8 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.ActivityRun, DefaultParameterSetName = ParameterSetNames.ByFactoryName),
-        OutputType(typeof(PSActivityRun))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2ActivityRun", DefaultParameterSetName = ParameterSetNames.ByFactoryName),OutputType(typeof(PSActivityRun))]
     public class GetAzureDataFactoryActivityRunCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = true,

@@ -93,6 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
+        protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";

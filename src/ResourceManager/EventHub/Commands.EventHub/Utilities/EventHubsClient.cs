@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Management.Automation;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Eventhub
 {
@@ -492,6 +494,28 @@ namespace Microsoft.Azure.Commands.Eventhub
                 returnvalue = 1;
 
             return returnvalue;
+        }
+
+        public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
+        {
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorResponseContent errorExtract = new ErrorResponseContent();
+                errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+                if (!string.IsNullOrEmpty(errorExtract.error.message))
+                {
+                    return new ErrorRecord(ex, errorExtract.error.message, ErrorCategory.OpenError, ex);
+                }
+                else
+                {
+                    return new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+            }
         }
     }
 }

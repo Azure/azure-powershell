@@ -385,14 +385,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CertificateType (ByPropertyName), IssuerName (ByPropertyName), KeyType (ByPropertyName), SecretContentType (ByPropertyName), SubjectName (ByPropertyName)
 
 ### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Disabled (ByPropertyName), KeyNotExportable (ByPropertyName), ReuseKeyOnRenewal (ByPropertyName)
 
 ### System.Collections.Generic.List`1[[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

@@ -16,6 +16,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Name of the backup location.
 
+.PARAMETER ResourceId
+    The resource id.
+
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
 
@@ -70,8 +73,6 @@ function Start-AzsBackup {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         if ( 'CreateBackup_FromResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/ {subscriptionId}/resourcegroups/ {resourceGroup}/providers/Microsoft.Backup.Admin/backupLocations/{location}/'
@@ -81,15 +82,17 @@ function Start-AzsBackup {
 
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
             $Location = $ArmResourceIdParameterValues['location']
+        } else {
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRMLocation).Location
+            }
         }
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$Location" , "Start backup at $Location")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start backup at $($Location)?", "Performing operation backup at $Location.")) {
 
-                if ([System.String]::IsNullOrEmpty($Location)) {
-                    $Location = (Get-AzureRMLocation).Location
-                }
+
                 if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$($Location)"
                 }

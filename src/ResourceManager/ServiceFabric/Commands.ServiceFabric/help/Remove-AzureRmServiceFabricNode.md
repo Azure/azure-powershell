@@ -145,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: NumberOfNodesToRemove (ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName), NodeType (ByValue), ResourceGroupName (ByPropertyName)
+Parameters: NodeType (ByValue)
 
 ## OUTPUTS
 

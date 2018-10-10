@@ -317,22 +317,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: BackupScheduleType (ByPropertyName), FullBackupFrequency (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: BackupSystemDbs (ByPropertyName), Enable (ByPropertyName), EnableEncryption (ByPropertyName)
 
 ### System.Int32
-Parameters: RetentionPeriodInDays (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: StorageContext (ByPropertyName)
 
 ### System.Uri
-Parameters: StorageUri (ByPropertyName)
 
 ### System.Security.SecureString
-Parameters: StorageKey (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

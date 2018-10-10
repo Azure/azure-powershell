@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update, ProfileNouns.AvailabilitySet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class UpdateAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {

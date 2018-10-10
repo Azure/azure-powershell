@@ -22,12 +22,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.DataDisk,
-        DefaultParameterSetName = VmNormalDiskParameterSet),
-    OutputType(
-        typeof(CM.PSVirtualMachine), typeof (PSVirtualMachineScaleSetVM))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDataDisk",DefaultParameterSetName = VmNormalDiskParameterSet),OutputType(typeof(CM.PSVirtualMachine), typeof (PSVirtualMachineScaleSetVM))]
     public class AddAzureVMDataDiskCommand : ComputeClientBaseCmdlet
     {
         protected const string VmNormalDiskParameterSet = "VmNormalDiskParameterSetName";
@@ -229,13 +224,7 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun.GetValueOrDefault(),
                     CreateOption = this.CreateOption,
-                    ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
-                                  ? null
-                                  : new ManagedDiskParameters
-                                  {
-                                      Id = this.ManagedDiskId,
-                                      StorageAccountType = this.StorageAccountType
-                                  },
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 });
 
@@ -263,11 +252,7 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun.GetValueOrDefault(),
                     CreateOption = this.CreateOption,
-                    ManagedDisk = new ManagedDiskParameters
-                                  {
-                                      Id = this.ManagedDiskId,
-                                      StorageAccountType = this.StorageAccountType
-                                  },
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 });
 

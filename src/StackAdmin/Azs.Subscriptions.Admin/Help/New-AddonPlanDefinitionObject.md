@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -21,29 +21,14 @@ Contains the name of the desired plan to be linked or unlinked from an offer.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### -------------------------- EXAMPLE 1 --------------------------
+```
+New-AddonPlanDefinitionObject -PlanId $planIdentifier -MaxAcquisitionCount 500
 ```
 
-{{ Add example description here }}
+Create a new plan definition object for the specified plan with the acquisition limit of 500.
 
 ## PARAMETERS
-
-### -PlanId
-Plan identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -MaxAcquisitionCount
 Maximum number of instances that can be acquired by a single subscription.
@@ -52,10 +37,25 @@ If not specified, the assumed value is 1.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanId
+Plan identifier.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -71,3 +71,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

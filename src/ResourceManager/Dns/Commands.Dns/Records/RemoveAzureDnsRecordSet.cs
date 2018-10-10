@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Deletes an existing record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class RemoveAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ParameterSetName = "Fields", HelpMessage = "The name of the records in the record set (relative to the name of the zone and without a terminating dot).")]

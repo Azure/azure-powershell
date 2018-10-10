@@ -23,7 +23,7 @@ Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBack
 ### FromWebApp
 ```
 Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
- [-IgnoreConflictingHostNames] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+ [-IgnoreConflictingHostNames] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite] [<CommonParameters>]
 ```
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 
@@ -212,13 +212,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AppServicePlan (ByPropertyName), BlobName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName), StorageAccountUrl (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
-Parameters: Databases (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: IgnoreConflictingHostNames (ByPropertyName), Overwrite (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)

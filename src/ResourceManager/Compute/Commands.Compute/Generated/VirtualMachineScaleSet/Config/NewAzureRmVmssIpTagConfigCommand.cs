@@ -30,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssIpTagConfig")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpTagConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag))]
     public partial class NewAzureRmVmssIpTagConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -62,4 +62,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

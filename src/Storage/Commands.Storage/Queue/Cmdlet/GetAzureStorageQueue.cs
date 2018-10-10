@@ -27,8 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     /// <summary>
     /// list azure queues
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.Queue, DefaultParameterSetName = NameParameterSet),
-        OutputType(typeof(AzureStorageQueue))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageQueue))]
     public class GetAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {
         /// <summary>

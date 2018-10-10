@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
 
         internal void AddAzureRmSqlServerTransparentDataEncryptionCertificate(string resourceGroupName, string serverName, string privateBlob, string password)
         {
-            TdeCertificate tdeCertificate = new TdeCertificate(privateBlob, password);
+            TdeCertificate tdeCertificate = new TdeCertificate(privateBlob:privateBlob, certPassword:password);
             GetCurrentSqlClient().TdeCertificates.Create(resourceGroupName, serverName, tdeCertificate);
         }
 
         internal void AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate(string resourceGroupName, string managedInstanceName, string privateBlob, string password)
         {
-            TdeCertificate tdeCertificate = new TdeCertificate(privateBlob, password);
+            TdeCertificate tdeCertificate = new TdeCertificate(privateBlob:privateBlob, certPassword: password);
             GetCurrentSqlClient().ManagedInstanceTdeCertificates.Create(resourceGroupName, managedInstanceName, tdeCertificate);
         }
 

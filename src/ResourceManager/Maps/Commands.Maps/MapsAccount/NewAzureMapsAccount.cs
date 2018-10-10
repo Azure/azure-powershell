@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// <summary>
     /// Create a new Maps Account, specify it's type (resource kind)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, MapsAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMapsAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MapsAccount", SupportsShouldProcess = true), OutputType(typeof(PSMapsAccount))]
     public class NewAzureMapsAccount : MapsAccountBaseCmdlet
     {
         [Parameter(

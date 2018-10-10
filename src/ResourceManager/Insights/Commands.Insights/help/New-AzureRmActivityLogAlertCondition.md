@@ -84,7 +84,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Equal (ByPropertyName), Field (ByPropertyName)
 
 ## OUTPUTS
 

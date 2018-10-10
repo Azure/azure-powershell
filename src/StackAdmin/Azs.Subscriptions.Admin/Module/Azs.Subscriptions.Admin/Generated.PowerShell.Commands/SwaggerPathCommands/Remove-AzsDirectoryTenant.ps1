@@ -66,7 +66,7 @@ function Remove-AzsDirectoryTenant {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

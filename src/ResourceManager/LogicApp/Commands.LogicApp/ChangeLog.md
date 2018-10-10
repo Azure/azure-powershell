@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 4.1.4
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 4.1.3
+* Fixed issue with default resource groups not being set.
+
+## Version 4.1.2
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 4.1.1
 * Updated all help files to include full parameter types and correct input/output types.
 

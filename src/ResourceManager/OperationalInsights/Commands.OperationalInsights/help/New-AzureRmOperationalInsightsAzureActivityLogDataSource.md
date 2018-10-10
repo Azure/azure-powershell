@@ -186,10 +186,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Workspace (ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), SubscriptionId (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ### System.DateTimeOffset
-Parameters: BackfillStartTime (ByPropertyName)
 
 ## OUTPUTS
 

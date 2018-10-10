@@ -161,7 +161,6 @@ Parameters: Context (ByValue)
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: ApiVersionSetId (ByPropertyName)
 
 ## OUTPUTS
 

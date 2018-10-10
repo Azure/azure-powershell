@@ -166,12 +166,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
-Parameters: TrafficManagerProfile (ByValue)
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet accepts a **TrafficManagerProfile** object.
 
 ## OUTPUTS
 
-### System.Boolean
+### Boolean
+This cmdlet returns a value of $True, if it succeeds or, if the deletion fails, a value of $False.
 
 ## NOTES
 

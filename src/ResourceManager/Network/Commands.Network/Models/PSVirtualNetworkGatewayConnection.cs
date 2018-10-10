@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualNetworkGatewayConnection : PSTopLevelResource
     {
@@ -28,27 +29,37 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId Peer { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionType { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int RoutingWeight { get; set; }
 
         public string SharedKey { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool EnableBgp { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionStatus { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public long? EgressBytesTransferred { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public long? IngressBytesTransferred { get; set; }
 
         public List<PSTunnelConnectionHealth> TunnelConnectionStatus { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool UsePolicyBasedTrafficSelectors { get; set; }
 
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
+
+        public bool ExpressRouteGatewayBypass { get; set; }
 
         [JsonIgnore]
         public string VirtualNetworkGateway1Text

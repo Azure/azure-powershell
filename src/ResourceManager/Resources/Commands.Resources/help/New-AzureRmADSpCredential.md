@@ -275,19 +275,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ObjectId (ByPropertyName)
 
 ### System.String
-Parameters: CertValue (ByPropertyName), ServicePrincipalName (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameters: ServicePrincipalObject (ByValue)
 
 ### System.Security.SecureString
-Parameters: Password (ByPropertyName)
 
 ### System.DateTime
-Parameters: EndDate (ByPropertyName), StartDate (ByPropertyName)
 
 ## OUTPUTS
 

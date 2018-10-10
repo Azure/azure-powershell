@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "TrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 350)]
         public List<string> GeoMapping { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The list of address ranges or subnets mapped to this endpoint when using the â€˜Subnetâ€™ traffic routing method.")]
+        public List<TrafficManagerIpAddressRange> SubnetMapping { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
+        [ValidateCount(1, 8)]
+        public List<TrafficManagerCustomHeader> CustomHeader { get; set; }
         public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
@@ -107,7 +113,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.Priority,
                         this.EndpointLocation,
                         this.MinChildEndpoints,
-                        this.GeoMapping);
+                        this.GeoMapping,
+                        this.SubnetMapping,
+                        this.CustomHeader);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

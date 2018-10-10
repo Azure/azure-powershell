@@ -116,10 +116,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
-Parameters: ContainerService (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName)
 
 ## OUTPUTS
 

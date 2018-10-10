@@ -252,16 +252,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: ApiId (ByPropertyName), AuthorizationScope (ByPropertyName), AuthorizationServerId (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), Path (ByPropertyName), ServiceUrl (ByPropertyName), SubscriptionKeyHeaderName (ByPropertyName), SubscriptionKeyQueryParamName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]
-Parameters: Protocols (ByPropertyName)
 
 ### System.String[]
-Parameters: ProductIds (ByPropertyName)
 
 ## OUTPUTS
 

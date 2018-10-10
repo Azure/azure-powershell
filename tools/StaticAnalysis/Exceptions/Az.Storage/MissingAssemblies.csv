@@ -1,0 +1,2 @@
+"Directory","Assembly Name","Assembly Version","Referencing Assembly","Severity","ProblemId","Description","Remediation"
+"C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Storage","Mono.Posix.NETStandard","1.0.0.0","Microsoft.WindowsAzure.Storage.DataMovement","0","3000","Missing assembly Mono.Posix.NETStandard referenced from Microsoft.WindowsAzure.Storage.DataMovement","Ensure that the assembly is included in the Wix file or directory"

@@ -188,18 +188,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName)
 
 ### System.Uri
-Parameters: BaseImageUriToPatch (ByPropertyName), Destination (ByPropertyName)
 
 ### System.IO.FileInfo
-Parameters: LocalFilePath (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Management.Automation.SwitchParameter
-Parameters: OverWrite (ByPropertyName)
 
 ## OUTPUTS
 

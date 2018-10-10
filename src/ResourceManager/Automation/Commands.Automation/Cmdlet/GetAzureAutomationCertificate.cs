@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(CertificateInfo))]
     public class GetAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {

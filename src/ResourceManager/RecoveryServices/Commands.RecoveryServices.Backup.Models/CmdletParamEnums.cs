@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         StorageAccountId,
         StorageAccountLocation,
         StorageAccountType,
+        TargetResourceGroupName,
         OsaOption
     }
 

@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmSubscription", SupportsShouldProcess = true), OutputType(typeof(PSAzureSubscription))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Subscription", SupportsShouldProcess = true), OutputType(typeof(PSAzureSubscription))]
     public class NewAzureRmSubscription : AzureRmLongRunningCmdlet
     {
         private ActiveDirectoryClient _activeDirectoryClient;

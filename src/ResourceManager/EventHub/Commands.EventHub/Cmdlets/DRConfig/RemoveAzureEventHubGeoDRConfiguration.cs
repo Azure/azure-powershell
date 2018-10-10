@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'Remove-AzureRmEventHubDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -58,53 +57,34 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
                 ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
-                    {
-                        Client.DeleteEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }                        
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ParentResource;
+                Name = getParamGeoDR.ResourceName;                
             }
 
             if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
             {
                 ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
-                    {
-                        Client.DeleteEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ParentResource;
+                Name = getParamGeoDR.ResourceName;                
             }
 
             if (ParameterSetName == GeoDRParameterSet)
             {
                 if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, Name, Namespace)))
                 {
-                    Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
-                    if (PassThru)
+                    try
                     {
-                        WriteObject(true);
+                        Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    }
+                    catch (Management.EventHub.Models.ErrorResponseException ex)
+                    {
+                        WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                     }
                 }                
             }

@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option.
+Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/en-us/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
@@ -267,15 +267,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DomainName (ByPropertyName), ForceRerun (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), OUPath (ByPropertyName), ResourceGroupName (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName)
 
 ### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Management.Automation.PSCredential
-Parameters: Credential (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName), Restart (ByPropertyName)
 
 ## OUTPUTS
 

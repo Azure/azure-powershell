@@ -94,9 +94,7 @@ function DRConfigurationTests
 	# Assert
 	Assert-AreEqual $result2.Name $namespaceName2
 
-	Try
-	{
-		# get the created Eventhub Namespace  1
+	# get the created Eventhub Namespace  1
 		Write-Debug " Get the created namespace within the resource group"
 		$createdNamespace1 = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
 	
@@ -267,10 +265,7 @@ function DRConfigurationTests
 
 		# Assert
 		Assert-AreEqual $createdServiceBusDRConfigList_delete.Count 0 "DR Config List: after delete the DRCoinfig was listed"
-	}
-	Finally
-	{
-		# Wait till the Namespace Provisioning  state changes to succeeded
+	# Wait till the Namespace Provisioning  state changes to succeeded
 		WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName1
 
 		Write-Debug " Delete namespaces"
@@ -284,7 +279,6 @@ function DRConfigurationTests
 
 		Write-Debug " Delete resourcegroup"
 		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-	}
 }
 
 function DRConfigurationTestsAlternateName

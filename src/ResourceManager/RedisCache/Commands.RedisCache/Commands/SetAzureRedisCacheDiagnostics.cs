@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmRedisCacheDiagnostics", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheDiagnostics", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
-            string storageAccountName = GetStorageAccountName(StorageAccountId);
 
             RedisCacheAttributes cache = new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName);
             ConfirmAction(
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               Name,
               () => 
               {
-                  CacheClient.SetDiagnostics(cache.Id, storageAccountName);
+                  CacheClient.SetDiagnostics(cache.Id, StorageAccountId);
               });
         }
 

@@ -58,7 +58,9 @@ function Get-AzsStorageDestinationShare {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+        $SourceShareName = Get-ResourceNameSuffix -Resourcename $SourceShareName
+
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'

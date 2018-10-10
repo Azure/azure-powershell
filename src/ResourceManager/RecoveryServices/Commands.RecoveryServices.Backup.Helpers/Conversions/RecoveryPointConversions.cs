@@ -83,6 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                             recPoint.IsSourceVMEncrypted.Value : false,
                         IlrSessionActive = isInstantILRSessionActive,
+                        IsManagedVirtualMachine = recPoint.IsManagedVirtualMachine.HasValue ?
+                            recPoint.IsManagedVirtualMachine.Value : false,
                         OriginalSAEnabled = recPoint.OriginalStorageAccountOption.HasValue ?
                             recPoint.OriginalStorageAccountOption.Value : false,
                     };

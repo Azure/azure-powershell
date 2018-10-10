@@ -65,15 +65,29 @@ InModuleScope Azs.Compute.Admin {
                 # Resource
                 $VMExtension.Id       | Should Not Be $null
                 $VMExtension.Type     | Should Not Be $null
+            }
 
+            function ValidateSameVMExtension {
+                param(
+                    $VMExt1,
+                    $VMExt2
+                )
+                Get-Member -InputObject $VMExt1 -MemberType Properties {
+                    $variable = $_.Name
+                    $VMExt1."$variable" | Should be $VMExt2."$variable"
+                }
             }
         }
+
+		AfterEach {
+			$global:Client = $null
+		}
 
 
         It "TestListVMExtensions" -Skip:$('TestListVMExtensions' -in $global:SkippedTests) {
             $global:TestName = 'TestListVMExtensions'
 
-            $VMExtensions = Get-AzsVMExtension -Location "local"
+            $VMExtensions = Get-AzsVMExtension -Location $global:Location
             $VMExtensions | Should Not Be $null
             foreach ($VMExtension in $VMExtensions) {
                 ValidateVMExtension -VMExtension $VMExtension
@@ -84,7 +98,7 @@ InModuleScope Azs.Compute.Admin {
         It "TestGetVMExtension" -Skip:$('TestGetVMExtension' -in $global:SkippedTests) {
             $global:TestName = 'TestGetVMExtension'
 
-            $VMExtensions = Get-AzsVMExtension -Location "local"
+            $VMExtensions = Get-AzsVMExtension -Location $global:Location
             $VMExtensions | Should Not Be $null
             foreach ($VMExtension in $VMExtensions) {
                 ValidateVMExtension -VMExtension $VMExtension
@@ -95,17 +109,33 @@ InModuleScope Azs.Compute.Admin {
         It "TestGetAllVMExtensions" -Skip:$('TestGetAllVMExtensions' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllVMExtensions'
 
-            $VMExtensions = Get-AzsVMExtension -Location "local"
+            $VMExtensions = Get-AzsVMExtension -Location $global:Location
             $VMExtensions | Should Not Be $null
             foreach ($VMExtension in $VMExtensions) {
-                ValidateVMExtension -VMExtension $VMExtension
+                $vmExt = Get-AzsVMExtension `
+                    -Location $vmextension.Location `
+                    -Publisher $vmExtension.Publisher `
+                    -Type $vmExtension.ExtensionType `
+                    -Version $vmExtension.TypeHandlerVersion `
+
+                $vmExt | Should not be $null
+                ValidateSameVMExtension $VMExtension $vmExt
             }
         }
 
 
         It "TestCreateVMExtension" -Skip:$('TestCreateVMExtension' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateVMExtension'
-            $result = Add-AzsVMExtension -Location $global:Location -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux" -Force
+            $result = Add-AzsVMExtension `
+                -Location $global:Location `
+                -Publisher "Microsoft" `
+                -Type "MicroExtension" `
+                -Version "0.1.0" `
+                -ComputeRole "IaaS" `
+                -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" `
+                -SupportMultipleExtensions `
+                -VmOsType "Linux" `
+                -Force
             $result | Should not be $null
         }
 

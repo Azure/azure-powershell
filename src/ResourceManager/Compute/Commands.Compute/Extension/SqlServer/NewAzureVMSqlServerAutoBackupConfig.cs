@@ -18,9 +18,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
@@ -31,12 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Helper cmdlet to construct instance of AutoBackup settings class
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachineSqlServerAutoBackupConfig,
-        DefaultParameterSetName = StorageUriParamSetName),
-    OutputType(
-        typeof(AutoBackupSettings))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSqlServerAutoBackupConfig",DefaultParameterSetName = StorageUriParamSetName),OutputType(typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
         protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";

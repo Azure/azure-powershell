@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.New, ContainerRegistryNoun, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase
     {

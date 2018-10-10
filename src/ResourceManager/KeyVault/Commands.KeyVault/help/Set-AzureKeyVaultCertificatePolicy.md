@@ -457,7 +457,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
-Parameters: InputObject (ByPropertyName, ByValue)
 
 ## OUTPUTS
 
