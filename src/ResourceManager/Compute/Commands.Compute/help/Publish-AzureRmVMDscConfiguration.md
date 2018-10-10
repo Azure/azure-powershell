@@ -277,10 +277,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ConfigurationDataPath (ByPropertyName), ConfigurationPath (ByPropertyName, ByValue), ContainerName (ByPropertyName), OutputArchivePath (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountName (ByPropertyName), StorageEndpointSuffix (ByPropertyName)
 
 ### System.String[]
-Parameters: AdditionalPath (ByPropertyName)
 
 ## OUTPUTS
 

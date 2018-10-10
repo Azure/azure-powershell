@@ -18,19 +18,17 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Clear, "AzureRmContext", SupportsShouldProcess = true)]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class ClearAzureRmContext : AzureRMCmdlet
+    public class ClearAzureRmContext : AzureContextModificationCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage ="Clear the context only for the current PowerShell session, or for all sessions.")]
-        public ContextModificationScope Scope { get; set; } = ContextModificationScope.Process;
-
-        [Parameter(Mandatory = false, HelpMessage="Return a value indicating success or failure")]
+        [Parameter(Mandatory = false, HelpMessage = "Return a value indicating success or failure")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Delete all users and groups from the global scope without prompting")]
@@ -38,59 +36,78 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
-           switch(Scope)
+            switch (GetContextModificationScope())
             {
                 case ContextModificationScope.Process:
-                    ConfirmAction(Resources.ClearContextProcessMessage, Resources.ClearContextProcessTarget, 
-                        () => 
-                        {
-                            bool result = false;
-                            var profile = DefaultProfile as AzureRmProfile;
-                            if (profile != null)
-                            {
-                                profile.Clear();
-                                result = true;
-                            }
-                            if (PassThru.IsPresent)
-                            {
-                                WriteObject(result);
-                            }
-                        });
+                    if (ShouldProcess(Resources.ClearContextProcessMessage, Resources.ClearContextProcessTarget))
+                    {
+                        ModifyContext(ClearContext);
+                    }
+
                     break;
                 case ContextModificationScope.CurrentUser:
                     ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
                         Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
+                        () => ModifyContext(ClearContext),
                         () => 
-                        {
-                            bool result = false;
-                            var session = AzureSession.Instance;
-                            var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
-                            if (session.TokenCache != null)
-                            {
-                                session.TokenCache.Clear();
-                            }
-                            if (session.DataStore.FileExists(contextFilePath))
-                            {
-                                session.DataStore.DeleteFile(contextFilePath);
-                                if (AzureRmProfileProvider.Instance != null)
-                                {
-                                    AzureRmProfileProvider.Instance.ResetDefaultProfile();
-                                    result = true; ;
-                                }
-                            }
-
-                            if (PassThru.IsPresent)
-                            {
-                                WriteObject(result);
-                            }
-                        },
-                        () =>
                         {
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
                             return session.DataStore.FileExists(contextFilePath);
                         });
                     break;
+            }
+        }
+
+        void ClearContext(AzureRmProfile profile, RMProfileClient client)
+        {
+            bool result = false;
+            if (profile != null)
+            {
+                var contexts = profile.Contexts.Values;
+                foreach (var context in contexts)
+                {
+                    client.TryRemoveContext(context);
+                }
+
+                var defaultContext = new AzureContext();
+                var cache = AzureSession.Instance.TokenCache;
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                {
+                    var fileCache = cache as ProtectedFileTokenCache;
+                    if (fileCache == null)
+                    {
+                        try
+                        {
+                            var session = AzureSession.Instance;
+                            fileCache = new ProtectedFileTokenCache(Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile), session.DataStore);
+                            fileCache.Clear();
+                        }
+                        catch
+                        {
+                            // ignore exceptions from creating a token cache
+                        }
+                    }
+
+                    cache.Clear();
+                }
+                else
+                {
+                    var localCache = cache as AuthenticationStoreTokenCache;
+                    if (localCache != null)
+                    {
+                        localCache.Clear();
+                    }
+                }
+
+                defaultContext.TokenCache = cache;
+                profile.TrySetDefaultContext(defaultContext);
+                result = true;
+            }
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(result);
             }
         }
     }

@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
     public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
         [Parameter(

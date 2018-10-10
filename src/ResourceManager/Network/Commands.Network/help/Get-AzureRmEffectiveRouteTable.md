@@ -98,7 +98,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: NetworkInterfaceName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

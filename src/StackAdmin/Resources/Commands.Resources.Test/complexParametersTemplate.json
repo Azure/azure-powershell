@@ -1,0 +1,53 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+	"appSku": {
+		"type": "object",
+		"allowedValues": [
+			{
+				"code": "f1",
+				"name": "Free"
+			},
+			{
+				"code": "f2",
+				"name": "Shared"
+			},
+			{
+				"code": "f3",
+				"name": {
+					"major": "Official",
+					"minor": "1.0"
+				}
+			}
+		],
+		"defaultValue": {
+			"code": "f1",
+			"name": "Free"
+		}
+	},
+	"servicePlan": {
+		"type": "string"
+	},
+	"ranks": {
+		"type": "array",
+		"allowedValues": [
+			[ "a", "b" ],
+			[ "c", "d" ],
+			[ "d", "e", "f" ]
+		],
+		"defaultValue": [ "a", "b" ]
+	}
+  },
+  "variables": { },
+  "resources": [{
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[concat('tianotest010', parameters('appSku').code, parameters('ranks')[0])]",
+        "apiVersion": "2015-06-15",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "accountType": "Standard_LRS"
+        }
+  }],
+  "outputs": {  }
+}

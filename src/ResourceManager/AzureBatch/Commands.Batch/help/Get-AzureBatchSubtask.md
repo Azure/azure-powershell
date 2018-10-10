@@ -144,7 +144,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: JobId (ByPropertyName), TaskId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSCloudTask
 Parameters: Task (ByValue)

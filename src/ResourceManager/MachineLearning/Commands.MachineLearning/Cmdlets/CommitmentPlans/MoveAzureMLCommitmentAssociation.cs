@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(VerbsCommon.Move, CommitmentPlansCmdletBase.CommitmentAssociationCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlCommitmentAssociation", SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan))]
     public class MoveAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {

@@ -378,16 +378,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
-Parameters: CloudBlob (ByPropertyName, ByValue)
 
 ### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
-Parameters: CloudBlobContainer (ByPropertyName)
 
 ### System.String
-Parameters: AbsoluteUri (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

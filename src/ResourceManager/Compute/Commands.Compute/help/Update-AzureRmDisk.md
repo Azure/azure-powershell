@@ -190,7 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DiskName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
 Parameters: DiskUpdate (ByValue)

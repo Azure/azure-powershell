@@ -25,8 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkWatcherPacketCapture", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),
-        OutputType(typeof(PSPacketCaptureResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherPacketCapture", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),OutputType(typeof(PSPacketCaptureResult))]
     public class NewAzureNetworkWatcherPacketCaptureCommand : PacketCaptureBaseCmdlet
     {
         [Parameter(

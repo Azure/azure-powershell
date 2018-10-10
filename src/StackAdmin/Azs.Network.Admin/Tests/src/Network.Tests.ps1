@@ -78,6 +78,10 @@ InModuleScope Azs.Network.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         It "TestGetAdminOverview" -Skip:$('TestGetAdminOverview' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAdminOverview'

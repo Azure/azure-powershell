@@ -206,10 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteTable
-Parameters: RouteTable (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: AddressPrefix (ByPropertyName), NextHopIpAddress (ByPropertyName), NextHopType (ByPropertyName)
 
 ## OUTPUTS
 

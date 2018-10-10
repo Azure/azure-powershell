@@ -28,27 +28,28 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 #>
 function New-PlatformImageParametersObject
 {
-    param(    
+    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters])]
+    param(
         [Parameter(Mandatory = $false)]
         [Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk]
         $OsDisk,
-    
+
         [Parameter(Mandatory = $false)]
         [Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails]
         $Details,
-    
+
         [Parameter(Mandatory = $false)]
         [Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk[]]
         $DataDisks,
-    
+
         [Parameter(Mandatory = $false)]
         [Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState]
         $ProvisioningState
     )
-    
+
     $Object = New-Object -TypeName Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters
 
-    $PSBoundParameters.GetEnumerator() | ForEach-Object { 
+    $PSBoundParameters.GetEnumerator() | ForEach-Object {
         if(Get-Member -InputObject $Object -Name $_.Key -MemberType Property)
         {
             $Object.$($_.Key) = $_.Value

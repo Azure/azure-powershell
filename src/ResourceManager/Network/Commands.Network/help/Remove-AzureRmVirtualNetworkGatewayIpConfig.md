@@ -9,6 +9,7 @@ schema: 2.0.0
 # Remove-AzureRmVirtualNetworkGatewayIpConfig
 
 ## SYNOPSIS
+Removes an IP Configuration from a Virtual Network Gateway
 
 ## SYNTAX
 
@@ -18,12 +19,56 @@ Remove-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNet
 ```
 
 ## DESCRIPTION
+Removes an IP Configuration from a Virtual Network Gateway
 
 ## EXAMPLES
 
-### 1:
+### Example 1:
 ```
-PS C:\>
+Remove-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gateway -Name ActiveActive
+
+Name                   : myGateway
+ResourceGroupName      : myRG
+Location               : eastus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft
+                         .Network/virtualNetworkGateways/VNet8GW
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/800000000-0000-0000-0000-000000000000/resourceGroups/myRG/provid
+                         ers/Microsoft.Network/virtualNetworks/VNet8/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/provid
+                         ers/Microsoft.Network/publicIPAddresses/VNet8GWIP"
+                             },
+                             "Name": "gwipconfig1",
+                             "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/provider
+                         s/Microsoft.Network/virtualNetworkGateways/VNet8GW/ipConfigurations/gwipconfig1"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : True
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+VpnClientConfiguration : null
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "192.0.2.4,192.0.2.5",
+                           "PeerWeight": 0
+                         }
 ```
 
 ## PARAMETERS

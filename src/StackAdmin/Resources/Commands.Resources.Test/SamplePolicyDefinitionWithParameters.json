@@ -1,0 +1,11 @@
+{
+  "if": {
+    "not": {
+      "field": "location",
+      "in": "[parameters('listOfAllowedLocations')]"
+    }
+  },
+  "then": {
+    "effect": "deny"
+  }
+}

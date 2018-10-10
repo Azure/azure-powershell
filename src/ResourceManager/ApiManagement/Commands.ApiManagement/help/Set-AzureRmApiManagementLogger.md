@@ -184,13 +184,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: ConnectionString (ByPropertyName), Description (ByPropertyName), InstrumentationKey (ByPropertyName), LoggerId (ByPropertyName), Name (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: IsBuffered (ByPropertyName), PassThru (ByPropertyName)
 
 ## OUTPUTS
 

@@ -59,7 +59,7 @@ The example changes partition count and replica count of the Azure Search servic
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Search Service Input Object.
 
 ```yaml
-Type: PSSearchService
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Search Service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Search Service partition count.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Search Service replica count.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Resource Group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Search Service Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -195,9 +195,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseAdvisors cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAdvisor")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvisor")]
     [OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
     public class GetAzureSqlDatabaseAdvisor : AzureSqlDatabaseAdvisorCmdletBase
     {

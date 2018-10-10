@@ -13,15 +13,15 @@ Gets a load balancer.
 
 ## SYNTAX
 
-### NoExpand
+### NoExpand (Default)
 ```
-Get-AzureRmLoadBalancer [-Name <String>] [-ResourceGroupName <String>]
+Get-AzureRmLoadBalancer [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmLoadBalancer -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+Get-AzureRmLoadBalancer -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -124,7 +124,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ExpandResource (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

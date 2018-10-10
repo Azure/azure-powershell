@@ -131,6 +131,10 @@ namespace VersionController.Models
             {
                 var serializedCmdletName = nestedModule + ".dll.json";
                 var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+                if (serializedCmdletFile == null)
+                {
+                    continue;
+                }
                 var file = File.ReadAllLines(serializedCmdletFile);
                 var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
                 var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));
@@ -216,11 +220,16 @@ namespace VersionController.Models
             File.Copy(outputModuleManifestPath, tempModuleManifestPath);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
+            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};{_fileHelper.SrcDirectory}\\Package\\Debug\\Storage\";";
             script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
             using (PowerShell powershell = PowerShell.Create())
             {
                 powershell.AddScript(script);
                 var result = powershell.Invoke();
+                if (powershell.Streams.Error.Any())
+                {
+                    Console.WriteLine($"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First().ToString()}");
+                }
             }
 
             var tempModuleContent = File.ReadAllLines(tempModuleManifestPath);

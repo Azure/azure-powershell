@@ -211,10 +211,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: MetricNamespace (ByPropertyName), ResourceId (ByPropertyName)
 
 ### System.String[]
-Parameters: MetricName (ByPropertyName)
 
 ## OUTPUTS
 

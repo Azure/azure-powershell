@@ -27,9 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Enable protection of an item with the recovery services vault. 
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection",
-        DefaultParameterSetName = AzureVMComputeParameterSet, SupportsShouldProcess = true),
-        OutputType(typeof(JobBase))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtection",DefaultParameterSetName = AzureVMComputeParameterSet, SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class EnableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that removes an azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

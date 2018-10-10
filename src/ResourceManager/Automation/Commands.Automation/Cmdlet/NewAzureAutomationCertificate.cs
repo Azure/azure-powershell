@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
     [OutputType(typeof(CertificateInfo))]
     public class NewAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
 
-            var createdCertificate = this.AutomationClient.CreateCertificate(this.ResourceGroupName, this.AutomationAccountName, this.Name, this.ResolvePath(this.Path), this.Password, this.Description, this.Exportable.IsPresent);
+            var createdCertificate = this.AutomationClient.CreateCertificate(this.ResourceGroupName, this.AutomationAccountName, this.Name, this.ResolvePath(Path), this.Password, this.Description, this.Exportable.IsPresent);
 
             this.WriteObject(createdCertificate);
         }

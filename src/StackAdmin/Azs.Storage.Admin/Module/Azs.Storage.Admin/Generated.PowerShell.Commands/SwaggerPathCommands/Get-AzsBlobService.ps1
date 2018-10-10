@@ -51,7 +51,7 @@ function Get-AzsBlobService {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'

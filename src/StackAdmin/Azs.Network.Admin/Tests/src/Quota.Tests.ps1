@@ -82,16 +82,6 @@ InModuleScope Azs.Network.Admin {
                     -Force
             }
 
-            function DeleteQuota {
-                param(
-                    [string] $location,
-                    [string] $quotaName
-                )
-
-                Remove-AzsNetworkQuota -Name $quotaName -Location $location -Force
-                Start-Sleep -Seconds 5
-            }
-
             function AssertQuotasAreSame {
                 param(
                     $expected,
@@ -116,6 +106,10 @@ InModuleScope Azs.Network.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         # Record new tests
         It "TestPutAndDeleteQuota" -Skip:$('TestPutAndDeleteQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestPutAndDeleteQuota'
@@ -132,7 +126,7 @@ InModuleScope Azs.Network.Admin {
             AssertQuotasAreSame -expected $quota -found $created
 
             # Delete Quota
-            DeleteQuota -quotaName $global:PutAndDeleteQuotaName -Location $global:location
+            Remove-AzsNetworkQuota -Name $global:PutAndDeleteQuotaName -Location $global:location -Force
         }
 
         # Record again
@@ -140,6 +134,7 @@ InModuleScope Azs.Network.Admin {
             $global:TestName = 'TestPutAndUpdateQuota'
 
             $quota = New-AzsNetworkQuota -Name $global:CreateAndUpdateQuotaName -Location $global:location
+
             $created = Get-AzsNetworkQuota -Name $global:CreateAndUpdateQuotaName -Location $global:location
 
             $quota   | Should Not be $null
@@ -160,7 +155,7 @@ InModuleScope Azs.Network.Admin {
             AssertQuotasAreSame -expected $updatedQuota -found $getUpdatedQuota
 
             # Delete Quota
-            DeleteQuota -quotaName $global:CreateAndUpdateQuotaName -Location $global:Location
+            Remove-AzsNetworkQuota -Name $global:CreateAndUpdateQuotaName -Location $global:location -Force
         }
     }
 }

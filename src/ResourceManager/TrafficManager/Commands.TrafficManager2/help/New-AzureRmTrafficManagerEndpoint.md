@@ -17,12 +17,15 @@ Creates an endpoint in a Traffic Manager profile.
 New-AzureRmTrafficManagerEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -Type <String> [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
  [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>]
- [-GeoMapping <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-GeoMapping <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetMapping <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]>]
+ [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmTrafficManagerEndpoint** cmdlet creates an endpoint in an Azure Traffic Manager profile.
+
 This cmdlet commits each new endpoint to the Traffic Manager service.
 To add multiple endpoints to a local Traffic Manager profile object and commit changes in a single operation, use the Add-AzureRmTrafficManagerEndpointConfig cmdlet.
 
@@ -46,6 +49,21 @@ The command does not specify the *EndpointLocation* parameter because the Web Ap
 
 ## PARAMETERS
 
+### -CustomHeader
+List of custom header name and value pairs for probe requests.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -65,6 +83,7 @@ Accept wildcard characters: False
 Specifies the location of the endpoint to use in the Performance traffic-routing method.
 This parameter is only applicable to endpoints of the ExternalEndpoints or NestedEndpoints type.
 You must specify this parameter when the Performance traffic-routing method is used.
+
 Specify an Azure region name.
 For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
 
@@ -83,8 +102,10 @@ Accept wildcard characters: False
 ### -EndpointStatus
 Specifies the status of the endpoint.
 Valid values are: 
+
 - Enabled 
 - Disabled 
+
 If the status is Enabled, the endpoint is probed for endpoint health and is included in the traffic-routing method.
 
 ```yaml
@@ -151,6 +172,7 @@ Specifies the priority that Traffic Manager assigns to the endpoint.
 This parameter is used only if the Traffic Manager profile is configured with the for Priority traffic-routing method.
 Valid values are integers from 1 through 1000.
 Lower values represent higher priority.
+
 If you specify a priority, you must specify priorities on all endpoints in the profile, and no two endpoints can share the same priority value.
 If you do not specify priorities, Traffic Manager assigns default priority values to the endpoints, starting with one (1), in the order the profile lists the endpoints.
 
@@ -198,6 +220,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubnetMapping
+The list of address ranges or subnets mapped to this endpoint when using the â€˜Subnetâ€™ traffic routing method.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Target
 Specifies the fully qualified DNS name of the endpoint.
 Traffic Manager returns this value in DNS responses when it directs traffic to this endpoint.
@@ -236,6 +273,7 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of endpoint that this cmdlet adds to the Traffic Manager profile.
 Valid values are: 
+
 - AzureEndpoints
 - ExternalEndpoints
 - NestedEndpoints
@@ -277,6 +315,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

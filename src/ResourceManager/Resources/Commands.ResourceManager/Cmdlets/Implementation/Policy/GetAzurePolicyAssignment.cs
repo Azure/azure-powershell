@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
     public class GetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -118,6 +118,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         cancellationToken: this.CancellationToken.Value,
                         odataQuery: null)
                     .ConfigureAwait(continueOnCapturedContext: false);
+
                 ResponseWithContinuation<JObject[]> retVal;
                 return resource.TryConvertTo(out retVal) && retVal.Value != null
                     ? retVal

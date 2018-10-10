@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetApplicationInsightsDailyCap()
+        public void TestGetAppInsightsDailyCap()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsDailyCap");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApplicationInsightsDailyCap()
+        public void TestSetAppInsightsDailyCap()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-SetApplicationInsightsDailyCap");
         }

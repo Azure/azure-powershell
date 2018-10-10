@@ -173,7 +173,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: DataFactoryName (ByPropertyName), GatewayName (ByPropertyName), KeyName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

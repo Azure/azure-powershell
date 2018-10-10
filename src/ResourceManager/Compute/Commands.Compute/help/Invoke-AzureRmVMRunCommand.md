@@ -19,6 +19,13 @@ Invoke-AzureRmVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> -Com
  [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdParameter
+```
+Invoke-AzureRmVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### VMParameter
 ```
 Invoke-AzureRmVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
@@ -115,6 +122,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id for the VM
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ScriptPath
 Path of the script to be executed.  When this value is given, the given script will override the default script of the command.
 
@@ -197,10 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), VMName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameters: VM (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

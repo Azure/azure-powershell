@@ -213,10 +213,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: Description (ByPropertyName), LegalTerms (ByPropertyName), ProductId (ByPropertyName), Title (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
@@ -225,7 +223,6 @@ Parameters: Description (ByPropertyName), LegalTerms (ByPropertyName), ProductId
 ### System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProductState, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Management.Automation.SwitchParameter
-Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

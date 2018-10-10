@@ -20,7 +20,7 @@ Get-AzureRmWebAppBackupConfiguration [-ResourceGroupName] <String> [-Name] <Stri
 
 ### FromWebApp
 ```
-Get-AzureRmWebAppBackupConfiguration [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmWebAppBackupConfiguration [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 
@@ -119,7 +119,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)

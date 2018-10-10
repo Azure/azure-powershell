@@ -105,8 +105,6 @@ function Get-AzsLogicalSubnet {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
@@ -140,6 +138,9 @@ function Get-AzsLogicalSubnet {
             $logicalNetwork = $ArmResourceIdParameterValues['logicalNetwork']
             $Name = $ArmResourceIdParameterValues['logicalSubnet']
         } else {
+
+            $LogicalNetwork = Get-ResourceNameSuffix -ResourceName $LogicalNetwork
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -178,6 +179,7 @@ function Get-AzsLogicalSubnet {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
             $TaskResult = $FabricAdminClient.LogicalSubnets.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $LogicalNetwork, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
@@ -215,7 +217,7 @@ function Get-AzsLogicalSubnet {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and (Get-Member -InputObject $PageResult -Name Page) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
                 $TaskResult = $FabricAdminClient.LogicalSubnets.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null

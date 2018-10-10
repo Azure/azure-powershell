@@ -19,6 +19,21 @@
 -->
 ## Current Release
 
+## Version 0.1.7
+* Updated SDK to 0.4.0-preview.
+* Added support for api-version 2018-07-15-preview.
+* Added cmdlets for sync online migrations.
+
+## Version 0.1.6
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.1.5
+* Fixed issue with default resource groups not being set.
+
+## Version 0.1.4
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.1.3
 * Updated help files to include full parameter types and correct input/output types.
 

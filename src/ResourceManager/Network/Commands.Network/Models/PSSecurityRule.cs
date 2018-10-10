@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSSecurityRule : PSChildResource
     {
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Description { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Protocol { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -39,15 +41,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         public IList<string> DestinationAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Access { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int Priority { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Direction { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonProperty(Order = 1)]

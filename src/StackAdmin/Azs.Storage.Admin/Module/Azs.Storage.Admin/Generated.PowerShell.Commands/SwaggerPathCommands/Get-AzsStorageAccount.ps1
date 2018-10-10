@@ -96,8 +96,6 @@ function Get-AzsStorageAccount {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
         }
@@ -132,6 +130,7 @@ function Get-AzsStorageAccount {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $StorageAdminClient.'
             $TaskResult = $StorageAdminClient.StorageAccounts.ListWithHttpMessagesAsync($ResourceGroupName, $FarmName, $Summary.IsPresent)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
             $TaskResult = $StorageAdminClient.StorageAccounts.GetWithHttpMessagesAsync($ResourceGroupName, $FarmName, $Name)
         } else {
@@ -162,7 +161,7 @@ function Get-AzsStorageAccount {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and (Get-Member -InputObject $PageResult -Name Page) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
                 $TaskResult = $StorageAdminClient.StorageAccounts.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null

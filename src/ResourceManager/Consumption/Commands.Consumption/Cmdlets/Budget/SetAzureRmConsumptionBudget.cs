@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {   
     using Budget = Management.Consumption.Models.Budget;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSBudget))]
     public class SetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {

@@ -110,7 +110,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), VirtualNetworkGatewayName (ByPropertyName), VpnClientRevokedCertificateName (ByPropertyName)
 
 ## OUTPUTS
 

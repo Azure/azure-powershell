@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 hostnameConfiguration.NegotiateClientCertificate = hostnameConfig.NegotiateClientCertificate.Value;
             }
 
+            // if no new certificate is provided, then copy over details of existing certificate
+            if (hostnameConfig.CertificateInformation != null && 
+                string.IsNullOrEmpty(hostnameConfig.EncodedCertificate))
+            {
+                hostnameConfiguration.Certificate = hostnameConfig.CertificateInformation.GetCertificateInformation();
+            }
+
             return hostnameConfiguration;
         }
 
@@ -76,7 +83,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 certificateConfiguration.CertificatePassword = systemCertificate.CertificatePassword;
             }
 
+            if (systemCertificate.CertificateInformation != null && 
+                string.IsNullOrEmpty(systemCertificate.EncodedCertificate))
+            {
+                certificateConfiguration.Certificate = systemCertificate.CertificateInformation.GetCertificateInformation();
+            }
+
             return certificateConfiguration;
+        }
+
+        public static CertificateInformation GetCertificateInformation(this PsApiManagementCertificateInformation psCertificateInformation)
+        {
+            if (psCertificateInformation == null)
+            {
+                return null;
+            }
+
+            var certificateInformation = new CertificateInformation();
+            certificateInformation.Expiry = psCertificateInformation.Expiry;
+            certificateInformation.Thumbprint = psCertificateInformation.Thumbprint;
+            certificateInformation.Subject = psCertificateInformation.Subject;
+
+            return certificateInformation;
         }
     }
 }

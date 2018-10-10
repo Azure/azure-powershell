@@ -144,10 +144,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

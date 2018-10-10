@@ -27,23 +27,57 @@ namespace NetCoreCsProjSync
     {
         private const string Validate = "-v";
         private const string Create = "-c";
+        private const string TestProj = "-t";
+        private const string CreateTest = "-s";
 
         private static readonly Dictionary<string, Action<string>> ModeMap = new Dictionary<string, Action<string>>
         {
             { Validate, ValidateCsProjFiles },
-            { Create, CreateCsProjFiles }
+            { Create, CreateCsProjFiles },
+            { TestProj, TestCsProjFiles },
+            { CreateTest, CreateTestCsProjFiles }
         };
 
         public static void Main(string[] args)
         {
-            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a)) ?? @"..\..\..\src\ResourceManager";
+            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower())) ?? @"..\..\..\src\ResourceManager";
             if (!Directory.Exists(rmPath))
             {
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
             }
             //https://stackoverflow.com/a/17563994/294804
-            var mode = args.Any(a => a.IndexOf(Create, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Create : Validate;
+            var mode = ModeMap.Keys.FirstOrDefault(k => args.Any(a => a.IndexOf(k, StringComparison.InvariantCultureIgnoreCase) >= 0)) ?? Validate;
             ModeMap[mode](rmPath);
+        }
+
+        private static void CreateTestCsProjFiles(string srcPath)
+        {
+            var projectFolders = GetTestProjectFolderPaths(srcPath);
+            var desktopFilePaths = GetTestDesktopFilePaths(projectFolders).Where(fp => !fp.EndsWith("Commands.Common.Tests.csproj"));
+            var desktopDefinitions = GetDesktopDefinitions(desktopFilePaths);
+
+            var serializer = new XmlSerializer(typeof(NewProjectDefinition));
+            foreach (var desktopDefinition in desktopDefinitions)
+            {
+                var path = ConvertDesktopToNetCorePath(desktopDefinition.FilePath);
+                Console.WriteLine($"Creating {path}");
+
+                var netCoreDefinition = ConvertOldTestToNewTestNetCore(desktopDefinition);
+                WriteProjectFile(serializer, netCoreDefinition, path);
+            }
+        }
+
+        private static void TestCsProjFiles(string srcPath)
+        {
+            var projectFolders = GetTestProjectFolderPaths(srcPath);
+            var desktopFilePaths = GetTestDesktopFilePaths(projectFolders).Where(fp => !fp.EndsWith("Commands.Common.Tests.csproj"));
+            var desktopDefinitions = GetDesktopDefinitions(desktopFilePaths);
+
+            desktopDefinitions.SelectMany(d => d.ItemGroups.SelectMany(ig => ig.References.Select(or => ConvertOldToNewPackageReference(or, Enumerable.Empty<string>()))))
+                .Where(p => p != null)
+                .GroupBy(p => $"{p.Include}: {p.Version}", (k, r) => (Reference: k, Count: r.Count())).Select(g => $"{g.Reference}: {g.Count}")
+                .OrderBy(g => g)
+                .ToList().ForEach(Console.WriteLine);
         }
 
         private static void ValidateCsProjFiles(string rmPath)
@@ -132,29 +166,34 @@ namespace NetCoreCsProjSync
                 Console.WriteLine($"Creating {path}");
 
                 var netCoreDefinition = ConvertOldToNewNetCore(desktopDefinition);
-                //https://stackoverflow.com/a/760290/294804
-                //https://stackoverflow.com/a/3732234/294804
-                var blankNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
-                var xmlSettings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
-                using (var stringWriter = new StringWriter())
-                using (var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings))
-                {
-                    serializer.Serialize(xmlWriter, netCoreDefinition, blankNamespaces);
-                    var lines = stringWriter.ToString().Split(Environment.NewLine).ToList();
-                    var newLineIndecies = lines.Select((l, i) => (Index: i, Line: l)).Where(a =>
-                            a.Line.StartsWith("<Project") || a.Line.StartsWith("  <Import") ||
-                            a.Line.StartsWith("  </PropertyGroup>") || a.Line.StartsWith("  </ItemGroup>"))
-                        .Select(a => a.Index).ToList();
+                WriteProjectFile(serializer, netCoreDefinition, path);
+            }
+        }
 
-                    for (var i = 0; i < newLineIndecies.Count; ++i)
-                    {
-                        lines.Insert(newLineIndecies[i] + i + 1, String.Empty);
-                    }
-                    File.WriteAllLines(path, lines.Take(lines.Count - 1));
-                    using (var streamWriter = File.AppendText(path))
-                    {
-                        streamWriter.Write(lines.Last());
-                    }
+        private static void WriteProjectFile(XmlSerializer serializer, NewProjectDefinition netCoreDefinition, string path)
+        {
+            //https://stackoverflow.com/a/760290/294804
+            //https://stackoverflow.com/a/3732234/294804
+            var blankNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+            var xmlSettings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
+            using (var stringWriter = new StringWriter())
+            using (var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings))
+            {
+                serializer.Serialize(xmlWriter, netCoreDefinition, blankNamespaces);
+                var lines = stringWriter.ToString().Split(Environment.NewLine).ToList();
+                var newLineIndecies = lines.Select((l, i) => (Index: i, Line: l)).Where(a =>
+                        a.Line.StartsWith("<Project") || a.Line.StartsWith("  <Import") ||
+                        a.Line.StartsWith("  </PropertyGroup>") || a.Line.StartsWith("  </ItemGroup>"))
+                    .Select(a => a.Index).ToList();
+
+                for (var i = 0; i < newLineIndecies.Count; ++i)
+                {
+                    lines.Insert(newLineIndecies[i] + i + 1, String.Empty);
+                }
+                File.WriteAllLines(path, lines.Take(lines.Count - 1));
+                using (var streamWriter = File.AppendText(path))
+                {
+                    streamWriter.Write(lines.Last());
                 }
             }
         }

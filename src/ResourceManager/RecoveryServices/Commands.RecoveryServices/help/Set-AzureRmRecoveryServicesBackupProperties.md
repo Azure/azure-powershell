@@ -39,25 +39,10 @@ The second command sets the backup storage redundancy for $Vault01 to GeoRedunda
 Specifies the backup storage redundancy type.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType]
+Type: AzureRmRecoveryServicesBackupStorageRedundancyType
 Parameter Sets: (All)
 Aliases:
 Accepted values: GeoRedundant, LocallyRedundant
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -71,7 +56,7 @@ Specifies the name of the vault.
 The vault must be an **AzureRmRecoveryServicesVault** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Type: ARSVault
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +71,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -101,9 +86,24 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

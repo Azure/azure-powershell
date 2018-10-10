@@ -1,0 +1,2 @@
+"Directory","AssemblyName","Expected Version","Actual Version","Parent Assembly","Severity","ProblemId","Description","Remediation"
+"src\Package\Debug\ServiceManagement\Azure\HDInsight","Microsoft.WindowsAzure.Storage","3.0.3.0","6.0.0.0","Microsoft.Hadoop.Client","1","1010","Assembly Microsoft.WindowsAzure.Storage version 3.0.3.0 referenced from Microsoft.Hadoop.Client.dll does not match assembly version on disk: 6.0.0.0","Update any references to version 3.0.3.0 of assembly Microsoft.WindowsAzure.Storage"

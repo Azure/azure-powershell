@@ -147,7 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: CdnEndpoint (ByValue)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

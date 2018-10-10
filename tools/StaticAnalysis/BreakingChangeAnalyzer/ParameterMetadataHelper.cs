@@ -89,7 +89,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the parameter cannot be found, log an issue
                 else
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameter,
@@ -149,7 +149,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the alias cannot be found, log an issue
                 if (!aliasSet.Contains(oldAlias))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterAlias,
@@ -187,7 +187,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // one in the new assembly, log an issue
             if (oldValidateSet.Count == 0 && newValidateSet.Count > 0)
             {
-                issueLogger.LogBreakingChangeIssue(
+                issueLogger?.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
                     severity: 0,
                     problemId: ProblemIds.BreakingChangeProblemId.AddedValidateSet,
@@ -215,7 +215,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the value cannot be found, log an issue
                 if (!valueSet.Contains(oldValue))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedValidateSetValue,
@@ -246,7 +246,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the old parameter had no validation range, but the new parameter does, log an issue
                 if (oldParameter.ValidateRangeMin == null && oldParameter.ValidateRangeMax == null)
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.AddedValidateRange ,
@@ -260,7 +260,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     // If the minimum value of the range has increased, log an issue
                     if (oldParameter.ValidateRangeMin < newParameter.ValidateRangeMin)
                     {
-                        issueLogger.LogBreakingChangeIssue(
+                        issueLogger?.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
                             problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMinimum,
@@ -273,7 +273,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     // If the maximum value of the range has decreased, log an issue
                     if (oldParameter.ValidateRangeMax > newParameter.ValidateRangeMax)
                     {
-                        issueLogger.LogBreakingChangeIssue(
+                        issueLogger?.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
                             problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMaximum,
@@ -303,7 +303,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // old assembly, but has it in the new assembly, log an issue
             if (!oldParameter.ValidateNotNullOrEmpty && newParameter.ValidateNotNullOrEmpty)
             {
-                issueLogger.LogBreakingChangeIssue(
+                issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.AddedValidateNotNullOrEmpty,

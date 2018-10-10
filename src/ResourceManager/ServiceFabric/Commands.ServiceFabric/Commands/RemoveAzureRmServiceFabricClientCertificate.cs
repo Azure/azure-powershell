@@ -24,8 +24,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClientCertificate, SupportsShouldProcess = true),
-     OutputType(typeof (PSCluster))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricClientCertificate", SupportsShouldProcess = true),OutputType(typeof (PSCluster))]
     public class RemoveAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
     {
         public override void ExecuteCmdlet()

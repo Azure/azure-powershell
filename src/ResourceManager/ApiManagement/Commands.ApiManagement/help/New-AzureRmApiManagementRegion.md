@@ -121,7 +121,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
-Parameters: VirtualNetwork (ByPropertyName)
 
 ## OUTPUTS
 

@@ -235,16 +235,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Type (ByPropertyName)
 
 ### System.DateTime
-Parameters: BackupTime (ByPropertyName)
 
 ### System.String[]
-Parameters: DaysOfWeek (ByPropertyName)
 
 ### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[]
-Parameters: RetentionPolicy (ByPropertyName)
 
 ### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameters: Vault (ByValue)

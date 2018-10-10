@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssAdditionalUnattendContent", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssAdditionalUnattendContent", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -100,13 +100,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vAdditionalUnattendContent = new Microsoft.Azure.Management.Compute.Models.AdditionalUnattendContent();
 
-            vAdditionalUnattendContent.PassName = this.MyInvocation.BoundParameters.ContainsKey("PassName") ? this.PassName : (PassNames?) null;
-            vAdditionalUnattendContent.ComponentName = this.MyInvocation.BoundParameters.ContainsKey("ComponentName") ? this.ComponentName : (ComponentNames?) null;
-            vAdditionalUnattendContent.SettingName = this.MyInvocation.BoundParameters.ContainsKey("SettingName") ? this.SettingName : (SettingNames?) null;
+            vAdditionalUnattendContent.PassName = this.MyInvocation.BoundParameters.ContainsKey("PassName") ? this.PassName : (PassNames?)null;
+            vAdditionalUnattendContent.ComponentName = this.MyInvocation.BoundParameters.ContainsKey("ComponentName") ? this.ComponentName : (ComponentNames?)null;
+            vAdditionalUnattendContent.SettingName = this.MyInvocation.BoundParameters.ContainsKey("SettingName") ? this.SettingName : (SettingNames?)null;
             vAdditionalUnattendContent.Content = this.MyInvocation.BoundParameters.ContainsKey("Content") ? this.Content : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent.Add(vAdditionalUnattendContent);
             WriteObject(this.VirtualMachineScaleSet);
         }
     }
 }
-

@@ -244,10 +244,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ExtensionPublisherName (ByPropertyName), ExtensionType (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName), VolumeType (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

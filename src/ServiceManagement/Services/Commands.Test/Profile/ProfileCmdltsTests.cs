@@ -511,7 +511,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
@@ -555,7 +555,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             AzureSession.Instance.DataStore = new MemoryDataStore();
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
@@ -600,7 +600,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             AzureSession.Instance.DataStore = new MemoryDataStore();
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var oldProfile = new AzureSMProfile();
             AzureSMCmdlet.CurrentProfile = oldProfile;
             var profile = new AzureSMProfile();

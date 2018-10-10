@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetService()
         {
             //when service name is passed as argument in the cmdlet
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineDscStatusContextListWithServiceName()
         {
             getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
@@ -57,6 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineDscStatusContextListWithServiceNameAndVmName()
         {
             getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
@@ -82,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineDscStatusContextListWithServiceNameAndIncorrectVmName()
         {
             getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
@@ -106,6 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineDscStatusContextListWithVm()
         {
             getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
@@ -125,6 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDscStatusContext()
         {
             getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;

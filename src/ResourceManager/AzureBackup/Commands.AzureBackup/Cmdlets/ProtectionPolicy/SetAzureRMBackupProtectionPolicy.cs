@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupJob))]
     public class SetAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
@@ -156,4 +156,3 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
-

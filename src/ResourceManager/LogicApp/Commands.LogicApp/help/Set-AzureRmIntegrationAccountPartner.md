@@ -207,7 +207,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), PartnerName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

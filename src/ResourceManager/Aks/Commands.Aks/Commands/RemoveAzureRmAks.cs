@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet(VerbsCommon.Remove, KubeNounStr, SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmAks : KubeCmdletBase
     {

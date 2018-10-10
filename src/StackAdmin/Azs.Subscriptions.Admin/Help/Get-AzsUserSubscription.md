@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzsUserSubscription
 
 ## SYNOPSIS
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ## SYNTAX
 
@@ -23,33 +23,18 @@ Get-AzsUserSubscription -SubscriptionId <Guid> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsUserSubscription
 ```
 
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ## PARAMETERS
-
-### -SubscriptionId
-Subscription Id parameter.
-
-```yaml
-Type: Guid
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Filter
 OData filter parameter.
@@ -60,6 +45,21 @@ Parameter Sets: List
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id parameter.
+
+```yaml
+Type: Guid
+Parameter Sets: Get
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,3 +78,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

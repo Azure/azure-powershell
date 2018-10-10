@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.Remove, Nouns.WorkspaceCollection, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveWorkspaceCollection : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(

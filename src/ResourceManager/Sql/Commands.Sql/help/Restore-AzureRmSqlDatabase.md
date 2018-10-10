@@ -446,10 +446,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.DateTime
-Parameters: DeletionDate (ByPropertyName)
 
 ### System.String
-Parameters: ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), ServerName (ByPropertyName), ServiceObjectiveName (ByPropertyName)
 
 ## OUTPUTS
 

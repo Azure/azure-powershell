@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementLogger, DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementLogger", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementLogger))]
     public class GetAzureApiManagementLogger : AzureApiManagementCmdletBase
     {

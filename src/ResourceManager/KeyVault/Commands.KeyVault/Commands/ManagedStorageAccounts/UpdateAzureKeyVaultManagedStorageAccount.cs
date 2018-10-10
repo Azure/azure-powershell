@@ -19,8 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageAccount",DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
     [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {

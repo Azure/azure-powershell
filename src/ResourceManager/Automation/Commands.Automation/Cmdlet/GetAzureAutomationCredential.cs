@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(CredentialInfo))]
     public class GetAzureAutomationCredential : AzureAutomationBaseCmdlet
     {

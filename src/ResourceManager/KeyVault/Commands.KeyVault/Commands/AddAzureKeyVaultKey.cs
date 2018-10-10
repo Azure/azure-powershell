@@ -34,9 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// 4 .Create a HSM or software key by importing key material with given key 
     /// attributes
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = InteractiveCreateParameterSet)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = InteractiveCreateParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {

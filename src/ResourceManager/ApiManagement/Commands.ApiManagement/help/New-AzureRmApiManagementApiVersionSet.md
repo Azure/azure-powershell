@@ -210,10 +210,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Context (ByValue)
 
 ### System.String
-Parameters: ApiVersionSetId (ByPropertyName), Description (ByPropertyName), HeaderName (ByPropertyName), Name (ByPropertyName), QueryName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementVersioningScheme
-Parameters: Scheme (ByPropertyName)
 
 ## OUTPUTS
 

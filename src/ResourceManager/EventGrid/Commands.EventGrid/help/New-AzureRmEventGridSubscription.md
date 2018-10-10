@@ -434,13 +434,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Endpoint (ByPropertyName), EndpointType (ByPropertyName), EventSubscriptionName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), SubjectBeginsWith (ByPropertyName), SubjectEndsWith (ByPropertyName), TopicName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameters: InputObject (ByValue)
 
 ### System.String[]
-Parameters: IncludedEventType (ByPropertyName), Label (ByPropertyName)
 
 ## OUTPUTS
 

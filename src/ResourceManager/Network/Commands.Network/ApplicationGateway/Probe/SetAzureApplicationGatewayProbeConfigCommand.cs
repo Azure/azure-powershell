@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayProbeConfigCommand : AzureApplicationGatewayProbeConfigBase
     {
 

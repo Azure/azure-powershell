@@ -144,7 +144,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Id (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameters: BatchContext (ByValue)

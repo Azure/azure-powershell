@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Stop the workflow run
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicAppRun", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class CancelAzureLogicAppRunCommand : LogicAppBaseCmdlet
     {
 

@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsData.Update, CmdletSuffix + "SystemService", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlOpClusterSystemService", SupportsShouldProcess = true)]
     [OutputType(typeof(PSUpdateSystemServicesResponse))]
     public class UpdateAzureRmMlOpClusterSystemService : MachineLearningComputeCmdletBase
     {

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// <summary>
     /// Restores an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmWebAppBackup"), OutputType(typeof(void))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppBackup"), OutputType(typeof(void))]
     public class RestoreAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(AppServicePlan))
             {
-                Site app = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+                var app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
                 this.AppServicePlan = app.ServerFarmId.Split('/').Last();
             }
             RestoreRequest request = new RestoreRequest()

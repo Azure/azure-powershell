@@ -21,7 +21,7 @@ Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-Resour
 
 ### FromWebApp
 ```
-Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-WebApp] <Site>
+Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-InputObject] <AzureWebAppSnapshot> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The web app object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 
@@ -213,10 +213,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName), RecoverConfiguration (ByPropertyName)
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)

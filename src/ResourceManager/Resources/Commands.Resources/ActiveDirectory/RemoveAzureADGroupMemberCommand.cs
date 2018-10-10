@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes a user from a group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADGroupMember", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Explicit), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADGroupMember", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Explicit), OutputType(typeof(bool))]
     public class RemoveAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupDisplayName, HelpMessage = "The object id of the member(s) to remove.")]

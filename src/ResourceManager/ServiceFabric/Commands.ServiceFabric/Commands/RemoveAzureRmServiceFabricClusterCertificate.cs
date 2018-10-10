@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClusterCertificate, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricClusterCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true,

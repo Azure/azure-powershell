@@ -241,10 +241,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Workspace (ByValue)
 
 ### System.String
-Parameters: CounterName (ByPropertyName), InstanceName (ByPropertyName), Name (ByPropertyName), ObjectName (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ### System.Int32
-Parameters: IntervalSeconds (ByPropertyName)
 
 ## OUTPUTS
 

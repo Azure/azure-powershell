@@ -25,7 +25,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -158,7 +158,21 @@ namespace Microsoft.Azure.Commands.Compute
                             .GetAwaiter().GetResult();
 
                     var psResultListStatus = new List<PSVirtualMachineListStatus>();
-                    psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                    while (vmListResult != null)
+                    {
+                        psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                        {
+                            vmListResult = this.VirtualMachineClient.ListNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
+                                .GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            vmListResult = null;
+                        }
+                    }
 
                     if (this.Status.IsPresent)
                     {

@@ -19,13 +19,14 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.ServiceBus.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
     /// 'Get-AzureServicebusGeoDRConfigurations' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
     public class GetServiceBusGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -51,59 +52,65 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
         public override void ExecuteCmdlet()
         {
-            
-            if (ParameterSetName == NamespaceInputObjectParameterSet)
+            try
             {
-                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
+                if (ParameterSetName == NamespaceInputObjectParameterSet)
+                {
+                    LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
 
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                    if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                    {
+                        if (!string.IsNullOrEmpty(Name))
+                        {
+                            PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                            WriteObject(drConfiguration);
+                        }
+                        else
+                        {
+                            IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                            WriteObject(drConfigurationList.ToList(), true);
+                        }
+                    }
+                }
+
+                if (ParameterSetName == ResourceIdParameterSet)
+                {
+                    LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
+
+                    if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                    {
+                        if (!string.IsNullOrEmpty(Name))
+                        {
+                            PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                            WriteObject(drConfiguration);
+                        }
+                        else
+                        {
+                            IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                            WriteObject(drConfigurationList.ToList(), true);
+                        }
+                    }
+                }
+
+                if (ParameterSetName == GeoDRParameterSet)
                 {
                     if (!string.IsNullOrEmpty(Name))
                     {
-                        PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                        // Get a DRConfiguration
+                        PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
                         WriteObject(drConfiguration);
                     }
                     else
                     {
-                        IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                        // Get all DRConfigurations
+                        IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, Namespace);
                         WriteObject(drConfigurationList.ToList(), true);
                     }
                 }
             }
-
-            if (ParameterSetName == ResourceIdParameterSet)
+            catch (ErrorResponseException ex)
             {
-                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (!string.IsNullOrEmpty(Name))
-                    {
-                        PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
-                        WriteObject(drConfiguration);
-                    }
-                    else
-                    {
-                        IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
-                        WriteObject(drConfigurationList.ToList(), true);
-                    }
-                }
-            }
-
-            if (ParameterSetName == GeoDRParameterSet)
-            {
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a DRConfiguration
-                    PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
-                    WriteObject(drConfiguration);
-                }
-                else
-                {
-                    // Get all DRConfigurations
-                    IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, Namespace);
-                    WriteObject(drConfigurationList.ToList(), true);
-                }
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
         }
     }

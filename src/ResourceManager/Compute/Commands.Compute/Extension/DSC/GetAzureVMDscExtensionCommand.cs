@@ -12,12 +12,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineDscExtension,
-        DefaultParameterSetName = GetDscExtensionParamSetName),
-     OutputType(
-         typeof(VirtualMachineDscExtensionContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtension",DefaultParameterSetName = GetDscExtensionParamSetName),OutputType(typeof(VirtualMachineDscExtensionContext))]
     public class GetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private const string GetDscExtensionParamSetName = "GetDscExtension";

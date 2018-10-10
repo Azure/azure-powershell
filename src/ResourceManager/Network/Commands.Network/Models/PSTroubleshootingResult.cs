@@ -17,15 +17,19 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSTroubleshootingResult : PSTopLevelResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Code { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? EndTime { get; set; }
 
         public List<PSTroubleshootingDetails> Results { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? StartTime { get; set; }
 
         [JsonIgnore]

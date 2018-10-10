@@ -199,10 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), Name (ByPropertyName), ObjectType (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Guid
-Parameters: ObjectId (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

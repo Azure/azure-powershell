@@ -157,7 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
 Parameters: InputObject (ByValue)

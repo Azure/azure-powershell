@@ -375,10 +375,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
-Parameters: DataFactory (ByPropertyName)
 
 ### System.String
-Parameters: ActivityName (ByPropertyName), DataFactoryName (ByPropertyName), DatasetName (ByPropertyName), Filter (ByPropertyName), OrderBy (ByPropertyName), PipelineName (ByPropertyName), ResourceGroupName (ByPropertyName), WindowState (ByPropertyName), WindowSubstate (ByPropertyName)
 
 ### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

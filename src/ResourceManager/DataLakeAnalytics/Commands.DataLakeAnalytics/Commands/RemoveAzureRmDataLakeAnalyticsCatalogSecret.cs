@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsCatalogSecret", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlCatalogSecret")]
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use Remove-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
     public class RemoveAzureDataLakeAnalyticsSecret : DataLakeAnalyticsCmdletBase

@@ -141,10 +141,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
 ### System.String
-Parameters: DisplayName (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameters: ApplicationObject (ByValue)

@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 0.1.2
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.1.1
+* Fixed issue with default resource groups not being set.
+
 ## Version 0.1.0 
 * Introduce the first version of Azure Search Service cmdlets
 

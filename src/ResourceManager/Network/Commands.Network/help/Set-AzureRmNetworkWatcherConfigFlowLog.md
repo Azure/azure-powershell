@@ -433,16 +433,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: NetworkWatcher (ByValue)
 
 ### System.String
-Parameters: Location (ByPropertyName), NetworkWatcherName (ByValue), ResourceGroupName (ByPropertyName), StorageAccountId (ByPropertyName), TargetResourceId (ByPropertyName), WorkspaceGUID (ByPropertyName), WorkspaceLocation (ByPropertyName), WorkspaceResourceId (ByPropertyName)
+Parameters: NetworkWatcherName (ByValue)
 
 ### System.Boolean
-Parameters: EnableFlowLog (ByPropertyName), EnableRetention (ByPropertyName)
 
 ### System.Int32
-Parameters: RetentionInDays (ByPropertyName)
 
 ### Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
-Parameters: Workspace (ByPropertyName)
 
 ## OUTPUTS
 

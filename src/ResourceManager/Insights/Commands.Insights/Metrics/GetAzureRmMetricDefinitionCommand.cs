@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// <summary>
     /// Get the list of metric definitions for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmMetricDefinition"), OutputType(typeof(PSMetricDefinition))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricDefinition"), OutputType(typeof(PSMetricDefinition))]
     public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
     {
         /// <summary>

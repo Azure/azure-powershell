@@ -103,10 +103,14 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListEdgeGateways" -Skip:$('TestListEdgeGateways' -in $global:SkippedTests) {
             $global:TestName = 'TestListEdgeGateways'
 
-            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $global:Location
             $gateways | Should Not Be $null
             foreach ($gateway in $gateways) {
                 ValidateEdgeGateway -EdgeGateway $gateway
@@ -116,7 +120,8 @@ InModuleScope Azs.Fabric.Admin {
         It "TestGetEdgeGateway" -Skip:$('TestGetEdgeGateway' -in $global:SkippedTests) {
             $global:TestName = 'TestGetEdgeGateway'
 
-            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $global:Location
+            $gateways | Should not be $null
             foreach ($gateway in $gateways) {
                 $retrieved = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $gateway.Name
                 AssertEdgeGatewaysAreSame -Expected $gateway -Found $retrieved

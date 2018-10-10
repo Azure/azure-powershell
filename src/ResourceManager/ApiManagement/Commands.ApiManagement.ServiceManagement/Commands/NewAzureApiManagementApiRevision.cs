@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Models;
     using Properties;
 
-    [Cmdlet(VerbsCommon.New, Constants.ApiManagementApiRevision, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRevision", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApi))]
     public class NewAzureApiManagementApiRevision : AzureApiManagementCmdletBase
     {

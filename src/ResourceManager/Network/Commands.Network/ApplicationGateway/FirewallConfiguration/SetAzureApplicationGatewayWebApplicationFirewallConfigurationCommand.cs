@@ -17,8 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),
-        OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         [Parameter(

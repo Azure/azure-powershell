@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// <summary>
     /// Update a media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaService", SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
     public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         private const string SetMediaServiceWhatIfMessage = "Set MediaService ";

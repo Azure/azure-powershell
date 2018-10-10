@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSChildResource : PSResourceId
     {
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 1)]
         public string Name { get; set; }
 
         public string Etag { get; set; }

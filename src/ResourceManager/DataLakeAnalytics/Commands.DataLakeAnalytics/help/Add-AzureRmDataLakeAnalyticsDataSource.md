@@ -135,7 +135,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AccessKey (ByPropertyName), Account (ByPropertyName), Blob (ByPropertyName), DataLakeStore (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

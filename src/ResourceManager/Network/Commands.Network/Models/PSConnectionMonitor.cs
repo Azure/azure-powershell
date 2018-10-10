@@ -18,17 +18,21 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSConnectionMonitor : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
         public PSConnectionMonitorSource Source { get; set; }
 
         public PSConnectionMonitorDestination Destination { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? AutoStart { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? MonitoringIntervalInSeconds { get; set; }
 
         public Hashtable Tag { get; set; }

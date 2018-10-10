@@ -281,21 +281,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), Name (ByPropertyName), Submitter (ByPropertyName)
 
 ### System.Guid
-Parameters: JobId (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData
-Parameters: Include (ByPropertyName)
 
 ### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### Microsoft.Azure.Management.DataLake.Analytics.Models.JobState[]
-Parameters: State (ByPropertyName)
 
 ### Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult[]
-Parameters: Result (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

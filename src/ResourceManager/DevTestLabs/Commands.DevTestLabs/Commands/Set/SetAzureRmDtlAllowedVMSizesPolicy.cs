@@ -25,10 +25,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAllowedVMSizesPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri,
-        DefaultParameterSetName = ParameterSetEnable,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DtlAllowedVMSizesPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSPolicy))]
     public class SetAzureRmDtlAllowedVMSizesPolicy : DtlPolicyCmdletBase
     {

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmLogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class NewAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables

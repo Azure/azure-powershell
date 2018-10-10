@@ -27,12 +27,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
     public class SetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(

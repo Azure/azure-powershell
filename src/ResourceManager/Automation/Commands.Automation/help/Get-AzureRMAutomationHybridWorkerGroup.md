@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), Name (ByValue), ResourceGroupName (ByPropertyName)
+Parameters: Name (ByValue)
 
 ## OUTPUTS
 

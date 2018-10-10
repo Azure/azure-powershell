@@ -48,6 +48,38 @@ function ConvertTo-AzureRmVhd
     }
 }
 
+function ConvertTo-AzVhd
+{
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    [OutputType([System.Management.Automation.PathInfo])]
+    param
+    (
+        [Parameter(ParameterSetName = 'Hyper-V', Mandatory = $true)]
+        [string]$HyperVVMName,
+        
+        [Parameter(ParameterSetName = 'Hyper-V', Mandatory = $true)]
+        [string]$ExportPath,
+        
+        [Parameter(ParameterSetName = 'Hyper-V')]
+        [string]$HyperVServer = 'localhost',
+      
+        [Parameter(ParameterSetName = 'Hyper-V')]
+        [switch]$Force,
+        
+        [Parameter(ParameterSetName = 'Hyper-V')]
+        [switch]$AsJob
+    )
+
+    if ($AsJob)
+    {
+        Start-Job -ScriptBlock ${function:ExecuteCmdlet} -Argumentlist $HyperVVMName,$ExportPath,$HyperVServer,$Force;
+    }
+    else
+    {
+        ExecuteCmdlet $HyperVVMName $ExportPath $HyperVServer $Force;
+    }
+}
+
 function ExecuteCmdlet($HyperVVMName, $ExportPath, $HyperVServer, $Force)
 {
     function Get-HyperVVhdFolder([string]$exportPath, [string]$hyperVVMName)

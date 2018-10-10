@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Get the list of offers as the administrator.
+    Get the list of offers as the operator.
 
 .DESCRIPTION
     Get the list of offers.
@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     PS C:\> Get-AzsManagedOffer -Name offer -ResourceGroupName offerrg
 
-    Get the list of offers as the administrator.
+    Get the list of offers as the operator.
 #>
 function Get-AzsManagedOffer {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer])]
@@ -76,8 +76,6 @@ function Get-AzsManagedOffer {
     }
 
     Process {
-
-        $ErrorActionPreference = 'Stop'
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
@@ -145,7 +143,7 @@ function Get-AzsManagedOffer {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and (Get-Member -InputObject $PageResult -Name Page) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
                 $TaskResult = $SubscriptionsAdminClient.Offers.ListAllNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null

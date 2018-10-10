@@ -245,13 +245,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Description (ByPropertyName), DisplayName (ByPropertyName), Id (ByPropertyName), Name (ByPropertyName), PackageFileUri (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.String[]
-Parameters: Authorization (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

@@ -436,10 +436,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: BootstrapOptions (ByPropertyName), BootstrapVersion (ByPropertyName), ChefDaemonInterval (ByPropertyName), ChefServerUrl (ByPropertyName), ClientRb (ByPropertyName), Daemon (ByPropertyName), JsonAttribute (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), OrganizationName (ByPropertyName), ResourceGroupName (ByPropertyName), RunList (ByPropertyName), Secret (ByPropertyName), SecretFile (ByPropertyName), TypeHandlerVersion (ByPropertyName), ValidationClientName (ByPropertyName), ValidationPem (ByPropertyName), VMName (ByPropertyName)
 
 ### System.Boolean
-Parameters: AutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

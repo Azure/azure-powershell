@@ -87,23 +87,11 @@
 
 
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
-                            Condition=" '$(Scope)' == 'AzureStorage' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;"
-                           Exclude=".\src\ResourceManager\Intune\*.sln"
-                            Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
-                            Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\Stack.sln"
-                            Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
-
-    <CommonSolution   Include="$(LibrarySourceFolder)\Common\Common.sln" />
+    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
+    <StackSolution    Include="$(LibrarySourceFolder)\StackAdmin\Stack.sln" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'"/>
+    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
   </ItemGroup>
 
   <!-- Tasks -->
@@ -114,16 +102,16 @@
   <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="FilterTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
-	  <ParameterGroup>
-	    <EnvName ParameterType="System.String" Required="true" />
-		  <EnvValue ParameterType="System.String" Required="true" />
+      <ParameterGroup>
+        <EnvName ParameterType="System.String" Required="true" />
+          <EnvValue ParameterType="System.String" Required="true" />
     </ParameterGroup>
     <Task>
-		  <Using Namespace="System"/>
-      <Code Type="Fragment" Language="cs">  
-			<![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
-      </Code>  
-    </Task>  
+          <Using Namespace="System"/>
+      <Code Type="Fragment" Language="cs">
+            <![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
+      </Code>
+    </Task>
   </UsingTask>  <!--
   CI build related
   -->
@@ -145,6 +133,10 @@
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
     <Message  Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
+
+    <!-- Clean out the NuGet cache -->
+    <Exec ContinueOnError="false"
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; $Path = Join-Path $env:USERPROFILE .nuget; if (Test-Path $Path) { Remove-Item $Path -Recurse } &quot;"/>
 
     <!-- Clean each project -->
     <MSBuild Projects="@(CmdletSolutionsToBuild)"
@@ -180,7 +172,7 @@
   <PropertyGroup>
     <NuGetCommand>$(MSBuildProjectDirectory)\tools\NuGet.exe</NuGetCommand>
     <LibraryNugetPackageFolder>$(LibrarySourceFolder)\packages</LibraryNugetPackageFolder>
-    <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
+    <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\NuGet.Config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
     <NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
     <NuGetLocalBuildTaskPackages>-PackagesDirectory $(LibraryToolsFolder)\BuildPackagesTask\packages</NuGetLocalBuildTaskPackages>
@@ -199,20 +191,9 @@
   -->
   <Target Name="RestoreNugetPackages" Condition="$(SkipNugetRestore) == 'false'">
     <Message Importance="high" Text="Restore Nuget packages..." />
-
-    <Delete Files="$(NuGetRestoreConfigFile)" />
-    <WriteLinesToFile
-      File="$(NuGetRestoreConfigFile)"
-      Lines="&lt;configuration&gt;&lt;/configuration&gt;"
-      Overwrite="true"
-      Encoding="Unicode"/>
-
-    <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(LocalFeedFolder)&quot; $(NuGetRestoreConfigSwitch)"/>
-    <Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CommonSolution.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
-          ContinueOnError="false" />
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
+    <Exec Command="$(NuGetCommand) restore %(StackSolution.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="false" />
     <!-- Restore packages for static analysis-->
     <Exec Command="$(NuGetCommand) restore %(StaticAnalysis.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
@@ -227,17 +208,18 @@
             ContinueOnError="false" />
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
-
-    <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
 
   <Target Name="FilterBuild">
-	<!-- Get all of the files changed in the given pull request -->
-  	<FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
-  		<Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
-  	</FilesChangedTask>
+    <Exec ContinueOnError="false"
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateFilterMappings.ps1 &quot;"/>
 
-  	<!-- Get the list of modules changed -->
+    <!-- Get all of the files changed in the given pull request -->
+    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
+        <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
+    </FilesChangedTask>
+
+    <!-- Get the list of modules changed -->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\ModuleMappings.json">
       <Output TaskParameter="Output" ItemName="ModulesChanged"/>
     </FilterTask>
@@ -246,14 +228,26 @@
     <Message Text="Total: @(ModulesChanged->Count())"/>
     <Message Text=""/>
 
+    <!-- Get the list of solutions to build -->
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\SolutionMappings.json">
+        <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild"/>
+    </FilterTask>
+    <Message Text="Filtering solutions to build by the following:"/>
+    <Message Text="%(CmdletSolutionsToBuild.Identity)"/>
+    <Message Text="Total: @(CmdletSolutionsToBuild->Count())"/>
+    <Message Text=""/>
+
     <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-      <Output TaskParameter="Output" ItemName="XUnitTests"/>
+        <Output TaskParameter="Output" ItemName="XUnitTests"/>
     </FilterTask>
     <Message Text="Using these test assemblies:"/>
     <Message Text="%(XUnitTests.Identity)"/>
     <Message Text="Total: @(XunitTests->Count())"/>
     <Message Text=""/>
+
+    <!-- Restore packages -->
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" ContinueOnError="false" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
@@ -268,89 +262,88 @@
     <MakeDir  Directories="$(StackPackageFolder)"
               Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
-    <MSBuild
-      Projects="@(CommonSolution)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-
     <MSBuild  Projects="@(CmdletSolutionsToBuild)"
               Targets="Build"
               Properties="Configuration=$(Configuration);Platform=Any CPU"
               BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />     
+              ContinueOnError="false" />
+
+    <MSBuild  Projects="@(StackSolution)"
+              Targets="Build"
+              Properties="Configuration=$(Configuration);Platform=Any CPU"
+              BuildInParallel="$(BuildInParallel)"
+              Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
+              ContinueOnError="false" />
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
- 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           Condition="'$(CodeSign)' == 'false'"/>
 
-    <Exec ContinueOnError="false"
-      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
-	    Condition=" ('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'"/>
-	  
     <!-- Copying modules to be signed -->
 
     <!-- AzureRM -->
     <Copy SourceFiles="$(LibraryToolsFolder)\AzureRM\AzureRM.psd1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false"
-          Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
     <Copy SourceFiles="$(LibraryToolsFolder)\AzureRM\AzureRM.psm1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false"
-          Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
 
     <!-- Stack Specific -->
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureRM\AzureRM.psd1"
           DestinationFolder="$(StackPackageFolder)\$(Configuration)"
           ContinueOnError="false"
-          Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureRM\AzureRM.psm1"
           DestinationFolder="$(StackPackageFolder)\$(Configuration)"
           ContinueOnError="false"
-          Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psd1"
           DestinationFolder="$(StackPackageFolder)\$(Configuration)"
           ContinueOnError="false"
-          Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psm1"
           DestinationFolder="$(StackPackageFolder)\$(Configuration)"
           ContinueOnError="false"
-          Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
 
     <Exec ContinueOnError="false"
-      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" 
-      Condition=" ('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'"/>
-      
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;"
+      Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
+
     <!-- AzureRM -->
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psd1"
-          DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
+          DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psm1"
-          DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
+          DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
 
     <!-- Stack -->
     <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureRM.psd1"
-          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureRM.psm1"
-          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
     <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureStack.psd1"
-          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureStack.psm1"
-          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
+          DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+
+    <Exec ContinueOnError="false"
+          Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;"
+          Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
   </Target>
 
 
@@ -361,6 +354,8 @@
   -->
   <Target Name="BuildNetCore">
     <Message Importance="high" Text="Building Cmdlets..." />
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\CreateAliasMapping.ps1 &quot;"/>
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
@@ -394,23 +389,22 @@
       <GetAllFiles Include="$(PackageDirectory)\**\publish\*.*" />
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
- 
+
     <RemoveDir  Directories="%(Artifacts.Identity)"
                 ContinueOnError="true" />
 
     <ItemGroup>
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Websites.Netcore\AzureRM.Tags.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\AzureRM.Resources.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Az.Tags.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\Az.Resources.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\Az.Tags.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Network\Az.Resources.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Network\Az.Tags.psd1" />
     </ItemGroup>
 
     <Delete Files="@(ExtraPsdFiles->'%(FullPath)')"/>
 
     <!-- Update module manifests. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope Netcore &quot; "
-          Condition="'$(Scope)' == 'Netcore'"
           ContinueOnError="false" />
     <!-- Generate the Help -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
@@ -444,22 +438,23 @@
       <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
     </GetFrameworkSdkPath>
 
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
+    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psd1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= " '$(Scope)' == 'Netcore' "/>
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
+      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" Exclude="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*Common*.dll" />
       <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
       <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
     </ItemGroup>
 
     <!-- Stack -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'">
-      <DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
+      <DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" Exclude="$(StackPackageFolder)\$(Configuration)\**\Microsoft*Azure*Commands*Common*.dll" />
+      <DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Management.Storage.dll" />
       <DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
       <DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
-   </ItemGroup>
+    </ItemGroup>
 
     <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip."
              Condition="'@(DelaySignedAssembliesToSign)' == ''" />
@@ -478,7 +473,7 @@
       UnsignedFiles="@(DelaySignedAssembliesToSign)"
       DestinationPath="$(LibrarySourceFolder)"
       BasePath="$(LibrarySourceFolder)"
-      Certificates="72, 401"
+      Certificates="72, 400"
       SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
@@ -496,11 +491,11 @@
 
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
-          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= "'$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
+          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureRM\AzureRM.psm1"
-          DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
+          DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psm1"
-          DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
+          DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
 
 
     <!-- Azure -->
@@ -539,8 +534,8 @@
           ContinueOnError="ErrorAndContinue" />
 
     <!-- Copying signed shortcut back -->
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.Netcore.psd1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'Latest' "/>
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psd1"
+          DestinationFolder="$(LibraryRoot)tools\Az" Condition= " '$(Scope)' == 'Latest' "/>
   </Target>
 
 
@@ -598,10 +593,13 @@
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
-    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp) @(ModulesChanged)"
+    <PropertyGroup>
+        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
+    </PropertyGroup>
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -m @(ModulesChanged)"
           Condition="'$(Scope)' != 'Stack'"/>
 
-    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe $(StackPackageFolder)\$(Configuration) $(StackPackageFolder)"
+    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe -p $(StackPackageFolder)\$(Configuration) -r $(StackPackageFolder)"
           Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="True"/>
 
@@ -631,11 +629,11 @@
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
-          Condition="'$(Scope)' !='Stack'"
+          Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="false"/>
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope Stack -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
-          Condition="'$(Scope)' =='All' or '$(Scope)' =='Stack'"
+          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="false"/>
 
     <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
@@ -653,9 +651,9 @@
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
 
-    <CallTarget Targets="BinScopeCheck" />
+    <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
-    <CallTarget Targets="RunPoliCheck" />
+    <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
 
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           ContinueOnError="ErrorAndContinue"/>
@@ -674,7 +672,7 @@
   </Target>
 
   <Target Name="BinScopeCheck">
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) &quot;"
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) -Scope $(Scope) &quot;"
           ContinueOnError="False"/>
     <OnError ExecuteTargets="BinScopeErrorMessage"/>
   </Target>
@@ -690,7 +688,7 @@
   </Target>
 
   <Target Name="TestFailureErrorMessage">
-    <Error Text="Test failures occured, check the files in src/TestResults/FailingTests."/>
+    <Error Text="Test failures occured, check the files in src/Publish/TestResults/FailingTests."/>
   </Target>
 
   <!-- Run Full switch with scenario tests -->
