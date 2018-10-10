@@ -12,7 +12,7 @@
     RootModule             = "AzureStack.psm1"
 
     # Version number of this module.
-    ModuleVersion          = '1.4.0'
+    ModuleVersion          = '1.5.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -33,7 +33,7 @@
     Description            = 'Azure Stack Adminisitration Module'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion      = '3.0'
+    PowerShellVersion      = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -51,21 +51,21 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.4.1'; },
-        @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.1.2'; },
-        @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.1.0'; },
-        @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.1.1'; })
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
+        @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.0'; },
+        @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.0'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -121,34 +121,24 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.07 - Version 1.4.0
-            * Azurestack 1.4.0 version has no breaking changes from the previous release 1.3.0
-			* Azs.AzureBridge.Admin
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Backup.Admin
-			- Added new parameters BackupFrequencyInHours, IsBackupSchedulerEnabled, BackupRetentionPeriodInDays in cmdlet Set-AzsBackupShare
-			- Added a cmdlet New-EncyptionKeyBase64 to facilitate creating encryption key
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Commerce.Admin
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Fabric.Admin
-			- Bug fix for returning only a single page in paginated results
-			- Added a cmdlet Add-AzsScaleUnitNode to enable admin to add new scale unit nodes to the azurestack stamp
-			- Added cmdlet and New-AzsScaleUnitNodeObject to facilitate the creation scale unit parameter objects
-			* Azs.Gallery.Admin
-			- Bug fix for returning only a single page in paginated results
-			* Azs.InfrastructureInsights.Admin
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Network.Admin
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Update.Admin
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Subscriptions
-			- Bug fix for returning only a single page in paginated results
-			* Azs.Subscriptions.Admin
-			- Added a cmdlet Move-AzsSubscription to move subscriptions between delegated provider offers
-			- Added a cmdlet Test-AzsMoveSubscription to validate that user subscriptions can be moved between delegated provider offers
-			- Bug fix for returning only a single page in paginated results'
+            ReleaseNotes = '## 2018.09 - Version 1.5.0
+            * All the Azure Stack Admin modules are updated for greater than or equal to dependency on the AzureRm.Profile module
+            * Support for handling nested resource names in all the modules
+            * Bug fix in all the modules where ErrorActionPreference is being overridden to be Stop
+            * Azs.Compute.Admin Module
+                * New quota properties added for the support of manged disk
+                * Addition of disk migration related cmdlets
+                * Additional properties in the Platform Image and VM extesnion objects
+            * Azs.Fabric.Admin 
+                * New cmdlet for adding scale unit node
+            * Azs.Backup.Admin
+                * Set-AzsBackupShare is an alias now to the cmdlet Set-AzsBackupConfiguration
+                * Get-AzsBackupLocation is an alias now to the cmdlet Get-AzsBackupConfiguration
+                * Set-AzsBackupConfiguration, the parameter BackupShare is an alias now for the parameter path
+            * Azs.Subscriptions
+                * Get-AzsDelegatedProviderOffer, the parameter OfferName is now an alias for Offer
+            * Azs.Subscriptions.Admin
+                * Get-AzsDelegatedProviderOffer, the parameter OfferName is now an alias for Offer'
 
 
             # External dependent modules of this module
@@ -165,4 +155,3 @@
     # DefaultCommandPrefix = ''
 
 }
-

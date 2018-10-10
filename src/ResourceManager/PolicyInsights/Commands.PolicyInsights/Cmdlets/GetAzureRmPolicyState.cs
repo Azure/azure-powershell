@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
     /// <summary>
     /// Gets policy states
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyState", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyState))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyState", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyState))]
     public class GetAzureRmPolicyState : PolicyInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]

@@ -20,6 +20,28 @@
 -->
 ## Current Release
 
+## Version 0.6.12
+* Fixed issue
+	- https://github.com/Azure/azure-powershell/issues/7161
+
+## Version 0.6.11
+* Fixed issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.6.10
+* Fixed issue with default resource groups not being set.
+* Fix for issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+
+## Version 0.6.9
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.6.8
 * Updated all help files to include full parameter types and correct input/output types.
 * Updated piping for InputObject and ResourceId in remove cmdlets
@@ -35,7 +57,7 @@
 	- Complete-AzureRmServiceBusMigration
 	- Stop-AzureRmServiceBusMigration
 	- Remove-AzureRmServiceBusMigration
-* Added a readonly property 'PendingReplicationOperationsCount' to PSServiceBusDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress 
+* Added a readonly property 'PendingReplicationOperationsCount' to PSServiceBusDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
 
 ## Version 0.6.6
 * Added optional Parameter -KeyValue to New-AzureRmServiceBusKey cmdlet, which enables user to provide KeyValue.

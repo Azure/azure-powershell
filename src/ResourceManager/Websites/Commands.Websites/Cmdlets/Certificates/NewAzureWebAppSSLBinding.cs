@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebAppSSLBinding"), OutputType(typeof(HostNameSslState))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSSLBinding"), OutputType(typeof(HostNameSslState))]
     public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
     {
         const string CertNamePostFixSeparator = "_";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet3Name, Position = 0, Mandatory = true, HelpMessage = "The web app object.", ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ParameterSet4Name, Position = 0, Mandatory = true, HelpMessage = "The web app object.", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public Site WebApp { get; set; }
+        public PSSite WebApp { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The name of the host name.")]
         [ValidateNotNullOrEmpty]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
 
             string thumbPrint = null;
-            var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
+            var webapp = new PSSite(WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot));
 
             switch (ParameterSetName)
             {

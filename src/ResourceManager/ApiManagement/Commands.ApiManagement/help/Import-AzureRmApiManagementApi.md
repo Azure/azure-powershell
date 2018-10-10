@@ -238,13 +238,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: ApiId (ByPropertyName), ApiRevision (ByPropertyName), Path (ByPropertyName), SpecificationPath (ByPropertyName), SpecificationUrl (ByPropertyName), WsdlEndpointName (ByPropertyName), WsdlServiceName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
-Parameters: SpecificationFormat (ByPropertyName)
 
 ### System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiType, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]]
 

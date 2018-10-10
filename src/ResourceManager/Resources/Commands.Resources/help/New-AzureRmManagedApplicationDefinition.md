@@ -284,16 +284,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CreateUiDefinition (ByPropertyName), Description (ByPropertyName), DisplayName (ByPropertyName), MainTemplate (ByPropertyName), Name (ByPropertyName), PackageFileUri (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel
-Parameters: LockLevel (ByPropertyName)
 
 ### System.String[]
-Parameters: Authorization (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

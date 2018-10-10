@@ -1,4 +1,4 @@
-// 
+﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCrossConnection"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCrossConnection"), OutputType(typeof(PSExpressRouteCrossConnection))]
     public partial class GetAzureRmExpressRouteCrossConnection : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// <summary>
     /// 'Remove-AzureRmServicebusMigrationConfiguration' Cmdlet Deletes Migration Coinfiguration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
@@ -67,10 +67,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveMigrationConfiguration)))
             {
-                Client.DeleteServiceBusMigrationConfiguration(ResourceGroupName, Name);
-                if (PassThru)
+                try
                 {
-                    WriteObject(true);
+                    Client.DeleteServiceBusMigrationConfiguration(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
                 }
             }
         }

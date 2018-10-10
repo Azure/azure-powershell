@@ -413,25 +413,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: MetricFilter (ByPropertyName), MetricNamespace (ByPropertyName), OrderBy (ByPropertyName), ResourceId (ByPropertyName)
 
 ### System.TimeSpan
-Parameters: TimeGrain (ByPropertyName)
 
 ### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.19.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.DateTime
-Parameters: EndTime (ByPropertyName), StartTime (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.ResultType, Microsoft.Azure.Management.Monitor, Version=0.19.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.String[]
-Parameters: MetricName (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DetailedOutput (ByPropertyName)
 
 ## OUTPUTS
 

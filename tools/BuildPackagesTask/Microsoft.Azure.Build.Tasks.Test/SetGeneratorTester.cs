@@ -407,11 +407,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<string> paths = new HashSet<string>()
             {
                 "src/ResourceManager/StreamAnalytics/file",
-                "src/ResourceManager/Websites/"
+                "src/ResourceManager/EventHub/"
             };
 
             string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 3;
+            int expectedNumberFiles = 4;
             HashSet<string> actual;
 
             //act
@@ -495,7 +495,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 ".github",
                 "documentation",
-                "src/ServiceManagement/file",
                 "src/ResourceManager/LogicApp/file",
                 "src/ResourceManager/UsageAggregates/file"
 
@@ -504,12 +503,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             string mapFilePath = MapFilePath;
             HashSet<string> expected = new HashSet<string>()
             {
-                @".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll",
-                @".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll",
-                @".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll",
-                @".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll",
-                @".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll",
-                @".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll",
                 @".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll",
                 @".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"
             };

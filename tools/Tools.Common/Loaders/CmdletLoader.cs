@@ -24,11 +24,13 @@ using System.IO;
 
 namespace Tools.Common.Loaders
 {
+#if !NETSTANDARD
     public class CmdletLoader : MarshalByRefObject
+#else
+    public class CmdletLoader
+#endif
     {
         public static ModuleMetadata ModuleMetadata;
-
-        private static IDictionary<string, Assembly> _assemblyDictionary = null;
 
         public ModuleMetadata GetModuleMetadata(string assemblyPath, List<string> commonOutputFolders)
         {

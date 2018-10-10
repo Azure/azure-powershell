@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.ManagementPartner;
 
 namespace Microsoft.Azure.Commands.ManagementPartner
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmManagementPartner"), OutputType(typeof(PSManagementPartner))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementPartner"), OutputType(typeof(PSManagementPartner))]
     public class GetManagementPartner : AzureManagementPartnerCmdletsBase
     {
         [Parameter(Position = 0, Mandatory = false)]

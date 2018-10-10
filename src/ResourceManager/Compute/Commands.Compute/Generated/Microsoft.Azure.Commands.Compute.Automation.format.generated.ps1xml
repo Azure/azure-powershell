@@ -24,23 +24,6 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService</TypeName>
@@ -262,23 +245,6 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineExtensionsListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineExtensionsListResult</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocument</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocument</TypeName>
@@ -299,23 +265,6 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocumentBase</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocumentBase</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -749,6 +698,23 @@
       </CustomControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</TypeName>
@@ -769,6 +735,23 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>

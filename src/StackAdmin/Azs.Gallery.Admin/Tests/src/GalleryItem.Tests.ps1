@@ -127,6 +127,10 @@ InModuleScope Azs.Gallery.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListAllGalleryItems" -Skip:$('TestListAllGalleryItems' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllGalleryItems'

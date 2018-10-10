@@ -19,10 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, 
-        Constants.ApiManagementApiVersionSet,
-        DefaultParameterSetName = ExpandedParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiVersionSet",DefaultParameterSetName = ExpandedParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApiVersionSet), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
     {

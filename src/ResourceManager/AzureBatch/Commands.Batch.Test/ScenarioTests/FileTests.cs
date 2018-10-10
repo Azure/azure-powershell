@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestGetNodeFileContentByTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestGetNodeFileContentByComputeNode()
         {
             BatchController controller = BatchController.NewInstance;

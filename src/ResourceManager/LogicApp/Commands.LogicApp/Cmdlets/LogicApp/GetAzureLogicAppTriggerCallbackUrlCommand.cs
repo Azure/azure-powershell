@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the callback URL for a trigger in a workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppTriggerCallbackUrl"), OutputType(typeof(WorkflowTriggerCallbackUrl))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicAppTriggerCallbackUrl"), OutputType(typeof(WorkflowTriggerCallbackUrl))]
     public class GetAzureLogicAppTriggerCallbackUrlCommand : LogicAppBaseCmdlet
     {
 

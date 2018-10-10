@@ -61,3 +61,121 @@ function Clean-ResourceGroup($rgname)
         Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
+
+function New-AzureRmRoleAssignmentWithId
+{
+    [CmdletBinding()]
+    param(
+        [Guid]   [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
+        [string] [Parameter()] [alias("Email", "UserPrincipalName")] $SignInName,
+        [string] [Parameter()] [alias("SPN", "ServicePrincipalName")] $ApplicationId,
+        [string] [Parameter()] $ResourceGroupName,
+        [string] [Parameter()] $ResourceName,
+        [string] [Parameter()] $ResourceType,
+        [string] [Parameter()] $ParentResource,
+        [string] [Parameter()] $Scope,
+        [string] [Parameter()] $RoleDefinitionName,
+        [Guid]   [Parameter()] $RoleDefinitionId,
+        [switch] [Parameter()] $AllowDelegation,
+        [Guid]   [Parameter()] $RoleAssignmentId
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureRoleAssignmentCommand
+    $cmdlet.DefaultProfile = $profile
+	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if ($ObjectId -ne $null -and $ObjectId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.ObjectId = $ObjectId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($SignInName)))
+    {
+        $cmdlet.SignInName = $SignInName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ApplicationId)))
+    {
+        $cmdlet.ApplicationId = $ApplicationId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceGroupName)))
+    {
+        $cmdlet.ResourceGroupName = $ResourceGroupName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceName)))
+    {
+        $cmdlet.ResourceName = $ResourceName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceType)))
+    {
+        $cmdlet.ResourceType = $ResourceType
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ParentResource)))
+    {
+        $cmdlet.ParentResource = $ParentResource
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Scope)))
+    {
+        $cmdlet.Scope = $Scope
+    }
+
+    if (-not ([string]::IsNullOrEmpty($RoleDefinitionName)))
+    {
+        $cmdlet.RoleDefinitionName = $RoleDefinitionName
+    }
+
+    if ($RoleDefinitionId -ne $null -and $RoleDefinitionId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.RoleDefinitionId = $RoleDefinitionId
+    }
+
+    if ($AllowDelegation.IsPresent)
+    {
+        $cmdlet.AllowDelegation = $true
+    }
+
+    if ($RoleAssignmentId -ne $null -and $RoleAssignmentId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.RoleAssignmentId = $RoleAssignmentId
+    }
+
+    $cmdlet.ExecuteCmdlet()
+}
+
+function New-AzureRmRoleDefinitionWithId
+{
+    [CmdletBinding()]
+    param(
+        [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition] [Parameter()] $Role,
+        [string] [Parameter()] $InputFile,
+        [Guid]   [Parameter()] $RoleDefinitionId
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureRoleDefinitionCommand
+    $cmdlet.DefaultProfile = $profile
+	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if (-not ([string]::IsNullOrEmpty($InputFile)))
+    {
+        $cmdlet.InputFile = $InputFile
+    }
+
+    if ($Role -ne $null)
+    {
+        $cmdlet.Role = $Role
+    }
+
+    if ($RoleDefinitionId -ne $null -and $RoleDefinitionId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.RoleDefinitionId = $RoleDefinitionId
+    }
+
+    $cmdlet.ExecuteCmdlet()
+}

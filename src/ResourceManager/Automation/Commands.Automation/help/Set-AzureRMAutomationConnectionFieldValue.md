@@ -129,10 +129,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), ConnectionFieldName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Object
-Parameters: Value (ByPropertyName)
 
 ## OUTPUTS
 

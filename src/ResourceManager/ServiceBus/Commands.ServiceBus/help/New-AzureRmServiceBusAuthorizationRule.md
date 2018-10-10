@@ -204,10 +204,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), Namespace (ByPropertyName), Queue (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
 ### System.String[]
-Parameters: Rights (ByPropertyName)
 
 ## OUTPUTS
 

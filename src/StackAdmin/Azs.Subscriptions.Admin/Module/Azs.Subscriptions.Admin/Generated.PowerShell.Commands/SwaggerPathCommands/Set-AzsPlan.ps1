@@ -119,7 +119,7 @@ function Set-AzsPlan {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewPlan = $null
 

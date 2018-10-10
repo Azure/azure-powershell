@@ -35,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
                 this.DefaultServiceVersion = properties.DefaultServiceVersion;
                 this.Cors = PSCorsRule.ParseCorsRules(properties.Cors);
                 this.DeleteRetentionPolicy = PSDeleteRetentionPolicy.ParsePSDeleteRetentionPolicy(properties.DeleteRetentionPolicy);
+                this.StaticWebsite = PSStaticWebsiteProperties.ParsePSStaticWebsiteProperties(properties.StaticWebsite);
             }
         }
 
@@ -75,6 +76,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         [Ps1Xml(Label = "DeleteRetentionPolicy.Enabled", Target = ViewControl.List, ScriptBlock = "$_.DeleteRetentionPolicy.Enabled", Position = 9)]
         [Ps1Xml(Label = "DeleteRetentionPolicy.RetentionDays", Target = ViewControl.List, ScriptBlock = "$_.DeleteRetentionPolicy.RetentionDays", Position = 10)]
         public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the service properties pertaining to StaticWebsites
+        [Ps1Xml(Label = "StaticWebsite.Enabled", Target = ViewControl.List, ScriptBlock = "$_.StaticWebsite.Enabled", Position = 11)]
+        [Ps1Xml(Label = "StaticWebsite.IndexDocument", Target = ViewControl.List, ScriptBlock = "$_.StaticWebsite.IndexDocument", Position = 12)]
+        [Ps1Xml(Label = "StaticWebsite.ErrorDocument404Path", Target = ViewControl.List, ScriptBlock = "$_.StaticWebsite.ErrorDocument404Path", Position = 13)]
+        public PSStaticWebsiteProperties StaticWebsite { get; set; }
     }
 
     // Wrapper of DeleteRetentionPolicy
@@ -103,5 +111,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         // Summary:
         //     Gets or Sets the number of days on the DeleteRetentionPolicy.
         public int? RetentionDays { get; set; }
+    }
+
+    // Wrapper of StaticWebsiteProperties
+    public class PSStaticWebsiteProperties
+    {
+        //
+        // Summary:
+        //     Parse DeleteRetentionPolicy object in SDK to wrapped  PSDeleteRetentionPolicy object
+        public static PSStaticWebsiteProperties ParsePSStaticWebsiteProperties(StaticWebsiteProperties staticWebsiteProperties)
+        {
+            if (staticWebsiteProperties == null)
+            {
+                return null;
+            }
+            PSStaticWebsiteProperties psProperties = new PSStaticWebsiteProperties();
+            psProperties.Enabled = staticWebsiteProperties.Enabled;
+            psProperties.IndexDocument = staticWebsiteProperties.IndexDocument;
+            psProperties.ErrorDocument404Path = staticWebsiteProperties.ErrorDocument404Path;
+            return psProperties;
+        }
+
+        //
+        // Summary:
+        //     True if static websites should be enabled on the blob service for the corresponding
+        //     Storage Account.
+        public bool Enabled { get; set; }
+        //
+        // Summary:
+        //     Gets or sets a string representing the name of the index document in each directory.
+        public string IndexDocument { get; set; }
+        //
+        // Summary:
+        //     Gets or sets a string representing the path to the error document that should
+        //     be shown when a 404 is issued (meaning, when a browser requests a page that does
+        //     not exist.)
+        public string ErrorDocument404Path { get; set; }
     }
 }

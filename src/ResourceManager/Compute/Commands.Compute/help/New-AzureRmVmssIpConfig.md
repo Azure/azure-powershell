@@ -18,8 +18,8 @@ New-AzureRmVmssIpConfig [[-Name] <String>] [[-Id] <String>] [[-SubnetId] <String
  [[-ApplicationGatewayBackendAddressPoolsId] <String[]>] [[-LoadBalancerBackendAddressPoolsId] <String[]>]
  [[-LoadBalancerInboundNatPoolsId] <String[]>] [-Primary] [-PrivateIPAddressVersion <String>]
  [-PublicIPAddressConfigurationName <String>] [-PublicIPAddressConfigurationIdleTimeoutInMinutes <Int32>]
- [-DnsSetting <String>] [-IpTag <VirtualMachineScaleSetIpTag[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DnsSetting <String>] [-IpTag <VirtualMachineScaleSetIpTag[]>] [-PublicIPPrefix <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -237,6 +237,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PublicIPPrefix
+The ID of Public IP Prefix
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SubnetId
 Specifies the subnet ID in which the configuration creates  the VMSS network interface.
 
@@ -288,16 +303,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DnsSetting (ByPropertyName), Id (ByPropertyName), Name (ByPropertyName), PrivateIPAddressVersion (ByPropertyName), PublicIPAddressConfigurationName (ByPropertyName), SubnetId (ByPropertyName)
 
 ### System.String[]
-Parameters: ApplicationGatewayBackendAddressPoolsId (ByPropertyName), LoadBalancerBackendAddressPoolsId (ByPropertyName), LoadBalancerInboundNatPoolsId (ByPropertyName)
 
 ### System.Int32
-Parameters: PublicIPAddressConfigurationIdleTimeoutInMinutes (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag[]
-Parameters: IpTag (ByPropertyName)
 
 ## OUTPUTS
 

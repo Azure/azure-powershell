@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ProcessorArchitecture (ByPropertyName), ResourceGroupName (ByValue), VirtualNetworkGatewayName (ByValue)
+Parameters: ResourceGroupName (ByValue), VirtualNetworkGatewayName (ByValue)
 
 ## OUTPUTS
 

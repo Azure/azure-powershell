@@ -133,7 +133,7 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
-    Assert-AreEqual "Standard_LRS" $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+    Assert-Null $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $false $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
 
     # Windows OS

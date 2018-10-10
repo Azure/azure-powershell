@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Set-AzureKeyVaultCertificateIssuer sets the provided parameters on the
     /// issuer object
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureKeyVaultCertificateIssuer,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ExpandedParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateIssuer",SupportsShouldProcess = true,DefaultParameterSetName = ExpandedParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {

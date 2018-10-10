@@ -209,7 +209,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ColumnName (ByPropertyName), DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), SchemaName (ByPropertyName), ServerName (ByPropertyName), TableName (ByPropertyName)
 
 ## OUTPUTS
 

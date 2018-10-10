@@ -226,7 +226,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AlternateName (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), PartnerNamespace (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 Parameters: InputObject (ByValue)

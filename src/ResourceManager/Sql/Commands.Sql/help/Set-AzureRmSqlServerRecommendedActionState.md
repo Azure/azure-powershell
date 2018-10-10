@@ -197,10 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AdvisorName (ByPropertyName), RecommendedActionName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState
-Parameters: State (ByPropertyName)
 
 ## OUTPUTS
 

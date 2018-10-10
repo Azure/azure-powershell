@@ -17,9 +17,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSExpressRouteServiceProvider
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
         public string Id { get; set; }
@@ -30,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSExpressRouteServiceProviderBandwidthsOffered> BandwidthsOffered { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

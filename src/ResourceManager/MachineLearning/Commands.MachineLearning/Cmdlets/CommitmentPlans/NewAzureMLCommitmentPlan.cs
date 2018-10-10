@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.New, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan))]
     public class NewAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {

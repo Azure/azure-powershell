@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// <summary>
     /// Enables job collection.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmSchedulerJobCollection", SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SchedulerJobCollection", SupportsShouldProcess = true), OutputType(typeof(string))]
     public class EnableAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job collection.")]

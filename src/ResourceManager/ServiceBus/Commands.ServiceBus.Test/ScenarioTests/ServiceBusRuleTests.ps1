@@ -68,8 +68,9 @@ function ServiceBusRuleTests
 	Assert-AreEqual $resultGetSub.Name $subName "Get-Sub, Created Subscription not found"
 
 	# Create Rule	
-	$createRule = New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -SqlExpression "myproperty='test'"
+	$createRule = New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -SqlExpression "myproperty='test'" -ActionSqlExpression "SET myAction='test'" -RequiresPreprocessing
 	Assert-AreEqual $createRule.Name $ruleName "Rule created earlier is not found."
+	Assert-AreEqual $createRule.Action.SqlExpression "SET myAction='test'" "Action SqlExpression is not found."
 	
 	# Get Rule
 	$getRule = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName

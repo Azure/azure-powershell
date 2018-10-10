@@ -128,10 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameters: VM (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName), Product (ByPropertyName), PromotionCode (ByPropertyName), Publisher (ByPropertyName)
 
 ## OUTPUTS
 

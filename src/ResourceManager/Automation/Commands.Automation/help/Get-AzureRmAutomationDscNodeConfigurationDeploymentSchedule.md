@@ -146,10 +146,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: JobScheduleId (ByPropertyName)
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

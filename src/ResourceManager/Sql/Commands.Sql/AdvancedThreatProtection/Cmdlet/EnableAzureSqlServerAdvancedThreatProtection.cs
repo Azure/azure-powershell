@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// Enables the Advanced Threat Protection of a specific server.
     /// </summary>
-    [Cmdlet("Enable", "AzureRmSqlServerAdvancedThreatProtection", SupportsShouldProcess = true), 
-        OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtection", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
     public class EnableAzureSqlServerAdvancedThreatProtection : SqlServerAdvancedThreatProtectionCmdletBase
     {
         /// <summary>

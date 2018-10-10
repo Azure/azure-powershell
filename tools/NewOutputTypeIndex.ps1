@@ -40,6 +40,18 @@ $psd1Files | ForEach {
                     }
                 }
             }
+
+            foreach ($property in $exportedType.GetProperties() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "ParameterAttribute"})
+            {
+                if ($property.PropertyType.FullName -like "*System.Nullable*``[``[*")
+                {
+                    $outputTypes.Add(($property.PropertyType.BaseType.FullName -replace "[][]", "")) | Out-Null
+                }
+                elseif ($property.PropertyType.FullName -notlike "*``[``[*")
+                {
+                    $outputTypes.Add(($property.PropertyType.FullName -replace "[][]", "")) | Out-Null
+                }
+            }
         }
     }
 }

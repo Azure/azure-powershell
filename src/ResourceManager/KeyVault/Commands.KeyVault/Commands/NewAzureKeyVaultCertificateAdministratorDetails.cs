@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// New-AzureKeyVaultCertificateAdministratorDetails creates an in-memory administrator details object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateAdministratorDetails,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateAdministratorDetails",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateAdministratorDetails))]
     public class NewAzureKeyVaultCertificateAdministratorDetails : KeyVaultCmdletBase
     {

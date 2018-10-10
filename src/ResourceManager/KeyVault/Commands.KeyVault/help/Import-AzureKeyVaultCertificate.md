@@ -239,13 +239,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), VaultName (ByPropertyName)
 
 ### System.Security.Cryptography.X509Certificates.X509Certificate2Collection
 Parameters: CertificateCollection (ByValue)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

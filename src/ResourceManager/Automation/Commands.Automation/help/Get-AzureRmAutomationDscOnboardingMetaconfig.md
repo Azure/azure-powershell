@@ -169,10 +169,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), OutputFolder (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.String[]
-Parameters: ComputerName (ByPropertyName)
 
 ## OUTPUTS
 

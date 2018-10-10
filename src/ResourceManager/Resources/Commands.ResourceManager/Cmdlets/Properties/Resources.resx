@@ -123,8 +123,8 @@
   <data name="CancelResourceGroupDeployment" xml:space="preserve">
     <value>Are you sure you want to cancel the active deployment of resource group '{0}'?</value>
   </data>
-  <data name="CancelResourceGroupDeploymentMessage" xml:space="preserve">
-    <value>Cancelling active resource group deployment ...</value>
+  <data name="CancelDeploymentMessage" xml:space="preserve">
+    <value>Cancelling active deployment ...</value>
   </data>
   <data name="CreateApplicationNotAllowedGuestUser" xml:space="preserve">
     <value>You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory.</value>
@@ -135,11 +135,14 @@
   <data name="DeleteResourceGroupDeployment" xml:space="preserve">
     <value>Are you sure you want to delete the deployment '{0}'?</value>
   </data>
-  <data name="DeleteResourceGroupDeploymentMessage" xml:space="preserve">
+  <data name="DeleteDeploymentMessage" xml:space="preserve">
     <value>Deleting the deployment ...</value>
   </data>
-  <data name="DeploymentDoesntExist" xml:space="preserve">
+  <data name="DeploymentDoesntExistInResourceGroup" xml:space="preserve">
     <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
+  </data>
+  <data name="DeploymentDoesntExistAtSubscriptionScope" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist in subscription.</value>
   </data>
   <data name="DeploymentWithNameNotFound" xml:space="preserve">
     <value>Cannot find a deployment with name '{0}'.</value>
@@ -354,6 +357,9 @@
   <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
     <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
   </data>
+  <data name="InvalidRollbackParameters" xml:space="preserve">
+    <value>The paramater -RollbackToLastDeployment and -RollBackDeploymentName can't be defined at the same time.</value>
+  </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds</value>
   </data>
@@ -389,6 +395,9 @@
   </data>
   <data name="NoRunningDeployments" xml:space="preserve">
     <value>There are no running deployments under resource group '{0}'</value>
+  </data>
+  <data name="NoRunningDeploymentsAtSubscriptionScope" xml:space="preserve">
+    <value>There are no running deployment called '{0}' at the current subscription scope.</value>
   </data>
   <data name="UpdatedResourceGroup" xml:space="preserve">
     <value>Updated resource group '{0}' in location '{1}'</value>

@@ -281,10 +281,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DisplayName (ByPropertyName), UPNOrObjectId (ByPropertyName), UserPrincipalName (ByPropertyName)
 
 ### System.Guid
-Parameters: ObjectId (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
 Parameters: InputObject (ByValue)
@@ -292,7 +290,6 @@ Parameters: InputObject (ByValue)
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Security.SecureString
-Parameters: Password (ByPropertyName)
 
 ## OUTPUTS
 

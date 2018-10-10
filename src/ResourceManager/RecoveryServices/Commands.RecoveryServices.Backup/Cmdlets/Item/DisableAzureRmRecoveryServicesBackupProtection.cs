@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Disable protection of an item protected by the recovery services vault. 
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection", SupportsShouldProcess = true),
-        OutputType(typeof(JobBase))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtection", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         /// <summary>

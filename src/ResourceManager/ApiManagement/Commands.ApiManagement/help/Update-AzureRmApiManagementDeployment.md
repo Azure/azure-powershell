@@ -261,21 +261,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: ApiManagement (ByValue)
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
-Parameters: Sku (ByPropertyName)
 
 ### System.Int32
-Parameters: Capacity (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
-Parameters: VirtualNetwork (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
-Parameters: VpnType (ByPropertyName)
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=6.1.2.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

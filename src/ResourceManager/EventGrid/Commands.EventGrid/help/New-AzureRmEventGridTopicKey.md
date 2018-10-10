@@ -190,7 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: KeyName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), TopicName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameters: InputObject (ByValue)

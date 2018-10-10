@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize TrustedRootCertificates
+            if (applicationGateway.TrustedRootCertificates != null)
+            {
+                foreach (var trustedRootCertificate in applicationGateway.TrustedRootCertificates)
+                {
+                    trustedRootCertificate.Id = string.Empty;
+                }
+            }
+
             // Normalize FrontendIpConfiguration
             if (applicationGateway.FrontendIPConfigurations != null)
             {
@@ -145,12 +154,24 @@ namespace Microsoft.Azure.Commands.Network
                                                     applicationGateway.ResourceGroupName,
                                                     applicationGateway.Name);
                     }
+
                     if (null != backendHttpSettings.AuthenticationCertificates)
                     {
                         foreach (var authCert in backendHttpSettings.AuthenticationCertificates)
                         {
                             authCert.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                     authCert.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                        }
+                    }
+
+                    if (null != backendHttpSettings.TrustedRootCertificates)
+                    {
+                        foreach (var trustedRootCert in backendHttpSettings.TrustedRootCertificates)
+                        {
+                            trustedRootCert.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    trustedRootCert.Id,
                                                     applicationGateway.ResourceGroupName,
                                                     applicationGateway.Name);
                         }

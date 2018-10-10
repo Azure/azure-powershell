@@ -29,7 +29,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
+    using ApiManagementClient = Azure.Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase
     {
@@ -150,7 +150,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
+#if NETSTANDARD
+                    _helper.RMStorageModule,
+#else
                     _helper.RMStorageDataPlaneModule,
+#endif
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");

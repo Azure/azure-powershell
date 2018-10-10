@@ -59,11 +59,11 @@ function Get-TaskResult {
         } catch {
             # Catch exception so no output.
         } finally {
-            throw $Exception
+            Write-Error -Exception $Exception
         }
     }
 
-    $ErrorActionPreference = 'Stop'
+
     $null = $TaskResult.AsyncWaitHandle.WaitOne()
     Write-Debug -Message "$($TaskResult | Out-String)"
 

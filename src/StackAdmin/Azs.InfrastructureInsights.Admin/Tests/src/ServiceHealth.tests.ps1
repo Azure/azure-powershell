@@ -120,6 +120,10 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListServiceHealths" -Skip:$('TestListServiceHealths' -in $global:SkippedTests) {
             $global:TestName = 'TestListServiceHealths'
@@ -127,11 +131,8 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
             $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($RegionHealth in $RegionHealths) {
-                $regionName = Extract-Name -Name $RegionHealth.Name
-
-                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name
                 foreach ($serviceHealth in $ServiceHealths) {
-                    $serviceHealthName = Extract-Name -Name $serviceHealth.Name
                     ValidateAzsServiceHealth -ServiceHealth $serviceHealth
                 }
             }
@@ -142,13 +143,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
             $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($RegionHealth in $RegionHealths) {
-
-                $regionName = Extract-Name -Name $RegionHealth.Name
-                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name
                 foreach ($serviceHealth in $ServiceHealths) {
-
-                    $serviceHealthName = Extract-Name -Name $serviceHealth.Name
-                    $retrieved = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName -Name $serviceHealthName
+                    $retrieved = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name -Name $serviceHealth.Name
                     AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
                     break
                 }
@@ -161,13 +158,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
             $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($RegionHealth in $RegionHealths) {
-
-                $regionName = Extract-Name -Name $RegionHealth.Name
-                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name
                 foreach ($serviceHealth in $ServiceHealths) {
-
-                    $serviceHealthName = Extract-Name -Name $serviceHealth.Name
-                    $retrieved = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName -Name $serviceHealthName
+                    $retrieved = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name -Name $serviceHealth.Name
                     AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
                 }
             }
@@ -180,11 +173,8 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
             $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($RegionHealth in $RegionHealths) {
-
-                $regionName = Extract-Name -Name $RegionHealth.Name
-                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $RegionHealth.Name
                 foreach ($serviceHealth in $ServiceHealths) {
-
                     $retrieved = $serviceHealth | Get-AzsRPHealth
                     AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
                 }

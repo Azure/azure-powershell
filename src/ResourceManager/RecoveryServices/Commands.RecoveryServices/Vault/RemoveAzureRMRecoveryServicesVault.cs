@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Used to initiate a vault delete operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesVault", SupportsShouldProcess = true),
-        OutputType(typeof(VaultOperationOutput))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVault", SupportsShouldProcess = true),OutputType(typeof(VaultOperationOutput))]
     public class RemoveAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
     {
         #region Parameters

@@ -191,10 +191,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: Id (ByPropertyName)
 
 ### System.String
-Parameters: Name (ByPropertyName), Scope (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 Parameters: InputObject (ByValue)

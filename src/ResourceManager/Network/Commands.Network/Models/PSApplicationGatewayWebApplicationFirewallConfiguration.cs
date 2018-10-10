@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -20,9 +21,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayWebApplicationFirewallConfiguration
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool Enabled { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string FirewallMode { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string RuleSetType { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string RuleSetVersion { get; set; }
         public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
 

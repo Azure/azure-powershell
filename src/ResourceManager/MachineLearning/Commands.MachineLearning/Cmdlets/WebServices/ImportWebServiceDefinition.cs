@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(VerbsData.Import, WebServicesCmdletBase.CommandletSuffix)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebService")]
     [OutputType(typeof(WebService))]
     public class ImportWebServiceDefinition : WebServicesCmdletBase
     {

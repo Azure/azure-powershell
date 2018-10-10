@@ -138,7 +138,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: JobCollectionName (ByPropertyName), JobName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

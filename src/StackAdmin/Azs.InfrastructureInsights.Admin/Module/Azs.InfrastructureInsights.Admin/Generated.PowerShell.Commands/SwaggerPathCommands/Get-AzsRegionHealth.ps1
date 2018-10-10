@@ -16,8 +16,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Name of the region
 
-.PARAMETER ResourceGroupNameName
-    resourceGroupName.
+.PARAMETER ResourceGroupName
+    Resource group name which the resource resides.
 
 .PARAMETER ResourceId
     The resource id.
@@ -82,8 +82,6 @@ function Get-AzsRegionHealth {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient'
         }
@@ -119,6 +117,7 @@ function Get-AzsRegionHealth {
                 $ResourceGroupName = "System.$Location"
             }
         } else {
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -155,6 +154,7 @@ function Get-AzsRegionHealth {
             }
             return
         }
+
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'
             $TaskResult = $InfrastructureInsightsAdminClient.RegionHealths.ListWithHttpMessagesAsync($ResourceGroupName, $(if ($oDataQuery) {
@@ -193,7 +193,7 @@ function Get-AzsRegionHealth {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and (Get-Member -InputObject $PageResult -Name Page) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
                 $TaskResult = $InfrastructureInsightsAdminClient.RegionHealths.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null

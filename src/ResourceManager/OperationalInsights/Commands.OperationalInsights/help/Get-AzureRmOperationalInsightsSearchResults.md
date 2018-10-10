@@ -230,10 +230,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Id (ByPropertyName), PostHighlight (ByPropertyName), PreHighlight (ByPropertyName), Query (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ### System.Int64
-Parameters: Top (ByPropertyName)
 
 ### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

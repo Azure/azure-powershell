@@ -183,13 +183,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ApplicationName (ByPropertyName), Name (ByPropertyName), Parameters (ByPropertyName)
 
 ### System.Uri
-Parameters: Uri (ByPropertyName)
 
 ### Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[]
-Parameters: NodeTypes (ByPropertyName)
 
 ## OUTPUTS
 

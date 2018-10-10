@@ -184,13 +184,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: JobId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

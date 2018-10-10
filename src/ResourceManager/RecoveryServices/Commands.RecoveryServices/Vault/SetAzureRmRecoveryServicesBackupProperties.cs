@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Sets Azure Recovery Services Vault Backup Properties.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProperties", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
     {
         #region Parameters

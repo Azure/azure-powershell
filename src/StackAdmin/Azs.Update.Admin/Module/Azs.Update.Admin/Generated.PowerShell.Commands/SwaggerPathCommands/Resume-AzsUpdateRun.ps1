@@ -25,8 +25,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     The resource id.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
 .PARAMETER Force
-    Flag to remove the item without confirmation.
+    Don't ask for confirmation.
 
 .EXAMPLE
 	PS C:\> Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
@@ -84,8 +87,6 @@ function Resume-AzsUpdateRun {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         if ( 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}/updateRuns/{runId}'
@@ -97,6 +98,8 @@ function Resume-AzsUpdateRun {
             $Location = $ArmResourceIdParameterValues['updateLocation']
             $UpdateName = $ArmResourceIdParameterValues['update']
             $Name = $ArmResourceIdParameterValues['runId']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PsCmdlet.ShouldProcess($Name, "Resume the update")) {

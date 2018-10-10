@@ -154,13 +154,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Boolean
-Parameters: Encrypted (ByPropertyName)
 
 ### System.Object
-Parameters: Value (ByPropertyName)
 
 ## OUTPUTS
 

@@ -20,11 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        Constants.JobDefinitions.AzureHDInsightStreamingMapReduceJobDefinition),
-    OutputType(
-        typeof(AzureHDInsightStreamingMapReduceJobDefinition))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightStreamingMapReduceJobDefinition"),OutputType(typeof(AzureHDInsightStreamingMapReduceJobDefinition))]
     public class NewAzureHDInsightStreamingMapReduceJobDefinitionCommand : HDInsightCmdletBase
     {
         private AzureHDInsightStreamingMapReduceJobDefinition job;

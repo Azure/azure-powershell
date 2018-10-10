@@ -13,7 +13,7 @@ Remove all Azure credentials, account, and subscription information.
 ## SYNTAX
 
 ```
-Clear-AzureRmContext -Scope <ContextModificationScope> [-PassThru] [-Force]
+Clear-AzureRmContext [-PassThru] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Parameter Sets: (All)
 Aliases:
 Accepted values: Process, CurrentUser
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

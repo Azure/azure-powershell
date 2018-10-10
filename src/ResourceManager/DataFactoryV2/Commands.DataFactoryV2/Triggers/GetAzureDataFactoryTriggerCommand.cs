@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Trigger, DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSTrigger))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSTrigger))]
     public class GetAzureDataFactoryTriggerCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,

@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlDatabaseActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseActivityModel))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseActivityModel))]
     public class StopAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
     {
         /// <summary>

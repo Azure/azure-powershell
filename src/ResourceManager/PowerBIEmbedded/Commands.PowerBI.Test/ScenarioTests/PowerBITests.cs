@@ -28,21 +28,21 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Now using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPBIECapacity()
         {
             NewInstance.RunPsTest(_logger, "Test-PowerBIEmbeddedCapacity");
         }
 
-        [Fact(Skip = "Now using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPBIECapacityScale()
         {
             NewInstance.RunPsTest(_logger, "Test-PowerBIEmbeddedCapacityScale");
         }
 
-        [Fact(Skip = "Now using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativePBIECapacity()
         {

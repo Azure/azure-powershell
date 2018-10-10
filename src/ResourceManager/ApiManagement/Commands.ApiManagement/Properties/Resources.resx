@@ -145,6 +145,10 @@
     <value>Confirm</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="SourceFileNotFound" xml:space="preserve">
+    <value>File at path '{0}' does not exist</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="UpdateApiManagementService" xml:space="preserve">
     <value>Update an Api Management Service.</value>
     <comment>Process workflow</comment>

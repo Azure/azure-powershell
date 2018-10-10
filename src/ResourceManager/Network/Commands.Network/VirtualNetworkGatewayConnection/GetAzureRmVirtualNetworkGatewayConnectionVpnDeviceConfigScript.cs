@@ -20,10 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, 
-        "AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript",
-        SupportsShouldProcess = true), 
-        OutputType(typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionVpnDeviceConfigScript",SupportsShouldProcess = true),OutputType(typeof(string))]
     public class GetAzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]

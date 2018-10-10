@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System;
     using System.Globalization;
     using System.Management.Automation;
+    using System.Threading.Tasks;
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
@@ -54,6 +55,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
+        /// Confirm the overwrite operation
+        /// </summary>
+        /// <param name="msg">Confirmation message</param>
+        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
+        {
+            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
+            return overwrite || await OutputStream.ConfirmAsync(overwriteMessage);
+        }
+
+        /// <summary>
         /// On Task run successfully
         /// </summary>
         /// <param name="data">User data</param>
@@ -78,11 +90,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
             if (overwrite)
             {
-                transferContext.ShouldOverwriteCallback = TransferContext.ForceOverwrite;
+                transferContext.ShouldOverwriteCallbackAsync = TransferContext.ForceOverwrite;
             }
             else
             {
-                transferContext.ShouldOverwriteCallback = ConfirmOverwrite;
+                transferContext.ShouldOverwriteCallbackAsync = ConfirmOverwriteAsync;
             }
 
             transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>

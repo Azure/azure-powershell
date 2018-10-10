@@ -179,7 +179,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Workspace (ByValue)
 
 ### System.String
-Parameters: CustomLogRawJson (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ## OUTPUTS
 

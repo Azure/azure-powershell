@@ -20,10 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.ApiManagementApiRelease,
-        DefaultParameterSetName = ByApiReleaseIdParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRelease",DefaultParameterSetName = ByApiReleaseIdParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {

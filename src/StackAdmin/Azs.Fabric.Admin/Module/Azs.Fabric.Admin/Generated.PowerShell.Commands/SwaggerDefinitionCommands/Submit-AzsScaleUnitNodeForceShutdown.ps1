@@ -60,7 +60,7 @@ function Submit-AzsScaleUnitNodeForceShutdown {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
