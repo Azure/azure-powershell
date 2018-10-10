@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Resources
                 ADObjectFilter = new ADObjectFilterOptions
                 {
                     UPN = SignInName,
-                    Id =  ObjectId.ToString(),
+                    Id =  ObjectId,
                     SPN = ServicePrincipalName
                 },
                 ResourceIdentifier = new ResourceIdentifier()

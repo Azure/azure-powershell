@@ -21,17 +21,17 @@ Input data that allows for adding a scale unit node.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+New-AzsScaleUnitNodeObject -BMCIPv4Address 192.168.1.1 -ComputeName 'NodeName'
 ```
 
-{{ Add example description here }}
+Create a new node object.
 
 ## PARAMETERS
 
 ### -BMCIPv4Address
-BMC address of the physical machine.
+Bmc address of the physical machine.
 
 ```yaml
 Type: String

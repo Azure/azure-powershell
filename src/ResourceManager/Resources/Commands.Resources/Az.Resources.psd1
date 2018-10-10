@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,17 +51,17 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll', 
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
-    '.\Microsoft.Azure.Management.ResourceManager.dll', 
-    '.\Microsoft.Azure.Management.ManagementGroups.dll', 
-    '.\Microsoft.Extensions.Caching.Abstractions.dll', 
-    '.\Microsoft.Extensions.Caching.Memory.dll', 
-    '.\Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
-    '.\Microsoft.Extensions.Options.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+    '.\Microsoft.Azure.Management.ResourceManager.dll',
+    '.\Microsoft.Azure.Management.ManagementGroups.dll',
+    '.\Microsoft.Extensions.Caching.Abstractions.dll',
+    '.\Microsoft.Extensions.Caching.Memory.dll',
+    '.\Microsoft.Extensions.DependencyInjection.Abstractions.dll',
+    '.\Microsoft.Extensions.Options.dll',
     '.\Microsoft.Extensions.Primitives.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -71,82 +71,82 @@ ScriptsToProcess = @()
 TypesToProcess = '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml', 
+FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml',
     '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll', 
+NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll',
     '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
-    'Get-AzRoleAssignment', 'New-AzRoleAssignment', 
-    'Get-AzRoleDefinition', 'New-AzRoleDefinition', 
-    'Set-AzRoleDefinition', 'Remove-AzRoleDefinition', 
-    'Get-AzADAppCredential', 'Get-AzADApplication', 
-    'Add-AzADGroupMember', 'Get-AzADGroupMember', 
-    'Remove-AzADGroupMember', 'Get-AzADGroup', 
-    'New-AzADGroup', 'Remove-AzADGroup', 
-    'Get-AzADServicePrincipal', 'Get-AzADSpCredential', 
-    'Get-AzADUser', 'New-AzADAppCredential', 
-    'New-AzADSpCredential', 'New-AzADUser', 
-    'Remove-AzADAppCredential', 'Remove-AzADApplication', 
-    'New-AzADApplication', 'Remove-AzADServicePrincipal', 
-    'New-AzADServicePrincipal', 'Remove-AzADSpCredential', 
-    'Remove-AzADUser', 'Update-AzADApplication', 
-    'Update-AzADServicePrincipal', 'Update-AzADUser', 
-    'Remove-AzResourceGroup', 'Get-AzProviderFeature', 
-    'Register-AzProviderFeature', 'Get-AzLocation', 
-    'Export-AzResourceGroup', 
-    'Get-AzResourceProvider', 'Register-AzResourceProvider', 
-    'Unregister-AzResourceProvider', 
-    'Get-AzResourceGroupDeployment', 
-    'New-AzResourceGroupDeployment', 
-    'Remove-AzResourceGroupDeployment', 
-    'Stop-AzResourceGroupDeployment', 
-    'Test-AzResourceGroupDeployment', 'Set-AzResourceGroup', 
-    'New-AzResourceGroup', 'Get-AzResourceGroup', 
-    'Save-AzResourceGroupDeploymentTemplate', 
-    'Get-AzResourceGroupDeploymentOperation', 
-    'Get-AzResourceLock', 'Invoke-AzResourceAction', 
-    'Move-AzResource', 
-    'New-AzResourceLock', 'Get-AzPolicyAssignment', 
-    'Get-AzPolicyDefinition', 'Get-AzPolicySetDefinition', 
-    'New-AzPolicyAssignment', 'New-AzPolicyDefinition', 
-    'New-AzPolicySetDefinition', 'Remove-AzPolicyAssignment', 
-    'Remove-AzPolicyDefinition', 
-    'Remove-AzPolicySetDefinition', 'Set-AzPolicyAssignment', 
-    'Set-AzPolicyDefinition', 'Set-AzPolicySetDefinition', 
-    'Remove-AzResource', 'Remove-AzResourceLock', 
-    'Set-AzResource', 'New-AzResource', 
-    'Set-AzResourceLock', 'Get-AzResource', 
-    'Get-AzManagedApplicationDefinition', 
-    'New-AzManagedApplicationDefinition', 
-    'Set-AzManagedApplicationDefinition', 
-    'Remove-AzManagedApplicationDefinition', 
-    'Get-AzManagedApplication', 'New-AzManagedApplication', 
-    'Set-AzManagedApplication', 'Remove-AzManagedApplication', 
-    'Get-AzManagementGroup', 'New-AzManagementGroup', 
-    'Update-AzManagementGroup', 'Remove-AzManagementGroup', 
-    'New-AzManagementGroupSubscription', 
-    'Remove-AzManagementGroupSubscription', 
+CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
+    'Get-AzRoleAssignment', 'New-AzRoleAssignment',
+    'Get-AzRoleDefinition', 'New-AzRoleDefinition',
+    'Set-AzRoleDefinition', 'Remove-AzRoleDefinition',
+    'Get-AzADAppCredential', 'Get-AzADApplication',
+    'Add-AzADGroupMember', 'Get-AzADGroupMember',
+    'Remove-AzADGroupMember', 'Get-AzADGroup',
+    'New-AzADGroup', 'Remove-AzADGroup',
+    'Get-AzADServicePrincipal', 'Get-AzADSpCredential',
+    'Get-AzADUser', 'New-AzADAppCredential',
+    'New-AzADSpCredential', 'New-AzADUser',
+    'Remove-AzADAppCredential', 'Remove-AzADApplication',
+    'New-AzADApplication', 'Remove-AzADServicePrincipal',
+    'New-AzADServicePrincipal', 'Remove-AzADSpCredential',
+    'Remove-AzADUser', 'Update-AzADApplication',
+    'Update-AzADServicePrincipal', 'Update-AzADUser',
+    'Remove-AzResourceGroup', 'Get-AzProviderFeature',
+    'Register-AzProviderFeature', 'Get-AzLocation',
+    'Export-AzResourceGroup',
+    'Get-AzResourceProvider', 'Register-AzResourceProvider',
+    'Unregister-AzResourceProvider',
+    'Get-AzResourceGroupDeployment',
+    'New-AzResourceGroupDeployment',
+    'Remove-AzResourceGroupDeployment',
+    'Stop-AzResourceGroupDeployment',
+    'Test-AzResourceGroupDeployment', 'Set-AzResourceGroup',
+    'New-AzResourceGroup', 'Get-AzResourceGroup',
+    'Save-AzResourceGroupDeploymentTemplate',
+    'Get-AzResourceGroupDeploymentOperation',
+    'Get-AzResourceLock', 'Invoke-AzResourceAction',
+    'Move-AzResource',
+    'New-AzResourceLock', 'Get-AzPolicyAssignment',
+    'Get-AzPolicyDefinition', 'Get-AzPolicySetDefinition',
+    'New-AzPolicyAssignment', 'New-AzPolicyDefinition',
+    'New-AzPolicySetDefinition', 'Remove-AzPolicyAssignment',
+    'Remove-AzPolicyDefinition',
+    'Remove-AzPolicySetDefinition', 'Set-AzPolicyAssignment',
+    'Set-AzPolicyDefinition', 'Set-AzPolicySetDefinition',
+    'Remove-AzResource', 'Remove-AzResourceLock',
+    'Set-AzResource', 'New-AzResource',
+    'Set-AzResourceLock', 'Get-AzResource',
+    'Get-AzManagedApplicationDefinition',
+    'New-AzManagedApplicationDefinition',
+    'Set-AzManagedApplicationDefinition',
+    'Remove-AzManagedApplicationDefinition',
+    'Get-AzManagedApplication', 'New-AzManagedApplication',
+    'Set-AzManagedApplication', 'Remove-AzManagedApplication',
+    'Get-AzManagementGroup', 'New-AzManagementGroup',
+    'Update-AzManagementGroup', 'Remove-AzManagementGroup',
+    'New-AzManagementGroupSubscription',
+    'Remove-AzManagementGroupSubscription',
     'New-AzDeployment', 'Get-AzDeployment', 'Test-AzDeployment',
     'Remove-AzDeployment', 'Stop-AzDeployment',
     'Save-AzDeploymentTemplate',
-    'Get-AzDeploymentOperation'
+    'Get-AzDeploymentOperation', 'Get-AzPolicyAlias'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzResourceProviderAction', 
-    'Get-AzADServicePrincipalCredential', 
-    'New-AzADServicePrincipalCredential', 
-    'Remove-AzADServicePrincipalCredential', 
-    'Set-AzADApplication', 'Set-AzADServicePrincipal', 
+AliasesToExport = 'Get-AzResourceProviderAction',
+    'Get-AzADServicePrincipalCredential',
+    'New-AzADServicePrincipalCredential',
+    'Remove-AzADServicePrincipalCredential',
+    'Set-AzADApplication', 'Set-AzADServicePrincipal',
     'Set-AzADUser'
 
 # DSC resources to export from this module
@@ -164,8 +164,8 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup', 
-            'Deployment', 'ActiveDirectory', 'Authorization', 'Management', 
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup',
+            'Deployment', 'ActiveDirectory', 'Authorization', 'Management',
             'ManagementGroups'
 
         # A URL to the license for this module.
