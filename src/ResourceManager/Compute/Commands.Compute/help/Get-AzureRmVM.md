@@ -175,13 +175,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Uri
-Parameters: NextLink (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.Models.DisplayHintType
-Parameters: DisplayHint (ByPropertyName)
 
 ## OUTPUTS
 

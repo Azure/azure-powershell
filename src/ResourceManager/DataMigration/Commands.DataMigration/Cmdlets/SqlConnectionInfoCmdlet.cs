@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public override void CustomInit()
         {
             this.SimpleParam(dataSource, typeof(string), "Gets or sets data source in the format Protocol:MachineName\\SQLServerInstanceName,PortNumber", true);
-            this.SimpleParam(authType, typeof(string), "Authentication type to be used for Sql Connection", true,
+            this.SimpleParam(authType, typeof(string), "Authentication type to be used for Sql Connection", true, false,
                 "None", "WindowsAuthentication", "SqlAuthentication", "ActiveDirectoryIntegrated", "ActiveDirectoryPassword");
             this.SimpleParam(encryptConnection, typeof(SwitchParameter), "Gets or sets whether to encrypt the connection, Default Value True");
             this.SimpleParam(trustServerCertificate, typeof(SwitchParameter), "Gets or sets whether to trust the server certificate");

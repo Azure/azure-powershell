@@ -25,6 +25,8 @@
     { "regex": "NetworkWatcher", "group": "Network", "alias": "Network Watcher" },
     { "regex": "Network","group": "Network",  "alias": "Networking" },
 
+    { "regex": "FrontDoor", "alias": "Front Door" },
+
     { "regex": "AppService", "group": "App Service", "alias": "App Service" },
     { "regex": "Websites", "group": "App Service", "alias": "App Service" },
     { "regex": "WebApp", "group": "App Service", "alias": "App Service" },
@@ -137,5 +139,6 @@
     { "regex":  "ManagementPartner", "alias":  "Management Partner"  },
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" },
-    { "regex": "Search", "alias": "Search" } 
+    { "regex": "Search", "alias": "Search" },
+    { "regex": "Security", "alias": "Security" }
 ]

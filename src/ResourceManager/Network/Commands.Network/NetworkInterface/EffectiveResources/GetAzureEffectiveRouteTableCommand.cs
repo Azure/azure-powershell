@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmEffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
     public class GetAzureEffectiveRouteTableCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(

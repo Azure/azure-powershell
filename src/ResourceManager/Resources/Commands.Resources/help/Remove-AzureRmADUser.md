@@ -231,10 +231,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DisplayName (ByPropertyName), UPNOrObjectId (ByPropertyName), UserPrincipalName (ByPropertyName)
 
 ### System.Guid
-Parameters: ObjectId (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
 Parameters: InputObject (ByValue)

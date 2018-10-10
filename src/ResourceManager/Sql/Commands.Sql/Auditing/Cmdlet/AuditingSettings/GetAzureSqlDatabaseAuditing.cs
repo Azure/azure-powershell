@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Returns the auditing settings of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
     public class GetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>

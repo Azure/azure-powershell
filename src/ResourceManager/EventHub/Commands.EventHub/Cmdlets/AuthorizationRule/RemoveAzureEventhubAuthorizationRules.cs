@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <summary>
     /// 'Remove-AzureRmRelayAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -52,37 +52,44 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         public override void ExecuteCmdlet()
         {
-            // Delete Namespace authorizationRule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
-                string.Format(Resources.RemoveNamespaceAuthorizationRule, Name, Namespace),
-                Name,
-                () =>
-                {
-                    Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
-                    if (PassThru)
+            try
+            {
+                // Delete Namespace authorizationRule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+                    ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
+                    string.Format(Resources.RemoveNamespaceAuthorizationRule, Name, Namespace),
+                    Name,
+                    () =>
                     {
-                        WriteObject(true);
-                    }
-                });
+                        Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
 
-            // Delete Eventhub authorizationRule
-            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingEventHubAuthorizationRule, Namespace, EventHub, Name),
-                string.Format(Resources.RemoveEventHubAuthorizationRule, Namespace, EventHub, Name),
-                Name,
-                () =>
-                {
-                    Client.DeleteEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name);
-                    if (PassThru)
+                // Delete Eventhub authorizationRule
+                if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
+                    ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingEventHubAuthorizationRule, Namespace, EventHub, Name),
+                    string.Format(Resources.RemoveEventHubAuthorizationRule, Namespace, EventHub, Name),
+                    Name,
+                    () =>
                     {
-                        WriteObject(true);
-                    }
-                });
+                        Client.DeleteEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
+            }
+            catch (Management.EventHub.Models.ErrorResponseException ex)
+            {
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

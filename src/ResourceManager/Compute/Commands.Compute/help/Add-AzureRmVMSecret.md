@@ -149,10 +149,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameters: VM (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: CertificateStore (ByPropertyName), CertificateUrl (ByPropertyName), SourceVaultId (ByPropertyName)
 
 ## OUTPUTS
 

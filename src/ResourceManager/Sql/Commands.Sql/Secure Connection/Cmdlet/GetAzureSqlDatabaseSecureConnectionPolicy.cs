@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
     /// <summary>
     /// Returns the secure connection policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseSecureConnectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecureConnectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
     public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
         /// <summary>

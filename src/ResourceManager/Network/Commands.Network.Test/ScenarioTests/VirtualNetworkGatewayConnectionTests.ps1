@@ -43,9 +43,25 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual $expected.Name $actual.Name	
         Assert-AreEqual "ExpressRoute" $expected.ConnectionType
         Assert-AreEqual "3" $expected.RoutingWeight
+        Assert-AreEqual $False $expected.ExpressRouteGatewayBypass
 
 		#get routes 
 		Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
+
+        # Delete VirtualNetworkGatewayConnection
+        $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+        Assert-AreEqual true $delete
+        $list = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual 0 @($list).Count
+
+        # Now Create a Virtual Network Gateway Connection with ExpressRouteGatewayBypass enabled
+        $connection = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass
+        $getConnection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual $getConnection.ResourceGroupName $connection.ResourceGroupName
+        Assert-AreEqual $getConnection.Name $connection.Name
+        Assert-AreEqual "ExpressRoute" $getConnection.ConnectionType
+        Assert-AreEqual "3" $getConnection.RoutingWeight
+        Assert-AreEqual $True $getConnection.ExpressRouteGatewayBypass
 
         # Delete VirtualNetworkGatewayConnection
         $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force

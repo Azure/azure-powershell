@@ -21,11 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        Constants.IntegrationRuntimeNode,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),
-        OutputType(typeof(PSManagedIntegrationRuntimeNode), typeof(PSSelfHostedIntegrationRuntimeNode))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeNode",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSManagedIntegrationRuntimeNode), typeof(PSSelfHostedIntegrationRuntimeNode))]
     public class GetAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(Mandatory = true,

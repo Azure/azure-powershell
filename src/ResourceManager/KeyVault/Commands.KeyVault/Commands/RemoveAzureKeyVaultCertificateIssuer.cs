@@ -18,9 +18,7 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateIssuer,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateIssuer",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateIssuer))]
     public class RemoveAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {

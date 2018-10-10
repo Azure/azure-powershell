@@ -147,7 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Webhook (ByValue)
 
 ### System.String
-Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

@@ -166,13 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), Path (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Security.SecureString
-Parameters: Password (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Exportable (ByPropertyName)
 
 ## OUTPUTS
 

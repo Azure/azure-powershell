@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to delete a sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlSyncGroup", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncGroup", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class RemoveAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>

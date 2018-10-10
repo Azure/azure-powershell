@@ -94,6 +94,10 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListAllStorageQuotas" -Skip:$('TestListAllStorageQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllStorageQuotas'
 
@@ -107,7 +111,7 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestGetStorageQuota'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
-            $quota = Get-AzsStorageQuota -Location $global:Location -Name (Select-Name $quotas[0].Name)
+            $quota = Get-AzsStorageQuota -Location $global:Location -Name $quotas[0].Name
             ValidateStorageQuota -storageQuota $quota
             AssertAreEqual -expected $quotas[0] -found $quota
         }
@@ -117,7 +121,7 @@ InModuleScope Azs.Storage.Admin {
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
             foreach ($quota in $quotas) {
-                $result = Get-AzsStorageQuota -Location $global:Location -Name (Select-Name $quota.Name)
+                $result = Get-AzsStorageQuota -Location $global:Location -Name $quota.Name
                 ValidateStorageQuota -storageQuota $quota
                 AssertAreEqual -expected $quota -found $result
             }

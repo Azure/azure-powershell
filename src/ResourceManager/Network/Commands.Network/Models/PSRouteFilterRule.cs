@@ -18,13 +18,16 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
 
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSRouteFilterRule : PSChildResource
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Access { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string RouteFilterRuleType { get; set; }
 
         [JsonProperty(Order = 1)]

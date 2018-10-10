@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// <summary>
     /// Defines the Start-AzureRmSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlDatabaseExecuteIndexRecommendation",
-        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExecuteIndexRecommendation",ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
     public class StartAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
     {
         /// <summary>

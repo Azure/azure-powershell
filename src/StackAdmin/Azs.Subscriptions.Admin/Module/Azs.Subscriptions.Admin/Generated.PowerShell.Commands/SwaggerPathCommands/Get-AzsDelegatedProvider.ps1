@@ -10,7 +10,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Get the list of delegatedProviders.
 
-.PARAMETER DelegatedProvider
+.PARAMETER DelegatedProviderId
     DelegatedProvider identifier.
 
 .EXAMPLE
@@ -32,7 +32,7 @@ function Get-AzsDelegatedProvider
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.String]
+        [System.Guid]
         $DelegatedProviderId
     )
 
@@ -50,7 +50,7 @@ function Get-AzsDelegatedProvider
 
     Process {
 
-    $ErrorActionPreference = 'Stop'
+
 
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'

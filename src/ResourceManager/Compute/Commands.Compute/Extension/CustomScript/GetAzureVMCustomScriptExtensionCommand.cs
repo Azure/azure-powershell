@@ -21,9 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineCustomScriptExtension)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMCustomScriptExtension")]
     [OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]
     public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet

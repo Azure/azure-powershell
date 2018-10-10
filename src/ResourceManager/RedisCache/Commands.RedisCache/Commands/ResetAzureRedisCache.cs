@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using RebootTypeStrings = Microsoft.Azure.Management.Redis.Models.RebootType;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Reset, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ResetAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]

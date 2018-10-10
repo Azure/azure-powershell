@@ -25,6 +25,40 @@ The **Set-AzureRmVirtualNetworkGatewayConnection** cmdlet configures a virtual n
 
 ## EXAMPLES
 
+### Example 1:
+```
+$conn = Get-AzureRmVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
+Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn
+
+Confirm
+Are you sure you want to overwrite resource '1'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+
+
+Name                    : 1
+ResourceGroupName       : myRG
+Location                : westus
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Mi
+                          crosoft.Network/connections/1
+Etag                    : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid            : 00000000-0000-0000-0000-000000000000
+ProvisioningState       : Succeeded
+Tags                    :
+AuthorizationKey        :
+VirtualNetworkGateway1  : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/M
+                          icrosoft.Network/virtualNetworkGateways/myGateway"
+VirtualNetworkGateway2  : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/S2SVnetConn/providers/Mic
+                          rosoft.Network/virtualNetworkGateways/S2SConnGW"
+LocalNetworkGateway2    :
+Peer                    :
+RoutingWeight           : 0
+SharedKey               :
+ConnectionStatus        : Connected
+EgressBytesTransferred  : 91334484
+IngressBytesTransferred : 100386089
+TunnelConnectionStatus  : []
+```
+
 ## PARAMETERS
 
 ### -AsJob
@@ -173,7 +207,7 @@ Parameters: VirtualNetworkGatewayConnection (ByValue)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

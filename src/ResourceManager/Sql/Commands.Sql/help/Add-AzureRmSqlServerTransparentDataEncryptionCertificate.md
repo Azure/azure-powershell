@@ -234,7 +234,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: SqlServer (ByValue)
 
 ### System.String
-Parameters: SqlServerResourceId (ByPropertyName)
 
 ## OUTPUTS
 

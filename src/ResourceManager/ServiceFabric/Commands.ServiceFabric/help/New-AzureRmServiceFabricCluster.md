@@ -462,16 +462,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CertificateFile (ByValue), CertificateOutputFolder (ByValue), CertificateSubjectName (ByValue), KeyVaultName (ByValue), KeyVaultResouceGroupName (ByValue), Location (ByValue), Name (ByValue), ParameterFile (ByValue), ResourceGroupName (ByPropertyName), SecondaryCertificateFile (ByValue), SecretIdentifier (ByValue), TemplateFile (ByValue), VmSku (ByPropertyName), VmUserName (ByValue)
+Parameters: CertificateFile (ByValue), CertificateOutputFolder (ByValue), CertificateSubjectName (ByValue), KeyVaultName (ByValue), KeyVaultResouceGroupName (ByValue), Location (ByValue), Name (ByValue), ParameterFile (ByValue), SecondaryCertificateFile (ByValue), SecretIdentifier (ByValue), TemplateFile (ByValue), VmUserName (ByValue)
 
 ### System.Security.SecureString
-Parameters: CertificatePassword (ByValue), SecondaryCertificatePassword (ByValue), VmPassword (ByPropertyName)
+Parameters: CertificatePassword (ByValue), SecondaryCertificatePassword (ByValue)
 
 ### System.Int32
 Parameters: ClusterSize (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
-Parameters: OS (ByPropertyName)
 
 ## OUTPUTS
 

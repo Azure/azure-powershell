@@ -31,6 +31,7 @@ Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetwor
 The **Add-AzureRmVirtualNetworkGatewayIpConfig** cmdlet adds an IP configuration to a virtual network gateway.
 
 ## EXAMPLES
+
 ### Example 1
 ```
 Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name GWIPConfig2 -Subnet $subnet -PublicIpAddress $gwpip2
@@ -83,7 +84,6 @@ BgpSettings            : {
                            "PeerWeight": 0
                          }
 ```
-
 
 ## PARAMETERS
 

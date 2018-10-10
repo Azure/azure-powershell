@@ -20,7 +20,7 @@ using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemExpiry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(DataLakeStoreItem))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemExpiry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(DataLakeStoreItem))]
     [Alias("Set-AdlStoreItemExpiry")]
     public class SetAzureRmDataLakeStoreItemExpiry : DataLakeStoreFileSystemCmdletBase
     {

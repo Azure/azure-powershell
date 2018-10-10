@@ -161,19 +161,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Path (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner
-Parameters: Type (ByPropertyName)
 
 ### System.Guid
-Parameters: Id (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

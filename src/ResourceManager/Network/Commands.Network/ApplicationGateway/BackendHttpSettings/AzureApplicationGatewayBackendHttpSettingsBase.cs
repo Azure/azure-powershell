@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Application gateway Trusted Root Certificates")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificate { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag if host header should be picked from the host name of the backend server.")]
         public SwitchParameter PickHostNameFromBackendAddress { get; set; }
 
@@ -116,6 +122,7 @@ namespace Microsoft.Azure.Commands.Network
             backendHttpSettings.Port = this.Port;
             backendHttpSettings.Protocol = this.Protocol;
             backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
+
             if (0 == this.RequestTimeout)
             {
                 backendHttpSettings.RequestTimeout = 30;
@@ -124,15 +131,18 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.RequestTimeout = this.RequestTimeout;
             }
+
             if(this.ConnectionDraining != null)
             {
                 backendHttpSettings.ConnectionDraining = this.ConnectionDraining;
             }
+
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 backendHttpSettings.Probe = new PSResourceId();
                 backendHttpSettings.Probe.Id = this.ProbeId;
             }
+
             if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
             {
                 backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
@@ -145,18 +155,35 @@ namespace Microsoft.Azure.Commands.Network
                         });
                 }
             }
+
+            if (this.TrustedRootCertificate != null && this.TrustedRootCertificate.Count > 0)
+            {
+                backendHttpSettings.TrustedRootCertificates = new List<PSResourceId>();
+                foreach (var trustedRootCert in this.TrustedRootCertificate)
+                {
+                    backendHttpSettings.TrustedRootCertificates.Add(
+                        new PSResourceId()
+                        {
+                            Id = trustedRootCert.Id
+                        });
+                }
+            }
+
             if(this.PickHostNameFromBackendAddress.IsPresent)
             {
                 backendHttpSettings.PickHostNameFromBackendAddress = true;
             }
+
             if(this.HostName != null)
             {
                 backendHttpSettings.HostName = this.HostName;
             }
+
             if (this.AffinityCookieName != null)
             {
                 backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
             }
+
             if (this.Path != null)
             {
                 backendHttpSettings.Path = this.Path;

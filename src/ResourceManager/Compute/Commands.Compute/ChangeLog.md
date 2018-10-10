@@ -19,7 +19,39 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.7.0
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+
+## Version 5.6.0
+* Move dependencies on Keyvault and Storage to the common dependencies
+* Add support for more virutal machine sizes to AEM cmdlets
+* Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
+* Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
+* Add Invoke-AzureRmVmssVMRunCommand cmdlet
+* Update the Compute client library to version 22.0.0
+
+## Version 5.5.2
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+* Updated common runtime assemblies
+
+## Version 5.5.1
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+
+## Version 5.5.0
+* Updated to the latest version of the Azure ClientRuntime.
+* Add EvictionPolicy parameter to New-AzureRmVmssConfig
+* Use default location in the DiskFileParameterSet of New-AzureRmVm if no Location is specified.
 * Fix parameter description in Save-AzureRmVMImage
+* Fix Get-AzureRmVMDiskEncryptionStatus cmdlet for certain singlepass related scenarios
 
 ## Version 5.4.0
 * Fix issue with creating a vm using `DiskFileParameterSet` in `New-AzureRmVm` failing because of `PremiumLRS` storage account type renaming.

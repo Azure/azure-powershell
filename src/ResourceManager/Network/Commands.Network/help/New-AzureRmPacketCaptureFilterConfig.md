@@ -155,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: LocalIPAddress (ByPropertyName), LocalPort (ByPropertyName), Protocol (ByValue), RemoteIPAddress (ByPropertyName), RemotePort (ByPropertyName)
+Parameters: Protocol (ByValue)
 
 ## OUTPUTS
 

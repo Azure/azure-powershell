@@ -18,13 +18,14 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ServiceBus.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
     /// 'New-AzureRmServiceBusNamespace' cmdlet creates a new Servicebus NameSpace
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServiceBusNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         /// <summary>
@@ -82,7 +83,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
             {
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                try
+                {
+                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                }
+                catch (ErrorResponseException ex)
+                {
+                   WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

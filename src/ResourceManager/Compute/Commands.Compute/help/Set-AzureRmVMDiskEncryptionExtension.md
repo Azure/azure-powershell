@@ -612,10 +612,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AadClientCertThumbprint (ByPropertyName), AadClientID (ByPropertyName), AadClientSecret (ByPropertyName), DiskEncryptionKeyVaultId (ByPropertyName), DiskEncryptionKeyVaultUrl (ByPropertyName), ExtensionPublisherName (ByPropertyName), ExtensionType (ByPropertyName), KeyEncryptionAlgorithm (ByPropertyName), KeyEncryptionKeyUrl (ByPropertyName), KeyEncryptionKeyVaultId (ByPropertyName), Name (ByPropertyName), Passphrase (ByPropertyName), ResourceGroupName (ByPropertyName), SequenceVersion (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName), VolumeType (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName), SkipVmBackup (ByPropertyName)
 
 ## OUTPUTS
 

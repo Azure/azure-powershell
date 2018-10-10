@@ -187,7 +187,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ComputeNodeId (ByPropertyName), PoolId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameters: ComputeNode (ByValue)

@@ -83,7 +83,6 @@ namespace Microsoft.Azure.Commands.SignalR.Test
             providers.Add("Microsoft.Resources", null);
             providers.Add("Microsoft.Features", null);
             providers.Add("Microsoft.Authorization", null);
-            providers.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
@@ -112,7 +111,9 @@ namespace Microsoft.Azure.Commands.SignalR.Test
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     "AzureRM.SignalR.psd1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1",
+                    "ScenarioTests\\Common.ps1");
                 try
                 {
                     if (scriptBuilder != null)
@@ -139,17 +140,11 @@ namespace Microsoft.Azure.Commands.SignalR.Test
         {
             ResourceManagementClient = GetResourceManagementClient();
             InternalResourceManagementClient = GetResourceManagementClientInternal(context);
-            //SubscriptionClient = GetSubscriptionClient();
-            //GalleryClient = GetGalleryClient();
-            //AuthorizationManagementClient = GetAuthorizationManagementClient();
             SignalRManagementClient = GetSignalRManagementClient(context);
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
                 InternalResourceManagementClient,
-                //SubscriptionClient,
-                //GalleryClient,
-                //AuthorizationManagementClient,
                 SignalRManagementClient);
         }
 

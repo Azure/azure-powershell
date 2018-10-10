@@ -18,11 +18,24 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.6.1
+* Fix Copy Blob/File won't copy metadata when destination has metadata issue
+    - Start-AzureStorageBlobCopy
+    - Start-AzureStorageFileCopy
+	
+## Version 4.6.0
+* Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
+* Support create Storage Context with OAuth. 
+	- New-AzureStorageContext
+
+## Version 4.5.0
 * Remove the 5TB limitation for Azure File Share quota
 - Set-AzureStorageShareQuota
 
 ## Version 4.4.0
 * Updated all help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
 * Support get Storage Context from DefaulfProfile
 * Add Ps1XmlAttribute to cmdlets output types properties.
 
@@ -58,7 +71,7 @@
 ## Version 4.1.1
 * Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
 	- Get-AzureStorageContainer
-	
+
 ## Version 4.1.0
 * Add cmdlets to get and set Storage service properties
 	- Get-AzureStorageServiceProperty
@@ -74,7 +87,7 @@
     - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-	
+
 ## Version 3.4.1
 
 ## Version 3.4.0
@@ -118,7 +131,7 @@
 ## Version 2.5.0
 * Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
     - Start-AzureStorageBlobCopy
-* Fix hang issue when running cmdlets from WPF/Winform context  
+* Fix hang issue when running cmdlets from WPF/Winform context
     - Get-AzureStorageBlob
     - Get-AzureStorageBlobContent
     - Get-AzureStorageBlobCopyState

@@ -1,0 +1,48 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/azsdkposhteam_outlook.com",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_DataContractVersionMissing\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"The specified api-version is invalid. The value must exactly match a supported version.\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "ocp-aad-diagnostics-server-name": [
+          "TeRcHeoqA22BHcRGBKky0IV4jTQ6ab7yWgt9gZFyqCs="
+        ],
+        "request-id": [
+          "9b850efb-1789-4581-b78d-2c6096a97823"
+        ],
+        "client-request-id": [
+          "2df56c9d-2a3a-4c9b-8cae-b87eade6b69d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "private"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 16 Sep 2014 00:41:43 GMT"
+        ]
+      },
+      "StatusCode": 400
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
+    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0"
+  }
+}

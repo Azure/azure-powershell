@@ -14,7 +14,7 @@ Adds a diagnostics extension to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssDiagnosticsExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
+Add-AzureRmVmssDiagnosticsExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [-SettingFilePath] <String> [[-ProtectedSettingFilePath] <String>] [[-Name] <String>]
  [[-TypeHandlerVersion] <String>] [[-AutoUpgradeMinorVersion] <Boolean>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -145,7 +145,7 @@ Specify the VMSS object.
 You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases:
 
@@ -193,13 +193,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
-Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName), ProtectedSettingFilePath (ByPropertyName), SettingFilePath (ByPropertyName), TypeHandlerVersion (ByPropertyName)
 
 ### System.Boolean
-Parameters: AutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

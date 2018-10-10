@@ -18,7 +18,40 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.6.0
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
+
+## Version 6.5.0
+* Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
+    - Add support for OnErrorDeployment with the new parameter.
+* Support managed identity on policy assignments.
+* Parameters with default values are no longer requred when assigning a policy with `New-AzureRmPolicyAssignment`
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
+
+## Version 6.4.2
+* Fixed issue with creating managed applications from the MarketPlace.
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 6.4.1
+* Fixed issue with default resource groups not being set.
+* Fixed issue with creating managed application from the MarketPlace.
+
+## Version 6.4.0
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Fix issue where error is thrown when passing a context to Set-AzureRmResource
+    - https://github.com/Azure/azure-powershell/issues/5705
 * Fix example in New-AzureRmResourceGroupDeployment
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 6.3.0
 * Updated help files to include full parameter types and correct input/output types.

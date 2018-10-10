@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of protection policies associated with this recovery services vault
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),
-            OutputType(typeof(PolicyBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),OutputType(typeof(PolicyBase))]
     public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";

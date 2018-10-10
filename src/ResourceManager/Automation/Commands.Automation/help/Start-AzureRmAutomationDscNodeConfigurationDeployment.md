@@ -267,7 +267,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), NodeConfigurationName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment
 Parameters: InputObject (ByValue)

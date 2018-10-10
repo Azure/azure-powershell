@@ -297,19 +297,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: DisplayName (ByPropertyName), HomePage (ByPropertyName)
 
 ### System.String[]
-Parameters: IdentifierUri (ByPropertyName), ReplyUrl (ByPropertyName)
 
 ### System.Boolean
-Parameters: AvailableToOtherTenants (ByPropertyName)
 
 ## OUTPUTS
 

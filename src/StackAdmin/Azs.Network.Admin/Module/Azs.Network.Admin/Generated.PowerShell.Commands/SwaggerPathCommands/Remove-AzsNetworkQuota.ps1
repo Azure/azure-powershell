@@ -19,6 +19,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     The resource id.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
+.PARAMETER Force
+    Don't ask for confirmation.
+
 .EXAMPLE
 
     PS C:\> Remove-AzsNetworkQuota -Name NetworkQuota1
@@ -87,12 +93,14 @@ function Remove-AzsNetworkQuota {
 
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['resourceName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Delete the network quota")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete the network quota?", "Performing operation delete $Name."))) {
 
-                $ErrorActionPreference = 'Stop'
+
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'

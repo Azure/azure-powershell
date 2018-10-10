@@ -237,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: NetworkWatcher (ByValue)
 
 ### System.String
-Parameters: NetworkWatcherName (ByValue), ResourceGroupName (ByPropertyName), TargetResourceGroupName (ByPropertyName)
+Parameters: NetworkWatcherName (ByValue)
 
 ## OUTPUTS
 

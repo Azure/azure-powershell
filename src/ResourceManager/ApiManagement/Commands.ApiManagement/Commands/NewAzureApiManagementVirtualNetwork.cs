@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
     public class NewAzureApiManagementVirtualNetwork : AzureRMCmdlet
     {
         [Parameter(

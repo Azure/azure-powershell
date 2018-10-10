@@ -15,22 +15,28 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSIPConfiguration : PSChildResource
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIpAddress { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIpAllocationMethod { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "Subnet Name", Target = ViewControl.Table, ScriptBlock = "$_.Subnet.Name")]
         public PSSubnet Subnet { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "PublicIpAddress Name", Target = ViewControl.Table, ScriptBlock = "$_.PublicIpAddress.Name")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

@@ -30,7 +30,7 @@ function Test-FilteredResult {
         $Filter
     )
 
-    $ErrorActionPreference = 'Stop'
+
     if ($Filter.Type -eq 'wildcard') {
         Test-WildcardFilterOnResult -Filter $Filter -Result $Result
     } elseif ($Filter.Type -eq 'equalityOperator') {

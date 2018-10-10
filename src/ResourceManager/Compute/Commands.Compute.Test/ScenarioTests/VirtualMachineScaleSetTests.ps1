@@ -1065,16 +1065,26 @@ Test Virtual Machine Scale Set Identity
 function Test-VirtualMachineScaleSetUserIdentity
 {
     # Setup
-    $rgname = Get-ComputeTestResourceName
+    $subid = "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e";
+    $rgname = "UAITG123456";
+    $loc = 'Central US';
+    $identityname = $rgname + 'Identity';
+
+    # To record this test run these commands first:
+    #
+    # New-AzureRmResourceGroup -Name $rgname -Location 'Central US'
+    # New-AzureRmUserAssignedIdentity -ResourceGroupName $rgname -Name $identityname
+    # 
+    # Now get the identity :
+    # 
+    # $newUserIdentity = Get-AzureRmUserAssignedIdentity -ResourceGroupName $rgname -Name $identityname
+    # $newUserId = $newUserIdentity.Id
+    $newUserId = "/subscriptions/${subid}/resourcegroups/${rgname}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/${identityname}";
 
     try
     {
-        # Common
-        $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-
         # SRP
-        $stoname = 'sto' + $rgname;
+        $stoname = 'sto' + $rgname.ToLowerInvariant();
         $stotype = 'Standard_GRS';
         New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
@@ -1087,26 +1097,21 @@ function Test-VirtualMachineScaleSetUserIdentity
 
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $storageUri = "https://" + $stoname + ".blob.core.windows.net/"
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName.ToLowerInvariant();
 
         $extname = 'csetest';
         $publisher = 'Microsoft.Compute';
         $exttype = 'BGInfo';
         $extver = '2.1';
 
-        # MSI cmdlets are not ready yet.  Use a fake identity to test new paramters.
-        $userIdentity = 'fakeidentity';
-
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
         $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
-            -IdentityType UserAssigned -IdentityId "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/${rgname}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/${userIdentity}" `
+            -IdentityType UserAssigned -IdentityId $newUserId `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1114,8 +1119,16 @@ function Test-VirtualMachineScaleSetUserIdentity
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
 
-        Assert-ThrowsContains { New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss; } `
-             "ManagedServiceIdentityInternalError";
+        New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
+        
+        Assert-AreEqual $vmssName $vmss.Name;
+        Assert-AreEqual "UserAssigned" $vmss.Identity.Type;
+        Assert-NotNull $vmss.Identity.UserAssignedIdentities;
+        Assert-AreEqual 1 $vmss.Identity.UserAssignedIdentities.Count;
+        Assert-True { $vmss.Identity.UserAssignedIdentities.ContainsKey($newUserId) };
+        Assert-NotNull $vmss.Identity.UserAssignedIdentities[$newUserId].PrincipalId;
+        Assert-NotNull $vmss.Identity.UserAssignedIdentities[$newUserId].ClientId;
     }
     finally
     {
@@ -1358,7 +1371,7 @@ function Test-VirtualMachineScaleSetPriority
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -Priority 'Regular' `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -Priority 'Low' -EvictionPolicy 'Delete' `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1368,15 +1381,18 @@ function Test-VirtualMachineScaleSetPriority
 
         $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Assert-AreEqual "Regular" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Low" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
         $output = $vmssResult | Out-String;
         Assert-True {$output.Contains("Priority")};
+        Assert-True {$output.Contains("EvictionPolicy")};
 
         Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Assert-AreEqual "Regular" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Low" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
 
-        $vmssResult.VirtualMachineProfile.Priority = "Low";
+        $vmssResult.VirtualMachineProfile.Priority = "Regular";
         Assert-ThrowsContains { Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult; } `
             "Changing property 'priority' is not allowed";
     }

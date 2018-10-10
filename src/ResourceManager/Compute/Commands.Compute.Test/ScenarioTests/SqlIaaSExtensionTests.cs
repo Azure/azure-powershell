@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact]
+        [Fact(Skip ="CRP needs to re-record the test")]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlIaaSAKVExtension()

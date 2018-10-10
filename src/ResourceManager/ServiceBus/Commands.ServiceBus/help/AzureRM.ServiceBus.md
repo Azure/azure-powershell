@@ -12,7 +12,7 @@ This topic displays help topics for the Azure Service Bus cmdlets.
 
 ## AzureRM.ServiceBus Cmdlets
 ### [Complete-AzureRmServiceBusMigration](Complete-AzureRmServiceBusMigration.md)
-Set the Migration from Standard to premium namespace as Complete
+Cmdlets set the Migration from Standard to premium namespace as complete and connection strings of standard namespace now point to Premium namespace
 
 ### [Get-AzureRmServiceBusAuthorizationRule](Get-AzureRmServiceBusAuthorizationRule.md)
 Gets a description of the specified authorization rule for a given Namespace or Queue or Topic or Alias (GeoDR Configurations). 
@@ -24,7 +24,7 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 Gets the primary and secondary connection strings for the given Namespace or Queue or Topic or Alias (GeoDR Configurations).
 
 ### [Get-AzureRmServiceBusMigration](Get-AzureRmServiceBusMigration.md)
-Gets the MigrationConfiguration details for the namespace
+Retrieves MigrationConfiguration for the namespace
 
 ### [Get-AzureRmServiceBusNamespace](Get-AzureRmServiceBusNamespace.md)
 Gets a description for the specified Service Bus namespace within the resource group.
@@ -36,7 +36,7 @@ List supported ServiceBus Operations
 Returns a description for the specified Service Bus queue.
 
 ### [Get-AzureRmServiceBusRule](Get-AzureRmServiceBusRule.md)
-Gets a description of the specified rule for a given Subscription of  Topic. 
+Creates a new rule for a given Subscription of Topic. 
 
 ### [Get-AzureRmServiceBusSubscription](Get-AzureRmServiceBusSubscription.md)
 Returns a subscription description for the specified topic.
@@ -60,7 +60,7 @@ Creates a new Service Bus namespace.
 Creates a Service Bus queue in the specified Service Bus namespace.
 
 ### [New-AzureRmServiceBusRule](New-AzureRmServiceBusRule.md)
-Creates a new rule for a given Subscription of Topic.
+Creates a new rule for a given Subscription of Topic. 
 
 ### [New-AzureRmServiceBusSubscription](New-AzureRmServiceBusSubscription.md)
 Creates a subscription to the specified Service Bus topic.
@@ -74,11 +74,11 @@ Removes the authorization rule of a Service Bus namespace or queue or topic from
 ### [Remove-AzureRmServiceBusGeoDRConfiguration](Remove-AzureRmServiceBusGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
+### [Remove-AzureRmServiceBusMigration](Remove-AzureRmServiceBusMigration.md)
+Cmdlet deletes the Migration configuration for Standard to Premium namespaces
+
 ### [Remove-AzureRmServiceBusNamespace](Remove-AzureRmServiceBusNamespace.md)
 Removes the namespace from the specified resource group. 
-
-### [Remove-AzureRmServiceBusMigration](Remove-AzureRmServiceBusMigration.md)
-Removes the Migration configuration for Standard to Premium namespaces
 
 ### [Remove-AzureRmServiceBusQueue](Remove-AzureRmServiceBusQueue.md)
 Removes the queue from the specified Service Bus namespace.
@@ -117,10 +117,11 @@ Updates a subscription description for a Service Bus topic in the specified Serv
 Updates the description of a Service Bus topic in the specified Service Bus namespace.
 
 ### [Start-AzureRmServiceBusMigration](Start-AzureRmServiceBusMigration.md)
-Creates an new Migration configuration and starts migrating entites from Standard to Premium namespaces
+Creates a new Migration configuration and starts migrating entities from Standard to Premium namespaces
 
 ### [Stop-AzureRmServiceBusMigration](Stop-AzureRmServiceBusMigration.md)
 Terminates the Migration between Standard to premium namespace
 
 ### [Test-AzureRmServiceBusName](Test-AzureRmServiceBusName.md)
 Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name) 
+

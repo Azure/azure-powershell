@@ -197,10 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: DataFactoryName (ByPropertyName), ParameterFile (ByPropertyName), PipelineName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Parameter (ByPropertyName)
 
 ## OUTPUTS
 

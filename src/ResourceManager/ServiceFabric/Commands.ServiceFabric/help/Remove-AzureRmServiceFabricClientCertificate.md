@@ -224,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CommonName (ByValue), IssuerThumbprint (ByValue), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Thumbprint (ByValue)
+Parameters: CommonName (ByValue), IssuerThumbprint (ByValue), Thumbprint (ByValue)
 
 ### System.String[]
 Parameters: AdminClientThumbprint (ByValue), ReadonlyClientThumbprint (ByValue)

@@ -11,7 +11,7 @@ using Identity = Microsoft.Azure.Management.ManagedServiceIdentity.Models.Identi
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmUserAssignedIdentity", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "UserAssignedIdentity", SupportsShouldProcess = true)]
     [OutputType(typeof (PsUserAssignedIdentity))]
     public class NewAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {

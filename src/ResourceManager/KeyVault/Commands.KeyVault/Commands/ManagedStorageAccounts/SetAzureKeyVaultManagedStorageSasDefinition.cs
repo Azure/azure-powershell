@@ -20,9 +20,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Set, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageSasDefinition",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType( typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public class SetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {

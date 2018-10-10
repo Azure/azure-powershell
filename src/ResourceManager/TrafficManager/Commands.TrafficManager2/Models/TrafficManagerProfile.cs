@@ -14,8 +14,10 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -47,14 +49,30 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public int? MonitorToleratedNumberOfFailures { get; set; }
 
+        public long? MaxReturn { get; set; }
+
         public List<TrafficManagerEndpoint> Endpoints { get; set; }
+
+        public List<TrafficManagerCustomHeader> CustomHeaders { get; set; }
+
+        public List<TrafficManagerExpectedStatusCodeRange> ExpectedStatusCodeRanges { get; set; }
+
+        public Hashtable Tags { get; set; }
 
         public Profile ToSDKProfile()
         {
-            var profile = new Profile(this.Id, this.Name, Constants.ProfileType, TrafficManagerClient.ProfileResourceLocation)
-            { 
+            var tags = TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true);
+
+            var profile = new Profile(
+                this.Id,
+                this.Name,
+                Constants.ProfileType,
+                tags,
+                TrafficManagerClient.ProfileResourceLocation)
+            {
                 ProfileStatus = this.ProfileStatus,
                 TrafficRoutingMethod = this.TrafficRoutingMethod,
+                MaxReturn = this.MaxReturn,
                 DnsConfig = new DnsConfig
                 {
                     RelativeName = this.RelativeDnsName,
@@ -68,6 +86,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                     IntervalInSeconds = this.MonitorIntervalInSeconds,
                     TimeoutInSeconds = this.MonitorTimeoutInSeconds,
                     ToleratedNumberOfFailures = this.MonitorToleratedNumberOfFailures,
+                    CustomHeaders = this.CustomHeaders?.Select(
+                        customHeader => customHeader.ToSDKMonitorConfigCustomHeadersItem()).ToList(),
+                    ExpectedStatusCodeRanges = this.ExpectedStatusCodeRanges?.Select(
+                        expectedStatusCodeRange => expectedStatusCodeRange.ToSDKMonitorConfigStatusCodeRangesItem()).ToList()
                 }
             };
 

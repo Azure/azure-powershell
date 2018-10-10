@@ -425,13 +425,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CaaTag (ByPropertyName), CaaValue (ByPropertyName), Cname (ByPropertyName), Exchange (ByPropertyName), Ipv4Address (ByPropertyName), Ipv6Address (ByPropertyName), Nsdname (ByPropertyName), Ptrdname (ByPropertyName), Target (ByPropertyName), Value (ByPropertyName)
 
 ### System.UInt16
-Parameters: Port (ByPropertyName), Preference (ByPropertyName), Priority (ByPropertyName), Weight (ByPropertyName)
 
 ### System.Byte
-Parameters: CaaFlags (ByPropertyName)
 
 ## OUTPUTS
 

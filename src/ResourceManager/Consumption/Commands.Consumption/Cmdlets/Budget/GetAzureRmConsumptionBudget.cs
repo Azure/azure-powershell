@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
     using Budget = Management.Consumption.Models.Budget;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionBudget")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ConsumptionBudget")]
     [OutputType(typeof(PSBudget))]
     public class GetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {

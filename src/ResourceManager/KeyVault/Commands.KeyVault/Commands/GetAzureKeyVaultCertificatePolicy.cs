@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// Get-AzureKeyVaultCertificatePolicy gets the policy for a certificate object in key vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificatePolicy,        
-        DefaultParameterSetName = ByVaultAndCertNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificatePolicy",        DefaultParameterSetName = ByVaultAndCertNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class GetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {

@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public bool IlrSessionActive { get; set; }
 
         /// <summary>
+        /// Identifies if the virtual machine has a managed disks.
+        /// </summary>
+        public bool IsManagedVirtualMachine { get; set; }
+
+        /// <summary>
         /// Required details for recovering an encrypted VM. 
         /// Applicable only when the EncryptionEnabled flag is true.
         /// </summary>

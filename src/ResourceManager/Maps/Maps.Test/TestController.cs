@@ -20,7 +20,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Maps;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
@@ -30,6 +29,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 using LegacyResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Maps.Test
 {
@@ -118,6 +118,7 @@ namespace Microsoft.Azure.Commands.Maps.Test
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
+                    helper.RMResourceModule,
                     "AzureRM.Resources.ps1",
                     helper.GetRMModulePath("AzureRM.Maps.psd1")
                 );
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Commands.Maps.Test
 
         private void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             MapsClient = GetMapsManagementClient(context);
             GalleryClient = GetGalleryClient();
@@ -161,9 +162,9 @@ namespace Microsoft.Azure.Commands.Maps.Test
                 LegacyResourceManagementClient);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SubscriptionClient GetSubscriptionClient()

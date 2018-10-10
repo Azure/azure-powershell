@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet")]
     [OutputType(typeof(PSAvailabilitySet))]
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {

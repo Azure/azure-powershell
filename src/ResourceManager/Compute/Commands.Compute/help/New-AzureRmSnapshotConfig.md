@@ -292,26 +292,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CreateOption (ByPropertyName), Location (ByPropertyName), SkuName (ByPropertyName), SourceResourceId (ByPropertyName), SourceUri (ByPropertyName), StorageAccountId (ByPropertyName)
 
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.Int32
-Parameters: DiskSizeGB (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.ImageDiskReference
-Parameters: ImageReference (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-Parameters: DiskEncryptionKey (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
-Parameters: KeyEncryptionKey (ByPropertyName)
 
 ## OUTPUTS
 

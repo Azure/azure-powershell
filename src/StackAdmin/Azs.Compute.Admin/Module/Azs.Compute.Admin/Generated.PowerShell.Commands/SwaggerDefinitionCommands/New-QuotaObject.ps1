@@ -14,7 +14,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Holds quota information used to control resource allocation.
 
 .PARAMETER AvailabilitySetCount
-    Maximum number of availability sets allowed.
+    Number of availability sets allowed.
 
 .PARAMETER Id
     ID of the resource.
@@ -23,16 +23,22 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Type of Resource.
 
 .PARAMETER CoresLimit
-    Maximum number of core allowed.
+    Number of cores allowed.
 
 .PARAMETER VmScaleSetCount
-    Maximum number of scale sets allowed.
+    Number of scale sets allowed.
+
+.PARAMETER MaxAllocationStandardManagedDisksAndSnapshots
+    Number of Standard Managed Disks and Snapshots allowed.
+
+.PARAMETER MaxAllocationPremiumManagedDisksAndSnapshots
+    Number of Premium Managed Disks and Snapshots allowed.
 
 .PARAMETER Name
     Name of the resource.
 
 .PARAMETER VirtualMachineCount
-    Maximum number of virtual machines allowed.
+    Number of virtual machines allowed.
 
 .PARAMETER Location
     Location of the resource.
@@ -60,6 +66,14 @@ function New-QuotaObject
         [Parameter(Mandatory = $false)]
         [int32]
         $VmScaleSetCount,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+        $MaxAllocationStandardManagedDisksAndSnapshots,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+        $MaxAllocationPremiumManagedDisksAndSnapshots,
 
         [Parameter(Mandatory = $false)]
         [string]

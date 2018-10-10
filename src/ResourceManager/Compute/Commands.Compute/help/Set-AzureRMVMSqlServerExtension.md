@@ -209,16 +209,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Version (ByPropertyName), VMName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.AutoPatchingSettings
-Parameters: AutoPatchingSettings (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.AutoBackupSettings
-Parameters: AutoBackupSettings (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.KeyVaultCredentialSettings
-Parameters: KeyVaultCredentialSettings (ByPropertyName)
 
 ## OUTPUTS
 

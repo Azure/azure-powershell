@@ -17,15 +17,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSBgpServiceCommunity
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
         public string Id { get; set; }
 
         public string Type { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ServiceName { get; set; }
 
         public List<PSBgpCommunity> BgpCommunities { get; set; }

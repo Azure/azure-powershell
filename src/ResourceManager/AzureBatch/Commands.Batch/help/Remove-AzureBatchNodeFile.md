@@ -258,7 +258,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ComputeNodeId (ByPropertyName), JobId (ByPropertyName), PoolId (ByPropertyName), TaskId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSNodeFile
 Parameters: InputObject (ByValue)

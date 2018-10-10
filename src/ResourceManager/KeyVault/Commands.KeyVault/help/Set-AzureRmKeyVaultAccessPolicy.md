@@ -450,6 +450,10 @@ The acceptable values for this parameter:
 - Setissuers
 - Deleteissuers
 - Manageissuers
+- Recover
+- Backup
+- Restore
+- Purge
 
 ```yaml
 Type: System.String[]
@@ -655,7 +659,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

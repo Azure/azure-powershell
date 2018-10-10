@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiRelease)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRelease")]
     [OutputType(typeof(PsApiManagementApiRelease))]
     public class GetAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {        

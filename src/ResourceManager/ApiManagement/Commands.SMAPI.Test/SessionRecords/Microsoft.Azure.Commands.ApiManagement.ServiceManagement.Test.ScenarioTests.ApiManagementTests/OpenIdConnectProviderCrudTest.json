@@ -1,10 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps3130\",\r\n    \"description\": \"ps9352\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps5308\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps1572\",\r\n    \"description\": \"ps3994\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps1112\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -13,19 +13,19 @@
           "238"
         ],
         "x-ms-client-request-id": [
-          "fa3e5665-c24c-446b-bd37-163e6c5b2ea6"
+          "ccbf5c28-35f8-4472-8fff-c06882a4563a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps821\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3130\",\r\n    \"description\": \"ps9352\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps5308\",\r\n    \"clientSecret\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps222\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps1572\",\r\n    \"description\": \"ps3994\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps1112\",\r\n    \"clientSecret\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "540"
@@ -43,16 +43,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ba332a92-f2a3-4f11-aca9-b6033e8c5c3a"
+          "bb638b90-00c1-4f4e-b5c1-689015264afe"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "814f9f66-3718-41c0-aa4e-681624d30caf"
+          "5e1d35fb-ddde-49b3-9e59-5e31730d2570"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005731Z:814f9f66-3718-41c0-aa4e-681624d30caf"
+          "NORTHCENTRALUS:20180818T002818Z:5e1d35fb-ddde-49b3-9e59-5e31730d2570"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -61,10 +61,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:30 GMT"
+          "Sat, 18 Aug 2018 00:28:17 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFI4=\""
+          "\"AAAAAAAAHLM=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -73,25 +73,25 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bb158a46-2e51-4eb8-b531-3b9512f353b0"
+          "ddbc48cb-e160-4ba9-af60-84d90721eb53"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps821\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3130\",\r\n    \"description\": \"ps9352\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps5308\",\r\n    \"clientSecret\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps222\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps1572\",\r\n    \"description\": \"ps3994\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps1112\",\r\n    \"clientSecret\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "540"
@@ -109,16 +109,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "44ce4de9-4fb9-4bbe-80a2-865b842bb528"
+          "bc6fef5c-44a3-451b-996f-dd8ce177bf8f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "9f39d6a4-4c4a-491a-8a4e-34c049421f17"
+          "15a3e2da-7e1a-498f-9c05-8aef9b9fadc4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005732Z:9f39d6a4-4c4a-491a-8a4e-34c049421f17"
+          "NORTHCENTRALUS:20180818T002818Z:15a3e2da-7e1a-498f-9c05-8aef9b9fadc4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -127,10 +127,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:31 GMT"
+          "Sat, 18 Aug 2018 00:28:18 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFI4=\""
+          "\"AAAAAAAAHLM=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -139,25 +139,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "af804060-e398-47e8-8166-9d7953c797e0"
+          "21da9c72-0206-4718-acc9-1eb93eca9ea8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps821\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3130\",\r\n    \"description\": \"ps9352\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps5308\",\r\n    \"clientSecret\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps222\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps1572\",\r\n    \"description\": \"ps3994\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps1112\",\r\n    \"clientSecret\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "540"
@@ -175,16 +175,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1837d57e-9614-4eee-b08f-fb65397b4ec1"
+          "d2afb804-5df6-42eb-b7ad-e20879527d69"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "17f85d70-a4bc-4d7c-8e3f-32c977938778"
+          "7bb772ed-2d22-40cc-a5e3-d1d03aed783a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005734Z:17f85d70-a4bc-4d7c-8e3f-32c977938778"
+          "NORTHCENTRALUS:20180818T002820Z:7bb772ed-2d22-40cc-a5e3-d1d03aed783a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -193,10 +193,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:33 GMT"
+          "Sat, 18 Aug 2018 00:28:19 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFI4=\""
+          "\"AAAAAAAAHLM=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -205,25 +205,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a4f656ed-982d-444d-a6bb-5d7c0761f3af"
+          "4c52bcf6-2d62-450a-976f-0aa18f62c668"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps821\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3130\",\r\n    \"description\": \"ps9352\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps5308\",\r\n    \"clientSecret\": \"ps5691\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps222\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps1572\",\r\n    \"description\": \"ps3994\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps1112\",\r\n    \"clientSecret\": \"ps9582\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "544"
@@ -241,16 +241,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "88774e59-aaf9-414a-88c6-6e46b74a19dc"
+          "4bb1e02f-ad34-410c-a28f-007f1fd3716e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "ef3b5dd5-54e7-4c4a-8497-4b98bf5fb56a"
+          "9c9cb8c9-d311-4884-9b6b-8bd47a3ae30b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005738Z:ef3b5dd5-54e7-4c4a-8497-4b98bf5fb56a"
+          "NORTHCENTRALUS:20180818T002822Z:9c9cb8c9-d311-4884-9b6b-8bd47a3ae30b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -259,10 +259,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:38 GMT"
+          "Sat, 18 Aug 2018 00:28:21 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFI8=\""
+          "\"AAAAAAAAHLQ=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -271,22 +271,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "890820ec-4a9f-46c8-ba59-ac71f7f3fb66"
+          "72b032ef-1c97-4abd-82a1-519b1d554783"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"OpenidConnectProvider not found.\",\r\n    \"details\": null\r\n  }\r\n}",
@@ -307,16 +307,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f68f645a-69a4-40d8-8699-ddc81569874b"
+          "2be5cd62-cb2e-42d8-8bf8-7fc105d36119"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "13caa6c7-bd37-4272-94a4-85a1f0fabb83"
+          "75eb21dd-1742-454f-a367-79a6a9ceb7cc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005740Z:13caa6c7-bd37-4272-94a4-85a1f0fabb83"
+          "NORTHCENTRALUS:20180818T002823Z:75eb21dd-1742-454f-a367-79a6a9ceb7cc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -325,7 +325,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:40 GMT"
+          "Sat, 18 Aug 2018 00:28:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -334,22 +334,22 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a33188b1-26ee-4b71-9736-ea83097be88a"
+          "03af05b1-fdfd-4757-8539-b1f3bfc517fa"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"OpenidConnectProvider not found.\",\r\n    \"details\": null\r\n  }\r\n}",
@@ -370,16 +370,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a7e4b7a7-00a9-4f61-8b1e-83a1a6b080df"
+          "262fed29-615c-40c8-93f5-6caeaaca305e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "2b2e4186-93ce-4c99-84de-4715ee8a63fb"
+          "f1a69c6e-633c-4e05-8739-a62c6d0dace1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005741Z:2b2e4186-93ce-4c99-84de-4715ee8a63fb"
+          "NORTHCENTRALUS:20180818T002824Z:f1a69c6e-633c-4e05-8739-a62c6d0dace1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -388,7 +388,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:41 GMT"
+          "Sat, 18 Aug 2018 00:28:24 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -397,25 +397,25 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders?$filter=substringof('ps3130',properties/displayName)&api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnM/JGZpbHRlcj1zdWJzdHJpbmdvZigncHMzMTMwJyxwcm9wZXJ0aWVzL2Rpc3BsYXlOYW1lKSZhcGktdmVyc2lvbj0yMDE4LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders?$filter=substringof('ps1572',properties/displayName)&api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnM/JGZpbHRlcj1zdWJzdHJpbmdvZigncHMxNTcyJyxwcm9wZXJ0aWVzL2Rpc3BsYXlOYW1lKSZhcGktdmVyc2lvbj0yMDE4LTAxLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9ad1c01c-2fc2-4cf8-a2e7-4534fab00c7e"
+          "6b3dfe9d-7e20-4532-aa6b-39289a1fadba"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps821\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps3130\",\r\n        \"description\": \"ps9352\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps5308\",\r\n        \"clientSecret\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps222\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps1572\",\r\n        \"description\": \"ps3994\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps1112\",\r\n        \"clientSecret\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "632"
@@ -433,16 +433,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "28d3ad7c-5a52-4869-a062-a446a1470129"
+          "7c27d5ed-a335-44c7-b552-1f60d461cf22"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "44339f42-b2b0-41d2-87ba-35fce6c1e8ad"
+          "0de460d7-cc93-4442-a916-bb92f04911d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005733Z:44339f42-b2b0-41d2-87ba-35fce6c1e8ad"
+          "NORTHCENTRALUS:20180818T002819Z:0de460d7-cc93-4442-a916-bb92f04911d8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -451,7 +451,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:32 GMT"
+          "Sat, 18 Aug 2018 00:28:19 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -466,19 +466,19 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "00337402-57d4-4b73-908d-285cb42b5511"
+          "5b8fba2b-fbeb-4e6c-9281-f39c725008a4"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps821\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps3130\",\r\n        \"description\": \"ps9352\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps5308\",\r\n        \"clientSecret\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps222\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps1572\",\r\n        \"description\": \"ps3994\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps1112\",\r\n        \"clientSecret\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "632"
@@ -496,16 +496,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4de53c7b-c335-4145-966b-9a1bd9b7a6b5"
+          "7921b220-d434-4945-98c1-3b6f422a4f1c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "4393a3af-759d-4e9e-a08f-a4f63740e88d"
+          "358039c7-8776-4a97-80ae-f0ed0a1e3a46"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005735Z:4393a3af-759d-4e9e-a08f-a4f63740e88d"
+          "NORTHCENTRALUS:20180818T002821Z:358039c7-8776-4a97-80ae-f0ed0a1e3a46"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -514,7 +514,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:34 GMT"
+          "Sat, 18 Aug 2018 00:28:20 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -523,10 +523,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientSecret\": \"ps5691\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientSecret\": \"ps9582\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -535,7 +535,7 @@
           "58"
         ],
         "x-ms-client-request-id": [
-          "91c73632-e049-4a6a-8362-1113e8f768f2"
+          "76100d9b-e14e-44b1-9408-58e8e26ddd35"
         ],
         "If-Match": [
           "*"
@@ -544,10 +544,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -562,16 +562,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2cd9b1b5-149d-40e8-b153-090140795722"
+          "da32fbda-4c31-46e3-a8ff-a6d610648ca8"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "144fcdd1-1aa3-403c-aa01-e87d755f96ca"
+          "9a288b8c-67d6-4886-b873-e42240aa2efe"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005737Z:144fcdd1-1aa3-403c-aa01-e87d755f96ca"
+          "NORTHCENTRALUS:20180818T002821Z:9a288b8c-67d6-4886-b873-e42240aa2efe"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -580,7 +580,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:36 GMT"
+          "Sat, 18 Aug 2018 00:28:21 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -589,13 +589,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "031f914f-a4fa-42bc-8ae3-d464d0df5f50"
+          "ddc7fd44-9491-4075-8f74-6daca8ed1aff"
         ],
         "If-Match": [
           "*"
@@ -604,10 +604,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -625,16 +625,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0c0b049e-9519-42a7-84f5-9cb1c7b69a9a"
+          "2228617c-576d-4a32-ab7c-85d2b7613991"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "c27badb7-48ae-44f9-b838-9e4152e33981"
+          "6b77712f-ffde-4dae-a942-4c57584eb0bc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005740Z:c27badb7-48ae-44f9-b838-9e4152e33981"
+          "NORTHCENTRALUS:20180818T002823Z:6b77712f-ffde-4dae-a942-4c57584eb0bc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -643,7 +643,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:40 GMT"
+          "Sat, 18 Aug 2018 00:28:22 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -652,13 +652,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps821?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM4MjE/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps222?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMyMjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d589ea3e-b00e-43e8-a684-0695c2688d9f"
+          "66bbce37-4300-4fa1-9395-74a3db517c93"
         ],
         "If-Match": [
           "*"
@@ -667,10 +667,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -685,16 +685,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "98190051-698b-4241-9820-823cf4a00c73"
+          "47155c39-3c02-4b58-925a-b03fb60b6b12"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "228c6ab4-3ba5-4f63-92d3-4cc70a200a4e"
+          "90e09bff-6430-4923-b09e-25381971afff"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T005741Z:228c6ab4-3ba5-4f63-92d3-4cc70a200a4e"
+          "NORTHCENTRALUS:20180818T002824Z:90e09bff-6430-4923-b09e-25381971afff"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -703,7 +703,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 00:57:41 GMT"
+          "Sat, 18 Aug 2018 00:28:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -714,11 +714,11 @@
   ],
   "Names": {
     "": [
-      "ps821",
-      "ps3130",
-      "ps5308",
-      "ps9352",
-      "ps5691"
+      "ps222",
+      "ps1572",
+      "ps1112",
+      "ps3994",
+      "ps9582"
     ]
   },
   "Variables": {

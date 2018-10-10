@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Enables backup of an item protected by the recovery services vault.
     /// Returns the corresponding job created in the service to track this backup operation.
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
-        OutputType(typeof(JobBase))]
+    [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         /// <summary>

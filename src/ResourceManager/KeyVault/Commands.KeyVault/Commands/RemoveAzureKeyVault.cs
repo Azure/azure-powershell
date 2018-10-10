@@ -22,9 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVault",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveVaultParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",SupportsShouldProcess = true,DefaultParameterSetName = RemoveVaultParameterSet)]
     [OutputType(typeof(bool))]
     public class RemoveAzureKeyVault : KeyVaultManagementCmdletBase
     {

@@ -17,7 +17,10 @@ Creates a Traffic Manager profile.
 New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-ProfileStatus <String>]
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
  -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
- [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-Tag <Hashtable>]
+ [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-MaxReturn <Int64>]
+ [-Tag <Hashtable>]
+ [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
+ [-ExpectedStatusCodeRange <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,6 +28,7 @@ New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-Pr
 The **New-AzureRmTrafficManagerProfile** cmdlet creates an Azure Traffic Manager profile.
 Specify the *Name* parameter and required settings.
 This cmdlet returns a local object that represents the new profile.
+
 This cmdlet does not configure Traffic Manager endpoints.
 You can update the local profile object by using the Add-AzureRmTrafficManagerEndpointConfig cmdlet.
 Then upload changes to Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
@@ -42,6 +46,21 @@ The DNS FQDN is contosoapp.trafficmanager.net.
 
 ## PARAMETERS
 
+### -CustomHeader
+List of custom header name and value pairs for probe requests.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -49,6 +68,36 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpectedStatusCodeRange
+List of expected HTTP status code ranges for probe requests.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxReturn
+The maximum number of answers returned for profiles with a MultiValue routing method.
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -108,6 +157,7 @@ Accept wildcard characters: False
 ### -MonitorProtocol
 Specifies the protocol to use to monitor endpoint health.
 Valid values are:
+
 - HTTP
 - HTTPS
 
@@ -220,6 +270,7 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table set as tags on the server. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -238,6 +289,7 @@ Accept wildcard characters: False
 Specifies the traffic routing method.
 This method determines which endpoint Traffic Manager returns in response to incoming DNS queries.
 Valid values are:
+
 - Performance
 - Weighted
 - Priority
@@ -277,10 +329,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet returns a new TrafficManagerProfile object.
 
 ## NOTES
 

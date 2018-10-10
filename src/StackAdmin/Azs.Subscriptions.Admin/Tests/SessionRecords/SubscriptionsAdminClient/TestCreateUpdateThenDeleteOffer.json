@@ -61,6 +61,69 @@
     {
       "RequestUri": "/subscriptions/3c2a4c80-e594-46eb-b923-98fd98d50155/resourcegroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testOffer1?api-version=2015-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2MyYTRjODAtZTU5NC00NmViLWI5MjMtOThmZDk4ZDUwMTU1L3Jlc291cmNlZ3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlN1YnNjcmlwdGlvbnMuQWRtaW4vb2ZmZXJzL3Rlc3RPZmZlcjE/YXBpLXZlcnNpb249MjAxNS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-client-request-id": [
+          "26fc0d04-895e-48e3-ba4b-5ec883914972"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01",
+          "Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 10 Apr 2018 18:02:15 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1175"
+        ],
+        "x-ms-request-id": [
+          "a87a921e-7806-40aa-813c-2266d388e438"
+        ],
+        "x-ms-correlation-request-id": [
+          "a87a921e-7806-40aa-813c-2266d388e438"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20180410T180215Z:a87a921e-7806-40aa-813c-2266d388e438"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/3c2a4c80-e594-46eb-b923-98fd98d50155/resourcegroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testOffer1?api-version=2015-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2MyYTRjODAtZTU5NC00NmViLWI5MjMtOThmZDk4ZDUwMTU1L3Jlc291cmNlZ3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlN1YnNjcmlwdGlvbnMuQWRtaW4vb2ZmZXJzL3Rlc3RPZmZlcjE/YXBpLXZlcnNpb249MjAxNS0xMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"name\": \"testOffer1\",\r\n    \"displayName\": \"Test Offer\",\r\n    \"description\": \"This is a test Offer\",\r\n    \"maxSubscriptionsPerAccount\": 100,\r\n    \"basePlanIds\": [\r\n      \"/subscriptions/3c2a4c80-e594-46eb-b923-98fd98d50155/resourceGroups/planoffer/providers/Microsoft.Subscriptions.Admin/plans/plan0\"\r\n    ]\r\n  },\r\n  \"location\": \"redmond\"\r\n}",
       "RequestHeaders": {

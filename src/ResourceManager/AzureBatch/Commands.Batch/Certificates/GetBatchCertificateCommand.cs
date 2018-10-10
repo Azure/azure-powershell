@@ -18,8 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchCertificate, DefaultParameterSetName = Constants.ODataFilterParameterSet),
-        OutputType(typeof(PSCertificate))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCertificate))]
     public class GetBatchCertificateCommand : BatchObjectModelCmdletBase
     {
         internal const string ThumbprintParameterSet = "Thumbprint";

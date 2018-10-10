@@ -113,13 +113,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### System.Guid
-Parameters: JobId (ByPropertyName, ByValue)
 
 ### System.Int32
-Parameters: TimeoutInSeconds (ByPropertyName), WaitIntervalInSeconds (ByPropertyName)
 
 ## OUTPUTS
 

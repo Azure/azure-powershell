@@ -99,7 +99,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: VirtualNetworkGateway (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
-Parameters: GatewayDefaultSite (ByPropertyName)
 
 ## OUTPUTS
 

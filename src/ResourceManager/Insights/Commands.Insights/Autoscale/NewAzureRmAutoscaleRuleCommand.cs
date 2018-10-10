@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create an Autoscale rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleRule"), OutputType(typeof(Management.Monitor.Management.Models.ScaleRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleRule"), OutputType(typeof(Management.Monitor.Management.Models.ScaleRule))]
     public class NewAzureRmAutoscaleRuleCommand : MonitorCmdletBase
     {
         private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);

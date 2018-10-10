@@ -109,7 +109,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     if (scriptBuilder != null)
                     {
                         var psScripts = scriptBuilder();
-
                         if (psScripts != null)
                         {
                             _helper.RunPowerShellTest(psScripts);

@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class for the cmdlet to get project task details.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataMigrationTask", DefaultParameterSetName = DefaultParams), OutputType(typeof(PSProjectTask))]
-    [Alias("Get-AzureRmDmsTask")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationTask", DefaultParameterSetName = DefaultParams), OutputType(typeof(PSProjectTask))]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsTask")]
     public class GetDataMigrationTask : DataMigrationCmdlet
     {
         private const string DefaultParams = ListByComponent;
@@ -187,7 +187,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             {
                 if (Expand && MyInvocation.BoundParameters.ContainsKey("ResultType"))
                 {
-                    expandFilter = string.Format("output($filter= ResultType eq '{0}')", ResultType.ToString());
+                    if (ResultType.ToString().Equals(ResultTypeEnum.Command.ToString()))
+                    {
+                        expandFilter = "command";
+                    }
+                    else
+                    {
+                        expandFilter = string.Format("output($filter= ResultType eq '{0}')", ResultType.ToString());
+                    }
                 }
                 else
                 {

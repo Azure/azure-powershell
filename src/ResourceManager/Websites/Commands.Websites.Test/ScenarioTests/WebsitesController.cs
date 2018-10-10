@@ -93,7 +93,11 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+#if NETSTANDARD
+                    _helper.RMStorageModule,
+#else
                     _helper.RMStorageDataPlaneModule,
+#endif
                     _helper.GetRMModulePath(@"AzureRM.Websites.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");

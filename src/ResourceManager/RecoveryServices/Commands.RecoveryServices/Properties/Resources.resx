@@ -304,4 +304,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="VaultTarget" xml:space="preserve">
     <value>Azure Recovery Services Vault</value>
   </data>
+  <data name="MissingCertificateForNetStandard" xml:space="preserve">
+    <value>Pass self signed certificate to get vaultcreds file.</value>
+  </data>
 </root>

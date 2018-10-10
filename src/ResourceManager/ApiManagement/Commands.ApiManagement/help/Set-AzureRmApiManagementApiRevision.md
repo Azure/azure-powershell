@@ -332,19 +332,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ApiId (ByPropertyName), ApiRevision (ByPropertyName), AuthorizationScope (ByPropertyName), AuthorizationServerId (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), Path (ByPropertyName), ServiceUrl (ByPropertyName), SubscriptionKeyHeaderName (ByPropertyName), SubscriptionKeyQueryParamName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi
 Parameters: InputObject (ByValue)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]
-Parameters: Protocols (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

@@ -147,6 +147,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 // (tenant is present and subscription is not provided)
                 if (!string.IsNullOrEmpty(tenantId))
                 {
+                    Guid tempGuid = Guid.Empty;
+                    if (!Guid.TryParse(tenantId, out tempGuid))
+                    {
+                        var tenant = ListAccountTenants(
+                            account,
+                            environment,
+                            password,
+                            promptBehavior,
+                            promptAction)?.FirstOrDefault();
+                        if (tenant == null || tenant.Id == null)
+                        {
+                            throw new ArgumentNullException(string.Format("Could not find tenant id for provided tenant domain '{0}'. Please ensure that " +
+                                                                          "the provided service principal is found in the provided tenant domain.", tenantId));
+                        }
+
+                        tenantId = tenant.Id;
+                    }
+
                     var token = AcquireAccessToken(
                         account,
                         environment,

@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
+
     public class PSApplicationGatewayUrlPathMap : PSChildResource
     {
         public PSResourceId DefaultBackendAddressPool { get; set; }
@@ -24,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId DefaultRedirectConfiguration { get; set; }
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
         public string Type { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         [JsonIgnore]
         public string DefaultBackendAddressPoolText

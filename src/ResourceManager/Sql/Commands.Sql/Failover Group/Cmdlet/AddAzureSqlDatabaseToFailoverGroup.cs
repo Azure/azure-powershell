@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to add Azure Sql Databases into a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlDatabaseToFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseToFailoverGroup",ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

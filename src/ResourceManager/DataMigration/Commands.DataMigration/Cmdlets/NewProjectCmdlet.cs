@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance DMS Project.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSProject))]
-    [Alias("New-AzureRmDmsProject")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSProject))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsProject")]
     public class NewProjectCmdlet : DataMigrationCmdlet
     {
         [Parameter(

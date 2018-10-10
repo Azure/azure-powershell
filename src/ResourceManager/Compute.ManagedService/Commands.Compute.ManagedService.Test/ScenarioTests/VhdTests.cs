@@ -28,8 +28,8 @@ namespace ManagedComputeServicesTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Fact(Skip = "Compute.ManagedService test need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6858")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVhd()
         {
             ManagedComputeServicesTestController.NewInstance.RunPsTest(_logger, "Test-ConvertToAzureRmVhd");

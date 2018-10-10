@@ -238,10 +238,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AdvisorName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: ExpandRecommendedActions (ByPropertyName)
 
 ## OUTPUTS
 
