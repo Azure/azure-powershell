@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// The base class for Azure SQL server auditing settings Management Cmdlets
     /// </summary>
-    public abstract class SqlServerAuditingSettingsCmdletBase : AzureSqlCmdletBase<ServerBlobAuditingSettingsModel, SqlAuditAdapter>
+    public abstract class SqlServerExtendedAuditingSettingsCmdletBase : AzureSqlCmdletBase<ServerExtendedBlobAuditingSettingsModel, SqlAuditAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the SQL server to use.
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override ServerBlobAuditingSettingsModel GetEntity()
+        protected override ServerExtendedBlobAuditingSettingsModel GetEntity()
         {
-            ServerBlobAuditingSettingsModel model;
-            ModelAdapter.GetServerBlobAuditingPolicyV2(ResourceGroupName, ServerName, out model);
+            ServerExtendedBlobAuditingSettingsModel model;
+            ModelAdapter.GetServerExtendedBlobAuditingPolicy(ResourceGroupName, ServerName, out model);
             return model;
         }
 
@@ -55,27 +55,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override SqlAuditAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new SqlAuditAdapter(DefaultProfile.DefaultContext);
-        }
-
-        /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
-        /// </summary>
-        /// <param name="baseModel">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel baseModel)
-        {
-            if (Array.IndexOf(baseModel.AuditActionGroup, AuditActionGroups.AUDIT_CHANGE_GROUP) > -1)
-            {
-                // AUDIT_CHANGE_GROUP is not supported.
-                WriteWarning(Resources.auditChangeGroupDeprecationMessage);
-
-                // Remove it
-                baseModel.AuditActionGroup = baseModel.AuditActionGroup.Where(v => v != AuditActionGroups.AUDIT_CHANGE_GROUP).ToArray();
-            }
-
-            ModelAdapter.SetServerAuditingPolicy(baseModel, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
-          
-            return null;
         }
     }
 }
