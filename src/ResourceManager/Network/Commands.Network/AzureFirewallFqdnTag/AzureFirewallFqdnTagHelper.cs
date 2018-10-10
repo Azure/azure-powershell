@@ -42,12 +42,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     userAcceptedVersions.Add(allowedFqdnTag.FqdnTagName.ToUpper(), allowedFqdnTag.FqdnTagName);
 
-                    // Accept user input without spaces
-                    if (allowedFqdnTag.FqdnTagName.Contains(' '))
-                    {
-                        userAcceptedVersions.Add(allowedFqdnTag.FqdnTagName.Replace(" ", string.Empty).ToUpper(), allowedFqdnTag.FqdnTagName);
-                    }
-
                     return userAcceptedVersions;
                 });
 
