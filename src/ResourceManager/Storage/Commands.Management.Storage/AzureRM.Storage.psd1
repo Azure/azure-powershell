@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.0.0'
+ModuleVersion = '6.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -133,13 +133,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support enable or disable FilesAadIntegration for SMB when creating or updating Storage account
-       - New-AzureRmStorageAccount
-       - Set-AzureRmStorageAccount
-* Support Kind FileStorage and BlockBlobStorage when creating Storage account
-       - New-AzureRmStorageAccount
-* Remove get global Storage usage function, and can only get location Storage usage, so parameter "Location" changes from optional to required.
-       - Get-AzureRmStorageUsage'
+        ReleaseNotes = '* Support failover Storage account
+    - Invoke-AzureRmStorageAccountFailover
+* Support Get last sync time of Storage account
+    - Get-AzureRmStorageAccountLastSyncTime'
 
         # Prerelease string of this module
         Prerelease = 'preview'
