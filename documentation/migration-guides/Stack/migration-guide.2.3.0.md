@@ -131,12 +131,12 @@ Get-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
 ```
 
 ### **Get-AzureRmResource**
-The cmdlet output model got changed. The property name `ResourceName` got renamed to simply `Name`
+The cmdlet output model was changed. The property name `ResourceName` was renamed to `Name`
 ```powershell
 # Old
-(Get-AuzreRmResource).ResourceName
+(Get-AzureRmResource).ResourceName
 # New
-(Get-AuzreRmResource).Name
+(Get-AzureRmResource).Name
 ```
 
 ### **New-AzureRmADAppCredential**
