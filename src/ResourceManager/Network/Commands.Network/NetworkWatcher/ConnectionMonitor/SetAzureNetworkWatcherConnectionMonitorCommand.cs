@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -88,6 +89,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByLocation")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers/connectionMonitors", new string[] { "ResourceGroupName", "NetworkWatcherName" })]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The name of the load balancer.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Network/loadBalancers", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

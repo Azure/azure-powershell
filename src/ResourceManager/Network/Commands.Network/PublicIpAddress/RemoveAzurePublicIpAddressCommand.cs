@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/publicIPAddresses", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 

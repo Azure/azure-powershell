@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             Mandatory = true,
             HelpMessage = "The virtual wan name.")]
+        [ResourceNameCompleter("Microsoft.Network/vpnGateways", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

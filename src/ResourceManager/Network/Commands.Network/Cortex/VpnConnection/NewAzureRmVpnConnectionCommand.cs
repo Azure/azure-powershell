@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName + CortexParameterSetNames.ByVpnSiteResourceId,
             HelpMessage = "The resource group name.")]
+        [ResourceNameCompleter("Microsoft.Network/vpnGateways", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
 
