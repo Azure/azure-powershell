@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Subscriptions.Admin Module
 ## Description
--Preview release of the AzureStack Subscription administrator module.  This module provides functionality for administrators to manage plans, offers and subscriptions
+Preview release of the AzureStack Subscription operator module.  This module provides functionality for operators to manage plans, offers and subscriptions
 
 ## Azs.Subscriptions.Admin Cmdlets
 ### [Add-AzsPlanToOffer](Add-AzsPlanToOffer.md)
@@ -27,7 +27,7 @@ Lists all the directory tenants under the current subscription and given resourc
 Get a list of all AzureStack location.
 
 ### [Get-AzsManagedOffer](Get-AzsManagedOffer.md)
-Get the list of offers as the administrator.
+Get the list of offers as the operator.
 
 ### [Get-AzsOfferDelegation](Get-AzsOfferDelegation.md)
 Get the list of delegated offers.
@@ -48,10 +48,12 @@ Get a collection of all acquired plans that subscription has access to.
 Get the list of subscription resource provider quotas at a location.
 
 ### [Get-AzsUserSubscription](Get-AzsUserSubscription.md)
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ### [Move-AzsSubscription](Move-AzsSubscription.md)
 Move subscriptions between delegated provider offers.
+This process will only perform a rebranding,
+the underlying offer, plans, quotas for the subscriptions will not be altered.
 
 ### [New-AddonPlanDefinitionObject](New-AddonPlanDefinitionObject.md)
 Contains the name of the desired plan to be linked or unlinked from an offer.
@@ -70,28 +72,6 @@ Creates a subscription plan.
 
 ### [New-AzsUserSubscription](New-AzsUserSubscription.md)
 Create a new subscription.
-
-### [New-CheckNameAvailabilityDefinitionObject](New-CheckNameAvailabilityDefinitionObject.md)
-The check name availability action definition.
-
-### [New-DirectoryTenantObject](New-DirectoryTenantObject.md)
-Directory tenant.
-
-### [New-OfferDelegationObject](New-OfferDelegationObject.md)
-Offer delegation.
-
-### [New-OfferObject](New-OfferObject.md)
-Represents an offering of services against which a subscription can be created.
-
-### [New-PlanAcquisitionPropertiesObject](New-PlanAcquisitionPropertiesObject.md)
-Represents the acquisition of an add-on plan for a subscription.
-
-### [New-PlanObject](New-PlanObject.md)
-A plan represents a package of quotas and capabilities that are offered tenants.
-A tenant can acquire this plan through an offer to upgrade his access to underlying cloud services.
-
-### [New-SubscriptionObject](New-SubscriptionObject.md)
-List of supported operations.
 
 ### [Remove-AzsOffer](Remove-AzsOffer.md)
 Delete the specified offer.

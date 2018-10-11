@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', 
@@ -96,7 +96,9 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
     'Reset-AzWebAppPublishingProfile', 'Restart-AzWebApp', 
     'Set-AzWebApp', 'Start-AzWebApp', 'Stop-AzWebApp', 
     'Get-AzWebAppSnapshot', 'Restore-AzWebAppSnapshot',
-    'Get-AzDeletedWebApp', 'Restore-AzDeletedWebApp'
+    'Get-AzDeletedWebApp', 'Restore-AzDeletedWebApp',
+    'Get-AzWebAppContainerContinuousDeploymentUrl',
+    'Enter-AzWebAppContainerPSSession', 'New-AzWebAppContainerPSSession'
 
 # Variables to export from this module
 # VariablesToExport = @()

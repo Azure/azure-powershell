@@ -136,7 +136,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                 if (!foundMatch)
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterSet,

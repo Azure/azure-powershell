@@ -117,16 +117,9 @@ if ($Scope -in $AzureScopes) {
 
 if ($Scope -in $StackScopes) {
 
-    # Download and add AzureRM.Profile 3.4.1 to PSModulePath
-    [System.String]$SavePath = (Join-Path -Path $PSScriptRoot -ChildPath "tmp")
-    if (-not(Test-Path $SavePath)) {
-        New-Item -Path $SavePath -ItemType Directory -Force | Out-Null
-        Save-Module -Name AzureRM.Profile -RequiredVersion 3.4.1 -Repository PSGallery -Path $SavePath | Out-Null
-        Save-Module -Name AzureRM.Resources -RequiredVersion 4.4.1 -Repository PSGallery -Path $SavePath | Out-Null
-    }
-
-    $oldModulePath = $env:PSModulePath.Clone()
-    [Environment]::SetEnvironmentVariable("PSModulePath","$env:PSModulePath;$SavePath")
+    $ARMRoot = "$PSScriptRoot\..\..\src\Stack\$BuildConfig\ResourceManager\AzureResourceManager"
+    Import-Module "$ARMRoot\AzureRM.Profile\AzureRM.Profile.psd1"
+    Import-Module "$ARMRoot\AzureRM.Resources\AzureRM.Resources.psd1";
 
     # All admin modules
     $AllStackModules = @(
@@ -151,6 +144,5 @@ if ($Scope -in $StackScopes) {
     [System.String[]]$ModulesToTest = $AllStackModules | Where-Object { !($_ -in $IgnoredStackModules) }
     Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest
 
-    [Environment]::SetEnvironmentVariable("PSModulePath",$oldModulePath)
 }
 

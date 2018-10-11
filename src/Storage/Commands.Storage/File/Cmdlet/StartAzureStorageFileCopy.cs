@@ -366,6 +366,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             try
             {
                 await destFile.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+
+                //Clean the Metadata of the destination file object, or the source metadata won't overwirte the dest file metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-file
+                destFile.Metadata.Clear();
             }
             catch (StorageException ex)
             {
