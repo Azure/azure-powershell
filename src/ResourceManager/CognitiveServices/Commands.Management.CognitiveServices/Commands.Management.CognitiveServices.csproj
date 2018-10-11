@@ -49,6 +49,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CognitiveServicesAccount\GetAzureCognitiveServicesAccountType.cs" />
     <Compile Include="CognitiveServicesAccount\GetAzureCognitiveServicesAccountUsage.cs" />
     <Compile Include="Models\PSCognitiveServicesUsage.cs" />
     <Compile Include="ObsoletedModels\ProvisioningState.cs" />

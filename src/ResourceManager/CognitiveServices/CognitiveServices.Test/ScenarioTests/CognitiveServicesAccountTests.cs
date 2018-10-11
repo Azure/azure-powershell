@@ -100,6 +100,13 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAccountType()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingToGetKey()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingGetAccountToGetKey");

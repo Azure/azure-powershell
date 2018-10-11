@@ -20,6 +20,9 @@ Gets the API keys for an account.
 ### [Get-AzureRmCognitiveServicesAccountSkus](Get-AzureRmCognitiveServicesAccountSkus.md)
 Gets the available SKUs for an account.
 
+### [Get-AzureRmCognitiveServicesAccountType](Get-AzureRmCognitiveServicesAccountType.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmCognitiveServicesAccountUsage](Get-AzureRmCognitiveServicesAccountUsage.md)
 Get current usages for a Cognitive Services account.
 
