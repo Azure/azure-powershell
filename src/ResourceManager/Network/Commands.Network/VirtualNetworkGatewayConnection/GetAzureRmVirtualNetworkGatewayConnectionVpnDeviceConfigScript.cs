@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name of the connection for which the configuration is to be generated.")]
+        [ResourceNameCompleter("Microsoft.Network/connections", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
