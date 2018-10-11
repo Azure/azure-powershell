@@ -120,91 +120,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         {
             IAzureContext context = AzureRmProfileProvider.Instance?.Profile?.DefaultContext;
             IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            Task<IPage<GenericResource>> allProviders = null;
             var odataQuery = new ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
 
-            if (string.IsNullOrWhiteSpace(resourceGroupName))
-            {
-                allProviders = client.Resources.ListAsync(odataQuery);
-            }
-            else
-            {
-                allProviders = client.ResourceGroups.ListResourcesAsync(resourceGroupName, odataQuery);
-            }
+            var allProviders = string.IsNullOrWhiteSpace(resourceGroupName)
+                ? client.Resources.ListAsync(odataQuery)
+                : client.ResourceGroups.ListResourcesAsync(resourceGroupName, odataQuery);
 
-            List<ResourceIdentifier> ids = new List<ResourceIdentifier>();
-            if (_timeout == -1)
-            {
-                allProviders.Wait(TimeSpan.FromMinutes(5));
-                if (allProviders.Result != null)
-                {
-                    allProviders.Result.ToList().ForEach(resource => ids.Add(new ResourceIdentifier(resource.Id)));
-                }
-                else
-                {
-#if DEBUG
-                    throw new InvalidOperationException("Result from client.Providers is null");
-#endif
-                }
-            }
-            else if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
-            {
-                if (allProviders.Result != null)
-                {
-                    allProviders.Result.ToList().ForEach(resource => ids.Add(new ResourceIdentifier(resource.Id)));
-                }
-                else
-                {
-#if DEBUG
-                    throw new InvalidOperationException("Result from client.Providers is null");
-#endif
-                }
-            }
-            else
-            {
-#if DEBUG
-                throw new InvalidOperationException(Resources.TimeOutForProviderList);
-#endif
-            }
+            var timeoutDuration = _timeout == -1 ? TimeSpan.FromMinutes(5) : TimeSpan.FromSeconds(_timeout);
+            var hasNotTimedOut = allProviders.Wait(timeoutDuration);
+            var hasResult = allProviders.Result != null;
+            var isSuccessful = hasNotTimedOut && hasResult;
 
-            return ids;
+#if DEBUG
+            if (!isSuccessful)
+            {
+                throw new InvalidOperationException(!hasResult ? "Result from client.Providers is null" : Resources.TimeOutForProviderList);
+            }
+#endif
+
+            return isSuccessful
+                ? allProviders.Result.Select(resource => new ResourceIdentifier(resource.Id)).ToList()
+                : new List<ResourceIdentifier>();
         }
 
         public static List<string> FilterByParentResource(List<ResourceIdentifier> ids, string[] parentResources)
         {
-            List<string> output = new List<string>();
-            foreach (var resource in ids)
+            return ids.Where(resource =>
             {
-                var include = true;
-
-                if (resource.ParentResource != null)
+                if (resource.ParentResource == null)
                 {
-                    var actualParentResource = resource.ParentResource.Split('/');
-                    if (actualParentResource.Count() / 2 == parentResources.Count() - 1)
-                    {
-                        for (int i = 0; i < actualParentResource.Count() / 2; i++)
-                        {
-                            if (!string.IsNullOrEmpty(parentResources[i + 1]) && !string.Equals(actualParentResource[i * 2 + 1], parentResources[i + 1], StringComparison.OrdinalIgnoreCase))
-                            {
-                                include = false;
-                            }
-                        }
-                    }
-                    else
-                    {
+                    return true;
+                }
+
+                var actualParentResources = resource.ParentResource.Split('/').Where((pr, i) => i % 2 != 0).ToArray();
+                var parentResourcesExceptFirst = parentResources.Skip(1).ToArray();
+                if (actualParentResources.Count() != parentResourcesExceptFirst.Count())
+                {
 #if DEBUG
-                        throw new InvalidOperationException("Improper number of parent resources were given");
+                    throw new InvalidOperationException("Improper number of parent resources were given");
+#else
+                    return true;
 #endif
+                }
+
+                for (int i = 0; i < actualParentResources.Count(); i++)
+                {
+                    if (!string.IsNullOrEmpty(parentResourcesExceptFirst[i]) && !string.Equals(actualParentResources[i], parentResourcesExceptFirst[i], StringComparison.OrdinalIgnoreCase))
+                    {
+                        return false;
                     }
                 }
 
-                if (include)
-                {
-                    output.Add(resource.ResourceName);
-                }
-            }
-
-            return output;
+                return true;
+            }).Select(resource => resource.ResourceName).ToList();
         }
     }
 }
