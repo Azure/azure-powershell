@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM.Websites
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebappazurestoragepath
 schema: 2.0.0
 ---
 
 # New-AzureRmWebAppAzureStoragePath
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates an object that represents an Azure Storage path to be mounted in a Web App. It is meant to be used as a parameter (-AzureStoragePath) to Set-AzureRmWebApp and Set-AzureRmWebAppSlot
 
 ## SYNTAX
 
