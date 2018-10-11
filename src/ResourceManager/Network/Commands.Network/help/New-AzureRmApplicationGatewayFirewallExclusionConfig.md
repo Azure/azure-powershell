@@ -13,8 +13,8 @@ Creates a new exclusion rule list for application gateway waf
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable <String> -Operator <String>
- -Selector <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable <String> -Operator <String> -Selector <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,8 +46,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Variable
-The variable to be excluded.
+### -Operator
+When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
@@ -76,8 +76,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
-When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
+### -Variable
+The variable to be excluded.
 
 ```yaml
 Type: System.String
