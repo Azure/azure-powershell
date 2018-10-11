@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, and Any.
+Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, ICMP and Any.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
