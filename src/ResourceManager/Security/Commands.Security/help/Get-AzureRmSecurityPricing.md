@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/get-azurermsecuritypricing
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityPricing.md
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Get-AzureRmSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-Azure Security Cetner pricing tier is decided per scope, with this cmdlet you can get the configured pricing tiers.
+Azure Security Center pricing tier is decided per scope, with this cmdlet you can get the configured pricing tiers.
 Subscription pricing tier include all the resource groups under it.
 Resource Group pricing tier will override the subscription pricing tier.
 

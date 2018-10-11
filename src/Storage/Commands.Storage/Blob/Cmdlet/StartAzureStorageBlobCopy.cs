@@ -567,6 +567,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
                 string copyId;
+
+                //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
+                destBlob.Metadata.Clear();
+
                 if (pageBlobTier == null)
                 {
                     copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
