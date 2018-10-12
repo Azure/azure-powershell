@@ -159,6 +159,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSProtection.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSGetRPs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSBackup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

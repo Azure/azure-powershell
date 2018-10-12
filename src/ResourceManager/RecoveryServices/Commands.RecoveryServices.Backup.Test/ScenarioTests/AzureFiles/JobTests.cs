@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSGetJob");
         }
 
-        [Fact(Skip = "Jon not cancellable everytime")]
+        [Fact(Skip = "Job not cancellable everytime")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSCancelJob()
