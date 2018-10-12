@@ -146,5 +146,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-InboundNatPoolCRUDAllParameters"));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
+        public void TestOutboundRuleCRUDMinimalParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-OutboundRuleCRUDMinimalParameters"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
+        public void TestOutboundRuleCRUDAllParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-OutboundRuleCRUDAllParameters"));
+        }
     }
 }

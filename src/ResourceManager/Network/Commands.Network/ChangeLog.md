@@ -18,9 +18,12 @@
         - Additional information about change #1
 --->
 ## Current Release
-* Added WhatIf support to Set-AzureRmNetworkSecurityGroup 
+
+* Added WhatIf support to Set-AzureRmNetworkSecurityGroup
+* Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
 
 ## Version 6.9.0
+
 * Added NetworkProfile functionality. new cmdlets added
     - Get-AzureRMNetworkProfile
     - New-AzureRMNetworkProfile
