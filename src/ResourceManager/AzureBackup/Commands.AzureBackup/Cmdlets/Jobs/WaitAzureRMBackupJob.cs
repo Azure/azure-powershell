@@ -24,7 +24,7 @@ using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [CmdletDeprecation()]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
     [Cmdlet("Wait", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupJob"), OutputType(typeof(AzureRMBackupJob))]
     public class WaitAzureRMBackupJob : AzureBackupCmdletBase
     {

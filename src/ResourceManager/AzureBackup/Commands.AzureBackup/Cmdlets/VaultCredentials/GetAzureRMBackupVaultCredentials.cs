@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to download an azure backup vault's credentials.
     /// </summary>
-    [CmdletDeprecation()]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupVaultCredentials"), OutputType(typeof(string))]
     public class GetAzureRMBackupVaultCredentials : AzureBackupVaultCmdletBase
     {
