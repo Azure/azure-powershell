@@ -186,6 +186,7 @@
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="AzureFirewallFqdnTag\AzureFirewallFqdnTagHelper.cs" />
+    <Compile Include="AzureFirewallFqdnTag\GetAzureFirewallFqdnTagCommand.cs" />
     <Compile Include="AzureFirewall\ApplicationRuleCollection\NewAzureFirewallApplicationRuleCollectionCommand.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\AzureFirewallApplicationRuleParameterSets.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\NewAzureFirewallApplicationRuleCommand.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="Generated\Models\PSTroubleshootingRecommendedActions.cs" />
     <Compile Include="InterfaceEndpoint\GetAzureInterfaceEndpointCommand.cs" />
     <Compile Include="Models\PSApplicationGatewayFirewallExclusion.cs" />
+    <Compile Include="Models\AzureFirewall\PSAzureFirewallFqdnTag.cs" />
     <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
     <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />
