@@ -8,8 +8,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.13" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.15" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.14" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.16" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-06" PrivateAssets="All" />
