@@ -1349,3 +1349,230 @@ function Test-InboundNatPoolCRUDAllParameters
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test creating new OutboundRule using minimal set of parameters
+#>
+function Test-OutboundRuleCRUDMinimalParameters
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+    $rnameAdd = "${rname}Add";
+    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    # Resource's parameters
+    $Protocol = "Udp";
+    # Resource's parameters for Set test
+    $ProtocolSet = "Tcp";
+    # Resource's parameters for Add test
+    $ProtocolAdd = "All";
+    # Dependency parameters
+    $PublicIPAddressName = "PublicIPAddressName";
+    $PublicIPAddressNameAdd = "PublicIPAddressNameAdd";
+    $PublicIPAddressAllocationMethod = "Static";
+    $PublicIPAddressSku = "Standard";
+    $FrontendIPConfigurationName = "FrontendIPConfigurationName";
+    $FrontendIPConfigurationNameAdd = "FrontendIPConfigurationNameAdd";
+    $BackendAddressPoolName = "BackendAddressPoolName";
+    $BackendAddressPoolNameAdd = "BackendAddressPoolNameAdd";
+    $LoadBalancerSku = "Standard";
+
+    try
+    {
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create required dependencies
+        $PublicIPAddress = New-AzureRmPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod -Sku $PublicIPAddressSku;
+        $FrontendIPConfiguration = New-AzureRmLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -PublicIpAddress $PublicIPAddress;
+        $BackendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName;
+        $PublicIPAddressAdd = New-AzureRmPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressNameAdd -AllocationMethod $PublicIPAddressAllocationMethod -Sku $PublicIPAddressSku;
+        $FrontendIPConfigurationAdd = New-AzureRmLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationNameAdd -PublicIpAddress $PublicIPAddressAdd;
+        $BackendAddressPoolAdd = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolNameAdd;
+
+        # Create OutboundRule
+        $vOutboundRule = New-AzureRmLoadBalancerOutboundRuleConfig -Name $rname -FrontendIPConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Protocol $Protocol;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "New-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        $vLoadBalancer = New-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname -OutboundRule $vOutboundRule -Sku $LoadBalancerSku -FrontendIPConfiguration @($FrontendIPConfiguration, $FrontendIPConfigurationAdd) -BackendAddressPool @($BackendAddressPool, $BackendAddressPoolAdd) -Location $location;
+        Assert-NotNull $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer.FrontendIpConfigurations;
+        Assert-True { $vLoadBalancer.FrontendIpConfigurations.Length -gt 0 };
+        Assert-NotNull $vLoadBalancer.BackendAddressPools;
+        Assert-True { $vLoadBalancer.BackendAddressPools.Length -gt 0 };
+        Assert-AreEqual $rname $vOutboundRule.Name;
+        Assert-AreEqual $Protocol $vOutboundRule.Protocol;
+
+        # Get OutboundRule
+        $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        Assert-AreEqual $rname $vOutboundRule.Name;
+        Assert-AreEqual $Protocol $vOutboundRule.Protocol;
+
+        # Set OutboundRule
+        $vLoadBalancer = Set-AzureRmLoadBalancerOutboundRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Protocol $ProtocolSet;
+        Assert-NotNull $vLoadBalancer;
+        $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+
+        # Get OutboundRule
+        $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        Assert-AreEqual $rname $vOutboundRule.Name;
+        Assert-AreEqual $ProtocolSet $vOutboundRule.Protocol;
+
+        # Add OutboundRule
+        $vLoadBalancer = Add-AzureRmLoadBalancerOutboundRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfigurationAdd -BackendAddressPool $BackendAddressPoolAdd -Protocol $ProtocolAdd;
+        Assert-NotNull $vLoadBalancer;
+        $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer.FrontendIpConfigurations;
+        Assert-True { $vLoadBalancer.FrontendIpConfigurations.Length -gt 0 };
+        Assert-NotNull $vLoadBalancer.BackendAddressPools;
+        Assert-True { $vLoadBalancer.BackendAddressPools.Length -gt 0 };
+
+        # Get OutboundRule
+        $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        Assert-AreEqual $rnameAdd $vOutboundRule.Name;
+        Assert-AreEqual $ProtocolAdd $vOutboundRule.Protocol;
+
+        # Remove OutboundRule
+        Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+
+        # Get OutboundRule should fail
+        Assert-ThrowsContains { Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test creating new OutboundRule
+#>
+function Test-OutboundRuleCRUDAllParameters
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+    $rnameAdd = "${rname}Add";
+    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    # Resource's parameters
+    $Protocol = "Udp";
+    $AllocatedOutboundPort = 8;
+    $EnableTcpReset = $false;
+    $IdleTimeoutInMinutes = 15;
+    # Resource's parameters for Set test
+    $ProtocolSet = "Tcp";
+    $AllocatedOutboundPortSet = 16;
+    $EnableTcpResetSet = $false;
+    $IdleTimeoutInMinutesSet = 20;
+    # Resource's parameters for Add test
+    $ProtocolAdd = "All";
+    $AllocatedOutboundPortAdd = 24;
+    $EnableTcpResetAdd = $false;
+    $IdleTimeoutInMinutesAdd = 30;
+    # Dependency parameters
+    $PublicIPAddressName = "PublicIPAddressName";
+    $PublicIPAddressNameAdd = "PublicIPAddressNameAdd";
+    $PublicIPAddressAllocationMethod = "Static";
+    $PublicIPAddressSku = "Standard";
+    $FrontendIPConfigurationName = "FrontendIPConfigurationName";
+    $FrontendIPConfigurationNameAdd = "FrontendIPConfigurationNameAdd";
+    $BackendAddressPoolName = "BackendAddressPoolName";
+    $BackendAddressPoolNameAdd = "BackendAddressPoolNameAdd";
+    $LoadBalancerSku = "Standard";
+
+    try
+    {
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create required dependencies
+        $PublicIPAddress = New-AzureRmPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod -Sku $PublicIPAddressSku;
+        $FrontendIPConfiguration = New-AzureRmLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -PublicIpAddress $PublicIPAddress;
+        $BackendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName;
+        $PublicIPAddressAdd = New-AzureRmPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressNameAdd -AllocationMethod $PublicIPAddressAllocationMethod -Sku $PublicIPAddressSku;
+        $FrontendIPConfigurationAdd = New-AzureRmLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationNameAdd -PublicIpAddress $PublicIPAddressAdd;
+        $BackendAddressPoolAdd = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolNameAdd;
+
+        # Create OutboundRule
+        $vOutboundRule = New-AzureRmLoadBalancerOutboundRuleConfig -Name $rname -FrontendIPConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Protocol $Protocol -AllocatedOutboundPort $AllocatedOutboundPort -IdleTimeoutInMinutes $IdleTimeoutInMinutes;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "New-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        $vLoadBalancer = New-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname -OutboundRule $vOutboundRule -Sku $LoadBalancerSku -FrontendIPConfiguration @($FrontendIPConfiguration, $FrontendIPConfigurationAdd) -BackendAddressPool @($BackendAddressPool, $BackendAddressPoolAdd) -Location $location;
+        Assert-NotNull $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer.FrontendIpConfigurations;
+        Assert-True { $vLoadBalancer.FrontendIpConfigurations.Length -gt 0 };
+        Assert-NotNull $vLoadBalancer.BackendAddressPools;
+        Assert-True { $vLoadBalancer.BackendAddressPools.Length -gt 0 };
+        Assert-AreEqual $rname $vOutboundRule.Name;
+        Assert-AreEqual $Protocol $vOutboundRule.Protocol;
+        Assert-AreEqual $AllocatedOutboundPort $vOutboundRule.AllocatedOutboundPorts;
+        Assert-AreEqual $EnableTcpReset $vOutboundRule.EnableTcpReset;
+        Assert-AreEqual $IdleTimeoutInMinutes $vOutboundRule.IdleTimeoutInMinutes;
+
+        # Get OutboundRule
+        $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        Assert-AreEqual $rname $vOutboundRule.Name;
+        Assert-AreEqual $Protocol $vOutboundRule.Protocol;
+        Assert-AreEqual $AllocatedOutboundPort $vOutboundRule.AllocatedOutboundPorts;
+        Assert-AreEqual $EnableTcpReset $vOutboundRule.EnableTcpReset;
+        Assert-AreEqual $IdleTimeoutInMinutes $vOutboundRule.IdleTimeoutInMinutes;
+
+        # Set OutboundRule
+        $vLoadBalancer = Set-AzureRmLoadBalancerOutboundRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Protocol $ProtocolSet -AllocatedOutboundPort $AllocatedOutboundPortSet -IdleTimeoutInMinutes $IdleTimeoutInMinutesSet;
+        Assert-NotNull $vLoadBalancer;
+        $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+
+        # Get OutboundRule
+        $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        Assert-AreEqual $rname $vOutboundRule.Name;
+        Assert-AreEqual $ProtocolSet $vOutboundRule.Protocol;
+        Assert-AreEqual $AllocatedOutboundPortSet $vOutboundRule.AllocatedOutboundPorts;
+        Assert-AreEqual $EnableTcpResetSet $vOutboundRule.EnableTcpReset;
+        Assert-AreEqual $IdleTimeoutInMinutesSet $vOutboundRule.IdleTimeoutInMinutes;
+
+        # Add OutboundRule
+        $vLoadBalancer = Add-AzureRmLoadBalancerOutboundRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfigurationAdd -BackendAddressPool $BackendAddressPoolAdd -Protocol $ProtocolAdd -AllocatedOutboundPort $AllocatedOutboundPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd;
+        Assert-NotNull $vLoadBalancer;
+        $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer.FrontendIpConfigurations;
+        Assert-True { $vLoadBalancer.FrontendIpConfigurations.Length -gt 0 };
+        Assert-NotNull $vLoadBalancer.BackendAddressPools;
+        Assert-True { $vLoadBalancer.BackendAddressPools.Length -gt 0 };
+
+        # Get OutboundRule
+        $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        Assert-NotNull $vOutboundRule;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerOutboundRuleConfig" $vOutboundRule };
+        Assert-AreEqual $rnameAdd $vOutboundRule.Name;
+        Assert-AreEqual $ProtocolAdd $vOutboundRule.Protocol;
+        Assert-AreEqual $AllocatedOutboundPortAdd $vOutboundRule.AllocatedOutboundPorts;
+        Assert-AreEqual $EnableTcpResetAdd $vOutboundRule.EnableTcpReset;
+        Assert-AreEqual $IdleTimeoutInMinutesAdd $vOutboundRule.IdleTimeoutInMinutes;
+
+        # Remove OutboundRule
+        Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+
+        # Get OutboundRule should fail
+        Assert-ThrowsContains { Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
