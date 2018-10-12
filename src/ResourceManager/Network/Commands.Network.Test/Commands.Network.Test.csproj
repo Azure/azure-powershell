@@ -268,6 +268,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableDelegationsTests\TestAvailableDelegationsList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AzureFirewallFqdnTagTests\TestListAzureFirewallFqdnTag.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AzureFirewallTests\TestAzureFirewallAllocateAndDeallocate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
