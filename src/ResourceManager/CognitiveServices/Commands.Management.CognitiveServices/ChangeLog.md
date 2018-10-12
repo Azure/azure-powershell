@@ -19,6 +19,7 @@
 -->
 ## Current Release
 
+## Version 0.9.11
 * Support Get-AzureRmCognitiveServicesAccountSkus without an existing account.
 
 ## Version 0.9.10
