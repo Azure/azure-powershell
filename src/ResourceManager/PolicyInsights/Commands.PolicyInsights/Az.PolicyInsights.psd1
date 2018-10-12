@@ -75,11 +75,11 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzPolicyEvent', 
     'Get-AzPolicyState', 
     'Get-AzPolicyStateSummary',
-    'Get-AzureRmPolicyRemediation',
-    'Remove-AzureRmPolicyRemediation',
-    'New-AzureRmPolicyRemediation',
-    'Stop-AzureRmPolicyRemediation',
-    'Get-AzureRmPolicyRemediationDeployment'
+    'Get-AzPolicyRemediation',
+    'Remove-AzPolicyRemediation',
+    'New-AzPolicyRemediation',
+    'Stop-AzPolicyRemediation',
+    'Get-AzPolicyRemediationDeployment'
 
 # Variables to export from this module
 # VariablesToExport = @()

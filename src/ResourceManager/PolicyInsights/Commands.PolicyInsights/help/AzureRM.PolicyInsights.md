@@ -2,7 +2,7 @@
 Module Name: AzureRM.PolicyInsights
 Module Guid: B1876B47-3652-4265-9AD5-782EC3E98319
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights
-Help Version: 1.0.0.0
+Help Version: 1.1.0.0
 Locale: en-US
 ---
 
@@ -14,9 +14,24 @@ This topic displays help for the Azure Policy Insights cmdlets.
 ### [Get-AzureRmPolicyEvent](Get-AzureRmPolicyEvent.md)
 Gets policy evaluation events generated as resources are created or updated.
 
+### [Get-AzureRmPolicyRemediation](Get-AzureRmPolicyRemediation.md)
+Gets policy remediations.
+
+### [Get-AzureRmPolicyRemediationDeployment](Get-AzureRmPolicyRemediationDeployment.md)
+Gets the status of the deployments executed by a remediation.
+
 ### [Get-AzureRmPolicyState](Get-AzureRmPolicyState.md)
 Gets policy compliance states for resources.
 
 ### [Get-AzureRmPolicyStateSummary](Get-AzureRmPolicyStateSummary.md)
 Gets latest policy compliance states summary for resources.
+
+### [New-AzureRmPolicyRemediation](New-AzureRmPolicyRemediation.md)
+Creates a policy remediation.
+
+### [Remove-AzureRmPolicyRemediation](Remove-AzureRmPolicyRemediation.md)
+Deletes a completed or canceled policy remediation.
+
+### [Stop-AzureRmPolicyRemediation](Stop-AzureRmPolicyRemediation.md)
+Cancels an active policy remediation.
 
