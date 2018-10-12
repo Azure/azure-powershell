@@ -65,6 +65,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+                cfg.CreateMap<FROM.Gallery, TO.PSGalleryList>();
+                cfg.CreateMap<TO.PSGalleryList, TO.PSGallery>();
+                cfg.CreateMap<TO.PSGallery, TO.PSGalleryList>();
+                cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImageList>();
+                cfg.CreateMap<TO.PSGalleryImageList, TO.PSGalleryImage>();
+                cfg.CreateMap<TO.PSGalleryImage, TO.PSGalleryImageList>();
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
+                cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
+                cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
@@ -118,6 +127,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.AccessUri, TO.PSAccessUri>();
                 cfg.CreateMap<TO.PSAccessUri, FROM.AccessUri>();
+                cfg.CreateMap<FROM.Gallery, TO.PSGallery>();
+                cfg.CreateMap<TO.PSGallery, FROM.Gallery>();
+                cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImage>();
+                cfg.CreateMap<TO.PSGalleryImage, FROM.GalleryImage>();
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>();
+                cfg.CreateMap<TO.PSGalleryImageVersion, FROM.GalleryImageVersion>();
                 cfg.CreateMap<FROM.Image, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();

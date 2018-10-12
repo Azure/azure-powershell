@@ -175,7 +175,16 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Export-AzureRmLogAnalyticThrottledRequests', 
                'Repair-AzureRmVmssServiceFabricUpdateDomain', 
                'New-AzureRmVMDataDisk', 'Update-AzureRmVmssVM', 
-               'New-AzureRmVmssIpTagConfig', 'Invoke-AzureRmVmssVMRunCommand'
+               'New-AzureRmVmssIpTagConfig', 'Invoke-AzureRmVmssVMRunCommand', 
+               'New-AzureRmGallery', 'Update-AzureRmGallery', 'Get-AzureRmGallery', 
+               'Remove-AzureRmGallery', 'New-AzureRmGalleryImageDefinition', 
+               'Update-AzureRmGalleryImageDefinition', 
+               'Get-AzureRmGalleryImageDefinition', 
+               'Remove-AzureRmGalleryImageDefinition', 
+               'New-AzureRmGalleryImageVersion', 
+               'Update-AzureRmGalleryImageVersion', 
+               'Get-AzureRmGalleryImageVersion', 
+               'Remove-AzureRmGalleryImageVersion'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -213,11 +222,12 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
-* Added an example of the ''SimpleParameterSet'' to New-AzureRmVmss cmdlet help.
-* Fixed a typo in the Azure Disk Encryption progress message'
+        * Added an example of the ''SimpleParameterSet'' to New-AzureRmVmss cmdlet help.
+        * Fixed a typo in the Azure Disk Encryption progress message'
+        * ReleaseNotes = '* Shared Gallery cmdlets'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

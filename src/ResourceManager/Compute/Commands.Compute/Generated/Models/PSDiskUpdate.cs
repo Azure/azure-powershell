@@ -19,11 +19,21 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSDiskUpdate : DiskUpdate
+    public partial class PSDiskUpdate
     {
+        public OperatingSystemTypes? OsType { get; set; }
+        public int? DiskSizeGB { get; set; }
+        public EncryptionSettings EncryptionSettings { get; set; }
+        public System.Int64? DiskIOPSReadWrite { get; set; }
+        public int? DiskMBpsReadWrite { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+        public DiskSku Sku { get; set; }
+
     }
 }
