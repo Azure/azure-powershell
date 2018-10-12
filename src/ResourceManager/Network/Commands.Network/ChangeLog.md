@@ -21,6 +21,7 @@
 
 * Added WhatIf support to Set-AzureRmNetworkSecurityGroup
 * Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
+* Added cmdlet Get-AzureRmFirewallFqdnTag
 
 ## Version 6.9.0
 
