@@ -19,6 +19,7 @@
 --->
 ## Current Release
 * Added WhatIf support to Set-AzureRmNetworkSecurityGroup 
+* Added cmdlet Get-AzureRmFirewallFqdnTag
 
 ## Version 6.9.0
 * Added NetworkProfile functionality. new cmdlets added
