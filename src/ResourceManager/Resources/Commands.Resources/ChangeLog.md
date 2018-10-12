@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 
 ## Version 6.6.0
 * Add missing -Mode parameter to Set-AzureRmPolicyDefinition
