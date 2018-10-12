@@ -18,11 +18,14 @@
         - Additional information about change #1
 --->
 ## Current Release
-* Added WhatIf support to Set-AzureRmNetworkSecurityGroup 
+
+* Added WhatIf support to Set-AzureRmNetworkSecurityGroup
+* Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
+* Added cmdlet Get-AzureRmFirewallFqdnTag
 * Added Exclusion list and Global config functionality for application gateway WAF, new cmdlets added
-    - New-AzureRmApplicationGatewayFirewallExclusionConfig
 
 ## Version 6.9.0
+
 * Added NetworkProfile functionality. new cmdlets added
     - Get-AzureRMNetworkProfile
     - New-AzureRMNetworkProfile
