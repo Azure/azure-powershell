@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 6.0.1-preview
+* fixed the DSC Register Node command
+
 ## Version 6.0.0-preview
 * Swagger based Azure Automation cmdlets
 * Added Update Management cmdlets
