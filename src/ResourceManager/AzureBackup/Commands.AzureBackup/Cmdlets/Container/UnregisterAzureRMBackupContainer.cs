@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [CmdletDeprecation()]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
     [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupContainer", SupportsShouldProcess = true), OutputType(typeof(AzureRMBackupJob))]
     public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
