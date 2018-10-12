@@ -72,8 +72,14 @@ NestedModules = @('.\Microsoft.Azure.Commands.PolicyInsights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzPolicyEvent', 'Get-AzPolicyState', 
-    'Get-AzPolicyStateSummary'
+CmdletsToExport = 'Get-AzPolicyEvent', 
+    'Get-AzPolicyState', 
+    'Get-AzPolicyStateSummary',
+    'Get-AzureRmPolicyRemediation',
+    'Remove-AzureRmPolicyRemediation',
+    'New-AzureRmPolicyRemediation',
+    'Stop-AzureRmPolicyRemediation',
+    'Get-AzureRmPolicyRemediationDeployment'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -97,7 +103,7 @@ PrivateData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
         Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'Policy', 
-            'PolicyInsights', 'PolicyEvent', 'PolicyState'
+            'PolicyInsights', 'PolicyEvent', 'PolicyState', 'Remediation'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
