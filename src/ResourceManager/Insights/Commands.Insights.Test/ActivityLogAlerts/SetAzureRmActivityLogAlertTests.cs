@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsOperationsMock = new Mock<IActivityLogAlertsOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetAzureRmActivityLogAlertCommand
             {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             cmdlet.Action = new List<Management.Monitor.Management.Models.ActivityLogAlertActionGroup>
             {
                 ActivityLogAlertsUtilities.CreateActionGroup(
-                    id: "ActGrpId", 
+                    id: "ActGrpId",
                     webhooks: new Dictionary<string, string> { { "key1", "value1" } })
             };
             cmdlet.Condition = new List<Management.Monitor.Management.Models.ActivityLogAlertLeafCondition>
