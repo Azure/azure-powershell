@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSBackup");
         }
 
-        [Fact(Skip = "Failing on service end")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSGetRPs()

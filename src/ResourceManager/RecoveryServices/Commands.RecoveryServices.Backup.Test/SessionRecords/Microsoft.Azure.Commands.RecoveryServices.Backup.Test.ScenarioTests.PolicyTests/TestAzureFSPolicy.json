@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "40e6999d-bb9a-47e4-ab72-80b533dbc01e-2018-10-03 12:55:54Z-P"
+          "cdb4dcc1-f982-411c-9f01-2ce002e19d38-2018-10-12 11:58:13Z-P"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"PSTestFSVaultsisi\",\r\n      \"etag\": \"W/\\\"datetime'2018-10-03T09%3A03%3A22.984265Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"PSTestFSRSV1bca8f8e\",\r\n      \"etag\": \"W/\\\"datetime'2018-10-12T09%3A39%3A19.2619034Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "397"
+          "413"
         ],
         "Content-Type": [
           "application/json"
@@ -37,28 +37,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "4c578b05-11d2-4091-92fa-1fca163f26d8"
+          "6f59e1b1-00f3-4b5f-81ec-051967303d03"
         ],
         "x-ms-client-request-id": [
-          "40e6999d-bb9a-47e4-ab72-80b533dbc01e-2018-10-03 12:55:54Z-P"
+          "cdb4dcc1-f982-411c-9f01-2ce002e19d38-2018-10-12 11:58:13Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11818"
         ],
         "x-ms-correlation-request-id": [
-          "4c578b05-11d2-4091-92fa-1fca163f26d8"
+          "6f59e1b1-00f3-4b5f-81ec-051967303d03"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125555Z:4c578b05-11d2-4091-92fa-1fca163f26d8"
+          "SOUTHINDIA:20181012T115813Z:6f59e1b1-00f3-4b5f-81ec-051967303d03"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:54 GMT"
+          "Fri, 12 Oct 2018 11:58:12 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -67,21 +67,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eda75291-4063-49b7-9a1b-5b1d1916e40d"
+          "d2d056bd-b387-49bd-af55-ec11d15516d3"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
@@ -103,29 +103,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "0b1a4e03-8004-41d1-9b06-c98c510390cb"
+          "419764ec-3d38-4d3b-aeff-3069160d0329"
         ],
         "x-ms-client-request-id": [
-          "eda75291-4063-49b7-9a1b-5b1d1916e40d",
-          "eda75291-4063-49b7-9a1b-5b1d1916e40d"
+          "d2d056bd-b387-49bd-af55-ec11d15516d3",
+          "d2d056bd-b387-49bd-af55-ec11d15516d3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11686"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "0b1a4e03-8004-41d1-9b06-c98c510390cb"
+          "419764ec-3d38-4d3b-aeff-3069160d0329"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125556Z:0b1a4e03-8004-41d1-9b06-c98c510390cb"
+          "SOUTHINDIA:20181012T115813Z:419764ec-3d38-4d3b-aeff-3069160d0329"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:55 GMT"
+          "Fri, 12 Oct 2018 11:58:13 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -137,28 +137,28 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "23148363-03a8-4311-8a44-33f5628af4f4"
+          "3eec8397-cdf7-41aa-8b15-735b44f2b917"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "705"
+          "711"
         ],
         "Content-Type": [
           "application/json"
@@ -173,29 +173,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "9a484186-32b2-4059-8f98-0c9c29732b54"
+          "3854fdf7-4880-414d-b311-e77bfbbe6932"
         ],
         "x-ms-client-request-id": [
-          "23148363-03a8-4311-8a44-33f5628af4f4",
-          "23148363-03a8-4311-8a44-33f5628af4f4"
+          "3eec8397-cdf7-41aa-8b15-735b44f2b917",
+          "3eec8397-cdf7-41aa-8b15-735b44f2b917"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11685"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "9a484186-32b2-4059-8f98-0c9c29732b54"
+          "3854fdf7-4880-414d-b311-e77bfbbe6932"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125558Z:9a484186-32b2-4059-8f98-0c9c29732b54"
+          "SOUTHINDIA:20181012T115815Z:3854fdf7-4880-414d-b311-e77bfbbe6932"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:57 GMT"
+          "Fri, 12 Oct 2018 11:58:15 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -207,28 +207,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64aaa5a4-01f5-4ea3-9cc5-b44ca3aea573"
+          "0ff0cfb4-a210-499a-a298-d8f65fa086c5"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "705"
+          "711"
         ],
         "Content-Type": [
           "application/json"
@@ -243,29 +243,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ce87b7d7-c711-497b-ae42-9ca17a94fe3a"
+          "36c28de9-1dbc-47d9-b180-1c3eaab8a23d"
         ],
         "x-ms-client-request-id": [
-          "64aaa5a4-01f5-4ea3-9cc5-b44ca3aea573",
-          "64aaa5a4-01f5-4ea3-9cc5-b44ca3aea573"
+          "0ff0cfb4-a210-499a-a298-d8f65fa086c5",
+          "0ff0cfb4-a210-499a-a298-d8f65fa086c5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11684"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "ce87b7d7-c711-497b-ae42-9ca17a94fe3a"
+          "36c28de9-1dbc-47d9-b180-1c3eaab8a23d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125559Z:ce87b7d7-c711-497b-ae42-9ca17a94fe3a"
+          "SOUTHINDIA:20181012T115815Z:36c28de9-1dbc-47d9-b180-1c3eaab8a23d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:58 GMT"
+          "Fri, 12 Oct 2018 11:58:15 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -277,28 +277,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "910c8775-11f5-4e36-b5df-4d3157ecd44f"
+          "a7dde837-83ae-407d-91a0-d0932d203213"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "705"
+          "711"
         ],
         "Content-Type": [
           "application/json"
@@ -313,29 +313,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8a92fc9f-320e-4a90-a18a-efa88ac9f5fc"
+          "cdb30a7a-ce82-4703-9ccc-1d9134b151f5"
         ],
         "x-ms-client-request-id": [
-          "910c8775-11f5-4e36-b5df-4d3157ecd44f",
-          "910c8775-11f5-4e36-b5df-4d3157ecd44f"
+          "a7dde837-83ae-407d-91a0-d0932d203213",
+          "a7dde837-83ae-407d-91a0-d0932d203213"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11683"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "8a92fc9f-320e-4a90-a18a-efa88ac9f5fc"
+          "cdb30a7a-ce82-4703-9ccc-1d9134b151f5"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125559Z:8a92fc9f-320e-4a90-a18a-efa88ac9f5fc"
+          "SOUTHINDIA:20181012T115815Z:cdb30a7a-ce82-4703-9ccc-1d9134b151f5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:58 GMT"
+          "Fri, 12 Oct 2018 11:58:15 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -347,28 +347,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8162b4a2-91ba-49de-b3bd-331dc6401129"
+          "a05c2c4a-4002-42c7-83f8-ba03fb8f0be7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 31,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 31,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "705"
+          "711"
         ],
         "Content-Type": [
           "application/json"
@@ -383,29 +383,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "14e6b0df-8e3a-4c42-98a3-dcfb42b4e0a2"
+          "a3f75bd1-2531-4cf9-8549-1d086ecdc527"
         ],
         "x-ms-client-request-id": [
-          "8162b4a2-91ba-49de-b3bd-331dc6401129",
-          "8162b4a2-91ba-49de-b3bd-331dc6401129"
+          "a05c2c4a-4002-42c7-83f8-ba03fb8f0be7",
+          "a05c2c4a-4002-42c7-83f8-ba03fb8f0be7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11682"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "14e6b0df-8e3a-4c42-98a3-dcfb42b4e0a2"
+          "a3f75bd1-2531-4cf9-8549-1d086ecdc527"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125600Z:14e6b0df-8e3a-4c42-98a3-dcfb42b4e0a2"
+          "SOUTHINDIA:20181012T115816Z:a3f75bd1-2531-4cf9-8549-1d086ecdc527"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:56:00 GMT"
+          "Fri, 12 Oct 2018 11:58:16 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -417,10 +417,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ]\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ]\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -429,22 +429,22 @@
           "633"
         ],
         "x-ms-client-request-id": [
-          "94c1351f-0acc-497f-8325-adf0631b657a"
+          "ddf9c62b-7c2f-4c01-bac5-e5467eba8f47"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 30,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "705"
+          "711"
         ],
         "Content-Type": [
           "application/json"
@@ -459,29 +459,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "21053037-f389-42db-b815-379245556f7f"
+          "f8cc3a4d-e467-4f9d-805e-b27e0796895f"
         ],
         "x-ms-client-request-id": [
-          "94c1351f-0acc-497f-8325-adf0631b657a",
-          "94c1351f-0acc-497f-8325-adf0631b657a"
+          "ddf9c62b-7c2f-4c01-bac5-e5467eba8f47",
+          "ddf9c62b-7c2f-4c01-bac5-e5467eba8f47"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "21053037-f389-42db-b815-379245556f7f"
+          "f8cc3a4d-e467-4f9d-805e-b27e0796895f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125558Z:21053037-f389-42db-b815-379245556f7f"
+          "SOUTHINDIA:20181012T115815Z:f8cc3a4d-e467-4f9d-805e-b27e0796895f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:57 GMT"
+          "Fri, 12 Oct 2018 11:58:14 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -493,10 +493,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ]\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 31,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ]\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 31,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -505,22 +505,22 @@
           "633"
         ],
         "x-ms-client-request-id": [
-          "8e1eb8b3-5e91-4c6c-91dc-2419e3bfede4"
+          "585edc9d-1572-490e-aa33-d116f1e2c960"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-03T16:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-03T16:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 31,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2018-10-12T13:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [\r\n          \"2018-10-12T13:00:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 31,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"timeZone\": \"Utc\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "705"
+          "711"
         ],
         "Content-Type": [
           "application/json"
@@ -535,29 +535,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "5afabfdc-8fca-4e9a-a641-7c1e6957f3b6"
+          "b7816ddc-27c1-46d5-8101-0db411e06c7c"
         ],
         "x-ms-client-request-id": [
-          "8e1eb8b3-5e91-4c6c-91dc-2419e3bfede4",
-          "8e1eb8b3-5e91-4c6c-91dc-2419e3bfede4"
+          "585edc9d-1572-490e-aa33-d116f1e2c960",
+          "585edc9d-1572-490e-aa33-d116f1e2c960"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "5afabfdc-8fca-4e9a-a641-7c1e6957f3b6"
+          "b7816ddc-27c1-46d5-8101-0db411e06c7c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125600Z:5afabfdc-8fca-4e9a-a641-7c1e6957f3b6"
+          "SOUTHINDIA:20181012T115816Z:b7816ddc-27c1-46d5-8101-0db411e06c7c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:55:59 GMT"
+          "Fri, 12 Oct 2018 11:58:16 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -569,21 +569,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/newFilePolicy?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/newFilePolicy?api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDE2LTEyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "20e123b4-a781-40b6-8208-3d37364f83e8"
+          "e4b35860-2457-45d7-813b-aedf4fec122e"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
@@ -602,29 +602,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "421bb089-4980-41cc-89e4-0cc53adc7fb5"
+          "84552172-3c3f-4503-a457-12312af1cea4"
         ],
         "x-ms-client-request-id": [
-          "20e123b4-a781-40b6-8208-3d37364f83e8",
-          "20e123b4-a781-40b6-8208-3d37364f83e8"
+          "e4b35860-2457-45d7-813b-aedf4fec122e",
+          "e4b35860-2457-45d7-813b-aedf4fec122e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "421bb089-4980-41cc-89e4-0cc53adc7fb5"
+          "84552172-3c3f-4503-a457-12312af1cea4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125601Z:421bb089-4980-41cc-89e4-0cc53adc7fb5"
+          "SOUTHINDIA:20181012T115817Z:84552172-3c3f-4503-a457-12312af1cea4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:56:00 GMT"
+          "Fri, 12 Oct 2018 11:58:16 GMT"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -633,28 +633,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies?$filter=backupManagementType%20eq%20'AzureStorage'&api-version=2017-07-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL1BTVGVzdEZTUkdzaXNpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvUFNUZXN0RlNWYXVsdHNpc2kvYmFja3VwUG9saWNpZXM/JGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlU3RvcmFnZScmYXBpLXZlcnNpb249MjAxNy0wNy0wMQ==",
+      "RequestUri": "/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies?$filter=backupManagementType%20eq%20'AzureStorage'&api-version=2017-07-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZGEzNjRmMGYtMzA3Yi00MWM5LTlkNDctYjc0MTNlYzQ1NTM1L3Jlc291cmNlR3JvdXBzL3BzdGVzdEZTUkcxYmNhOGY4ZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BTVGVzdEZTUlNWMWJjYThmOGUvYmFja3VwUG9saWNpZXM/JGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlU3RvcmFnZScmYXBpLXZlcnNpb249MjAxNy0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c5b102a4-5d2f-4951-a585-2a836d677a71"
+          "b50b1043-b09c-4d5c-af37-0798405d334f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3163.0",
+          "FxVersion/4.7.3190.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "OSVersion/6.3.17763",
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestFSRGsisi/providers/Microsoft.RecoveryServices/vaults/PSTestFSVaultsisi/backupPolicies/AFSBackupPolicy\",\r\n      \"name\": \"AFSBackupPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2018-10-03T11:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2018-10-03T11:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.RecoveryServices/vaults/PSTestFSRSV1bca8f8e/backupPolicies/AFSBackupPolicy\",\r\n      \"name\": \"AFSBackupPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2018-10-12T14:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2018-10-12T14:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "721"
+          "727"
         ],
         "Content-Type": [
           "application/json"
@@ -669,29 +669,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8cbd4e15-2997-4119-8b07-e37e7b5c2679"
+          "589b1248-16b8-4119-be28-0d2763893647"
         ],
         "x-ms-client-request-id": [
-          "c5b102a4-5d2f-4951-a585-2a836d677a71",
-          "c5b102a4-5d2f-4951-a585-2a836d677a71"
+          "b50b1043-b09c-4d5c-af37-0798405d334f",
+          "b50b1043-b09c-4d5c-af37-0798405d334f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11681"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "8cbd4e15-2997-4119-8b07-e37e7b5c2679"
+          "589b1248-16b8-4119-be28-0d2763893647"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20181003T125602Z:8cbd4e15-2997-4119-8b07-e37e7b5c2679"
+          "SOUTHINDIA:20181012T115817Z:589b1248-16b8-4119-be28-0d2763893647"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 03 Oct 2018 12:56:01 GMT"
+          "Fri, 12 Oct 2018 11:58:17 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"

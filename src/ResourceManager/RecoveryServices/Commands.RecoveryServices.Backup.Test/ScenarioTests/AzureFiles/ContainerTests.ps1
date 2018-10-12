@@ -12,32 +12,32 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "westus"
-$resourceGroupName = "PSTestFSRGsisi"
-$vaultName = "PSTestFSvaultsisi"
-$fileShareFriendlyName = "pstestfileshare"
-$fileShareName = "AzureFileShare;pstestfileshare"
-$saName = "psteststorageac"
+$location = "southeastasia"
+$resourceGroupName = "pstestFSRG1bca8f8e"
+$vaultName = "PSTestFSRSV1bca8f8e"
+$fileShareFriendlyName = "pstestfs1bca8f8e"
+$fileShareName = "AzureFileShare;pstestfs1bca8f8e"
+$saName = "pstestsa1bca8f8e"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
 
-#Setup Instructions:
-#1. Create a resource group
-#New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+# Setup Instructions:
+# 1. Create a resource group
+# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-#2. Create a storage account and a recovery services vault
-#New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
-#New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+# 2. Create a storage account and a recovery services vault
+# New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+# New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
 
-#3. Create a file share in the storage account
-#$storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
-#New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
+# 3. Create a file share in the storage account
+# $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+# New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
-#4. Create a backup policy for file shares
-#$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-#$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-#$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-#$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
+# 4. Create a backup policy for file shares
+# $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+# $schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+# $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+# $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
 #		-Name $policyName `
 #		-WorkloadType AzureFiles `
 #		-RetentionPolicy $retentionPolicy `
