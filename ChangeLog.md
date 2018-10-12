@@ -1,18 +1,65 @@
-﻿## 6.9.0 - September 2018
+﻿## 6.10.0 - October 2018
+#### Azure.Storage
+* Fix Copy Blob/File won't copy metadata when destination has metadata issue
+    - Start-AzureStorageBlobCopy
+    - Start-AzureStorageFileCopy
+
+#### AzureRM.CognitiveServices
+* Support Get-AzureRmCognitiveServicesAccountSkus without an existing account.
+
+#### AzureRM.Compute
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Added an example of the 'SimpleParameterSet' to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 2.3.0.
+
+#### AzureRM.Network
+* Added NetworkProfile functionality. new cmdlets added
+    - Get-AzureRMNetworkProfile
+    - New-AzureRMNetworkProfile
+    - Remove-AzureRMNetworkProfile
+    - Set-AzureRMNetworkProfile
+    - New-AzureRMContainerNicConfig
+    - New-AzureRmContainerNicConfigIpConfig
+* Added service association link on Subnet Model
+* Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
+* Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
+
+#### AzureRM.RedisCache
+* Allow any string as Size parameter going forward. Add P5 in PSArgumentCompleter popup
+
+#### AzureRM.Resources
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
+
+#### AzureRM.Sql
+* Fixed issue where some backup cmdlets would not recognize the current azure subscription
+
+#### AzureRM.Storage
+* Support get the Storage resource usage of a specific location, and add warning message for get global Storage resource usage is obsolete.
+    - Get-AzureRmStorageUsage
+
+#### AzureRM.Websites
+* New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUrl - Gets the Container Continuous Deployment Webhook URL
+* New Cmdlets New-AzureRMWebAppContainerPSSession and Enter-WebAppContainerPSSession  - Initiates a PowerShell remote session into a windows container app
+
+## 6.9.0 - September 2018
 #### General
 * AzureRM.SignalR was added to the AzureRM rollup module
 
 #### AzureRM.Profile
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
-- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set
 
 #### Azure.Storage
-* Support create Storage Context with OAuth. 
+* Support create Storage Context with OAuth.
 	- New-AzureStorageContext
 
 #### AzureRM.Cdn
-* Added Standard_Microsoft in Cdn pricing sku. 
+* Added Standard_Microsoft in Cdn pricing sku.
 
 #### AzureRM.Compute
 * Move dependencies on Keyvault and Storage to the common dependencies
@@ -123,7 +170,7 @@
 * Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
 
 #### AzureRM.Storage
-* Support Immutability Policy in AzureRm.Storage 
+* Support Immutability Policy in AzureRm.Storage
     - Remove-AzureRmStorageAccountNetworkRule
     - Get-AzureRmStorageContainer
     - Update-AzureRmStorageContainer
@@ -151,7 +198,7 @@
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6603
     - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6879
-    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to
 	4.0.4-preview nuget
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6853
     - Fixed the Odata filter for Search by Name on Product
@@ -317,7 +364,7 @@
 * Update example for New-AzureRmDisk
 * Add example for 'New-AzureRmVM'
 * Update description for Set-AzureRmVMOSDisk
-* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix.
 
 #### AzureRM.DataFactoryV2
 * Updated the ADF .Net SDK version to 1.1.0.
