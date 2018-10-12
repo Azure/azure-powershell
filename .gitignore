@@ -3,7 +3,6 @@ src/Publish/
 src/Package/
 src/Stack/
 src/local-artifacts/*
-/tools/AzureRM/AzureRM.psm1
 !.placeholder
 
 obj
