@@ -799,38 +799,35 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Model.AgentRegistration agentRegistrationInfo = this.GetAgentRegistration(
                 resourceGroupName,
                 automationAccountName);
+            
+            var parameters = GetDSCDeploymenttemplateParameters(resourceGroupName,
+                                            automationAccountName,
+                                            azureVMName,
+                                            nodeconfigurationName,
+                                            configurationMode,
+                                            configurationModeFrequencyMins,
+                                            refreshFrequencyMins,
+                                            rebootFlag,
+                                            actionAfterReboot,
+                                            moduleOverwriteFlag,
+                                            azureVmResourceGroup,
+                                            location,
+                                            agentRegistrationInfo.Endpoint,
+                                            agentRegistrationInfo.PrimaryKey);
 
-            // invoke the New-AzureRmResourceGroupDeployment cmdlet
-            using (var pipe = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
-            {
-                var parameters = GetDSCDeploymenttemplateParameters(resourceGroupName,
-                                             automationAccountName,
-                                             azureVMName,
-                                             nodeconfigurationName,
-                                             configurationMode,
-                                             configurationModeFrequencyMins,
-                                             refreshFrequencyMins,
-                                             rebootFlag,
-                                             actionAfterReboot,
-                                             moduleOverwriteFlag,
-                                             azureVmResourceGroup,
-                                             location,
-                                             agentRegistrationInfo.Endpoint,
-                                             agentRegistrationInfo.PrimaryKey);
-
-                var armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
+            var armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
                 
-                var deployment = new Management.ResourceManager.Models.Deployment
+            var deployment = new Management.ResourceManager.Models.Deployment
+            {
+                Properties = new Management.ResourceManager.Models.DeploymentProperties
                 {
-                    Properties = new Management.ResourceManager.Models.DeploymentProperties
-                    {
-                        TemplateLink = new Management.ResourceManager.Models.TemplateLink(Constants.TemplateFile),
-                        Parameters = parameters
-                    }
-                };
+                    TemplateLink = new Management.ResourceManager.Models.TemplateLink(Constants.TemplateFile),
+                    Parameters = parameters
+                }
+            };
 
-                armClient.Deployments.CreateOrUpdate(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment);                
-            }
+            armClient.Deployments.CreateOrUpdate(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment);               
+            
         }
 
         private string GetDSCDeploymenttemplateParameters(string resourceGroupName,
@@ -853,60 +850,60 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 ContentVersion = "1.0.0.0",
                 Schema = "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
                 Parameters = new ParametersObj {
-                                actionAfterReboot = new TemplateParameters {
-                                    value = actionAfterReboot
+                                ActionAfterReboot = new TemplateParameters {
+                                    Value = actionAfterReboot
                                 },
-                                allowModuleOverwrite = new TemplateParameters
+                                AllowModuleOverwrite = new TemplateParameters
                                 {
-                                    value = moduleOverwriteFlag
+                                    Value = moduleOverwriteFlag
                                 },
-                                configurationFunction = new TemplateParameters
+                                ConfigurationFunction = new TemplateParameters
                                 {
-                                    value = Constants.ConfigurationFunction
+                                    Value = Constants.ConfigurationFunction
                                 },
-                                configurationMode = new TemplateParameters
+                                ConfigurationMode = new TemplateParameters
                                 {
-                                    value = configurationMode
+                                    Value = configurationMode
                                 },
-                                configurationModeFrequencyMins = new TemplateParameters
+                                ConfigurationModeFrequencyMins = new TemplateParameters
                                 {
-                                    value = configurationModeFrequencyMins
+                                    Value = configurationModeFrequencyMins
                                 },
-                                location = new TemplateParameters
+                                Location = new TemplateParameters
                                 {
-                                    value = azureVmLocation
+                                    Value = azureVmLocation
                                 },
-                                modulesUrl = new TemplateParameters
+                                ModulesUrl = new TemplateParameters
                                 {
-                                    value = Constants.ModulesUrl
+                                    Value = Constants.ModulesUrl
                                 },
-                                nodeConfigurationName = new TemplateParameters
+                                NodeConfigurationName = new TemplateParameters
                                 {
-                                    value = nodeconfigurationName
+                                    Value = nodeconfigurationName
                                 },
-                                rebootNodeIfNeeded = new TemplateParameters
+                                RebootNodeIfNeeded = new TemplateParameters
                                 {
-                                    value = rebootFlag
+                                    Value = rebootFlag
                                 },
-                                refreshFrequencyMins = new TemplateParameters
+                                RefreshFrequencyMins = new TemplateParameters
                                 {
-                                    value = refreshFrequencyMins
+                                    Value = refreshFrequencyMins
                                 },
-                                registrationKey = new TemplateParameters
+                                RegistrationKey = new TemplateParameters
                                 {
-                                    value = registrationKey
+                                    Value = registrationKey
                                 },
-                                registrationUrl = new TemplateParameters
+                                RegistrationUrl = new TemplateParameters
                                 {
-                                    value = registrationEndPoint
+                                    Value = registrationEndPoint
                                 },
-                                timestamp = new TemplateParameters
+                                Timestamp = new TemplateParameters
                                 {
-                                    value = DateTimeOffset.UtcNow.ToString("o")
+                                    Value = DateTimeOffset.UtcNow.ToString("o")
                                 },
-                                vmName = new TemplateParameters
+                                VmName = new TemplateParameters
                                 {
-                                    value = azureVMName
+                                    Value = azureVMName
                                 }
                 }
             };
@@ -1825,38 +1822,38 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
     internal class ParametersObj
     {
-        public TemplateParameters vmName { get; set; }
+        public TemplateParameters VmName { get; set; }
 
-        public TemplateParameters location { get; set; }
+        public TemplateParameters Location { get; set; }
 
-        public TemplateParameters modulesUrl { get; set; }
+        public TemplateParameters ModulesUrl { get; set; }
 
-        public TemplateParameters configurationFunction { get; set; }
+        public TemplateParameters ConfigurationFunction { get; set; }
 
-        public TemplateParameters registrationKey { get; set; }
+        public TemplateParameters RegistrationKey { get; set; }
 
-        public TemplateParameters registrationUrl { get; set; }
+        public TemplateParameters RegistrationUrl { get; set; }
 
-        public TemplateParameters nodeConfigurationName { get; set; }
+        public TemplateParameters NodeConfigurationName { get; set; }
 
-        public TemplateParameters configurationMode { get; set; }
+        public TemplateParameters ConfigurationMode { get; set; }
 
-        public TemplateParameters configurationModeFrequencyMins { get; set; }
+        public TemplateParameters ConfigurationModeFrequencyMins { get; set; }
 
-        public TemplateParameters refreshFrequencyMins { get; set; }
+        public TemplateParameters RefreshFrequencyMins { get; set; }
 
-        public TemplateParameters rebootNodeIfNeeded { get; set; }
+        public TemplateParameters RebootNodeIfNeeded { get; set; }
 
-        public TemplateParameters actionAfterReboot { get; set; }
+        public TemplateParameters ActionAfterReboot { get; set; }
 
-        public TemplateParameters allowModuleOverwrite { get; set; }
+        public TemplateParameters AllowModuleOverwrite { get; set; }
 
-        public TemplateParameters timestamp { get; set; }
+        public TemplateParameters Timestamp { get; set; }
     }
 
     internal class TemplateParameters
     {
-        public object value { get; set; }
+        public object Value { get; set; }
     }
 
 }
