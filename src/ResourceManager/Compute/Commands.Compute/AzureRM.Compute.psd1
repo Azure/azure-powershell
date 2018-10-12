@@ -223,8 +223,8 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
         * Added an example of the ''SimpleParameterSet'' to New-AzureRmVmss cmdlet help.
-        * Fixed a typo in the Azure Disk Encryption progress message'
-        * ReleaseNotes = '* Shared Gallery cmdlets'
+        * Fixed a typo in the Azure Disk Encryption progress message
+        * Shared Gallery cmdlets'
 
         # Prerelease string of this module
         Prerelease = 'preview'
