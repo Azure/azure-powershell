@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertRulesOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureRmAlertRuleCommand()
             {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Response = new System.Net.Http.HttpResponseMessage
                 {
                     StatusCode = HttpStatusCode.OK
-                }                
+                }
             };
 
             insightsAlertRuleOperationsMock.Setup(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
