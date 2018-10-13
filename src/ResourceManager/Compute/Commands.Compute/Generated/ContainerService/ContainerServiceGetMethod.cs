@@ -20,7 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.ContainerService/containerServices", new string[] { "ResourceGroupName" })]
+        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.ContainerService/containerServices", "ResourceGroupName")]
         public string Name { get; set; }
     }
 }

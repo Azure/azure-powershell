@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine where dsc extension handler would be installed.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
