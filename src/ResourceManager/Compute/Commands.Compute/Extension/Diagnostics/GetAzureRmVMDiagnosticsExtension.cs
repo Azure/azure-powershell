@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Extension Name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", new string[] { "ResourceGroupName", "VMName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         public string Name { get; set; }
 
         [Parameter(
