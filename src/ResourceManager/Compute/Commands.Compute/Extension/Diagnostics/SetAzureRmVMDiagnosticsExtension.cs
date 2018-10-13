@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", new string[] { "ResourceGroupName", "VMName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         public string Name
         {
             get

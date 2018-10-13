@@ -20,7 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -99,14 +98,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Compute/disks", new string[] { "ResourceGroupName" })]
+        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.Compute/disks", "ResourceGroupName")]
         [Alias("Name")]
         public string DiskName { get; set; }
     }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the virtual machine.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to  " +
             "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed " +
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", new string[] { "ResourceGroupName", "VMName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

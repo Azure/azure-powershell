@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", new string[] { "ResourceGroupName", "VMName" })]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
