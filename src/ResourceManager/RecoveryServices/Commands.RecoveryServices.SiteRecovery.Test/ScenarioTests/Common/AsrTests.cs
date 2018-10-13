@@ -31,13 +31,13 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
-            this.vaultSettingsFilePath = System.IO.Path.Combine(
+            this.VaultSettingsFilePath = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\Common\\Common.VaultCredentials");
-            this.powershellFile = System.IO.Path.Combine(
+                "ScenarioTests", "Common", "Common.VaultCredentials");
+            this.PowershellFile = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\Common\\AsrTests.ps1");
-            this.initialize();
+                "ScenarioTests", "Common", "AsrTests.ps1");
+            this.Initialize();
         }
 
         [Fact]
@@ -50,11 +50,15 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryEnumerationTests -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Linux date encoding issue: https://github.com/Azure/azure-powershell/issues/7506")]
+#else
         [Fact]
+#endif
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
@@ -63,7 +67,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(
                 _logger,
              Constants.NewModel,
-             "Test-AsrEvent -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
+             "Test-AsrEvent -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
         }
 
         [Fact]
@@ -75,7 +79,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(
                 _logger,
              Constants.NewModel,
-             "Test-Job -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
+             "Test-Job -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
         }
 
         [Fact]
@@ -87,7 +91,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(
                 _logger,
              Constants.NewModel,
-             "Test-NotificationSettings -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
+             "Test-NotificationSettings -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
         }
 
         [Fact]
@@ -104,8 +108,8 @@ namespace RecoveryServices.SiteRecovery.Test
                   "e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps",
                    dateTime);
             Assert.Equal(
-                cikToken,
-                "{\"NotBeforeTimestamp\":\"\\/Date(1524865429692)\\/\",\"NotAfterTimestamp\":\"\\/Date(1525470229692)\\/\",\"ClientRequestId\":\"e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"cYcaVjQ7BOG/lVrrl7dhwK5WXad6mvQdqm3ce3JSRY4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}");
+                "{\"NotBeforeTimestamp\":\"\\/Date(1524865429692)\\/\",\"NotAfterTimestamp\":\"\\/Date(1525470229692)\\/\",\"ClientRequestId\":\"e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"cYcaVjQ7BOG/lVrrl7dhwK5WXad6mvQdqm3ce3JSRY4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}",
+                cikToken);
         }
     }
 }
