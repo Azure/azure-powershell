@@ -51,7 +51,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataFactory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.2.0.0\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.2.3.0\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

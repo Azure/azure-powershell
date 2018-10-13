@@ -39,14 +39,24 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Command parameter not available in NetStandard")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerInstanceLog()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerInstanceLog");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Command parameter not available in NetStandard")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolume()
         {
@@ -55,7 +65,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateContainerGroupWithDnsNameLabel()
+        public void TestCreateContainerGroupDnsLabel()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithDnsNameLabel");
         }

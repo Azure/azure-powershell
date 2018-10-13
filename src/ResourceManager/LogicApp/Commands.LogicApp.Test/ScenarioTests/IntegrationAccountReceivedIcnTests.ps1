@@ -58,7 +58,7 @@ Test Get-AzureRmIntegrationAccountReceivedIcn command
 #>
 function Test-GetIntegrationAccountReceivedIcn-NoAgreementType()
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
@@ -123,7 +123,7 @@ Test Get-AzureRmIntegrationAccountReceivedIcn command
 #>
 function Test-GetIntegrationAccountReceivedIcnInternal([String] $agreementType)
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
@@ -188,7 +188,7 @@ Test Remove-AzureRmIntegrationAccountReceivedIcn command
 #>
 function Test-RemoveIntegrationAccountReceivedIcnInternal([String] $agreementType)
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -245,7 +245,7 @@ Test Set-AzureRmIntegrationAccountReceivedIcn command
 #>
 function Test-UpdateIntegrationAccountReceivedIcnInternal([String] $agreementType)
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
