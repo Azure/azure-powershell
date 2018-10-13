@@ -58,7 +58,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.3-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.0.184-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
 
   <ItemGroup>
