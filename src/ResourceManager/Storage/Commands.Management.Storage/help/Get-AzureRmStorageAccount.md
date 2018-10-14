@@ -76,7 +76,7 @@ Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases: StorageAccountName, AccountName
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
