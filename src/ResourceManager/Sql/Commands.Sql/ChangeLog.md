@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.11.5
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription
 
 ## Version 4.11.4-preview

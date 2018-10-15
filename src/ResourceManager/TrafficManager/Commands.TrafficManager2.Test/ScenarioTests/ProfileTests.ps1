@@ -31,7 +31,11 @@ function Test-ProfileCrud
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
 	Assert-AreEqual "Performance" $createdProfile.TrafficRoutingMethod
 
+	$createdProfile = Add-AzureRmTrafficManagerEndpointConfig -EndpointName "MyExternalEndpoint" -TrafficManagerProfile $createdProfile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$createdProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $createdProfile
+
 	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+	Assert-AreEqual "MyExternalEndpoint" $retrievedProfile.Endpoints[0].Name
 
 	Assert-NotNull $retrievedProfile
 	Assert-AreEqual $profileName $retrievedProfile.Name 

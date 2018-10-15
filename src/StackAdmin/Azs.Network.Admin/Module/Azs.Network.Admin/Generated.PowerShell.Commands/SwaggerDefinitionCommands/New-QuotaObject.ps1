@@ -49,6 +49,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER MaxLoadBalancersPerSubscription
     Maximum number of load balancers a tenant subscription can provision.
 
+.PARAMETER MigrationPhase
 #>
 function New-QuotaObject {
     param(
