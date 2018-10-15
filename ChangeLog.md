@@ -1,4 +1,4 @@
-﻿## 6.10.0 - October 2018
+﻿## 6.10.0 - October 2018 
 #### Azure.Storage
 * Fix Copy Blob/File won't copy metadata when destination has metadata issue
     - Start-AzureStorageBlobCopy
