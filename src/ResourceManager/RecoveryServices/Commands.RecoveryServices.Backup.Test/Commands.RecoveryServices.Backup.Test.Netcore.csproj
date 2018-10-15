@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,19 +24,42 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="2.1.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="4.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.0.0-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.ARM">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.ARM.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Logger">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Models">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Providers">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ScenarioTests\*.ps1">
+    <None Update="ScenarioTests\**\*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
