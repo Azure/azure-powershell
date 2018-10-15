@@ -40,7 +40,7 @@ The request will be loged in the policy for later review and will be terminated 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default" -Kind "Basic" -VirtualMachine $vms
+PS C:\> Start-AzureRmJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default" -Kind "Basic" -VirtualMachine $vms
 
 Id                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.S
                     ecurity/locations/centralus/jitNetworkAccessPolicies/default
