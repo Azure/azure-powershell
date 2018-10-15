@@ -30,7 +30,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
-    public delegate IRecordMatcher BuildMatcherDelegate (bool ignoreResourcesClient, Dictionary<string, string> resourceProviders, Dictionary<string, string> userAgentsToIgnore);
+    public delegate IRecordMatcher RecordMatcherDelegate (bool ignoreResourcesClient, Dictionary<string, string> resourceProviders, Dictionary<string, string> userAgentsToIgnore);
 
     public class TestManager : ITestRunnerFactory, ITestRunner
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.TestFx
         protected readonly List<string> RmModules;
         protected readonly List<string> CommonPsScripts = new List<string>();
 
-        protected BuildMatcherDelegate BuildMatcher { get; set; }
+        protected RecordMatcherDelegate RecordMatcher { get; set; }
 
         protected XunitTracingInterceptor Logger { get; set; }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 Helper.RMResourceModule,
             };
 
-            BuildMatcher = (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
+            RecordMatcher = (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
                 new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore);
         }
 
@@ -143,11 +143,11 @@ namespace Microsoft.Azure.Commands.TestFx
         /// <summary>
         /// Sets a new HttpMockServer.Matcher implementation. By defauls it's PermissiveRecordMatcherWithApiExclusion
         /// </summary>
-        /// <param name="buildMatcher">delegate</param>
+        /// <param name="recordMatcher">delegate</param>
         /// <returns>self</returns>
-        public ITestRunnerFactory WithBuildMatcher(BuildMatcherDelegate buildMatcher)
+        public ITestRunnerFactory WithRecordMatcher(RecordMatcherDelegate recordMatcher)
         {
-            BuildMatcher = buildMatcher;
+            RecordMatcher = recordMatcher;
             return this;
         }
 
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
             _userAgentsToIgnore?.Keys.ForEach(k=> userAgentsToIgnore.Add(k, _userAgentsToIgnore[k]));
 
-            HttpMockServer.Matcher = BuildMatcher(true, resourceProviders, userAgentsToIgnore);
+            HttpMockServer.Matcher = RecordMatcher(true, resourceProviders, userAgentsToIgnore);
         }
 
         #endregion
