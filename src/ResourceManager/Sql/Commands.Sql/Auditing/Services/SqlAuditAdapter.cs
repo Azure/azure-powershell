@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                PredicateExpression = string.IsNullOrEmpty(policy.PredicateExpression) ? policy.PredicateExpression : null
+                PredicateExpression = policy.PredicateExpression
             };
             ModelizeDatabaseAuditPolicy(policy, model);
         }
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
-                PredicateExpression = string.IsNullOrEmpty(policy.PredicateExpression) ? policy.PredicateExpression : null
+                PredicateExpression = policy.PredicateExpression
             };
             ModelizeServerAuditPolicy(policy, model);
         }
