@@ -26,6 +26,9 @@
 * Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
 * Fixed a typo in the Azure Disk Encryption progress message
 
+## Version 5.6.1-preview
+* Shared Gallery cmdlets
+
 ## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies
 * Add support for more virutal machine sizes to AEM cmdlets
