@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// Example: ResourceNameCompleter(new string[] { "Microsoft.Batch/operations", "ResourceGroupName" })]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public ResourceNameCompleterAttribute(string resourceType, string[] parentResourceParameterNames) : base(CreateScriptBlock(resourceType, parentResourceParameterNames))
+        public ResourceNameCompleterAttribute(string resourceType, params string[] parentResourceParameterNames) : base(CreateScriptBlock(resourceType, parentResourceParameterNames))
         {
         }
 
