@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.0" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" >
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.5" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.0" >
