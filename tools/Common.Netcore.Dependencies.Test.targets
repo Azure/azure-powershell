@@ -9,17 +9,17 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.0" >
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.1" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.0" >
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.1" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.3-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.4-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
@@ -58,7 +58,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.3-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.4-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
 
   <ItemGroup>
