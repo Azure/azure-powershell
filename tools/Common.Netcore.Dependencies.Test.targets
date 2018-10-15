@@ -19,7 +19,7 @@
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.3-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.0.187-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
@@ -35,8 +35,7 @@
       <HintPath>$(windir)\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
     <PackageReference Include="Microsoft.Azure.PowerShell.Storage.TestPrerequisites" Version="*" IncludeAssets="All" PrivateAssets="none" Condition="'$(UseStorageDataPlane)' == 'true'"/>
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" Condition="'$(UseStorageDataPlane)' != 'true'"/>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" Condition="'$(UseStorageDataPlane)' == 'true'"/>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
@@ -58,7 +57,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.3-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.0.187-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
 
   <ItemGroup>

@@ -906,7 +906,7 @@ function Get-PSSwaggerExternalDependencies {
                                             PackageName = 'Newtonsoft.Json'
                                             References = @('Newtonsoft.Json.dll')
                                             Framework = $Framework
-                                            RequiredVersion = if ($Framework.Contains('standard')) { '9.0.1' } else { '6.0.8' }
+                                            RequiredVersion = if ($Framework.Contains('standard')) { '10.0.3' } else { '6.0.8' }
                                             LoadOrder = 0
                                         }
     $dependencies['Microsoft.Rest.ClientRuntime'] = @{
