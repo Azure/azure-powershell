@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     public class ReservedIP
     {
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
-        
+
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
