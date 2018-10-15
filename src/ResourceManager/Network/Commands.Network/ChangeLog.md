@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 
 * Added WhatIf support to Set-AzureRmNetworkSecurityGroup
 * Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
