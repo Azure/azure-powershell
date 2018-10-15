@@ -18,8 +18,8 @@ Test New-AzureRmIntegrationAccountAgreement command
 #>
 function Test-CreateIntegrationAccountAgreementX12
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
+	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname
@@ -65,8 +65,8 @@ Test New-AzureRmIntegrationAccountAgreement command
 #>
 function Test-CreateIntegrationAccountAgreementAS2
 {
-	$agreementAS2FilePath = "$TestOutputRoot\Resources\IntegrationAccountAS2AgreementContent.json"
-	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)	
+	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
+	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname	
@@ -98,7 +98,7 @@ Test New-AzureRmIntegrationAccountAgreement command
 #>
 function Test-CreateIntegrationAccountAgreementEdifact
 {
-	$agreementEdifactFilePath = "$TestOutputRoot\Resources\IntegrationAccountEdifactAgreementContent.json"
+	$agreementEdifactFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountEdifactAgreementContent.json"
 	$agreementEdifactContent = [IO.File]::ReadAllText($agreementEdifactFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -132,8 +132,8 @@ Test New-AzureRmIntegrationAccountAgreement command with negative scenario.
 #>
 function Test-CreateIntegrationAccountAgreementWithFailure
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
+	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname	
@@ -166,7 +166,7 @@ Test Get-AzureRmIntegrationAccountAgreement command
 #>
 function Test-GetIntegrationAccountAgreement
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountAgreement -ResourceGroupName "Random83da135" -IntegrationAccountName "DoesNotMatter" -AgreementName "DoesNotMatter" } "Resource group 'Random83da135' could not be found."
@@ -202,8 +202,8 @@ Test Remove-AzureRmIntegrationAccountAgreement command
 #>
 function Test-RemoveIntegrationAccountAgreement
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
+	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname	
@@ -232,10 +232,10 @@ Test Set-AzureRmIntegrationAccountAgreement command
 #>
 function Test-UpdateIntegrationAccountAgreement
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
+	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 	
-	$agreementAS2FilePath = "$TestOutputRoot\Resources\IntegrationAccountAS2AgreementContent.json"
+	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -317,7 +317,7 @@ Test Get-AzureRmIntegrationAccountAgreement command : paging test
 #>
 function Test-ListIntegrationAccountAgreement
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
