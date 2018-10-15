@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     return false;
                 }
             }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

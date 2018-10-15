@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The ExpressRouteConnection could not be found..
+        ///   Looks up a localized string similar to The ExpressRouteConnection {0} could not be found..
         /// </summary>
         public static string ExpressRouteConnectionNotFound {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MinBounds {0} cannot be greater than MaxBounds {1}..
+        ///   Looks up a localized string similar to Min {0} cannot be greater than Max {1}..
         /// </summary>
         public static string InvalidAutoScaleConfiguration {
             get {
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         public static string RemovingExpressRouteGatewayWarning {
             get {
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         public static string RemovingVirtualHubWarning {
             get {
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing a VpnGateway will also remove all VpnConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Removing a VpnGateway will also remove all VpnExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         public static string RemovingVpnGatewayWarning {
             get {

@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "MinBounds for the scale units for this ExpressRouteGateway.")]
+            HelpMessage = "Min for the scale units for this ExpressRouteGateway.")]
         public uint MinBounds { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "MaxBounds for the scale units for this ExpressRouteGateway.")]
+            HelpMessage = "Max for the scale units for this ExpressRouteGateway.")]
         public uint MaxBounds { get; set; }
 
         [Parameter(
@@ -80,11 +80,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The Id of the VirtualHub this ExpressRouteGateway needs to be associated with.")]
         public string VirtualHubName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The list of ExpressRouteConnections that this ExpressRouteGateway needs to have.")]
-        public PSExpressRouteConnection[] ExpressRouteConnection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -131,13 +126,6 @@ namespace Microsoft.Azure.Commands.Network
             expressRouteGateway.Location = resolvedVirtualHub.Location;
             expressRouteGateway.VirtualHub = new PSVirtualHubId() { Id = resolvedVirtualHub.Id };
 
-            //// ExpressRouteConnections, if specified
-            expressRouteGateway.Connections = new List<PSExpressRouteConnection>();
-            if (this.ExpressRouteConnection != null && this.ExpressRouteConnection.Any())
-            {
-                expressRouteGateway.Connections.AddRange(this.ExpressRouteConnection);
-            }
-
             if (this.MinBounds > this.MaxBounds)
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinBounds, this.MaxBounds));
@@ -145,8 +133,8 @@ namespace Microsoft.Azure.Commands.Network
 
             expressRouteGateway.AutoScaleConfiguration = new PSExpressRouteGatewayAutoscaleConfiguration();
             expressRouteGateway.AutoScaleConfiguration.Bounds = new PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds();
-            expressRouteGateway.AutoScaleConfiguration.Bounds.MinBounds = Convert.ToInt32(this.MinBounds);
-            expressRouteGateway.AutoScaleConfiguration.Bounds.MaxBounds = Convert.ToInt32(this.MaxBounds);
+            expressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinBounds);
+            expressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxBounds);
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,

@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The Express Route Circuit Peering Id to which this Express Route gateway connection is to be created.")]
+            HelpMessage = "The resource id of the Express Route Circuit Peering to which this Express Route gateway connection is to be created to.")]
         [ValidateNotNullOrEmpty]
-        public PSResourceId ExpressRouteCircuitPeering { get; set; }
+        public string ExpressRouteCircuitPeeringId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -143,14 +143,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ParentExpressRouteGatewayNotFound);
             }
 
-            if (parentExpressRouteGateway.Connections == null)
-            {
-                parentExpressRouteGateway.Connections = new List<PSExpressRouteConnection>();
-            }
+            var peeringResourceId = new PSExpressRouteCircuitPeeringId() { Id = this.ExpressRouteCircuitPeeringId };
 
             PSExpressRouteConnection expressRouteConnection = new PSExpressRouteConnection
             {
-                Name = this.Name
+                Name = this.Name,
+                ExpressRouteCircuitPeering = peeringResourceId,
             };
 
             // Set the auth key, if specified
@@ -165,21 +163,20 @@ namespace Microsoft.Azure.Commands.Network
                 expressRouteConnection.RoutingWeight = this.RoutingWeight;
             }
 
-            parentExpressRouteGateway.Connections.Add(expressRouteConnection);
-
             WriteVerbose(string.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
 
             PSExpressRouteConnection connectionToReturn = null;
+
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    this.CreateOrUpdateExpressRouteGateway(this.ResourceGroupName, this.ParentResourceName, parentExpressRouteGateway, parentExpressRouteGateway.Tag);
+                    this.CreateOrUpdateExpressRouteConnection(this.ResourceGroupName, this.ParentResourceName, expressRouteConnection, parentExpressRouteGateway.Tag);
 
                     var createdOrUpdatedExpressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ParentResourceName);
-                    connectionToReturn = createdOrUpdatedExpressRouteGateway.Connections.Where(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                    connectionToReturn = createdOrUpdatedExpressRouteGateway.ExpressRouteConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
                 });
 
             return connectionToReturn;
