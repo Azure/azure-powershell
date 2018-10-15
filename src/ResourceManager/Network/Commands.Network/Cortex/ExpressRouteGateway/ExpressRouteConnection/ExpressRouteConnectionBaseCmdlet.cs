@@ -14,13 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using AutoMapper;
     using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
-    using System;
+    using System.Collections;
     using System.Collections.Generic;
-    using System.Management.Automation;
     using System.Net;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -61,13 +58,26 @@ namespace Microsoft.Azure.Commands.Network
             return connectionsToReturn;
         }
 
+        public PSExpressRouteConnection CreateOrUpdateExpressRouteConnection(string resourceGroupName, string expressRouteGatewayName, PSExpressRouteConnection expressRouteConnection, Hashtable tags)
+        {
+            var expressRouteConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteConnection>(expressRouteConnection);
+
+            var expressRouteConnectionCreatedOrUpdated = this.ExpressRouteConnectionClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, expressRouteConnection.Name, expressRouteConnectionModel).GetAwaiter().GetResult();
+            var connectionToReturn = this.ToPsExpressRouteConnection(expressRouteConnectionCreatedOrUpdated.Body);
+            return connectionToReturn;
+        }
+
         public bool IsExpressRouteConnectionPresent(string resourceGroupName, string parentExpressRouteGatewayName, string name)
         {
             try
             {
-                this.GetExpressRouteConnection(resourceGroupName, parentExpressRouteGatewayName, name);
+                var connection = this.GetExpressRouteConnection(resourceGroupName, parentExpressRouteGatewayName, name);
+                if (connection == null)
+                {
+                    return false;
+                }
             }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

@@ -20,19 +20,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSExpressRouteGateway : PSTopLevelResource
     {
-        public List<PSExpressRouteConnection> Connections { get; set; }
+        public List<PSExpressRouteConnection> ExpressRouteConnections { get; set; }
 
-        [Ps1Xml(Label = "Virtual Hub", Target = ViewControl.Table, ScriptBlock = "$_.VirtualHub.Id")]
+        [Ps1Xml(Label = "VirtualHub", Target = ViewControl.Table, ScriptBlock = "$_.VirtualHub.Id")]
         public PSVirtualHubId VirtualHub { get; set; }
 
-        [Ps1Xml(Label = "Auto Scale Configuration", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "AutoScaleConfiguration", Target = ViewControl.Table)]
         public PSExpressRouteGatewayAutoscaleConfiguration AutoScaleConfiguration { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-
-        [Ps1Xml(Label = "ExpressRoute Connections", Target = ViewControl.Table)]
-        public List<PSExpressRouteConnection> ExpressRouteConnections { get; set; }
 
         [JsonIgnore]
         public string VirtualHubText

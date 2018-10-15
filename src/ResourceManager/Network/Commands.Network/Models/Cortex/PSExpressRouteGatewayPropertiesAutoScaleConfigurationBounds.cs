@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public int MinBounds { get; set; }
+        public int Min { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int MaxBounds { get; set; }
+        public int Max { get; set; }
     }
 }

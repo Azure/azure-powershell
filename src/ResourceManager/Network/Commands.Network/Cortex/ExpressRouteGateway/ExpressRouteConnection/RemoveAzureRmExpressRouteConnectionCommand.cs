@@ -98,31 +98,26 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.ResourceId = this.InputObject.Id;
 
-                //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
-                if (string.IsNullOrWhiteSpace(this.ResourceId))
-                {
-                    throw new PSArgumentException(Properties.Resources.ExpressRouteConnectionNotFound);
-                }
-
-                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                this.Name = parsedResourceId.ResourceName;
+                this.SetResourceNames();
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                this.SetResourceNames();
             }
 
             //// Get the expressRoutegateway object - this will throw not found if the object is not found
             PSExpressRouteGateway parentGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ParentResourceName);
 
             if (parentGateway == null ||
-                parentGateway.Connections == null ||
-                !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
+                parentGateway.ExpressRouteConnections == null ||
+                !parentGateway.ExpressRouteConnections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException(Properties.Resources.ExpressRouteConnectionNotFound);
+                throw new PSArgumentException(Properties.Resources.ExpressRouteConnectionNotFound, this.Name);
             }
 
-            if (parentGateway.Connections.Any())
+            if (parentGateway.ExpressRouteConnections.Any())
             {
-                var expressRouteConnectionToRemove = parentGateway.Connections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
+                var expressRouteConnectionToRemove = parentGateway.ExpressRouteConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
                 if (expressRouteConnectionToRemove != null)
                 {
                     base.Execute();
@@ -134,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.Name,
                         () =>
                         {
-                            parentGateway.Connections.Remove(expressRouteConnectionToRemove);
+                            parentGateway.ExpressRouteConnections.Remove(expressRouteConnectionToRemove);
                             this.CreateOrUpdateExpressRouteGateway(this.ResourceGroupName, this.ParentResourceName, parentGateway, parentGateway.Tag);
                         });
                 }
@@ -144,6 +139,19 @@ namespace Microsoft.Azure.Commands.Network
             {
                 WriteObject(true);
             }
+        }
+
+        private void SetResourceNames()
+        {
+            if (string.IsNullOrWhiteSpace(this.ResourceId))
+            {
+                throw new PSArgumentException(Properties.Resources.ExpressRouteConnectionNotFound, this.ResourceId);
+            }
+
+            var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+            this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+            this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            this.Name = parsedResourceId.ResourceName;
         }
     }
 }

@@ -71,18 +71,13 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The list of ExpressRouteConnections that this ExpressRouteGateway needs to have.")]
-        public PSExpressRouteConnection[] ExpressRouteConnection { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            HelpMessage = "MinBounds for the scale units for this ExpressRouteGateway.")]
+            HelpMessage = "Min for the scale units for this ExpressRouteGateway.")]
         public uint MinBounds { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "MaxBounds for the scale units for this ExpressRouteGateway.")]
+            HelpMessage = "Max for the scale units for this ExpressRouteGateway.")]
         public uint MaxBounds { get; set; }
 
         [Parameter(
@@ -126,15 +121,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinBounds, this.MaxBounds));
             }
 
-            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.MinBounds = Convert.ToInt32(this.MinBounds);
-            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.MaxBounds = Convert.ToInt32(this.MaxBounds);
-
-            //// Modify the connections
-            if (this.ExpressRouteConnection != null)
-            {
-                existingExpressRouteGateway.Connections = new List<PSExpressRouteConnection>();
-                existingExpressRouteGateway.Connections.AddRange(this.ExpressRouteConnection);
-            }
+            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinBounds);
+            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxBounds);
 
             ConfirmAction(
                     Properties.Resources.SettingResourceMessage,
