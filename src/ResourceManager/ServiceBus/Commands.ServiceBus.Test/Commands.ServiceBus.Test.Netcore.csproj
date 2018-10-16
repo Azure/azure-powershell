@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,10 +24,14 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="1.4.0" />
+  </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="1.2.0" />
-    <PackageReference Include="Microsoft.WindowsAzure.Management.Storage" Version="5.1.1" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+    <Reference Include="Microsoft.Azure.Commands.ServiceBus">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.ServiceBus\Microsoft.Azure.Commands.ServiceBus.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
