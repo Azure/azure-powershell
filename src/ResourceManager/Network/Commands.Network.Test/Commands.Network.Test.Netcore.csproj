@@ -29,7 +29,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.0" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.2-preview" />
