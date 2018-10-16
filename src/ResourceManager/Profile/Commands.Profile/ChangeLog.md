@@ -18,11 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Get-AzureRmSubscription in CloudShell
+* Update common code to use latest version of ClientRuntime
 
 ## Version 5.6.0
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
-- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set
 
 ## Version 5.5.1
 * Fixed issue with default resource groups not being set.

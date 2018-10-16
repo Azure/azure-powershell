@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 
 ## Version 6.9.0
 * Added NetworkProfile functionality. new cmdlets added
