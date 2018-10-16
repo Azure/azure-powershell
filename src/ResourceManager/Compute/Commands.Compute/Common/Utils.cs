@@ -80,7 +80,19 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
                       "Standard_E4_v3", "Standard_E4s_v3", "Standard_F2", "Standard_F2s", "Standard_F4s_v2",
 
-                      "Standard_D11_v2", "Standard_DS11_v2", "AZAP_Performance_ComputeV17C"};
+                      "Standard_D11_v2", "Standard_DS11_v2", "AZAP_Performance_ComputeV17C",
+
+                      "AZAP_Performance_ComputeV17C_DDA", "Standard_PB6s", "Standard_PB12s", "Standard_PB24s",
+
+                      "Standard_L80s_v2", "Standard_M8ms", "Standard_M8-4ms", "Standard_M8-2ms", "Standard_M16ms",
+
+                      "Standard_M16-8ms", "Standard_M16-4ms", "Standard_M32ms", "Standard_M32-8ms",
+
+                      "Standard_M32-16ms", "Standard_M32ls", "Standard_M32ts", "Standard_M64ls", "Standard_E64i_v3",
+
+                      "Standard_E64is_v3", "Standard_E4-2s_v3", "Standard_E8-4s_v3", "Standard_E8-2s_v3",
+
+                      "Standard_E16-4s_v3", "Standard_E16-8s_v3", "Standard_E20s_v3", "Standard_E20_v3"};
 
         static readonly string[] FourCoreSizesForAccelNet = { "Standard_D3_v2", "Standard_D3_v2_Promo", "Standard_D3_v2_ABC", "Standard_DS3_v2",
 
