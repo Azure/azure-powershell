@@ -190,7 +190,7 @@ namespace Tools.Common.Loggers
             if (hasErrors)
             {
                 throw new InvalidOperationException(string.Format("One or more errors occurred in validation. " +
-                                                                  "See the analysis repots at {0} for details",
+                                                                  "See the analysis reports at {0} for details",
                     _baseDirectory));
             }
         }
