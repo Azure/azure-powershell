@@ -99,13 +99,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.Compute/disks", "ResourceGroupName")]
         [Alias("Name")]
         public string DiskName { get; set; }
     }

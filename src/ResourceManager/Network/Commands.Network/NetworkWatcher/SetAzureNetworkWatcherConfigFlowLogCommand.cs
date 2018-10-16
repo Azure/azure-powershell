@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = SetFlowlogByNameWithoutTA)]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 

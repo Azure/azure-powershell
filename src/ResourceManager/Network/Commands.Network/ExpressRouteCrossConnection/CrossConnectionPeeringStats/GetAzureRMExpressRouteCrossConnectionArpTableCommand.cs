@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The Name of Express Route Cross Connection",
             ParameterSetName = "SpecifyByParameterValues")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCrossConnections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string CrossConnectionName { get; set; }
 

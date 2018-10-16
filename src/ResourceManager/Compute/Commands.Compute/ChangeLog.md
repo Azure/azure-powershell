@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Added new sizes to the whitelist of VM sizes for which Accel Net will be turned on when using the simple param set for `New-AzureRmVm`
+* Added ResourceName argument completer to all cmdlets.
 
 ## Version 5.7.0
 * Add DiskIOPSReadWrite and  DiskMBpsReadWrite parameters to New-AzureRmDiskConfig and New-AzureRmDiskUpdateConfig cmdlets 
