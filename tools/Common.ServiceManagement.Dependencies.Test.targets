@@ -38,20 +38,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.ScenarioTest.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-<<<<<<< HEAD
       <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.0.187-preview\lib\net452\Microsoft.WindowsAzure.Commands.ScenarioTest.Common.dll</HintPath>
-=======
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.1.4-preview\lib\net452\Microsoft.WindowsAzure.Commands.ScenarioTest.Common.dll</HintPath>
->>>>>>> e9fe4e884f01b7095d79744f4f51343981943654
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-<<<<<<< HEAD
     <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.0.187-preview\tools\</ScenarioTestToolsPath>
-=======
-    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.1.4-preview\tools\</ScenarioTestToolsPath>
->>>>>>> e9fe4e884f01b7095d79744f4f51343981943654
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(ScenarioTestToolsPath)Assert.ps1">
