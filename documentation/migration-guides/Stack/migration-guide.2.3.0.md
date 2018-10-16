@@ -102,6 +102,8 @@ Set-AzureRmVMAccessExtension [other required parameters] -UserName "plain-text s
 Set-AzureRmVMAccessExtension [other required parameters] -Credential $PSCredential
 ```
 
+## Breaking changes to Resources cmdlets
+
 ### **Find-AzureRmResource**
 - This cmdlet was removed and the functionality was moved into `Get-AzureRmResource`
 
@@ -126,6 +128,15 @@ Find-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
 Get-AzureRmResourceGroup
 Get-AzureRmResourceGroup -Tag @{ "testtag" = $null }
 Get-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
+```
+
+### **Get-AzureRmResource**
+The cmdlet output model was changed. The property name `ResourceName` was renamed to `Name`
+```powershell
+# Old
+(Get-AzureRmResource).ResourceName
+# New
+(Get-AzureRmResource).Name
 ```
 
 ### **New-AzureRmADAppCredential**
