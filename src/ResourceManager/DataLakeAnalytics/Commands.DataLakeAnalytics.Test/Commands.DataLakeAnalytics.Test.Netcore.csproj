@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,11 +24,15 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.1.2-preview" />
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.3.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="3.0.0" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.DataLakeAnalytics">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

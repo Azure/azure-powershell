@@ -21,12 +21,12 @@ Contains the name of the desired plan to be linked or unlinked from an offer.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+New-AddonPlanDefinitionObject -PlanId $planIdentifier -MaxAcquisitionCount 500
 ```
 
-{{ Add example description here }}
+Create a new plan definition object for the specified plan with the acquisition limit of 500.
 
 ## PARAMETERS
 

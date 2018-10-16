@@ -15,14 +15,14 @@ Update a `Reservation`.
 ### CommandLine (Default)
 ```
 Update-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid> -AppliedScopeType <String>
- [-AppliedScope <String>] [-InstanceFlexibility <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AppliedScope <String>] [-InstanceFlexibility <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
 Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String>]
- -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -Reservation <PSReservation> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -94,6 +94,21 @@ Accept wildcard characters: False
 
 ### -InstanceFlexibility
 If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of Reservation
 
 ```yaml
 Type: System.String
