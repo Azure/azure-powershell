@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
            ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

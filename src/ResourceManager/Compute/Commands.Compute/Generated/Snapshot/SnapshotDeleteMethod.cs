@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.Compute/snapshots", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Compute/snapshots", "ResourceGroupName")]
         [Alias("Name")]
         public string SnapshotName { get; set; }
 
