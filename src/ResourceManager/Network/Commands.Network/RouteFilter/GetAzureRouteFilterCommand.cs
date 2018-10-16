@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/routeFilters", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/routeFilters", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

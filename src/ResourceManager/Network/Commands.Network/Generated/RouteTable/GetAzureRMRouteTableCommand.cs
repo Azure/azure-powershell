@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the route table.",
             ParameterSetName = "NoExpand",
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Network/routeTables", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/routeTables", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

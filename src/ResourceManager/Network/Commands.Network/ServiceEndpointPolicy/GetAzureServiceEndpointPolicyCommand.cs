@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The name of the service endpoint policy")]
-        [ResourceNameCompleter("Microsoft.Network/serviceEndpointPolicies", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/serviceEndpointPolicies", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

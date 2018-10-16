@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The name of the interface endpoint")]
-        [ResourceNameCompleter("Microsoft.Network/interfaceEndpoints", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/interfaceEndpoints", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

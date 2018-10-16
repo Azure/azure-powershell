@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualHubs", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
