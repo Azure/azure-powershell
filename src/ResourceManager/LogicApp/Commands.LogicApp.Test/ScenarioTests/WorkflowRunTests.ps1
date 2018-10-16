@@ -25,8 +25,8 @@ function Test-StartLogicApp
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
@@ -50,8 +50,8 @@ function Test-GetAzureLogicAppRunHistory
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
@@ -81,8 +81,8 @@ function Test-GetAzureLogicAppRunAction
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname	
-	$definitionFilePath = [System.IO.Path]::Combine($TestOutputRoot, "Resources\TestSimpleWorkflowTriggerDefinition.json")		
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources\TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 
@@ -116,8 +116,8 @@ function Test-StopAzureRmLogicAppRun
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"			
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
