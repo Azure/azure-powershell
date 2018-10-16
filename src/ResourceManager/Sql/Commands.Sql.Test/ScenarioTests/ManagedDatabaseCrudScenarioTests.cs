@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;

@@ -21,7 +21,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedDatabase"),
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabase",
+        DefaultParameterSetName = GetByNameAndResourceGroupParameterSet),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class GetAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {

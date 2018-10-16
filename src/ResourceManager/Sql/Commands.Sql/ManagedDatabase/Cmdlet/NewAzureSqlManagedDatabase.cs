@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Managed Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedDatabase",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabase",
+        DefaultParameterSetName = CreateNewByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class NewAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>

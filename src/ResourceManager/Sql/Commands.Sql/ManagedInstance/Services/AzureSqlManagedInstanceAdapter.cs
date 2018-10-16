@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <summary>
         /// Gets a list of all the managed instances in a subscription
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <returns>A list of all the managed instances</returns>
         public List<AzureSqlManagedInstanceModel> ListManagedInstances()
         {
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 Tags = model.Tags,
                 AdministratorLogin = model.AdministratorLogin,
                 AdministratorLoginPassword = model.AdministratorPassword != null ? ConversionUtilities.SecureStringToString(model.AdministratorPassword) : null,
-                Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name) : null,
+                Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name, model.Sku.Tier) : null,
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
