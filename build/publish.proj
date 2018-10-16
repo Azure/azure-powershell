@@ -20,9 +20,9 @@
   <Target Name="All">
     <Message Importance="high" Text="Publish: All started" />
     <ItemGroup>
-      <PackagePaths Include="$(PackDir)*.nupkg" />
+      <PackagePaths Include="$(PackDir)*.nupkg" Exclude="$(PackDir)*symbols.nupkg" />
     </ItemGroup>
-    <Exec Command="$(NuGet) push %(PackagePaths.FullPath) -ApiKey $(NuGetApiKey) -Source https://www.myget.org/F/azure-powershell/api/v2/package" />
+    <Exec Command="$(NuGet) push %(PackagePaths.FullPath) -ApiKey $(NuGetApiKey) -Source https://www.myget.org/F/azure-powershell/api/v2/package -SymbolSource https://www.myget.org/F/azure-powershell/symbols/api/v2/package -SymbolApiKey $(NuGetApiKey)" />
     <PropertyGroup>
       <!-- https://stackoverflow.com/a/41618979/294804 -->
       <ReleaseCommand>[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://api.github.com/repos/Azure/azure-powershell-common/releases' -Headers @{ 'Authorization' = 'Token $(GitHubAccessToken)' } -Method Post -Body (ConvertTo-Json @{ 'tag_name' = '$(ReleaseVersion)'; 'target_commitish' = '$(CommitId)'; 'name' = '$(ReleaseVersion)'; 'body' = 'Azure PowerShell Common version $(ReleaseVersion)'; 'draft' = $false; 'prerelease' = $false })</ReleaseCommand>
