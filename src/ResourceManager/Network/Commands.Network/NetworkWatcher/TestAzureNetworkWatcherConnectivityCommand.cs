@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
-        [ResourceNameCompleter("Microsoft.Network/networkWatchers", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 

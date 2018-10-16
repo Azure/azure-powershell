@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Network/applicationSecurityGroups", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/applicationSecurityGroups", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

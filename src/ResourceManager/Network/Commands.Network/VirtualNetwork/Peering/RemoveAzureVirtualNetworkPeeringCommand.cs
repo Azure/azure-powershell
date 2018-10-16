@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network peering name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks/virtualNetworkPeerings", new string[] { "ResourceGroupName", "VirtualNetworkName" })]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "ResourceGroupName", "VirtualNetworkName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

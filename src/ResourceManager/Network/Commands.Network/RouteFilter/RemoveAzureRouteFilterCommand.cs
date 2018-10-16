@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/routeFilters", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/routeFilters", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

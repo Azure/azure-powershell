@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = false,
             ParameterSetName = "TestByResourceId",
             HelpMessage = "The virtualNetwork name")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 

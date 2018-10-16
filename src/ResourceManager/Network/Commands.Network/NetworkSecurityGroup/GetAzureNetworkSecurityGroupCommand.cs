@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/networkSecurityGroups", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Network/networkSecurityGroups", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
