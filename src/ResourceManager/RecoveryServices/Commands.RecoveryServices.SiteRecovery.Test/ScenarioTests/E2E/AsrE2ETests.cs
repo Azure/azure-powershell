@@ -29,13 +29,13 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
-            this.vaultSettingsFilePath = System.IO.Path.Combine(
+            this.VaultSettingsFilePath = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\E2E\\E2E.VaultCredentials");
-            this.powershellFile = System.IO.Path.Combine(
+                "ScenarioTests", "E2E", "E2E.VaultCredentials");
+            this.PowershellFile = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\E2E\\AsrE2ETests.ps1");
-            this.initialize();
+                "ScenarioTests", "E2E", "AsrE2ETests.ps1");
+            this.Initialize();
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryFabricTest -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -62,7 +62,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryCreatePolicy -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -75,7 +75,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
-                "Test-CreatePCMap -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
+                "Test-CreatePCMap -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -102,7 +102,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-MapNetwork -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -116,7 +116,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-TFO -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -130,7 +130,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-PlannedFailover -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -144,7 +144,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-Reprotect -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -158,7 +158,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-UFOandFailback -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -172,7 +172,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-EditRecoveryPlan -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -186,7 +186,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryRemoveRecoveryPlan -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -200,7 +200,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryDisableDR -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -213,7 +213,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
-                "Test-RemovePCMap -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
+                "Test-RemovePCMap -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
         }
 
         [Fact]
@@ -226,7 +226,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryRemovePolicy -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -240,7 +240,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-RemoveNetworkPairing -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -254,7 +254,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-RemoveFabric -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
     }
