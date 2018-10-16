@@ -7,7 +7,7 @@
 * Deprecated Azure Backup cmdlets.
 
 #### AzureRM.Compute
-* Added new sizes to the whitelist of VM sizes for which Accel Net will be turned on when using the simple param set for 'New-AzureRmVm'
+* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for 'New-AzureRmVm'
 * Added ResourceName argument completer to all cmdlets.
 
 #### AzureRM.Network
@@ -15,7 +15,7 @@
 * Added ResourceName argument completer to all cmdlets.
 
 #### AzureRM.Resources
-* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible excpetion (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to 'RoleDefinitionNameParameterSet'.
+* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to 'RoleDefinitionNameParameterSet'.
 
 ## 6.10.0 - October 2018
 #### Azure.Storage
