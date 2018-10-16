@@ -104,8 +104,24 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 try
                 {
-                    var subscriptions = _client.ListSubscriptions(tenant);
-                    WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                    if (DefaultContext.Account.Type.Equals("ManagedService"))
+                    {
+                        if (tenant == null)
+                        {
+                            tenant = DefaultContext.Tenant.Id;
+                        }
+
+                        if (tenant.Equals(DefaultContext.Tenant.Id))
+                        {
+                            var subscriptions = _client.ListSubscriptions(tenant);
+                            WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                        }
+                    }
+                    else
+                    {
+                        var subscriptions = _client.ListSubscriptions(tenant);
+                        WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                    }
                 }
                 catch (AadAuthenticationException exception)
                 {

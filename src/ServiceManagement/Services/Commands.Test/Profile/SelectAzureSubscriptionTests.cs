@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Test.Profile;
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
-    
+
     public class SelectAzureSubscriptionTests
     {
         [Fact]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
         {
             ProfileTestController.NewRdfeInstance.RunPsTest("Test-StorageAccountIsNotCleaned");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionPipeToSetSubscription()
