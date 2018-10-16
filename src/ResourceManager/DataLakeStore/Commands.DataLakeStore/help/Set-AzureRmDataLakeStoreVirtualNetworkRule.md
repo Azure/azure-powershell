@@ -24,10 +24,17 @@ The **Set-AzureRmDataLakeStoreVirtualNetworkRule** cmdlet modifies the specified
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET" -VirtualNetworkSubnetId "subnetId"
+PS C:\> Set-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET" -SubnetId "updatedId"
+
+ResourceGroupName                :
+AccountName                      :
+VirtualNetworkRuleName           : myVNET
+VirtualNetworkSubnetId           : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Network/virtualNetworks/myVNET/subnets/updatedId
+IgnoreMissingVnetServiceEndpoint :
+State                            :
 ```
 
-Updates the subnet id of virtual network rule "myVNET" in account "dls" to "subnetId"
+Updates the subnet id of virtual network rule "myVNET" in account "dls" to "updatedId"
 
 ## PARAMETERS
 
