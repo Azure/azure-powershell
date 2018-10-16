@@ -78,7 +78,7 @@ CmdletsToExport = 'New-AzureRmFrontDoor', 'Get-AzureRmFrontDoor', 'Set-AzureRmFr
 				'New-AzureRmFrontDoorHealthProbeSettingObject', 'New-AzureRmFrontDoorLoadBalancingSettingObject',
 				'New-AzureRmFrontDoorMatchConditionObject', 'New-AzureRmFrontDoorCustomRuleObject', 'New-AzureRmFrontDoorManagedRuleObject',
 				'New-AzureRmFrontDoorFireWallPolicy', 'Get-AzureRmFrontDoorFireWallPolicy', 'Set-AzureRmFrontDoorFireWallPolicy',
-				'Remove-AzureRmFrontDoorFireWallPolicy', 'New-AzureRmFrontDoorRuleGroupOverrideObject'
+				'Remove-AzureRmFrontDoorFireWallPolicy', 'New-AzureRmFrontDoorRuleGroupOverrideObject', 'Remove-AzureRmFrontDoorContent'
 
 # Variables to export from this module
 # VariablesToExport = @()

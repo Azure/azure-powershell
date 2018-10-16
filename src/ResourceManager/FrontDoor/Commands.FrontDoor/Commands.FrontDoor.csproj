@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Cmdlets\GetAzureRmFrontDoorFireWallPolicy.cs" />
     <Compile Include="Cmdlets\GetAzureRmFrontDoor.cs" />
+    <Compile Include="Cmdlets\UnpublishAzureRmFrontDoorContent.cs" />
     <Compile Include="Cmdlets\RemoveAzureRmFrontDoorFireWallPolicy.cs" />
     <Compile Include="Cmdlets\SetAzureRmFrontDoorFIreWallPolicy.cs" />
     <Compile Include="Cmdlets\NewAzureRmFrontDoorFireWallPolicy.cs" />
