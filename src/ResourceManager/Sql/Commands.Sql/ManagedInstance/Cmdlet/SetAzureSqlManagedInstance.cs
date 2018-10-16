@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlManagedInstance",
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstance",
+        DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class SetAzureSqlManagedInstance : ManagedInstanceCmdletBase
@@ -97,6 +98,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SecureString AdministratorPassword { get; set; }
 
         /// <summary>
+        /// Gets or sets the edition to assign to the Azure SQL Managed Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The edition to assign to the Azure SQL Managed Database.")]
+        [PSArgumentCompleter(Constants.GeneralPurposeEdition, Constants.BusinessCriticalEdition)]
+        [ValidateNotNullOrEmpty]
+        public string Edition { get; set; }
+
+        /// <summary>
         /// Gets or sets the Managed instance License Type
         /// </summary>
         [Parameter(Mandatory = false,
@@ -155,6 +165,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlManagedInstanceModel> model)
         {
+            AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
+            Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
+
+            if (Edition != null)
+            {
+                string computeGeneration = existingInstance.Sku.Name.Contains(Constants.ComputeGenerationGen4) ? Constants.ComputeGenerationGen4 : Constants.ComputeGenerationGen5;
+                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                Sku.Name = editionShort + "_" + computeGeneration;
+                Sku.Tier = Edition;
+            }
+            else
+            {
+                Sku = null;
+            }
+
             // Construct a new entity so we only send the relevant data to the Managed instance
             List<Model.AzureSqlManagedInstanceModel> updateData = new List<Model.AzureSqlManagedInstanceModel>();
             updateData.Add(new Model.AzureSqlManagedInstanceModel()
@@ -163,6 +188,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 ManagedInstanceName = this.Name,
                 FullyQualifiedDomainName = this.Name,
                 Location = model.FirstOrDefault().Location,
+                Sku = Sku,
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,

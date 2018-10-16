@@ -197,7 +197,16 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
     'Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline', 'Get-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline', 
     'Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline',
     'Convert-AzSqlDatabaseVulnerabilityAssessmentScan', 'Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord',
-    'Start-AzSqlDatabaseVulnerabilityAssessmentScan'
+    'Start-AzSqlDatabaseVulnerabilityAssessmentScan',
+    'Get-AzSqlManagedInstance', 
+    'New-AzSqlManagedInstance', 
+    'Remove-AzSqlManagedInstance', 
+    'Set-AzSqlManagedInstance', 
+    'Update-AzSqlManagedInstance', 
+    'Get-AzSqlManagedDatabase', 
+    'New-AzSqlManagedDatabase', 
+    'Remove-AzSqlManagedDatabase', 
+    'Restore-AzSqlManagedDatabase' 
 
 # Variables to export from this module
 # VariablesToExport = @()
