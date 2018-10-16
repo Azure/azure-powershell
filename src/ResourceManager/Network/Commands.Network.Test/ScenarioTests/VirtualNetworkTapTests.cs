@@ -45,7 +45,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkTapCRUDUsingIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-VirtualNetworkTapCRUDUsingIpConfig"));
