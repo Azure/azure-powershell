@@ -57,7 +57,7 @@ Test Get-AzureRmIntegrationAccountGeneratedIcn command
 #>
 function Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType()
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
@@ -125,7 +125,7 @@ Test Get-AzureRmIntegrationAccountGeneratedIcn command
 #>
 function Test-GetIntegrationAccountGeneratedControlNumberInternal([String] $agreementType)
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
@@ -193,7 +193,7 @@ Test Set-AzureRmIntegrationAccountGeneratedIcn command
 #>
 function Test-UpdateIntegrationAccountGenCNInternal([String] $agreementType)
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -252,10 +252,10 @@ Test Get-AzureRmIntegrationAccountGeneratedIcn command : paging test
 #>
 function Test-ListIntegrationAccountGenCNInternal([String] $agreementType)
 {
-	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
-	$agreementAS2FilePath = "$TestOutputRoot\Resources\IntegrationAccountAS2AgreementContent.json"
+	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 	$integrationAccountAS2AgreementName = getAssetname
 
