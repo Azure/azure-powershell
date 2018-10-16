@@ -26,7 +26,14 @@ If no virtual network rule is specified, then lists all virtual network rules fo
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET"
+PS C:\> Get-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
+
+ResourceGroupName                :
+AccountName                      :
+VirtualNetworkRuleName           : myVNET
+VirtualNetworkSubnetId           : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Network/virtualNetworks/myVNET/subnets/testId
+IgnoreMissingVnetServiceEndpoint :
+State                            :
 ```
 
 Returns the virtual network rule named "myVNET" from account "dls"

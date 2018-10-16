@@ -24,10 +24,17 @@ The **Add-AzureRmDataLakeStoreVirtualNetworkRule** cmdlet adds a virtual network
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET" -VirtualNetworkSubnetId "subnetId"
+PS C:\> Add-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET" -SubnetId "testId"
+
+ResourceGroupName                :
+AccountName                      :
+VirtualNetworkRuleName           : myVNET
+VirtualNetworkSubnetId           : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Network/virtualNetworks/myVNET/subnets/testId
+IgnoreMissingVnetServiceEndpoint :
+State                            :
 ```
 
-This creates a new virtual network rule called "myVNET" in account "dls" with a subnet id "subnetId"
+This creates a new virtual network rule called "myVNET" in account "dls" with a subnet id "testId"
 
 ## PARAMETERS
 
