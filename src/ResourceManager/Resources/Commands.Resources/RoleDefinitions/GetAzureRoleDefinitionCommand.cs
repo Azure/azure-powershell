@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {
-                    Subscription = (DefaultProfile.DefaultContext.Subscription.Id == null)?null:DefaultProfile.DefaultContext.Subscription.Id.ToString()
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id?.ToString()
                 },
                 RoleDefinitionId = Id,
                 RoleDefinitionName = Name,
