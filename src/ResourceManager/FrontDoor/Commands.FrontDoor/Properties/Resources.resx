@@ -162,4 +162,7 @@
   <data name="Error_ErrorResponseFromServer" xml:space="preserve">
     <value>Error response received. Error Message: '{0}'</value>
   </data>
+  <data name="PurgeFrontDoor" xml:space="preserve">
+    <value>Purge Contents?</value>
+  </data>
 </root>
