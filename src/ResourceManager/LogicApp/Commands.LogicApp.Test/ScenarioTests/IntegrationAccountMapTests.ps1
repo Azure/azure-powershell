@@ -18,15 +18,15 @@ Test New-AzureRmIntegrationAccountMap command
 #>
 function Test-CreateIntegrationAccountMap
 {
-	$mapFilePath = "$TestOutputRoot\Resources\SampleXsltMap.xsl"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)	
+	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccountMapName1 = getAssetname	
-	$integrationAccountMapName2 = getAssetname	
-	$integrationAccountMapName3 = getAssetname	
+	$integrationAccountMapName1 = getAssetname
+	$integrationAccountMapName2 = getAssetname
+	$integrationAccountMapName3 = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
@@ -48,13 +48,13 @@ Test Get-AzureRmIntegrationAccountMap command
 #>
 function Test-GetIntegrationAccountMap
 {
-	$mapFilePath = "$TestOutputRoot\Resources\SampleXsltMap.xsl"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)	
+	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccountMapName = getAssetname	
+	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -77,13 +77,13 @@ Test Remove-AzureRmIntegrationAccountMap command
 #>
 function Test-RemoveIntegrationAccountMap
 {
-	$mapFilePath = "$TestOutputRoot\Resources\SampleXsltMap.xsl"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)	
+	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccountMapName = getAssetname	
+	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -101,13 +101,13 @@ Test Set-AzureRmIntegrationAccountMap command
 #>
 function Test-UpdateIntegrationAccountMap
 {
-	$mapFilePath = "$TestOutputRoot\Resources\SampleXsltMap.xsl"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)	
+	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccountMapName = getAssetname	
+	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -129,7 +129,7 @@ Test Get-AzureRmIntegrationAccountMap command : Paging test
 #>
 function Test-ListIntegrationAccountMap
 {
-	$mapFilePath = "$TestOutputRoot\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
