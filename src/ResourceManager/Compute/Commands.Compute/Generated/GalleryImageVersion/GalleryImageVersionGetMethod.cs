@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string galleryName;
                 string galleryImageName;
                 string galleryImageVersionName;
+                string expand = (this.ExpandReplicationStatus.IsPresent) ? "ReplicationStatus" : null;
                 switch (this.ParameterSetName)
                 {
                     case "ResourceIdParameter":
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(galleryName) && !string.IsNullOrEmpty(galleryImageName) && !string.IsNullOrEmpty(galleryImageVersionName))
                 {
-                    var result = GalleryImageVersionsClient.Get(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName);
+                    var result = GalleryImageVersionsClient.Get(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, expand);
                     var psObject = new PSGalleryImageVersion();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
                     WriteObject(psObject);
@@ -127,5 +128,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter ExpandReplicationStatus { get; set; }
     }
 }
