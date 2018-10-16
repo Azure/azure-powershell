@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible excpetion (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to `RoleDefinitionNameParameterSet`.
 
 ## Version 6.6.0
 * Add missing -Mode parameter to Set-AzureRmPolicyDefinition
