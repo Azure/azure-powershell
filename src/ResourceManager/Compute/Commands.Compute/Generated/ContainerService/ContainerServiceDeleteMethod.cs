@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.ContainerService/containerServices", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.ContainerService/containerServices", "ResourceGroupName")]
         public string Name { get; set; }
 
         [Parameter(

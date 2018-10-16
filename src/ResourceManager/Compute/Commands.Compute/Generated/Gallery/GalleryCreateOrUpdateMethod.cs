@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Alias("GalleryName")]
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Alias("GalleryName")]
