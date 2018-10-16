@@ -171,7 +171,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible excpetion (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to ''RoleDefinitionNameParameterSet''.'
+        ReleaseNotes = '* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to ''RoleDefinitionNameParameterSet''.'
 
         # Prerelease string of this module
         # Prerelease = ''

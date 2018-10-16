@@ -212,7 +212,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new sizes to the whitelist of VM sizes for which Accel Net will be turned on when using the simple param set for ''New-AzureRmVm''
+        ReleaseNotes = '* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for ''New-AzureRmVm''
 * Added ResourceName argument completer to all cmdlets.'
 
         # Prerelease string of this module
