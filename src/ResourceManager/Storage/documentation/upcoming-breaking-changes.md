@@ -26,3 +26,18 @@
 -->
 
 # Upcoming Breaking Changes
+
+Release 7.0.0 - November 2018
+
+The following cmdlets were affected this release:
+
+**Get-AzureRmStorageUsage**
+- The -Location parameter changes from optional to mandatory. User must specify -Location to get Storage resource usage, since get global Storage resource usage is obsolete.
+
+```powershell
+# Old
+	$usage = Get-AzureRmStorageUsage
+
+# New
+    $usage = Get-AzureRmStorageUsage -Location $location
+    ```

@@ -32,6 +32,12 @@ Run the following command in an elevated PowerShell session to install the rollu
 Install-Module -Name AzureRM
 ```
 
+Run the following command in an elevated PowerShell session to install the new 'Az' module for ResourceManager cmdlets. This module runs on PowerShell 5.1 (with .Net Framework 4.7.2) ,  or PowerShell Core, and replaces AzureRM.  You should not install this module side-by-side with AzureRM:
+
+```powershell
+Install-Module -Name Az
+```
+
 To install the module containing the legacy RDFE cmdlets, run the following command in an elevated PowerShell session:
 
 ```powershell
@@ -43,6 +49,9 @@ If you have an earlier version of the Azure PowerShell modules installed from th
 ```powershell
 # Update to the latest version of AzureRM
 Update-Module -Name AzureRM
+
+# Update to the latest version of Az
+Update-Module -Name Az
 
 # Update to the latest version of Azure
 Update-Module -Name Azure

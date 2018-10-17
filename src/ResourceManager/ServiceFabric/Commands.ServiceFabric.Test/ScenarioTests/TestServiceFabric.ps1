@@ -93,7 +93,7 @@ function Test-NewAzureRmServiceFabricCluster
     $vmPassword = Get-VmPwd | ConvertTo-SecureString -Force -AsPlainText
 
     $cluster = New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword `
-        -TemplateFile $pwd\resources\template.json -ParameterFile $pwd\resources\parameters.json -SecretIdentifier $keyvaulturi -Verbose
+        -TemplateFile (Join-Path $pwd '\Resources\template.json') -ParameterFile (Join-Path $pwd '\Resources\parameters.json') -SecretIdentifier $keyvaulturi -Verbose
     $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
     Assert-NotNull $clusters.Where({$_.Name -eq $clusterName})
 }
