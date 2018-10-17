@@ -991,6 +991,24 @@
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceProtectorTests\TestSetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include=".\SessionRecordsMicrosoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestCreateManagedInstance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecordsMicrosoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestCreateManagedInstanceWithIdentity.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecordsMicrosoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestGetManagedInstance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecordsMicrosoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestRemoveManagedInstance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecordsMicrosoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestSetManagedInstance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecordsMicrosoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestUpdateManagedInstance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
