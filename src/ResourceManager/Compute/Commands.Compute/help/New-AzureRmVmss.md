@@ -62,8 +62,7 @@ The command above creates the following with the name `$vmssName` :
 The default image chosen for the VMs in the VMSS is `2016-Datacenter Windows Server` and the SKU is `Standard_DS1_v2`
 
 ### Example 2: Create a VMSS using the **`DefaultParameterSet`**
-```
-powershell
+```powershell
 # Common
 $LOC = "WestUs";
 $RGName = "rgkyvms";
