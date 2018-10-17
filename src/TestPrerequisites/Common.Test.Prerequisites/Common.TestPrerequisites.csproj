@@ -42,7 +42,7 @@
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.2-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.3.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="1.2.0-preview" PrivateAssets="All" />
