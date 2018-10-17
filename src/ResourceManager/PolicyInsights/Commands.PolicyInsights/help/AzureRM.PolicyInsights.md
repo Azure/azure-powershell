@@ -17,21 +17,18 @@ Gets policy evaluation events generated as resources are created or updated.
 ### [Get-AzureRmPolicyRemediation](Get-AzureRmPolicyRemediation.md)
 Gets policy remediations.
 
-### [Get-AzureRmPolicyRemediationDeployment](Get-AzureRmPolicyRemediationDeployment.md)
-Gets the status of the deployments executed by a remediation.
-
 ### [Get-AzureRmPolicyState](Get-AzureRmPolicyState.md)
 Gets policy compliance states for resources.
 
 ### [Get-AzureRmPolicyStateSummary](Get-AzureRmPolicyStateSummary.md)
 Gets latest policy compliance states summary for resources.
 
-### [New-AzureRmPolicyRemediation](New-AzureRmPolicyRemediation.md)
-Creates a policy remediation.
-
 ### [Remove-AzureRmPolicyRemediation](Remove-AzureRmPolicyRemediation.md)
-Deletes a completed or canceled policy remediation.
+Deletes a policy remediation.
+
+### [Start-AzureRmPolicyRemediation](Start-AzureRmPolicyRemediation.md)
+Creates and starts a policy remediation for a policy assignment.
 
 ### [Stop-AzureRmPolicyRemediation](Stop-AzureRmPolicyRemediation.md)
-Cancels an active policy remediation.
+Cancels an in-progress policy remediation.
 

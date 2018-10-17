@@ -14,10 +14,12 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
+    using Microsoft.Azure.Commands.PolicyInsights.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
@@ -55,6 +57,8 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.ByName, Mandatory = false, HelpMessage = ParameterHelpMessages.TopRemediationDeployments)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.TopRemediationDeployments)]
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
@@ -67,6 +71,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [Parameter(ParameterSetName = ParameterSetNames.GenericScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Filter)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByName, Mandatory = false, HelpMessage = ParameterHelpMessages.IncludeRemediationDetail)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.IncludeRemediationDetail)]
+        public SwitchParameter IncludeDetail { get; set; }
 
         /// <summary>
         /// Executes the cmdlet to retrieve remediation resources
@@ -81,7 +89,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ManagementGroupName, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException($"Only one of {nameof(this.Scope)}, {nameof(this.ManagementGroupName)}, {nameof(this.ResourceGroupName)} can be specified when {nameof(this.Name)} is provided.");
+                throw new PSArgumentException(Resources.Error_TooManyScopes);
             }
 
             // Determine the scope of the request and whether this is an individual GET or a list
@@ -91,7 +99,21 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
             if (!string.IsNullOrEmpty(remediationName))
             {
                 var rawRemediation = this.PolicyInsightsClient.Remediations.GetAtResource(resourceId: rootScope, remediationName: remediationName);
-                WriteObject(new PSRemediation(rawRemediation));
+
+                // Include the deployment details if IncludeDetail was specified
+                List<RemediationDeployment> deployments = null;
+                if (this.IncludeDetail.IsPresent)
+                {
+                    deployments = new List<RemediationDeployment>();
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => this.PolicyInsightsClient.Remediations.ListDeploymentsAtResource(resourceId: rootScope, remediationName: remediationName, queryOptions: queryOptions),
+                        getNextPage: nextLink => this.PolicyInsightsClient.Remediations.ListDeploymentsAtResourceNext(nextPageLink: nextLink),
+                        action: deploymentPage => deployments.AddRange(deploymentPage),
+                        top: queryOptions.Top.GetValueOrDefault(int.MaxValue),
+                        cancellationToken: this.CancellationToken);
+                }
+
+                WriteObject(new PSRemediation(remediation: rawRemediation, deployments: deployments));
             }
             else
             {

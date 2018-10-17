@@ -57,5 +57,12 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ManagementGroupScope-Crud");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackgroundJobs()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-BackgroundJobs");
+        }
     }
 }

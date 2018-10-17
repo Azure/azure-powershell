@@ -14,21 +14,22 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 {
+    using System.Globalization;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
+    using Microsoft.Azure.Commands.PolicyInsights.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
     using Microsoft.Azure.Management.PolicyInsights.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
-    /// Gets policy remediations.
+    /// Creates and starts a policy remediation.
     /// </summary>
-    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "PolicyRemediationDeployment", DefaultParameterSetName = ParameterSetNames.ByName), OutputType(typeof(PSRemediationDeployment))]
-    public class GetAzureRmPolicyRemediationDeployment : RemediationCmdletBase
+    [Cmdlet("Start", AzureRMConstants.AzureRMPrefix + "PolicyRemediation", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true), OutputType(typeof(PSRemediation))]
+    public class StartAzureRmPolicyRemediation : RemediationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Name)]
         [ValidateNotNullOrEmpty]
@@ -52,37 +53,51 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.RemediationObject)]
-        [ValidateNotNull]
-        public PSRemediation InputObject { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.PolicyAssignmentId)]
+        [ValidateNotNullOrEmpty]
+        public string PolicyAssignmentId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
-        public int Top { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.PolicyDefinitionReferenceId)]
+        [ValidateNotNullOrEmpty]
+        public string PolicyDefinitionReferenceId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.LocationFilter)]
+        [ValidateNotNullOrEmpty]
+        public string[] LocationFilter { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AsJob)]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Executes the cmdlet to retrieve a remediation resource's deployments
+        /// Executes the cmdlet to create a remediation resource
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var queryOptions = new QueryOptions
-            {
-                Top = this.IsParameterBound(c => c.Top) ? (int?)Top : null
-            };
-
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ManagementGroupName, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException($"Only one of {nameof(this.Scope)}, {nameof(this.ManagementGroupName)}, {nameof(this.ResourceGroupName)} can be specified when {nameof(this.Name)} is provided.");
+                throw new PSArgumentException(Resources.Error_TooManyScopes);
             }
             
-            var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, managementGroupId: this.ManagementGroupName, resourceGroupName: this.ResourceGroupName, inputObject: this.InputObject);
-            var remediationName = this.GetRemediationName(name: this.Name, resourceId: this.ResourceId, inputObject: this.InputObject);
-            
-            PaginationHelper.ForEach(
-                getFirstPage: () => this.PolicyInsightsClient.Remediations.ListDeploymentsAtResource(resourceId: rootScope, remediationName: remediationName, queryOptions: queryOptions),
-                getNextPage: nextLink => this.PolicyInsightsClient.Remediations.ListDeploymentsAtResourceNext(nextPageLink: nextLink),
-                action: deployments => this.WriteObject(sendToPipeline: deployments.Select(d => new PSRemediationDeployment(d)), enumerateCollection: true),
-                top: queryOptions.Top.GetValueOrDefault(int.MaxValue),
-                cancellationToken: this.CancellationToken);
+            var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, managementGroupId: this.ManagementGroupName, resourceGroupName: this.ResourceGroupName);
+            var remediationName = this.GetRemediationName(name: this.Name, resourceId: this.ResourceId);
+
+            var remediation = new Remediation(policyAssignmentId: this.PolicyAssignmentId, policyDefinitionReferenceId: this.PolicyDefinitionReferenceId);
+            if (this.LocationFilter != null)
+            {
+                remediation.Filters = new RemediationFilters(this.LocationFilter);
+            }
+
+            if (this.ShouldProcess(target: remediationName, action: string.Format(CultureInfo.InvariantCulture, Resources.CreatingRemediation, rootScope, remediationName)))
+            {
+                var result = this.PolicyInsightsClient.Remediations.CreateOrUpdateAtResource(resourceId: rootScope, remediationName: remediationName, parameters: remediation);
+
+                if (this.AsJob.IsPresent)
+                {
+                    result = this.WaitForTerminalState(result);
+                }
+
+                WriteObject(new PSRemediation(result));
+            }
         }
     }
 }
