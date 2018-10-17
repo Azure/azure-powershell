@@ -116,11 +116,16 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual $newUserId1 $vmss.Identity.IdentityIds[0];
     Assert-AreEqual $newUserId2 $vmss.Identity.IdentityIds[1];
 
-    $vmss2 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false;
-    Assert-False { $vmss2.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
+    # AdditionalCapabilities
+    Assert-Null $vmss.VirtualMachineProfile.AdditionalCapabilities;
 
-    $vmss3 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true;
+    $vmss2 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false -UltraSSDEnabled $false;
+    Assert-False { $vmss2.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
+    Assert-False { $vmss2.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+
+    $vmss3 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -UltraSSDEnabled $true;
     Assert-True { $vmss3.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
+    Assert-True { $vmss3.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
 
     $vmss4 = New-AzureRmVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy ;
     Assert-Null $vmss4.Identity;

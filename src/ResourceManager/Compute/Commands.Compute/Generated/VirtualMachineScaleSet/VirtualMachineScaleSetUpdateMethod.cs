@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
@@ -263,6 +263,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceVersion { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public bool UltraSSDEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -1370,6 +1375,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageReference();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer = this.ImageReferenceOffer;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities = new Microsoft.Azure.Management.Compute.Models.AdditionalCapabilities();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("PauseTimeBetweenBatches"))
