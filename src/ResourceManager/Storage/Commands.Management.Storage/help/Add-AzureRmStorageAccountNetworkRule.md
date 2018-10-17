@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmStorageAccountNetworkRule
 
 ## SYNOPSIS
- Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
+Adds IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
 
 ## SYNTAX
 
