@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
 Module Name: AzureRM.IotCentral
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral/set-azurermiotcentralapp
 schema: 2.0.0
 ---
 
