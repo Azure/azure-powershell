@@ -19,7 +19,7 @@ $fileShareFriendlyName = "pstestfs1bca8f8e"
 $fileShareName = "AzureFileShare;pstestfs1bca8f8e"
 $saName = "pstestsa1bca8f8e"
 $skuName="Standard_LRS"
-$policyName = "newFilePolicy"
+$newPolicyName = "newFilePolicy"
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -46,19 +46,19 @@ function Test-AzureFSPolicy
 	# Create policy
 	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
-		-Name $policyName `
+		-Name $newPolicyName `
 		-WorkloadType AzureFiles `
 		-RetentionPolicy $retentionPolicy `
 		-SchedulePolicy $schedulePolicy
 	Assert-NotNull $policy
-	Assert-AreEqual $policy.Name $policyName
+	Assert-AreEqual $policy.Name $newPolicyName
 
 	# Get policy
 	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
-		-Name $policyName
+		-Name $newPolicyName
 	Assert-NotNull $policy
-	Assert-AreEqual $policy.Name $policyName
+	Assert-AreEqual $policy.Name $newPolicyName
 
 	# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
 	Assert-NotNull $schedulePolicy
@@ -74,7 +74,7 @@ function Test-AzureFSPolicy
 		-Policy $policy
 	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
-		-Name $policyName
+		-Name $newPolicyName
 	Assert-AreEqual $policy.RetentionPolicy.DailySchedule.DurationCountInDays $retentionPolicy.DailySchedule.DurationCountInDays
 
 	# Delete policy
@@ -85,5 +85,5 @@ function Test-AzureFSPolicy
 	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-WorkloadType AzureFiles
-	Assert-False { $policy.Name -contains $policyName }
+	Assert-False { $policy.Name -contains $newPolicyName }
 }
