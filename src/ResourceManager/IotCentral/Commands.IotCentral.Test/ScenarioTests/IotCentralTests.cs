@@ -32,51 +32,9 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateSimpleIotCentralApp()
+        public void TestIotCentralAppLifecycleManagement()
         {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-CreateSimpleIotCentralApp");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateComplexIotCentralApp()
-        {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-CreateComplexIotCentralApp");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIotCentralAppsViaPiping()
-        {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-GetIotCentralAppsViaPiping");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIotCentralAppsViaResourceIdPiping()
-        {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-GetIotCentralAppsViaResourceIdPiping");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIotCentralAppsFromEmptyGroup()
-        {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-GetIotCentralAppsFromEmptyGroup");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetIotCentralAppMetadata()
-        {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-SetIotCentralAppMetadata");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIotCentralApp()
-        {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-RemoveIotCentralApp");
+            IotCentralController.NewInstance.RunPsTest(_logger, "Test-IotCentralAppLifecycleManagement");
         }
     }
 }
