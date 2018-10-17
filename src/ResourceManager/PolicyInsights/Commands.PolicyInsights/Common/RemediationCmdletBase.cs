@@ -14,19 +14,32 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Threading;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.PolicyInsights.Properties;
     using Microsoft.Azure.Management.PolicyInsights;
+    using Microsoft.Azure.Management.PolicyInsights.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
     /// Base class for Azure Policy Insights cmdlets
     /// </summary>
     public abstract class RemediationCmdletBase : PolicyInsightsCmdletBase
     {
+        /// <summary>
+        /// The terminal provisioning states.
+        /// </summary>
+        private static readonly HashSet<string> TerminalStates = new HashSet<string>(new[] { "Canceled", "Failed", "Succeeded" }, StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// The interval between polling attempts when waiting for operations to complete.
+        /// </summary>
+        private static readonly TimeSpan StatePollingInterval = TimeSpan.FromSeconds(30);
+
         /// <summary>
         /// The fully qualified resource type of the remediations resource.
         /// </summary>
@@ -64,7 +77,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
                 rootScope = ResourceIdHelper.GetRootScope(resourceId: resourceId, fullyQualifiedResourceType: RemediationCmdletBase.RemediationsFullyQualifiedResourceType);
                 if (rootScope == null)
                 {
-                    throw new PSArgumentException($"ResourceId must be a resource ID of a single {RemediationCmdletBase.RemediationsFullyQualifiedResourceType} resource.", paramName: "ResourceId");
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidResourceId, RemediationCmdletBase.RemediationsFullyQualifiedResourceType), paramName: "ResourceId");
                 }
             }
             else if (!string.IsNullOrEmpty(scope))
@@ -110,7 +123,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
                 remediationName = ResourceIdHelper.GetResourceName(resourceId: resourceId);
                 if (remediationName == null)
                 {
-                    throw new PSArgumentException($"ResourceId must be a resource ID of a single {RemediationCmdletBase.RemediationsFullyQualifiedResourceType} resource.", paramName: "ResourceId");
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidResourceId, RemediationCmdletBase.RemediationsFullyQualifiedResourceType), paramName: "ResourceId");
                 }
             }
             else if (inputObject != null)
@@ -119,6 +132,44 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
             }
 
             return remediationName;
+        }
+
+        /// <summary>
+        /// Waits for the remediation to transition to a terminal state.
+        /// </summary>
+        /// <param name="remediation">The remediation to wait on.</param>
+        /// <returns>The final terminal remediation object</returns>
+        protected Remediation WaitForTerminalState(Remediation remediation)
+        {
+            var rootScope = this.GetRootScope(resourceId: remediation.Id);
+            var remediationName = remediation.Name;
+
+            while (!this.CancellationToken.IsCancellationRequested && !this.IsComplete(remediation))
+            {
+                var progress = new ProgressRecord(0, string.Format(CultureInfo.InvariantCulture, Resources.WaitingForRemediationCompletion, rootScope, remediationName), remediation.ProvisioningState)
+                {
+                    PercentComplete = remediation.DeploymentStatus.TotalDeployments > 0
+                        ? ((remediation.DeploymentStatus.FailedDeployments.GetValueOrDefault(0) + remediation.DeploymentStatus.SuccessfulDeployments.GetValueOrDefault(0)) / remediation.DeploymentStatus.TotalDeployments.Value) * 100
+                        : 0
+                };
+
+                this.WriteProgress(progress);
+
+                TestMockSupport.Delay(RemediationCmdletBase.StatePollingInterval);
+                remediation = this.PolicyInsightsClient.Remediations.GetAtResource(resourceId: rootScope, remediationName: remediationName);
+            }
+
+            return remediation;
+        }
+
+        /// <summary>
+        /// Checks whether a remediation is complete.
+        /// </summary>
+        /// <param name="remediation">The remediation to check.</param>
+        /// <returns>True if the remediation is complete.</returns>
+        protected bool IsComplete(Remediation remediation)
+        {
+            return RemediationCmdletBase.TerminalStates.Contains(remediation.ProvisioningState);
         }
 
         /// <summary>

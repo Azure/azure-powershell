@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
 Module Name: AzureRM.PolicyInsights
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights/get-azurermpolicyremediation
 schema: 2.0.0
 ---
 
@@ -21,7 +21,8 @@ Get-AzureRmPolicyRemediation [-Top <Int32>] [-Filter <String>] [-DefaultProfile 
 ### ByName
 ```
 Get-AzureRmPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
- [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceGroupName <String>] [-Top <Int32>] [-IncludeDetail] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GenericScope
@@ -44,8 +45,8 @@ Get-AzureRmPolicyRemediation -ResourceGroupName <String> [-Top <Int32>] [-Filter
 
 ### ByResourceId
 ```
-Get-AzureRmPolicyRemediation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmPolicyRemediation -ResourceId <String> [-Top <Int32>] [-IncludeDetail]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,12 +62,12 @@ PS C:\> Get-AzureRmPolicyRemediation
 
 This command gets all the remediations created at or underneath a subscription named 'My Subscription'.
 
-### Example 2: Get a specific policy remediation
+### Example 2: Get a specific policy remediation and the deployment details
 ```
-PS C:\> Get-AzureRmPolicyRemediation -ResourceGroupName "myResourceGroup" -Name "remediation1"
+PS C:\> Get-AzureRmPolicyRemediation -ResourceGroupName "myResourceGroup" -Name "remediation1" -IncludeDetail
 ```
 
-This command gets the remediation named 'remediation1' from resource group 'myResourceGroup'.
+This command gets the remediation named 'remediation1' from resource group 'myResourceGroup'. The details of the resources being remediated will be included.
 
 ### Example 3: Get 10 policy remediations in a management group with optional filters
 ```
@@ -81,7 +82,7 @@ This command gets a max of 10 policy remediations from a management group named 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,8 +97,23 @@ Accept wildcard characters: False
 Filter expression using OData notation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionScope, GenericScope, ManagementGroupScope, ResourceGroupScope
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDetail
+Include details of the deployments created by the remediation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByName, ByResourceId
 Aliases:
 
 Required: False
@@ -111,7 +127,7 @@ Accept wildcard characters: False
 Management group ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -123,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupScope
 Aliases:
 
@@ -138,7 +154,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -153,7 +169,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -165,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupScope
 Aliases:
 
@@ -180,7 +196,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases: Id
 
@@ -195,7 +211,7 @@ Accept wildcard characters: False
 Scope of the resource. For example, '/subscriptions/{subscriptionId}/resourceGroups/{rgName}'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -207,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GenericScope
 Aliases:
 
@@ -222,8 +238,8 @@ Accept wildcard characters: False
 Maximum number of records to return.
 
 ```yaml
-Type: Int32
-Parameter Sets: SubscriptionScope, GenericScope, ManagementGroupScope, ResourceGroupScope
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -234,8 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -51,8 +51,7 @@
     <Compile Include="Cmdlets\GetAzureRmPolicyEvent.cs" />
     <Compile Include="Cmdlets\GetAzureRmPolicyState.cs" />
     <Compile Include="Cmdlets\GetAzureRmPolicyStateSummary.cs" />
-    <Compile Include="Cmdlets\Remediation\GetAzureRmPolicyRemediationDeployment.cs" />
-    <Compile Include="Cmdlets\Remediation\NewAzureRmPolicyRemediation.cs" />
+    <Compile Include="Cmdlets\Remediation\StartAzureRmPolicyRemediation.cs" />
     <Compile Include="Cmdlets\Remediation\StopAzureRmPolicyRemediation.cs" />
     <Compile Include="Cmdlets\Remediation\RemoveAzureRmPolicyRemediation.cs" />
     <Compile Include="Cmdlets\Remediation\GetAzureRmPolicyRemediation.cs" />
@@ -75,11 +74,13 @@
     <Compile Include="Models\PolicyStateSummary.cs" />
     <Compile Include="Models\SummaryResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Az.PolicyInsights.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="AzureRM.PolicyInsights.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -108,7 +109,13 @@
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>

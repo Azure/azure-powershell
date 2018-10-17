@@ -14,10 +14,12 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 {
+    using System.Globalization;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
+    using Microsoft.Azure.Commands.PolicyInsights.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
@@ -54,7 +56,13 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [ValidateNotNull]
         public PSRemediation InputObject { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AllowRemediationStop)]
+        public SwitchParameter AllowStop { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AsJob)]
+        public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
@@ -64,14 +72,28 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         {
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ManagementGroupName, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException($"Only one of {nameof(this.Scope)}, {nameof(this.ManagementGroupName)}, {nameof(this.ResourceGroupName)} can be specified when {nameof(this.Name)} is provided.");
+                throw new PSArgumentException(Resources.Error_TooManyScopes);
             }
             
             var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, managementGroupId: this.ManagementGroupName, resourceGroupName: this.ResourceGroupName, inputObject: this.InputObject);
             var remediationName = this.GetRemediationName(name: this.Name, resourceId: this.ResourceId, inputObject: this.InputObject);
 
-            if (this.ShouldProcess(target: remediationName, action: $"Deleting remediation '{remediationName}' from scope '{rootScope}'"))
+            if (this.ShouldProcess(target: remediationName, action: string.Format(CultureInfo.InvariantCulture, Resources.DeletingRemediation, remediationName, rootScope)))
             {
+                var remediation = this.PolicyInsightsClient.Remediations.GetAtResource(resourceId: rootScope, remediationName: remediationName);
+                if (!this.IsComplete(remediation))
+                {
+                    if (this.AllowStop.IsPresent)
+                    {
+                        remediation = this.PolicyInsightsClient.Remediations.CancelAtResource(resourceId: rootScope, remediationName: remediationName);
+                        this.WaitForTerminalState(remediation);
+                    }
+                    else
+                    {
+                        throw new PSInvalidOperationException(Resources.Error_RemediationNotCompleteOnDelete);
+                    }
+                }
+
                 this.PolicyInsightsClient.Remediations.DeleteAtResource(resourceId: rootScope, remediationName: remediationName);
                 if (this.PassThru.IsPresent)
                 {

@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.Azure.Management.PolicyInsights.Models;
 
     /// <summary>
@@ -74,10 +76,16 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
         public PSRemediationDeploymentSummary DeploymentSummary { get; }
 
         /// <summary>
+        /// Gets the details of the deployments created by this remediation.
+        /// </summary>
+        public PSRemediationDeployment[] Deployments { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PSRemediation" /> class.
         /// </summary>
         /// <param name="remediation">The raw remediation model.</param>
-        public PSRemediation(Remediation remediation)
+        /// <param name="deployments">The remediation deployments.</param>
+        public PSRemediation(Remediation remediation, IEnumerable<RemediationDeployment> deployments = null)
         {
             if (remediation == null)
             {
@@ -94,6 +102,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
             this.ProvisioningState = remediation.ProvisioningState;
             this.Filters = remediation.Filters != null ? new PSRemediationFilter(remediation.Filters) : null;
             this.DeploymentSummary = remediation.DeploymentStatus != null ? new PSRemediationDeploymentSummary(remediation.DeploymentStatus) : null;
+
+            if (deployments != null)
+            {
+                this.Deployments = deployments.Select(d => new PSRemediationDeployment(d)).ToArray();
+            }
         }
     }
 }

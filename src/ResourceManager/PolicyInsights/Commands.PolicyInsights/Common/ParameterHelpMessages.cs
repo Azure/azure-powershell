@@ -40,5 +40,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string All = "Within the specified time interval, get all policy states instead of the latest only.";
         public const string RemediationObject = "The Remediation object.";
         public const string LocationFilter = "The resource locations that should be included in the remediation. Resources that don't reside in these locations will not be remediated.";
+        public const string IncludeRemediationDetail = "Include details of the deployments created by the remediation.";
+        public const string TopRemediationDeployments = "Number of deployment details to return.";
+        public const string AsJob = "Run cmdlet in the background.";
+        public const string AllowRemediationStop = "Allow the remediation to be canceled if it is in-progress.";
+        public const string PassThru = "Return True if the command completes successfully.";
     }
 }

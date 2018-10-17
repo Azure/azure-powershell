@@ -77,9 +77,8 @@ CmdletsToExport = 'Get-AzureRmPolicyEvent',
     'Get-AzureRmPolicyStateSummary',
     'Get-AzureRmPolicyRemediation',
     'Remove-AzureRmPolicyRemediation',
-    'New-AzureRmPolicyRemediation',
-    'Stop-AzureRmPolicyRemediation',
-    'Get-AzureRmPolicyRemediationDeployment'
+    'Start-AzureRmPolicyRemediation',
+    'Stop-AzureRmPolicyRemediation'
 
 # Variables to export from this module
 # VariablesToExport = @()
