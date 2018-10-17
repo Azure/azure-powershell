@@ -54,9 +54,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.IotCentral" Version="1.0.0"/>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +71,7 @@
     <None Include="help\Remove-AzureRmIotCentralApp.md" />
     <None Include="help\Set-AzureRmIotCentralApp.md" />
     <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +86,11 @@
       <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.IotCentral">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
