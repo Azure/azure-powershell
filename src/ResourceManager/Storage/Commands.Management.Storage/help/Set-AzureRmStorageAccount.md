@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Indicates whether or not the Storage account enabled Azure Files AAD Integration for SMB.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases: EnableFilesAADIntegration
 

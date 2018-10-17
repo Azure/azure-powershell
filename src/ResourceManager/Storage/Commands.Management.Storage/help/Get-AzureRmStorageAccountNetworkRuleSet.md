@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
-Get the NetWorkRule property of a Storage account
+Gets the NetWorkRule property of a Storage account
 
 ## SYNTAX
 

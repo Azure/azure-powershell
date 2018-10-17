@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetworkRule property of a Storage account
+Updates the NetworkRule property of a Storage account
 
 ## SYNTAX
 
