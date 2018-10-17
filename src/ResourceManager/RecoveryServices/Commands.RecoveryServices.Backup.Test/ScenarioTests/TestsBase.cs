@@ -164,14 +164,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                     "AzureRM.Resources.ps1"
                 };
 
-                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, commonPsFile)))
-                {
-                    modules.Add(commonPsFile);
-                }
-
                 if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, workloadCommonPsFile)))
                 {
                     modules.Add(workloadCommonPsFile);
+                }
+
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, commonPsFile)))
+                {
+                    modules.Add(commonPsFile);
                 }
 
 
