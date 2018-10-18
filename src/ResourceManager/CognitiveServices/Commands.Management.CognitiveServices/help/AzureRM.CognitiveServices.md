@@ -21,7 +21,7 @@ Gets the API keys for an account.
 Gets the available SKUs for an account.
 
 ### [Get-AzureRmCognitiveServicesAccountType](Get-AzureRmCognitiveServicesAccountType.md)
-{{Fill in the Synopsis}}
+Gets the available Cognitive Services Account Types.
 
 ### [Get-AzureRmCognitiveServicesAccountUsage](Get-AzureRmCognitiveServicesAccountUsage.md)
 Get current usages for a Cognitive Services account.

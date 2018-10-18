@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Account Types for Cognitive Services Account Type(s)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountType"), OutputType(typeof(string[]), typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountType", DefaultParameterSetName = GetAccountTypesParamSetName), OutputType(typeof(string[]), typeof(string))]
     public class GetAzureCognitiveServicesAccountTypeCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string GetAccountTypeWithNameParamSetName = "GetAccountTypeWithName";
