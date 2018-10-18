@@ -90,8 +90,8 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.Consumption | Az.Consumption* |
 | AzureRM.ContainerInstance | Az.ContainerInstance* |
 | AzureRM.ContainerRegistry | Az.ContainerRegistry* |
-| AzureRM.DataFactories | Az.DataFactories*** |
-| AzureRM.DataFactoryV2 | Az.FataFactoryV2* |
+| AzureRM.DataFactories | Az.DataFactory |
+| AzureRM.DataFactoryV2 | Az.DataFactory |
 | AzureRM.DataLakeAnalytics | Az.DataLakeAnalytics |
 | AzureRM.DataLakeStore | Az.DataLakeStore |
 | AzureRM.DataMigration | Az.DataMigration |
