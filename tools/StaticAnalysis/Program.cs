@@ -143,7 +143,7 @@ namespace StaticAnalysis
             }
             catch(Exception ex)
             {
-                analysisLogger.WriteError(ex.ToString());
+                analysisLogger?.WriteError(ex.ToString());
                 throw ex;
             }
             finally

@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ListAvailableSizesForAvailabilitySet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The availability set name.")]
+        [ResourceNameCompleter("Microsoft.Compute/availabilitySets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetName { get; set; }
 
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ListAvailableSizesForVirtualMachine,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 

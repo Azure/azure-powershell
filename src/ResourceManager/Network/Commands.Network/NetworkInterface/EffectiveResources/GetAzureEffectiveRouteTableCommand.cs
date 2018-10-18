@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network interface name.")]
+        [ResourceNameCompleter("Microsoft.Network/networkInterfaces", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
 

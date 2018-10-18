@@ -135,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
                 List<string> modules = Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup".AsAbsoluteLocation(), "*.ps1").ToList();
                 modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
-                
+
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
