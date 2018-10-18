@@ -37,7 +37,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(_logger, "Test-RecoveryServicesVaultCRUD");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Different parameter set used for NetStandard. Cannot process command because of one or more missing mandatory parameters: Certificate.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRSVaultSettingsFile()
         {
