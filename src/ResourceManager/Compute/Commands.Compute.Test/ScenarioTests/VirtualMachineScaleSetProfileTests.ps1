@@ -119,11 +119,10 @@ function Test-VirtualMachineScaleSetProfile
     # AdditionalCapabilities
     Assert-Null $vmss.VirtualMachineProfile.AdditionalCapabilities;
 
-    $vmss2 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false -UltraSSDEnabled $false;
+    $vmss2 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false;
     Assert-False { $vmss2.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
-    Assert-False { $vmss2.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
 
-    $vmss3 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -UltraSSDEnabled $true;
+    $vmss3 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -EnableUltraSSD;
     Assert-True { $vmss3.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
     Assert-True { $vmss3.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
 

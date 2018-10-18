@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        public bool UltraSSDEnabled { get; set; }
+        public SwitchParameter EnableUltraSSD { get; set; }
 
         protected override bool IsUsageMetricEnabled
         {
@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.HardwareProfile.VmSize = this.VMSize;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+            if (this.EnableUltraSSD.IsPresent)
             {
-                vm.AdditionalCapabilities = new AdditionalCapabilities(this.UltraSSDEnabled);
+                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
             }
 
             WriteObject(vm);

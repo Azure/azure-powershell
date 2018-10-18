@@ -287,7 +287,7 @@ function Test-VirtualMachineProfileWithoutAUC
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
-    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -UltraSSDEnabled $true;
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -EnableUltraSSD;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
     Assert-True { $p.AdditionalCapabilities.UltraSSDEnabled };
 

@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        public bool UltraSSDEnabled { get; set; }
+        public SwitchParameter EnableUltraSSD { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+            if (this.EnableUltraSSD.IsPresent)
             {
                 if (vVirtualMachineProfile == null)
                 {
@@ -435,9 +435,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (vVirtualMachineProfile.AdditionalCapabilities == null)
                 {
-                    vVirtualMachineProfile.AdditionalCapabilities = new Microsoft.Azure.Management.Compute.Models.AdditionalCapabilities();
+                    vVirtualMachineProfile.AdditionalCapabilities = new Microsoft.Azure.Management.Compute.Models.AdditionalCapabilities(true);
                 }
-                vVirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
             }
 
             if (this.AssignIdentity.IsPresent)
