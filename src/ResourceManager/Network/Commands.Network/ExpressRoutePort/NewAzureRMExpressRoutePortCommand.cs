@@ -40,7 +40,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRoutePort", SupportsShouldProcess = true), OutputType(typeof(PSExpressRoutePort))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePort", SupportsShouldProcess = true), OutputType(typeof(PSExpressRoutePort))]
     public partial class NewAzureRmExpressRoutePort : NetworkBaseCmdlet
     {
         [Parameter(

@@ -34,7 +34,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRoutePortLinkConfig"), OutputType(typeof(PSExpressRouteLink))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortLinkConfig"), OutputType(typeof(PSExpressRouteLink))]
     public partial class GetAzureRmExpressRoutePortLinkConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
