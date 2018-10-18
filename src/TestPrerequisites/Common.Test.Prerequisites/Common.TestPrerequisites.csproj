@@ -78,7 +78,7 @@
     <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="0.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="YamlDotNet.Signed" Version="4.2.4" PrivateAssets="All" />
     <PackageReference Include="Moq" Version="4.7.145" />
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="xunit" Version="2.4.0" />
   </ItemGroup>
 
