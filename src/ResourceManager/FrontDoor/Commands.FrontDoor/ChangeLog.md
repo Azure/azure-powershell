@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.2.0
 * Add remove-AzureRmFrontDoorContent for cache purge
 
 ## Version 0.1.0
