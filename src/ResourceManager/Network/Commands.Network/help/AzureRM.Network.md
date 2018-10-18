@@ -221,6 +221,15 @@ Gets a route table summary of an ExpressRoute circuit.
 ### [Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)
 Gets usage statistics of an ExpressRoute circuit.
 
+### [Get-AzureRmExpressRoutePort](Get-AzureRmExpressRoutePort.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmExpressRoutePortLinkConfig](Get-AzureRmExpressRoutePortLinkConfig.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmExpressRoutePortsLocation](Get-AzureRmExpressRoutePortsLocation.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmExpressRouteServiceProvider](Get-AzureRmExpressRouteServiceProvider.md)
 Gets a list ExpressRoute service providers and their attributes.
 
@@ -521,6 +530,9 @@ Creates a Firewall Network Rule.
 ### [New-AzureRmFirewallNetworkRuleCollection](New-AzureRmFirewallNetworkRuleCollection.md)
 Creates a Azure Firewall Network Collection of Network rules.
 
+### [New-AzureRmExpressRoutePort](New-AzureRmExpressRoutePort.md)
+Creates an ExpressRoutePort
+
 ### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
 Creates an IPSec Policy.
 
@@ -738,6 +750,9 @@ Removes an ExpressRoute circuit peering configuration.
 ### [Remove-AzureRmFirewall](Remove-AzureRmFirewall.md)
 Remove a Firewall.
 
+### [Remove-AzureRmExpressRoutePort](Remove-AzureRmExpressRoutePort.md)
+Removes aan ExpressRoutePort
+
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
 
@@ -873,6 +888,10 @@ Resets the Virtual Network Gateway
 ### [Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey](Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 Resets the shared key of the virtual network gateway connection.
 
+### [Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey](Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
+
+>>>>>>> f4f39f5919... ExpressRoutePort changes
+
 ### [Resize-AzureRmVirtualNetworkGateway](Resize-AzureRmVirtualNetworkGateway.md)
 Resizes an existing virtual network gateway.
 
@@ -941,6 +960,9 @@ Saves a modified ExpressRoute peering configuration.
 
 ### [Set-AzureRmFirewall](Set-AzureRmFirewall.md)
 Saves a modified Firewall.
+
+### [Set-AzureRmExpressRoutePort](Set-AzureRmExpressRoutePort.md)
+Saves a modified ExpressRoutePort
 
 ### [Set-AzureRmLoadBalancer](Set-AzureRmLoadBalancer.md)
 Sets the goal state for a load balancer.

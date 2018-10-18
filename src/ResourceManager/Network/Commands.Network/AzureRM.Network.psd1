@@ -389,7 +389,13 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Set-AzureRmNetworkInterfaceTapConfig', 
                'Remove-AzureRmNetworkInterfaceTapConfig', 
                'Get-AzureRmVirtualNetworkTap', 'New-AzureRmVirtualNetworkTap', 
-               'Remove-AzureRmVirtualNetworkTap', 'Set-AzureRmVirtualNetworkTap'
+               'Remove-AzureRmVirtualNetworkTap', 'Set-AzureRmVirtualNetworkTap',
+               'New-AzureRmExpressRoutePort',
+               'Get-AzureRmExpressRoutePort',
+               'Set-AzureRmExpressRoutePort',
+               'Remove-AzureRmExpressRoutePort',
+               'Get-AzureRmExpressRoutePortLinkConfig',
+               'Get-AzureRmExpressRoutePortsLocation'
 
 # Variables to export from this module
 # VariablesToExport = @()
