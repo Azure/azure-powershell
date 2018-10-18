@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzureRmFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorContent", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorContent", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmFrontDoorContent : AzureFrontDoorCmdletBase
     {
         /// <summary>
@@ -52,12 +52,19 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The paths to the content to be purged.")]
         public string[] ContentPath { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Return object (if specified).")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.PurgeFrontDoor, Name)))
             {
                 var parameters = new Microsoft.Azure.Management.FrontDoor.Models.PurgeParameters(ContentPath);
                 FrontDoorManagementClient.Endpoints.PurgeContent(ResourceGroupName, Name, parameters);
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
