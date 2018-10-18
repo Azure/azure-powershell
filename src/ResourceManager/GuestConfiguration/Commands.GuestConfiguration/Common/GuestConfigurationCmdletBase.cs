@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
     using Microsoft.Azure.Commands.GuestConfiguration.Helpers;
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Management.GuestConfiguration;
+    using Microsoft.Azure.Management.GuestConfiguration.Models;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
+    using ErrorResponseException = Management.ResourceManager.Models.ErrorResponseException;
+    using GuestConfigurationErrorResponseException = Management.GuestConfiguration.Models.ErrorResponseException;
 
     /// <summary>
     /// Base class for Azure Guest configuration cmdlets
@@ -94,7 +97,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         }
 
         // Get all guest configuration policy assignment reports for a VM
-        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReports(string resourceGroupName, string vmName, bool getLatest)
+        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReports(string resourceGroupName, string vmName)
         {
             var gcPolicyAssignmentReportList = new List<GuestConfigurationPolicyAssignmentReport>();
             var gcPolicySetDefinitions = GetAllGuestConfigPolicySetDefinitions();
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
             foreach (var gcPolicySetDefinition in gcPolicySetDefinitions)
             {
-                var gcAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id, getLatest);
+                var gcAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id);
                 if (gcAssignmentReports != null || gcAssignmentReports.Count() > 0)
                 {
                     gcPolicyAssignmentReportList.AddRange(gcAssignmentReports);
@@ -167,8 +170,25 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
             var gcPolicyAssignmentsList = new List<GuestConfigurationPolicyAssignment>();
 
+            IEnumerable<GuestConfigurationAssignment> gcrpAssignments = null;
+            try
+            {
+                gcrpAssignments = GuestConfigurationClient.GuestConfigurationAssignments.List(resourceGroupName, vmName);
+            }
+            catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+            {
+                this.WriteVerbose(string.Format(Resources.InvalidRGOrVMName, resourceGroupName, vmName));
+                throw exception;
+            }
+
+            var gcrp_AssignmentName_Assignment_Map = new Dictionary<string, GuestConfigurationAssignment>();
+            foreach(var gcrpAssignment in gcrpAssignments)
+            {
+                gcrp_AssignmentName_Assignment_Map.Add(gcrpAssignment.Name, gcrpAssignment);
+            }
+
             // Get all gcrp assignments for the initiative - for policy definitions  of category "Guest Configuration", effectType "AuditIfNotExists"   
-            foreach(var policyDef in policyDefinitionsForTheInitiative)
+            foreach (var policyDef in policyDefinitionsForTheInitiative)
             {
                 var policyRule = JObject.Parse(policyDef.PolicyRule.ToString());
                 var policyRuleDictionary = policyRule.ToObject<Dictionary<string, object>>();
@@ -192,18 +212,13 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
                 var guestConfigurationAssignmentNameInPolicy = policyRuleDetailsDictionary["name"].ToString();
 
-                if (!string.IsNullOrEmpty(guestConfigurationAssignmentNameInPolicy))
+                if (!string.IsNullOrEmpty(guestConfigurationAssignmentNameInPolicy) && gcrp_AssignmentName_Assignment_Map.ContainsKey(guestConfigurationAssignmentNameInPolicy))
                 {
-                    // check if there is guest configuration assignment in GCRP with the same name as guestConfigurationAssignmentNameInPolicy
-                    try
+                    var gcrpAsgnment = gcrp_AssignmentName_Assignment_Map[guestConfigurationAssignmentNameInPolicy];
+                    if(gcrpAsgnment != null)
                     {
-                        var gcrpAssignment = GuestConfigurationClient.GuestConfigurationAssignments.Get(resourceGroupName, guestConfigurationAssignmentNameInPolicy, vmName);
-                        gcPolicyAssignmentsList.Add(new GuestConfigurationPolicyAssignment(gcrpAssignment, policyDef.DisplayName));
-                    }
-                    catch (Management.GuestConfiguration.Models.ErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
-                    {
-                        continue;
-                    }
+                        gcPolicyAssignmentsList.Add(new GuestConfigurationPolicyAssignment(gcrpAsgnment, policyDef.DisplayName));
+                    }                         
                 }
             }
 
@@ -223,29 +238,16 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         }
 
         // Get guest configuration policy assignment reports by initiative definition name
-        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeName(string resourceGroupName, string vmName, string initiativeName, bool getLatest)
+        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeName(string resourceGroupName, string vmName, string initiativeName)
         {
             var gcPolicyAssignments = GetAllGuestConfigurationAssignmentsByInitiativeName(resourceGroupName, vmName, initiativeName);
             var gcPolicyAssignmentReportList = new List<GuestConfigurationPolicyAssignmentReport>();
 
             foreach (var gcPolicyAssignment in gcPolicyAssignments)
             {
-                if(getLatest)
-                {
-                    var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
-                    var gcPolicyAssignmentReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
-                    gcPolicyAssignmentReportList.Add(new GuestConfigurationPolicyAssignmentReport(gcPolicyAssignmentReport, gcPolicyAssignment.PolicyDisplayName));
-                }
-                else
-                {
-                    var gcAssignmentReports= GuestConfigurationClient.GuestConfigurationAssignmentReports.List(resourceGroupName, gcPolicyAssignment.Configuration.Name, vmName);
-                    var gcPolicyReports = new List<GuestConfigurationPolicyAssignmentReport>();
-                    foreach(var gcAssignmentReport in gcAssignmentReports.Value)
-                    {
-                        gcPolicyReports.Add(new GuestConfigurationPolicyAssignmentReport(gcAssignmentReport, gcPolicyAssignment.PolicyDisplayName));
-                    }
-                    gcPolicyAssignmentReportList.AddRange(gcPolicyReports);
-                }              
+                var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
+                var gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                gcPolicyAssignmentReportList.Add(new GuestConfigurationPolicyAssignmentReport(gcrpReport, gcPolicyAssignment));  
             }
 
             // sort gcPolicyAssignmentReportList by Policy display name, end time 
@@ -254,23 +256,38 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         }
 
         // Get guest configuration policy assignment reports by initiative definition name
-        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeId(string resourceGroupName, string vmName, string initiativeId, bool getLatest)
+        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeId(string resourceGroupName, string vmName, string initiativeId)
         {
             var initiativeName = GetInitiativeNameFromId(initiativeId);
-            var gcPolicyAssignmentReportList = GetAllGuestConfigurationAssignmentReportsByInitiativeName(resourceGroupName, vmName, initiativeName, getLatest);
+            var gcPolicyAssignmentReportList = GetAllGuestConfigurationAssignmentReportsByInitiativeName(resourceGroupName, vmName, initiativeName);
             return gcPolicyAssignmentReportList;
         }
-
 
         // Get guest configuration policy assignment report by reportId
         protected GuestConfigurationPolicyAssignmentReport GetGuestConfigurationAssignmentReportById(string reportId)
         {
+
             var urlParameters = CommonHelpers.GetGCURLParameters(reportId);
             var reportGuid = CommonHelpers.GetReportGUIDFromID(reportId);
+            
+            if(urlParameters == null || reportGuid == null)
+            {
+                throw new ErrorResponseException(string.Format(Resources.InvalidReportId, reportId));
+            }
+
             GuestConfigurationPolicyAssignmentReport policyReport = null;
             if (urlParameters != null && urlParameters.AreParametersNotNullOrEmpty() && !string.IsNullOrEmpty(reportId))
             {
-                var report = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(urlParameters.ResourceGroupName, urlParameters.AssignmentName, reportGuid, urlParameters.VMName);
+                GuestConfigurationAssignmentReport report = null;
+                try
+                {
+                    report = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(urlParameters.ResourceGroupName, urlParameters.AssignmentName, reportGuid, urlParameters.VMName);
+                }
+                catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+                {
+                    this.WriteVerbose(string.Format(Resources.NotFoundByReportId, reportId));
+                    throw exception;
+                }
                 policyReport = new GuestConfigurationPolicyAssignmentReport(report, null);
             }
             return policyReport;
@@ -341,8 +358,5 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 return 0;
             }
         }
-
-
-
     }
 }

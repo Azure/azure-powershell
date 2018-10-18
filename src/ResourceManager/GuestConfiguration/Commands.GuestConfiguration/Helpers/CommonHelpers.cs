@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Helpers
             {
                 var assignmentNameStartIndex = guestConfigurationAssignmentsStringIndex + _guestConfigurationAssignmentsString.Length;
                 assignmentNameEndIndex = url.IndexOf("/", assignmentNameStartIndex);
-                if (resourceGroupNameEndIndex > 0)
+                if (assignmentNameEndIndex > 0)
                 {
                     assignmentName = url.Substring(assignmentNameStartIndex, assignmentNameEndIndex - assignmentNameStartIndex);
                 }
@@ -99,10 +99,18 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Helpers
                 return null;
             }
             var reportsStringIndex = reportId.IndexOf(_reportsString, StringComparison.CurrentCultureIgnoreCase);
+            if(reportsStringIndex < 0)
+            {
+                return null;
+            }
             string reportGuid = null;
 
             var reportGuidStartIndex = reportsStringIndex + _reportsString.Length;
             reportGuid = reportId.Substring(reportGuidStartIndex);
+            if(string.IsNullOrEmpty(reportGuid) || reportGuid.Length != 36)
+            {
+                return null;
+            }
             return reportGuid;
         }
 

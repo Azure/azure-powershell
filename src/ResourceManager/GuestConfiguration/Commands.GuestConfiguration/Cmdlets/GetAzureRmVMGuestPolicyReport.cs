@@ -50,68 +50,34 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InitiativeId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ReportIdScope, Mandatory = true, Position = 2, HelpMessage = ParameterHelpMessages.ReportId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ReportIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ReportId)]
         [ValidateNotNullOrEmpty]
         public string ReportId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.DetailedSwitch)]
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = false, HelpMessage = ParameterHelpMessages.DetailedSwitch)]
-        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.DetailedSwitch)]
-        public SwitchParameter Detailed { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.LatestSwitch)]
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = false,  HelpMessage = ParameterHelpMessages.LatestSwitch)]
-        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = false, Position = 3,  HelpMessage = ParameterHelpMessages.LatestSwitch)]
-        public SwitchParameter Latest { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            IEnumerable<GuestConfigurationPolicyAssignment> gcPolicyAssignments = null;
             IEnumerable<GuestConfigurationPolicyAssignmentReport> gcPolicyAssignmentReports = null;
 
             switch (ParameterSetName)
             {
                 case ParameterSetNames.InitiativeNameScope:
-                    if (Detailed.IsPresent)
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName);
+                    if(gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
-                        gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, Latest.IsPresent);
-                        if(gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
-                        {
-                            WriteObject(gcPolicyAssignmentReports, true);
-                        }                        
-                    }
-                    else
-                    {
-                        gcPolicyAssignments = GetAllGuestConfigurationAssignmentsByInitiativeName(ResourceGroupName, VMName, InitiativeName);
-                        if (gcPolicyAssignments == null || gcPolicyAssignments.Count() > 0)
-                        {
-                            WriteObject(gcPolicyAssignments, true);
-                        }
-                    }
+                        WriteObject(gcPolicyAssignmentReports, true);
+                    }                        
                     break;
 
                 case ParameterSetNames.InitiativeIdScope:
-                    if (Detailed.IsPresent)
-                    {
-                        gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, Latest.IsPresent);
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId);
 
-                        if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
-                        {
-                            WriteObject(gcPolicyAssignmentReports, true);
-                        }                   
-                    }
-                    else
+                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
-                        gcPolicyAssignments = GetAllGuestConfigurationAssignmentsByInitiativeId(ResourceGroupName, VMName, InitiativeId);
-
-                        if (gcPolicyAssignments == null || gcPolicyAssignments.Count() > 0)
-                        {
-                            WriteObject(gcPolicyAssignments, true);
-                        }                       
-                    }
+                        WriteObject(gcPolicyAssignmentReports, true);
+                    }                   
                     break;
 
                 case ParameterSetNames.ReportIdScope:
@@ -123,21 +89,10 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     break;
 
                 case ParameterSetNames.VmNameScope:
-                    if (Detailed.IsPresent)
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName);
+                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
-                        gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName, Latest.IsPresent);
-                        if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
-                        {
-                            WriteObject(gcPolicyAssignmentReports, true);
-                        }
-                    }
-                    else
-                    {
-                        gcPolicyAssignments = GetAllGuestConfigurationAssignments(ResourceGroupName, VMName);
-                        if (gcPolicyAssignments == null || gcPolicyAssignments.Count() > 0)
-                        {
-                            WriteObject(gcPolicyAssignments, true);
-                        }
+                        WriteObject(gcPolicyAssignmentReports, true);
                     }
                     break;
             }    

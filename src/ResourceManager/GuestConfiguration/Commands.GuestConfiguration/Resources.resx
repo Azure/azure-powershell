@@ -141,6 +141,9 @@
   <data name="InvalidReportId" xml:space="preserve">
     <value>Invalid report Id {0}.</value>
   </data>
+  <data name="InvalidRGOrVMName" xml:space="preserve">
+    <value>Invalid resource group name {0} or VM name {1}. Please check whether the resource group and VM exist in subscription.</value>
+  </data>
   <data name="LatestSwitch" xml:space="preserve">
     <value>Limits the detailed reports to the latest one, one latest report for each policy in an initiative(policy set).</value>
   </data>
@@ -155,5 +158,8 @@
   </data>
   <data name="VMName" xml:space="preserve">
     <value>VM name.</value>
+  </data>
+  <data name="NotFoundByReportId" xml:space="preserve">
+    <value>No report was found for report id {0}.</value>
   </data>
 </root>
