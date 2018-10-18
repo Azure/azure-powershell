@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
 Module Name: AzureRM.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/remove-azurermfrontdoorcontent
 schema: 2.0.0
 ---
 

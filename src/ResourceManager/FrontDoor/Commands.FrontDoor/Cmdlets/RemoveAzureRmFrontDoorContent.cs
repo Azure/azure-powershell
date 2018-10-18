@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzureRmFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorContent", SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorContent", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRmFrontDoorContent : AzureFrontDoorCmdletBase
     {
         /// <summary>
