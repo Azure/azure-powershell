@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     ResourceGroupName = this.ResourceGroupName,
                     Name = this.Name,
                     Location = this.Location,
-                    SourceType = this.ParameterSetName,
+                    SourceType = "AzureStorage",
                     ArtifactRoot = this.ArtifactRoot,
                     Authentication = this.GetAuthentication(),
                     Tags = this.Tag
