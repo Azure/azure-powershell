@@ -70,19 +70,34 @@ namespace Microsoft.Azure.Commands.Network
         public string SkuFamily { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            ParameterSetName = "ServiceProvider",
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ServiceProviderName { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             ParameterSetName = "ServiceProvider",
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
         public string PeeringLocation { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             ParameterSetName = "ServiceProvider",
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
         public int BandwidthInMbps { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ExpressRoutePort",
+            Mandatory = false,
+            ValueFromPipeline = true)]
+        public PSExpressRoutePort ExpressRoutePort { get; set; }
+
+        [Parameter(
+             ParameterSetName = "ExpressRoutePort",
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true)]
+        public double BandwidthInGbps { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -158,6 +173,13 @@ namespace Microsoft.Azure.Commands.Network
                 circuit.ServiceProviderProperties.ServiceProviderName = this.ServiceProviderName;
                 circuit.ServiceProviderProperties.PeeringLocation = this.PeeringLocation;
                 circuit.ServiceProviderProperties.BandwidthInMbps = this.BandwidthInMbps;
+            }
+
+            // construct the ExpressRoutePort properties
+            if (this.ExpressRoutePort != null)
+            {
+                circuit.ExpressRoutePort = this.ExpressRoutePort;
+                circuit.BandwidthInGbps = this.BandwidthInGbps;
             }
 
             circuit.Peerings = this.Peering;

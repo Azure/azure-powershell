@@ -271,6 +271,12 @@
     <Compile Include="ExpressRouteCrossConnection\ExpressRouteCrossConnectionBaseCmdlet.cs" />
     <Compile Include="ExpressRouteCrossConnection\GetAzureRMExpressRouteCrossConnectionCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\SetAzureRMExpressRouteCrossConnectionCommand.cs" />
+    <Compile Include="ExpressRoutePortsLocation\GetAzureRMExpressRoutePortsLocationCommand.cs" />
+    <Compile Include="ExpressRoutePort\Link\GetAzureRmExpressRoutePortLinkConfigCommand.cs" />
+    <Compile Include="ExpressRoutePort\GetAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="ExpressRoutePort\NewAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="ExpressRoutePort\RemoveAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="ExpressRoutePort\SetAzureRMExpressRoutePortCommand.cs" />
     <Compile Include="Generated\LoadBalancer\BackendAddressPool\AddAzureRmLoadBalancerBackendAddressPoolConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\BackendAddressPool\GetAzureRmLoadBalancerBackendAddressPoolConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\BackendAddressPool\NewAzureRmLoadBalancerBackendAddressPoolConfigCommand.cs" />
@@ -343,6 +349,10 @@
     <Compile Include="Generated\Models\PSExpressRouteCircuitStats.cs" />
     <Compile Include="Generated\Models\PSExpressRouteCrossConnection.cs" />
     <Compile Include="Generated\Models\PSExpressRouteCrossConnectionRoutesTableSummary.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteLink.cs" />
+    <Compile Include="Generated\Models\PSExpressRoutePort.cs" />
+    <Compile Include="Generated\Models\PSExpressRoutePortsLocation.cs" />
+    <Compile Include="Generated\Models\PSExpressRoutePortsLocationBandwidths.cs" />
     <Compile Include="Generated\Models\PSFrontendIPConfiguration.cs" />
     <Compile Include="Generated\Models\PSGatewayRoute.cs" />
     <Compile Include="Generated\Models\PSInboundNatPool.cs" />

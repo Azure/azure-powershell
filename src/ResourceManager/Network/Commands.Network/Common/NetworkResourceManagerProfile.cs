@@ -547,6 +547,24 @@ namespace Microsoft.Azure.Commands.Network
                         dest.DestinationAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.DestinationAddressPrefixes) ? src.DestinationAddressPrefixes : (!string.IsNullOrWhiteSpace(src.DestinationAddressPrefix) ? new List<string> { src.DestinationAddressPrefix } : new List<string>());
                     });
 
+                // ExpressRoutePortsLocation
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRoutePortsLocation, MNM.ExpressRoutePortsLocation>();                
+                cfg.CreateMap<CNM.PSExpressRoutePortsLocationBandwidths, MNM.ExpressRoutePortsLocationBandwidths>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRoutePortsLocation, CNM.PSExpressRoutePortsLocation>();
+                cfg.CreateMap<MNM.ExpressRoutePortsLocationBandwidths, CNM.PSExpressRoutePortsLocationBandwidths>();
+
+                // ExpressRoutePort
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRoutePort, MNM.ExpressRoutePort>();
+                cfg.CreateMap<CNM.PSExpressRouteLink, MNM.ExpressRouteLink>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRoutePort, CNM.PSExpressRoutePort>();
+                cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
+
                 // ExpressRouteCircuit
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuit, MNM.ExpressRouteCircuit>();
