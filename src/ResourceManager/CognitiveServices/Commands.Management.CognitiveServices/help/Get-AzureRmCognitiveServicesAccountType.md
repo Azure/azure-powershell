@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccounttype
 schema: 2.0.0
 ---
 
 # Get-AzureRmCognitiveServicesAccountType
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the available Cognitive Services Account Types.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzureRmCognitiveServicesAccountType [-Location <String>] [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmCognitiveServicesAccountType** cmdlet gets the available Cognitive Services Account Types under this subscription.
 
 ## EXAMPLES
 
