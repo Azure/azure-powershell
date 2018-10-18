@@ -48,7 +48,7 @@ AzureRM will continue to be supported, and important bugs will be fixed, but new
 
 To make it easier for existing scripts to migrate from AzureRM to Az, we have provided cmdlets to create aliases that map the cmdlet names in AzureRM into the appropriate cmdlets in Az.  When the aliases are enabled, any script that uses AzureRM cmdlet names should run against Az without modification.
 
-Note: Connect-AzAccount aka Connect-AzureRmAccount no longer supports $pscredential. See Authentication Changes for more
+Note: Connect-AzAccount aka Connect-AzureRmAccount no longer supports $pscredential. See [Authentication Changes](#authentication-changes) for more
 
 ```powershell
 PS C:\> Enable-AzureRmAlias
