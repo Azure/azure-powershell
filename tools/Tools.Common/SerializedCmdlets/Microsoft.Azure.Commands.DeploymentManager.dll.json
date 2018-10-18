@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
               "Tags": "System.Collections.Hashtable",
@@ -143,7 +143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
               "Tags": "System.Collections.Hashtable",
@@ -413,7 +413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
                     "Tags": "System.Collections.Hashtable",
@@ -586,7 +586,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -740,7 +740,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -1041,7 +1041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
                     "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -1219,7 +1219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -1370,7 +1370,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -1448,7 +1448,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -1739,7 +1739,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -2042,7 +2042,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -2219,7 +2219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -2346,7 +2346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -2614,7 +2614,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -2785,7 +2785,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -2963,7 +2963,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -3050,7 +3050,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -3140,7 +3140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -3461,7 +3461,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -3775,7 +3775,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -4102,7 +4102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -4288,7 +4288,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
               "Tags": "System.Collections.Hashtable",
@@ -4415,7 +4415,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
               "Tags": "System.Collections.Hashtable",
@@ -4683,7 +4683,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
                     "Tags": "System.Collections.Hashtable",
@@ -4854,7 +4854,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
               "Tags": "System.Collections.Hashtable",
@@ -5432,7 +5432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -5619,7 +5619,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -6163,7 +6163,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -6646,7 +6646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -7017,7 +7017,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -7324,7 +7324,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -7414,7 +7414,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -8258,7 +8258,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -9004,7 +9004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -9733,13 +9733,13 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "Wait",
       "OutputTypes": [
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
               "Tags": "System.Collections.Hashtable",
@@ -10322,7 +10322,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
               "Tags": "System.Collections.Hashtable",
@@ -10724,7 +10724,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
                     "Tags": "System.Collections.Hashtable",
@@ -11066,7 +11066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -11473,7 +11473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
                     "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -11838,7 +11838,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -11916,7 +11916,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -12267,7 +12267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -12690,7 +12690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -13036,7 +13036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -13436,7 +13436,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -13812,7 +13812,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -13899,7 +13899,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -13989,7 +13989,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -14394,7 +14394,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -14750,7 +14750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -15179,7 +15179,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -15534,7 +15534,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
               "Tags": "System.Collections.Hashtable",
@@ -15934,7 +15934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
                     "Tags": "System.Collections.Hashtable",
@@ -16201,7 +16201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -16335,7 +16335,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -16676,7 +16676,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
                     "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -16902,7 +16902,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
               "Tags": "System.Collections.Hashtable",
@@ -16977,7 +16977,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
               "Tags": "System.Collections.Hashtable",
@@ -17089,7 +17089,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Authentication": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
                     "Tags": "System.Collections.Hashtable",
@@ -17262,7 +17262,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -17341,7 +17341,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -17457,7 +17457,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -17634,7 +17634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -17707,7 +17707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -17817,7 +17817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -17949,7 +17949,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -18037,7 +18037,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -18162,7 +18162,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceGroupName": "System.String",
@@ -18309,7 +18309,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
               "Tags": "System.Collections.Hashtable",
@@ -18382,7 +18382,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
               "Tags": "System.Collections.Hashtable",
@@ -18492,7 +18492,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "StepProperties": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
                     "Tags": "System.Collections.Hashtable",
@@ -18663,7 +18663,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -18797,7 +18797,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
             "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
               "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -19138,7 +19138,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
                   "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
                     "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
@@ -19495,7 +19495,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSAuthentication, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19742,7 +19742,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSIdentity, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IdentityIds": "System.Collections.Generic.IList`1[System.String]",
         "Type": "System.String"
@@ -19792,12 +19792,13 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutOperationInfo, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Error": "Microsoft.Azure.Management.DeploymentManager.Models.CloudErrorBody",
         "SkipSucceededOnRetry": "System.Nullable`1[System.Boolean]",
         "StartTime": "System.Nullable`1[System.DateTime]",
         "EndTime": "System.Nullable`1[System.DateTime]",
+        "LastUpdatedTime": "System.Nullable`1[System.DateTime]",
         "RetryAttempt": "System.Nullable`1[System.Int32]"
       },
       "ElementType": null,
@@ -19972,7 +19973,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSService]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSService]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSService, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSService, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19984,7 +19985,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSService": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSService, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSService, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ServiceUnits": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit]",
         "TargetLocation": "System.String",
@@ -20036,7 +20037,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20048,7 +20049,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnit, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DeploymentMode": "Microsoft.Azure.Management.DeploymentManager.Models.DeploymentMode",
         "Steps": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep]",
@@ -20209,7 +20210,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20221,7 +20222,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSRolloutStep, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "OperationInfo": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepOperationInfo",
         "Messages": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage]",
@@ -20275,7 +20276,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepOperationInfo": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepOperationInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepOperationInfo, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepOperationInfo, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Error": "Microsoft.Azure.Management.DeploymentManager.Models.CloudErrorBody",
         "StartTime": "System.Nullable`1[System.DateTime]",
@@ -20329,7 +20330,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20341,7 +20342,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSMessage, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "TimeStamp": "System.Nullable`1[System.DateTime]",
         "MessageProperty": "System.String"
@@ -20391,7 +20392,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20403,7 +20404,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSResourceOperation, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ResourceName": "System.String",
         "OperationId": "System.String",
@@ -20457,7 +20458,7 @@
     "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties": {
       "Namespace": "Microsoft.Azure.Commands.DeploymentManager.Models",
       "Name": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties, Microsoft.Azure.Commands.DeploymentManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DeploymentManager.Models.PSStepProperties, Microsoft.Azure.Commands.DeploymentManager, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

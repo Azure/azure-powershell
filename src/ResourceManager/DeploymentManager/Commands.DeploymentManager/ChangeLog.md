@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.9.2
+* Fix ArtifactSource command bug
+ 
 ## Version 0.9.1-preview
 * Enhance the discoverability of information provided by `Get-AzureRmDeploymentManagerRollout` when using the `-Verbose` and `-Error` switch parameters
 
