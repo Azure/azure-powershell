@@ -40,7 +40,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRoutePort", SupportsShouldProcess = true), OutputType(typeof(PSExpressRoutePort))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePort", SupportsShouldProcess = true), OutputType(typeof(PSExpressRoutePort))]
     public class SetAzureExpressRoutePortCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
             var present = true;
             try
             {
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var vExpressRoutePortModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRoutePort>(this.ExpressRoutePort);
             vExpressRoutePortModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRoutePort.Tag, validate: true);
+
             // Execute the PUT ExpressRoutePort call
             this.NetworkClient.NetworkManagementClient.ExpressRoutePorts.CreateOrUpdate(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, vExpressRoutePortModel);
 

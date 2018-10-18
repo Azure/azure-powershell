@@ -38,7 +38,7 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRoutePortsLocation"), OutputType(typeof(PSExpressRoutePortsLocation))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortsLocation"), OutputType(typeof(PSExpressRoutePortsLocation))]
     public partial class GetAzureRmExpressRoutePortsLocation : NetworkBaseCmdlet
     {
         [Parameter(

@@ -40,7 +40,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRoutePort"), OutputType(typeof(PSExpressRoutePort))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePort"), OutputType(typeof(PSExpressRoutePort))]
     public partial class GetAzureRmExpressRoutePort : NetworkBaseCmdlet
     {
         [Parameter(

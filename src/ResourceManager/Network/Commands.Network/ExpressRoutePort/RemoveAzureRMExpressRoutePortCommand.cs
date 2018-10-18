@@ -37,7 +37,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRoutePort", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePort", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureRmExpressRoutePort : NetworkBaseCmdlet
     {
         [Parameter(
