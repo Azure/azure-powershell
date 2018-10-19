@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 0.9.2
+## Version 0.9.2-preview
 * Fix ArtifactSource command bug
  
 ## Version 0.9.1-preview
