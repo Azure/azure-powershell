@@ -109,7 +109,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime.'
+        ReleaseNotes = '* Update version of YamlDotNet.Signed used'
 
         # Prerelease string of this module
         Prerelease = 'preview'
