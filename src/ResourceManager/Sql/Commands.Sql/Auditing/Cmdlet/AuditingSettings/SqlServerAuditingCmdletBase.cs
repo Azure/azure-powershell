@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Gets or sets the name of the SQL server to use.
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL server name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

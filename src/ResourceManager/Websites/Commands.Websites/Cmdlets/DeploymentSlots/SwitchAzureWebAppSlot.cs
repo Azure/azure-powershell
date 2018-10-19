@@ -14,6 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using System.Management.Automation;
 
@@ -27,10 +28,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class SwitchAzureWebAppSlot : WebAppBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the source slot.")]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", new string[] { "ResourceGroupName", "Name" })]
         [ValidateNotNullOrEmpty]
         public string SourceSlotName { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Name of the destination slot.")]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", new string[] { "ResourceGroupName", "Name" })]
         [ValidateNotNullOrEmpty]
         public string DestinationSlotName { get; set; }
 
