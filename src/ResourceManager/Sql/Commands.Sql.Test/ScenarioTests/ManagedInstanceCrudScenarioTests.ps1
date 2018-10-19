@@ -27,6 +27,7 @@ function Test-CreateManagedInstance
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "dummylogin"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
  	$managedInstancePassword = "Un53cuRE!"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
@@ -102,6 +103,7 @@ function Test-SetManagedInstance
 	try
 	{
 		# Test using parameters
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -120,6 +122,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 		
 		# Test using piping
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
 
@@ -138,6 +141,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test Set using InputObject
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -156,6 +160,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test Set using ResourceId
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
@@ -194,6 +199,7 @@ function Test-UpdateManagedInstance
 	try
 	{
 		# Test update using all parameters
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -212,6 +218,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 
 		# Test update using piping
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd1234!!!"
 		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
 
@@ -230,6 +237,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test update using InputObject
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -248,6 +256,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test update using ResourceId
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
@@ -365,6 +374,7 @@ function Test-CreateManagedInstanceWithIdentity
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "login"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
  	$managedInstancePassword = "Un5!"
  	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
