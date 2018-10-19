@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.IotCentral;
 using Microsoft.Azure.Management.IotCentral.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
@@ -65,13 +66,13 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     if (string.IsNullOrEmpty(this.ResourceGroupName))
                     {
                         IEnumerable<App> iotCentralAppsBySubscription = this.IotCentralClient.Apps.ListBySubscription();
-                        this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsBySubscription));
+                        this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsBySubscription), enumerateCollection: true);
                         break;
                     }
                     else
                     {
                         IEnumerable<App> iotCentralAppsByResourceGroup = this.IotCentralClient.Apps.ListByResourceGroup(this.ResourceGroupName);
-                        this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsByResourceGroup));
+                        this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsByResourceGroup), enumerateCollection: true);
                         break;
                     }
                 case ResourceIdParameterSet:
