@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* PowerShell integration for Azure Front Door service.'
+        ReleaseNotes = '* Add Remove-AzureRmFrontDoorContent for cache purge'
 
         # Prerelease string of this module
         # Prerelease = ''
