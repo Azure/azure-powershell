@@ -3,6 +3,7 @@
 #    and upload some blobs into the container
 # note: this retrieves all of the blobs in the container in one command.
 #       connect Azure with Login-AzureRmAccount before you run the script.
+#       requests sent as part of this tool will incur transactional costs. 
 # command line usage: script.ps1 -ResourceGroup {YourResourceGroupName} -StorageAccountName {YourAccountName} -ContainerName {YourContainerName}
 #
 
@@ -22,12 +23,54 @@ param(
 
 $VerbosePreference = "Continue"
 
-if((Get-Module -ListAvailable Azure) -eq $null)
+if(((Get-Module -ListAvailable Azure) -eq $null) -or ((Get-Module -ListAvailable Azure.Storage) -eq $null))
 {
-    throw "Azure Powershell not found! Please install from http://www.windowsazure.com/en-us/downloads/#cmd-line-tools"
+    throw "Azure Powershell not found! Please install from https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps"
 }
 
+# function Retry-OnRequest
+function Retry-OnRequest
+{
+    param(
+        [Parameter(Mandatory=$true)]
+        $Action)
+    
+    # It could encounter various of temporary errors, like network errors, or storage server busy errors.
+    # Should retry the request on transient errors
 
+    # Retry on storage server timeout errors
+    $clientTimeOut = New-TimeSpan -Minutes 15
+    $retryPolicy = New-Object -TypeName Microsoft.WindowsAzure.Storage.RetryPolicies.ExponentialRetry -ArgumentList @($clientTimeOut, 10)        
+    $requestOption = @{}
+    $requestOption.RetryPolicy = $retryPolicy
+
+    # Retry on temporary network errors
+    $shouldRetryOnException = $false
+    $maxRetryCountOnException = 3
+
+    do
+    {
+        try
+        {
+            return $Action.Invoke($requestOption)
+        }
+        catch
+        {
+            if ($_.Exception.InnerException -ne $null -And $_.Exception.InnerException.GetType() -Eq [System.TimeoutException] -And $maxRetryCountOnException -gt 0)
+            {
+                $shouldRetryOnException = $true
+                $maxRetryCountOnException--
+            }
+            else
+            {
+                $shouldRetryOnException = $false
+                throw
+            }
+        }
+    }
+    while ($shouldRetryOnException)
+
+}
 
 # function Get-BlobBytes
 
@@ -35,7 +78,9 @@ function Get-BlobBytes
 {
     param(
         [Parameter(Mandatory=$true)]
-        $Blob)
+        $Blob,
+        [Parameter(Mandatory=$false)]
+        [bool]$IsPremiumAccount = $false)
 
     # Base + blobname
     $blobSizeInBytes = 124 + $Blob.Name.Length * 2
@@ -47,19 +92,85 @@ function Get-BlobBytes
         $blobSizeInBytes += 3 + $metadataEnumerator.Current.Key.Length + $metadataEnumerator.Current.Value.Length
     }
 
-    if($Blob.BlobType -eq [Microsoft.WindowsAzure.Storage.Blob.BlobType]::BlockBlob)
+    if (!$IsPremiumAccount)
     {
-        $blobSizeInBytes += 8
-        # Default is Microsoft.WindowsAzure.Storage.Blob.BlockListingFilter.Committed. Need All
-        $Blob.ICloudBlob.DownloadBlockList([Microsoft.WindowsAzure.Storage.Blob.BlockListingFilter]::All) |
-            ForEach-Object { $blobSizeInBytes += $_.Length + $_.Name.Length }
+        if($Blob.BlobType -eq [Microsoft.WindowsAzure.Storage.Blob.BlobType]::BlockBlob)
+        {
+            $blobSizeInBytes += 8
+            # Default is Microsoft.WindowsAzure.Storage.Blob.BlockListingFilter.Committed. Need All
+            $action = { param($requestOption) return $Blob.ICloudBlob.DownloadBlockList([Microsoft.WindowsAzure.Storage.Blob.BlockListingFilter]::All, $null, $requestOption) }                
+
+            $blocks=Retry-OnRequest $action      
+
+            if ($null -eq $blocks)
+            {
+                $blobSizeInBytes += $Blob.ICloudBlob.Properties.Length
+            }
+            else
+            {
+                $blocks | ForEach-Object { $blobSizeInBytes += $_.Length + $_.Name.Length }
+            }  
+        }
+        elseif($Blob.BlobType -eq [Microsoft.WindowsAzure.Storage.Blob.BlobType]::PageBlob)
+        {
+            # It could cause server time out issue when trying to get page ranges of highly fragmented page blob 
+            # Get page ranges in segment can mitigate chance of meeting such kind of server time out issue
+            # See https://blogs.msdn.microsoft.com/windowsazurestorage/2012/03/26/getting-the-page-ranges-of-a-large-page-blob-in-segments/ for details.
+            $pageRangesSegSize = 148 * 1024 * 1024L
+            $totalSize = $Blob.ICloudBlob.Properties.Length
+            $pageRangeSegOffset = 0
+        
+            $pageRangesTemp = New-Object System.Collections.ArrayList
+        
+            while ($pageRangeSegOffset -lt $totalSize)
+            {
+                $action = {param($requestOption) return $Blob.ICloudBlob.GetPageRanges($pageRangeSegOffset, $pageRangesSegSize, $null, $requestOption) }
+
+                Retry-OnRequest $action | ForEach-Object { $pageRangesTemp.Add($_) }  | Out-Null
+                $pageRangeSegOffset += $pageRangesSegSize
+            }
+
+            $pageRanges = New-Object System.Collections.ArrayList
+
+            foreach ($pageRange in $pageRangesTemp)
+            {
+                if($lastRange -eq $Null)
+                {
+                    $lastRange = New-Object PageRange
+                    $lastRange.StartOffset = $pageRange.StartOffset
+                    $lastRange.EndOffset =  $pageRange.EndOffset
+                }
+                else
+                {
+                    if (($lastRange.EndOffset + 1) -eq $pageRange.StartOffset)
+                    {
+                        $lastRange.EndOffset = $pageRange.EndOffset
+                    }
+                    else
+                    {
+                        $pageRanges.Add($lastRange)  | Out-Null
+                        $lastRange = New-Object PageRange
+                        $lastRange.StartOffset = $pageRange.StartOffset
+                        $lastRange.EndOffset =  $pageRange.EndOffset
+                    }
+                }
+            }
+
+            $pageRanges.Add($lastRange) | Out-Null
+            $pageRanges |  ForEach-Object { 
+                    $blobSizeInBytes += 12 + $_.EndOffset - $_.StartOffset 
+                }
+        }
+        else
+        {
+            $blobSizeInBytes += $Blob.ICloudBlob.Properties.Length
+        }
+        return $blobSizeInBytes
     }
     else
     {
-        $Blob.ICloudBlob.GetPageRanges() |
-            ForEach-Object { $blobSizeInBytes += 12 + $_.EndOffset - $_.StartOffset }
+        $blobSizeInBytes += $Blob.ICloudBlob.Properties.Length
     }
-
     return $blobSizeInBytes
 }
 
@@ -69,7 +180,9 @@ function Get-ContainerBytes
 {
     param(
         [Parameter(Mandatory=$true)]
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer]$Container)
+        [Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer]$Container,
+        [Parameter(Mandatory=$false)]
+        [bool]$IsPremiumAccount = $false)
 
     # Base + name of container
     $containerSizeInBytes = 48 + $Container.Name.Length*2
@@ -104,7 +217,7 @@ function Get-ContainerBytes
         }
 
         $Blobs | ForEach-Object {
-                $blobSize = Get-BlobBytes $_
+                $blobSize = Get-BlobBytes $_ $IsPremiumAccount
                 $containerSizeInBytes += $blobSize
                 $blobCount++
 
@@ -129,6 +242,17 @@ if($storageAccount -eq $null)
 
 $storageContext = $storageAccount.Context
 
+if (-not ([System.Management.Automation.PSTypeName]'PageRange').Type)
+{
+    $Source = "
+        public class PageRange
+        {
+            public long StartOffset;
+            public long EndOffset;
+        }"
+    Add-Type -TypeDefinition $Source
+}
+
 $containers = New-Object System.Collections.ArrayList
 if($ContainerName.Length -ne 0)
 {
@@ -141,12 +265,13 @@ else
 }
 
 $sizeInBytes = 0
+$IsPremiumAccount = ($storageAccount.Sku.Tier -eq "Premium")
 
 if($containers.Count -gt 0)
 {
     $containers | ForEach-Object {
         Write-Output("Calculating container {0} ..." -f $_.CloudBlobContainer.Name)
-        $result = Get-ContainerBytes $_.CloudBlobContainer
+        $result = Get-ContainerBytes $_.CloudBlobContainer $IsPremiumAccount
         $sizeInBytes += $result.containerSize
 
         Write-Output("Container '{0}' with {1} blobs has a sizeof {2:F2} MB." -f $_.CloudBlobContainer.Name,$result.blobCount,($result.containerSize/1MB))
