@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Current Release
+
+## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 * Added ResourceName argument completer to all cmdlets.
 
