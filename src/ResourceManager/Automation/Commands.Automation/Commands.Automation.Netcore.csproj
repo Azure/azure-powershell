@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="2.0.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
