@@ -40,8 +40,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(		
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The Name of ExpressRoute Circuit")]		
-         [ValidateNotNullOrEmpty]		
+             HelpMessage = "The Name of ExpressRoute Circuit")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]		
          public string ExpressRouteCircuitName { get; set; }		
  		
          [Parameter(		
