@@ -106,7 +106,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
-                Identity = model.Identity
+                Identity = model.Identity,
+                DnsZonePartner = model.DnsZonePartner
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -179,6 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             sku.Tier = resp.Sku.Tier;
 
             managedInstance.Sku = sku;
+            managedInstance.DnsZone = resp.DnsZone;
 
             return managedInstance;
         }

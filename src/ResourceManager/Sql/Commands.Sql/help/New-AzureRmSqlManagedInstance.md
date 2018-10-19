@@ -16,7 +16,7 @@ Creates a SQL Database Managed instance.
 ```
 New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  -AdministratorCredential <PSCredential> -Location <String> -SubnetId <String> -LicenseType <String>
- -StorageSizeInGB <Int32> -VCore <Int32> -SkuName <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
+ -StorageSizeInGB <Int32> -VCore <Int32> -SkuName <String> -DnsZonePartner <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
 ```
 New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  -AdministratorCredential <PSCredential> -Location <String> -SubnetId <String> -LicenseType <String>
- -StorageSizeInGB <Int32> -VCore <Int32> -Edition <String> -ComputeGeneration <String> [-Tag <Hashtable>]
+ -StorageSizeInGB <Int32> -VCore <Int32> -Edition <String> -ComputeGeneration <String> -DnsZonePartner <String> [-Tag <Hashtable>]
  [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ The **New-AzureRmSqlManagedInstance** cmdlet creates an Azure SQL Database Manag
 
 ### Example 1: Create a new Azure SQL Database Managed instance
 ```
-PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -SkuName GP_Gen4
+PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -SkuName GP_Gen4 -DnsZonePartner "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/partnerServerForDnsZone"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -51,13 +51,14 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+DnsZone                  : ad35cna0mw
 ```
 
 This command creates a new Azure SQL Database Managed instance by using Edition and ComputeGeneration parameters.
 
 ### Example 2: Create a new Azure SQL Database Managed instance
 ```
-PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
+PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4 -DnsZonePartner "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/partnerServerForDnsZone"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -72,6 +73,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+DnsZone                  : ad35cna0mw
 ```
 
 This command creates a new Azure SQL Database Managed instance by using by using Edition and ComputeGeneration parameters.
@@ -298,6 +300,20 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -DnsZonePartner
+The resource id of the partner Managed Server to inherit DnsZone property from for Managed instance creation
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: false
 Position: Named
 Default value: None
 Accept pipeline input: False
