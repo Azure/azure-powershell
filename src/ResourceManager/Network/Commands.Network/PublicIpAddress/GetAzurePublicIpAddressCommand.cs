@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "ExpandScaleSetIp")]
+        [ResourceNameCompleter("Microsoft.Network/publicIPAddresses", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
