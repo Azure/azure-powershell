@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="YamlDotNet" Version="4.2.4" />
+    <PackageReference Include="YamlDotNet.Signed" Version="5.2.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll', 
@@ -82,6 +82,10 @@ CmdletsToExport = 'Get-AzureRmDataLakeStoreTrustedIdProvider',
                'Get-AzureRmDataLakeStoreFirewallRule', 
                'Set-AzureRmDataLakeStoreFirewallRule', 
                'Add-AzureRmDataLakeStoreFirewallRule', 
+			   'Get-AzureRmDataLakeStoreVirtualNetworkRule', 
+			   'Set-AzureRmDataLakeStoreVirtualNetworkRule', 
+			   'Add-AzureRmDataLakeStoreVirtualNetworkRule', 
+			   'Remove-AzureRmDataLakeStoreVirtualNetworkRule', 
                'Add-AzureRmDataLakeStoreItemContent', 
                'Enable-AzureRmDataLakeStoreKeyVault', 
                'Export-AzureRmDataLakeStoreItem', 
@@ -116,6 +120,8 @@ AliasesToExport = 'Get-AdlStoreTrustedIdProvider', 'Remove-AdlStoreTrustedIdProv
                'Remove-AdlStoreFirewallRule', 'Set-AdlStoreTrustedIdProvider', 
                'Add-AdlStoreTrustedIdProvider', 'Get-AdlStoreFirewallRule', 
                'Set-AdlStoreFirewallRule', 'Add-AdlStoreFirewallRule', 
+			   'Get-AdlStoreVirtualNetworkRule', 'Set-AdlStoreVirtualNetworkRule', 
+			   'Add-AdlStoreVirtualNetworkRule', 'Remove-AdlStoreVirtualNetworkRule',
                'Add-AdlStoreItemContent', 'Export-AdlStoreItem', 
                'Enable-AdlStoreKeyVault', 'Get-AdlStoreChildItem', 
                'Get-AdlStoreItem', 'Get-AdlStoreItemAclEntry', 
