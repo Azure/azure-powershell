@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     public class GetAzureRMWebAppContainerContinuousDeploymentUrl : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", new string[] { "ResourceGroupName", "Name" })]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
         public override void ExecuteCmdlet()

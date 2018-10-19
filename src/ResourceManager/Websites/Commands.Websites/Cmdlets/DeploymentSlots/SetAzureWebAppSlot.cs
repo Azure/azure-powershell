@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class SetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [ResourceNameCompleter("Microsoft.Web/serverfarms", new string[] { "DoNotFilter" })]
         public string AppServicePlan { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Default documents for web app")]

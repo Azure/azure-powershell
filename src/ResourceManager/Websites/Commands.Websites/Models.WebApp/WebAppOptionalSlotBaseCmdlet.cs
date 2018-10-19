@@ -20,11 +20,13 @@ namespace Microsoft.Azure.Commands.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true,
             HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Web/sites", new string[] { "ResourceGroupName" })]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false,
             HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", new string[] { "ResourceGroupName", "Name" })]
         public string Slot { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true,
