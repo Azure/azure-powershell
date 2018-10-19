@@ -23,6 +23,7 @@
     <ItemGroup>
       <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.Commands*.dll" />
       <UnsignedFiles Include="$(OutputDir)net452\Microsoft.WindowsAzure.Commands*.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)net452\Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
   </Target>
 
