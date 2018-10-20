@@ -20,13 +20,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(VerbsCommon.Get, EventGridTopicKeyVerb, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(TopicSharedAccessKeys))]
-    public class GetAzureRmEventGridTopicKeys : AzureEventGridCmdletBase
+    [Cmdlet(VerbsCommon.Get, EventGridDomainKeyVerb, DefaultParameterSetName = DomainNameParameterSet), OutputType(typeof(DomainSharedAccessKeys))]
+    public class GetAzureEventGridDomainKeys : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            ParameterSetName = TopicNameParameterSet,
+            ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -36,24 +36,24 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            ParameterSetName = TopicNameParameterSet,
-            HelpMessage = EventGridConstants.TopicNameHelp)]
+            ParameterSetName = DomainNameParameterSet,
+            HelpMessage = EventGridConstants.DomainNameHelp)]
         [ValidateNotNullOrEmpty]
-        [Alias("TopicName")]
+        [Alias("DomainName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicInputObjectHelp,
-            ParameterSetName = TopicInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.DomainInputObjectHelp,
+            ParameterSetName = DomainInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic InputObject { get; set; }
+        public PSDomain InputObject { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicResourceIdHelp,
+            HelpMessage = EventGridConstants.DomainResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -61,24 +61,24 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             string resourceGroupName;
-            string topicName;
+            string domainName;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
             }
             else if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
-                topicName = this.InputObject.TopicName;
+                domainName = this.InputObject.DomainName;
             }
             else
             {
                 resourceGroupName = this.ResourceGroupName;
-                topicName = this.Name;
+                domainName = this.Name;
             }
 
-            this.WriteObject(this.Client.GetTopicSharedAccessKeys(resourceGroupName, topicName));
+            this.WriteObject(this.Client.GetDomainSharedAccessKeys(resourceGroupName, domainName));
         }
     }
 }

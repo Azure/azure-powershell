@@ -26,7 +26,18 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         protected const string TopicInputObjectParameterSet = "TopicInputObjectParameterSet";
         protected const string TopicKeyInputObjectParameterSet = "TopicKeyInputObjectParameterSet";
-        protected const string EventSubscriptionInputObjectParameterSet = "EventSubscriptionInputObjectSet";
+
+        protected const string EventSubscriptionCustomTopicInputObjectParameterSet = "EventSubscriptionCustomTopicInputObjectParameterSet";
+        protected const string EventSubscriptionDomainInputObjectParameterSet = "EventSubscriptionDomainInputObjectParameterSet";
+        protected const string EventSubscriptionDomainTopicInputObjectParameterSet = "EventSubscriptionDomainTopicInputObjectParameterSet";
+
+        protected const string DomainInputObjectParameterSet = "DomainInputObjectParameterSet";
+        protected const string DomainKeyInputObjectParameterSet = "DomainKeyInputObjectParameterSet";
+
+        protected const string DomainEventSubscriptionParameterSet = "DomainEventSubscriptionParameterSet";
+        protected const string DomainTopicEventSubscriptionParameterSet = "DomainTopicEventSubscriptionParameterSet";
+        protected const string EventSubscriptionDomainNameParameterSet = "EventSubscriptionDomainNameParameterSet";
+        protected const string EventSubscriptionDomainTopicNameParameterSet = "EventSubscriptionDomainTopicNameParameterSet";
 
         protected const string TopicNameParameterSet = "TopicNameParameterSet";
         protected const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSet";
@@ -37,10 +48,17 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         protected const string EventSubscriptionTopicNameParameterSet = "EventSubscriptionTopicNameParameterSet";
         protected const string EventSubscriptionTopicTypeNameParameterSet = "EventSubscriptionTopicTypeNameParameterSet";
+        protected const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
         protected const string AliasResourceGroup = "ResourceGroup";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
+
+        protected const string EventGridDomainVerb = "AzureRmEventGridDomain";
+        protected const string EventGridDomainTopicVerb = "AzureRmEventGridDomainTopic";
+        protected const string EventGridDomainKeyVerb = "AzureRmEventGridDomainKey";
+        protected const string DomainNameParameterSet = "DomainNameParameterSet";
+        protected const string DomainTopicNameParameterSet = "DomainTopicNameParameterSet";
 
         EventGridClient client;
 

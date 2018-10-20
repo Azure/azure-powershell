@@ -22,23 +22,24 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     /// <summary>
-    /// 'Get-AzureRmEventGridTopic' Cmdlet gives the details of a / List of EventGrid topic(s)
-    /// <para> If Topic name provided, a single Topic details will be returned</para>
-    /// <para> If Topic name not provided, list of Topics will be returned</para>
+    /// 'Get-AzureRmEventGridDomain' Cmdlet gives the details of a / List of EventGrid domain(s)
+    /// <para> If Domain name provided, a single Domain details will be returned</para>
+    /// <para> If Domain name not provided, list of Domains will be returned</para>
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
-        EventGridTopicVerb,
+        EventGridDomainVerb,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-     OutputType(typeof(PSTopic), typeof(List<PSTopicListInstance>))]
-    public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
+     OutputType(typeof(PSDomain), typeof(List<PSDomainListInstance>))]
+
+    public class GetAzureEventGridDomain : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -54,16 +55,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            HelpMessage = EventGridConstants.DomainNameHelp,
+            ParameterSetName = DomainNameParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("TopicName")]
+        [Alias("DomainName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicResourceIdHelp,
+            HelpMessage = EventGridConstants.DomainResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -71,55 +72,55 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
-            string topicName = string.Empty;
+            string domainName = string.Empty;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
             }
             else if (!string.IsNullOrEmpty(this.Name))
             {
                 // If Name is provided, ResourceGroup should be non-empty as well
                 resourceGroupName = this.ResourceGroupName;
-                topicName = this.Name;
+                domainName = this.Name;
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 resourceGroupName = this.ResourceGroupName;
             }
 
-            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(topicName))
+            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(domainName))
             {
-                // Get details of the Event Grid topic
-                Topic topic = this.Client.GetTopic(resourceGroupName, topicName);
-                PSTopic psTopic = new PSTopic(topic);
-                this.WriteObject(psTopic);
+                // Get details of the Event Grid domain
+                Domain domain = this.Client.GetDomain(resourceGroupName, domainName);
+                PSDomain psDomain = new PSDomain(domain);
+                this.WriteObject(psDomain);
             }
-            else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(topicName))
+            else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
             {
-                // List all Event Grid topics in the given resource group
-                IEnumerable<Topic> topicsList = this.Client.ListTopicsByResourceGroup(resourceGroupName);
+                // List all Event Grid domains in the given resource group
+                IEnumerable<Domain> domainsList = this.Client.ListDomainsByResourceGroup(resourceGroupName);
 
-                List<PSTopicListInstance> psTopicsList = new List<PSTopicListInstance>();
-                foreach (Topic topic in topicsList)
+                List<PSDomainListInstance> psDomainsList = new List<PSDomainListInstance>();
+                foreach (Domain domain in domainsList)
                 {
-                    psTopicsList.Add(new PSTopicListInstance(topic));
+                    psDomainsList.Add(new PSDomainListInstance(domain));
                 }
 
-                this.WriteObject(psTopicsList, true);
+                this.WriteObject(psDomainsList, true);
             }
             else
             {
-                // List all Event Grid topics in the given subscription
-                IEnumerable<Topic> topicsList = this.Client.ListTopicsBySubscription();
+                // List all Event Grid domains in the given subscription
+                IEnumerable<Domain> domainsList = this.Client.ListDomainsBySubscription();
 
-                List<PSTopicListInstance> psTopicsList = new List<PSTopicListInstance>();
-                foreach (Topic topic in topicsList)
+                List<PSDomainListInstance> psDomainsList = new List<PSDomainListInstance>();
+                foreach (Domain domain in domainsList)
                 {
-                    psTopicsList.Add(new PSTopicListInstance(topic));
+                    psDomainsList.Add(new PSDomainListInstance(domain));
                 }
 
-                this.WriteObject(psTopicsList, true);
+                this.WriteObject(psDomainsList, true);
             }
         }
     }

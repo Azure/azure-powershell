@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -27,18 +26,18 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.New,
-        EventGridTopicVerb,
+        EventGridDomainVerb,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = TopicNameParameterSet),
-     OutputType(typeof(PSTopic))]
-    public class NewAzureEventGridTopic : AzureEventGridCmdletBase
+        DefaultParameterSetName = DomainNameParameterSet),
+     OutputType(typeof(PSDomain))]
+    public class NewAzureEventGridDomain : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -48,19 +47,19 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            HelpMessage = EventGridConstants.DomainNameHelp,
+            ParameterSetName = DomainNameParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("TopicName")]
+        [Alias("DomainName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = EventGridConstants.TopicLocationHelp,
-            ParameterSetName = TopicNameParameterSet)]
-        [LocationCompleter("Microsoft.EventGrid/topics")]
+            HelpMessage = EventGridConstants.DomainLocationHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [LocationCompleter("Microsoft.EventGrid/domains")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -72,14 +71,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputSchemaHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventV01Schema, IgnoreCase = true)]
         public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
@@ -88,30 +87,30 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingFieldHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingField { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingDefaultValue { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // Create a new Event Grid Topic
+            // Create a new Event Grid Domain
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
-            if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.Name, $"Create a new EventGrid domain {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Topic topic = this.Client.CreateTopic(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
-                PSTopic psTopic = new PSTopic(topic);
-                this.WriteObject(psTopic);
+                Domain domain = this.Client.CreateDomain(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
+                PSDomain psDomain = new PSDomain(domain);
+                this.WriteObject(psDomain);
             }
         }
     }

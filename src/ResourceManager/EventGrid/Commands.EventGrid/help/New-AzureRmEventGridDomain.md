@@ -1,47 +1,55 @@
 ---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/new-azurermeventgridtopic
+online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmEventGridTopic
+# New-AzureRmEventGridDomain
 
 ## SYNOPSIS
-Creates a new Azure Event Grid Topic.
+Creates a new Azure Event Grid Domain.
 
 ## SYNTAX
 
 ```
-New-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+New-AzureRmEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Tag] <Hashtable>] [-InputSchema <String>] [-InputMappingField <Hashtable>]
  [-InputMappingDefaultValue <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new Azure Event Grid Topic. Once the topic is created, an application can publish events to the topic endpoint.
+Creates a new Azure Event Grid Domain. Once the domain is created, an application can publish events to the topic endpoint.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzureRmEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Location westus2
+```powershell
+PS C:\> New-AzureRmEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2
 ```
 
-Creates an Event Grid topic \`Topic1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```
-PS C:\> New-AzureRmEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+PS C:\> New-AzureRmEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
-Creates an Event Grid topic \`Topic1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
+
+### Example 2
+```
+PS C:\> New-AzureRmEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+New-AzureRmEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 --Tag @{ Department="Finance"; Environment="Test" } -InputSchema customeventschema -InputMappingField @{id="CustomIdField"; topic="CustomTopicField"; eventtime="CustomEventTimeField"; subject="CustomSubjectField"; eventtype="CustomEventTypeField"; dataversion="CustomDataVersionField"} -InputMappingDefaultValue @{subject="CustomSubjectDefaultValue"; eventtype="CustomEventTypeDefaultValue"; dataversion="CustomDataVersionDefaultValue"}
+```
+
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment" with the specified customeventschema Input Schema along with the corresponding input mapping fields and default values that are used for input mapping.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -56,7 +64,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputMappingDefaultValue
-Hashtable which represents the input mapping fields with default value in space separated key = value format. Allowed key names are: subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.
+Hashtable which represents the input mapping fields with default value in space separated key = value format.
+Allowed key names are: subject, eventtype, and dataversion.
+This is used when InputSchemaHelp is customeventschema only.
 
 ```yaml
 Type: Hashtable
@@ -71,7 +81,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputMappingField
-Hashtable which represents the input mapping fields in space separated key = value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.
+Hashtable which represents the input mapping fields in space separated key = value format.
+Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion.
+This is used when InputSchemaHelp is customeventschema only.
 
 ```yaml
 Type: Hashtable
@@ -86,7 +98,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputSchema
-The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default value is eventgridschema. Note that if customeventschema is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.
+The schema of the input events for the topic.
+Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema.
+Default value is eventgridschema.
+Note that if customeventschema is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.
 
 ```yaml
 Type: String
@@ -102,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the topic
+The location of the domain.
 
 ```yaml
 Type: String
@@ -117,12 +132,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the topic.
+EventGrid domain name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: TopicName
+Aliases: DomainName
 
 Required: True
 Position: 1
@@ -132,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group in which the topic should be created.
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -147,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags.
+Hashtable which represents resource Tags.
 
 ```yaml
 Type: Hashtable
@@ -198,11 +213,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
 
 ## NOTES
 

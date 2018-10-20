@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.EventGrid.Models;
 
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.MaxDeliveryAttempt = eventSubscription.RetryPolicy?.MaxDeliveryAttempts;
             this.EventDeliverySchema = eventSubscription.EventDeliverySchema;
             this.deadletterDestination = eventSubscription.DeadLetterDestination;
+            this.ExpirationDate = eventSubscription.ExpirationTimeUtc;
         }
 
         public PSEventSubscription(EventSubscription eventSubscription, string fullEndpointUrl)
@@ -67,6 +69,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public int? MaxDeliveryAttempt { get; set; }
 
         public string EventDeliverySchema { get; set; }
+
+        public DateTime? ExpirationDate { get; set; }
 
         public string DeadLetterEndpoint
         {

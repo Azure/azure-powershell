@@ -33,6 +33,24 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Get ResourceGroup name
+#>
+function Get-CommonResourceGroupName1
+{
+  return "EventGridPowershellResourceGroup1"
+}
+
+<#
+.SYNOPSIS
+Get ResourceGroup name
+#>
+function Get-CommonResourceGroupName2
+{
+  return "EventGridPowershellResourceGroup1"
+}
+
+<#
+.SYNOPSIS
 Get EventSubscription name
 #>
 function Get-EventSubscriptionName
@@ -47,6 +65,24 @@ Get topic name
 function Get-TopicName
 {
     return "PSTestTopic-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get domain name
+#>
+function Get-DomainName
+{
+    return "PSTestDomain-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get domain topic name
+#>
+function Get-DomainTopicName
+{
+    return "PSTestDomainTopic-" + (getAssetName)
 }
 
 <#

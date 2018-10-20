@@ -78,7 +78,10 @@ CmdletsToExport = 'New-AzureRmEventGridTopic', 'Get-AzureRmEventGridTopic',
                'New-AzureRmEventGridSubscription', 
                'Update-AzureRmEventGridSubscription', 
                'Remove-AzureRmEventGridSubscription', 
-               'Get-AzureRmEventGridSubscription', 'Get-AzureRmEventGridTopicType'
+               'Get-AzureRmEventGridSubscription', 'Get-AzureRmEventGridTopicType',
+               'New-AzureRmEventGridDomain', 'Get-AzureRmEventGridDomain',
+               'Get-AzureRmEventGridDomainTopic','Get-AzureRmEventGridDomainKey',
+               'New-AzureRmEventGridDomainKey','Remove-AzureRmEventGridDomain'
 
 # Variables to export from this module
 # VariablesToExport = @()

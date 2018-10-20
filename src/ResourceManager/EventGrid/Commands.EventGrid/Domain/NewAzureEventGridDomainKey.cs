@@ -20,14 +20,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(VerbsCommon.New, EventGridTopicKeyVerb, DefaultParameterSetName = TopicNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(TopicSharedAccessKeys))]
-    public class NewAzureEventGridTopicKey : AzureEventGridCmdletBase
+    [Cmdlet(VerbsCommon.New, EventGridDomainKeyVerb, DefaultParameterSetName = DomainNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(DomainSharedAccessKeys))]
+
+    public class NewAzureEventGridDomainKey : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            ParameterSetName = TopicNameParameterSet,
+            ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -38,23 +39,23 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            ParameterSetName = TopicNameParameterSet,
-            HelpMessage = EventGridConstants.TopicNameHelp)]
+            ParameterSetName = DomainNameParameterSet,
+            HelpMessage = EventGridConstants.DomainNameHelp)]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        public string DomainName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            ParameterSetName = TopicNameParameterSet,
+            ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.KeyNameHelp)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
-            ParameterSetName = TopicInputObjectParameterSet)]
+            ParameterSetName = DomainInputObjectParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -67,42 +68,42 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicInputObjectHelp,
-            ParameterSetName = TopicInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.DomainInputObjectHelp,
+            ParameterSetName = DomainInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic InputObject { get; set; }
+        public PSDomain InputObject { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicResourceIdHelp,
+            HelpMessage = EventGridConstants.DomainResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.TopicName, $"Regenerate key {this.KeyName} for topic {this.TopicName} in Resource Group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.KeyName} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
             {
                 string resourceGroupName;
-                string topicName;
+                string domainName;
 
                 if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                    EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
                 }
                 else if (this.InputObject != null)
                 {
                     resourceGroupName = this.InputObject.ResourceGroupName;
-                    topicName = this.InputObject.TopicName;
+                    domainName = this.InputObject.DomainName;
                 }
                 else
                 {
                     resourceGroupName = this.ResourceGroupName;
-                    topicName = this.TopicName;
+                    domainName = this.DomainName;
                 }
 
-                this.WriteObject(this.Client.RegenerateTopicKey(resourceGroupName, topicName, this.KeyName));
+                this.WriteObject(this.Client.RegenerateDomainKey(resourceGroupName, domainName, this.KeyName));
             }
         }
     }

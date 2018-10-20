@@ -32,7 +32,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="2.0.0-preview" />
+    <Reference Include="Microsoft.Azure.Management.EventGrid">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.2.1.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

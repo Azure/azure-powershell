@@ -21,17 +21,18 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        EventGridTopicVerb,
-        DefaultParameterSetName = TopicNameParameterSet,
+        EventGridDomainVerb,
+        DefaultParameterSetName = DomainNameParameterSet,
         SupportsShouldProcess = true),
-    OutputType(typeof(bool))]
-    public class RemoveAzureRmEventGridTopic : AzureEventGridCmdletBase
+        OutputType(typeof(bool))]
+
+    public class RemoveAzureEventGridDomain : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = DomainNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -40,16 +41,16 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            HelpMessage = EventGridConstants.DomainNameHelp,
+            ParameterSetName = DomainNameParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("TopicName")]
+        [Alias("DomainName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventGrid Topic ResourceID.",
+            HelpMessage = EventGridConstants.DomainResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -57,37 +58,37 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicInputObjectHelp,
-            ParameterSetName = TopicInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.DomainInputObjectHelp,
+            ParameterSetName = DomainInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic InputObject { get; set; }
+        public PSDomain InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Remove topic {this.Name} in resource group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.Name, $"Remove domain {this.Name} in resource group {this.ResourceGroupName}"))
             {
                 string resourceGroupName = string.Empty;
-                string topicName = string.Empty;
+                string domainName = string.Empty;
 
                 if (!string.IsNullOrEmpty(this.Name))
                 {
                     resourceGroupName = this.ResourceGroupName;
-                    topicName = this.Name;
+                    domainName = this.Name;
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                    EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
                 }
                 else if (this.InputObject != null)
                 {
                     resourceGroupName = this.InputObject.ResourceGroupName;
-                    topicName = this.InputObject.TopicName;
+                    domainName = this.InputObject.DomainName;
                 }
 
-                this.Client.DeleteTopic(resourceGroupName, topicName);
+                this.Client.DeleteDomain(resourceGroupName, domainName);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);
