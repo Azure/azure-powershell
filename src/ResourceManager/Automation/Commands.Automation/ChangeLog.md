@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
 
 ## Version 5.1.1
 * Fixed issue with default resource groups not being set.
