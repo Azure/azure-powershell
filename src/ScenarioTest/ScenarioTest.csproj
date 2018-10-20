@@ -2,6 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ServiceManagementDependencies>true</ServiceManagementDependencies>
+    <UseTestImports>false</UseTestImports>
   </PropertyGroup>
   <Import Project="$(ProjectDir)..\Dependencies.Test.targets" />
   <PropertyGroup>
