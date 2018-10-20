@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.EventGrid.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid.Utilities
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 
             // ResourceID should be in the following format:
             // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/topics/topic1
-            string[] tokens = resourceId.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length != 8)
             {
                 throw new Exception($"ResourceId {resourceId} not in the expected format");
@@ -42,10 +42,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
             topicName = tokens[7];
         }
 
-        public static void GetResourceGroupNameAndDomainName(
-    string resourceId,
-    out string resourceGroupName,
-    out string domainName)
+        public static void GetResourceGroupNameAndDomainName(string resourceId, out string resourceGroupName, out string domainName)
         {
             if (string.IsNullOrEmpty(resourceId))
             {

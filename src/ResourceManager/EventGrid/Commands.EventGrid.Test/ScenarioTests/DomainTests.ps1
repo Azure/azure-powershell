@@ -18,12 +18,7 @@ Tests EventGrid Domain Create, Get and List operations.
 #>
 function DomainTests {
     # Setup
-
-
-
-	###########TODO: add validation for new values/parameters retry policy here and in topic.
-
-	$location = Get-LocationForEventGrid
+    $location = Get-LocationForEventGrid
     $domainName = Get-DomainName
     $domainName2 = Get-DomainName
     $domainName3 = Get-DomainName
@@ -42,7 +37,7 @@ function DomainTests {
     Write-Debug "ResourceGroup name : $secondResourceGroup"
     New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
     Write-Debug "Domain: $domainName"
     $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -75,23 +70,19 @@ function DomainTests {
 
     Assert-True {$allCreatedDomains.Count -ge 0} "Domains created earlier are not found."
 
-    Write-Debug " Deleting domain: $domainName"
+    Write-Debug "Deleting domain: $domainName"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
 
-    Write-Debug " Creating a new EventGrid domain: $domainName4 in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid domain: $domainName4 in resource group $resourceGroupName"
     $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName4 -Location $location
 
-    Write-Debug " Deleting domain: $domainName4 using the InputObject parameter set from Get-AzureRmEventGridDomain output"
+    Write-Debug "Deleting domain: $domainName4 using the InputObject parameter set from Get-AzureRmEventGridDomain output"
     Get-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName4 | Remove-AzureRmEventGridDomain
 
-    # Offline playback of tests is failing if I use Get-AzureRmResource, hence temporarily commenting this out
-    # Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/domains/$domainName3" | Remove-AzureRmEventGridDomain
-
-    Write-Debug " Deleting domain: $domainName2 using the ResourceID parameter set"
+    Write-Debug "Deleting domain: $domainName2 using the ResourceID parameter set"
     Remove-AzureRmEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/domains/$domainName2"
 
-    # Offline playback of tests is failing if I use Get-AzureRmResource, hence temporarily commenting this out
-    Write-Debug " Deleting domain: $domainName3 using the ResourceID parameter"
+    Write-Debug "Deleting domain: $domainName3 using the ResourceID parameter"
     Remove-AzureRmEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/domains/$domainName3"
 
     # Remove-AzureRmEventGridDomain -ResourceGroup $secondResourceGroup -Name $domainName3
@@ -103,10 +94,10 @@ function DomainTests {
     $returnedDomains2 = Get-AzureRmEventGridDomain -ResourceGroup $secondResourceGroup
     Assert-True {$returnedDomains2.Count -eq 0}
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 
-    Write-Debug " Deleting resourcegroup $secondResourceGroup"
+    Write-Debug "Deleting resourcegroup $secondResourceGroup"
     Remove-AzureRmResourceGroup -Name $secondResourceGroup -Force
 }
 
@@ -125,7 +116,7 @@ function DomainGetKeyTests {
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
@@ -141,10 +132,10 @@ function DomainGetKeyTests {
     $sharedAccessKeys = Get-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName | Get-AzureRmEventGridDomainKey
     Assert-True {$sharedAccessKeys.Count -eq 1}
 
-    Write-Debug " Deleting domain: $domainName"
+    Write-Debug "Deleting domain: $domainName"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -163,7 +154,7 @@ function DomainNewKeyTests {
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
@@ -179,10 +170,10 @@ function DomainNewKeyTests {
     $sharedAccessKeys = Get-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName | New-AzureRmEventGridDomainKey -KeyName "key2"
     Assert-True {$sharedAccessKeys.Count -eq 1}
 
-    Write-Debug " Deleting domain: $domainName"
+    Write-Debug "Deleting domain: $domainName"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -221,7 +212,7 @@ function DomainInputMappingTests {
 
     try
     {
-        Write-Debug " Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName with InputSchema $inputSchemaInvalid"
+        Write-Debug "Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName with InputSchema $inputSchemaInvalid"
         $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location -InputSchema $inputSchemaInvalid
         Assert-True {$false} "New-AzureRmEventGridDomain succeeded while it is expected to fail"
     }
@@ -230,7 +221,7 @@ function DomainInputMappingTests {
         Assert-True {$true}
     }
 
-    Write-Debug " Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
+    Write-Debug "Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
     $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location -InputSchema $inputSchemaEventGridSchema1
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
     Assert-True {$result.InputSchema -eq $expectedInputMappingEventGridSchema} "EventGridSchema is expected."
@@ -320,22 +311,22 @@ function DomainInputMappingTests {
     Assert-True {$createdDomain.DomainName -eq $domainName5} "Domain created earlier is not found."
     Assert-True {$createdDomain.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
 
-    Write-Debug " Deleting domain: $domainName"
+    Write-Debug "Deleting domain: $domainName"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
 
-    Write-Debug " Deleting domain: $domainName2 using the ResourceID parameter set"
+    Write-Debug "Deleting domain: $domainName2 using the ResourceID parameter set"
     Remove-AzureRmEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName2"
 
-    Write-Debug " Deleting domain: $domainName3"
+    Write-Debug "Deleting domain: $domainName3"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName3
 
-    Write-Debug " Deleting domain: $domainName4"
+    Write-Debug "Deleting domain: $domainName4"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName4
 
-    Write-Debug " Deleting domain: $domainName5"
+    Write-Debug "Deleting domain: $domainName5"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5
 
-    Write-Debug " Deleting domain: $domainName6"
+    Write-Debug "Deleting domain: $domainName6"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName6
 
     # Verify that all domains have been deleted correctly
@@ -345,7 +336,7 @@ function DomainInputMappingTests {
     $returnedDomains2 = Get-AzureRmEventGridDomain -ResourceGroup $resourceGroupName
     Assert-True {$returnedDomains2.Count -eq 0}
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -372,19 +363,19 @@ function DomainTopicTests {
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-    Write-Debug " Creating a new EventSubscription $eventSubscriptionName to domain topic $domainTopicName1 under domain $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventSubscription $eventSubscriptionName to domain topic $domainTopicName1 under domain $domainName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -DomainName $domainName -DomainTopicName $domainTopicName1 -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-    Write-Debug " Creating a new EventSubscription $eventSubscriptionName to domain topic $domainTopicName2 under domain $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventSubscription $eventSubscriptionName to domain topic $domainTopicName2 under domain $domainName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -DomainName $domainName -DomainTopicName $domainTopicName2 -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-    Write-Debug " Creating a new EventSubscription $eventSubscriptionName to domain topic $domainTopicName3 under domain $domainName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventSubscription $eventSubscriptionName to domain topic $domainTopicName3 under domain $domainName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -DomainName $domainName -DomainTopicName $domainTopicName3 -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
@@ -424,9 +415,9 @@ function DomainTopicTests {
         Assert-True {$true}
     }
 
-    Write-Debug " Deleting domain: $domainName"
+    Write-Debug "Deleting domain: $domainName"
     Remove-AzureRmEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }

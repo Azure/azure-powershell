@@ -36,7 +36,7 @@
 
 * Update the following cmdlets to support new scenario in 2018-09-15-preview API version
     - New-AzureRmEventGridSubscription: 
-        - Add new mandatory parameters to support pipling for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
+        - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
         - Add new mandatory parameters for specifying the new Event Grid Domain name and/or Event Grid Domain Topic name to allow creating new event subscription under these resources.
         - Add new Parameter sets for domains and domain topics to allow reusing existing parameters (e.g., EndPointType, SubjectBeginsWith, etc).
         - Add new optional parameters for specifying: 
@@ -45,7 +45,7 @@
     - Update-AzureRmEventGridSubscription: Add new optional parameters for specifying: 
         - Similar as New-AzureRmEventGridSubscription.
     - Remove-AzureRmEventGridSubscription
-        - Add new mandatory parameters to support pipling for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
+        - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
         - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
 
 ## Version 0.3.3

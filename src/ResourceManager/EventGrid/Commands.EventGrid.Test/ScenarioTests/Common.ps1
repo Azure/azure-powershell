@@ -33,24 +33,6 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
-Get ResourceGroup name
-#>
-function Get-CommonResourceGroupName1
-{
-  return "EventGridPowershellResourceGroup1"
-}
-
-<#
-.SYNOPSIS
-Get ResourceGroup name
-#>
-function Get-CommonResourceGroupName2
-{
-  return "EventGridPowershellResourceGroup1"
-}
-
-<#
-.SYNOPSIS
 Get EventSubscription name
 #>
 function Get-EventSubscriptionName

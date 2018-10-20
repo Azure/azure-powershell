@@ -35,7 +35,7 @@ function TopicTests {
     Write-Debug "ResourceGroup name : $secondResourceGroup"
     New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
     Write-Debug "Topic: $topicName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -68,16 +68,16 @@ function TopicTests {
 
     Assert-True {$allCreatedtopic.Count -ge 0} "Topics created earlier are not found."
 
-    Write-Debug " Deleting topic: $topicName"
+    Write-Debug "Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
-    Write-Debug " Creating a new EventGrid Topic: $topicName4 in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid Topic: $topicName4 in resource group $resourceGroupName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4 -Location $location
 
-    Write-Debug " Deleting topic: $topicName4 using the InputObject parameter set"
+    Write-Debug "Deleting topic: $topicName4 using the InputObject parameter set"
     Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4 | Remove-AzureRmEventGridTopic
 
-    Write-Debug " Deleting topic: $topicName2 using the ResourceID parameter set"
+    Write-Debug "Deleting topic: $topicName2 using the ResourceID parameter set"
     # Offline playback of tests is failing if I use Get-AzureRmResource, hence temporarily commenting this out
     # Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/topics/$topicName3" | Remove-AzureRmEventGridTopic
     Remove-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/topics/$topicName2"
@@ -91,10 +91,10 @@ function TopicTests {
     $returnedTopics2 = Get-AzureRmEventGridTopic -ResourceGroup $secondResourceGroup
     Assert-True {$returnedTopics2.Count -eq 0}
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 
-    Write-Debug " Deleting resourcegroup $secondResourceGroup"
+    Write-Debug "Deleting resourcegroup $secondResourceGroup"
     Remove-AzureRmResourceGroup -Name $secondResourceGroup -Force
 }
 
@@ -113,7 +113,7 @@ function TopicSetTests {
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
     Write-Debug "Topic: $topicName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -144,10 +144,10 @@ function TopicSetTests {
     Assert-AreEqual $tags3["test1"] $returned_tags3["test1"];
     Assert-AreEqual $tags3["test2"] $returned_tags3["test2"];
 
-    Write-Debug " Deleting topic: $topicName"
+    Write-Debug "Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -166,7 +166,7 @@ function TopicGetKeyTests {
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location    
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
@@ -182,10 +182,10 @@ function TopicGetKeyTests {
     $sharedAccessKeys = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Get-AzureRmEventGridTopicKey
     Assert-True {$sharedAccessKeys.Count -eq 1}
 
-    Write-Debug " Deleting topic: $topicName"
+    Write-Debug "Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -204,7 +204,7 @@ function TopicNewKeyTests {
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location    
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
@@ -220,10 +220,10 @@ function TopicNewKeyTests {
     $sharedAccessKeys = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | New-AzureRmEventGridTopicKey -KeyName "key2"
     Assert-True {$sharedAccessKeys.Count -eq 1}
 
-    Write-Debug " Deleting topic: $topicName"
+    Write-Debug "Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -262,7 +262,7 @@ function TopicInputMappingTests {
 
     try
     {
-        Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName with InputSchema $inputSchemaInvalid"
+        Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName with InputSchema $inputSchemaInvalid"
         $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -InputSchema $inputSchemaInvalid
         Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail"
     }
@@ -271,7 +271,7 @@ function TopicInputMappingTests {
         Assert-True {$true}
     }
 
-    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
+    Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -InputSchema $inputSchemaEventGridSchema1
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
     Assert-True {$result.InputSchema -eq $expectedInputMappingEventGridSchema} "EventGridSchema is expected."
@@ -361,22 +361,22 @@ function TopicInputMappingTests {
     Assert-True {$createdTopic.TopicName -eq $topicName5} "Topic created earlier is not found."
     Assert-True {$createdTopic.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
 
-    Write-Debug " Deleting topic: $topicName"
+    Write-Debug "Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
-    Write-Debug " Deleting topic: $topicName2 using the ResourceID parameter set"
+    Write-Debug "Deleting topic: $topicName2 using the ResourceID parameter set"
     Remove-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName2"
 
-    Write-Debug " Deleting topic: $topicName3"
+    Write-Debug "Deleting topic: $topicName3"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName3
 
-    Write-Debug " Deleting topic: $topicName4"
+    Write-Debug "Deleting topic: $topicName4"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4
 
-    Write-Debug " Deleting topic: $topicName5"
+    Write-Debug "Deleting topic: $topicName5"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5
 
-    Write-Debug " Deleting topic: $topicName6"
+    Write-Debug "Deleting topic: $topicName6"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName6
 
     # Verify that all topics have been deleted correctly
@@ -386,6 +386,6 @@ function TopicInputMappingTests {
     $returnedTopics2 = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName
     Assert-True {$returnedTopics2.Count -eq 0}
 
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Write-Debug "Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
