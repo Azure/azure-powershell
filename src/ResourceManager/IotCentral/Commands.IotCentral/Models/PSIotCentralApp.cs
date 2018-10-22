@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
             {
                 if (this.identifier == null)
                 {
-                    this.identifier = new ResourceIdentifier(this.Id);
+                    this.identifier = new ResourceIdentifier(this.ResourceId);
                 }
                 return this.identifier;
             }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// The Resource Id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
+        public string ResourceId { get; private set; }
 
         /// <summary>
         /// The Resource name.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// The Resource tags.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        public IDictionary<string, string> Tag { get; set; }
 
         /// <summary>
         /// Gets or sets a valid instance SKU.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// The subscription identifier.
         /// </summary>
         [JsonProperty(PropertyName = "subscriptionid")]
-        public string Subscriptionid
+        public string SubscriptionId
         {
             get
             {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// The resource group name
         /// </summary>
         [JsonProperty(PropertyName = "resourcegroup")]
-        public string Resourcegroup
+        public string ResourceGroupName
         {
             get
             {
