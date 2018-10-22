@@ -34,8 +34,7 @@ function Test-ExpressRoutePortCRUD
     $rgname = Get-ResourceGroupName
     $rglocation = Get-ProviderLocation ResourceManagement
     $rname = Get-ResourceName
-    $location = Get-ProviderLocation "Microsoft.Network/ExpressRoutePorts"
-	$location = "centraluseuap"
+	$location = Get-Location "Microsoft.Network" "ExpressRouteCircuits" "Central US EUAP"
 	$peeringLocation = "Unalaska"
 	$encapsulation = "QinQ"
 	$bandwidthInGbps = 1.0
@@ -80,6 +79,4 @@ function Test-ExpressRoutePortCRUD
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-}
-
 }

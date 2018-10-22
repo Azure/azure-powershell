@@ -222,13 +222,13 @@ Gets a route table summary of an ExpressRoute circuit.
 Gets usage statistics of an ExpressRoute circuit.
 
 ### [Get-AzureRmExpressRoutePort](Get-AzureRmExpressRoutePort.md)
-{{Fill in the Synopsis}}
+Gets an Azure ExpressRoutePort resource.
 
 ### [Get-AzureRmExpressRoutePortLinkConfig](Get-AzureRmExpressRoutePortLinkConfig.md)
-{{Fill in the Synopsis}}
+Gets an ExpressRoutePort's link configuration.
 
 ### [Get-AzureRmExpressRoutePortsLocation](Get-AzureRmExpressRoutePortsLocation.md)
-{{Fill in the Synopsis}}
+Gets a list of available locations of ExpressRoutePorts. Gets attributes of a location for a specified location.
 
 ### [Get-AzureRmExpressRouteServiceProvider](Get-AzureRmExpressRouteServiceProvider.md)
 Gets a list ExpressRoute service providers and their attributes.
@@ -751,7 +751,7 @@ Removes an ExpressRoute circuit peering configuration.
 Remove a Firewall.
 
 ### [Remove-AzureRmExpressRoutePort](Remove-AzureRmExpressRoutePort.md)
-Removes aan ExpressRoutePort
+Removes an ExpressRoutePort
 
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
@@ -887,10 +887,6 @@ Resets the Virtual Network Gateway
 
 ### [Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey](Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 Resets the shared key of the virtual network gateway connection.
-
-### [Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey](Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
-
->>>>>>> f4f39f5919... ExpressRoutePort changes
 
 ### [Resize-AzureRmVirtualNetworkGateway](Resize-AzureRmVirtualNetworkGateway.md)
 Resizes an existing virtual network gateway.
