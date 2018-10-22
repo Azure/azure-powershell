@@ -184,6 +184,7 @@ function Test-AzureFSProtection
 			-Container $container `
 			-WorkloadType AzureFiles
 		Assert-True { $item.Name -contains $fileShareName }
+		Assert-True { $item.LastBackupStatus -eq "IRPending" }
 	}
 	finally
 	{
