@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
                 case InteractiveIotCentralParameterSet:
                     break;
                 case InputObjectParameterSet:
-                    this.ResourceGroupName = this.InputObject.Resourcegroup;
+                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
                     this.Name = this.InputObject.Name;
                     break;
                 case ResourceIdParameterSet:
