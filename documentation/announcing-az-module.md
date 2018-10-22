@@ -30,7 +30,7 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 AzureRM will continue to be supported, and important bugs will be fixed, but new development and new Azure capabilities will be shipped only in Az starting December 2018.
 
 ## Authentication Changes
-   - ADAL has removed support for the "not recommended" user credentail auth flow. 
+   - ADAL has removed support for the "not recommended" user credential auth flow.
      - Connect-AzAccount will no longer accept PSCredential from Get-credentail
      - Here are a couple issues that describe why ADAL has removed this support   
         - [Azure ActiveDirectory UserPasswordCredential doesn't support .NET core](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/482#issuecomment-262256236)
