@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public ResourceBackupStatus CheckBackupStatus()
         {
-            string azureStorageAccountName = (string)ProviderData[ProtectionCheckParams.Name];
+            string fileShareName = (string)ProviderData[ProtectionCheckParams.Name];
             string azureStorageAccountResourceGroupName =
                 (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
 
@@ -718,15 +718,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     {
                         ResourceIdentifier storageIdentifier =
                             new ResourceIdentifier(item.Properties.SourceResourceId);
-                        var itemStorageAccountName = storageIdentifier.ResourceName;
                         var itemStorageAccountRgName = storageIdentifier.ResourceGroupName;
 
-                        return itemStorageAccountName.ToLower() == azureStorageAccountName.ToLower() &&
+                        return item.Name.Split(';')[1].ToLower() == fileShareName.ToLower() &&
                             itemStorageAccountRgName.ToLower() == azureStorageAccountResourceGroupName.ToLower();
                     }))
                 {
                     return new ResourceBackupStatus(
-                        azureStorageAccountName,
+                        fileShareName,
                         azureStorageAccountResourceGroupName,
                         vaultId,
                         true);
@@ -734,7 +733,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return new ResourceBackupStatus(
-                azureStorageAccountName,
+                fileShareName,
                 azureStorageAccountResourceGroupName,
                 null,
                 false);

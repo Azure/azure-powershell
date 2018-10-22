@@ -48,7 +48,7 @@ function Test-AzureFSProtectionCheck
 	try
 	{
 		$status = Get-AzureRmRecoveryServicesBackupStatus `
-			-Name $saName `
+			-Name $fileShareFriendlyName `
 			-ResourceGroupName $resourceGroupName `
 			-Type AzureFiles
 
@@ -59,7 +59,7 @@ function Test-AzureFSProtectionCheck
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 		
 		$status = Get-AzureRmRecoveryServicesBackupStatus `
-			-Name $saName `
+			-Name $fileShareFriendlyName `
 			-ResourceGroupName $resourceGroupName `
 			-Type AzureFiles
 
