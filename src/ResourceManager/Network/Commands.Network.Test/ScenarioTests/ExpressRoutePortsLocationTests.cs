@@ -21,10 +21,10 @@ using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {    
-    public class ExpressRoutePortsLocationTestsGenerated : RMTestBase
+    public class ExpressRoutePortsLocationTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
-        public ExpressRoutePortsLocationTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+        public ExpressRoutePortsLocationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
