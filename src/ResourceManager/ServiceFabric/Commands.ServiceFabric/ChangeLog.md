@@ -20,7 +20,9 @@
 ## Current Release
 * Fix add certificate to Linux Vmss.
 
-* Fix `Add-AzureRmServiceFabricClusterCertificate` to display exception correctly (Azure/service-fabric-issues#1054).
+* Fix `Add-AzureRmServiceFabricClusterCertificate`
+    - Using correct thumbprint from new certificate (Azure/service-fabric-issues#932).
+    - Display exception correctly (Azure/service-fabric-issues#1054).
 
 * Fix `Update-AzureRmServiceFabricDurability` to update cluster configuration before starting Vmss CreateOrUpdate operation.
 

@@ -632,7 +632,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 jsonBlob.Password,
                                 X509KeyStorageFlags.Exportable);
 
-                            return certCollection[0].Thumbprint;
+                            var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
+                            if (lastCert?.Thumbprint != null)
+                            {
+                                return lastCert.Thumbprint;
+                            }
                         }
                     }
                 }
