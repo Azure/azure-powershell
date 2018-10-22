@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     {
         private CognitiveServicesManagementClientWrapper cognitiveServicesClientWrapper;
 
-        protected const string CognitiveServicesAccountNounStr = "AzureRmCognitiveServicesAccount";
+         protected const string CognitiveServicesAccountNounStr = ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount";
         protected const string CognitiveServicesAccountKeyNounStr = CognitiveServicesAccountNounStr + "Key";
         protected const string CognitiveServicesAccountSkusNounStr = CognitiveServicesAccountNounStr + "Skus";
         protected const string CognitiveServicesAccountTypeNounStr = CognitiveServicesAccountNounStr + "Type";
