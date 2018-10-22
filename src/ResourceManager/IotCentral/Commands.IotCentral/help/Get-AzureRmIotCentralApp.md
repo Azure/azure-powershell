@@ -42,6 +42,22 @@ PS C:\> Get-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name 
 
 Gets the metadata for the specified IoT Central Application.
 
+Example Output:
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName
+Name              : MyAppResourceName
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : {[key, val]}
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : My Custom Display Name
+Subdomain         : MyAppSubdomain
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
+
 ### Example 2 Get IoT Central Applications in Subscription.
 ```powershell
 PS C:\> Get-AzureRmIotCentralApp
@@ -49,12 +65,72 @@ PS C:\> Get-AzureRmIotCentralApp
 
 Gets the metadata for all the IoT Central Applications in the current Subscription.
 
+Example Output:
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName
+Name              : MyAppResourceName
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : {[key, val]}
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : My Custom Display Name
+Subdomain         : MyAppSubdomain
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName2/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName2
+Name              : MyAppResourceName2
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : {[key, val]}
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : My Custom Display Name 2
+Subdomain         : MyAppSubdomain2
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName2
+
 ### Example 3 Get IoT Central Applications in Resource Group.
 ```powershell
 PS C:\> Get-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName"
 ```
 
 Gets the metadata for all IoT Central Applications in the provided Resource Group.
+
+Example Output:
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName
+Name              : MyAppResourceName
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : {[key, val]}
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : My Custom Display Name
+Subdomain         : MyAppSubdomain
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName2
+Name              : MyAppResourceName2
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : {[key, val]}
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : My Custom Display Name 2
+Subdomain         : MyAppSubdomain2
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
 
 ## PARAMETERS
 

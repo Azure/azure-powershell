@@ -28,12 +28,44 @@ Creates a new IoT Central Application with the provided properties and metadata.
 PS C:\> New-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain"
 ```
 
+Example Output:
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName
+Name              : MyAppResourceName
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : 
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : MyAppResourceName
+Subdomain         : MyAppSubdomain
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
+
 Create an IoT Central application in the standard pricing tier S1, in the region of the resource group.
 
 ### Example 2 Create simple IoT Central Application.
 ```powershell
 PS C:\> New-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain" -Sku "S1" -DisplayName "My Custom Display Name" -Template "iotc-default" -Location "westus"
 ```
+
+Example Output:
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName
+Name              : MyAppResourceName
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : 
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : My Custom Display Name
+Subdomain         : MyAppSubdomain
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
 
 Create an IoT Central application with the standard pricing tier S1 in the 'westus' region, with a custom display name, based on the iotc-default template.
 
