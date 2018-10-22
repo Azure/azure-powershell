@@ -23,7 +23,11 @@ namespace Commands.Network.Test
         public const string slbdev = "slbdev";
 
         // Brooklyn FTEs
+        // Split into subsets due to tests' long running time
         public const string brooklynft = "brooklynft";
+        public const string brooklynft_subset1 = "brooklynft_subset1";
+        public const string brooklynft_subset2 = "brooklynft_subset2";
+        public const string brooklynft_subset3 = "brooklynft_subset3";
 
         // Azure Network Analytics Dev Team
         public const string netanalyticsdev = "netanalyticsdev";
