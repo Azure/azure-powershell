@@ -74,19 +74,6 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $resourceType $app1.Type
 		Assert-AreEqual $resourceType $app2.Type
 
-		# Get App ResourceId
-		$list = Find-AzureRmResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzureRmIotCentralApp
-
-		$app1 = $list | where {$_.Name -eq $rname1} | Select-Object -First 1
-		$app2 = $list | where {$_.Name -eq $rname2} | Select-Object -First 1
-		# Assert
-		Assert-AreEqual $rname1 $app1.Name
-		Assert-AreEqual $rname2 $app2.Name
-		Assert-AreEqual $subdomain $app1.Subdomain
-		Assert-AreEqual $rname2 $app2.Subdomain
-		Assert-AreEqual $resourceType $app1.Type
-		Assert-AreEqual $resourceType $app2.Type
-
 		# Test getting from empty group
 		$emptyrg = ($rgname) + "empty"
 		New-AzureRmResourceGroup -Name $emptyrg -Location $location
