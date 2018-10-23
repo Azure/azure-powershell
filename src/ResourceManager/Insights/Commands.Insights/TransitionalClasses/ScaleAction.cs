@@ -27,8 +27,14 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// </summary>
         public new ScaleType Type
         {
-            get => (ScaleType)System.Enum.Parse(typeof(ScaleType), base.Type.ToString());
-            set => base.Type = (Monitor.Models.ScaleType)System.Enum.Parse(typeof(Monitor.Models.ScaleType), value.ToString());
+            get
+            {
+                return (ScaleType)System.Enum.Parse(typeof(ScaleType), base.Type.ToString());
+            }
+            set
+            {
+                base.Type = (Monitor.Models.ScaleType)System.Enum.Parse(typeof(Monitor.Models.ScaleType), value.ToString());
+            }
         }
 
         /// <summary>
@@ -36,8 +42,14 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// </summary>
         public new ScaleDirection Direction
         {
-            get => (ScaleDirection)System.Enum.Parse(typeof(ScaleDirection), base.Direction.ToString());
-            set => base.Direction = (Monitor.Models.ScaleDirection)System.Enum.Parse(typeof(Monitor.Models.ScaleDirection), value.ToString());
+            get
+            {
+                return (ScaleDirection)System.Enum.Parse(typeof(ScaleDirection), base.Direction.ToString());
+            }
+            set
+            {
+                base.Direction = (Monitor.Models.ScaleDirection)System.Enum.Parse(typeof(Monitor.Models.ScaleDirection), value.ToString());
+            }
         }
 
         /// <summary>
