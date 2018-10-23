@@ -23,7 +23,7 @@ using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Proper
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotCentralApp", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotCentralApp", SupportsShouldProcess = true, DefaultParameterSetName = ResourceIdParameterSet)]
     [OutputType(typeof(PSIotCentralApp))]
     public class SetAzureRmIotCentralApp : IotCentralFullParameterSetCmdlet
     {
