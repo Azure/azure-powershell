@@ -19,7 +19,7 @@ using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Proper
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotCentralApp", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotCentralApp", SupportsShouldProcess = true, DefaultParameterSetName = ResourceIdParameterSet)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmIotCentralApp : IotCentralFullParameterSetCmdlet
     {
