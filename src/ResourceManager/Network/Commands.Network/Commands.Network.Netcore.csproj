@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,3 +70,4 @@
   </ItemGroup>
 
 </Project>
+
