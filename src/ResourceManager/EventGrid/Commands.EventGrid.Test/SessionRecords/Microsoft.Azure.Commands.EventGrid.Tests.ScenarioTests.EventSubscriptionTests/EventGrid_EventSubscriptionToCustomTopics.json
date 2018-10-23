@@ -511,7 +511,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps8452/providers/Microsoft.EventGrid/topics/PSTestTopic-ps5293/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps8662?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM4NDUyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljcy9QU1Rlc3RUb3BpYy1wczUyOTMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzODY2Mj9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -946,7 +946,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps8452/providers/Microsoft.EventGrid/topics/PSTestTopic-ps5293/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps5821?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM4NDUyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljcy9QU1Rlc3RUb3BpYy1wczUyOTMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzNTgyMT9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false,\r\n      \"advancedFilters\": [\r\n        {\r\n          \"operatorType\": \"NumberIn\",\r\n          \"values\": [\r\n            1.0,\r\n            2.0\r\n          ],\r\n          \"key\": \"Data.Key1\"\r\n        },\r\n        {\r\n          \"operatorType\": \"StringBeginsWith\",\r\n          \"values\": [\r\n            \"string1\",\r\n            \"string2\"\r\n          ],\r\n          \"key\": \"Subject\"\r\n        },\r\n        {\r\n          \"operatorType\": \"NumberLessThan\",\r\n          \"value\": 5.12,\r\n          \"key\": \"Data.Key12\"\r\n        },\r\n        {\r\n          \"operatorType\": \"BoolEquals\",\r\n          \"value\": false,\r\n          \"key\": \"Data.Key6\"\r\n        }\r\n      ]\r\n    },\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false,\r\n      \"advancedFilters\": [\r\n        {\r\n          \"operatorType\": \"NumberIn\",\r\n          \"values\": [\r\n            1.0,\r\n            2.0\r\n          ],\r\n          \"key\": \"Data.Key1\"\r\n        },\r\n        {\r\n          \"operatorType\": \"StringBeginsWith\",\r\n          \"values\": [\r\n            \"string1\",\r\n            \"string2\"\r\n          ],\r\n          \"key\": \"Subject\"\r\n        },\r\n        {\r\n          \"operatorType\": \"NumberLessThan\",\r\n          \"value\": 5.12,\r\n          \"key\": \"Data.Key12\"\r\n        },\r\n        {\r\n          \"operatorType\": \"BoolEquals\",\r\n          \"value\": false,\r\n          \"key\": \"Data.Key6\"\r\n        }\r\n      ]\r\n    },\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1255,7 +1255,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps8452/providers/Microsoft.EventGrid/topics/PSTestTopic-ps5293/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps4278?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM4NDUyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljcy9QU1Rlc3RUb3BpYy1wczUyOTMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzNDI3OD9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"eventDeliverySchema\": \"CloudEventV01Schema\",\r\n    \"retryPolicy\": {\r\n      \"maxDeliveryAttempts\": 20,\r\n      \"eventTimeToLiveInMinutes\": 50\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"eventDeliverySchema\": \"CloudEventV01Schema\",\r\n    \"retryPolicy\": {\r\n      \"maxDeliveryAttempts\": 20,\r\n      \"eventTimeToLiveInMinutes\": 50\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1522,7 +1522,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"
@@ -1585,7 +1585,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"
@@ -1648,7 +1648,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"
@@ -1696,7 +1696,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps8452/providers/Microsoft.EventGrid/topics/PSTestTopic-ps5293/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps8662?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM4NDUyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljcy9QU1Rlc3RUb3BpYy1wczUyOTMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzODY2Mj9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"destination\": {\r\n    \"endpointType\": \"WebHook\",\r\n    \"properties\": {\r\n      \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n    }\r\n  },\r\n  \"filter\": {\r\n    \"subjectBeginsWith\": \"\",\r\n    \"subjectEndsWith\": \"\",\r\n    \"includedEventTypes\": [\r\n      \"All\"\r\n    ]\r\n  },\r\n  \"retryPolicy\": {\r\n    \"maxDeliveryAttempts\": 30,\r\n    \"eventTimeToLiveInMinutes\": 1440\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"destination\": {\r\n    \"endpointType\": \"WebHook\",\r\n    \"properties\": {\r\n      \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n    }\r\n  },\r\n  \"filter\": {\r\n    \"subjectBeginsWith\": \"\",\r\n    \"subjectEndsWith\": \"\",\r\n    \"includedEventTypes\": [\r\n      \"All\"\r\n    ]\r\n  },\r\n  \"retryPolicy\": {\r\n    \"maxDeliveryAttempts\": 30,\r\n    \"eventTimeToLiveInMinutes\": 1440\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1828,7 +1828,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps8452/providers/Microsoft.EventGrid/topics/PSTestTopic-ps5293/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps5821?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM4NDUyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljcy9QU1Rlc3RUb3BpYy1wczUyOTMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzNTgyMT9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"destination\": {\r\n    \"endpointType\": \"WebHook\",\r\n    \"properties\": {\r\n      \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n    }\r\n  },\r\n  \"filter\": {\r\n    \"subjectBeginsWith\": \"\",\r\n    \"subjectEndsWith\": \"\",\r\n    \"includedEventTypes\": [\r\n      \"All\"\r\n    ],\r\n    \"advancedFilters\": [\r\n      {\r\n        \"operatorType\": \"StringBeginsWith\",\r\n        \"values\": [\r\n          \"string3\",\r\n          \"string4\"\r\n        ],\r\n        \"key\": \"Subject\"\r\n      }\r\n    ]\r\n  },\r\n  \"retryPolicy\": {\r\n    \"maxDeliveryAttempts\": 20,\r\n    \"eventTimeToLiveInMinutes\": 10\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"destination\": {\r\n    \"endpointType\": \"WebHook\",\r\n    \"properties\": {\r\n      \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n    }\r\n  },\r\n  \"filter\": {\r\n    \"subjectBeginsWith\": \"\",\r\n    \"subjectEndsWith\": \"\",\r\n    \"includedEventTypes\": [\r\n      \"All\"\r\n    ],\r\n    \"advancedFilters\": [\r\n      {\r\n        \"operatorType\": \"StringBeginsWith\",\r\n        \"values\": [\r\n          \"string3\",\r\n          \"string4\"\r\n        ],\r\n        \"key\": \"Subject\"\r\n      }\r\n    ]\r\n  },\r\n  \"retryPolicy\": {\r\n    \"maxDeliveryAttempts\": 20,\r\n    \"eventTimeToLiveInMinutes\": 10\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2164,7 +2164,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"
@@ -2227,7 +2227,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"
@@ -2290,7 +2290,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"

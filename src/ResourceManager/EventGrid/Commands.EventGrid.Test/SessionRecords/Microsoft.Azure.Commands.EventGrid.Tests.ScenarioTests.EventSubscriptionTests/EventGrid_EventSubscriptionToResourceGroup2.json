@@ -70,7 +70,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps733/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps7936?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzNzkzNj9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"labels\": [\r\n      \"Finance\",\r\n      \"HR\"\r\n    ],\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"labels\": [\r\n      \"Finance\",\r\n      \"HR\"\r\n    ],\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -322,7 +322,7 @@
       "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps733/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps1153?api-version=2018-09-15-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9yZXNvdXJjZUdyb3Vwcy9SR05hbWUtcHM3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvZXZlbnRTdWJzY3JpcHRpb25zL0V2ZW50U3Vic2NyaXB0aW9uLXBzMTE1Mz9hcGktdmVyc2lvbj0yMDE4LTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"Microsoft.Resources.ResourceWriteFailure\",\r\n        \"Microsoft.Resources.ResourceWriteSuccess\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"Microsoft.Resources.ResourceWriteFailure\",\r\n        \"Microsoft.Resources.ResourceWriteSuccess\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"eventDeliverySchema\": \"EventGridSchema\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -526,7 +526,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=HIDDEN\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "152"

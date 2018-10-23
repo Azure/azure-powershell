@@ -22,13 +22,6 @@ Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [[-Resource
 ### EventSubscriptionDomainNameParameterSet
 ```
 Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
- [[-DomainName] <String>] [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### EventSubscriptionDomainTopicNameParameterSet
-```
-Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
  [[-DomainName] <String>] [[-DomainTopicName] <String>] [-IncludeFullEndpointUrl]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -54,14 +47,14 @@ Get-AzureRmEventGridSubscription [-CustomTopicInputObject] <PSTopic> [-DefaultPr
 
 ### EventSubscriptionDomainInputObjectParameterSet
 ```
-Get-AzureRmEventGridSubscription [-DomainInputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmEventGridSubscription [-DomainInputObject] <PSDomain> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### EventSubscriptionDomainTopicInputObjectParameterSet
 ```
-Get-AzureRmEventGridSubscription [-DomainTopicInputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmEventGridSubscription [-DomainTopicInputObject] <PSDomainTopic>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,7 +177,7 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: PSDomain
 Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
 Aliases:
 
@@ -200,7 +193,7 @@ EventGrid topic type name.
 
 ```yaml
 Type: String
-Parameter Sets: EventSubscriptionDomainNameParameterSet, EventSubscriptionDomainTopicNameParameterSet
+Parameter Sets: EventSubscriptionDomainNameParameterSet
 Aliases:
 
 Required: False
@@ -214,7 +207,7 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: PSDomainTopic
 Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -230,7 +223,7 @@ EventGrid domain topic name.
 
 ```yaml
 Type: String
-Parameter Sets: EventSubscriptionDomainTopicNameParameterSet
+Parameter Sets: EventSubscriptionDomainNameParameterSet
 Aliases:
 
 Required: False
@@ -245,7 +238,7 @@ The name of the event subscription
 
 ```yaml
 Type: String
-Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionDomainTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
+Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -260,7 +253,7 @@ Include the full endpoint URL of the event subscription destination.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionDomainTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionTopicTypeNameParameterSet
+Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionTopicTypeNameParameterSet
 Aliases:
 
 Required: False
@@ -290,7 +283,7 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionDomainTopicNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
+Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
 Aliases: ResourceGroup
 
 Required: False

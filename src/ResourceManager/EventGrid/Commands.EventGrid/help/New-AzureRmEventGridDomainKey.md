@@ -49,14 +49,12 @@ PS C:\> Get-AzureRmEventGridDomain -ResourceGroup MyResourceGroupName -Name Doma
 
 Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
-
 ### Example 3
 ```
 PS C:\> New-AzureRmEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
 ```
 
 Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
-
 
 ## PARAMETERS
 

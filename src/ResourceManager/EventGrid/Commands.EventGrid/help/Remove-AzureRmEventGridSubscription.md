@@ -49,6 +49,13 @@ Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Resource
  [<CommonParameters>]
 ```
 
+### DomainNameParameterSet
+```
+Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
+ [-DomainName] <String> [[-DomainTopicName] <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DomainEventSubscriptionParameterSet
 ```
 Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-PassThru]
@@ -59,19 +66,6 @@ Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-PassThru
 ```
 Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DomainNameParameterSet
-```
-Remove-AzureRmEventGridSubscription [-ResourceGroupName] <String> [-DomainName] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DomainTopicNameParameterSet
-```
-Remove-AzureRmEventGridSubscription [-ResourceGroupName] <String> [-DomainName] <String>
- [-DomainTopicName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,7 +160,7 @@ EventGrid domain name.
 
 ```yaml
 Type: String
-Parameter Sets: DomainNameParameterSet, DomainTopicNameParameterSet
+Parameter Sets: DomainNameParameterSet
 Aliases:
 
 Required: True
@@ -196,10 +190,10 @@ EventGrid domain topic name.
 
 ```yaml
 Type: String
-Parameter Sets: DomainTopicNameParameterSet
+Parameter Sets: DomainNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -211,7 +205,7 @@ Name of the event subscription that needs to be removed.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, TopicNameParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, TopicNameParameterSet, DomainNameParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: True
@@ -265,7 +259,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: TopicNameParameterSet, DomainNameParameterSet, DomainTopicNameParameterSet
+Parameter Sets: TopicNameParameterSet, DomainNameParameterSet
 Aliases: ResourceGroup
 
 Required: True
