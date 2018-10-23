@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Kusto
             Mandatory = true,
             HelpMessage = "Name of the Sku used to create the cluster")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("KC8", "KC16", "KS8", "KS16", IgnoreCase = true)]
+        [ValidateSet("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(
