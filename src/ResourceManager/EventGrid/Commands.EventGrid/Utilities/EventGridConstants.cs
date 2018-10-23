@@ -62,7 +62,11 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
         public const string ExpirationDateHelp = "Determines the expiration DateTime for the event subscription after which event subscription will retire.";
-        public const string AdvancedFilterHelp = "Advanced filter that specifies the list of attributes to be included.";
+        public const string AdvancedFilterHelp = "Advanced filter that specifies an array of multiple Hashtable values that are used for the attribute-based filtering. Each Hashtable value has the following keys-value info: Operation, Key and Value or Values. " +
+                                                 "Operator can be one of the following values: NumberIn, NumberNotIn, NumberLessThan, NumberGreaterThan, NumberLessThanOrEquals, NumberGreaterThanOrEquals, BoolEquals, StringIn, StringNotIn, StringBeginsWith, StringEndsWith " +
+                                                 "or StringContains. Key represents the payload property where the advanced filtering policies are applied. Finally, Value or Values represent the value or set of values to be matched. This can be a single value of the corresponding " +
+                                                 "type or an array of values. As an example of the advanced filter parameters: " +
+                                                 "$AdvancedFilters=@($AdvFilter1, $AdvFilter2) where $AdvFilter1=@{operator=\"NumberIn\"; key=\"Data.Key1\"; Values=@(1,2)} and $AdvFilter2=@{operator=\"StringBringsWith\"; key=\"Subject\"; Values=@(\"SubjectPrefix1\",\"SubjectPrefix2\")}";
 
         public const string KeyNameHelp = "The name of the key that needs to be regenerated";
         public const string TopicResourceIdHelp = "Resource Identifier representing the Event Grid Topic.";

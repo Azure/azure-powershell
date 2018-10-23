@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 // Validate entries.
                 if (advancedFilter[i].Count != 3)
                 {
-                    throw new Exception($"Invalid Advanced Filter parameter:. Unexpected number of entries for advanced filter #{i + 1}");
+                    throw new Exception($"Invalid Advanced Filter parameter:. Unexpected number of entries for advanced filter #{i + 1} as we expect 3 key-value pair while we received {advancedFilter[i].Count}");
                 }
 
                 if (!advancedFilter[i].ContainsKey("Operator") ||
@@ -702,21 +702,21 @@ namespace Microsoft.Azure.Commands.EventGrid
                     !(advancedFilter[i].ContainsKey("value")
                     || advancedFilter[i].ContainsKey("values")))
                 {
-                    throw new Exception($"Invalid Advanced Filter parameter:. At least one of the key parameters is invalid for advanced filter #{i + 1}.");
+                    throw new Exception($"Invalid Advanced Filter parameter:. At least one of the key parameters is invalid for advanced filter #{i + 1}. The expected keys are either: Operator, key, and value or values.");
                 }
 
                 string operatorValue = (string)advancedFilter[i]["operator"];
 
                 if (string.IsNullOrEmpty(operatorValue))
                 {
-                    throw new Exception($"Invalid Advanced Filter parameter: Operator value is null or empty for advanced filter #{i + 1}.");
+                    throw new Exception($"Invalid Advanced Filter parameter: The operator value is null or empty for advanced filter #{i + 1}.");
                 }
 
                 string keyValue = (string)advancedFilter[i]["key"];
 
                 if (string.IsNullOrEmpty(keyValue))
                 {
-                    throw new Exception($"Invalid Advanced Filter parameter. At least one of the key value is null or empty for advanced filter #{i + 1}");
+                    throw new Exception($"Invalid Advanced Filter parameter. The key value is null or empty for advanced filter #{i + 1}");
                 }
 
                 List<string> keyValuesList = null;
@@ -792,13 +792,13 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
                 else if (string.Equals(operatorValue, "StringEndsWith", StringComparison.OrdinalIgnoreCase))
                 {
-                    var stringEndssWithAdvFilter = new StringEndsWithAdvancedFilter
+                    var stringEndsWithAdvFilter = new StringEndsWithAdvancedFilter
                     {
                         Key = keyValue,
                         Values = keyValuesList
                     };
 
-                    filter.AdvancedFilters.Add(stringEndssWithAdvFilter);
+                    filter.AdvancedFilters.Add(stringEndsWithAdvFilter);
                 }
                 else if (string.Equals(operatorValue, "NumberIn", StringComparison.OrdinalIgnoreCase))
                 {
@@ -872,7 +872,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
                 else
                 {
-                    throw new Exception($"Invalid Advanced Filter parameter. Unsupported operator for advanced filter #{i + 1}");
+                    throw new Exception($"Invalid Advanced Filter parameter. Unsupported operator for advanced filter #{i + 1}.");
                 }
             }
         }

@@ -27,14 +27,14 @@
         - Gets the details of an Event Grid Domain, or gets a list of all Event Grid Domains in the current Azure subscription.
     - Remove-AzureRmEventGridDomain
         - Removes an Azure Event Grid Domain.
-    - New-AzureRmEventGridTDomainKey
+    - New-AzureRmEventGridDomainKey
         - Regenerates the shared access key for an Azure Event Grid Domain.
     - Get-AzureRmEventGridDomainKey
         - Gets the shared access keys used to publish events to an Event Grid Domain.
     - Get-AzureRmEventGridDomainTopic
         - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure subscription.
 
-* Update the following cmdlets to support new scenario in 2018-09-15-preview API version
+* Updated the following cmdlets to support new scenarios in 2018-09-15-preview API version
     - New-AzureRmEventGridSubscription: 
         - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
         - Add new mandatory parameters for specifying the new Event Grid Domain name and/or Event Grid Domain Topic name to allow creating new event subscription under these resources.
