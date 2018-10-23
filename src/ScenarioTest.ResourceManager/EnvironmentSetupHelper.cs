@@ -585,9 +585,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public void SetupModules(params string[] modules)
         {
-            this.modules = new List<string>();
-            this.modules.Add("Assert.ps1");
-            this.modules.Add("Common.ps1");
+            this.modules = new List<string> {"Assert.ps1", "Common.ps1"};
             this.modules.AddRange(modules);
         }
 
@@ -597,14 +595,18 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             // permissive record matcher.
             if (HttpMockServer.Matcher == null || HttpMockServer.Matcher.GetType() == typeof(SimpleRecordMatcher))
             {
-                Dictionary<string, string> d = new Dictionary<string, string>();
-                d.Add("Microsoft.Resources", null);
-                d.Add("Microsoft.Features", null);
-                d.Add("Microsoft.Authorization", null);
-                d.Add("Microsoft.Compute", null);
-                d.Add("Microsoft.KeyVault", null);
-                var providersToIgnore = new Dictionary<string, string>();
-                providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+                var d = new Dictionary<string, string>
+                {
+                    {"Microsoft.Resources", null},
+                    {"Microsoft.Features", null},
+                    {"Microsoft.Authorization", null},
+                    {"Microsoft.Compute", null},
+                    {"Microsoft.KeyVault", null}
+                };
+                var providersToIgnore = new Dictionary<string, string>
+                {
+                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+                };
                 HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             }
 
@@ -613,13 +615,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 SetupPowerShellModules(powershell);
 
                 Collection<PSObject> output = null;
-                for (int i = 0; i < scripts.Length; ++i)
+                foreach (var script in scripts)
                 {
-                    if (TracingInterceptor != null)
-                    {
-                        TracingInterceptor.Information(scripts[i]);
-                    }
-                    powershell.AddScript(scripts[i]);
+                    TracingInterceptor?.Information(script);
+                    powershell.AddScript(script);
                 }
                 try
                 {
@@ -627,12 +626,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     if (powershell.Streams.Error.Count > 0)
                     {
                         throw new RuntimeException(
-                            string.Format(
-                                "Test failed due to a non-empty error stream. First error: {0}{1}",
-                                PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0]),
-                                powershell.Streams.Error.Count > 0
-                                    ? "Check the error stream in the test log for additional errors."
-                                    : ""));
+                            $"Test failed due to a non-empty error stream. First error: {PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0])}{(powershell.Streams.Error.Count > 0 ? "Check the error stream in the test log for additional errors." : "")}");
                     }
 
                     return output;
@@ -660,13 +654,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 #endif
             powershell.AddScript("$error.clear()");
-            powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
-            powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
-            powershell.AddScript(string.Format("cd \"{0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
+            powershell.AddScript($"Write-Debug \"current directory: {System.AppDomain.CurrentDomain.BaseDirectory}\"");
+            powershell.AddScript(
+                $"Write-Debug \"current executing assembly: {Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\"");
+            powershell.AddScript($"cd \"{System.AppDomain.CurrentDomain.BaseDirectory}\"");
 
-            foreach (string moduleName in modules)
+            foreach (var moduleName in modules)
             {
-                powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
+                powershell.AddScript($"Import-Module \"{moduleName.AsAbsoluteLocation()}\"");
                 if (moduleName.EndsWith(".psd1"))
                 {
 #if NETSTANDARD
@@ -682,8 +677,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             powershell.AddScript("Disable-AzureRmDataCollection -ErrorAction Ignore");
             powershell.AddScript(
-                string.Format("set-location \"{0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
-            powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", System.AppDomain.CurrentDomain.BaseDirectory));
+                $"set-location \"{System.AppDomain.CurrentDomain.BaseDirectory}\"");
+            powershell.AddScript($@"$TestOutputRoot='{System.AppDomain.CurrentDomain.BaseDirectory}'");
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");
             powershell.AddScript("$ErrorActionPreference='Stop'");

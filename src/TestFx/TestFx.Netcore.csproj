@@ -1,25 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Test.Netcore.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Aks</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Aks</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell Aks</Title>
-    <Description>Microsoft Azure PowerShell Aks library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;aks</PackageTags>
+    <Title>Microsoft Azure PowerShell TestFx</Title>
+    <Description>Microsoft Azure PowerShell TestFx library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;testfx</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0-preview</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,18 +38,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>true</DesignTime>
-      <AutoGen>true</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Graph.Rbac\Graph.Rbac.Netcore.csproj" />
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
