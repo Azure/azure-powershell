@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The name of the tap.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworkTaps", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
