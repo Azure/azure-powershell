@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestMultiIpConfigCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-MultiIpConfigCRUD");
@@ -40,7 +40,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         /// current error is: LoadBalancingRules are not supported for secondary IpConfigurations. 
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestLBWithMultiIpConfigNICCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LBWithMultiIpConfigNICCRUD");
@@ -49,7 +49,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestAddNICToLBWithMultiIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AddNICToLBWithMultiIpConfig");
@@ -57,7 +57,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         /// Public IP is not supported on secondary IpConfigurations
         public void TestLBWithMultiIpConfigMultiNIC()
         {

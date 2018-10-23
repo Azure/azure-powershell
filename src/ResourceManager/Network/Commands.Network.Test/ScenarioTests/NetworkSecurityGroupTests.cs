@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkSecurityGroupCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkSecurityGroupCRUD");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkSecurityGroupSecurityRuleCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkSecurityGroup-SecurityRuleCRUD");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkSecurityGroupMultiValuedRules()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkSecurityGroup-MultiValuedRules");
