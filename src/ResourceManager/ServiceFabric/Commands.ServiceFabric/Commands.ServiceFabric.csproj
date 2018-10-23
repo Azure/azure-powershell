@@ -153,7 +153,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ServiceFabric">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.1-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.1-preview\lib\net452\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
