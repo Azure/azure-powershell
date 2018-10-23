@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -34,8 +33,8 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
 
         [Parameter(
-        ParameterSetName = "SetByResourceId",
-        HelpMessage = "ID of the application gateway BackendAddressPool")]
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public string DefaultBackendAddressPoolId { get; set; }
 
@@ -57,6 +56,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendHttpSettings DefaultBackendHttpSettings { get; set; }
 
+        [Parameter(
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway default RedirectConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public string DefaultRedirectConfigurationId { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway default RedirectConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayRedirectConfiguration DefaultRedirectConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -70,6 +81,10 @@ namespace Microsoft.Azure.Commands.Network
                 if (DefaultBackendHttpSettings != null)
                 {
                     this.DefaultBackendHttpSettingsId = this.DefaultBackendHttpSettings.Id;
+                }
+                if (DefaultRedirectConfiguration != null)
+                {
+                    this.DefaultRedirectConfigurationId = this.DefaultRedirectConfiguration.Id;
                 }
             }
         }
@@ -91,6 +106,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 urlPathMap.DefaultBackendHttpSettings = new PSResourceId();
                 urlPathMap.DefaultBackendHttpSettings.Id = this.DefaultBackendHttpSettingsId;
+            }
+
+            if (!string.IsNullOrEmpty(this.DefaultRedirectConfigurationId))
+            {
+                urlPathMap.DefaultRedirectConfiguration = new PSResourceId();
+                urlPathMap.DefaultRedirectConfiguration.Id = this.DefaultRedirectConfigurationId;
             }
 
             urlPathMap.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

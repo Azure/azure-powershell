@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Sets the Recovery Services vault context to be used for subsequent Azure Site Recovery operations in the current PowerShell session.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultContext",DefaultParameterSetName = ASRParameterSets.ARSVault,SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultContext", DefaultParameterSetName = ASRParameterSets.ARSVault, SupportsShouldProcess = true)]
     [Alias(
         "Set-ASRVaultContext",
         "Set-ASRVaultSettings",
@@ -73,8 +73,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     vaultExtendedInfo = this.RecoveryServicesClient
                     .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
                 }
-                catch (CloudException ex)
+                catch (Exception ex)
                 {
+                    // code interanally handled the cloud exception thrown earlier.But still there are changes of other exception.
+                    // suggesting alternate way to user to unblock if this command is failing.
                     Logger.Instance.WriteWarning(ex.Message);
                     throw new Exception(Resources.TryDownloadingVaultFile);
                 }

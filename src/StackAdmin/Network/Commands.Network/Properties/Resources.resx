@@ -132,7 +132,7 @@
     <comment>The ID of a virtual network gateway child resource</comment>
   </data>
   <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
-    <value>virtualNetworkGatewayIpConfigurations</value>
+    <value>virtualNetworkGatewayIpConfiguration</value>
   </data>
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
     <value>inboundNatRules</value>
@@ -148,6 +148,9 @@
   </data>
   <data name="OverwritingResource" xml:space="preserve">
     <value>Are you sure you want to overwriteresource '{0}'</value>
+  </data>
+  <data name="UltraPerformaceGatewayWarning" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
   </data>
   <data name="OverwritingResourceMessage" xml:space="preserve">
     <value>Overwriting resource ...</value>
@@ -207,6 +210,9 @@
   <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
     <value>requestRoutingRules</value>
   </data>
+  <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
+    <value>authenticationCertificates</value>
+  </data>
   <data name="ApplicationGatewaySslCertificateName" xml:space="preserve">
     <value>sslCertificates</value>
   </data>
@@ -216,7 +222,7 @@
   <data name="SetByIP" xml:space="preserve">
     <value>SetByIP</value>
   </data>
-  <data name="LoadBalancerInboundNatPoolsName" xml:space="preserve">
+  <data name="LoadBalancerInboundNatPoolName" xml:space="preserve">
     <value>inboundNatPools</value>
   </data>
   <data name="ApplicationGatewayProbeName" xml:space="preserve">
@@ -224,5 +230,35 @@
   </data>
   <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
     <value>urlPathMaps</value>
+  </data>
+  <data name="SetByIpConfiguration" xml:space="preserve">
+    <value>SetByIpConfiguration</value>
+  </data>
+  <data name="SetByIpConfigurationResourceId" xml:space="preserve">
+    <value>SetByIpConfigurationResourceId</value>
+  </data>
+  <data name="CreatingResourceMessage" xml:space="preserve">
+    <value>Creating Resource</value>
+  </data>
+  <data name="AddingResourceMessage" xml:space="preserve">
+    <value>Adding Resource</value>
+  </data>
+  <data name="MovingExpressRoutCircuitMessage" xml:space="preserve">
+    <value>Moving ExpressRoute Circuit</value>
+  </data>
+  <data name="ResettingResourceMessage" xml:space="preserve">
+    <value>Resetting Resource</value>
+  </data>
+  <data name="SettingResourceMessage" xml:space="preserve">
+    <value>Setting Resource</value>
+  </data>
+  <data name="UltraPerformanceGatewayWarningMessage" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
+  </data>
+  <data name="EmptyEffectiveNetworkSecurityGroupOnNic" xml:space="preserve">
+    <value>The effective network security group list is empty because the specified network interface is not associated with a network security group or the subnet that is referenced by the network interface is also not associated with a network security group.</value>
+  </data>
+  <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
+    <value>redirectConfigurations</value>
   </data>
 </root>

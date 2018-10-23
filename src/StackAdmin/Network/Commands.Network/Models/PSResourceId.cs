@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-   public class PSResourceId
+    public class PSResourceId
     {
         public string Id { get; set; }
     }

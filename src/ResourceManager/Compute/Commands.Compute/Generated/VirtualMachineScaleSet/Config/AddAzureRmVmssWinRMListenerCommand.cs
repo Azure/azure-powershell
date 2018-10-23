@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vListeners = new Microsoft.Azure.Management.Compute.Models.WinRMListener();
 
-            vListeners.Protocol = this.MyInvocation.BoundParameters.ContainsKey("Protocol") ? this.Protocol : (ProtocolTypes?) null;
+            vListeners.Protocol = this.MyInvocation.BoundParameters.ContainsKey("Protocol") ? this.Protocol : (ProtocolTypes?)null;
             vListeners.CertificateUrl = this.MyInvocation.BoundParameters.ContainsKey("CertificateUrl") ? this.CertificateUrl : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.WinRM.Listeners.Add(vListeners);
             WriteObject(this.VirtualMachineScaleSet);

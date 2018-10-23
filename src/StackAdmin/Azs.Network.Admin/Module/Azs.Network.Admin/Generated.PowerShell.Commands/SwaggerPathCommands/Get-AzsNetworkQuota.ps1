@@ -116,6 +116,7 @@ function Get-AzsNetworkQuota {
                         $null
                     }))
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $NetworkAdminClient.'
             $TaskResult = $NetworkAdminClient.Quotas.GetWithHttpMessagesAsync($Location, $Name)
         } else {

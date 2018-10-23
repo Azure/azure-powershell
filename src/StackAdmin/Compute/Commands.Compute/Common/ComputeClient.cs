@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Compute;
 using System;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,13 +29,24 @@ namespace Microsoft.Azure.Commands.Compute
 
         public Action<string> ErrorLogger { get; set; }
 
-        public ComputeClient(IAzureContext context)
-            : this(AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
-        {
+        public ComputeClient(IAzureContext context) {
+            // Factories
+            var authFactory = AzureSession.Instance.AuthenticationFactory;
+            var clientFactory = AzureSession.Instance.ClientFactory;
+
+            var endpoint = AzureEnvironment.Endpoint.ResourceManager;
+
+            // Get parameters
+            var handler = new DelegatingHandler[] { new DoubleFetchHandler() };
+            var creds = authFactory.GetServiceClientCredentials(context, endpoint);
+            var baseUri = context.Environment.GetEndpointAsUri(endpoint);
+
+            // Construct client
+            ComputeManagementClient = clientFactory.CreateCustomArmClient<ComputeManagementClient>(baseUri, creds, handler);
+            ComputeManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
-        public ComputeClient(IComputeManagementClient computeManagementClient)
-        {
+        public ComputeClient(IComputeManagementClient computeManagementClient) {
             ComputeManagementClient = computeManagementClient;
         }
     }

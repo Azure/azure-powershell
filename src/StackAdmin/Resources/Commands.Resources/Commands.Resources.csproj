@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
+    <OutputPath>..\..\..\Stack\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

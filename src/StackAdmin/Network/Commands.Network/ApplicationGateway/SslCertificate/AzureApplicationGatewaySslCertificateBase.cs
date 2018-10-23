@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using System.Security.Cryptography.X509Certificates;
 using System;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.IO;
+using System.Management.Automation;
+using System.Security;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -39,16 +38,14 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "Certificate password")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         public PSApplicationGatewaySslCertificate NewObject()
         {
-            X509Certificate2 cert = new X509Certificate2(CertificateFile, Password, X509KeyStorageFlags.Exportable);
-
             var sslCertificate = new PSApplicationGatewaySslCertificate();
 
             sslCertificate.Name = this.Name;
-            sslCertificate.Data = Convert.ToBase64String(cert.Export(X509ContentType.Pfx, Password));
+            sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
             sslCertificate.Password = this.Password;
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

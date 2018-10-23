@@ -20,11 +20,12 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSetVM : VirtualMachineScaleSetVM
+    public partial class PSVirtualMachineScaleSetVM
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
@@ -37,5 +38,49 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 return m.Success ? m.Groups["rgname"].Value : null;
             }
         }
+
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public string Location { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
+        
+        public Plan Plan { get; set; }
+        
+        public string LicenseType { get; set; }
+        
+        public string ProvisioningState { get; set; }
+        
+        public SubResource AvailabilitySet { get; set; }
+        
+        public DiagnosticsProfile DiagnosticsProfile { get; set; }
+        
+        public NetworkProfile NetworkProfile { get; set; }
+        
+        public OSProfile OsProfile { get; set; }
+        
+        public StorageProfile StorageProfile { get; set; }
+        
+        public HardwareProfile HardwareProfile { get; set; }
+        
+        //public VirtualMachineScaleSetVMInstanceView InstanceView { get; } // hide this until breaking change release
+        
+        public string VmId { get; set; }
+        
+        public bool? LatestModelApplied { get; set; }
+        
+        public Sku Sku { get; set; }
+        
+        public string InstanceId { get; set; }
+        
+        public IList<VirtualMachineExtension> Resources { get; set; }
+        
+        public IList<string> Zones { get; set; }
+
+        public VirtualMachineInstanceView InstanceView { get; set; }
     }
 }

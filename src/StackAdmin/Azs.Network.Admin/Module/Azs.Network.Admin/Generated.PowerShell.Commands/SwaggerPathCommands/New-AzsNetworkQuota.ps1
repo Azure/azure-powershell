@@ -112,7 +112,7 @@ function New-AzsNetworkQuota {
 
         # Add here, leave defaults above.
         if (-not $PSBoundParameters.ContainsKey('MigrationPhase')) {
-            $PSBoundParameters.Add('MigrationPhase',$MigrationPhase)
+            $PSBoundParameters.Add('MigrationPhase', $MigrationPhase)
         }
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new network quota")) {
@@ -122,15 +122,9 @@ function New-AzsNetworkQuota {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsNetworkQuota -Name $Name -Location $Location
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A network quota with name $Name at location $Location already exists."
-                }
+            if ($null -ne (Get-AzsNetworkQuota -Name $Name -Location $Location -ErrorAction SilentlyContinue)) {
+                Write-Error "A network quota with the name $Name at location $Location already exists"
+                return
             }
 
             # Create object

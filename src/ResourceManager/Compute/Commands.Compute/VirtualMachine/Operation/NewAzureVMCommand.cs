@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Commands.Compute
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
-                        Identity = this.VM.Identity,
+                        Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
                     };
 
@@ -539,7 +539,13 @@ namespace Microsoft.Azure.Commands.Compute
                     Type = !isUserAssignedEnabled ? 
                            CM.ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
-                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+
+                    UserAssignedIdentities = isUserAssignedEnabled 
+                                             ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
+                                             {
+                                                 { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
+                                             }
+                                             : null,
                 }
                 : null;
         }

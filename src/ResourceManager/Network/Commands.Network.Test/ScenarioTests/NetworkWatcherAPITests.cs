@@ -88,6 +88,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestConnectivityCheck()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectivityCheck");

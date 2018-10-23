@@ -84,8 +84,6 @@ function Remove-AzsVMExtension {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{locationName}/artifactTypes/VMExtension/publishers/{publisher}/types/{type}/versions/{version}'
@@ -133,9 +131,7 @@ function Remove-AzsVMExtension {
                     $GetTaskResult_params = @{
                         TaskResult = $TaskResult
                     }
-
                     Get-TaskResult @GetTaskResult_params
-
                 }
             }
         }

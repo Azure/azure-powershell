@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         [Parameter(
@@ -30,22 +30,25 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (backendAddressPool == null)
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
             {
-                throw new ArgumentException("Backend address pool with the specified name does not exist");
+                base.ExecuteCmdlet();
+
+                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
+                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (backendAddressPool == null)
+                {
+                    throw new ArgumentException("Backend address pool with the specified name does not exist");
+                }
+
+                var newbackendAddressPool = base.NewObject();
+
+                this.ApplicationGateway.BackendAddressPools.Remove(backendAddressPool);
+                this.ApplicationGateway.BackendAddressPools.Add(newbackendAddressPool);
+
+                WriteObject(this.ApplicationGateway);
             }
-
-            var newbackendAddressPool = base.NewObject();
-
-            this.ApplicationGateway.BackendAddressPools.Remove(backendAddressPool);
-            this.ApplicationGateway.BackendAddressPools.Add(newbackendAddressPool);
-
-            WriteObject(this.ApplicationGateway);
         }
     }
 }

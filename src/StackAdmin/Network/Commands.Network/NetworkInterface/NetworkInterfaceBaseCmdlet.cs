@@ -13,15 +13,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-
-using Hyak.Common;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name, expandResource);
 
-            var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
+            var psNetworkInterface = NetworkResourceManagerProfile.Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
             psNetworkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(nic.Tags);
@@ -71,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name, expandResource);
 
-            var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
+            var psNetworkInterface = NetworkResourceManagerProfile.Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
             psNetworkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(nic.Tags);
@@ -79,9 +77,26 @@ namespace Microsoft.Azure.Commands.Network
             return psNetworkInterface;
         }
 
+		public void NullifyApplicationSecurityGroupIfAbsent(NetworkInterface nic)
+		{
+			if (nic == null || nic.IpConfigurations == null)
+			{
+				return;
+			}
+
+			// Temporary - to be removed
+			foreach (var ipconfigModel in nic.IpConfigurations)
+			{
+				if (ipconfigModel.ApplicationSecurityGroups != null && ipconfigModel.ApplicationSecurityGroups.Count == 0)
+				{
+					ipconfigModel.ApplicationSecurityGroups = null;
+				}
+			}
+		}
+
         public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
         {
-            var psNic = Mapper.Map<PSNetworkInterface>(nic);
+            var psNic = NetworkResourceManagerProfile.Mapper.Map<PSNetworkInterface>(nic);
 
             psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
@@ -89,8 +104,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSBackendAddressPool>();
                 ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSInboundNatRule>();
+                ipconfig.ApplicationGatewayBackendAddressPools = ipconfig.ApplicationGatewayBackendAddressPools ?? new List<PSApplicationGatewayBackendAddressPool>();
             }
-            
+
             return psNic;
         }
     }

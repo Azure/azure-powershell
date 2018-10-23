@@ -168,6 +168,7 @@ function Get-AzsInfrastructureRole {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
             $TaskResult = $FabricAdminClient.InfraRoles.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {

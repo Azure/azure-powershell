@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.IotHub.dll'
@@ -85,7 +85,10 @@ CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGrou
                'Get-AzureRmIotHubCertificate', 
                'Get-AzureRmIotHubCertificateVerificationCode', 
                'Set-AzureRmIotHubVerifiedCertificate', 
-               'Remove-AzureRmIotHubCertificate'
+               'Remove-AzureRmIotHubCertificate', 'Get-AzureRmIotHubRoutingEndpoint',
+			   'Add-AzureRmIotHubRoutingEndpoint','Remove-AzureRmIotHubRoutingEndpoint',
+			   'Get-AzureRmIotHubRoute', 'Add-AzureRmIotHubRoute','Remove-AzureRmIotHubRoute',
+			   'Set-AzureRmIotHubRoute','Test-AzureRmIotHubRoute'
 
 # Variables to export from this module
 # VariablesToExport = @()

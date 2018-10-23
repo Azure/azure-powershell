@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
+using MC = Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -60,25 +59,36 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;
-                Rest.Azure.AzureOperationResponse op = null;
-                while (count <= 2)
-                {
-                    op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                        ResourceGroupName,
-                        VMName,
-                        Name).GetAwaiter().GetResult();
+                AzureOperationResponse<MC.OperationStatusResponse> op = null;
 
-                    if ("Failed".Equals(op.Response.StatusCode))
-                        //&& op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
+                while (true)
+                {
+                    try
                     {
-                        count++;
-                    }
-                    else
-                    {
+                        op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                            ResourceGroupName,
+                            VMName,
+                            Name).GetAwaiter().GetResult();
                         break;
                     }
+                    catch (Rest.Azure.CloudException ex)
+                    {
+                        var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
+
+                        if ("Failed".Equals(errorReturned.Status)
+                            && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        {
+                            count++;
+                            if (count <= 2)
+                            {
+                                continue;
+                            }
+                        }
+                        ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
+                    }
                 }
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             }
         }

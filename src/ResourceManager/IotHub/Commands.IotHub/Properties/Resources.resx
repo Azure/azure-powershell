@@ -129,6 +129,12 @@
   <data name="AddIotHubKey" xml:space="preserve">
     <value>Add an IoT Hub Key</value>
   </data>
+  <data name="AddIotHubRoute" xml:space="preserve">
+    <value>Add Route</value>
+  </data>
+  <data name="AddIotHubRoutingEndpoint" xml:space="preserve">
+    <value>Add Routing Endpoint</value>
+  </data>
   <data name="NewAzureRmIotHubExportDevices" xml:space="preserve">
     <value>Export All Devices</value>
   </data>
@@ -147,8 +153,17 @@
   <data name="RemoveIotHubKey" xml:space="preserve">
     <value>Remove IoT Hub Key</value>
   </data>
+  <data name="RemoveIotHubRoute" xml:space="preserve">
+    <value>Remove Route</value>
+  </data>
+  <data name="RemoveIotHubRoutingEndpoint" xml:space="preserve">
+    <value>Remove Routing Endpoint</value>
+  </data>
   <data name="UpdateIotHub" xml:space="preserve">
     <value>Update IoT Hub </value>
+  </data>
+  <data name="UpdateIotHubRoute" xml:space="preserve">
+    <value>Update Route</value>
   </data>
   <data name="VerifyIotHubCertificate" xml:space="preserve">
     <value>Verify an Iot Hub Certificate</value>

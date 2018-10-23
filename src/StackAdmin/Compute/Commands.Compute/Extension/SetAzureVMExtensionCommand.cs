@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
-        DefaultParameterSetName = SettingsParamSet)]
+        DefaultParameterSetName = SettingsParamSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
@@ -79,39 +80,42 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(this.ExtensionType, VerbsCommon.Set))
             {
-                if (this.ParameterSetName.Equals(SettingStringParamSet))
+                ExecuteClientAction(() =>
                 {
-                    this.Settings = string.IsNullOrEmpty(this.SettingString)
-                        ? null
-                        : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
-                    this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
-                        ? null
-                        : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
-                }
+                    if (this.ParameterSetName.Equals(SettingStringParamSet))
+                    {
+                        this.Settings = string.IsNullOrEmpty(this.SettingString)
+                            ? null
+                            : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
+                        this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
+                            ? null
+                            : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
+                    }
 
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Publisher = this.Publisher,
-                    VirtualMachineExtensionType = this.ExtensionType,
-                    TypeHandlerVersion = this.TypeHandlerVersion,
-                    Settings = this.Settings,
-                    ProtectedSettings = this.ProtectedSettings,
-                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = this.ForceRerun
-                };
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = this.Publisher,
+                        VirtualMachineExtensionType = this.ExtensionType,
+                        TypeHandlerVersion = this.TypeHandlerVersion,
+                        Settings = this.Settings,
+                        ProtectedSettings = this.ProtectedSettings,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun
+                    };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

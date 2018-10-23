@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName;
                     string vmScaleSetName;
-                    switch(this.ParameterSetName)
+                    switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
@@ -91,13 +91,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int PlatformUpdateDomain { get; set; }
 
         [Parameter(
-           ParameterSetName = "ResourceIdParameter",
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "ResourceIdParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = "ObjectParameter",
+            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }

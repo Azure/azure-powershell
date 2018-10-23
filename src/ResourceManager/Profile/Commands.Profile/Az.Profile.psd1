@@ -12,10 +12,10 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '17a2feff-488b-47f9-8729-e2cec094624c'
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = '[PowerShell .Net Core] Microsoft Azure PowerShell - Profile credential management cmdlets for Azure Resource Manager'
+Description = 'Microsoft Azure PowerShell - Profile credential management cmdlets for Azure Resource Manager in PowerShell and PowerShell Core'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -42,7 +42,7 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -76,6 +76,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
     '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll', 
     '.\Microsoft.WindowsAzure.Storage.dll', 
+    '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
     '.\Microsoft.Azure.PowerShell.Aks.dll', 
     '.\Microsoft.Azure.PowerShell.Strategies.dll'
 
@@ -145,7 +146,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release'
+        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
 
         # Prerelease string of this module
         # Prerelease = ''

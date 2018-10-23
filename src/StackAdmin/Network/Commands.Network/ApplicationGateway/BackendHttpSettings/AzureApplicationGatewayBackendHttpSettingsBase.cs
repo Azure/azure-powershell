@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                Mandatory = true,
                HelpMessage = "Protocol")]
-        [ValidateSet("Http", IgnoreCase = true)]
+        [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
@@ -49,9 +49,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Request Timeout. Default value 30 seconds.")]        
+            HelpMessage = "Request Timeout. Default value 30 seconds.")]
         [ValidateNotNullOrEmpty]
-        public uint RequestTimeout { get; set; }
+        public int RequestTimeout { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Connection draining of the backend http settings resource.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayConnectionDraining ConnectionDraining { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -65,6 +72,40 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayProbe Probe { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application gateway Authentication Certificates")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if host header should be picked from the host name of the backend server.")]
+        public SwitchParameter PickHostNameFromBackendAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sets host header to be sent to the backend servers.")]
+        public string HostName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cookie name to use for the affinity cookie")]
+        [ValidateNotNullOrEmpty]
+        public string AffinityCookieName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if probe should be enabled.")]
+        [Obsolete("Parameter is ignored and will be removed in a future release")]
+        public SwitchParameter ProbeEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -72,7 +113,7 @@ namespace Microsoft.Azure.Commands.Network
             if (Probe != null)
             {
                 this.ProbeId = this.Probe.Id;
-            }                
+            }
         }
         public PSApplicationGatewayBackendHttpSettings NewObject()
         {
@@ -89,15 +130,49 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.RequestTimeout = this.RequestTimeout;
             }
+            if(this.ConnectionDraining != null)
+            {
+                backendHttpSettings.ConnectionDraining = this.ConnectionDraining;
+            }
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 backendHttpSettings.Probe = new PSResourceId();
                 backendHttpSettings.Probe.Id = this.ProbeId;
             }
+            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
+            {
+                backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
+                foreach (var authcert in this.AuthenticationCertificates)
+                {
+                    backendHttpSettings.AuthenticationCertificates.Add(
+                        new PSResourceId()
+                        {
+                            Id = authcert.Id
+                        });
+                }
+            }
+            if(this.PickHostNameFromBackendAddress.IsPresent)
+            {
+                backendHttpSettings.PickHostNameFromBackendAddress = true;
+            }
+            if(this.HostName != null)
+            {
+                backendHttpSettings.HostName = this.HostName;
+            }
+            if (this.AffinityCookieName != null)
+            {
+                backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
+            }
+            if (this.Path != null)
+            {
+                backendHttpSettings.Path = this.Path;
+            }
+
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
                                     this.Name);
+
             return backendHttpSettings;
         }
     }

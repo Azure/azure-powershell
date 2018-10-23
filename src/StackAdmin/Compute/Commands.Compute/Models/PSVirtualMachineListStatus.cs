@@ -19,10 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachineListStatus : PSVirtualMachineList
     {
         public string PowerState { get; set; }
+
+        public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
     }
 }

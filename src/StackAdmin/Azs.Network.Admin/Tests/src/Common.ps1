@@ -15,8 +15,6 @@
 # Tests to skip
 $global:SkippedTests = $(
     'TestGetAllVirtualNetworksOData',
-    'TestPutAndUpdateQuota',
-    'TestPutAndDeleteQuota',
     'TestGetAllPublicIpAddressesOData'
 )
 
@@ -35,10 +33,15 @@ $global:PutAndDeleteQuotaName = "TestQuotaForRemoval"
 $global:CreateAndUpdateQuotaName = "TestQuotaForUpdate"
 $global:MaxNicsPerSubscription = 8
 
+$global:Client = $null
+
 if (-not $global:RunRaw) {
     # Load the script block
     $scriptBlock = {
-        Get-MockClient -ClassName 'NetworkAdmin' -TestName $global:TestName
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'NetworkAdmin' -TestName $global:TestName
+        }
+        $global:Client
     }
     Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }

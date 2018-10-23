@@ -601,7 +601,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
             parameters.Action = new Management.ServiceBus.Models.Action()
             {
                 SqlExpression = ruleAttributes.Action.SqlExpression,
-                CompatibilityLevel = ruleAttributes.Action.CompatibilityLevel
+                CompatibilityLevel = ruleAttributes.Action.CompatibilityLevel,
+                RequiresPreprocessing = ruleAttributes.Action.RequiresPreprocessing
             };
 
             if (ruleAttributes.FilterType.ToString().Equals("SqlFilter"))

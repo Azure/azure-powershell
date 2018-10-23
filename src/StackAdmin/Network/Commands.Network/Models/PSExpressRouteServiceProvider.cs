@@ -15,9 +15,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSExpressRouteServiceProvider
     {
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSExpressRouteServiceProviderBandwidthsOffered> BandwidthsOffered { get; set; }
 
-        public string ProvisioningState { get; set; } 
+        public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string BandwidthsOfferedText

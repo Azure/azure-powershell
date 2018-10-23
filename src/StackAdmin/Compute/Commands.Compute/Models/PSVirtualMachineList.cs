@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public PSVirtualMachine ToPSVirtualMachine()
         {
-            return AutoMapper.Mapper.Map<PSVirtualMachine>(this);
+            return ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(this);
         }
     }
 }

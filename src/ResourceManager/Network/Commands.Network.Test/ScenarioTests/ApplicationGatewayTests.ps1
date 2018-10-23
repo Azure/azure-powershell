@@ -203,10 +203,10 @@ function Test-ApplicationGatewayCRUD
 		Assert-AreEqual 1 $getgw.Probes[1].Match.StatusCodes.Count
 
 		# Get Application Gateway backend health with expanded resource
-		$job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
-		$job | Wait-Job
-		$backendHealth = $job | Receive-Job
-		Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
+		# $job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
+		# $job | Wait-Job
+		# $backendHealth = $job | Receive-Job
+		# Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
 
 		# Get Application Gateway backend health without expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname
@@ -513,6 +513,7 @@ function Test-ApplicationGatewayCRUD3
 	$listener01Name = Get-ResourceName
 
 	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
 	$poolSetting01Name = Get-ResourceName
 
 	$rule01Name = Get-ResourceName
@@ -540,36 +541,76 @@ function Test-ApplicationGatewayCRUD3
 		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
 
 		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzureRmApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
 		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
-		$probeHttp = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
-		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
+		$probeHttp = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
 
 		#rule
 		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 
 		# sku
-		$sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
+		$sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+
+		# autoscale configuration
+		$autoscaleConfig = New-AzureRmApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 
 		# security part
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig
+
+		# Get Application Gateway
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
 		# Operational State
-		Assert-AreEqual "Running" $appgw.OperationalState
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# check trusted root
+		$trustedRoot02 = Get-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $getgw -Name $trustedRootCertName
+		Assert-NotNull $trustedRoot02
+		Assert-AreEqual $getgw.BackendHttpSettingsCollection[0].TrustedRootCertificates.Count 1
+
+		# check autoscale configuration
+		$autoscaleConfig01 = Get-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw
+		Assert-NotNull $autoscaleConfig01
+		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
 
 		# Get for zones
-		Assert-AreEqual $appgw.Zones.Count 2
+		Assert-AreEqual $getgw.Zones.Count 2
 
 		# Get for SslPolicy
-		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $appgw
+		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw
 		Assert-AreEqual $sslPolicy.MinProtocolVersion $sslPolicy01.MinProtocolVersion
 
-		# Stop Application Gateway
-		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $appgw
+		# check autoscale configuration
+		$autoscaleConfig01 = Get-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw
+		Assert-NotNull $autoscaleConfig01
+		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
 
-		Assert-AreEqual "Stopped" $getgw.OperationalState
+		# Next setup preparation
+
+		# remove autoscale config
+		$getgw = Remove-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
+		$getgw = Set-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+
+		# Set
+		$getgw01 = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		# check sku
+		$sku01 = Get-AzureRmApplicationGatewaySku -ApplicationGateway $getgw01
+		Assert-NotNull $sku01
+		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Name Standard_v2
+		Assert-AreEqual $sku01.Tier Standard_v2
+
+		# Stop Application Gateway
+		$getgw1 = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw01
+
+		Assert-AreEqual "Stopped" $getgw1.OperationalState
 
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force

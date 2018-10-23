@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmPublicIpAddress", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpAddress))]
     public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -29,12 +31,22 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
+            ParameterSetName = "NoExpandStandAloneIp")]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = "Expand")]
+           ParameterSetName = "ExpandStandAloneIp")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpandScaleSetIp")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "ExpandScaleSetIp")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -42,52 +54,164 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = "NoExpand")]
+            ParameterSetName = "NoExpandStandAloneIp")]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.",
-           ParameterSetName = "Expand")]
+           ParameterSetName = "ExpandStandAloneIp")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpandScaleSetIp")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "ExpandScaleSetIp")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Scale Set Name.",
+            ParameterSetName = "NoExpandScaleSetIp")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Scale Set Name.",
+            ParameterSetName = "ExpandScaleSetIp")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualMachineScaleSetName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Index.",
+            ParameterSetName = "NoExpandScaleSetIp")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Index.",
+            ParameterSetName = "ExpandScaleSetIp")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualMachineIndex { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Network Interface Name.",
+            ParameterSetName = "NoExpandScaleSetIp")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Network Interface Name.",
+            ParameterSetName = "ExpandScaleSetIp")]
+        [ValidateNotNullOrEmpty]
+        public string NetworkInterfaceName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Network Interface IP Configuration Name.",
+            ParameterSetName = "NoExpandScaleSetIp")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Network Interface IP Configuration Name.",
+            ParameterSetName = "ExpandScaleSetIp")]
+        [ValidateNotNullOrEmpty]
+        public string IpConfigurationName { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "Expand")]
+            ParameterSetName = "ExpandStandAloneIp")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "ExpandScaleSetIp")]
         [ValidateNotNullOrEmpty]
         public string ExpandResource { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var publicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name, this.ExpandResource);
-                
-                WriteObject(publicIp);
-            }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var publicIPList = this.PublicIpAddressClient.List(this.ResourceGroupName);
-
-                var psPublicIps = new List<PSPublicIpAddress>();
-                
-                // populate the publicIpAddresses with the ResourceGroupName
-                foreach (var publicIp in publicIPList)
+                PSPublicIpAddress publicIp;
+                if (ParameterSetName.Contains("ScaleSetIp"))
                 {
-                    var psPublicIp = this.ToPsPublicIpAddress(publicIp);
-                    psPublicIp.ResourceGroupName = this.ResourceGroupName;
-                    psPublicIps.Add(psPublicIp);
+                    var publicIpVmss = PublicIpAddressClient.GetVirtualMachineScaleSetPublicIPAddress(
+                        this.ResourceGroupName, this.VirtualMachineScaleSetName, this.VirtualMachineIndex, this.NetworkInterfaceName, this.IpConfigurationName, this.Name, this.ExpandResource);
+                    publicIp = ToPsPublicIpAddress(publicIpVmss);
+                    publicIp.ResourceGroupName = this.ResourceGroupName;
+                    publicIp.Tag = TagsConversionHelper.CreateTagHashtable(publicIpVmss.Tags);
+                }
+                else
+                {
+                    publicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name, this.ExpandResource);
                 }
 
-                WriteObject(psPublicIps, true);
+                WriteObject(publicIp);
             }
             else
             {
-                var publicIPList = this.PublicIpAddressClient.ListAll();
+                IPage<PublicIPAddress> publicipPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    if (ParameterSetName.Contains("ScaleSetIp"))
+                    {
+                        if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                        {
+                            publicipPage =
+                                this.PublicIpAddressClient.ListVirtualMachineScaleSetPublicIPAddresses(
+                                    this.ResourceGroupName,
+                                    this.VirtualMachineScaleSetName);
+                        }
+                        else
+                        {
+                            publicipPage =
+                                this.PublicIpAddressClient.ListVirtualMachineScaleSetVMPublicIPAddresses(
+                                    this.ResourceGroupName,
+                                    this.VirtualMachineScaleSetName,
+                                    this.VirtualMachineIndex,
+                                    this.NetworkInterfaceName,
+                                    this.IpConfigurationName);
+                        }
+                    }
+                    else
+                    {
+                        publicipPage = this.PublicIpAddressClient.List(this.ResourceGroupName);
+                    }
+                }
+                else
+                {
+                    publicipPage = this.PublicIpAddressClient.ListAll();
+                }
+
+                // Get all resources by polling on next page link
+                List<PublicIPAddress> publicIPList;
+                if (ParameterSetName.Contains("ScaleSetIp"))
+                {
+                    if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                    {
+                        publicIPList = ListNextLink<PublicIPAddress>.GetAllResourcesByPollingNextLink(publicipPage, this.PublicIpAddressClient.ListVirtualMachineScaleSetPublicIPAddressesNext);
+                    }
+                    else
+                    {
+                        publicIPList = ListNextLink<PublicIPAddress>.GetAllResourcesByPollingNextLink(publicipPage, this.PublicIpAddressClient.ListVirtualMachineScaleSetVMPublicIPAddressesNext);
+                    }
+                }
+                else
+                {
+                    publicIPList = ListNextLink<PublicIPAddress>.GetAllResourcesByPollingNextLink(publicipPage, this.PublicIpAddressClient.ListNext);
+                }
 
                 var psPublicIps = new List<PSPublicIpAddress>();
 
@@ -104,5 +228,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-
- 

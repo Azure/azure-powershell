@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The loadbalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-            
+            base.Execute();
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var frontendIpConfiguration =
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
                 var frontendIpConfigurations = this.LoadBalancer.FrontendIpConfigurations;
                 WriteObject(frontendIpConfigurations, true);
             }
-            
+
         }
     }
 }

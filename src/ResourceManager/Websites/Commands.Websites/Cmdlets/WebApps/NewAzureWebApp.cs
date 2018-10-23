@@ -38,19 +38,24 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", DefaultParameterSetName = SimpleParameterSet, SupportsShouldProcess = true), OutputType(typeof(Site))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", DefaultParameterSetName = SimpleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSite))]
     public class NewAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         const string CopyWebAppParameterSet = "WebAppParameterSet";
         const string SimpleParameterSet = "SimpleParameterSet";
+        const string PrivateRegistry = "PrivateRegistry";
         const int MaxFreeSites = 10;
+        //private AppServicePlan Asp;
 
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ParameterSetName = PrivateRegistry)]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ParameterSetName = CopyWebAppParameterSet)]
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.", ParameterSetName = SimpleParameterSet)]
         [ResourceGroupCompleter]
@@ -62,6 +67,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Alias("WebAppName")]
         public string Name { get; set; }
 
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The Location of the web app eg: West US.", ParameterSetName = PrivateRegistry)]
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.", ParameterSetName = CopyWebAppParameterSet)]
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The Location of the web app eg: West US.", ParameterSetName = SimpleParameterSet)]
         [LocationCompleter("Microsoft.Web/sites", "Microsoft.Web/serverFarms")]
@@ -72,13 +78,33 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true, ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
-        public Site SourceWebApp { get; set; }
+        public PSSite SourceWebApp { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = "Resource Id of existing traffic manager profile", ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("TrafficManagerProfileName", "TrafficManagerProfileId")]
         public string TrafficManagerProfile { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = "Container Image Name and optional tag, for example (image:tag)", ParameterSetName = PrivateRegistry)]
+        [Parameter(Mandatory = false, HelpMessage = "Container Image Name and optional tag, for example (image:tag)", ParameterSetName = SimpleParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerImageName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Private Container Registry Server Url", ParameterSetName = PrivateRegistry)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerRegistryUrl { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Private Container Registry Username", ParameterSetName = PrivateRegistry)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerRegistryUser { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Private Container Registry Password", ParameterSetName = PrivateRegistry)]
+        [ValidateNotNullOrEmpty]
+        public SecureString ContainerRegistryPassword { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter EnableContainerContinuousDeployment { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Ignore source control on source web app", ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -129,7 +155,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public void ExecuteCmdletActions(SessionState state)
         {
-            if (ParameterSetName == SimpleParameterSet)
+            if (ParameterSetName == SimpleParameterSet || ParameterSetName == PrivateRegistry)
             {
                 ValidateWebAppName(Name);
                 if (ShouldProcess(
@@ -178,6 +204,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfile),
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
+                cloningInfo = new PSCloningInfo(cloningInfo);
             }
 
             var cloneWebAppSlots = false;
@@ -202,7 +229,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteVerboseWithTimestamp("Cloning source web app '{0}' to destination web app {1}", srcwebAppName, Name);
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+            WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
 
             if (cloneWebAppSlots)
             {
@@ -255,11 +282,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         sealed class Parameters : IParameters<Site>
         {
-            readonly NewAzureWebAppCmdlet _cmdlet; 
+            readonly NewAzureWebAppCmdlet _cmdlet;
+            readonly WebsitesClient _websitesClient;
 
-            public Parameters(NewAzureWebAppCmdlet cmdlet)
+            public Parameters(NewAzureWebAppCmdlet cmdlet, WebsitesClient websitesClient)
             {
                 _cmdlet = cmdlet;
+                _websitesClient = websitesClient;
             }
 
             public string DefaultLocation => "eastus";
@@ -269,7 +298,44 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 get { return _cmdlet.Location; }
                 set { _cmdlet.Location = value; }
             }
+            private SiteConfig GetNewConfig(AppServicePlan appServiceplan)
+            {
+                bool newConfigAdded = false;
+                SiteConfig siteConfig = new SiteConfig();
+                siteConfig.AppSettings = new List<NameValuePair>();
 
+                string containerImageName = _cmdlet.ContainerImageName;
+                if (containerImageName != null)
+                {
+                    containerImageName = CmdletHelpers.DockerImagePrefix + containerImageName;
+                    if (appServiceplan == null || appServiceplan.IsXenon.GetValueOrDefault())
+                    {
+                        siteConfig.WindowsFxVersion = containerImageName;
+                        newConfigAdded = true;
+                    }
+                }
+                if (_cmdlet.ContainerRegistryUrl != null)
+                {
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
+                    newConfigAdded = true;
+                }
+                if (_cmdlet.ContainerRegistryUser != null)
+                {
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
+                    newConfigAdded = true;
+                }
+                if (_cmdlet.ContainerRegistryPassword != null)
+                {
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
+                    newConfigAdded = true;
+                }
+                if (_cmdlet.EnableContainerContinuousDeployment.IsPresent)
+                {
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerEnableCI, "true"));
+                    newConfigAdded = true;
+                }
+                return newConfigAdded ? siteConfig : null;
+            }
             public async Task<ResourceConfig<Site>> CreateConfigAsync()
             {
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
@@ -300,14 +366,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
                     }
                 }
-                var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName);
-                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name);
+                AppServicePlan appServiceplan = _websitesClient.GetAppServicePlan(planResourceGroup, planName);
+
+                // If ContainerImageName is specified and appservice plan doesn’t exist (appServiceplan == null) we will try to create plan with windows container 
+                var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName, appServiceplan == null && _cmdlet.ContainerImageName != null);
+
+                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name, this.GetNewConfig(appServiceplan));
             }
         }
 
         public async Task CreateWithSimpleParameters(IAsyncCmdlet adapter)
         {
-            var parameters = new Parameters(this);
+            var parameters = new Parameters(this, WebsitesClient);
             var client = new WebClient(DefaultContext);
             var output = await client.RunAsync(client.SubscriptionId, parameters, adapter);
 
@@ -387,7 +457,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     repoPath,
                     exception.Message));
             }
-            adapter.WriteObject(output);
+            adapter.WriteObject(new PSSite(output));
         }
 
 

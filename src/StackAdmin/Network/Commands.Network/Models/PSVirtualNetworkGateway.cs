@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSVirtualNetworkGateway : PSTopLevelResource
     {
@@ -27,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string VpnType { get; set; }
 
         public bool EnableBgp { get; set; }
+
+        public bool ActiveActive { get; set; }
 
         public PSResourceId GatewayDefaultSite { get; set; }
 

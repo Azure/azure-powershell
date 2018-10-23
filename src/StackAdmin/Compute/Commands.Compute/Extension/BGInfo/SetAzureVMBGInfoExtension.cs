@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineBgInfoExtension)]
+        ProfileNouns.VirtualMachineBgInfoExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBGInfoExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
@@ -30,32 +31,35 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ProcessRecord();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName, VerbsCommon.Set))
             {
-                if (string.IsNullOrEmpty(this.Location))
+                ExecuteClientAction(() =>
                 {
-                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
-                }
+                    if (string.IsNullOrEmpty(this.Location))
+                    {
+                        this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                    }
 
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                    TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
-                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = this.ForceRerun
-                };
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                        VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                        TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun
+                    };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                    parameters).GetAwaiter().GetResult();
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                        parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

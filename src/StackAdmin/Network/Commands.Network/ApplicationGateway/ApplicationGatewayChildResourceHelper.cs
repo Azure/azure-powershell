@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
             int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
-            
+
             // Replace the following string '/{value}/'
             startIndex--;
             string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var gatewayIpConfig in applicationGateway.GatewayIPConfigurations)
                 {
-                    gatewayIpConfig.Id = string.Empty;                    
+                    gatewayIpConfig.Id = string.Empty;
                 }
             }
 
@@ -87,12 +86,21 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize AuthenticationCertificates
+            if (applicationGateway.AuthenticationCertificates != null)
+            {
+                foreach (var authCertificate in applicationGateway.AuthenticationCertificates)
+                {
+                    authCertificate.Id = string.Empty;
+                }
+            }
+
             // Normalize FrontendIpConfiguration
             if (applicationGateway.FrontendIPConfigurations != null)
             {
                 foreach (var frontendIpConfiguration in applicationGateway.FrontendIPConfigurations)
                 {
-                    frontendIpConfiguration.Id = string.Empty;                    
+                    frontendIpConfiguration.Id = string.Empty;
                 }
             }
 
@@ -137,6 +145,16 @@ namespace Microsoft.Azure.Commands.Network
                                                     applicationGateway.ResourceGroupName,
                                                     applicationGateway.Name);
                     }
+                    if (null != backendHttpSettings.AuthenticationCertificates)
+                    {
+                        foreach (var authCert in backendHttpSettings.AuthenticationCertificates)
+                        {
+                            authCert.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    authCert.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                        }
+                    }
                 }
             }
 
@@ -161,7 +179,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     if (null != httpListener.SslCertificate)
-                    { 
+                    {
                         httpListener.SslCertificate.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                                         httpListener.SslCertificate.Id,
                                                                         applicationGateway.ResourceGroupName,
@@ -177,27 +195,54 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     urlPathMap.Id = string.Empty;
 
-                    urlPathMap.DefaultBackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                    if (null != urlPathMap.DefaultBackendAddressPool)
+                    {
+                        urlPathMap.DefaultBackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                     urlPathMap.DefaultBackendAddressPool.Id,
                                                     applicationGateway.ResourceGroupName,
                                                     applicationGateway.Name);
-
-                    urlPathMap.DefaultBackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                    }
+                    if (null != urlPathMap.DefaultBackendHttpSettings)
+                    {
+                        urlPathMap.DefaultBackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                     urlPathMap.DefaultBackendHttpSettings.Id,
                                                     applicationGateway.ResourceGroupName,
                                                     applicationGateway.Name);
+                    }
+                    if (null != urlPathMap.DefaultRedirectConfiguration)
+                    {
+
+                        urlPathMap.DefaultRedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        urlPathMap.DefaultRedirectConfiguration.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                    }
 
                     foreach (var pathRule in urlPathMap.PathRules)
                     {
-                        pathRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                        if (null != pathRule.BackendAddressPool)
+                        {
+                            pathRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                       pathRule.BackendAddressPool.Id,
                                       applicationGateway.ResourceGroupName,
                                       applicationGateway.Name);
+                        }
 
-                        pathRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                        if (null != pathRule.BackendHttpSettings)
+                        {
+                            pathRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                         pathRule.BackendHttpSettings.Id,
                                                         applicationGateway.ResourceGroupName,
                                                         applicationGateway.Name);
+                        }
+
+                        if (null != pathRule.RedirectConfiguration)
+                        {
+                            pathRule.RedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        pathRule.RedirectConfiguration.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                        }
                     }
                 }
             }
@@ -236,6 +281,31 @@ namespace Microsoft.Azure.Commands.Network
                                                                     requestRoutingRule.UrlPathMap.Id,
                                                                     applicationGateway.ResourceGroupName,
                                                                     applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.RedirectConfiguration)
+                    {
+                        requestRoutingRule.RedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.RedirectConfiguration.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
+                }
+
+                // Normalize RedirectConfiguration
+                if (applicationGateway.RedirectConfigurations != null)
+                {
+                    foreach (var redirectConfiguration in applicationGateway.RedirectConfigurations)
+                    {
+                        redirectConfiguration.Id = string.Empty;
+
+                        if (null != redirectConfiguration.TargetListener)
+                        {
+                            redirectConfiguration.TargetListener.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        redirectConfiguration.TargetListener.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                        }
                     }
                 }
             }

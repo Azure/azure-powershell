@@ -39,5 +39,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkSecurityGroup-SecurityRuleCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkSecurityGroupMultiValuedRules()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkSecurityGroup-MultiValuedRules");
+        }
     }
 }

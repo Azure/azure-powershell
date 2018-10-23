@@ -96,6 +96,8 @@ function Stop-AzsScaleUnitNode {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['scaleUnitNode']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Stop scale unit node")) {

@@ -23,7 +23,7 @@ Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBack
 ### FromWebApp
 ```
 Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
- [-IgnoreConflictingHostNames] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+ [-IgnoreConflictingHostNames] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite] [<CommonParameters>]
 ```
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 

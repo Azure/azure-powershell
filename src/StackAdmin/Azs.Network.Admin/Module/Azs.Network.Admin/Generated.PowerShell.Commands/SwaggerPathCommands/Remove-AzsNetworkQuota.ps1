@@ -87,6 +87,8 @@ function Remove-AzsNetworkQuota {
 
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['resourceName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Delete the network quota")) {

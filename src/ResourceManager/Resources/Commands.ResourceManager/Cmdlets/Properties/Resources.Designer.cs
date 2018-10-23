@@ -376,6 +376,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The paramater -RollbackToLastDeployment and -RollBackDeploymentName can&apos;t be defined at the same time..
+        /// </summary>
+        internal static string InvalidRollbackParameters {
+            get {
+                return ResourceManager.GetString("InvalidRollbackParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
         /// </summary>
         internal static string InvalidTagFormat {

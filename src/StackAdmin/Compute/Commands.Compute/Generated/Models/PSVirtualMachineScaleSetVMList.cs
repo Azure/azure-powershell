@@ -19,11 +19,13 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Management.Compute.Models;
-
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public class PSVirtualMachineScaleSetVMList : PSVirtualMachineScaleSetVM
     {
+        public PSVirtualMachineScaleSetVM ToPSVirtualMachineScaleSetVM ()
+        {
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSetVM>(this);
+        }
     }
 }

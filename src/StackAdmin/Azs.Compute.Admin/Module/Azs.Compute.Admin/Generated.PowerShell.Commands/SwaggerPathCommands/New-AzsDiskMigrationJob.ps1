@@ -29,34 +29,34 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The migration job guid name.
 
 .EXAMPLE
-
-    PS C:\> $disks = Get-AzsDisk -location local
     PS C:\> New-AzsDiskMigrationJob -Name "MyMigrationJob" -Disks $disks -location local -TargetShare "\\SU1FileServer.azurestack.local\SU1_ObjStore"
+
+    Start a managed disk migration job for the first 20 disks
 #>
 function New-AzsDiskMigrationJob
 {
     [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob])]
 	[Alias('Start-AzsDiskMigrationJob')]
-    param(    
+    param(
         [Parameter(Mandatory = $true)]
         [Microsoft.AzureStack.Management.Compute.Admin.Models.Disk[]]
         $Disks,
-    
+
         [Parameter(Mandatory = $true)]
         [System.String]
         $TargetShare,
-    
+
         [Parameter(Mandatory = $false)]
         [System.String]
         $Location,
-    
+
         [Parameter(Mandatory = $true)]
         [Alias('MigrationId')]
         [System.String]
         $Name
     )
 
-    Begin 
+    Begin
     {
 	    Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
@@ -76,7 +76,7 @@ function New-AzsDiskMigrationJob
 
 		$GlobalParameterHashtable = @{}
 		$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
+
 		$GlobalParameterHashtable['SubscriptionId'] = $null
 		if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 			$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -86,7 +86,7 @@ function New-AzsDiskMigrationJob
 
 		$MigrationId = $Name
 
- 
+
 		if (-not $PSBoundParameters.ContainsKey('Location')) {
 				$Location = (Get-AzureRMLocation).Location
 		}
@@ -98,9 +98,9 @@ function New-AzsDiskMigrationJob
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-            
+
 			Get-TaskResult @GetTaskResult_params
-        
+
 		}
     }
 

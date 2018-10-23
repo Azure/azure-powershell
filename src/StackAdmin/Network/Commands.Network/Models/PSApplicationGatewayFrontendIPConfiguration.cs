@@ -18,23 +18,24 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayFrontendIPConfiguration : PSChildResource
-     {
-         public string PrivateIPAddress { get; set; }
-         public string PrivateIPAllocationMethod { get; set; }
-         public PSResourceId Subnet { get; set; }
-         public PSResourceId PublicIPAddress { get; set; }
-         public string ProvisioningState { get; set; }
+    {
+        public string PrivateIPAddress { get; set; }
+        public string PrivateIPAllocationMethod { get; set; }
+        public PSResourceId Subnet { get; set; }
+        public PSResourceId PublicIPAddress { get; set; }
+        public string ProvisioningState { get; set; }
+        public string Type { get; set; }
 
-         [JsonIgnore]
-         public string SubnetText
-         {
-             get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string SubnetText
+        {
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         [JsonIgnore]
-         public string PublicIpAddressText
-         {
-             get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
-     }
+        [JsonIgnore]
+        public string PublicIpAddressText
+        {
+            get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
 }

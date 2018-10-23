@@ -15,38 +15,37 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    using Newtonsoft.Json;
-
     public class PSRouteTable : PSTopLevelResource
-     {
-         public List<PSRoute> Routes { get; set; }
+    {
+        public List<PSRoute> Routes { get; set; }
 
-         public List<PSSubnet> Subnets { get; set; }
+        public List<PSSubnet> Subnets { get; set; }
 
-         public string ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
-         [JsonIgnore]
-         public string RoutesText
-         {
-             get { return JsonConvert.SerializeObject(Routes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
-     
-         [JsonIgnore]
-         public string SubnetsText
-         {
-             get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string RoutesText
+        {
+            get { return JsonConvert.SerializeObject(Routes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         public bool ShouldSerializeSubnets()
-         {
-             return !string.IsNullOrEmpty(this.Name);
-         }
+        [JsonIgnore]
+        public string SubnetsText
+        {
+            get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         public bool ShouldSerializeRoutes()
-         {
-             return !string.IsNullOrEmpty(this.Name);
-         }
-     }
+        public bool ShouldSerializeSubnets()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeRoutes()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+    }
 }

@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewWebAppHyperV()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppHyperV");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppOnAse()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppOnAse");

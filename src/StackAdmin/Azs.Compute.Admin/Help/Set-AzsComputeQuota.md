@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Compute.Admin-help.xml
 Module Name: Azs.Compute.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Update an existing compute quota.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Set-AzsComputeQuota -Name Quota1 -VmScaleSetCount 20
 ```
@@ -55,7 +55,7 @@ Number of availability sets allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -85,7 +85,7 @@ Possibly modified compute quota returned form Get-AzsComputeQuota.
 ```yaml
 Type: ComputeQuotaObject
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -100,7 +100,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -115,7 +115,7 @@ The name of the quota.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -130,7 +130,7 @@ Size for standard managed disks and snapshots allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -145,7 +145,7 @@ The ARM compute quota id.
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -160,7 +160,7 @@ Size for standard managed disks and snapshots allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ Number of virtual machines allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -190,7 +190,7 @@ Number of scale sets allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -238,6 +238,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### ComputeQuotaObject
+
 ## NOTES
 
 ## RELATED LINKS
+

@@ -37,8 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .ReplicationProtectableItems
                 .ListByReplicationProtectionContainersWithHttpMessagesAsync(
                     fabricName,
-                    protectionContainerName,
-                    this.GetRequestHeaders(true))
+                    protectionContainerName)
                 .GetAwaiter()
                 .GetResult()
                 .Body;

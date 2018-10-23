@@ -33,5 +33,10 @@ namespace Microsoft.Azure.Commands.Compute
         ///  Password required for certification when encryption is enabled
         /// </summary>
         public string Password;
+
+        /// <summary>
+        /// Azure Key Vault Credential settings
+        /// </summary>
+        public PrivateKeyVaultCredentialSettings PrivateKeyVaultCredentialSettings;
     }
 }

@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -33,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string FrontendIpConfigurationId { get; set; }
 
-       [Parameter(
-             ParameterSetName = "SetByResource",
-             HelpMessage = "Frontend Ip config")]
+        [Parameter(
+              ParameterSetName = "SetByResource",
+              HelpMessage = "Frontend Ip config")]
         [ValidateNotNullOrEmpty]
         public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
 
@@ -65,9 +64,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {

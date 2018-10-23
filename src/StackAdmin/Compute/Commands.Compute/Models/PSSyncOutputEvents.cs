@@ -80,8 +80,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                                         precentComplete,
                                         FormatDuration(remainingTime),
                                         avgThroughputMbps);
-            var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", activityId, activity, message, (int) remainingTime.TotalSeconds, (int) precentComplete);
-            using(var ps = System.Management.Automation.PowerShell.Create())
+            var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", activityId, activity, message, (int)remainingTime.TotalSeconds, (int)precentComplete);
+            using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
                 ps.AddScript(progressCommand);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         private void LogProgressComplete(int activityId, string activity)
         {
             var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -Completed", activityId, activity, Rsrc.PSSyncOutputEventsLogProgressCompleteCompleted);
-            using(var ps = System.Management.Automation.PowerShell.Create())
+            using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
                 ps.AddScript(progressCommand);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public void ProgressEmptyBlockDetection(int processedRangeCount, int totalRangeCount)
         {
-            using(var ps = System.Management.Automation.PowerShell.Create())
+            using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 if (processedRangeCount >= totalRangeCount)
                 {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         protected virtual void Dispose(bool disposing)
         {
-            if(!disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {

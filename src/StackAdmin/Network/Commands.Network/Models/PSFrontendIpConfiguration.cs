@@ -15,9 +15,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSFrontendIPConfiguration : PSIPConfiguration
     {
@@ -29,6 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 2)]
         public List<PSResourceId> InboundNatPools { get; set; }
+
+        public List<string> Zones { get; set; }
 
         [JsonIgnore]
         public string InboundNatRulesText
@@ -46,6 +47,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InboundNatPoolsText
         {
             get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ZonesText
+        {
+            get { return JsonConvert.SerializeObject(Zones, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeInboundNatRules()

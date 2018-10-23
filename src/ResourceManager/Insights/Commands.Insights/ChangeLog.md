@@ -19,6 +19,15 @@
 -->
 ## Current Release
 
+## Version 5.1.4
+
+* Fixed issues #6833 and #7102 (Diagnostic Settings area)
+    - Issues with the default name, i.e. "service", during creation and listing/getting of diagnostic settings
+    - Issues creating diagnostic settings with categories
+
+* Added deprecation message for metrics time grains parameters
+    - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
+
 ## Version 5.1.3
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

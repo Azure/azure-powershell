@@ -39,7 +39,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.initialize();
         }
 
-        [Fact]
+        [Fact (Skip ="Need to ReRecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AvCenterTest()
         {
@@ -228,7 +228,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 Constants.NewModel,
                 "V2AUpdatePolicy -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
-        
+
         [Fact]
         [Trait(
             Category.AcceptanceType,

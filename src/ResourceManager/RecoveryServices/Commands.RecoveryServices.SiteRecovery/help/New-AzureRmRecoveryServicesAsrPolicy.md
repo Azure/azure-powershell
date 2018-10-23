@@ -140,6 +140,7 @@ Accept wildcard characters: False
 ### -Authentication
 Specifies the type of authentication used.
 Valid values are:
+
 - Certificate
 -  Kerberos
 
@@ -205,6 +206,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -218,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -Encryption
-Specifies if encryption should be enabled or disabled.
+{{Fill Encryption Description}}
 
 ```yaml
 Type: System.String
@@ -343,6 +345,7 @@ Accept wildcard characters: False
 ### -ReplicationFrequencyInSeconds
 Specifies the replication frequency interval in seconds.
 Valid values are:
+
 - 30
 - 300
 - 900
@@ -363,6 +366,7 @@ Accept wildcard characters: False
 ### -ReplicationMethod
 Specifies the replication method.
 Valid values are:
+
 - Online
 - Offline
 
@@ -510,7 +514,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+### System.Object
 
 ## NOTES
 

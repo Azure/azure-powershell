@@ -57,6 +57,14 @@
     <Compile Include="IotHub\RemoveAzureRmIotHubCertificate.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubEventHubConsumerGroup.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\Routing\AddAzureRmIotHubRoute.cs" />
+    <Compile Include="IotHub\Routing\AddAzureRmIotHubRoutingEndpoint.cs" />
+    <Compile Include="IotHub\Routing\GetAzureRmIotHubRoute.cs" />
+    <Compile Include="IotHub\Routing\GetAzureRmIotHubRoutingEndpoint.cs" />
+    <Compile Include="IotHub\Routing\RemoveAzureRmIotHubRoute.cs" />
+    <Compile Include="IotHub\Routing\RemoveAzureRmIotHubRoutingEndpoint.cs" />
+    <Compile Include="IotHub\Routing\TestAzureRmIotHubRoute.cs" />
+    <Compile Include="IotHub\Routing\SetAzureRmIotHubRoute.cs" />
     <Compile Include="IotHub\SetAzureRmIotHub.cs" />
     <Compile Include="IotHub\SetAzureRmIotHubVerifiedCertificate.cs" />
     <Compile Include="IotHub\UpdateAzureRmIotHub.cs" />
@@ -68,6 +76,7 @@
     <Compile Include="Models\PSCertificate.cs" />
     <Compile Include="Models\PSCertificateWithNonceDescription.cs" />
     <Compile Include="Models\PSCloudToDeviceProperties.cs" />
+    <Compile Include="Models\PSEndpointType.cs" />
     <Compile Include="Models\PSEventHubConsumerGroupInfo.cs" />
     <Compile Include="Models\PSEventHubInputProperties.cs" />
     <Compile Include="Models\PSEventHubProperties.cs" />
@@ -91,17 +100,25 @@
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
     <Compile Include="Models\PSFallbackRouteProperties.cs" />
+    <Compile Include="Models\PSRouteCompilationError.cs" />
+    <Compile Include="Models\PSRouteErrorPosition.cs" />
+    <Compile Include="Models\PSRouteErrorRange.cs" />
+    <Compile Include="Models\PSRoutingCustomEndpoint.cs" />
     <Compile Include="Models\PSRoutingServiceBusQueueEndpointProperties.cs" />
     <Compile Include="Models\PSRoutingProperties.cs" />
     <Compile Include="Models\PSRoutingServiceBusTopicEndpointProperties.cs" />
     <Compile Include="Models\PSRoutingEventHubProperties.cs" />
     <Compile Include="Models\PSRoutingEndpoints.cs" />
     <Compile Include="Models\PSRouteProperties.cs" />
+    <Compile Include="Models\PSRoutingSource.cs" />
+    <Compile Include="Models\PSRoutingStorageContainerProperties.cs" />
     <Compile Include="Models\PSSBAccessRights.cs" />
     <Compile Include="Models\PSSharedAccessAuthorizationRule.cs" />
     <Compile Include="Models\PSSharedAccessSignatureAuthorizationRule.cs" />
     <Compile Include="Models\PSStorageEndpointProperties.cs" />
     <Compile Include="Models\PSTagsResource.cs" />
+    <Compile Include="Models\PSTestRouteResult.cs" />
+    <Compile Include="Models\PSTestRouteResultDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -113,6 +130,8 @@
     <None Include="help\Add-AzureRmIotHubCertificate.md" />
     <None Include="help\Add-AzureRmIotHubEventHubConsumerGroup.md" />
     <None Include="help\Add-AzureRmIotHubKey.md" />
+    <None Include="help\Add-AzureRmIotHubRoute.md" />
+    <None Include="help\Add-AzureRmIotHubRoutingEndpoint.md" />
     <None Include="help\AzureRM.IotHub.md" />
     <None Include="help\Get-AzureRmIotHub.md" />
     <None Include="help\Get-AzureRmIotHubCertificate.md" />
@@ -123,6 +142,8 @@
     <None Include="help\Get-AzureRmIotHubKey.md" />
     <None Include="help\Get-AzureRmIotHubQuotaMetric.md" />
     <None Include="help\Get-AzureRmIotHubRegistryStatistic.md" />
+    <None Include="help\Get-AzureRmIotHubRoute.md" />
+    <None Include="help\Get-AzureRmIotHubRoutingEndpoint.md" />
     <None Include="help\Get-AzureRmIotHubValidSku.md" />
     <None Include="help\New-AzureRmIotHub.md" />
     <None Include="help\New-AzureRmIotHubExportDevices.md" />
@@ -131,8 +152,13 @@
     <None Include="help\Remove-AzureRmIotHubCertificate.md" />
     <None Include="help\Remove-AzureRmIotHubEventHubConsumerGroup.md" />
     <None Include="help\Remove-AzureRmIotHubKey.md" />
+    <None Include="help\Remove-AzureRmIotHubRoute.md" />
+    <None Include="help\Remove-AzureRmIotHubRoutingEndpoint.md" />
     <None Include="help\Set-AzureRmIotHub.md" />
+    <None Include="help\Set-AzureRmIotHubRoute.md" />
     <None Include="help\Set-AzureRmIotHubVerifiedCertificate.md" />
+    <None Include="help\Test-AzureRmIotHubRoute.md" />
+    <None Include="help\Update-AzureRmIotHub.md" />
     <Content Include="Microsoft.Azure.Commands.IotHub.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -156,7 +182,6 @@
     <None Include="AzureRM.IotHub.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="help\Update-AzureRmIotHub.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -165,7 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.2.0.0\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.2.1.0\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

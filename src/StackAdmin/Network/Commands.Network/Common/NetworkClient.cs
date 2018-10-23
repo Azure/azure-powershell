@@ -12,23 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Network.Models;
-using System.Threading.Tasks;
-using System.Threading;
-using Microsoft.Rest.Azure;
-using System.Collections.Generic;
-using Microsoft.Rest;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Text;
-using System.Net.Http.Headers;
-using System.Net;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -43,8 +43,21 @@ namespace Microsoft.Azure.Commands.Network
         public Action<string> WarningLogger { get; set; }
 
         public NetworkClient(IAzureContext context)
-            : this(AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
+             // Factories
+            var authFactory = AzureSession.Instance.AuthenticationFactory;
+            var clientFactory = AzureSession.Instance.ClientFactory;
+
+            var endpoint = AzureEnvironment.Endpoint.ResourceManager;
+
+            // Get parameters
+            var handler = new DelegatingHandler[] { new DoubleFetchHandler() };
+            var creds = authFactory.GetServiceClientCredentials(context, endpoint);
+            var baseUri = context.Environment.GetEndpointAsUri(endpoint);
+
+            // Construct client
+            this.NetworkManagementClient = clientFactory.CreateCustomArmClient<NetworkManagementClient>(baseUri, creds, handler);
+            this.NetworkManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
         public NetworkClient(INetworkManagementClient NetworkManagementClient)
@@ -60,11 +73,39 @@ namespace Microsoft.Azure.Commands.Network
             return Task.Factory.StartNew(() => GeneratevpnclientpackageAsync(resourceGroupName, virtualNetworkGatewayName, parameters)).Unwrap().GetAwaiter().GetResult();
         }
 
+        public string GenerateVpnProfile(string resourceGroupName, string virtualNetworkGatewayName, VpnClientParameters parameters)
+        {
+            return Task.Factory.StartNew(() => GenerateVpnProfileAsync(resourceGroupName, virtualNetworkGatewayName, parameters)).Unwrap().GetAwaiter().GetResult();
+        }
+
+        public string GetVpnProfilePackageUrl(string resourceGroupName, string virtualNetworkGatewayName)
+        {
+            return Task.Factory.StartNew(() => GetVpnProfilePackageUrlAsync(resourceGroupName, virtualNetworkGatewayName)).Unwrap().GetAwaiter().GetResult();
+        }
+
         public async Task<string> GeneratevpnclientpackageAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnClientParameters parameters,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             AzureOperationResponse<string> result = await this.GeneratevpnclientpackageWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName,
                 parameters, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        public async Task<string> GenerateVpnProfileAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnClientParameters parameters,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            AzureOperationResponse<string> result = await this.GenerateVpnProfileWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName,
+                parameters, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        public async Task<string> GetVpnProfilePackageUrlAsync(string resourceGroupName, string virtualNetworkGatewayName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            AzureOperationResponse<string> result = await this.GetVpnProfilePackageUrlWithHttpMessagesAsync(resourceGroupName,
+                virtualNetworkGatewayName,
+                null,
+                cancellationToken).ConfigureAwait(false);
+
             return result.Body;
         }
 
@@ -94,9 +135,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             #region 1. Send Async request to generate vpn client package
 
-            // 1. Send Async request to generate vpn client package          
+            // 1. Send Async request to generate vpn client package
             string baseUrl = NetworkManagementClient.BaseUri.ToString();
-            string apiVersion = NetworkManagementClient.ApiVersion;
+            string apiVersion = "2016-12-01";
 
             if (resourceGroupName == null)
             {
@@ -169,7 +210,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header received in response!"));
             }
 
-            if(string.IsNullOrEmpty(locationResultsUrl))
+            if (string.IsNullOrEmpty(locationResultsUrl))
             {
                 throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header value received in response!"));
             }
@@ -178,7 +219,7 @@ namespace Microsoft.Azure.Commands.Network
             #region 2. Wait for Async operation to succeed and then Get the content i.e. VPN Client package Url from locationResults
             //Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(60000);
 
-            // 2. Wait for Async operation to succeed           
+            // 2. Wait for Async operation to succeed
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
@@ -210,6 +251,297 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         // Wait for 15 seconds before retrying
                         Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(15000);
+                    }
+                }
+                else
+                {
+                    // Get the content i.e.VPN Client package Url from locationResults
+                    result.Body = newHttpResponse.Content.ReadAsStringAsync().Result;
+                    return result;
+                }
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// The Generatevpnclientpackage operation generates Vpn client package for
+        /// P2S client of the virtual network gateway in the specified resource group
+        /// through Network resource provider.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Begin Generating  Virtual Network Gateway Vpn
+        /// client package operation through Network resource provider.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<string>> GenerateVpnProfileWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName,
+            VpnClientParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            #region Send Async request to generate vpn profile
+
+            // 1. Send Async request to generate vpn client package
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2017-06-01";
+
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (virtualNetworkGatewayName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayName");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/virtualnetworkgateways/{virtualNetworkGatewayName}/generatevpnprofile").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{virtualNetworkGatewayName}", Uri.EscapeDataString(virtualNetworkGatewayName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, NetworkManagementClient.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+
+            // Set Credentials
+            if (NetworkManagementClient.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await NetworkManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var client = this.NetworkManagementClient as NetworkManagementClient;
+            HttpClient httpClient = client.HttpClient;
+            HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if ((int)statusCode != 202)
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
+                    statusCode, string.IsNullOrEmpty(responseContent) ? "NotAvailable" : responseContent));
+            }
+
+            // Create Result
+            var result = new AzureOperationResponse<string>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            string locationResultsUrl = string.Empty;
+
+            // Retrieve the location from LocationUri
+            if (httpResponse.Headers.Contains("Location"))
+            {
+                locationResultsUrl = httpResponse.Headers.GetValues("Location").FirstOrDefault();
+            }
+            else
+            {
+                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header received in response!"));
+            }
+
+            if (string.IsNullOrEmpty(locationResultsUrl))
+            {
+                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header value received in response!"));
+            }
+            #endregion
+
+            #region Wait for Async operation to succeed and then Get the content i.e. VPN Client package Url from locationResults
+            //Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(60000);
+            DateTime startTime = DateTime.UtcNow;
+            DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
+
+            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            while (true)
+            {
+                HttpRequestMessage newHttpRequest = new HttpRequestMessage();
+                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.RequestUri = new Uri(locationResultsUrl);
+
+                if (NetworkManagementClient.Credentials != null)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    await NetworkManagementClient.Credentials.ProcessHttpRequestAsync(newHttpRequest, cancellationToken).ConfigureAwait(false);
+                }
+
+                HttpResponseMessage newHttpResponse = await httpClient.SendAsync(newHttpRequest, cancellationToken).ConfigureAwait(false);
+
+                if ((int)newHttpResponse.StatusCode != 200)
+                {
+                    if (DateTime.UtcNow > giveUpAt)
+                    {
+                        string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                        throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
+                                                          "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                    }
+                    else
+                    {
+                        // Wait for 30 seconds before retrying
+                        Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(30000);
+                    }
+                }
+                else
+                {
+                    // Get the content i.e.VPN Client package Url from locationResults
+                    result.Body = newHttpResponse.Content.ReadAsStringAsync().Result;
+                    return result;
+                }
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Gets pre-generated vpn profile package SAS URL
+        /// </summary>
+        /// <param name="resourceGroupName">
+        /// Resource Group Name
+        /// </param>
+        /// <param name="virtualNetworkGatewayName">
+        /// Virtual Network Gateway Name
+        /// </param>
+        /// <param name="customHeaders">
+        /// Custom Headers
+        /// </param>
+        /// <param name="cancellationToken">
+        /// Cancellation Token
+        /// </param>
+        /// <returns></returns>
+        public async Task<AzureOperationResponse<string>> GetVpnProfilePackageUrlWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName,
+            Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            #region Send Async request to get vpn profile package url
+
+            // 1. Send Async request to generate vpn client package
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2017-06-01";
+
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (virtualNetworkGatewayName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayName");
+            }
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/virtualnetworkgateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{virtualNetworkGatewayName}", Uri.EscapeDataString(virtualNetworkGatewayName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.RequestUri = new Uri(url);
+
+            // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+
+            // Set Credentials
+            if (NetworkManagementClient.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await NetworkManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var client = this.NetworkManagementClient as NetworkManagementClient;
+            HttpClient httpClient = client.HttpClient;
+            HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if ((int)statusCode != 202)
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
+                    statusCode, string.IsNullOrEmpty(responseContent) ? "NotAvailable" : responseContent));
+            }
+
+            // Create Result
+            var result = new AzureOperationResponse<string>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            string locationResultsUrl = string.Empty;
+
+            // Retrieve the location from LocationUri
+            if (httpResponse.Headers.Contains("Location"))
+            {
+                locationResultsUrl = httpResponse.Headers.GetValues("Location").FirstOrDefault();
+            }
+            else
+            {
+                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header received in response!"));
+            }
+
+            if (string.IsNullOrEmpty(locationResultsUrl))
+            {
+                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header value received in response!"));
+            }
+            #endregion
+
+            #region Wait for Async operation to succeed and then Get the content i.e. VPN Client package Url from locationResults
+            //Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(60000);
+            DateTime startTime = DateTime.UtcNow;
+            DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
+
+            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            while (true)
+            {
+                HttpRequestMessage newHttpRequest = new HttpRequestMessage();
+                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.RequestUri = new Uri(locationResultsUrl);
+
+                if (NetworkManagementClient.Credentials != null)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    await NetworkManagementClient.Credentials.ProcessHttpRequestAsync(newHttpRequest, cancellationToken).ConfigureAwait(false);
+                }
+
+                HttpResponseMessage newHttpResponse = await httpClient.SendAsync(newHttpRequest, cancellationToken).ConfigureAwait(false);
+
+                if ((int)newHttpResponse.StatusCode != 200)
+                {
+                    if (DateTime.UtcNow > giveUpAt)
+                    {
+                        string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                        throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
+                                                          "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                    }
+                    else
+                    {
+                        // Wait for 30 seconds before retrying
+                        Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(30000);
                     }
                 }
                 else
