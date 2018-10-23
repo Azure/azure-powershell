@@ -59,7 +59,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.10.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" PrivateAssets="All" />
