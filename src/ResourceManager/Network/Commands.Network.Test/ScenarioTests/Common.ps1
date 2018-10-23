@@ -18,7 +18,9 @@ Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    return getAssetName
+    param([string] $prefix = [string]::Empty)
+
+	return getAssetName $prefix
 }
 
 <#
@@ -27,7 +29,9 @@ Gets valid resource name
 #>
 function Get-ResourceName
 {
-    return getAssetName
+    param([string] $prefix = [string]::Empty)
+
+    return getAssetName $prefix
 }
 
 <#
