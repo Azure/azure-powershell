@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.FrontDoor.dll'
@@ -78,7 +78,7 @@ CmdletsToExport = 'New-AzureRmFrontDoor', 'Get-AzureRmFrontDoor', 'Set-AzureRmFr
 				'New-AzureRmFrontDoorHealthProbeSettingObject', 'New-AzureRmFrontDoorLoadBalancingSettingObject',
 				'New-AzureRmFrontDoorMatchConditionObject', 'New-AzureRmFrontDoorCustomRuleObject', 'New-AzureRmFrontDoorManagedRuleObject',
 				'New-AzureRmFrontDoorFireWallPolicy', 'Get-AzureRmFrontDoorFireWallPolicy', 'Set-AzureRmFrontDoorFireWallPolicy',
-				'Remove-AzureRmFrontDoorFireWallPolicy', 'New-AzureRmFrontDoorRuleGroupOverrideObject'
+				'Remove-AzureRmFrontDoorFireWallPolicy', 'New-AzureRmFrontDoorRuleGroupOverrideObject', 'Remove-AzureRmFrontDoorContent'
 
 # Variables to export from this module
 # VariablesToExport = @()
