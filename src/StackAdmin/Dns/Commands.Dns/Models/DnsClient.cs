@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 using Sdk = Microsoft.Azure.Management.Dns.Models;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
@@ -51,8 +52,21 @@ namespace Microsoft.Azure.Commands.Dns.Models
         };
 
         public DnsClient(IAzureContext context)
-            : this(AzureSession.Instance.ClientFactory.CreateArmClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
+             // Factories
+            var authFactory = AzureSession.Instance.AuthenticationFactory;
+            var clientFactory = AzureSession.Instance.ClientFactory;
+
+            var endpoint = AzureEnvironment.Endpoint.ResourceManager;
+
+            // Get parameters
+            var handler = new DelegatingHandler[] { new DoubleFetchHandler() };
+            var creds = authFactory.GetServiceClientCredentials(context, endpoint);
+            var baseUri = context.Environment.GetEndpointAsUri(endpoint);
+
+            // Construct client
+            this.DnsManagementClient = clientFactory.CreateCustomArmClient<DnsManagementClient>(baseUri, creds, handler);
+            this.DnsManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
         public DnsClient(IDnsManagementClient managementClient)
@@ -127,9 +141,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 }
                 else
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListInResourceGroup(resourceGroupName);    
+                    getResponse = this.DnsManagementClient.Zones.ListInResourceGroup(resourceGroupName);
                 }
-                
+
                 results.AddRange(getResponse.Select(ToDnsZone));
             } while (getResponse != null && getResponse.NextPageLink != null);
 
@@ -204,7 +218,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             }
             else
             {
-                FillEmptyRecordsForType( properties, recordType);                
+                FillEmptyRecordsForType( properties, recordType);
             }
             return properties;
         }
@@ -354,7 +368,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 }
 
                 results.AddRange(listResponse.Select(recordSet => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSet)));
-                
+
             } while (listResponse != null && listResponse.NextPageLink != null);
 
             return results;

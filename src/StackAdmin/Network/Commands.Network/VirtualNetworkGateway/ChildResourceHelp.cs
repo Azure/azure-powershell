@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
             int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
-            
+
             // Replace the following string '/{value}/'
             startIndex--;
             string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public static void NormalizeChildResourcesId(PSVirtualNetworkGateway virtualNetworkGateway)
         {
-              // Normalize FrontendIpconfig
+            // Normalize FrontendIpconfig
             if (virtualNetworkGateway.IpConfigurations != null)
             {
                 foreach (var ipConfig in virtualNetworkGateway.IpConfigurations)

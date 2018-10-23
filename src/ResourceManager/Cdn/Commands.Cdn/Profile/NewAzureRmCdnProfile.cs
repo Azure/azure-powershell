@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// <summary>
         /// The pricing sku name of the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the Azure CDN profile. Valid values are StandardVerizon, StandardAkamai, and PremiumVerizon.")]
+        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the Azure CDN profile. Valid values are StandardVerizon, StandardAkamai, Standard_Microsoft and PremiumVerizon.")]
         public PSSkuName Sku { get; set; }
 
         /// <summary>

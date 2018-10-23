@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -30,7 +31,6 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -54,16 +54,28 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Update Domain Count.")]
+            HelpMessage = "The Platform Update Domain Count")]
         [ValidateNotNullOrEmpty]
         public int? PlatformUpdateDomainCount { get; set; }
 
         [Parameter(
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Fault Domain Count.")]
+            HelpMessage = "The Platform Fault Domain Count")]
         [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomainCount { get; set; }
+
+        [Parameter(
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Name of Sku")]
+        public string Sku { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Managed Availability Set")]
+        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
+        public SwitchParameter Managed { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -78,15 +90,28 @@ namespace Microsoft.Azure.Commands.Compute
                     PlatformFaultDomainCount = this.PlatformFaultDomainCount
                 };
 
+                if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
+                {
+                    avSetParams.Sku = new Sku();
+                    if (!string.IsNullOrEmpty(this.Sku))
+                    {
+                        avSetParams.Sku.Name = this.Sku;
+                    }
+                    if (this.Managed.IsPresent)
+                    {
+                        avSetParams.Sku.Name = "Aligned";
+                    }
+                }
+
                 var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.Name,
                     avSetParams).GetAwaiter().GetResult();
 
-                var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(result);
                 if (result.Body != null)
                 {
-                    psResult = Mapper.Map(result.Body, psResult);
+                    psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
                 }
                 WriteObject(psResult);
             });

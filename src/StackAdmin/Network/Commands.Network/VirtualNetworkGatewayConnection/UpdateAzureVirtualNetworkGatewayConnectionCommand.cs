@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
-
-using MNM = Microsoft.Azure.Management.Network.Models;
-using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection", SupportsShouldProcess = true),
+        OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class SetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Parameter(
@@ -32,35 +33,72 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The VirtualNetworkGatewayConnection")]
         public PSVirtualNetworkGatewayConnection VirtualNetworkGatewayConnection { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Whether to use a BGP session over a S2S VPN tunnel")]
+        public bool? EnableBgp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
+        public bool? UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies.")]
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            if (!this.IsVirtualNetworkGatewayConnectionPresent(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name))
-            {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
-
-            // Map to the sdk object
-            var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
-            vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
+            base.Execute();
 
             ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, VirtualNetworkGatewayConnection.Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    VirtualNetworkGatewayConnection.Name,
-                    () => this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel));
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, VirtualNetworkGatewayConnection.Name),
+                Properties.Resources.SettingResourceMessage,
+                VirtualNetworkGatewayConnection.Name,
+                () =>
+                {
+                    if (!this.IsVirtualNetworkGatewayConnectionPresent(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name))
+                    {
+                        throw new ArgumentException(Properties.Resources.ResourceNotFound);
+                    }
 
-            var getvnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name);
+                    if (this.EnableBgp.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.EnableBgp = this.EnableBgp.Value;
+                    }
 
-            WriteObject(getvnetGatewayConnection);
+                    if (this.UsePolicyBasedTrafficSelectors.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
+                    }
+
+                    if (this.IpsecPolicies != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies;
+                    }
+
+                    var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
+                    vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
+                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
+                        this.VirtualNetworkGatewayConnection.ResourceGroupName,
+                        this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel);
+                    var getvnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name);
+                    WriteObject(getvnetGatewayConnection);
+                });
+
         }
     }
 }

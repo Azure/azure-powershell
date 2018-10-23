@@ -25,4 +25,4 @@
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
 -->
 
-# Upcoming Breaking Changes    
+# Upcoming Breaking Changes

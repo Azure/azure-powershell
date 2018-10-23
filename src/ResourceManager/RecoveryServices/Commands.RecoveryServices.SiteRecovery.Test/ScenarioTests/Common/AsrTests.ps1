@@ -70,7 +70,7 @@ function WaitForJobCompletion
 
             if($isJobLeftForProcessing)
             {
-                [Microsoft.Azure.Test.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+                [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
             }
         }While($isJobLeftForProcessing)
 }
@@ -105,7 +105,7 @@ Function WaitForIRCompletion
 
             if($isProcessingLeft)
             {
-                [Microsoft.Azure.Test.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+                [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
             }
         }While($isProcessingLeft)
 
@@ -236,7 +236,7 @@ function Test-Job
 
     Assert-NotNull($jobList)
 
-    $jobList = Get-AzureRmRecoveryServicesAsrJob -EndTime "8/10/2017 7:50:50 PM" -StartTime "8/4/2017 2:58:52 PM"
+    $jobList = Get-AzureRmRecoveryServicesAsrJob -StartTime '2017-08-04T09:28:52.0000000Z' -EndTime '2017-08-10T14:20:50.0000000Z'
     Assert-NotNull($jobList)
 
     $jobList =  Get-AzureRmRecoveryServicesAsrJob -State Succeeded

@@ -642,7 +642,7 @@
                 <Label>VpnClientRootCertificates</Label> 
                 <PropertyName>VpnClientRootCertificatesText</PropertyName> 
               </ListItem>
-	      <ListItem> 
+        <ListItem> 
                  <Label>VpnClientIpsecPolicies</Label> 
                 <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
               </ListItem> 
@@ -751,7 +751,7 @@
          </ListEntries> 
       </ListControl> 
     </View>	 
-	<View> 	
+  <View> 	
       <Name>Microsoft.Azure.Commands.Network.Models.PSSubnet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSSubnet</TypeName>
@@ -803,6 +803,10 @@
               <ListItem>
                 <Label>ServiceEndpointPolicies</Label>
                 <PropertyName>ServiceEndpointPoliciesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InterfaceEndpoints</Label>
+                <PropertyName>InterfaceEndpointsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1140,7 +1144,7 @@
                 <Label>EnableIPForwarding</Label>
                 <PropertyName>EnableIPForwarding</PropertyName>
               </ListItem>
-			        <ListItem>
+              <ListItem>
                 <Label>EnableAcceleratedNetworking</Label>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
               </ListItem>
@@ -1410,15 +1414,19 @@
                 <Label>ServiceEndpointPolicyDefinitions</Label>
                 <PropertyName>ServiceEndpointPolicyDefinitionsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Subnets</Label>
+                <PropertyName>SubnetsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSInterfaceEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSInterfaceEndpoint</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -1447,6 +1455,73 @@
               <ListItem>
                 <Label>ResourceGuid</Label>
                 <PropertyName>ResourceGuid</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EndpointService</Label>
+                <PropertyName>EndpointServiceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Subnet</Label>
+                <PropertyName>SubnetText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Owner</Label>
+                <PropertyName>Owner</PropertyName>
+              </ListItem>               <ListItem>
+                <Label>Fqdn</Label>
+                <PropertyName>Fqdn</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NetworkInterfaces</Label>
+                <PropertyName>NetworkInterfacesText</PropertyName>
+              </ListItem>  
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSEndpointService</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSEndpointService</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem> 
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
@@ -2629,7 +2704,7 @@
         </ListEntries>
       </ListControl>
     </View>
-	<View>
+  <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</TypeName>
@@ -2706,10 +2781,6 @@
         <ListEntries>
           <ListEntry>
             <ListItems>
-              <ListItem>
-                <Label>LinkedResourceType</Label>
-                <PropertyName>LinkedResourceType</PropertyName>
-              </ListItem>
               <ListItem>
                 <Label>Link</Label>
                 <PropertyName>Link</PropertyName>
@@ -2890,6 +2961,548 @@
               <ListItem>
                 <Label>VirtualNetworks</Label>
                 <PropertyName>VirtualNetworksText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewall</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewall</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpConfigurations</Label>
+                <PropertyName>IpConfigurationsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplicationRuleCollections</Label>
+                <PropertyName>ApplicationRuleCollectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NatRuleCollections</Label>
+                <PropertyName>NatRuleCollectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NetworkRuleCollections</Label>
+                <PropertyName>NetworkRuleCollectionsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallIpConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallIpConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateIpAddress</Label>
+                <PropertyName>PrivateIpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Subnet</Label>
+                <PropertyName>SubnetText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublicIpAddress</Label>
+                <PropertyName>PublicIpAddressText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Priority</Label>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+			        <ListItem>
+                <Label>Action</Label>
+                <PropertyName>ActionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Rules</Label>
+                <PropertyName>RulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+			        <ListItem>
+                <Label>SourceAddresses</Label>
+                <PropertyName>SourceAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TargetFqdns</Label>
+                <PropertyName>TargetFqdnsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FqdnTags</Label>
+                <PropertyName>FqdnTagsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocols</Label>
+                <PropertyName>ProtocolsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Priority</Label>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Action</Label>
+                <PropertyName>ActionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Rules</Label>
+                <PropertyName>RulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocols</Label>
+                <PropertyName>ProtocolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceAddresses</Label>
+                <PropertyName>SourceAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationAddresses</Label>
+                <PropertyName>DestinationAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationPorts</Label>
+                <PropertyName>DestinationPortsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TranslatedAddress</Label>
+                <PropertyName>TranslatedAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TranslatedPort</Label>
+                <PropertyName>TranslatedPort</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Priority</Label>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+			        <ListItem>
+                <Label>Action</Label>
+                <PropertyName>ActionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Rules</Label>
+                <PropertyName>RulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceAddresses</Label>
+                <PropertyName>SourceAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationAddresses</Label>
+                <PropertyName>DestinationAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationPorts</Label>
+                <PropertyName>DestinationPortsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocols</Label>
+                <PropertyName>ProtocolsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualHub</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualHub</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>VirtualWan</Label>
+                <ScriptBlock>$_.VirtualWan.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AddressPrefix</Label>
+                <PropertyName>AddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RouteTable</Label>
+                <PropertyName>RouteTable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualNetworkConnections</Label>
+                <PropertyName>VirtualNetworkConnections</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteVirtualNetwork</Label>
+                <ScriptBlock>$_.RemoteVirtualNetwork.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualWan</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualWan</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowVnetToVnetTraffic</Label>
+                <PropertyName>AllowVnetToVnetTraffic</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowBranchToBranchTraffic</Label>
+                <PropertyName>AllowBranchToBranchTraffic</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVpnGateway</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnGateway</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnGatewayScaleUnit</Label>
+                <PropertyName>VpnGatewayScaleUnit</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualHub</Label>
+                <ScriptBlock>$_.VirtualHub.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>BgpSettings</Label>
+                <PropertyName>BgpSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVpnSite</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnSite</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpAddress</Label>
+                <PropertyName>IpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualWan</Label>
+                <ScriptBlock>$_.VirtualWan.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>AddressSpace</Label>
+                <ScriptBlock>$_.AddressSpace.AddressPrefixes</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>BgpSettings</Label>
+                <PropertyName>BgpSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

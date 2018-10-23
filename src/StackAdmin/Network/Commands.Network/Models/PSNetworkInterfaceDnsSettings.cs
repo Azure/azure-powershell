@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InternalDnsNameLabel { get; set; }
 
         public string InternalFqdn { get; set; }
+
+        public string InternalDomainNameSuffix { get; set; }
     }
 }

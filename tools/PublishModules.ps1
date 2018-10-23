@@ -672,7 +672,7 @@ function Add-Module {
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
-        if ((!$IsNetCore) -and ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)) {
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null) {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
         }
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using ResourceManager.Common.ArgumentCompleters;
-    using System.Linq;
-
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true),
+        OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/expressRouteCircuits")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ServiceProviderName { get; set; }
 
         [Parameter(
-             Mandatory = false,
+             Mandatory = true,
              ValueFromPipelineByPropertyName = true)]
         public string PeeringLocation { get; set; }
 
@@ -98,9 +98,16 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public bool? AllowClassicOperations { get; set; }
+
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
+            HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -108,31 +115,30 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+            var present = this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var expressRouteCircuit = CreateExpressRouteCircuit();
+                    WriteObject(expressRouteCircuit);
+                },
+                () => present);
 
-            if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateExpressRouteCircuit());
-
-                WriteObject(this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var ExpressRouteCircuit = CreateExpressRouteCircuit();
-
-                WriteObject(ExpressRouteCircuit);
-            }
         }
 
         private PSExpressRouteCircuit CreateExpressRouteCircuit()
         {
+            base.Execute();
             var circuit = new PSExpressRouteCircuit();
             circuit.Name = this.Name;
             circuit.ResourceGroupName = this.ResourceGroupName;
@@ -156,13 +162,12 @@ namespace Microsoft.Azure.Commands.Network
                 circuit.ServiceProviderProperties.BandwidthInMbps = this.BandwidthInMbps;
             }
 
-            circuit.Peerings = new List<PSPeering>();
             circuit.Peerings = this.Peering;
-            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
             circuit.Authorizations = this.Authorization;
+            circuit.AllowClassicOperations = this.AllowClassicOperations;
 
             // Map to the sdk object
-            var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
+            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call

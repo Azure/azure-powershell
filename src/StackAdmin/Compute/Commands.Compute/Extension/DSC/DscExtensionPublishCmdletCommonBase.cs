@@ -1,8 +1,8 @@
 ﻿using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,7 +10,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Management.Automation;
-using Newtonsoft.Json;
 
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
@@ -412,7 +411,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 string.Format(CultureInfo.CurrentUICulture, Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscUploadToBlobStorageAction, archivePath),
                 modulesBlob.Uri.AbsoluteUri, () =>
                 {
-                    if (!force && modulesBlob.Exists())
+                    if (!force && modulesBlob.ExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                     {
                         ThrowTerminatingError(
                             new ErrorRecord(
@@ -424,8 +423,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                                 ErrorCategory.PermissionDenied,
                                 null));
                     }
-                    
-                    modulesBlob.UploadFromFile(archivePath, FileMode.Open);
+
+                    modulesBlob.UploadFromFileAsync(archivePath).ConfigureAwait(false).GetAwaiter().GetResult();
 
                     WriteVerbose(string.Format(
                         CultureInfo.CurrentUICulture,
@@ -489,7 +488,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             var blobClient = storageAccount.CreateCloudBlobClient();
 
             CloudBlobContainer containerReference = blobClient.GetContainerReference(containerName);
-            containerReference.CreateIfNotExists();
+            containerReference.CreateIfNotExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
             var blobName = Path.GetFileName(archivePath);
 

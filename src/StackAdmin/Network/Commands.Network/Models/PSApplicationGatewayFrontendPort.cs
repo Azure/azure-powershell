@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,9 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayFrontendPort : PSChildResource
-     {
+    {
         public int Port { get; set; }
         public string ProvisioningState { get; set; }
-     }
+        public string Type { get; set; }
+    }
 }

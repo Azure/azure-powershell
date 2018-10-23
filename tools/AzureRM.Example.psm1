@@ -9,6 +9,18 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
+$preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
+if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath))
+{
+    try 
+    {
+        Get-ChildItem -Path $preloadPath -Filter "*.dll" | ForEach-Object {  
+            [System.Reflection.Assembly]::Load([System.IO.File]::ReadAllBytes($_.FullName)) 
+        }
+    }
+    catch {}
+}
+
 %IMPORTED-DEPENDENCIES%
 
 if (Test-Path -Path "$PSScriptRoot\StartupScripts")
@@ -27,7 +39,14 @@ if ($Env:ACC_CLOUD -eq $null)
         {
             $global:PSDefaultParameterValues.Add($_,
                 {
-                    $context = Get-AzureRmContext
+                    if ((Get-Command Get-AzContext -ErrorAction Ignore) -eq $null)
+                    {
+                        $context = Get-AzureRmContext
+                    }
+                    else
+                    {
+                        $context = Get-AzContext
+                    }
                     if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
                         $context.ExtendedProperties["Default Resource Group"]
                     } 

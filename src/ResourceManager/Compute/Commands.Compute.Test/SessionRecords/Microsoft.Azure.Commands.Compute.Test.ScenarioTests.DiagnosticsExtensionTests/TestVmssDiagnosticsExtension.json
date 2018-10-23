@@ -1408,7 +1408,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.1.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"1FWB6iuKCKM7SpkynUepgY3BFsubD/zmWcwEr/88X71R/KSO3cw0ySRPiLIUcSHH8E9hf+cZ7XD6JsEOmXtEag==\",\r\n  \"key2\": \"qN1Hown2ZdnD/j+WNeKCpRoBS/0xYeAgAscwP1Ky0cl2f6m71BMbmdh+T/pQHLE02h71m29jPuGN+A2G+B8Txg==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"fakekey1\",\r\n  \"key2\": \"fakekey2\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "198"
@@ -1466,7 +1466,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.1.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"1FWB6iuKCKM7SpkynUepgY3BFsubD/zmWcwEr/88X71R/KSO3cw0ySRPiLIUcSHH8E9hf+cZ7XD6JsEOmXtEag==\",\r\n  \"key2\": \"qN1Hown2ZdnD/j+WNeKCpRoBS/0xYeAgAscwP1Ky0cl2f6m71BMbmdh+T/pQHLE02h71m29jPuGN+A2G+B8Txg==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"fakekey1\",\r\n  \"key2\": \"fakekey2\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "198"
@@ -4823,7 +4823,8 @@
   ],
   "Names": {
     "Test-VmssDiagnosticsExtension": [
-      "crptestps7615"
+      "crptestps7615",
+      "ps4941"
     ]
   },
   "Variables": {

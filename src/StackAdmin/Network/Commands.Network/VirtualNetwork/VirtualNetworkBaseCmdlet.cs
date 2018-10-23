@@ -13,17 +13,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class VirtualNetworkBaseCmdlet : NetworkBaseCmdlet
     {
         public IVirtualNetworksOperations VirtualNetworkClient
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name, expandResource);
 
-            var psVirtualNetwork = Mapper.Map<PSVirtualNetwork>(vnet);
+            var psVirtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
             psVirtualNetwork.ResourceGroupName = resourceGroupName;
 
             psVirtualNetwork.Tag =
@@ -74,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetwork ToPsVirtualNetwork(VirtualNetwork vnet)
         {
-            var psVnet = Mapper.Map<PSVirtualNetwork>(vnet);
+            var psVnet = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
 
             psVnet.Tag = TagsConversionHelper.CreateTagHashtable(vnet.Tags);
 

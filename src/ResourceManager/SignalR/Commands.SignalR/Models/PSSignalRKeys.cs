@@ -22,13 +22,19 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string PrimaryKey { get; }
 
+        public string PrimaryConnectionString { get; }
+
         public string SecondaryKey { get; }
+
+        public string SecondaryConnectionString { get; }
 
         public PSSignalRKeys(string name, SignalRKeys obj)
         {
             Name = name;
             PrimaryKey = obj.PrimaryKey;
+            PrimaryConnectionString = obj.PrimaryConnectionString;
             SecondaryKey = obj.SecondaryKey;
+            SecondaryConnectionString = obj.SecondaryConnectionString;
         }
     }
 }

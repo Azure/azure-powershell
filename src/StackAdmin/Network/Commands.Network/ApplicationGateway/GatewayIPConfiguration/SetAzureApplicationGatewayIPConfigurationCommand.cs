@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var newGatewayIPConfiguration = base.NewObject();
-            
+
             this.ApplicationGateway.GatewayIPConfigurations.Remove(oldGatewayIPConfiguration);
             this.ApplicationGateway.GatewayIPConfigurations.Add(newGatewayIPConfiguration);
 

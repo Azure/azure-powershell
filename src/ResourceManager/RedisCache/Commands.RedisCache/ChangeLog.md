@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.6
 * Updated Insights dependency.
 
 ## Version 5.0.5

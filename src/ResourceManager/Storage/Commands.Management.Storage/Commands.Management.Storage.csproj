@@ -52,8 +52,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Storage, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.7.1.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Storage, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.8.1.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -90,7 +90,19 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
       <Link>Common\LazyAzureStorageContext.cs</Link>
     </Compile>
+    <Compile Include="Blob\LockAzureStorageContainerImmutabilityPolicy.cs" />
+    <Compile Include="Blob\RemoveAzureStorageContainerImmutabilityPolicy.cs" />
+    <Compile Include="Blob\GetAzureStorageContainerImmutabilityPolicy.cs" />
+    <Compile Include="Blob\SetAzureStorageContainerImmutabilityPolicy.cs" />
+    <Compile Include="Blob\RemoveAzureStorageContainer.cs" />
+    <Compile Include="Blob\NewAzureStorageContainer.cs" />
+    <Compile Include="Blob\RemoveAzureStorageContainerLegalHold.cs" />
+    <Compile Include="Blob\AddAzureStorageContainerLegalHold.cs" />
+    <Compile Include="Blob\UpdateAzureStorageContainer.cs" />
+    <Compile Include="Blob\GetAzureStorageContainer.cs" />
+    <Compile Include="Blob\StorageBlobBaseCmdlet.cs" />
     <Compile Include="Models\PSNetworkRule.cs" />
+    <Compile Include="Models\PSContainer.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

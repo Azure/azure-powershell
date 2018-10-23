@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
+        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, MNM.TransportProtocol.All, IgnoreCase = true)]
         public string Protocol { get; set; }
 
         [Parameter(
@@ -87,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The distribution type of the load balancer.")]
         [ValidateSet(
             "Default",
-            "SourceIP", 
+            "SourceIP",
             "SourceIPProtocol",
             IgnoreCase = true)]
         public string LoadDistribution { get; set; }
@@ -97,9 +96,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "DisableOutboundSNAT")]
+        public SwitchParameter DisableOutboundSNAT { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {

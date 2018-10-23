@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -30,11 +31,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location.")]
+        [LocationCompleter("Microsoft.Network/locations/CheckDnsNameAvailability")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
+            base.Execute();
             this.Location = this.Location.Replace(" ", string.Empty);
             var result = this.NetworkClient.NetworkManagementClient.CheckDnsNameAvailability(this.Location, this.DomainNameLabel);
             WriteObject(result.Available);

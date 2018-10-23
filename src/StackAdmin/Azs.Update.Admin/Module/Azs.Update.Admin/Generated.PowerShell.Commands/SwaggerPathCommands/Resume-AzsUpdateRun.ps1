@@ -84,8 +84,6 @@ function Resume-AzsUpdateRun {
 
     Process {
 
-
-
         if ( 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}/updateRuns/{runId}'
@@ -97,6 +95,8 @@ function Resume-AzsUpdateRun {
             $Location = $ArmResourceIdParameterValues['updateLocation']
             $UpdateName = $ArmResourceIdParameterValues['update']
             $Name = $ArmResourceIdParameterValues['runId']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PsCmdlet.ShouldProcess($Name, "Resume the update")) {

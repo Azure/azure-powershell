@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The address prefix of the subnet")]
+            HelpMessage = "The address prefixes of the subnet")]
         [ValidateNotNullOrEmpty]
-        public string AddressPrefix { get; set; }
+        public List<string> AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -71,5 +71,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Policies")]
         public List<PSServiceEndpointPolicy> ServiceEndpointPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Delegations")]
+        public List<PSDelegation> Delegation { get; set; }
     }
 }

@@ -23,11 +23,11 @@ function Test-SimpleNewVmss
 
     try
     {
-	    $lbName = $vmssname + "LoadBalancer"
+        $lbName = $vmssname + "LoadBalancer"
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
         $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName
@@ -41,12 +41,12 @@ function Test-SimpleNewVmss
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
-		Assert-False { $x.SinglePlacementGroup }
-		Assert-Null $x.Identity  
+        Assert-False { $x.SinglePlacementGroup }
+        Assert-Null $x.Identity  
 
-		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $vmssname 
-		Assert-NotNull $lb
-		Assert-AreEqual $lbName $lb.Name
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $vmssname 
+        Assert-NotNull $lb
+        Assert-AreEqual $lbName $lb.Name
     }
     finally
     {
@@ -66,36 +66,36 @@ function Test-SimpleNewVmssLbErrorScenario
 
     try
     {
-	    $lbName = $vmssname
+        $lbName = $vmssname
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmssname $x.Name;
-		$lb = Get-AzureRmLoadBalancer -Name $vmssname -ResourceGroupName $vmssname 
+        $lb = Get-AzureRmLoadBalancer -Name $vmssname -ResourceGroupName $vmssname 
         Remove-AzureRmVmss -Name $vmssname -ResourceGroupName $vmssname -Force
 
-		$exceptionFound = $false
-	    $errorMessageMatched = $false
+        $exceptionFound = $false
+        $errorMessageMatched = $false
 
-		try
-		{
-		    $newVmssName = $vmssname + "New"
-		    $x = New-AzureRmVmss -Name $newVmssName -Credential $cred -DomainNameLabel $domainNameLabel -ResourceGroupName $vmssname -LoadBalancerName $lbName
-		}
-		catch
-		{
-		    $errorMessage = $_.Exception.Message
-			$exceptionFound = ( $errorMessage -clike "Existing loadbalancer config is not compatible with what is required by the cmdlet*" )
-			$rId = $lb.ResourceId
-		    $errorMessageMatched = ( $errorMessage -like "*$rId*" )
-		}
+        try
+        {
+            $newVmssName = $vmssname + "New"
+            $x = New-AzureRmVmss -Name $newVmssName -Credential $cred -DomainNameLabel $domainNameLabel -ResourceGroupName $vmssname -LoadBalancerName $lbName
+        }
+        catch
+        {
+            $errorMessage = $_.Exception.Message
+            $exceptionFound = ( $errorMessage -clike "Existing loadbalancer config is not compatible with what is required by the cmdlet*" )
+            $rId = $lb.ResourceId
+            $errorMessageMatched = ( $errorMessage -like "*$rId*" )
+        }
 
-		Assert-True { $exceptionFound }
-		Assert-True { $errorMessageMatched }
+        Assert-True { $exceptionFound }
+        Assert-True { $errorMessageMatched }
     }
     finally
     {
@@ -114,7 +114,7 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
         $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity -SinglePlacementGroup
@@ -128,11 +128,11 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
-		Assert-AreEqual "SystemAssigned" $x.Identity.Type     
-		Assert-NotNull  $x.Identity.PrincipalId
-		Assert-NotNull  $x.Identity.TenantId
-		Assert-True { $x.SinglePlacementGroup }
-		Assert-Null $x.Identity.IdentityIds  
+        Assert-AreEqual "SystemAssigned" $x.Identity.Type     
+        Assert-NotNull  $x.Identity.PrincipalId
+        Assert-NotNull  $x.Identity.TenantId
+        Assert-True { $x.SinglePlacementGroup }
+        Assert-Null $x.Identity.IdentityIds  
     }
     finally
     {
@@ -151,22 +151,22 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
-       # To record this test run these commands first :
-       # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
-       # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
-       # 
-       # Now get the identity :
-       # 
-       # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
-        #Nore down the Id and use it in the PS code
-		#$identityName = $vmname + "Identity1"
-		#$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
+        # To record this test run these commands first :
+        # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
+        # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
+        # 
+        # Now get the identity :
+        # 
+        # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
+        # Note down the Id and use it in the PS code
+        # $identityName = $vmname + "Identity"
+        # $newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
 
-		#$newUserId = $newUserIdentity.Id
-		
-		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
+        #$newUserId = $newUserIdentity.Id
+        
+        $newUserId = "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
         # Common
         $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity -SinglePlacementGroup
@@ -180,13 +180,15 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
-		Assert-AreEqual "UserAssigned" $x.Identity.Type     
-		Assert-NotNull  $x.Identity.PrincipalId
-		Assert-NotNull  $x.Identity.TenantId
-		Assert-NotNull $x.Identity.IdentityIds
-		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
-		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
-		Assert-True { $x.SinglePlacementGroup }
+        Assert-AreEqual "UserAssigned" $x.Identity.Type     
+        Assert-NotNull  $x.Identity.PrincipalId
+        Assert-NotNull  $x.Identity.TenantId
+        Assert-NotNull $x.Identity.UserAssignedIdentities
+        Assert-AreEqual 1 $x.Identity.UserAssignedIdentities.Count
+        Assert-True { $x.Identity.UserAssignedIdentities.ContainsKey($newUserId) }
+        Assert-NotNull $x.Identity.UserAssignedIdentities[$newUserId].PrincipalId
+        Assert-NotNull $x.Identity.UserAssignedIdentities[$newUserId].ClientId
+        Assert-True { $x.SinglePlacementGroup }
     }
     finally
     {
@@ -209,15 +211,15 @@ function Test-SimpleNewVmssImageName
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
         $x = New-AzureRmVmss `
-			-Name $vmssname `
-			-Credential $cred `
-			-DomainNameLabel $domainNameLabel `
-			-SinglePlacementGroup `
-			-ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest"
+            -Name $vmssname `
+            -Credential $cred `
+            -DomainNameLabel $domainNameLabel `
+            -SinglePlacementGroup `
+            -ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest"
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -228,7 +230,7 @@ function Test-SimpleNewVmssImageName
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
-		Assert-True { $x.SinglePlacementGroup }
+        Assert-True { $x.SinglePlacementGroup }
     }
     finally
     {
@@ -260,7 +262,7 @@ function Test-SimpleNewVmssWithoutDomainName
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
-		Assert-True { $x.SinglePlacementGroup }
+        Assert-True { $x.SinglePlacementGroup }
     }
     finally
     {

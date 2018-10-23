@@ -20,24 +20,24 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The migration job guid name.
 
 .EXAMPLE
-
-    PS C:\> $migration =New-AzsDiskMigrationJob -Name "mymigrationJob" -Disks $list -location local -TargetShare "\\SU1FileServer.azurestack.local\SU1_ObjStore"
     PS C:\> Stop-AzsDiskMigrationJob -Location local -MigrationId $migration.MigrationId
+
+    Cancel a managed disk migration job.
 
 #>
 function Stop-AzsDiskMigrationJob
 {
     [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob])]
-    param(    
+    param(
         [System.String]
         $Location,
-    
+
         [Alias('MigrationId')]
         [System.String]
         $Name
     )
 
-    Begin 
+    Begin
     {
 	    Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
@@ -57,7 +57,7 @@ function Stop-AzsDiskMigrationJob
 
 		$GlobalParameterHashtable = @{}
 		$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
+
 		$GlobalParameterHashtable['SubscriptionId'] = $null
 		if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 			$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -70,15 +70,15 @@ function Stop-AzsDiskMigrationJob
 		}
 
 		Write-Verbose -Message 'Performing operation CancelWithHttpMessagesAsync on $ComputeAdminClient.'
-		$TaskResult = $ComputeAdminClient.DiskMigrationJobs.CancelWithHttpMessagesAsync($Location, $Name) 
+		$TaskResult = $ComputeAdminClient.DiskMigrationJobs.CancelWithHttpMessagesAsync($Location, $Name)
 
 		if ($TaskResult) {
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-            
+
 			Get-TaskResult @GetTaskResult_params
-        
+
 		}
     }
 

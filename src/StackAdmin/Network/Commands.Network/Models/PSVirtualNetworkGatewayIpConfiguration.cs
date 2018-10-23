@@ -14,19 +14,18 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
 
     using Newtonsoft.Json;
 
     public class PSVirtualNetworkGatewayIpConfiguration : PSChildResource
-    {        
+    {
         public string PrivateIpAddress { get; set; }
 
         public string PrivateIpAllocationMethod { get; set; }
 
         public PSResourceId Subnet { get; set; }
 
-        public PSResourceId PublicIpAddress { get; set; } 
+        public PSResourceId PublicIpAddress { get; set; }
 
         [JsonIgnore]
         public string SubnetText

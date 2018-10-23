@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Id'
         public string Id { get; set; }
 
+        // Gets the property of 'VmId'
+        public string VmId { get; set; }
+
         // Gets or sets the property of 'Name'
         public string Name { get; set; }
 
@@ -58,83 +61,29 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Tags'
         public IDictionary<string, string> Tags { get; set; }
 
-        [JsonIgnore]
-        public string TagsText
-        {
-            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
-        }
-
         // Gets or sets the reference Id of the availailbity set to which this virtual machine belongs.
         public SubResource AvailabilitySetReference { get; set; }
-
-        [JsonIgnore]
-        public string AvailabilitySetReferenceText
-        {
-            get { return JsonConvert.SerializeObject(AvailabilitySetReference, Formatting.Indented); }
-        }
 
         // Gets or sets the diagnostics profile.
         public DiagnosticsProfile DiagnosticsProfile { get; set; }
 
-        [JsonIgnore]
-        public string DiagnosticsProfileText
-        {
-            get { return JsonConvert.SerializeObject(DiagnosticsProfile, Formatting.Indented); }
-        }
-
         // Gets the virtual machine child extension resources.
         public IList<VirtualMachineExtension> Extensions { get; set; }
-
-        [JsonIgnore]
-        public string ExtensionsText
-        {
-            get { return JsonConvert.SerializeObject(Extensions, Formatting.Indented); }
-        }
 
         // Gets or sets the hardware profile.
         public HardwareProfile HardwareProfile { get; set; }
 
-        [JsonIgnore]
-        public string HardwareProfileText
-        {
-            get { return JsonConvert.SerializeObject(HardwareProfile, Formatting.Indented); }
-        }
-
         // Gets the virtual machine instance view.
         public VirtualMachineInstanceView InstanceView { get; set; }
-
-        [JsonIgnore]
-        public string InstanceViewText
-        {
-            get { return JsonConvert.SerializeObject(InstanceView, Formatting.Indented); }
-        }
 
         // Gets or sets the network profile.
         public NetworkProfile NetworkProfile { get; set; }
 
-        [JsonIgnore]
-        public string NetworkProfileText
-        {
-            get { return JsonConvert.SerializeObject(NetworkProfile, Formatting.Indented); }
-        }
-
         // Gets or sets the OS profile.
         public OSProfile OSProfile { get; set; }
 
-        [JsonIgnore]
-        public string OSProfileText
-        {
-            get { return JsonConvert.SerializeObject(OSProfile, Formatting.Indented); }
-        }
-
         // Gets or sets the purchase plan when deploying virtual machine from VM Marketplace images.
         public Plan Plan { get; set; }
-
-        [JsonIgnore]
-        public string PlanText
-        {
-            get { return JsonConvert.SerializeObject(Plan, Formatting.Indented); }
-        }
 
         // Gets or sets the provisioning state, which only appears in the response.
         public string ProvisioningState { get; set; }
@@ -142,40 +91,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the storage profile.
         public StorageProfile StorageProfile { get; set; }
 
-        [JsonIgnore]
-        public string StorageProfileText
-        {
-            get { return JsonConvert.SerializeObject(StorageProfile, Formatting.Indented); }
-        }
+        public DisplayHintType DisplayHint { get; set; }
 
-        [JsonIgnore]
-        public string[] DataDiskNames
-        {
-            get
-            {
-                if (this.StorageProfile == null) return null;
-                var listStr = new List<string>();
-                foreach (var item in StorageProfile.DataDisks)
-                {
-                    listStr.Add(item.Name);
-                }
-                return listStr.ToArray();
-            }
-        }
+        // Gets or sets the virtual machine identity.
+        public VirtualMachineIdentity Identity { get; set; }
 
-        [JsonIgnore]
-        public string[] NetworkInterfaceIDs
-        {
-            get
-            {
-                if (this.NetworkProfile == null) return null;
-                var listStr = new List<string>();
-                foreach (var item in NetworkProfile.NetworkInterfaces)
-                {
-                    listStr.Add(item.Id);
-                }
-                return listStr.ToArray();
-            }
-        }
+        // Gets or sets the virtual machine zones.
+        public IList<string> Zones { get; set; }
     }
 }

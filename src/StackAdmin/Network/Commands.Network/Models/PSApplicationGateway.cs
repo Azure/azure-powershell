@@ -13,97 +13,111 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGateway : PSTopLevelResource
-     {
-         public PSApplicationGatewaySku Sku { get; set; }
+    {
+        public PSApplicationGatewaySku Sku { get; set; }
 
-         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
+        public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 
-         public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
+        public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
-         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
-         public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
+        public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
 
-         public List<PSApplicationGatewayProbe> Probes { get; set; }
+        public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
-         public List<PSApplicationGatewayBackendAddressPool> BackendAddressPools { get; set; }
+        public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
 
-         public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
+        public List<PSApplicationGatewayProbe> Probes { get; set; }
 
-         public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
+        public List<PSApplicationGatewayBackendAddressPool> BackendAddressPools { get; set; }
 
-         public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
+        public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
 
-         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
+        public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
 
-         public string OperationalState { get; private set; }
+        public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
 
-         public string ProvisioningState { get; set; }
+        public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
-         [JsonIgnore]
-         public string GatewayIpConfigurationsText
-         {
-             get { return JsonConvert.SerializeObject(GatewayIPConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
 
-         [JsonIgnore]
-         public string SslCertificatesText
-         {
-             get { return JsonConvert.SerializeObject(SslCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
 
-         [JsonIgnore]
-         public string FrontendIpConfigurationsText
-         {
-             get { return JsonConvert.SerializeObject(FrontendIPConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        public string OperationalState { get; private set; }
 
-         [JsonIgnore]
-         public string FrontendPortsText
-         {
-             get { return JsonConvert.SerializeObject(FrontendPorts, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        public string ProvisioningState { get; set; }
 
-         [JsonIgnore]
-         public string BackendAddressPoolsText
-         {
-             get { return JsonConvert.SerializeObject(BackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string GatewayIpConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(GatewayIPConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         [JsonIgnore]
-         public string BackendHttpSettingsCollectionText
-         {
-             get { return JsonConvert.SerializeObject(BackendHttpSettingsCollection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string AuthenticationCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(AuthenticationCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         [JsonIgnore]
-         public string HttpListenersText
-         {
-             get { return JsonConvert.SerializeObject(HttpListeners, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string SslCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(SslCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         [JsonIgnore]
-         public string RequestRoutingRulesText
-         {
-             get { return JsonConvert.SerializeObject(RequestRoutingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string FrontendIpConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(FrontendIPConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         [JsonIgnore]
-         public string ProbesText
-         {
-             get { return JsonConvert.SerializeObject(Probes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
+        [JsonIgnore]
+        public string FrontendPortsText
+        {
+            get { return JsonConvert.SerializeObject(FrontendPorts, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-         [JsonIgnore]
-         public string UrlPathMapsText
-         {
-             get { return JsonConvert.SerializeObject(UrlPathMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
-     }
+        [JsonIgnore]
+        public string BackendAddressPoolsText
+        {
+            get { return JsonConvert.SerializeObject(BackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string BackendHttpSettingsCollectionText
+        {
+            get { return JsonConvert.SerializeObject(BackendHttpSettingsCollection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string HttpListenersText
+        {
+            get { return JsonConvert.SerializeObject(HttpListeners, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RequestRoutingRulesText
+        {
+            get { return JsonConvert.SerializeObject(RequestRoutingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ProbesText
+        {
+            get { return JsonConvert.SerializeObject(Probes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string UrlPathMapsText
+        {
+            get { return JsonConvert.SerializeObject(UrlPathMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
 }

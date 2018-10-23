@@ -14,11 +14,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
@@ -72,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -112,10 +114,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ExpandResource { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-            
+            base.Execute();
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 PSNetworkInterface networkInterface;
@@ -128,51 +130,45 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name, this.ExpandResource);
                 }
-                
+
                 WriteObject(networkInterface);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            else
             {
-                IEnumerable<MNM.NetworkInterface> nicList;
-
-                if (ParameterSetName.Contains("ScaleSetNic"))
+                IPage<MNM.NetworkInterface> nicPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                    if (ParameterSetName.Contains("ScaleSetNic"))
                     {
-                        nicList =
-                            this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(
-                                this.ResourceGroupName,
-                                this.VirtualMachineScaleSetName);
+                        if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                        {
+                            nicPage =
+                                this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(
+                                    this.ResourceGroupName,
+                                    this.VirtualMachineScaleSetName);
+                        }
+                        else
+                        {
+                            nicPage =
+                                this.NetworkInterfaceClient.ListVirtualMachineScaleSetVMNetworkInterfaces(
+                                    this.ResourceGroupName,
+                                    this.VirtualMachineScaleSetName,
+                                    this.VirtualMachineIndex);
+                        }
                     }
                     else
                     {
-                        nicList =
-                            this.NetworkInterfaceClient.ListVirtualMachineScaleSetVMNetworkInterfaces(
-                                this.ResourceGroupName,
-                                this.VirtualMachineScaleSetName,
-                                this.VirtualMachineIndex);
-                    }
+                        nicPage = this.NetworkInterfaceClient.List(this.ResourceGroupName);
+                    }                    
                 }
+
                 else
                 {
-                    nicList = this.NetworkInterfaceClient.List(this.ResourceGroupName);
-                }
-                
-                var psNetworkInterfaces = new List<PSNetworkInterface>();
-
-                foreach (var nic in nicList)
-                {
-                    var psNic = this.ToPsNetworkInterface(nic);
-                    psNic.ResourceGroupName = this.ResourceGroupName;
-                    psNetworkInterfaces.Add(psNic);
+                    nicPage = this.NetworkInterfaceClient.ListAll();
                 }
 
-                WriteObject(psNetworkInterfaces, true);
-            }
-
-            else
-            {
-                var nicList = this.NetworkInterfaceClient.ListAll();
+                // Get all resources by polling on next page link
+                var nicList = ListNextLink<NetworkInterface>.GetAllResourcesByPollingNextLink(nicPage, this.NetworkInterfaceClient.ListNext);
 
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 
@@ -189,4 +185,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 

@@ -123,6 +123,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListScaleUnits" -Skip:$('TestListScaleUnits' -in $global:SkippedTests) {
             $global:TestName = 'TestListScaleUnits'

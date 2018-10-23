@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -28,22 +29,30 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVmssNetworkInterfaceConfiguration")]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class RemoveAzureRmVmssNetworkInterfaceConfigurationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("Remove", "AzureRmVmssNetworkInterfaceConfiguration", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class RemoveAzureRmVmssNetworkInterfaceConfigurationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = true,
             Position = 1,
+            ParameterSetName = "NameParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = "IdParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        public string Id { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -69,7 +78,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             var vNetworkInterfaceConfigurations = this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.First
                 (e =>
-                    (e.Name == this.Name)
+                    (this.Name != null && e.Name == this.Name)
+                    || (this.Id != null && e.Id == this.Id)
                 );
 
             if (vNetworkInterfaceConfigurations != null)

@@ -16,6 +16,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
 
+
 namespace Microsoft.Azure.Commands.Compute.Common
 {
     public static class InstanceViewMethod
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static AzureOperationResponse<VirtualMachineExtension> GetWithInstanceView(this IVirtualMachineExtensionsOperations iVmExtensionOperations,
             string rgName, string vmName, string name)
         {
-            const string expand = "instanceView";
+            string expand = "instanceView";
             var result = iVmExtensionOperations.GetWithHttpMessagesAsync(rgName, vmName, name, expand).GetAwaiter().GetResult();
             return result;
         }

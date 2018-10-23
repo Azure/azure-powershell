@@ -30,8 +30,18 @@ namespace Microsoft.Azure.Commands.Compute
         public AutoBackupSettings AutoBackupSettings { get; set; }
 
         /// <summary>
+        /// AkV settings
+        /// </summary>
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
+
+        /// <summary>
         /// Auto-telemetry settings
         /// </summary>
         public AutoTelemetrySettings AutoTelemetrySettings { get; set; }
+    
+        /// <summary>
+        /// Deployment token, esp. to differentiate between two successive similar config updates.
+        /// </summary>
+        public int? DeploymentToken { get; set; }       
     }
 }

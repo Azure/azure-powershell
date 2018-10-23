@@ -450,6 +450,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             deployment.Location = parameters.Location;
+            deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
             return deployment;
         }

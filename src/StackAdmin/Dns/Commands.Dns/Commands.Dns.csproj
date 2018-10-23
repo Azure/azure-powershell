@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\DnsClient.cs" />
+    <Compile Include="Models\DoubleFetchHandler.cs" />
     <Compile Include="Models\DnsBaseCmdlet.cs" />
     <Compile Include="Models\DnsRecordSet.cs" />
     <Compile Include="Models\DnsZone.cs" />

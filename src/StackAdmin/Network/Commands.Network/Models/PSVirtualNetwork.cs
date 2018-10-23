@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.Management.Automation;
 
     public class PSVirtualNetwork : PSTopLevelResource
     {
@@ -26,7 +26,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSSubnet> Subnets { get; set; }
 
+        public List<PSVirtualNetworkPeering> VirtualNetworkPeerings { get; set; }
+
         public string ProvisioningState { get; set; }
+
+        public bool? EnableDDoSProtection { get; set; }
+
+        public bool? EnableVmProtection { get; set; }
 
         [JsonIgnore]
         public string AddressSpaceText
@@ -44,6 +50,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SubnetsText
         {
             get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VirtualNetworkPeeringsText
+        {
+            get { return JsonConvert.SerializeObject(VirtualNetworkPeerings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string EnableDDoSProtectionText
+        {
+            get { return JsonConvert.SerializeObject(EnableDDoSProtection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string EnableVmProtectionText
+        {
+            get { return JsonConvert.SerializeObject(EnableVmProtection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -1,4 +1,147 @@
-﻿## 6.8.1 - August 2018
+﻿## 6.9.0 - September 2018
+#### General
+* AzureRM.SignalR was added to the AzureRM rollup module
+
+#### AzureRM.Profile
+* Minor changes to the storage common code
+* Updated help files to include full parameter types.
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
+
+#### Azure.Storage
+* Support create Storage Context with OAuth. 
+	- New-AzureStorageContext
+
+#### AzureRM.Cdn
+* Added Standard_Microsoft in Cdn pricing sku. 
+
+#### AzureRM.Compute
+* Move dependencies on Keyvault and Storage to the common dependencies
+* Add support for more virutal machine sizes to AEM cmdlets
+* Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
+* Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
+* Add Invoke-AzureRmVmssVMRunCommand cmdlet
+
+#### AzureRM.Dns
+* Added support for alias record during dns record creation
+
+#### AzureRM.Insights
+* Fixed issues #6833 and #7102 (Diagnostic Settings area)
+    - Issues with the default name, i.e. 'service', during creation and listing/getting of diagnostic settings
+    - Issues creating diagnostic settings with categories
+* Added deprecation message for metrics time grains parameters
+    - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
+
+#### AzureRM.Network
+* Changes to LoadBalancer cmdlets
+  - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
+  - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
+  - LoadBalancerRuleConfig: added parameter EnableTcpReset
+  - LoadBalancerProbeConfig: added support for value "Https" for parameter Protocol
+* Added new commands for new LoadBalancer's subresource OutboundRule
+  - Add-AzureRmLoadBalancerOutboundRuleConfig
+  - Get-AzureRmLoadBalancerOutboundRuleConfig
+  - New-AzureRmLoadBalancerOutboundRuleConfig
+  - Set-AzureRmLoadBalancerOutboundRuleConfig
+  - Remove-AzureRmLoadBalancerOutboundRuleConfig
+* Added new HostedWorkloads property for PSNetworkInterface
+* Added new cmdlets for feature: Azure Firewall via ARM
+  - Added Get-AzureRmFirewall
+  - Added Set-AzureRmFirewall
+  - Added New-AzureRmFirewall
+  - Added Remove-AzureRmFirewall
+  - Added New-AzureRmFirewallApplicationRuleCollection
+  - Added New-AzureRmFirewallApplicationRule
+  - Added New-AzureRmFirewallNatRuleCollection
+  - Added New-AzureRmFirewallNatRule
+  - Added New-AzureRmFirewallNetworkRuleCollection
+  - Added New-AzureRmFirewallNetworkRule
+* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+  - New Cmdlets added:
+      - Add-AzureRmApplicationGatewayTrustedRootCertificate
+      - Get-AzureRmApplicationGatewayTrustedRootCertificate
+      - New-AzureRmApplicationGatewayTrustedRootCertificate
+      - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+      - Set-AzureRmApplicationGatewayTrustedRootCertificate
+      - Get-AzureRmApplicationGatewayAutoscaleConfiguration
+      - New-AzureRmApplicationGatewayAutoscaleConfiguration
+      - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
+      - Set-AzureRmApplicationGatewayAutoscaleConfiguration
+  - Cmdlets updated with optonal parameter -TrustedRootCertificate
+      - New-AzureRmApplicationGateway
+      - Set-AzureRmApplicationGateway
+      - New-AzureRmApplicationGatewayBackendHttpSetting
+      - Set-AzureRmApplicationGatewayBackendHttpSetting
+  - Cmdlets updated with optonal parameter -AutoscaleConfiguration
+      - New-AzureRmApplicationGateway
+      - Set-AzureRmApplicationGateway
+* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
+* Added support for multiple address prefixes in a subnet. Updated cmdlets:
+  - New-AzureRmVirtualNetworkSubnetConfig
+  - Set-AzureRmVirtualNetworkSubnetConfig
+  - Add-AzureRmVirtualNetworkSubnetConfig
+  - Get-AzureRmVirtualNetworkSubnetConfig
+  - Add-AzureRmApplicationGatewayAuthenticationCertificate
+  - Add-AzureRmApplicationGatewayFrontendIPConfig
+  - New-AzureRmApplicationGatewayFrontendIPConfig
+  - Set-AzureRmApplicationGatewayFrontendIPConfig
+  - Add-AzureRmApplicationGatewayIPConfiguration
+  - New-AzureRmApplicationGatewayIPConfiguration
+  - Set-AzureRmApplicationGatewayIPConfiguration
+  - Add-AzureRmNetworkInterfaceIpConfig
+  - New-AzureRmNetworkInterfaceIpConfig  - Set-AzureRmNetworkInterfaceIpConfig
+  - New-AzureRmVirtualNetworkGatewayIpConfig
+  - Add-AzureRmVirtualNetworkGatewayIpConfig
+  - Set-AzureRmLoadBalancerFrontendIpConfig
+  - Add-AzureRmLoadBalancerFrontendIpConfig
+  - New-AzureRmLoadBalancerFrontendIpConfig
+  - New-AzureRmNetworkInterface
+* Adding cmdlets for subnet delegation.
+  - New-AzureRmDelegation: Creates a new delegation, which can be added to a subnet
+  - Remove-AzureRmDelegation: Takes in a subnet and removes the provided delegation name from that subnet
+  - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
+  - Get-AzureRmDelegation
+  - Get-AzureRmAvailableServiceDelegations
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Support for managed Managed disk
+
+#### AzureRM.RedisCache
+* Updated Insights dependency.
+
+#### AzureRM.Resources
+* Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
+    - Add support for OnErrorDeployment with the new parameter.
+* Support managed identity on policy assignments.
+* Parameters with default values are no longer requred when assigning a policy with 'New-AzureRmPolicyAssignment'
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
+
+#### AzureRM.ServiceBus
+* Fixed issue #7161
+
+#### AzureRM.SignalR
+* Update SKU names to Free_F1 and Standard_S1
+* Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
+
+#### AzureRM.Storage
+* Support Immutability Policy in AzureRm.Storage 
+    - Remove-AzureRmStorageAccountNetworkRule
+    - Get-AzureRmStorageContainer
+    - Update-AzureRmStorageContainer
+    - New-AzureRmStorageContainer
+    - Remove-AzureRmStorageContainer
+    - Add-AzureRmStorageContainerLegalHold
+    - Remove-AzureRmStorageContainerLegalHold
+    - Set-AzureRmStorageContainerImmutabilityPolicy
+    - Get-AzureRmStorageContainerImmutabilityPolicy
+    - Remove-AzureRmStorageContainerImmutabilityPolicy
+    - Lock-AzureRmStorageContainerImmutabilityPolicy
+
+#### AzureRM.Websites
+* Added two new cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
+* New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
+
+## 6.8.1 - August 2018
 #### General
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

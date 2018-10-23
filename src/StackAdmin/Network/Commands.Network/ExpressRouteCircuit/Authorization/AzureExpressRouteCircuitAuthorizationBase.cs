@@ -13,12 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Collections.Generic;
-
     public class AzureExpressRouteCircuitAuthorizationBase : NetworkBaseCmdlet
     {
         [Parameter(

@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -25,14 +23,29 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         public const int TimeOut = 1;
         public const int OSNotSupported = 2;
         public const int WrongBlobUriFormat = 3;
+        public const int NoSnapshotFound = 4;
     }
 
+    [Serializable]
     public class AzureVMBackupException : Exception
     {
-        public AzureVMBackupException(int errorCode,string message):base(message)
-        {
+        public AzureVMBackupException(int errorCode, string message) : base(message) {
             this.AzureVMBackupErrorCode = errorCode;
         }
+
         public int AzureVMBackupErrorCode { get; set; }
+
+        [SecurityPermission(SecurityAction.LinkDemand,
+            Flags = SecurityPermissionFlag.SerializationFormatter)]
+        public override void GetObjectData(
+            SerializationInfo info,
+            StreamingContext context) {
+            
+            if (info == null)
+            {
+                throw new ArgumentNullException("info");
+            }
+            info.AddValue("AzureVMBackupErrorCode", AzureVMBackupErrorCode);
+        }
     }
 }

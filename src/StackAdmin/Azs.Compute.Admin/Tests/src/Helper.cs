@@ -16,8 +16,7 @@ using Microsoft.AzureStack.Management.Compute.Admin;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Linq;
 using System.Management.Automation;
-
-
+using System.Management.Automation.Runspaces;
 
 namespace Test
 {
@@ -38,7 +37,8 @@ namespace Test
             handler.IsPassThrough = true;
 
             var context = MockContext.Start(ClassName, TestName);
-            WriteObject(context.GetServiceClient<ComputeAdminClient>(handlers: handler));
+            var client = context.GetServiceClient<ComputeAdminClient>(handlers: handler);
+            WriteObject(client);
         }
     }
 }

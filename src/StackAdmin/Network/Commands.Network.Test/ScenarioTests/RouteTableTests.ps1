@@ -31,7 +31,9 @@ function Test-EmptyRouteTable
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create RouteTable
-        $rt = New-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location
+        $job = New-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -AsJob
+		$job | Wait-Job
+		$rt = $job | Receive-Job
 
         # Get RouteTable
         $getRT = Get-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgName
@@ -51,7 +53,9 @@ function Test-EmptyRouteTable
         Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count              
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        $job = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmRouteTable -ResourceGroupName $rgname
@@ -252,7 +256,9 @@ function Test-RouteTableRouteCRUD
 		Assert-AreEqual $getRT.Routes[0].NextHopIpAddress $route.NextHopIpAddress
 
 		# Add a Route
-		$getRT = Get-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgName | Add-AzureRmRouteConfig -name "route2" -AddressPrefix "192.168.2.0/24" -NextHopType "VnetLocal" | Set-AzureRmRouteTable
+		$job = Get-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgName | Add-AzureRmRouteConfig -name "route2" -AddressPrefix "192.168.2.0/24" -NextHopType "VnetLocal" | Set-AzureRmRouteTable -AsJob
+		$job | Wait-Job
+		$getRT = $job | Receive-Job
 
 		# get route
 		$route = $getRT | Get-AzureRmRouteConfig -name "route2"

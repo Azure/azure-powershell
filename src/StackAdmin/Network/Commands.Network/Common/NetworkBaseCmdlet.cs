@@ -13,8 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Network.Common;
+
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -43,7 +44,17 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            NetworkResourceManagerProfile.Initialize();
+            try
+            {
+                Execute();
+            }
+            catch (Rest.Azure.CloudException ex)
+            {
+                throw new NetworkCloudException(ex);
+            }
+        }
+        public virtual void Execute()
+        {
         }
 
         public static string GetResourceGroup(string resourceId)

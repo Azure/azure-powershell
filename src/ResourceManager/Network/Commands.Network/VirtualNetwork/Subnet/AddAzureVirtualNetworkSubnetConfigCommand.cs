@@ -91,6 +91,11 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (this.Delegation != null)
+            {
+                subnet.Delegations = this.Delegation;
+            }
+
             this.VirtualNetwork.Subnets.Add(subnet);
 
             WriteObject(this.VirtualNetwork);

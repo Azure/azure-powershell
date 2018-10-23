@@ -13,14 +13,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-
-using Hyak.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -65,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSLocalNetworkGateway ToPsLocalNetworkGateway(LocalNetworkGateway localnetGateway)
         {
-            var psLocalNetworkGateway = Mapper.Map<PSLocalNetworkGateway>(localnetGateway);
+            var psLocalNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<PSLocalNetworkGateway>(localnetGateway);
 
             psLocalNetworkGateway.Tag = TagsConversionHelper.CreateTagHashtable(localnetGateway.Tags);
 

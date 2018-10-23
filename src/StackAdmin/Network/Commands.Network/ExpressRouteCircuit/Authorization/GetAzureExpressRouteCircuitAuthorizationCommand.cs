@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Circuit")]
-        public PSExpressRouteCircuit Circuit { get; set; }
+            HelpMessage = "The ExpressRouteCircuit")]
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        protected override void ProcessRecord()
+        public override void Execute()
         {
-            base.ProcessRecord();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var authorization =
-                    this.Circuit.Authorizations.First(
+                    this.ExpressRouteCircuit.Authorizations.First(
                         resource =>
                         string.Equals(
                             resource.Name,
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var authorizations = this.Circuit.Authorizations;
+                var authorizations = this.ExpressRouteCircuit.Authorizations;
                 WriteObject(authorizations, true);
             }
         }

@@ -21,7 +21,7 @@ Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-Resour
 
 ### FromWebApp
 ```
-Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-WebApp] <Site>
+Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-InputObject] <AzureWebAppSnapshot> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The web app object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 

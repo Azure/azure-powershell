@@ -24,7 +24,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Edits a ASR Recovery plan in memory.
     /// </summary>
-    [Cmdlet("Edit", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.AppendGroup,SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsData.Edit,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",
+        DefaultParameterSetName = ASRParameterSets.AppendGroup,
+        SupportsShouldProcess = true)]
     [Alias(
         "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]
@@ -186,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                                 this.InputObject.Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                     .ReplicationProtectedItems
-                                    .Add(replicationProtectedItemResponse);
+                                    .Add(new ReplicationProtectedItem_2016_08_10(replicationProtectedItemResponse));
                             }
                             else
                             {
@@ -252,8 +256,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                         break;
                 }
-
-                ;
 
                 this.WriteObject(this.InputObject);
             }

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the application gateway URL path map")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var urlPathMap =
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var urlPathMaps = this.ApplicationGateway.UrlPathMaps;
                 WriteObject(urlPathMaps, true);
-            }            
+            }
         }
     }
 }

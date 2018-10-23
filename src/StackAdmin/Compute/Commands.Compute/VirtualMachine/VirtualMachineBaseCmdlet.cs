@@ -243,6 +243,5 @@ namespace Microsoft.Azure.Commands.Compute
         {
             return new Tuple<string, string, int>(key, value, depth);
         }
-
     }
 }

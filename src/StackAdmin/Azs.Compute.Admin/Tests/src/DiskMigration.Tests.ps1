@@ -95,10 +95,10 @@ InModuleScope Azs.Compute.Admin {
 			ValidateDiskMigration -DiskMigration $migration
 
 			$migration = Stop-AzsDiskMigrationJob -Location $global:Location -Name $migration.MigrationId
-			ValidateDiskMigration -DiskMigration $migration 
+			ValidateDiskMigration -DiskMigration $migration
 
 			$migrationFromGet = Get-AzsDiskMigrationJob -Location $global:Location -Name $migrationId
-			ValidateDiskMigration -DiskMigration $migrationFromGet 
+			ValidateDiskMigration -DiskMigration $migrationFromGet
 
 			$migrationList = Get-AzsDiskMigrationJob -Location $global:Location
 			$migrationList | %{ValidateDiskMigration -DiskMigration $_ }
@@ -118,8 +118,8 @@ InModuleScope Azs.Compute.Admin {
 			{
 				$toMigrationDisks = @($disks[0])
 				$migrationId = "A50E9E6B-CFC2-4BC7-956B-0F7C35035DF2"; # This guid should be the same as the ones in sessionRecord
-				{Start-AzsDiskMigrationJob -Location $global:Location -Name $migrationId -TargetShare $InvalidtTargetShare -Disks $toMigrationDisks} | Should throw
-				{Get-AzsDiskMigrationJob -Location $global:Location -Name $migrationId }| Should throw
+				{Start-AzsDiskMigrationJob -Location $global:Location -Name $migrationId -TargetShare $InvalidtTargetShare -Disks $toMigrationDisks -ErrorAction Stop} | Should throw
+				{Get-AzsDiskMigrationJob -Location $global:Location -Name $migrationId -ErrorAction Stop }| Should throw
 			}
         }
     }

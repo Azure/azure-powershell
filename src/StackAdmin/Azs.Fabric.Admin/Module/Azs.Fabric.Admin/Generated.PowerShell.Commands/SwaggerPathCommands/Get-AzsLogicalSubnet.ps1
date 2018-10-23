@@ -105,8 +105,6 @@ function Get-AzsLogicalSubnet {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
@@ -140,6 +138,9 @@ function Get-AzsLogicalSubnet {
             $logicalNetwork = $ArmResourceIdParameterValues['logicalNetwork']
             $Name = $ArmResourceIdParameterValues['logicalSubnet']
         } else {
+
+            $LogicalNetwork = Get-ResourceNameSuffix -ResourceName $LogicalNetwork
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -178,6 +179,7 @@ function Get-AzsLogicalSubnet {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
             $TaskResult = $FabricAdminClient.LogicalSubnets.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $LogicalNetwork, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {

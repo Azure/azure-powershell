@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Kusto.Utilities;
 namespace Microsoft.Azure.Commands.Kusto
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ParameterSet),
-        OutputType(typeof(PSKustoCluster[]))]
+        OutputType(typeof(PSKustoCluster))]
     public class GetAzureRmKustoCluster : KustoCmdletBase
     {
         protected const string ParameterSet = "ByClusterOrResourceGroupOrSubscription";
