@@ -70,7 +70,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.7.0';
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '5.0.3'; }, 
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.5.11'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '5.1.4'; }, 
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.1.2'; }, 
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.2.0'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.9'; }, 
                @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.1.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.7'; }, 
@@ -172,6 +172,13 @@ AzureRM.Backup
 AzureRM.Compute
 * Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for ''New-AzureRmVm''
 * Added ResourceName argument completer to all cmdlets.
+
+AzureRM.DataLakeStore
+* Adding support for Virtual Network Rules
+    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
+    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
+    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
+    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.
 
 AzureRM.Network
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.

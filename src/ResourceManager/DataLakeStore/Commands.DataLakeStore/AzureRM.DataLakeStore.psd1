@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.1.2'
+ModuleVersion = '6.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -163,10 +163,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix debugging when DebugPreference is set from powershell command line
-* Update example for Set-AzureRmDataLakeStoreItemAcl
-* Updated to the latest version of the Azure ClientRuntime.
-* Update example for Set-AzureRmDataLakeStoreItemAclEntry'
+        ReleaseNotes = '* Adding support for Virtual Network Rules
+    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
+    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
+    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
+    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.'
 
         # Prerelease string of this module
         # Prerelease = ''

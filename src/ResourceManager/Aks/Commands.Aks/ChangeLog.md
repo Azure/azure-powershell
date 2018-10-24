@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.0.6
 * Update version of YamlDotNet.Signed used
 
 ## Version 0.0.5
