@@ -89,6 +89,10 @@ function Test-ApplicationGatewayCRUD
 	$authCertName = Get-ResourceName
 	$probe01Name = Get-ResourceName
 	$probe02Name = Get-ResourceName
+	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError502Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+	$customError502Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
 
 	try 
 	{
@@ -160,8 +164,11 @@ function Test-ApplicationGatewayCRUD
 		Remove-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
 		Assert-Null $poolSetting02.connectionDraining
 
+		$ce01_listener = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
+		$ce02_listener = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url01
+
 		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
-		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02
+		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02 -CustomErrorConfiguration $ce01_listener,$ce02_listener
 
 		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 		$rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -BackendHttpSettings $poolSetting02 -HttpListener $listener02 -BackendAddressPool $pool
@@ -176,8 +183,11 @@ function Test-ApplicationGatewayCRUD
 		$exclusion2 = New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable "RequestArgNames" -Operator "Equals" -Selector "a"
 		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusion $exclusion1,$exclusion2
 
+		$ce01_appgw = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$ce02_appgw = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url02
+
 		# Create Application Gateway
-		$job = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig -AsJob
+		$job = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig -AsJob -CustomErrorConfiguration $ce01_appgw,$ce02_appgw
 		$job | Wait-Job
 		$appgw = $job | Receive-Job
 
@@ -306,6 +316,63 @@ function Test-ApplicationGatewayCRUD
 		$pool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $poolName
 		$getgw = Set-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType basic -HttpListener $listener -BackendHttpSettings $poolSetting -BackendAddressPool $pool
 
+		# Get Custom Error from listener and appgw
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		$ce = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url01 $ce.CustomErrorPageUrl
+
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$ce = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url02 $ce.CustomErrorPageUrl
+
+		#Set Custom Error on listener and appgw
+		#(403 error page on listener change from $customError403Url01 to $customError403Url02)
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		Set-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$updatedlistener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $updatedgw -Name $listener02Name
+		$ce = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $updatedlistener -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url02 $ce.CustomErrorPageUrl
+
+		#(403 error page on appgw change from $customError403Url02 to $customError403Url01)
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Set-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$ce = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $updatedgw -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url01 $ce.CustomErrorPageUrl
+
+		#Remove Custom Error from listener and appgw
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		Remove-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus502
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$updatedlistener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $updatedgw -Name $listener02Name
+		$ceConfigs = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $updatedlistener
+		Assert-AreEqual 1 $ceConfigs.count
+		Assert-AreEqual HttpStatus403 $ceConfigs[0].StatusCode
+
+		Remove-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus502
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$ceConfigs = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $updatedgw
+		Assert-AreEqual 1 $ceConfigs.count
+		Assert-AreEqual HttpStatus403 $ceConfigs[0].StatusCode
+
+		#Add Custom Error on listener and appgw
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		Add-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url01
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$updatedlistener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $updatedgw -Name $listener02Name
+		$ceConfigs = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $updatedlistener
+		Assert-AreEqual 2 $ceConfigs.count
+
+		Add-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url02
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$ceConfigs = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $updatedgw
+		Assert-AreEqual 2 $ceConfigs.count
+
 		# Modify existing application gateway with new configuration
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
@@ -317,7 +384,7 @@ function Test-ApplicationGatewayCRUD
 		$getgw = $job | Receive-Job
 
 		Assert-AreEqual "Stopped" $getgw.OperationalState
- 
+
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 	}
