@@ -175,7 +175,14 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Export-AzureRmLogAnalyticThrottledRequests', 
                'Repair-AzureRmVmssServiceFabricUpdateDomain', 
                'New-AzureRmVMDataDisk', 'Update-AzureRmVmssVM', 
-               'New-AzureRmVmssIpTagConfig', 'Invoke-AzureRmVmssVMRunCommand'
+               'New-AzureRmVmssIpTagConfig', 'Invoke-AzureRmVmssVMRunCommand',
+               'New-AzureRmGallery', 'Update-AzureRmGallery',
+               'Get-AzureRmGallery', 'Remove-AzureRmGallery',
+               'New-AzureRmGalleryImageDefinition', 'Update-AzureRmGalleryImageDefinition',
+               'Get-AzureRmGalleryImageDefinition', 'Remove-AzureRmGalleryImageDefinition',
+               'New-AzureRmGalleryImageVersion', 'Update-AzureRmGalleryImageVersion',
+               'Get-AzureRmGalleryImageVersion', 'Remove-AzureRmGalleryImageVersion'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -213,7 +220,16 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for ''New-AzureRmVm''
-* Added ResourceName argument completer to all cmdlets.'
+* Added ResourceName argument completer to all cmdlets.
+* Add DiskIOPSReadWrite and  DiskMBpsReadWrite parameters to New-AzureRmDiskConfig and New-AzureRmDiskUpdateConfig cmdlets 
+* Add DiffDiskSetting parameter to Set-AzureRmVmOSDisk and Set-AzureRmVmssStorageProfile cmdlets
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Add Location parameter to Get-AzureRmVM
+* Shared Gallery cmdlets
+* Added an example of the ''SimpleParameterSet'' to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
+* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -225,7 +241,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

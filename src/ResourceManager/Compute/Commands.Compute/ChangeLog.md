@@ -21,6 +21,12 @@
 ## Current Release
 
 ## Version 5.7.1
+* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
+* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.
+* Add DiskIOPSReadWrite and  DiskMBpsReadWrite parameters to New-AzureRmDiskConfig and New-AzureRmDiskUpdateConfig cmdlets 
+* Add DiffDiskSetting parameter to Set-AzureRmVmOSDisk and Set-AzureRmVmssStorageProfile cmdlets
+* Add Location parameter to Get-AzureRmVM
+* Shared Gallery cmdlets
 * Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for `New-AzureRmVm`
 * Added ResourceName argument completer to all cmdlets.
 
