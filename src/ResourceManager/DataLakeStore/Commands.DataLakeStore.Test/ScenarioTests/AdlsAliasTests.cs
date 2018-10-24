@@ -53,6 +53,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsVirtualNetworkRules()
+        {
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreVirtualNetwork -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsTrustedIdProvider()
         {
             NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreTrustedIdProvider -location '{0}'", AdlsTestsBase.ResourceGroupLocation));

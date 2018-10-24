@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, "azurefirewall")]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureFirewallCRUD");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, "azurefirewall")]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallAllocateAndDeallocate()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureFirewallAllocateAndDeallocate");
