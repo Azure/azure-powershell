@@ -25,10 +25,10 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.0.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
