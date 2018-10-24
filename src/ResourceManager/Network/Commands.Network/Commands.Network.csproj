@@ -58,8 +58,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=19.6.1.0">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.6.1-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.6.3.0">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.6.3\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime" />
   </ItemGroup>
@@ -790,3 +790,4 @@
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>
+
