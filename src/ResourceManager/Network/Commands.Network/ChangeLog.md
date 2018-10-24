@@ -19,11 +19,11 @@
 --->
 ## Current Release
 * Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
+* Added ICMP back to supported AzureFirewall Network Protocols
 
 ## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 * Added ResourceName argument completer to all cmdlets.
-
 * Added WhatIf support to Set-AzureRmNetworkSecurityGroup
 * Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
 * Added cmdlet Get-AzureRmFirewallFqdnTag
