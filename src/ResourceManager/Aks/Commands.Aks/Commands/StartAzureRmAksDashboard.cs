@@ -178,8 +178,6 @@ namespace Microsoft.Azure.Commands.Aks
 
         private void PopBrowser(string uri)
         {
-#if NETSTANDARD
-
             var browserProcess = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -188,24 +186,23 @@ namespace Microsoft.Azure.Commands.Aks
                     Arguments = uri
                 }
             };
-
+            var verboseMessage = Resources.StartingOnDefault;
+// TODO: Remove IfDef
+#if NETSTANDARD
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                WriteVerbose("Starting on OSX with open");
+                verboseMessage = "Starting on OSX with open";
                 browserProcess.StartInfo.FileName = "open";
-                browserProcess.Start();
-                return;
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                WriteVerbose("Starting on Unix with xdg-open");
+                verboseMessage = "Starting on Unix with xdg-open";
                 browserProcess.StartInfo.FileName = "xdg-open";
-                browserProcess.Start();
-                return;
             }
 #endif
-            WriteVerbose(Resources.StartingOnDefault);
-            Process.Start(uri);
+
+            WriteVerbose(verboseMessage);
+            browserProcess.Start();
         }
     }
 
