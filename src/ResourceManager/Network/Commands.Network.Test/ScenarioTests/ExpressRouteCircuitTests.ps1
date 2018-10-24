@@ -654,3 +654,56 @@ function Test-ExpressRouteCircuitConnectionCRUD
 	}
 }
 
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuit Peering with RouteFilter
+#>
+function Test-ExpressRouteCircuitPeeringWithRouteFilter
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits"
+    $ruleName = Get-ResourceName
+    $filterName = Get-ResourceName
+    $circuitName = Get-ResourceName
+    $peeringName = "MicrosoftPeering"
+
+    try
+    {
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+
+        $rule = New-AzureRmRouteFilterRuleConfig -Name $ruleName -Access "Allow" -RouteFilterRuleType "Community" -CommunityList "12076:5010" -Force
+        Assert-AreEqual $ruleName $rule.Name
+
+        $filter = New-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName -Location $location -Rule $rule -Force
+        Assert-AreEqual $filterName $filter.Name
+        Assert-AreEqual 1 @($filter.Rules).Count
+        Assert-AreEqual $ruleName $filter.Rules[0].Name
+        Assert-AreEqual $true $filter.Rules[0].Id.EndsWith($ruleName)
+
+        $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name $peeringName -RouteFilter $filter -PeeringType $peeringName -PeerASN 33 -PrimaryPeerAddressPrefix "192.171.1.0/30" -SecondaryPeerAddressPrefix "192.171.2.0/30" -VlanId 224 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName "AFRINIC" -LegacyMode $true
+        Assert-AreEqual $peeringName $peering.Name
+        Assert-NotNull $peering.RouteFilter
+        Assert-AreEqual $true $peering.RouteFilter.Id.EndsWith($filterName) 
+
+        $circuit = New-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName -Location $location -Peering $peering -SkuTier "Premium" -SkuFamily "MeteredData" -ServiceProviderName "equinix" -PeeringLocation "Atlanta" -BandwidthInMbps 1000
+        Assert-AreEqual $circuitName $circuit.Name
+        Assert-AreEqual 1 @($circuit.Peerings).Count
+        Assert-AreEqual $peeringName $circuit.Peerings[0].Name
+        Assert-AreEqual $true $circuit.Peerings[0].Id.EndsWith($peeringName)
+
+        $deletion = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName -PassThru -Force
+        Assert-AreEqual $true $deletion
+        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName } "${circuitName} not found"
+
+        $deletion = Remove-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName -PassThru -Force
+        Assert-AreEqual $true $deletion
+        Assert-ThrowsContains { Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName } "${filterName} not found"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
