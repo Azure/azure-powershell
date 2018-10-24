@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+* Fixed issue #7513 [Insights] Set-AzureRMDiagnosticSetting requires explicit specification of categories during creation of setting
+    - Now the cmdlet does not require explicit indication of the categories to enable during creation, i.e. it works as it is documented
+
 ## Version 5.1.4
 
 * Fixed issues #6833 and #7102 (Diagnostic Settings area)

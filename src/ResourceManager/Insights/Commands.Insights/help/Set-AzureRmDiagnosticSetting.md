@@ -128,7 +128,7 @@ This command uses the PowerShell pipeline to set (not change made) a diagnostic 
 
 ### -Categories
 Specifies the list of log categories to enable or disable, according to the value of *Enabled*.
-If you do not specify a category, this command operates on all categories.
+If no category is specified, this command operates on all supported categories. 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -219,7 +219,8 @@ Accept wildcard characters: False
 ```
 
 ### -MetricCategory
-The list of metric categories
+The list of metric categories. 
+If no category is specified, this command operates on all supported categories. 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]

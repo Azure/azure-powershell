@@ -78,7 +78,7 @@ FormatsToProcess =
                '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Automation\Microsoft.Azure.Commands.Automation.dll', 
+NestedModules = @('.\Automation\Microsoft.WindowsAzure.Commands.Automation.dll', 
                '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.dll', 
                '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll', 
                '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll', 
