@@ -49,7 +49,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.MachineLearningCompute, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.MachineLearningCompute">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearningCompute.0.4.0\lib\net452\Microsoft.Azure.Management.MachineLearningCompute.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
