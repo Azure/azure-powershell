@@ -10,6 +10,13 @@
 * Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for 'New-AzureRmVm'
 * Added ResourceName argument completer to all cmdlets.
 
+#### AzureRM.DataLakeStore
+* Adding support for Virtual Network Rules
+    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
+    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
+    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
+    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.
+
 #### AzureRM.Network
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 * Added ResourceName argument completer to all cmdlets.
