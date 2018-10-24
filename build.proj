@@ -399,10 +399,21 @@
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
-    <!-- Cleanup extraneous files. -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+    <!-- Copying modules to be signed -->
+    <Copy SourceFiles="$(LibraryToolsFolder)\Az\Az.psd1"
+          DestinationFolder="$(PackageDirectory)\$(Configuration)"
+          ContinueOnError="false" />
+    <Copy SourceFiles="$(LibraryToolsFolder)\Az\Az.psm1"
+          DestinationFolder="$(PackageDirectory)\$(Configuration)"
+          ContinueOnError="false" />
 
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
+
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psd1" DestinationFolder="$(LibraryToolsFolder)\Az" />
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1" DestinationFolder="$(LibraryToolsFolder)\Az" />
+
+    <!-- Cleanup extraneous files. -->
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
   </Target>
 
 
@@ -425,9 +436,6 @@
     <GetFrameworkSdkPath>
       <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
     </GetFrameworkSdkPath>
-
-    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psd1"
-          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= " '$(Scope)' == 'Netcore' "/>
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
@@ -478,6 +486,8 @@
           Condition="'$(Scope)' != 'Netcore'"/>
 
     <!-- Copying shortcut to be signed -->
+    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psm1"
+          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Netcore'" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
 
@@ -515,10 +525,6 @@
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(StackPackageFolder)\$(Configuration) &quot;"
           Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="ErrorAndContinue" />
-
-    <!-- Copying signed shortcut back -->
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psd1"
-          DestinationFolder="$(LibraryRoot)tools\Az" Condition= " '$(Scope)' == 'Latest' "/>
   </Target>
 
 
