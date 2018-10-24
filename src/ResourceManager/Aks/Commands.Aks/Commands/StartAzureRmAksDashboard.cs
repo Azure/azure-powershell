@@ -180,11 +180,7 @@ namespace Microsoft.Azure.Commands.Aks
         {
             var browserProcess = new Process
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    UseShellExecute = true,
-                    Arguments = uri
-                }
+                StartInfo = new ProcessStartInfo { Arguments = uri }
             };
             var verboseMessage = Resources.StartingOnDefault;
 // TODO: Remove IfDef
