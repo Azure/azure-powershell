@@ -61,14 +61,14 @@ function Test-SyncGroup
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
 
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Get-AzureRmStorageSyncGroup  | Remove-AzureRmStorageSyncGroup -Force 
+        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Get-AzureRmStorageSyncGroup  | Remove-AzureRmStorageSyncGroup -Force -AsJob | Wait-Job
 
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Remove-AzureRmStorageSyncGroup -Force 
+        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Remove-AzureRmStorageSyncGroup -Force -AsJob | Wait-Job
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
     }
     finally
@@ -271,11 +271,11 @@ function Test-GetSyncGroupParentObject
 
 <#
 .SYNOPSIS
-Test GetSyncGroupParentObjectParentResourceId
+Test GetSyncGroupParentResourceId
 .DESCRIPTION
 SmokeTest
 #>
-function Test-GetSyncGroupParentObjectParentResourceId
+function Test-GetSyncGroupParentResourceId
 {
     # Setup
     $resourceGroupName = Get-StorageManagementTestResourceName;

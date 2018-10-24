@@ -49,11 +49,11 @@ function Test-StorageSyncService
         Assert-AreEqual (Normalize-Location($resourceLocation)) (Normalize-Location($storageSyncService.Location))
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Get-AzureRmStorageSyncService  | Remove-AzureRmStorageSyncService -Force 
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Get-AzureRmStorageSyncService  | Remove-AzureRmStorageSyncService -Force -AsJob | Wait-Job
 
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Remove-AzureRmStorageSyncService -Force 
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Remove-AzureRmStorageSyncService -Force -AsJob | Wait-Job
     }
     finally
     {

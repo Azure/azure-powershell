@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceIdAlias)]
         public string ParentResourceId { get; set; }
 
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

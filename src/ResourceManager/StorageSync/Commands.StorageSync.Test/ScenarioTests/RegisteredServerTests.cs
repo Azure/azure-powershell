@@ -40,37 +40,72 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRegisteredServer()
+        public void TestNewRegisteredServer()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRegisteredServer");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRegisteredServer()
+        public void TestNewRegisteredServerParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureRegisteredServer");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServerParentObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRegisteredServers()
+        public void TestNewRegisteredServerParentResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureRegisteredServers");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServerParentResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRegisteredServer()
+        public void TestGetRegisteredServer()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRegisteredServer");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingSetRegisteredServer()
+        public void TestGetRegisteredServerParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-PipingToSetAzureRmCurrentRegisteredServer");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServerParentObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRegisteredServerParentResourceId()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServerParentResourceId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRegisteredServers()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServers");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveRegisteredServer()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveRegisteredServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveRegisteredServerResourceId()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveRegisteredServerResourceId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveRegisteredServerInputObject()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveRegisteredServerInputObject");
         }
     }
 }
