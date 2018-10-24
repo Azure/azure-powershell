@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Min for the scale units for this ExpressRouteGateway.")]
-        public uint MinBounds { get; set; }
+        public uint MinScaleUnits { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Max for the scale units for this ExpressRouteGateway.")]
-        public uint MaxBounds { get; set; }
+        public uint MaxScaleUnits { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ExpressRouteGatewayNotFound);
             }
 
-            if (this.MinBounds > this.MaxBounds)
+            if (this.MinScaleUnits > this.MaxScaleUnits)
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinBounds, this.MaxBounds));
+                throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnits, this.MaxScaleUnits));
             }
 
-            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinBounds);
-            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxBounds);
+            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnits);
+            existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnits);
 
             ConfirmAction(
                     Properties.Resources.SettingResourceMessage,

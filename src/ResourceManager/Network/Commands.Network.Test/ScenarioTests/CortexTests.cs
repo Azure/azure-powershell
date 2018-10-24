@@ -38,5 +38,12 @@ namespace Commands.Network.Test.ScenarioTests
             //// If using any other sub, please reach out to Brooklyn team.
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }
+
+        [Fact]
+        [Trait(Category.Owner, Category.brooklynft)]
+        public void TestCortexExpressRouteCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexExpressRouteCRUD");
+        }
     }
 }

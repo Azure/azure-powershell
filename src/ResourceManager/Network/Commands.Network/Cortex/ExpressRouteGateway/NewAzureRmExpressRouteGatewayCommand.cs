@@ -52,13 +52,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Min for the scale units for this ExpressRouteGateway.")]
-        public uint MinBounds { get; set; }
+            HelpMessage = "Min scale units for this ExpressRouteGateway.")]
+        [ValidateRange(2, 100)]
+        public uint MinScaleUnits { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "Max for the scale units for this ExpressRouteGateway.")]
-        public uint MaxBounds { get; set; }
+            Mandatory = false,
+            HelpMessage = "Max scale units for this ExpressRouteGateway.")]
+        [ValidateRange(2, 100)]
+        public uint MaxScaleUnits { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -126,15 +128,15 @@ namespace Microsoft.Azure.Commands.Network
             expressRouteGateway.Location = resolvedVirtualHub.Location;
             expressRouteGateway.VirtualHub = new PSVirtualHubId() { Id = resolvedVirtualHub.Id };
 
-            if (this.MinBounds > this.MaxBounds)
+            if (this.MaxScaleUnits > 0 && this.MinScaleUnits > this.MaxScaleUnits)
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinBounds, this.MaxBounds));
+                throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnits, this.MaxScaleUnits));
             }
 
             expressRouteGateway.AutoScaleConfiguration = new PSExpressRouteGatewayAutoscaleConfiguration();
             expressRouteGateway.AutoScaleConfiguration.Bounds = new PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds();
-            expressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinBounds);
-            expressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxBounds);
+            expressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnits);
+            expressRouteGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnits > 0) ? Convert.ToInt32(this.MaxScaleUnits) : Convert.ToInt32(this.MinScaleUnits);
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
