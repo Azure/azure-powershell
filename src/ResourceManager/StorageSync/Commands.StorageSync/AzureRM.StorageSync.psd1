@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,7 +72,13 @@ NestedModules = @('.\Microsoft.Azure.Commands.StorageSync.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Invoke-AzureRmStorageSyncCompatibilityCheck'
+CmdletsToExport = 'Invoke-AzureRmStorageSyncCompatibilityCheck',
+                'New-AzureRmStorageSyncService','Get-AzureRmStorageSyncService','Remove-AzureRmStorageSyncService',
+                'New-AzureRmStorageSyncGroup','Get-AzureRmStorageSyncGroup','Remove-AzureRmStorageSyncGroup',
+                'New-AzureRmStorageSyncCloudEndpoint','Get-AzureRmStorageSyncCloudEndpoint','Remove-AzureRmStorageSyncCloudEndpoint',
+                'New-AzureRmStorageSyncServerEndpoint','Get-AzureRmStorageSyncServerEndpoint','Remove-AzureRmStorageSyncServerEndpoint','Set-AzureRmStorageSyncServerEndpoint',
+                'Register-AzureRmStorageSyncServer','Unregister-AzureRmStorageSyncServer','Get-AzureRmStorageSyncServer','Reset-AzureRmStorageSyncServerCertificate'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -95,7 +101,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Storage','StorageSync'
+        Tags = 'Azure','ResourceManager','ARM','Storage','StorageSync','AFS','Azure','File','Sync'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Management.Automation;
 
-    public class FileSystemValidation : BaseSystemValidation
+    public class FileSystemValidation : SystemValidationBase
     {
         #region Fields and Properties
         private readonly char? _driveLetter;

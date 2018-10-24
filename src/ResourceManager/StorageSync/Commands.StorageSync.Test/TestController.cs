@@ -14,15 +14,19 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.StorageSync;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 //using Microsoft.Azure.Management.StorageSync;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
@@ -31,14 +35,23 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 {
-    public class TestController
+    public class TestController : IDisposable
     {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+
+        private EnvironmentSetupHelper environmentSetupHelper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
+
+        public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
+
+        public StorageManagementClient StorageClient { get; private set; }
+
+        public StorageSyncManagementClient StorageSyncClient { get; private set; }
+
+        public Azure.Management.ResourceManager.SubscriptionClient SubscriptionClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -46,51 +59,61 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
         public string UserDomain { get; private set; }
 
-        public static TestController NewInstance
-        {
-            get
-            {
-                return new TestController();
-            }
-        }
+        public static TestController NewInstance => new TestController();
 
         public TestController()
         {
-            helper = new EnvironmentSetupHelper();
+            environmentSetupHelper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
-
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
+                initializeEnvironment: null,// no custom initializer
+                cleanupAction: null,// no custom cleanup 
+                callingClassType: TestUtilities.GetCallingClass(2),
+                mockName: TestUtilities.GetCurrentMethodName(2));
+
+        }
+
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
+        {
+            StackFrame stackFrame = new StackTrace().GetFrame(1);
+
+            environmentSetupHelper.TracingInterceptor = logger;
+
+            RunPsTestWorkflow(
+                scriptBuilder: () => scripts,
+               // no custom cleanup
+               initializeEnvironment: null,// no custom initializer
+                cleanupAction: null,// no custom cleanup 
+                callingClassType: stackFrame.GetMethod().ReflectedType?.ToString(),
+                mockName: stackFrame.GetMethod().Name);
         }
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
-            Action cleanup,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initializeEnvironment,
+            Action cleanupAction,
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Storage", null);
-            d.Add("Microsoft.StorageSync", null);
+            Dictionary<string, string> providers = new Dictionary<string, string>
+            {
+                { "Microsoft.Resources", null },
+                { "Microsoft.Features", null },
+                { "Microsoft.Authorization", null },
+                { "Microsoft.Storage", null },
+                //{ "Microsoft.StorageSync", null }
+            };
 
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" }
+            };
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
@@ -98,23 +121,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
+                initializeEnvironment?.Invoke(this.csmTestFactory);
 
-                SetupManagementClients(context);
+                InitializeComponent(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                environmentSetupHelper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRm.StorageSync.psd1"),
+                string callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+
+                environmentSetupHelper.SetupModules(AzureModule.AzureResourceManager,
+                    environmentSetupHelper.RMProfileModule,
+                    environmentSetupHelper.GetRMModulePath("AzureRm.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    $"ScenarioTests\\{callingClassName}.ps1",
                     "AzureRM.Resources.ps1");
 
                 try
@@ -125,42 +144,49 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
                         if (psScripts != null)
                         {
-                            helper.RunPowerShellTest(psScripts);
+                            environmentSetupHelper.RunPowerShellTest(psScripts);
                         }
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanupAction?.Invoke();
                 }
             }
         }
 
-        private void SetupManagementClients(MockContext context)
+        private void InitializeComponent(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
+            InternalResourceManagementClient = GetInternalResourceManagementClient(context);
+            SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
+            StorageClient = GetStorageManagementClient(context);
+            StorageSyncClient = GetStorageSyncManagementClient(context);
+            GraphRbacManagementClient = GetGraphRbacManagementClient(context);
 
-            helper.SetupManagementClients(
+            environmentSetupHelper.SetupManagementClients(
                 ResourceManagementClient,
+                InternalResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                AuthorizationManagementClient);
+                AuthorizationManagementClient,
+                StorageClient,
+                StorageSyncClient, 
+                GraphRbacManagementClient);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context) =>context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+
+        private SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private SubscriptionClient GetSubscriptionClient()
+        private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return context.GetGraphServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
@@ -168,9 +194,30 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
         private GalleryClient GetGalleryClient()
         {
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
+        private StorageManagementClient GetStorageManagementClient(MockContext context) => context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+
+        private StorageSyncManagementClient GetStorageSyncManagementClient(MockContext context) => context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetInternalResourceManagementClient(MockContext context) => context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>();
+
+        public void Dispose()
+        {
+            ResourceManagementClient?.Dispose();
+            InternalResourceManagementClient?.Dispose();
+            SubscriptionClient?.Dispose();
+            GalleryClient?.Dispose();
+            AuthorizationManagementClient?.Dispose();
+            StorageSyncClient?.Dispose();
+        }
     }
+  
 }

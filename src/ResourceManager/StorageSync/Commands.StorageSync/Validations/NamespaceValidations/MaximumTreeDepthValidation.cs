@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumTreeDepthValidation : BaseNamespaceValidation
+    public class MaximumTreeDepthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
         private readonly int _maxTreeDepth;

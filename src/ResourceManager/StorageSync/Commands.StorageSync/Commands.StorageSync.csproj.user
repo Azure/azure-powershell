@@ -4,10 +4,15 @@
     <StartAction>Program</StartAction>
     <StartProgram>C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
     <StartArguments>-NoExit . ..\..\..\..\..\ResourceManager\StorageSync\Commands.StorageSync\debug.ps1 Debug</StartArguments>
+    <RemoteDebugEnabled>true</RemoteDebugEnabled>
+    <RemoteDebugMachine>ankushb-vm01.ntdev.corp.microsoft.com</RemoteDebugMachine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
     <StartArguments>-NoExit . ..\..\..\..\..\ResourceManager\StorageSync\Commands.StorageSync\debug.ps1 Release</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
 </Project>

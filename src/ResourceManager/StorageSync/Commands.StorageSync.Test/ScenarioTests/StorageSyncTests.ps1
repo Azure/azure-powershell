@@ -20,5 +20,5 @@ SmokeTest
 #>
 function Test-StorageSync
 {
-	Get-Command Invoke-AzureRmStorageSyncCompatibilityCheck
+    Get-Command Invoke-AzureRmStorageSyncCompatibilityCheck
 }

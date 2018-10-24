@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
     using Interfaces;
     using System;
 
-    class AfsConsoleWriter : IConsoleWriter
+    internal class AfsConsoleWriter : IConsoleWriter
     {
-        public void WriteLine(string v)
+        public void WriteLine(string message)
         {
-            Console.WriteLine(v);
+            Console.WriteLine(message);
         }
     }
 }

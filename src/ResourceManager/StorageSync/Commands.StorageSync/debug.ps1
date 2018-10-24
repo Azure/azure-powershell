@@ -7,6 +7,8 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $scriptDirectory = Split-Path $scriptpath
 $scriptFileName = Split-Path $scriptpath -Leaf
 
+Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1" -Verbose
+#Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.Profile/AzureRM.Profile.psd1" -Verbose
 Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.StorageSync.psd1" -Verbose
 
 $VerbosePreference='Continue'
@@ -145,20 +147,20 @@ function Perform-Test
     param ([switch]$Full, [switch]$SkipInvalidCharacters, [switch]$TrailingSlash, [switch]$AlternateSlash)
     
     $dataSetLocation = Get-DataSetLocation
-	$dataSetLocationForTest = $dataSetLocation
+    $dataSetLocationForTest = $dataSetLocation
 
-	$slashCharacter = if ($AlternateSlash) { "/" } else { "\" }
+    $slashCharacter = if ($AlternateSlash) { "/" } else { "\" }
 
-	if ($TrailingSlash)
-	{
-		$dataSetLocationForTest = "$($dataSetLocation)$($slashCharacter)"
-	}
+    if ($TrailingSlash)
+    {
+        $dataSetLocationForTest = "$($dataSetLocation)$($slashCharacter)"
+    }
 
-	if ($AlternateSlash)
-	{
-		$dataSetLocationForTest = $dataSetLocationForTest.Replace("\", $slashCharacter)
-		$dataSetLocationForTest = $dataSetLocationForTest.Replace("/", $slashCharacter)
-	}
+    if ($AlternateSlash)
+    {
+        $dataSetLocationForTest = $dataSetLocationForTest.Replace("\", $slashCharacter)
+        $dataSetLocationForTest = $dataSetLocationForTest.Replace("/", $slashCharacter)
+    }
 
     if ($Full)
     {
