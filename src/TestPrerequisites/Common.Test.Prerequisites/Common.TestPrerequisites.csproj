@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="$(ProjectDir)..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
@@ -68,7 +68,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Relay" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="1.4.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" PrivateAssets="All" />
