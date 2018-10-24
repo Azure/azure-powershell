@@ -24,6 +24,7 @@
 * Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
 * Added cmdlet Get-AzureRmFirewallFqdnTag
 * Added Exclusion list and Global config functionality for application gateway WAF, new cmdlets added
+* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
 
 ## Version 6.9.0
 

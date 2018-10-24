@@ -719,6 +719,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayAvailableSslOptions, MNM.ApplicationGatewayAvailableSslOptions>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPredefinedPolicy, MNM.ApplicationGatewaySslPredefinedPolicy>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAutoscaleConfiguration, MNM.ApplicationGatewayAutoscaleConfiguration>();
+                cfg.CreateMap<CNM.PSApplicationGatewayCustomError, MNM.ApplicationGatewayCustomError>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
@@ -765,6 +766,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayAvailableSslOptions, CNM.PSApplicationGatewayAvailableSslOptions>();
                 cfg.CreateMap<MNM.ApplicationGatewaySslPredefinedPolicy, CNM.PSApplicationGatewaySslPredefinedPolicy>();
                 cfg.CreateMap<MNM.ApplicationGatewayAutoscaleConfiguration, CNM.PSApplicationGatewayAutoscaleConfiguration>();
+                cfg.CreateMap<MNM.ApplicationGatewayCustomError, CNM.PSApplicationGatewayCustomError>();
 
                 // Application Security Groups
                 // CNM to MNM
