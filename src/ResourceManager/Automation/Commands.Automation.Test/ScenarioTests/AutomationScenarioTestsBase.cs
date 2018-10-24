@@ -14,12 +14,14 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Automation.Test
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
-
+            HttpMockServer.RecordsDirectory = GetSessionRecordsDirectory();
             using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
@@ -69,6 +71,15 @@ namespace Microsoft.Azure.Commands.Automation.Test
         {
             return context.GetServiceClient<AutomationClient>
                 (Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private string GetSessionRecordsDirectory()
+        {
+            // Note: if you are developing new tests, set the recording directory to a local path.
+            //       this is the location where the json files will be created.
+            // var recordsDirectory = Path.Combine("e:\\", "SessionRecords");
+            var recordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            return recordsDirectory;
         }
     }
 }
