@@ -401,6 +401,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     name = string.Format("{0} ({1}) - {2}", context.Subscription.Name, context.Subscription.Id, context.Account.Id);
                     result = true;
                 }
+                else if (context.Tenant != null && context.Account != null)
+                {
+                    name = string.Format("{0} - {1}", context.Tenant.Id, context.Account.Id);
+                    result = true;
+                }
                 else
                 {
                     name = "Default";
