@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 
     public class AzureExpressRouteCircuitPeeringConfigBase : NetworkBaseCmdlet
     {
+        protected const string ParamSetByRouteFilterId = "MicrosoftPeeringConfigRoutFilterId";
+        protected const string ParamSetByRouteFilter = "MicrosoftPeeringConfigRoutFilter";
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the Peering")]
@@ -92,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilterId",
+            ParameterSetName = ParamSetByRouteFilterId,
             HelpMessage = "RouteFilterId")]
         [ValidateNotNullOrEmpty]
         public string RouteFilterId { get; set; }
@@ -100,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilter",
+            ParameterSetName = ParamSetByRouteFilter,
             HelpMessage = "RouteFilter")]
         [ValidateNotNullOrEmpty]
         public PSRouteFilter RouteFilter { get; set; }

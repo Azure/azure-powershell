@@ -135,10 +135,18 @@ namespace Microsoft.Azure.Commands.Network
 
                 // VirtualNetwork Peering
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteAddressSpace,
+                        opt => opt.MapFrom(src => src.RemoteVirtualNetworkAddressSpace)
+                    );
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>();
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteVirtualNetworkAddressSpace,
+                        opt => opt.MapFrom(src => src.RemoteAddressSpace)
+                    );
 
                 // VirtualNetwork
                 // CNM to MNM
