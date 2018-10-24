@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Automation</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Automation</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Automation</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
