@@ -403,14 +403,10 @@
     <Copy SourceFiles="$(LibraryToolsFolder)\Az\Az.psd1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false" />
-    <Copy SourceFiles="$(LibraryToolsFolder)\Az\Az.psm1"
-          DestinationFolder="$(PackageDirectory)\$(Configuration)"
-          ContinueOnError="false" />
 
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
 
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psd1" DestinationFolder="$(LibraryToolsFolder)\Az" />
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1" DestinationFolder="$(LibraryToolsFolder)\Az" />
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
@@ -486,8 +482,6 @@
           Condition="'$(Scope)' != 'Netcore'"/>
 
     <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psm1"
-          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Netcore'" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
 
