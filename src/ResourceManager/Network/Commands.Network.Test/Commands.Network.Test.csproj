@@ -43,8 +43,8 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=19.6.1.0">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.6.1-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.6.3.0">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.6.3\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.18.0-preview\lib\net45\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
@@ -780,3 +780,4 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
+
