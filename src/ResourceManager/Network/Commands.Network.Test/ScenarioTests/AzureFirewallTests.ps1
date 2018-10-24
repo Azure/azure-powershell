@@ -71,6 +71,7 @@ function Test-AzureFirewallCRUD
     $networkRule1DestinationAddress1 = "*"
     $networkRule1Protocol1 = "UDP"
     $networkRule1Protocol2 = "TCP"
+    $networkRule1Protocol3 = "ICMP"
     $networkRule1DestinationPort1 = "90"
 
     # AzureFirewallNatRuleCollection
@@ -151,7 +152,7 @@ function Test-AzureFirewallCRUD
         $appRc2 = New-AzureRmFirewallApplicationRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $appRule -ActionType $appRc2ActionType
 
         # Create Network Rule
-        $networkRule = New-AzureRmFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+        $networkRule = New-AzureRmFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2, $networkRule1Protocol3 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
 
         # Create Network Rule Collection
         $netRc = New-AzureRmFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
@@ -312,9 +313,10 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual 1 $networkRule.DestinationAddresses.Count 
         Assert-AreEqual $networkRule1DestinationAddress1 $networkRule.DestinationAddresses[0]
 
-        Assert-AreEqual 2 $networkRule.Protocols.Count 
+        Assert-AreEqual 3 $networkRule.Protocols.Count
         Assert-AreEqual $networkRule1Protocol1 $networkRule.Protocols[0]
         Assert-AreEqual $networkRule1Protocol2 $networkRule.Protocols[1]
+        Assert-AreEqual $networkRule1Protocol3 $networkRule.Protocols[2]
 
         Assert-AreEqual 1 $networkRule.DestinationPorts.Count 
         Assert-AreEqual $networkRule1DestinationPort1 $networkRule.DestinationPorts[0]
