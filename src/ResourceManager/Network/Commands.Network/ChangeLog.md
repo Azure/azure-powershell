@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Added ICMP back to supported AzureFirewall Network Protocols
 
 ## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
@@ -27,7 +28,6 @@
 * Added cmdlet Get-AzureRmFirewallFqdnTag
 * Added Exclusion list and Global config functionality for application gateway WAF, new cmdlets added
 * Fixed issue with RouteFilter not being set if it was passed to ExpressRouteCircuit Peering as resource
-* Added ICMP back to supported AzureFirewall Network Protocols
 
 ## Version 6.9.0
 
