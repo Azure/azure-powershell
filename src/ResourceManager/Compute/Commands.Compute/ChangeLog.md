@@ -19,7 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added new sizes to the whitelist of VM sizes for which Accel Net will be turned on when using the simple param set for `New-AzureRmVm`
+
+## Version 5.7.1
+* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for `New-AzureRmVm`
 * Added ResourceName argument completer to all cmdlets.
 
 ## Version 5.7.0

@@ -42,7 +42,7 @@
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.3-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.1-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.3.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.10.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="1.2.1-preview" PrivateAssets="All" />
@@ -59,7 +59,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.2-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.11.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" PrivateAssets="All" />

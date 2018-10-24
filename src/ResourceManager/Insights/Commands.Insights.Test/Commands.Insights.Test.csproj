@@ -156,6 +156,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAzureRmAutoscaleSettingByName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingCreate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingWithRetention.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -189,7 +192,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingCategoriesOnly.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSetting.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestGetAzureRmDiagnosticSetting.json">
