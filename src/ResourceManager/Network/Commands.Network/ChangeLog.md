@@ -19,11 +19,11 @@
 --->
 ## Current Release
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
-
 * Added WhatIf support to Set-AzureRmNetworkSecurityGroup
 * Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
 * Added cmdlet Get-AzureRmFirewallFqdnTag
 * Added Exclusion list and Global config functionality for application gateway WAF, new cmdlets added
+* Added ICMP back to supported AzureFirewall Network Protocols
 
 ## Version 6.9.0
 
