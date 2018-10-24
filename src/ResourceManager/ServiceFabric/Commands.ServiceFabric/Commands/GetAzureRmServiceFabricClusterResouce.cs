@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case ByResourceGroup:
                     {
                         var clusters = SFRPClient.Clusters.
-                            ListByResourceGroup(ResourceGroupName).
+                            ListByResourceGroup(ResourceGroupName).Value.
                             Select(c => new PSCluster(c)).ToList();
 
                         WriteObject(clusters, true);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 default:
                     {
-                        var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
+                        var clusters = SFRPClient.Clusters.List().Value.Select(c => new PSCluster(c)).ToList();
                         WriteObject(clusters, true);
                         break;
                     }
