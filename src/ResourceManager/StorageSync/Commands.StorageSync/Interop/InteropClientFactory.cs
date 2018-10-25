@@ -5,9 +5,9 @@ namespace Commands.StorageSync.Interop
 {
     public static class InteropClientFactory
     {
-        public static IEcsManagement CreateEcsManagement()
+        public static IEcsManagement CreateEcsManagement(bool isTestMode)
         {
-            return new EcsManagementInteropClient();
+            return isTestMode ? new MockEcsManagementInteropClient() as IEcsManagement : new EcsManagementInteropClient();
         }
 
         public static ISyncServerRegistration CreateSyncServerRegistrationClient(IEcsManagement ecsManagementClient)

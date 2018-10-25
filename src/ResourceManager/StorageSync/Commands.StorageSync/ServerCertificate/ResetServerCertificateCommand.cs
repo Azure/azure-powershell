@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 throw new PSArgumentException("No subscription found");
             }
 
-            using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(InteropClientFactory.CreateEcsManagement()))
+            using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(InteropClientFactory.CreateEcsManagement(IsRunningInTest)))
             {
                 certificateRolloverClient.RolloverServerCertificate(
                     ManagementInteropConstants.CertificateProviderName,

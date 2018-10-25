@@ -15,6 +15,7 @@
 
 using Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewRegisteredServer()
         {
+            var value = HttpMockServer.GetCurrentMode();
             TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServer");
         }
 

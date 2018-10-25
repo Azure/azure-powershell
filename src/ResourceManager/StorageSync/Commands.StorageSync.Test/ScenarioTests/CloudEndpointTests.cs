@@ -40,37 +40,60 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureCloudEndpoint()
+        public void TestNewCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureCloudEndpoint");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewCloudEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureCloudEndpoint()
+        public void TestGetCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureCloudEndpoint");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureCloudEndpoints()
+        public void TestGetCloudEndpointParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureCloudEndpoints");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpointParentObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureCloudEndpoint()
+        public void TestGetCloudEndpointParentResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureCloudEndpoint");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpointParentResourceId");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetCloudEndpoints()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpoints");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingSetCloudEndpoint()
+        public void TestRemoveCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-PipingToSetAzureRmCurrentCloudEndpoint");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveCloudEndpointResourceId()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpointResourceId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveCloudEndpointInputObject()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpointInputObject");
+        }
+
     }
 }

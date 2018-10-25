@@ -34,7 +34,7 @@ function Test-SyncGroup
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+         $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
@@ -43,12 +43,6 @@ function Test-SyncGroup
         $syncGroup = Get-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -Verbose
          Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
-
-        Write-Verbose "List StorageSyncServices by Name"
-        $storageSyncService = Get-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
-        Write-Verbose "Validating StorageSyncService Properties"
-        Assert-AreEqual $storageSyncServiceName $storageSyncService.StorageSyncServiceName
-        Assert-AreEqual (Normalize-Location($resourceLocation)) (Normalize-Location($storageSyncService.Location))
 
         Write-Verbose "Get SyncGroup by ParentObject"
         $syncGroup = Get-AzureRmStorageSyncGroup -ParentObject $storageSyncService -Name $syncGroupName -Verbose

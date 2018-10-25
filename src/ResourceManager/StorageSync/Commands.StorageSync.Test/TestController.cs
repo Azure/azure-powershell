@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-//using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -104,8 +103,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
                 { "Microsoft.Resources", null },
                 { "Microsoft.Features", null },
                 { "Microsoft.Authorization", null },
-                { "Microsoft.Storage", null },
-                //{ "Microsoft.StorageSync", null }
+                { "Microsoft.Storage", null }
             };
 
             var providersToIgnore = new Dictionary<string, string>
@@ -121,11 +119,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
-                initializeEnvironment?.Invoke(this.csmTestFactory);
+                initializeEnvironment?.Invoke(csmTestFactory);
 
                 InitializeComponent(context);
 
-                environmentSetupHelper.SetupEnvironment(AzureModule.AzureResourceManager);
+                //environmentSetupHelper.SetupEnvironment(AzureModule.AzureResourceManager);
+                environmentSetupHelper.SetupAzureEnvironmentFromEnvironmentVariables(AzureModule.AzureResourceManager);
 
                 string callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
 

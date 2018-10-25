@@ -13,6 +13,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Authorization.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
@@ -37,6 +38,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
         protected virtual void InitializeComponent()
         {
+        }
+
+        private bool? isRunningInTest;
+        public bool IsRunningInTest
+        {
+            get
+            {
+                if (!isRunningInTest.HasValue)
+                {
+                    string mode = System.Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+                    isRunningInTest = "Playback".Equals(mode, StringComparison.OrdinalIgnoreCase);
+                }
+                return isRunningInTest.Value;
+            }
         }
 
         private Guid? subscriptionId;

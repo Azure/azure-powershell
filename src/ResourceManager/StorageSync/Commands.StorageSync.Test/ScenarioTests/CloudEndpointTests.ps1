@@ -27,29 +27,68 @@ function Test-CloudEndpoint
     {
         # Test
         $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $cloudEndpointName = Get-StorageManagementTestResourceName
         $resourceLocation = Get-ProviderLocation ResourceManagement;
+        $StorageAccountShareName = Get-StorageManagementTestResourceName
+        $StorageAccountName = Get-StorageManagementTestResourceName
+        $StorageAccountTenantId = (Get-AzureRmTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
-        New-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName -Location $resourceLocation -CloudEndpointName $storageSyncServiceName
-        
-        Write-Verbose "List CloudEndpoints by ResourceGroup"
-        $storageSyncServices = Get-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName
-        $storageSyncServices
-        Write-Verbose "List CloudEndpoints by Name"
-        $storageSyncService = Get-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName -CloudEndpointName $storageSyncServiceName -Verbose
-        $storageSyncService
-        
-        Write-Verbose "List CloudEndpoints by Name"
-        Retry-IfException { $global:storageSyncService = Get-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName  -Name $storageSyncServiceName }
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $Location -SkuName Standard_LRS
+        $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $StorageAccount.Context
+
+        $cloudEndpoint = New-AzureRmStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccount.Id -StorageAccountShareName $azureFileShare.Name -StorageAccountTenantId $StorageAccountTenantId -Verbose
+
         Write-Verbose "Validating CloudEndpoint Properties"
-        Assert-AreEqual $storageSyncServiceName $storageSyncService.CloudEndpointName
-        Assert-AreEqual $resourceLocation.ToLower().Replace(" ", "") $storageSyncService.Location
-        
-        Write-Verbose "Removing CloudEndpoint: $storageSyncServiceName"
-        Remove-AzureRmCloudEndpoint -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
+        Assert-AreEqual $StorageAccount.Id $cloudEndpoint.StorageAccountResourceId
+        Assert-AreEqual $StorageAccountTenantId $cloudEndpoint.StorageAccountTenantId
+
+        Write-Verbose "Get CloudEndpoint by Name"
+        $cloudEndpoint = Get-AzureRMStorageSyncCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -CloudEndpointName $cloudEndpointName 
+
+        Write-Verbose "Validating CloudEndpoint Properties"
+        Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
+        Assert-AreEqual $StorageAccount.Id $cloudEndpoint.StorageAccountResourceId
+        Assert-AreEqual $StorageAccountTenantId $cloudEndpoint.StorageAccountTenantId
+
+        Write-Verbose "Get CloudEndpoint by ParentObject"
+        $syncGroup = Get-AzureRMStorageSyncCloudEndpoint -ParentObject $storageSyncService -Name $cloudEndpointName -Verbose
+        Write-Verbose "Validating CloudEndpoint Properties"
+        Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
+        Assert-AreEqual $StorageAccount.Id $cloudEndpoint.StorageAccountResourceId
+        Assert-AreEqual $StorageAccountTenantId $cloudEndpoint.StorageAccountTenantId
+
+        Write-Verbose "Get CloudEndpoint by ParentResourceId"
+        $syncGroup = Get-AzureRMStorageSyncCloudEndpoint -ParentResourceId $storageSyncService.ResourceId -Name $cloudEndpointName -Verbose
+         Write-Verbose "Validating CloudEndpoint Properties"
+        Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
+        Assert-AreEqual $StorageAccount.Id $cloudEndpoint.StorageAccountResourceId
+        Assert-AreEqual $StorageAccountTenantId $cloudEndpoint.StorageAccountTenantId
+
+        Write-Verbose "Removing CloudEndpoint: $cloudEndpointName"
+        Remove-AzureRMStorageSyncCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
+
+        Write-Verbose "Executing Piping Scenarios"
+        New-AzureRMStorageSyncCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Get-AzureRMStorageSyncCloudEndpoint  | Remove-AzureRMStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
+
+        New-AzureRMStorageSyncCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Remove-AzureRMStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
+
+        Write-Verbose "Removing SyncGroup: $syncGroupName"
+        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
+
     }
     finally
     {
@@ -67,6 +106,51 @@ SmokeTest
 #>
 function Test-NewCloudEndpoint
 {
+   # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+         Write-Verbose "Validating SyncGroup Properties"
+        Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
+
+        Write-Verbose "Removing SyncGroup: $syncGroupName"
+        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test GetCloudEndpoint
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetCloudEndpoint
+{
     # Setup
     $resourceGroupName = Get-StorageManagementTestResourceName;
 
@@ -74,29 +158,301 @@ function Test-NewCloudEndpoint
     {
         # Test
         $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
-        New-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName -Location $resourceLocation -CloudEndpointName $storageSyncServiceName
-        
-        Write-Verbose "List CloudEndpoints by ResourceGroup"
-        $storageSyncServices = Get-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName
-        $storageSyncServices
-        Write-Verbose "List CloudEndpoints by Name"
-        $storageSyncService = Get-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName -CloudEndpointName $storageSyncServiceName -Verbose
-        $storageSyncService
-        
-        Write-Verbose "List CloudEndpoints by Name"
-        Retry-IfException { $global:storageSyncService = Get-AzureRmCloudEndpoint -ResourceGroupName $resourceGroupName  -Name $storageSyncServiceName }
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Get CloudEndpoint by Name"
+        $syncGroup = Get-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -Verbose
+         Write-Verbose "Validating CloudEndpoint Properties"
+        Assert-AreEqual $syncGroupName $syncGroup.CloudEndpointName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test GetCloudEndpoints
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetCloudEndpoints
+{
+    # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Get CloudEndpoint by Name"
+        $syncGroups = Get-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
+
+        Assert-AreEqual $syncGroups.Length 1
+        $syncGroup = $syncGroups[0]
+
+         Write-Verbose "Validating CloudEndpoint Properties"
+        Assert-AreEqual $syncGroupName $syncGroup.CloudEndpointName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test GetCloudEndpointParentObject
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetCloudEndpointParentObject
+{
+    # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Get CloudEndpoint by ParentObject"
+        $syncGroup = Get-AzureRmStorageCloudEndpoint -ParentObject $storageSyncService -Name $syncGroupName -Verbose
         Write-Verbose "Validating CloudEndpoint Properties"
-        Assert-AreEqual $storageSyncServiceName $storageSyncService.CloudEndpointName
-        Assert-AreEqual $resourceLocation.ToLower().Replace(" ", "") $storageSyncService.Location
-        
-        Write-Verbose "Removing CloudEndpoint: $storageSyncServiceName"
-        Remove-AzureRmCloudEndpoint -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Assert-AreEqual $syncGroupName $syncGroup.CloudEndpointName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test GetCloudEndpointParentResourceId
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetCloudEndpointParentResourceId
+{
+    # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Get CloudEndpoint by ParentResourceId"
+        $syncGroup = Get-AzureRmStorageCloudEndpoint -ParentResourceId $storageSyncService.ResourceId -Name $syncGroupName -Verbose
+        Write-Verbose "Validating CloudEndpoint Properties"
+        Assert-AreEqual $syncGroupName $syncGroup.CloudEndpointName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test RemoveCloudEndpoint
+.DESCRIPTION
+SmokeTest
+#>
+function Test-RemoveCloudEndpoint
+{
+     # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName 
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test RemoveCloudEndpointInputObject
+.DESCRIPTION
+SmokeTest
+#>
+function Test-RemoveCloudEndpointInputObject
+{
+     # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        $syncGroup = New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -InputObject $syncGroup -Force
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test RemoveCloudEndpointInputObject
+.DESCRIPTION
+SmokeTest
+#>
+function Test-RemoveCloudEndpointResourceId
+{
+     # Setup
+    $resourceGroupName = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-StorageManagementTestResourceName
+        $syncGroupName = Get-StorageManagementTestResourceName
+        $resourceLocation = Get-ProviderLocation ResourceManagement;
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        $syncGroup = New-AzureRmStorageCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing CloudEndpoint: $syncGroupName"
+        Remove-AzureRmStorageCloudEndpoint -ResourceId $syncGroup.ResourceId -Force
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
     }
     finally
     {
