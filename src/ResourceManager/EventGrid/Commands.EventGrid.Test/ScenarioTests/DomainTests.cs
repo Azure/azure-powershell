@@ -23,44 +23,47 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
     public class DomainTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public DomainTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest("DomainTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "DomainTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsGetKey()
         {
-            EventGridController.NewInstance.RunPsTest("DomainGetKeyTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "DomainGetKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsNewKey()
         {
-            EventGridController.NewInstance.RunPsTest("DomainNewKeyTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "DomainNewKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsInputMappingCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest("DomainInputMappingTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "DomainInputMappingTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainTopics()
         {
-            EventGridController.NewInstance.RunPsTest("DomainTopicTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "DomainTopicTests");
         }
     }
 }

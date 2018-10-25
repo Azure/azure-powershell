@@ -91,14 +91,14 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToDomains()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_Domains");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Domains");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToDomainTopics()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_DomainTopics");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_DomainTopics");
         }
     }
 }
