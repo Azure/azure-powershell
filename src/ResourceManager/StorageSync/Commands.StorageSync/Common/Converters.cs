@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 FriendlyName=source.FriendlyName,
                 StorageAccountResourceId=source.StorageAccountResourceId,
                 StorageAccountShareName =source.StorageAccountShareName,
-                StorageAccountTenantId = source.StorageAccountTenantId,
+                StorageAccountTenantId = source.StorageAccountTenantId?.Trim('"'),
                 BackupEnabled = source.BackupEnabled,
                 LastWorkflowId = source.LastWorkflowId,
                 LastOperationName = source.LastOperationName,

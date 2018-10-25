@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             {
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
-                if (parentResourceIdentifier != null)
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
                     parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
 

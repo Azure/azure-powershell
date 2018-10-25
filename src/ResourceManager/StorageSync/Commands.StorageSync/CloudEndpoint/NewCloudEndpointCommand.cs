@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
-                if (parentResourceIdentifier != null)
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
                     parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
 
@@ -163,8 +163,13 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
                     StorageAccountShareName = StorageAccountShareName,
-                    StorageAccountTenantId = StorageAccountTenantId ?? StorageSyncClientWrapper.AzureContext.Tenant.Id
+                    StorageAccountTenantId = "\"" + (StorageAccountTenantId ?? StorageSyncClientWrapper.AzureContext.Tenant.Id) + "\""
                 };
+
+                if(string.IsNullOrEmpty(createParameters.StorageAccountTenantId))
+                {
+                    throw new PSArgumentException($"Invalid Argument {nameof(StorageAccountTenantId)}", nameof(StorageAccountTenantId));
+                }
 
                 StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
                     ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
