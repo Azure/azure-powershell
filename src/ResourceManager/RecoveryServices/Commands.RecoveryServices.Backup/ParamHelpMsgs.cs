@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
             public const string VaultId = "Resource ID of the Recovery Services Vault.";
-            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer).";
+            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).";
             public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM).";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
         }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class Item
         {
-            public const string AzureVMName = "Azure VM Name.";
+            public const string ItemName = "Name of the item.";
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which" +
                 " the recovery points created by this backup will no longer be available for restore";
             public const string ProtectionPolicy = "The id of the backup policy which is used to protect the backup items";
+            public const string AzureFileShareName = "Azure FileShare Name.";
+            public const string AzureFileStorageAccountName = "Azure file share storage account name";
+            public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
         }
 
         internal static class RecoveryPoint

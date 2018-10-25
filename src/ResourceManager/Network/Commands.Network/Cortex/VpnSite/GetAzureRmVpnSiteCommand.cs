@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/vpnSites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

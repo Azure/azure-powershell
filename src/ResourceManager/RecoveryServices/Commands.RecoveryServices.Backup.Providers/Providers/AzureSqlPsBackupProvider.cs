@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             ContainerBase container = (ContainerBase)ProviderData[ItemParams.Container];
-            string name = (string)ProviderData[ItemParams.AzureVMName];
+            string name = (string)ProviderData[ItemParams.ItemName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)ProviderData[ItemParams.ProtectionStatus];
             ItemProtectionState status =
