@@ -21,6 +21,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.IO;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
@@ -45,6 +47,8 @@ namespace Microsoft.Azure.Commands.Automation.Test
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
+
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
