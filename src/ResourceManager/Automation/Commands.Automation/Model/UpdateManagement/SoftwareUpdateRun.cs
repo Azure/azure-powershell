@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.RunId = Guid.Parse(sucr.Name);
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
             this.StartTime = sucr.StartTime;
+            this.Status = (SoftwareUpdateRunStatus)Enum.Parse(typeof(SoftwareUpdateRunStatus), sucr.Status, true);
         }
 
         public Guid RunId { get; set; }
@@ -52,5 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         public int ComputerCount { get; set; }
 
         public int FailedCount { get; set; }
+
+        public SoftwareUpdateRunStatus Status { get; set; }
     }
 }
