@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.1
+* Added a warning to recommend running Test-AzureStack before Install-AzsUpdate
+
 ## Version 0.2.0
 * Module dependencies updated
 	* AzureRM.Profile

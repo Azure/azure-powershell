@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix add certificate to Linux Vmss.
+
+* Fix `Add-AzureRmServiceFabricClusterCertificate`
+    - Using correct thumbprint from new certificate (Azure/service-fabric-issues#932).
+    - Display exception correctly (Azure/service-fabric-issues#1054).
+
+* Fix `Update-AzureRmServiceFabricDurability` to update cluster configuration before starting Vmss CreateOrUpdate operation.
 
 ## Version 0.3.12
 * Fixed issue with default resource groups not being set.
