@@ -76,7 +76,8 @@ function Check-All {
                                      ($_.FullName -notlike "*Security.Cryptography*") -and `
                                      ($_.FullName -notlike "*NLog*") -and `
                                      ($_.FullName -notlike "*YamlDotNet*") -and `
-                                     ($_.FullName -notlike "*BouncyCastle.Crypto*")}
+                                     ($_.FullName -notlike "*BouncyCastle.Crypto*") -and `
+                                     ($_.FullName -notlike "System.Management.Automation*")}
     Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
 
     $invalidAuthenticodeList = @()
