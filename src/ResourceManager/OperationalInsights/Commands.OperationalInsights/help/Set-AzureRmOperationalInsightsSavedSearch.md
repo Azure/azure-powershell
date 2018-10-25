@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: A333A60D-CA76-4E4E-9C8B-72AAEF464F0A
@@ -37,7 +37,7 @@ This command sets a saved search with updated properties.
 Specifies the category name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Specifies the display name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Specifies the ETag name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Specifies the query name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Specifies the resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Specifies the saved search ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The saved search tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 
 ### -Version
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Specifies the workspace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -186,10 +186,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Int64
 
 ## OUTPUTS
+
+### System.Net.HttpStatusCode
 
 ## NOTES
 

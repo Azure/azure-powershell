@@ -657,3 +657,19 @@ function Test-SetAzureStorageAccountStorageV2
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test GetAzureStorageUsage with current Location
+.Description
+AzureAutomationTest
+#>
+function Test-GetAzureStorageLocationUsage
+{
+        # Test
+        $loc = Get-ProviderLocation_Stage ResourceManagement; 
+
+        $usage = Get-AzureRmStorageUsage -Location $loc
+        Assert-AreNotEqual 0 $usage.Limit;
+        Assert-AreNotEqual 0 $usage.CurrentValue;      
+}

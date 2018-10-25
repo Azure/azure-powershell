@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightoperationsmanagementsuite
@@ -72,7 +72,7 @@ Operations Management Suite (OMS) is disabled on the cluster because the Cluster
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The name of the cluster to get the status of Operations Management Suite(OMS).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -102,9 +102,9 @@ Accept wildcard characters: False
 The resource group of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,4 +127,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

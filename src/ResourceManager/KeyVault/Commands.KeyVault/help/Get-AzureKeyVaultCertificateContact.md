@@ -54,7 +54,7 @@ This command gets all of the contacts for the certificate objects in the Contoso
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 KeyVault Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VaultName
 Aliases:
 
@@ -116,6 +116,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: CE690DB0-0CD4-4841-B219-C208173D4730
@@ -36,9 +36,9 @@ This command gets the history of script actions for the cluster your-hadoop-001.
 Specifies the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,9 +81,9 @@ Accept wildcard characters: False
 Specifies the execution ID of the executed script action.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -98,13 +98,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail]
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricCmdletBase : AzureRMCmdlet
     {
-        private const int NewCreatedKeyVaultWaitTimeInSec = 15;
+        internal static int NewCreatedKeyVaultWaitTimeInSec = 15;
 
         internal static int WriteVerboseIntervalInSec = 20;
 

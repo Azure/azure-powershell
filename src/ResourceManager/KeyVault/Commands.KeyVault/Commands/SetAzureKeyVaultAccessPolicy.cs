@@ -22,9 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmKeyVaultAccessPolicy",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByUserPrincipalName)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy",SupportsShouldProcess = true,DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -134,7 +132,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectForVault,
             HelpMessage = "Key Vault Object")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
+        public PSKeyVaultIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Vault ResourceId
@@ -475,6 +473,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 VaultName = resourceIdentifier.ResourceName;
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.SetVaultAccessPolicy))
@@ -486,6 +485,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
                 ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                if (ResourceGroupName == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.VaultDoesNotExist, VaultName));
+                }
+
                 PSKeyVault vault = null;
 
                 // Get the vault to be updated

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 28DECA86-37A5-48BE-9727-0C1A3B867E9B
@@ -29,7 +29,7 @@ The **Get-AzureRMCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -44,9 +44,9 @@ Accept wildcard characters: False
 Specifies the name of the profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the profile belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,13 +75,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-###  
-This cmdlet returns a profile object.
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 
 ## NOTES
 

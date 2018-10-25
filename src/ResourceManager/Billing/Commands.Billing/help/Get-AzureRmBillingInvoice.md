@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
 Module Name: AzureRM.Billing
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermbillinginvoice
@@ -68,7 +68,7 @@ Get most recent 10 invoices of the subscription and include the download Url in 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 Generate the download url of the invoices.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Get the latest invoice.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Latest
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,9 +113,9 @@ Accept wildcard characters: False
 Determines the maximum number of records to return.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,7 +130,7 @@ Name of a specific invoice to get or the most recent if not specified.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: Single
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -148,10 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Billing.Models.Invoice, Microsoft.Azure.Commands.Billing, Version=0.14.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Management.Billing.Models.Invoice
+### Microsoft.Azure.Commands.Billing.Models.PSInvoice
 
 ## NOTES
 
 ## RELATED LINKS
-

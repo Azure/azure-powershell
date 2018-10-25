@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementGroup, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementGroup : AzureApiManagementCmdletBase
     {

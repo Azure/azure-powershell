@@ -10,6 +10,8 @@ This parameter is not required.
 If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.  
 If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.";
 
+        public const string AuditStorageAccountSubscriptionIdHelpMessage = "Specifies storage account subscription id";
+
         public const string StorageKeyTypeHelpMessage = "Specifies which of the storage access keys to use.";
 
         public const string RetentionInDaysHelpMessage = "The number of retention days for the audit logs.";

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 8BD3B8BD-DC87-4A94-9FCA-611D11D5E065
@@ -88,9 +88,9 @@ Specifies the HDInsight cluster configuration object that this cmdlet modifies.
 This object is created by the **New-AzureRmHDInsightClusterConfig** cmdlet.
 
 ```yaml
-Type: AzureHDInsightConfig
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 Specifies the credentials to use for the AzureSQL Server database.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 Specifies the database on the AzureSQL Server instance to use for this metastore.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -149,9 +149,9 @@ Specifies the type of metastore.
 Possible values are HiveMetastore or OozieMetastore.
 
 ```yaml
-Type: AzureHDInsightMetastoreType
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HiveMetastore, OozieMetastore
 
 Required: True
@@ -165,9 +165,9 @@ Accept wildcard characters: False
 Specifies the AzureSQL Server instance to use for this metastore.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -181,8 +181,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightConfig
-Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+Parameters: Config (ByValue)
 
 ## OUTPUTS
 

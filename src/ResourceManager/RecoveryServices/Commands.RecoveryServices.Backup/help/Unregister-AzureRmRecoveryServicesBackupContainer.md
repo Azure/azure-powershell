@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: A10DC2A2-A732-416F-9C68-6533C143AE8F
@@ -14,7 +14,7 @@ Unregisters a Windows Server or other container from the vault.
 ## SYNTAX
 
 ```
-Unregister-AzureRmRecoveryServicesBackupContainer [-Container] <ContainerBase> [-PassThru]
+Unregister-AzureRmRecoveryServicesBackupContainer [-Container] <ContainerBase> [-PassThru] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,7 +22,6 @@ Unregister-AzureRmRecoveryServicesBackupContainer [-Container] <ContainerBase> [
 The **Unregister-AzureRmRecoveryServicesBackupContainer** cmdlet unregisters a Windows Server or other Backup container from the vault.
 This cmdlet removes references to a container from the vault.
 Before you can unregister a container, you must delete any protected data associated with that container.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -34,7 +33,6 @@ PS C:\> Unregister-AzureRmRecoveryServicesBackupContainer -Container $Cont
 ```
 
 The first command gets the Windows container named server01.contoso.com that is registered in the vault, and then stores it in the $Cont variable.
-
 The second command unregisters the specified Windows Server from the Azure Backup vault.
 
 ## PARAMETERS
@@ -44,9 +42,9 @@ Specifies a Backup container object to unregister.
 To obtain a **BackupContainer** object, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.
 
 ```yaml
-Type: ContainerBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -59,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,9 +72,9 @@ Accept wildcard characters: False
 Return the container to be deleted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,11 +83,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VaultId
+ARM ID of the Recovery Services Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -104,7 +117,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -120,10 +133,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
 
 ## NOTES
 

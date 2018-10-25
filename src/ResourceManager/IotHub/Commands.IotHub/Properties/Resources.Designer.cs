@@ -97,6 +97,24 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Route.
+        /// </summary>
+        internal static string AddIotHubRoute {
+            get {
+                return ResourceManager.GetString("AddIotHubRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Routing Endpoint.
+        /// </summary>
+        internal static string AddIotHubRoutingEndpoint {
+            get {
+                return ResourceManager.GetString("AddIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export All Devices.
         /// </summary>
         internal static string NewAzureRmIotHubExportDevices {
@@ -151,11 +169,38 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Route.
+        /// </summary>
+        internal static string RemoveIotHubRoute {
+            get {
+                return ResourceManager.GetString("RemoveIotHubRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Routing Endpoint.
+        /// </summary>
+        internal static string RemoveIotHubRoutingEndpoint {
+            get {
+                return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update IoT Hub .
         /// </summary>
         internal static string UpdateIotHub {
             get {
                 return ResourceManager.GetString("UpdateIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Route.
+        /// </summary>
+        internal static string UpdateIotHubRoute {
+            get {
+                return ResourceManager.GetString("UpdateIotHubRoute", resourceCulture);
             }
         }
         

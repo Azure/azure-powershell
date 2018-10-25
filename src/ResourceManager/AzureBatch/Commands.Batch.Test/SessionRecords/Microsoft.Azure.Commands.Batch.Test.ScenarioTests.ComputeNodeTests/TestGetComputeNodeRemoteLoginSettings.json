@@ -1,29 +1,29 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testIaasPool/nodes?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
+      "RequestUri": "/pools/testIaasPool/nodes?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "720781e0-9810-46be-a552-b25b882778ca"
+          "3dfd043b-5926-4c4e-b916-1156bc1faaaf"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:45 GMT"
+          "Tue, 05 Jun 2018 23:30:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20171006t024827z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-10-06T02:48:32.656449Z\",\r\n      \"lastBootTime\": \"2017-10-06T02:48:32.489208Z\",\r\n      \"allocationTime\": \"2017-10-06T02:48:27.2643724Z\",\r\n      \"ipAddress\": \"10.0.0.4\",\r\n      \"affinityId\": \"TVM:tvm-892191217_1-20171006t024827z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"SSHRule.0\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"52.161.9.247\",\r\n            \"publicFQDN\": \"dns9bb8316e-08f6-4a88-8823-2d039bff149b-azurebatch-cloudservice.westcentralus.cloudapp.azure.com\",\r\n            \"frontendPort\": 50000,\r\n            \"backendPort\": 22\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-3840119875_1-20180605t170418z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool/nodes/tvm-3840119875_1-20180605t170418z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2018-06-05T17:05:17.885188Z\",\r\n      \"lastBootTime\": \"2018-06-05T17:05:17.796542Z\",\r\n      \"allocationTime\": \"2018-06-05T17:04:18.6270555Z\",\r\n      \"ipAddress\": \"10.0.0.4\",\r\n      \"affinityId\": \"TVM:tvm-3840119875_1-20180605t170418z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"SSHRule.0\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"13.78.128.182\",\r\n            \"publicFQDN\": \"dns05bdf992-9584-4181-8c77-08a2819f65f0-azurebatch-cloudservice.westcentralus.cloudapp.azure.com\",\r\n            \"frontendPort\": 50000,\r\n            \"backendPort\": 22\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -32,7 +32,7 @@
           "chunked"
         ],
         "request-id": [
-          "78d98627-6595-4670-b988-e52a334d8081"
+          "cb995f19-ecac-4bd1-8a09-9ad8493ae721"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -44,7 +44,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:44 GMT"
+          "Tue, 05 Jun 2018 23:30:37 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -53,29 +53,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm0tODkyMTkxMjE3XzEtMjAxNzEwMDZ0MDI0ODI3ej9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
+      "RequestUri": "/pools/testIaasPool/nodes/tvm-3840119875_1-20180605t170418z?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm0tMzg0MDExOTg3NV8xLTIwMTgwNjA1dDE3MDQxOHo/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c7cbf377-28bc-4b36-adb1-3f97be83787a"
+          "7fea0c2c-4ab0-4d4f-a38b-e3b11c6af9a3"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:45 GMT"
+          "Tue, 05 Jun 2018 23:30:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-892191217_1-20171006t024827z\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2017-10-06T02:48:32.656449Z\",\r\n  \"lastBootTime\": \"2017-10-06T02:48:32.489208Z\",\r\n  \"allocationTime\": \"2017-10-06T02:48:27.2643724Z\",\r\n  \"ipAddress\": \"10.0.0.4\",\r\n  \"affinityId\": \"TVM:tvm-892191217_1-20171006t024827z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"isDedicated\": true,\r\n  \"endpointConfiguration\": {\r\n    \"inboundEndpoints\": [\r\n      {\r\n        \"name\": \"SSHRule.0\",\r\n        \"protocol\": \"tcp\",\r\n        \"publicIPAddress\": \"52.161.9.247\",\r\n        \"publicFQDN\": \"dns9bb8316e-08f6-4a88-8823-2d039bff149b-azurebatch-cloudservice.westcentralus.cloudapp.azure.com\",\r\n        \"frontendPort\": 50000,\r\n        \"backendPort\": 22\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-3840119875_1-20180605t170418z\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool/nodes/tvm-3840119875_1-20180605t170418z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2018-06-05T17:05:17.885188Z\",\r\n  \"lastBootTime\": \"2018-06-05T17:05:17.796542Z\",\r\n  \"allocationTime\": \"2018-06-05T17:04:18.6270555Z\",\r\n  \"ipAddress\": \"10.0.0.4\",\r\n  \"affinityId\": \"TVM:tvm-3840119875_1-20180605t170418z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"isDedicated\": true,\r\n  \"endpointConfiguration\": {\r\n    \"inboundEndpoints\": [\r\n      {\r\n        \"name\": \"SSHRule.0\",\r\n        \"protocol\": \"tcp\",\r\n        \"publicIPAddress\": \"13.78.128.182\",\r\n        \"publicFQDN\": \"dns05bdf992-9584-4181-8c77-08a2819f65f0-azurebatch-cloudservice.westcentralus.cloudapp.azure.com\",\r\n        \"frontendPort\": 50000,\r\n        \"backendPort\": 22\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -84,7 +84,7 @@
           "chunked"
         ],
         "request-id": [
-          "2b2bc710-1f1c-4d07-9cc0-f2b65f92bf3f"
+          "88c5a75d-5979-4c41-bbfc-a7cbf9981517"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -96,7 +96,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:45 GMT"
+          "Tue, 05 Jun 2018 23:30:37 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -105,29 +105,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z/remoteloginsettings?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm0tODkyMTkxMjE3XzEtMjAxNzEwMDZ0MDI0ODI3ei9yZW1vdGVsb2dpbnNldHRpbmdzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/testIaasPool/nodes/tvm-3840119875_1-20180605t170418z/remoteloginsettings?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm0tMzg0MDExOTg3NV8xLTIwMTgwNjA1dDE3MDQxOHovcmVtb3RlbG9naW5zZXR0aW5ncz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a4cdca84-733e-4ca6-896c-2af3700b443f"
+          "787742c3-4d19-4883-a122-d6f3cd8c5d03"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:45 GMT"
+          "Tue, 05 Jun 2018 23:30:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\r\n  \"remoteLoginIPAddress\": \"52.161.9.247\",\r\n  \"remoteLoginPort\": 50000\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\r\n  \"remoteLoginIPAddress\": \"13.78.128.182\",\r\n  \"remoteLoginPort\": 50000\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -136,7 +136,7 @@
           "chunked"
         ],
         "request-id": [
-          "fc4418d5-e977-4dd4-8a3c-5157a778e667"
+          "5c2f4752-666a-4686-9e16-08e936eab013"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -148,10 +148,10 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z/remoteloginsettings"
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool/nodes/tvm-3840119875_1-20180605t170418z/remoteloginsettings"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:45 GMT"
+          "Tue, 05 Jun 2018 23:30:37 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

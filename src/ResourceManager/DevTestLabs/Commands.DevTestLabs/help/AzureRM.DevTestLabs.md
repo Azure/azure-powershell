@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.DevTestLabs
 Module Guid: be2ca175-bfb9-4601-b01c-4de13eb2105c
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.devtestlabs

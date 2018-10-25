@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 8FB78A4A-8392-44EE-A907-10FDF756071B
@@ -39,7 +39,6 @@ PS C:\> $Value = $Variable.value
 
 The first command gets an Automation variable named Variable06 in the account named Contoso17.
 The command stores that object in the $Variable variable.
-
 The second command uses standard dot notation to refer to the **value** property of $Variable.
 The command stores the value in the $value variable.
 
@@ -49,9 +48,9 @@ The command stores the value in the $value variable.
 Specifies the name of the Automation account that contains the variables that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -64,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,9 +78,9 @@ Accept wildcard characters: False
 Specifies the name of a variable that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -94,9 +93,9 @@ Accept wildcard characters: False
 Specifies the resource group for which this cmdlet gets variables.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -110,8 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

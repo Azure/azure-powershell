@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/get-azurermmlopclusterkey
@@ -47,7 +47,7 @@ Returns the secret keys for the services associated with the operationalization 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The operationalization cluster object.
 
 ```yaml
-Type: PSOperationalizationCluster
+Type: Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 Parameter Sets: GetByInputObject
 Aliases: Cluster
 
@@ -77,9 +77,9 @@ Accept wildcard characters: False
 The name of the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 The name of the resource group for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -107,9 +107,9 @@ Accept wildcard characters: False
 The Azure resource id for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +124,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
@@ -133,4 +135,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-

@@ -25,7 +25,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {

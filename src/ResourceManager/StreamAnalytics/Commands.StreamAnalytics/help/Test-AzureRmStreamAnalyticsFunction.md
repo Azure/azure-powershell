@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.StreamAnalytics
 ms.assetid: E711FBFF-FB6D-4DFD-BAE8-7961EB4FD16B
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/test-azurermstreamanalyticsfunction
 schema: 2.0.0
@@ -36,7 +36,7 @@ This command tests the connection status of the function named ScoreTweet in the
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,9 +51,9 @@ Accept wildcard characters: False
 Specifies the name of the Stream Analytics job to which a function belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the name of the Stream Analytics function that this cmdlet tests.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -82,9 +82,9 @@ Specifies the name of the resource group to which a Stream Analytics function be
 This cmdlet tests a function in the resource group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -98,12 +98,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

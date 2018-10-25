@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,37 +20,40 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public class LinkedServiceTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public LinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceV2()
         {
-            RunPowerShellTest("Test-LinkedService");
+            RunPowerShellTest(_logger, "Test-LinkedService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceWithDataFactoryParameterV2()
         {
-            RunPowerShellTest("Test-LinkedServiceWithDataFactoryParameter");
+            RunPowerShellTest(_logger, "Test-LinkedServiceWithDataFactoryParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServicePipingV2()
         {
-            RunPowerShellTest("Test-LinkedServicePiping");
+            RunPowerShellTest(_logger, "Test-LinkedServicePiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceWithResourceIdV2()
         {
-            RunPowerShellTest("Test-LinkedServiceWithResourceId");
+            RunPowerShellTest(_logger, "Test-LinkedServiceWithResourceId");
         }
     }
 }

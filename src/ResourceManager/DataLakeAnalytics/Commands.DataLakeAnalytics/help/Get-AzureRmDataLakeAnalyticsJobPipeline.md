@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticsjobpipeline
@@ -50,7 +50,7 @@ This command gets a list of all pipelines in the account "contosoadla"
 Name of the Data Lake Analytics account name under which want to retrieve the job pipeline.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ID of the specific job pipeline to return information for.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: GetBySpecificJobPipeline
 Aliases: Id
 
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 An optional filter which returns job pipeline(s) only submitted after the specified time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 An optional filter which returns job pipeline(s) only submitted before the specified time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,6 +130,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Guid
 
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation
@@ -137,4 +139,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

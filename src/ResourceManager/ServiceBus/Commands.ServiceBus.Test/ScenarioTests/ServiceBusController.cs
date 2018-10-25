@@ -27,6 +27,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
@@ -64,16 +65,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -112,8 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.ServiceBus.psd1"),                    
+                    helper.GetRMModulePath(@"AzureRM.ServiceBus.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {
@@ -149,7 +151,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                 AuthorizationManagementClient
                 );
         }
-
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {

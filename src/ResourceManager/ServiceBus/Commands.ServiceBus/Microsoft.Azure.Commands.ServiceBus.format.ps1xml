@@ -27,7 +27,7 @@
               </ListItem>
               <ListItem>
                 <Label>Sku </Label>
-                <ScriptBlock>"Name : " + $_.Sku.Name.ToString()  + " , Capacity : " +  $_.Sku.Capacity.ToString() + " , Tier : " +  $_.Sku.Tier.ToString() </ScriptBlock>
+                <ScriptBlock>"Name : " + $_.Sku.Name  + " , Capacity : " +  $_.Sku.Capacity.ToString() + " , Tier : " +  $_.Sku.Tier </ScriptBlock>
               </ListItem>
               <ListItem>
                 <PropertyName>ProvisioningState</PropertyName>

@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/new-azurermrelaykey
 schema: 2.0.0
 ---
@@ -41,6 +41,12 @@ The **New-AzureRmRelayKey** cmdlet generates the primary and secondary connectio
 PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -RegenerateKeys PrimaryKey
 
 PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -RegenerateKeys SecondaryKey
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 ```
 
 ### Example 2 - WcfRelay
@@ -48,6 +54,12 @@ PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namesp
 PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -WcfRelay TestWCFRelay1 -RegenerateKeys PrimaryKey
 
 PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -WcfRelay TestWCFRelay1 -RegenerateKeys SecondaryKey
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 ```
 
 ### Example 3 - HybridConnection
@@ -55,6 +67,12 @@ PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namesp
 PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -HybridConnection TestHybridConnection -RegenerateKeys PrimaryKey
 
 PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -HybridConnection TestHybridConnection -RegenerateKeys SecondaryKey
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 ```
 
 Regenerates the primary or secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection).
@@ -65,7 +83,7 @@ Regenerates the primary or secondary connection strings for the given Relay enti
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +98,9 @@ Accept wildcard characters: False
 HybridConnection Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -95,9 +113,9 @@ Accept wildcard characters: False
 AuthorizationRule Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -110,9 +128,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamespaceAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -122,9 +140,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -137,9 +155,9 @@ Accept wildcard characters: False
 Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: PrimaryKey, SecondaryKey
 
 Required: True
@@ -153,9 +171,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -168,9 +186,9 @@ Accept wildcard characters: False
 WcfRelay Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WcfRelayAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -183,7 +201,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +217,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -215,51 +233,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupNameName
- System.String 
-
-### -NamespaceName
- System.String 
- 
-
-### -HybridConnectionsName
- System.String 
-
-### -WcfRelayName
- System.String 
-
-### -Name
- System.String
-
-### -RegenerateKeys
- System.String
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
 
-### Example 1 - Namespace
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
-
-### Example 2 - WcfRelay
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
-
-### Example 3 - HybridConnection
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
-
 ## NOTES
 
 ## RELATED LINKS
-

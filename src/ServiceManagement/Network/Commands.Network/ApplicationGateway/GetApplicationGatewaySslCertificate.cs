@@ -21,7 +21,7 @@ using PowerShellAppGwModel = Microsoft.WindowsAzure.Commands.ServiceManagement.N
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway
 {
     [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewaySslCertificate"), 
-        OutputType(typeof(PowerShellAppGwModel.ApplicationGatewayCertificate), typeof(List<PowerShellAppGwModel.ApplicationGatewayCertificate>))]
+        OutputType(typeof(PowerShellAppGwModel.ApplicationGatewayCertificate))]
     public class GetApplicationGatewayCertificateCommand : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

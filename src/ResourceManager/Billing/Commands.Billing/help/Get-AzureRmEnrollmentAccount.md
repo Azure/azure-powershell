@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
 Module Name: AzureRM.Billing
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermenrollmentaccount
@@ -19,8 +19,8 @@ Get-AzureRmEnrollmentAccount [-DefaultProfile <IAzureContextContainer>] [<Common
 
 ### Single
 ```
-Get-AzureRmEnrollmentAccount -ObjectId <System.String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmEnrollmentAccount [-ObjectId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Get the enrollment account with the specified object id.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,10 +74,10 @@ ObjectId of a specific enrollment account to get.
 ```yaml
 Type: System.String
 Parameter Sets: Single
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,10 +92,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSEnrollmentAccount, Microsoft.Azure.Commands.Billing, Version=0.14.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.Billing.Models.PSEnrollmentAccount
+### Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod
 
 ## NOTES
 
 ## RELATED LINKS
-

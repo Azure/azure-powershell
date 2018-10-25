@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 350E19F6-5B1C-4D3F-B4CD-7225CDC984C4
@@ -145,7 +145,7 @@ This command returns metrics for an Azure SQL elastic database pool named Elasti
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the elastic pool that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 Specifies the name of the server that contains the elastic pool that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,8 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <summary>
     /// 'New-AzureRmEventHubConsumerGroup' Cmdlet creates a new Cosumer Group for Specified Eventhub
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ConsumerGroupVerb, SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
     public class NewEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -57,7 +57,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateConsumerGroup, Name, EventHub)))
             {
-                WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
+                try
+                {
+                    WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }
             
         }

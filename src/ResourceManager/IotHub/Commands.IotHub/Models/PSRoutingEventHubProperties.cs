@@ -16,6 +16,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {    
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// The properties related to event hub endpoint type.
+    /// </summary>
     public class PSRoutingEventHubProperties
     {
         /// <summary>
@@ -42,5 +45,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         [JsonProperty(PropertyName = "resourceGroup")]
         public string ResourceGroup { get; set; }
 
+    }
+
+    /// <summary>
+    /// The properties related to event hub endpoint type.
+    /// </summary>
+    public class PSRoutingEventHubEndpoint : PSRoutingEventHubProperties
+    {
     }
 }

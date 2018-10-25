@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 715F8821-BBD1-440A-AD54-E960939E288A
@@ -21,17 +21,13 @@ Remove-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Name
 
 ## DESCRIPTION
 The **Remove-AzureRmNotificationHubAuthorizationRules** cmdlet removes a Shared Access Signature (SAS) authorization rule from a notification hub.
-
 Authorization rules manage access to your notification hubs through the creation of links, as URIs, based on different permission levels.
 Permission levels can be one of the following: 
-
 - Listen
 - Send
 - Manage
-
 Clients are directed to one of these URIs based on the appropriate permission level.
 For instance, a client given the Listen permission will be directed to the URI for that permission.
-
 Removing an authorization rule also removes the corresponding user permission.
 
 ## EXAMPLES
@@ -50,9 +46,9 @@ When you run this command you must specify both the namespace and the resource g
 Specifies the name of the SAS authentication rule that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -65,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +76,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,9 +92,9 @@ Specifies the namespace to which the notification hub is assigned.
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -112,9 +108,9 @@ Specifies the notification hub the authorization rules are assigned to.
 Notification hubs are used to send push notifications to multiple clients regardless of the platform.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -128,9 +124,9 @@ Specifies the resource group to which the notification hub is assigned.
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,7 +139,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -158,7 +154,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -174,10 +170,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

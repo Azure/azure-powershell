@@ -36,7 +36,7 @@ Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitN
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The name of the ExpressRoute circuit being examined.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -67,7 +67,7 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 `MicrosoftPeering`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The name of the resource group containing the ExpressRoute circuit.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,8 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 PSTrigger trigger = GetTrigger(resourceGroupName, dataFactoryName, triggerName);
                 return trigger != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

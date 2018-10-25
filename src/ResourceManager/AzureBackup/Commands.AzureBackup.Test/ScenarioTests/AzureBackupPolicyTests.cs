@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,44 +20,47 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public class AzureBackupPolicyTests : AzureBackupTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureBackupPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListProtectionPolicyTests()
         {
-            this.RunPowerShellTest("Test-GetAzureBackupProtectionPolicyTests");
+            this.RunPowerShellTest(_logger, "Test-GetAzureBackupProtectionPolicyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProtectionPolicyTests()
         {
-            this.RunPowerShellTest("Test-NewAzureBackupProtectionPolicyTests");
+            this.RunPowerShellTest(_logger, "Test-NewAzureBackupProtectionPolicyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListProtectionPolicyByNameTests()
         {
-            this.RunPowerShellTest("Test-GetAzureBackupProtectionPolicyByNameTests");
+            this.RunPowerShellTest(_logger, "Test-GetAzureBackupProtectionPolicyByNameTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetProtectionPolicyTests()
         {
-            this.RunPowerShellTest("Test-SetAzureBackupProtectionPolicyTests");
+            this.RunPowerShellTest(_logger, "Test-SetAzureBackupProtectionPolicyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveProtectionPolicyTests()
         {
-            this.RunPowerShellTest("Test-RemoveAzureBackupProtectionPolicyTests");
+            this.RunPowerShellTest(_logger, "Test-RemoveAzureBackupProtectionPolicyTests");
         }
 
 

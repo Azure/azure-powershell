@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -25,8 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Waits for the given job to finish its operation and returns the corresponding job object.
     /// </summary>
-    [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase), typeof(IList<JobBase>))]
-    public class WaitAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
+    [Cmdlet("Wait", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob"), OutputType(typeof(JobBase))]
+    public class WaitAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Job or List of jobs until end of which the cmdlet should wait.
@@ -47,6 +48,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
+
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 List<string> jobsToWaitOn = new List<string>();
                 List<JobBase> finalJobs = new List<JobBase>();
@@ -109,8 +114,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         string jobId = jobsToWaitOn[i];
                         var updatedJob = JobConversions.GetPSJob(
-                            ServiceClientAdapter.GetJob(jobId)
-                            );
+                            ServiceClientAdapter.GetJob(
+                                jobId,
+                                vaultName: vaultName,
+                                resourceGroupName: resourceGroupName));
 
                         if (IsJobInProgress(updatedJob))
                         {

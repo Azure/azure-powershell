@@ -19,7 +19,6 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
@@ -31,6 +30,7 @@ using Microsoft.Azure.Subscriptions;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
 {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = TestBase.GetServiceClient<ResourceManagementClient>(_csmTestFactory);
+            ResourceManagementClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             SubscriptionClient = TestBase.GetServiceClient<SubscriptionClient>(_csmTestFactory);
             GalleryClient = TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
             AuthorizationManagementClient = TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -148,9 +148,6 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
-                    _helper.RMStorageDataPlaneModule,
-                    _helper.RMStorageModule,
                     @"AzureRM.Media.psd1",
                     "AzureRM.Resources.ps1",
                     "AzureRM.Storage.ps1");

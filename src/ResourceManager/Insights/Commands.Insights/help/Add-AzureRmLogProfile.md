@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 18D5B95E-4CF1-4C79-AE8B-9F4DA49B46A9
@@ -17,20 +17,15 @@ Creates a new activity log profile. This profile is used to either archive the a
 Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
  [-RetentionInDays <Int32>] -Location <System.Collections.Generic.List`1[System.String]>
  [-Category <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmLogProfile** cmdlet creates a log profile.
-
 - **Storage Account** - Only standard storage account (premium storage account is not supported) is supported. It could either be of type ARM or Classic. If it's logged to a storage account, the cost of storing the activity log is billed at normal standard storage rates. There could be only one log profile per subscription consequentially only one storage account per subscription can be used to export activity log. 
-
 - **Event Hub** - There could be only one log profile per subscription consequentially only one event hub per subscription can be used to export activity log. If activity log is streamed to an event hub, standard event hub pricing will apply. 
-
 In the activity log, events can pertain to a region or could be "Global". Global essentially means these events are region agnostics and are independent of region, in fact majority of events fall into this category. If the activity log profile is set from the portal, it implicitly adds "Global" along with any other region selected in the user interface. When using the cmdlet, the location as "Global" must be explicitly mentioned apart from any other region. 
-
 **Note** :- **Failing to set "Global" in the locations will result in a majority of activity log not getting exported.** 
-
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -61,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +70,6 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location of the log profile.
 Valid values: Run below cmdlet to get the latest list of locations. 
-
 Get-AzureLocation | Select DisplayName
 
 ```yaml
@@ -94,9 +88,9 @@ Accept wildcard characters: False
 Specifies the name of the profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -109,7 +103,7 @@ Accept wildcard characters: False
 Specifies the retention policy, in days. This is the number of days the logs are preserved in the storage account specified. To retain the data forever set this to **0**. If it's not specified, then it defaults to **0**. Normal standard storage or event hub billing rates will apply for data retention.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -124,9 +118,9 @@ Accept wildcard characters: False
 Specifies the ID of the Service Bus rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,13 +131,12 @@ Accept wildcard characters: False
 
 ### -StorageAccountId
 Specifies the ID of the Storage account. ID is the fully qualified Resource ID of the storage account for example  
-
 /subscriptions/40gpe80s-9sb7-4f07-9042-b1b6a92ja9fk/resourceGroups/activitylogRG/providers/Microsoft.Storage/storageAccounts/activitylogstorageaccount
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,13 +145,46 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

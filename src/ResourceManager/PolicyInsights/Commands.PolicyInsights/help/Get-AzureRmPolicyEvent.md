@@ -234,7 +234,7 @@ This generates the top 5 deny policies with the most number of denied resources.
 Apply expression for aggregations using OData notation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 Filter expression using OData notation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -280,7 +280,7 @@ ISO 8601 formatted timestamp specifying the start time of the interval to query.
 When not specified, defaults to 'To' parameter value minus 1 day.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -295,7 +295,7 @@ Accept wildcard characters: False
 Management group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupScope
 Aliases:
 
@@ -311,7 +311,7 @@ Ordering expression using OData notation.
 One or more comma-separated column names with an optional 'desc' (the default) or 'asc'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 Policy assignment name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
 Aliases:
 
@@ -341,7 +341,7 @@ Accept wildcard characters: False
 Policy definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyDefinitionScope
 Aliases:
 
@@ -356,7 +356,7 @@ Accept wildcard characters: False
 Policy set definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicySetDefinitionScope
 Aliases:
 
@@ -371,7 +371,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupScope, ResourceGroupLevelPolicyAssignmentScope
 Aliases:
 
@@ -386,7 +386,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceScope
 Aliases:
 
@@ -403,7 +403,7 @@ One or more comma-separated column names.
 Limits the columns on each record to just those requested.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -418,7 +418,7 @@ Accept wildcard characters: False
 Subscription ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionScope, ResourceGroupScope, PolicySetDefinitionScope, PolicyDefinitionScope, SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
 Aliases:
 
@@ -434,7 +434,7 @@ ISO 8601 formatted timestamp specifying the end time of the interval to query.
 When not specified, defaults to time of request.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -449,7 +449,7 @@ Accept wildcard characters: False
 Maximum number of records to return.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -465,11 +465,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent
 
 ## NOTES
 

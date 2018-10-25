@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 8D8FE2FE-03E7-453E-B968-E28B07E42EF2
@@ -50,7 +50,7 @@ RequestId                                                                       
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 The action group resourc
 
 ```yaml
-Type: PSActionGroupResource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,9 +80,9 @@ Accept wildcard characters: False
 The name of the action group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPropertyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 The resource group nam
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPropertyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 The resource i
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -156,8 +156,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

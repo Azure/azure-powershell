@@ -114,7 +114,7 @@ ParentDisplayName : TestGroupParent
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 Display Name of the management group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Management Group Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupOperations, ParentGroupObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 Input Object from the Get call
 
 ```yaml
-Type: PSManagementGroup
+Type: Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
 Parameter Sets: ParentAndManagementGroupObject, ManagementGroupObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -174,9 +174,9 @@ Accept wildcard characters: False
 Parent Id of the management group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupOperations, ManagementGroupObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,9 +189,9 @@ Accept wildcard characters: False
 Input Object from the Get call
 
 ```yaml
-Type: PSManagementGroup
+Type: Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
 Parameter Sets: ParentAndManagementGroupObject, ParentGroupObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -220,7 +220,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -236,7 +236,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
@@ -245,4 +246,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

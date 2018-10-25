@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// <summary>
     /// Retrieve a list of role runtimes available in the cloud
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureServiceProjectRoleRuntime"), OutputType(typeof(List<CloudRuntimePackage>))]
+    [Cmdlet(VerbsCommon.Get, "AzureServiceProjectRoleRuntime"), OutputType(typeof(CloudRuntimePackage))]
     public class GetAzureServiceProjectRoleRuntimeCommand : AzureSMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true)]

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = UpdateParameterSetName)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = UpdateParameterSetName), OutputType(typeof(AzureSqlDatabaseModel))]
     public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         private const string UpdateParameterSetName = "Update";
@@ -156,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the ComputeGeneration for the Azure Sql database.
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
-            HelpMessage = "The Compute generation for the Azure Sql database.")]
+            HelpMessage = "The compute generation to assign.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }

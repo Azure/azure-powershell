@@ -42,7 +42,7 @@ The **Add-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet adds an array of UR
 Specifies the application gateway to which this cmdlet adds a URL path map configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: PSApplicationGatewayBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Specifies the default backend address pool ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Specifies the default backend HTTP settings to use in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: PSApplicationGatewayBackendHttpSettings
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
 Parameter Sets: SetByResource
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Specifies the default backend HTTP settings ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Application gateway default RedirectConfiguration
 
 ```yaml
-Type: PSApplicationGatewayRedirectConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ID of the application gateway default RedirectConfiguration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Specifies the URL path map name that this cmdlet adds to the backend server pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,8 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

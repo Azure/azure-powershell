@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// <summary>
     /// 'New-AzureRmWcfRelay' Cmdlet creates a new WcfRelay
     /// </summary>
-    [Cmdlet(VerbsCommon.New, RelayWcfRelayVerb, SupportsShouldProcess = true), OutputType(typeof(WcfRelayAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WcfRelay", SupportsShouldProcess = true), OutputType(typeof(WcfRelayAttributes))]
     public class NewAzureRmWcfRelay : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

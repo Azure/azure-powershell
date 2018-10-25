@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
 Module Name: AzureRM.RecoveryServices
 ms.assetid: 818B5302-91EE-425F-B1CD-86B626F1B7A3
@@ -52,7 +52,7 @@ Specifies the name of the vault to query for.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,7 +67,7 @@ Specifies the name of the Azure resource group in which to create or from which 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,11 +97,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.ARSVault]
+### Microsoft.Azure.Commands.RecoveryServices.ARSVault
 
 ## NOTES
 

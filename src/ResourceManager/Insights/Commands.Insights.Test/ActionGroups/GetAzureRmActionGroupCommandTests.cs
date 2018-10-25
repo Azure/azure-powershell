@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             // Error
             cmdlet.ResourceGroupName = "   ";
             cmdlet.Name = Utilities.Name;
-            Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
+            var argException = Assert.Throws<PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Contains("PSArgumentException", argException.ToString());
         }
     }
 }

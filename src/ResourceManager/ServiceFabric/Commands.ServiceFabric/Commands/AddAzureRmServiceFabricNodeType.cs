@@ -36,7 +36,7 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodeType, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         private const string LoadBalancerIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}";

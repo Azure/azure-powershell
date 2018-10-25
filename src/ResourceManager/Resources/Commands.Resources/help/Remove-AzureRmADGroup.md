@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadgroup
@@ -57,7 +57,7 @@ Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes t
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The display name of the group to be removed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 If specified, doesn't ask for confirmation for deleting the group.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The object representation of the group to be removed.
 
 ```yaml
-Type: PSADGroup
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The object id of the group to be removed.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -163,7 +163,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -179,9 +179,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+### System.Guid
 
-This cmdlet accepts a PSADGroup object from the pipeline. You can pipe the output of Get-AzureRmADGroup to this cmdlet to remove the provided user.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

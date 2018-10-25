@@ -42,7 +42,7 @@ PS C:\> {{ Add example code here }}
 The Azure CDN profile object.
 
 ```yaml
-Type: PSProfile
+Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The name of the profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The resource group to which the profile belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -104,6 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
+Parameters: CdnProfile (ByValue)
 
 ## OUTPUTS
 

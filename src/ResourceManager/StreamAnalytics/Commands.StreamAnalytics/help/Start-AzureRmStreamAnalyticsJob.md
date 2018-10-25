@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.StreamAnalytics
 ms.assetid: B5914F65-CAF8-4647-BA78-49B65DD6D67A
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob
 schema: 2.0.0
@@ -36,7 +36,7 @@ This command starts the job StreamingJob and specifies that the output event str
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,9 +51,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure Stream Analytics job to start.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -65,17 +65,15 @@ Accept wildcard characters: False
 ### -OutputStartMode
 Specifies the start mode for the job.
 Valid values are: 
-
 - JobStartTime - This value indicates that the starting point of the output event stream should start when the job is started.
 - CustomTime - This value indicates that the starting point of the output event stream should start at a custom time that is specified in the *OutputStartTime* parameter. 
  -- LastOutputEventTime - This value indicates that the starting point of the output event stream should start from the last event output time.
-
 If the property is absent, the default is JobStartTime.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -90,9 +88,9 @@ This value is either an ISO-8601 formatted time stamp that indicates the startin
 This property must have a value if *OutputStartMode* is set to CustomTime.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -105,9 +103,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the Azure Stream Analytics job belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -121,12 +119,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

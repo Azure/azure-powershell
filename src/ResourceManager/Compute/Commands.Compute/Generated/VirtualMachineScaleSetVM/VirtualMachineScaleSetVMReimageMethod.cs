@@ -30,93 +30,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineScaleSetVMReimageDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pInstanceId = new RuntimeDefinedParameter();
-            pInstanceId.Name = "InstanceId";
-            pInstanceId.ParameterType = typeof(string);
-            pInstanceId.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pInstanceId.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("InstanceId", pInstanceId);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineScaleSetVMReimageMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string instanceId = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineScaleSetVMReimageParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-            string instanceId = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName", "InstanceId" },
-                 new object[] { resourceGroupName, vmScaleSetName, instanceId });
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Set, "AzureRmVmssVM", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVM", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class SetAzureRmVmssVM : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
@@ -125,35 +45,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string vmScaleSetName = this.VMScaleSetName;
                     string instanceId = this.InstanceId;
 
+                    Rest.Azure.AzureOperationResponse result = null;
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
-                        var result = VirtualMachineScaleSetVMsClient.ReimageAll(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.ReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else if (this.ParameterSetName.Equals("RedeployMethodParameter"))
                     {
-                        var result = VirtualMachineScaleSetVMsClient.Redeploy(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.RedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else if (this.ParameterSetName.Equals("PerformMaintenanceMethodParameter"))
                     {
-                        var result = VirtualMachineScaleSetVMsClient.PerformMaintenance(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
 
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }

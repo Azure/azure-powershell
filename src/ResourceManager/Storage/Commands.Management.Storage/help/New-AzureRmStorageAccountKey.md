@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM.Storage
 ms.assetid: FDD2CE98-6C7E-4B95-BA5B-B03B6AC6EAEF
@@ -36,7 +36,7 @@ This command regenerates a storage key for the specified Storage account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,14 +50,13 @@ Accept wildcard characters: False
 ### -KeyName
 Specifies which key to regenerate.
 The acceptable values for this parameter are:
-
 - key1
 - key2
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: key1, key2
 
 Required: True
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 Specifies the name of the Storage account for which to regenerate a storage key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountName, AccountName
 
@@ -86,9 +85,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,8 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

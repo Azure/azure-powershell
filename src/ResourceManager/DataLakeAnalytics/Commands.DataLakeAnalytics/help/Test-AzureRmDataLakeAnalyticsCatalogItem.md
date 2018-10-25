@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: ED17430D-4DAF-4B9E-937D-0F8A843DAB96
@@ -36,7 +36,7 @@ This command tests whether a specified Schema item exists.
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,6 @@ Accept wildcard characters: False
 ### -ItemType
 Specifies the catalog item type of the item to check.
 The acceptable values for this parameter are:
-
 - Database
 - Schema
 - Assembly
@@ -81,9 +80,9 @@ The acceptable values for this parameter are:
 - Types
 
 ```yaml
-Type: CatalogItemType
+Type: Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Database, Schema, Assembly, Table, TablePartition, TableValuedFunction, TableStatistics, ExternalDataSource, View, Procedure, Secret, Credential, Types, Package
 
 Required: True
@@ -97,9 +96,9 @@ Accept wildcard characters: False
 Specifies the path to the item to fetch, or the path to the parent item of the items to list.
 
 ```yaml
-Type: CatalogPathInstance
+Type: Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -113,13 +112,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
 
 ## OUTPUTS
 
-### bool
-True or false indicating if the specified catalog item exists or not.
+### System.Boolean
 
 ## NOTES
 

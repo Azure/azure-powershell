@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network
 
     using Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
     public class RemoveAzureRouteFilterRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

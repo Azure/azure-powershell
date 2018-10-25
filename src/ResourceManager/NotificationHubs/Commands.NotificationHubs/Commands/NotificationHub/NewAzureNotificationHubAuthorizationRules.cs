@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class NewAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

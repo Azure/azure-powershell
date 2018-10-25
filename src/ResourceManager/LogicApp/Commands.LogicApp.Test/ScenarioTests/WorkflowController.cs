@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
     using Microsoft.Azure.Management.WebSites.Version2016_09_01;
     using System.IO;
+    using ServiceManagemenet.Common.Models;
 
     /// <summary>
     /// Test controller for the logic app scenario testing
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// CSM test factory
         /// </summary>
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
-        
+
         /// <summary>
         /// EnvironmentSetupHelper instance
         /// </summary>
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         /// <summary>
         /// Authorization Api Version
-        /// </summary>       
+        /// </summary>
         private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Initiliazes the workflow controller 
+        /// Initiliazes the workflow controller
         /// </summary>
         public WorkflowController()
         {
@@ -103,16 +104,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// Runs the PowerShell test
         /// </summary>
         /// <param name="scripts">script to be executed</param>
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -159,7 +162,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,                    
                     helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
                     "ScenarioTests\\AzureRM.Resources.ps1");
 

@@ -64,7 +64,7 @@ API identifier whose revisions we want to list.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Revision Identifier of the particular Api revision. This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -127,11 +127,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-System.String
+
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=5.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision
 
 ## NOTES
 

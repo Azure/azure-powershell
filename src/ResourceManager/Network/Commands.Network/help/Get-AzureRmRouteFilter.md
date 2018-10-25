@@ -42,7 +42,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The resource reference to be expanded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases:
 

@@ -34,7 +34,7 @@ Stops the existing SSH tunnel setup by executing Start-AzureRmKubernetesDashboar
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 Returns true if SSH tunnel is closed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

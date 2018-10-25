@@ -408,4 +408,28 @@
   <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'?</value>
   </data>
+  <data name="ServerAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
+    <value>Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first.</value>
+  </data>
+  <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first.</value>
+  </data>
+  <data name="InvalidBlobStorageSasUri" xml:space="preserve">
+    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
+  </data>
+  <data name="NoStorageAccountSpecified" xml:space="preserve">
+    <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
+  </data>
+  <data name="ScanIdParameterIsRequired" xml:space="preserve">
+    <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
+  </data>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
+    <value>Failed retrieving keys of storage '{0}'.</value>
+  </data>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  </data>
 </root>

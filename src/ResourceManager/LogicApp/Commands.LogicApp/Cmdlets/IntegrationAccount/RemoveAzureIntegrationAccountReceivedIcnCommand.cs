@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Removes the integration account received interchange control number.
     /// </summary>
     /// <remarks>As the underlying resource provider does not return the deleted entity, there is no output to this cmdlet and no PassThru parameter either.</remarks>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountReceivedIcn", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountReceivedIcn", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Paramters

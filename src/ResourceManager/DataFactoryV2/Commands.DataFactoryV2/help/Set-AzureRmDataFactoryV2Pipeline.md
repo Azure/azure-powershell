@@ -29,14 +29,11 @@ Set-AzureRmDataFactoryV2Pipeline [-DefinitionFile] <String> [-ResourceId] <Strin
 The Set-AzureRmDataFactoryV2Pipeline cmdlet creates a pipeline in Azure Data Factory.
 If you specify a name for a pipeline that already exists, the cmdlet prompts you for confirmation before it replaces the pipeline.
 If you specify the Force parameter, the cmdlet replaces the existing pipeline without confirmation.
-
 Perform these operations in the following order:
-
         -- Create a data factory.
         -- Create linked services.
         -- Create datasets.
         -- Create a pipeline.
-
 If a pipeline with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing pipeline with the new pipeline.
 If you confirm to overwrite the existing pipeline, the pipeline definition is also replaced.
 
@@ -64,9 +61,9 @@ Specifies the name of a data factory.
 This cmdlet creates a pipeline for the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -79,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +91,7 @@ Accept wildcard characters: False
 The JSON file path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: File
 
@@ -109,9 +106,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet replaces an existing pipeline without prompting you for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,7 +121,7 @@ Accept wildcard characters: False
 Specifies the name of the pipeline to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
 Aliases: PipelineName
 
@@ -140,9 +137,9 @@ Specifies the name of an Azure resource group.
 This cmdlet creates a pipeline for the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -155,9 +152,9 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -170,7 +167,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +182,7 @@ Accept wildcard characters: False
 Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B2D9FF7B-EA3B-4853-814C-00FC4E328957
@@ -54,9 +54,9 @@ The cmdlet waits up to 1000 seconds for the results.
 
 ### -AutomationAccountName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,9 +85,9 @@ Specifies the number of seconds this cmdlet waits for a job to finish before it 
 The default value is 10800, or three hours.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: BySynchronousReturnJobOutput
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: RunbookName
 
@@ -111,9 +111,9 @@ Accept wildcard characters: False
 
 ### -Parameters
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,9 +124,9 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Specifies which Hybrid Worker Group on which to run the runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HybridWorker
 
@@ -154,9 +154,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet waits for job to complete, suspend, or fail, and then returns control to Azure PowerShell.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: BySynchronousReturnJobOutput
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -170,17 +170,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Automation.Model.Job
-This cmdlet returns a **Job** object, unless you specify the _Wait_ parameter.
+-This cmdlet returns a **Job** object, unless you specify the _Wait_ parameter.
+-If you do not specify _Wait_, Azure PowerShell returns a **Job** object immediately.
+-If you specify _Wait_, Azure PowerShell completes the job, and then returns the result.
+-The result is not a **Job** object.
 
-If you do not specify _Wait_, Azure PowerShell returns a **Job** object immediately.
-If you specify _Wait_, Azure PowerShell completes the job, and then returns the result.
-The result is not a **Job** object.
+### System.Management.Automation.PSObject
 
 ## NOTES
 

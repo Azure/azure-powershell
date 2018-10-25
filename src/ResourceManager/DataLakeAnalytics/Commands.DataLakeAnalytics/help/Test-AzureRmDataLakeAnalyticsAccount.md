@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0B52890D-102F-4C3C-9EF9-017F6ECA3E26
@@ -36,7 +36,7 @@ This command tests whether the account named ContosoAdlAccount exists.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,9 +51,9 @@ Accept wildcard characters: False
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -82,13 +82,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### bool
-True or false indicating whether the account exists or not.
+### System.Boolean
 
 ## NOTES
 

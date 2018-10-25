@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.StreamAnalytics
 ms.assetid: 04A6FD47-482C-4EA6-9375-D8B6FD1F2659
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/get-azurermstreamanalyticsoutput
 schema: 2.0.0
@@ -43,7 +43,7 @@ This command returns information about the output named Output defined on the jo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,9 +58,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure Stream Analytics job to which the Azure Stream Analytics output belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure Stream Analytics output to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -88,9 +88,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the Azure Stream Analytics output belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -104,12 +104,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics]]            Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
 
 ## NOTES
 

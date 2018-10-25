@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 326C87EB-EC3B-4B04-B593-EAC56FFA854A
@@ -20,14 +20,11 @@ Get-AzureRmNotificationHubListKeys [-ResourceGroup] <String> [-Namespace] <Strin
 
 ## DESCRIPTION
 The **Get-AzureRmNotificationHubListKeys** cmdlet returns the primary and secondary connection strings of a notification hub Shared Access Signature (SAS) authorization rule.
-
 Authorization rules manage user rights to the hub.
 Each rule includes a primary and a secondary connection string.
 These connection strings (URIs) perform the following:
-
 - Point users to a resource.
 - Include a token containing query parameters.
-
 One of these parameters, the signature, is used to authenticate the user and provide the specified level of access.
 
 ## EXAMPLES
@@ -47,9 +44,9 @@ Specifies the name of a Shared Access Signature (SAS) authentication rule.
 These rules determine the type of access that users have to the notification hub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -62,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,13 +72,12 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace to which the notification hub is assigned.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -95,9 +91,9 @@ Specifies the notification hub that this cmdlet assigns an authorization rule to
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -111,9 +107,9 @@ Specifies the resource group to which the notification hub is assigned.
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -127,8 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
@@ -34,7 +34,6 @@ Remove-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureCont
 ## DESCRIPTION
 The **Remove-AzureRmActivityLogAlert** cmdlet removes an activity log alert.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
-
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -72,7 +71,7 @@ This command removes the ActivityLogAlert using the ResourceId parameter from th
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,9 +86,9 @@ Accept wildcard characters: False
 Sets the InputObject tags property of the call to extract the required name, and resource group name properties.
 
 ```yaml
-Type: PSActivityLogAlertResource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
 Parameter Sets: RemoveByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,9 +101,9 @@ Accept wildcard characters: False
 The name of the activity log alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,9 +116,9 @@ Accept wildcard characters: False
 The name of the resource group where the alert resource exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -132,9 +131,9 @@ Accept wildcard characters: False
 Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -147,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -162,7 +161,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -178,8 +177,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

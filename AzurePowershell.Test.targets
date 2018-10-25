@@ -4,7 +4,6 @@
 		<TestSettings>.\src\Local.testsettings</TestSettings>
 		<TestSettings_x64>.\src\Local.x64.testsettings</TestSettings_x64>
 		<ScenarioTestDebug>.\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll</ScenarioTestDebug>
-		<CommonTestDebug>.\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
 		<BackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll</BackupTestDebug>
 		<RecoveryServicesBackupTestDebug>.\src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll</RecoveryServicesBackupTestDebug>
 		<SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
@@ -14,7 +13,7 @@
 		<AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
 		<AzureRTSeqTestSettings>.\src\AzureRTSeq.testsettings</AzureRTSeqTestSettings>
 		<AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
-		<StorageScenarioTestDebug>src\Common\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
+		<StorageScenarioTestDebug>src\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
 		<ManagementTestDebug>.\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestDebug>
 		<ResourceManagerTestDebug>.\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll</ResourceManagerTestDebug>
 		<DataFactoryManagerTestDebug>.\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll</DataFactoryManagerTestDebug>
@@ -56,21 +55,32 @@
 	</Target>
 
 	<Target Name="InvokeXUnit">
-		<Message Importance="high" Text="Running XUnit tests" />
-		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		<PropertyGroup> <!-- Create the file path for the test dll (src/TestResults/<dll name>.html -->
+			<TestName>$(XUnitTests.Split('\').Length)</TestName>
+			<TestNamePathLength>$([MSBuild]::Subtract($(TestName), 1))</TestNamePathLength>
+			<TestSubFileName>$(XUnitTests.Split('\')[$(TestNamePathLength)])</TestSubFileName>
+			<TestFileName>$(TestOutputDirectory)\$(TestSubFileName).html</TestFileName>
+		</PropertyGroup>
+		<Message Importance="high" Text="Running XUnit tests... $(TestFileName)" />
 
 		<xunit
-			Assemblies="@(XUnitTests)"
+			Assemblies="$(XUnitTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
+			ParallelizeAssemblies="false"
 			IncludeTraits="AcceptanceType=CheckIn"
-			Html="$(TestOutputDirectory)\AzurePowershellTestResults.html"
-			MaxParallelThreads="10"
+			Html="$(TestFileName)"
 			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" @(XUnitTests) != '' "/>
+			ContinueOnError="true"
+			Condition=" $(XUnitTests) != '' ">
+			<Output TaskParameter="ExitCode" ItemName="XUnitExitCode"/>
+		</xunit>
+
+
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/PassingTests/$(TestSubFileName).html &quot;" Condition="%(XUnitExitCode.Identity) == 0"/>
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/FailingTests/$(TestSubFileName).html &quot;" Condition="%(XUnitExitCode.Identity) != 0"/>
+
 	</Target>
 
 	<Target Name="InvokeXUnitAll">
@@ -82,10 +92,9 @@
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
+			ParallelizeAssemblies="false"
 			ExcludeTraits="RunType=LiveOnly;AcceptanceType=CheckIn"
 			Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
-			MaxParallelThreads="10"
 			DiagnosticMessages="false"
 			ContinueOnError="false"
 			Condition=" @(XUnitTests) != '' "/>
@@ -227,13 +236,6 @@
 	<Target Name="RecoveryServicesBackupTests">
 		<Message Importance="high" Text="Running Recovery Services Backup tests" />
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(RecoveryServicesBackupTestDebug)" Html="$(TestOutputDirectory)\RecoveryServicesBackupTests.xunit.dll.html" Verbose="false"
-		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-	</Target>
-
-	<!-- Run the common tests -->
-	<Target Name="CommonTests">
-		<Message Importance="high" Text="Running Common tests" />
-		<Xunit.Runner.MSBuild.xunit Assemblies="$(CommonTestDebug)" Html="$(TestOutputDirectory)\CommonTests.xunit.dll.html" Verbose="false"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
 	</Target>
 

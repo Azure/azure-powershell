@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -15,21 +15,21 @@ Linked IoT hub to an Azure IoT Hub device provisioning service.
 ### ResourceSet (Default)
 ```
 Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
- -IotHubConnectionString <String> -IotHubLocation <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IotHubConnectionString] <String> [-IotHubLocation] <String> [-AllocationWeight <Int32>]
+ [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-DpsObject] <PSProvisioningServiceDescription>
- -IotHubConnectionString <String> -IotHubLocation <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IotHubConnectionString] <String> [-IotHubLocation] <String> [-AllocationWeight <Int32>]
+ [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> -IotHubConnectionString <String>
- -IotHubLocation <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
+Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-IotHubConnectionString] <String>
+ [-IotHubLocation] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -71,9 +71,9 @@ Linked IoT hub to an Azure IoT Hub device provisioning service with AllocationWe
 Allocation weight of the IoT Hub
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 A boolean indicating whether to apply allocation policy to the IoT Hub
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,9 +116,9 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: PSProvisioningServiceDescription
+Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -131,12 +131,12 @@ Accept wildcard characters: False
 Connection String of the Iot Hub resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -146,12 +146,12 @@ Accept wildcard characters: False
 Location of the Iot Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,9 +161,9 @@ Accept wildcard characters: False
 Name of the IoT Device Provisioning Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -176,9 +176,9 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -191,9 +191,9 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -222,7 +222,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -239,14 +239,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
-System.String
+Parameters: DpsObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions
 
 ## NOTES
 
 ## RELATED LINKS
-

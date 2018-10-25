@@ -27,6 +27,7 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using Microsoft.Azure.Management.Storage;
 using System.Collections.Generic;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             RedisManagementClient = GetRedisManagementClient(context);
-            InsightsManagementClient = GetInsightsManagementClient();
+            InsightsManagementClient = GetInsightsManagementClient(context);
             ResourceManagementClient = GetResourceManagementClient();
             NewResourceManagementClient = GetResourceManagementClient(context);
             StorageClient = GetStorageManagementClient(context);
@@ -73,10 +74,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                 InsightsManagementClient);
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -98,8 +101,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMStorageDataPlaneModule,
                     "AzureRM.Storage.ps1",
                     helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"),
                     "AzureRM.Resources.ps1");
@@ -121,9 +122,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
             return context.GetServiceClient<RedisManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private InsightsManagementClient GetInsightsManagementClient()
+        private InsightsManagementClient GetInsightsManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<InsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ResourceManagementClient GetResourceManagementClient()

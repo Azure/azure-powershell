@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: D64FB139-04E2-47BC-86FB-EEEA23839F2F
@@ -22,7 +22,6 @@ Get-AzureRmSqlDatabaseUpgradeHint [-ServerName] <String> [-DatabaseName <String>
 ## DESCRIPTION
 The **Get-AzureRmSqlDatabaseUpgradeHint** cmdlet gets pricing tier hints for upgrading an Azure SQL Database.
 Databases that are still in Web and Business pricing tiers get the hint to upgrade to the new Basic, Standard, or Premium pricing tiers.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -55,7 +54,7 @@ Specifies the name of the SQL database for which this cmdlet gets an upgrade hin
 If you do not specify a database, this cmdlet gets hints for all databases on the logical server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +84,7 @@ Accept wildcard characters: False
 Indicates whether databases in elastic database pools are excluded from the returned recommendations.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +99,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the database is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +114,7 @@ Accept wildcard characters: False
 Specifies the name of the server that hosts the database for which this cmdlet gets an upgrade hint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +129,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -146,7 +145,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -162,10 +161,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Boolean
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties
 
 ## NOTES
 

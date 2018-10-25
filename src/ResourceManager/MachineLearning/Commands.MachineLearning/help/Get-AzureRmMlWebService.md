@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlwebservice
@@ -23,17 +23,17 @@ Depending on the paramenters passed, the cmdlet returns the defintion for a spec
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Get details of specific web service  --------------------------
+### Example 1: Get details of specific web service
 ```
 Get-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
-### --------------------------  Example 2: Get all web service resources in current subscription  --------------------------
+### Example 2: Get all web service resources in current subscription
 ```
 Get-AzureRmMlWebService
 ```
 
-### --------------------------  Example 3: Get all web services in the current subscription and given resource group  --------------------------
+### Example 3: Get all web services in the current subscription and given resource group
 ```
 Get-AzureRmMlWebService -ResourceGroupName "myresourcegroup"
 ```
@@ -44,7 +44,7 @@ Get-AzureRmMlWebService -ResourceGroupName "myresourcegroup"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 The name of the web service for which the details are retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 The name of regio
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 The resource group from which the details for the web service are retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,14 +106,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

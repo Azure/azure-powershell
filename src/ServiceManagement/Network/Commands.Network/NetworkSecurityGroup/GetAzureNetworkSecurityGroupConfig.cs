@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Get, NetworkSecurityGroupConfig), OutputType(typeof(IEnumerable<INetworkSecurityGroup>))]
+    [Cmdlet(VerbsCommon.Get, NetworkSecurityGroupConfig), OutputType(typeof(INetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupConfigCommand : VirtualMachineConfigurationCmdletBase
     {
         [Parameter(Mandatory = false)]

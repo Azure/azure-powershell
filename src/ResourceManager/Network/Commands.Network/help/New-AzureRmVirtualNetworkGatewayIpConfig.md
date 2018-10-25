@@ -43,7 +43,7 @@ Configures a Virtual Network Gateway with a Public IP Address. The variable $myG
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 
 ### -PrivateIpAddress
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 
 ### -PublicIpAddress
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResource
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 
 ### -PublicIpAddressId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 
 ### -Subnet
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 
 ### -SubnetId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -138,7 +138,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

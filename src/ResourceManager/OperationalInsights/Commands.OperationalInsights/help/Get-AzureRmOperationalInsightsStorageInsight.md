@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 29ABCC1B-8590-4243-A629-709F207927B4
@@ -46,7 +46,6 @@ PS C:\>Get-AzureRmOperationalInsightsStorageInsight -Workspace $Workspace -Name 
 ```
 
 The first command uses the **Get-AzureRmOperationalInsightsWorkspace** cmdlet to get an Operational Insights workspace, and then stores it in the $Workspace variable.
-
 The second command gets the storage insight named MyStorageInsight for the workspace in $Workspace.
 
 ## PARAMETERS
@@ -55,7 +54,7 @@ The second command gets the storage insight named MyStorageInsight for the works
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,9 +69,9 @@ Accept wildcard characters: False
 Specifies the Storage Insight name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -85,9 +84,9 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -100,9 +99,9 @@ Accept wildcard characters: False
 Specifies the workspace that contains the Storage Insights.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,9 +114,9 @@ Accept wildcard characters: False
 Specifies the name of the workspace that contains the Storage Insights.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -131,12 +130,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
 
 ## OUTPUTS
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight]
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight
 

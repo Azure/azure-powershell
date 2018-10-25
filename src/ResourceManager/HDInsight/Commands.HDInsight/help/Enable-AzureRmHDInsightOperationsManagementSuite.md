@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/enable-azurermhdinsightoperationsmanagementsuite
@@ -59,7 +59,7 @@ Operations Management Suite (OMS) will be enabled on the HDInsight cluster and r
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The name of the cluster to enable Operations Management Suite(OMS).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 The primary key of the Operations Management Suite(OMS) workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 The resource group of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -119,9 +119,9 @@ Accept wildcard characters: False
 The id of the Operations Management Suite(OMS) workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -174,4 +174,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

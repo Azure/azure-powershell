@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Location = Location;
             cmdlet.Scope = new List<string> { "scope1" };
-            cmdlet.Action = new List<ActivityLogAlertActionGroup>
+            cmdlet.Action = new List<Management.Monitor.Management.Models.ActivityLogAlertActionGroup>
             {
                 ActivityLogAlertsUtilities.CreateActionGroup(
                     id: "ActGrpId", 
                     webhooks: new Dictionary<string, string> { { "key1", "value1" } })
             };
-            cmdlet.Condition = new List<ActivityLogAlertLeafCondition>
+            cmdlet.Condition = new List<Management.Monitor.Management.Models.ActivityLogAlertLeafCondition>
             {
                 ActivityLogAlertsUtilities.CreateLeafCondition(
                     field: "field",

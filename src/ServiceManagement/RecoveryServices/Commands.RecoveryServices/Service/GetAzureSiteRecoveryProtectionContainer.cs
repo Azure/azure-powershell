@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Protection Container.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryProtectionContainer", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(IEnumerable<ASRProtectionContainer>))]
+    [OutputType(typeof(ASRProtectionContainer))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]

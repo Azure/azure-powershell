@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
+    [OutputType(typeof(AzureSqlDatabaseModel))]
     public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>

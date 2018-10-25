@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,24 +20,26 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchAccountTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public BatchAccountTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-        }
-
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
-        public void TestBatchAccountEndToEnd()
-        {
-            BatchController.NewInstance.RunPsTest("Test-BatchAccountEndToEnd");
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBatchAccountEndToEnd()
+        {
+            BatchController.NewInstance.RunPsTest(_logger, "Test-BatchAccountEndToEnd");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeAgentSkus()
         {
-            BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");
+            BatchController.NewInstance.RunPsTest(_logger, "Test-GetBatchNodeAgentSkus");
         }
     }
 }

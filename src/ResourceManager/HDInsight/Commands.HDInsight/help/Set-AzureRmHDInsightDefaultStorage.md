@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 37E41DA2-B65B-4AA2-B6AB-F93CCA881C72
@@ -68,9 +68,9 @@ Specifies the HDInsight cluster configuration object that this cmdlet modifies.
 This object is created by the **New-AzureRmHDInsightClusterConfig** cmdlet.
 
 ```yaml
-Type: AzureHDInsightConfig
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -113,9 +113,9 @@ Accept wildcard characters: False
 Specifies the name of the default storage account that the HDInsight cluster will use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Gets or sets the type of the default storage account. Defaults to AzureStorage
 
 ```yaml
-Type: StorageType
+Type: System.Nullable`1[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureStorage, AzureDataLakeStore
 
 Required: False
@@ -145,8 +145,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightConfig
-Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+Parameters: Config (ByValue)
 
 ## OUTPUTS
 
@@ -155,4 +155,3 @@ Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipelin
 ## NOTES
 
 ## RELATED LINKS
-

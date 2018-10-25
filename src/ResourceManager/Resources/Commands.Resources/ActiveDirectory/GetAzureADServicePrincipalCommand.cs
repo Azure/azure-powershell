@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADServicePrincipal>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADServicePrincipal))]
     public class GetAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,

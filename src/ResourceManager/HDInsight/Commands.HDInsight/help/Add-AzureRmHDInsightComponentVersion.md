@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 774848C9-47A1-4C43-B6FA-B3C0C3C76470
@@ -24,7 +24,7 @@ The Add-AzureRmHDInsightComponentVersion cmdlet adds a version for a service run
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Add a version for Spark to the cluster configuration object.  --------------------------
+### Example 1: Add a version for Spark to the cluster configuration object.
 ```
 PS C:\> # Primary storage account info
         $storageAccountResourceGroupName = "Group"
@@ -70,9 +70,9 @@ This command adds the version of Spark to the HDInsight cluster named 'your-spar
 
 ### -ComponentName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 
 ### -ComponentVersion
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -96,9 +96,9 @@ Accept wildcard characters: False
 
 ### -Config
 ```yaml
-Type: AzureHDInsightConfig
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 
 ### -WhatIf
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -155,8 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightConfig
-Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+Parameters: Config (ByValue)
 
 ## OUTPUTS
 
@@ -165,4 +165,3 @@ Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipelin
 ## NOTES
 
 ## RELATED LINKS
-

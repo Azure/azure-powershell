@@ -168,6 +168,9 @@
   <data name="IncorrectOutputTypeWarning" xml:space="preserve">
     <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
   </data>
+  <data name="SetOnlyDefaultAclRecursively" xml:space="preserve">
+    <value>Default Acls are being set recursively without the Access Acls. Default Acls will not change the access acls of existing files.</value>
+  </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
   </data>

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
     using System;
 
     using Microsoft.Azure.Commands.Insights.OutputClasses;
-    using Microsoft.Azure.Management.Monitor.Management.Models;
+    using Microsoft.Azure.Management.Monitor.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     public class NewAzureRmActionGroupReceiverTests

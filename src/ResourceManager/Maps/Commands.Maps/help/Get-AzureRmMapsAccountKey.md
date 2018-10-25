@@ -33,10 +33,8 @@ Get-AzureRmMapsAccountKey [-ResourceId] <String> [-DefaultProfile <IAzureContext
 
 ## DESCRIPTION
 The Get-AzureRmMapsAccountKey cmdlet gets the API keys for a provisioned Azure Maps account.
-
 An Azure Maps account has two API keys: Primary and Secondary.
 The keys enable interaction with the Azure Maps account endpoint.
-
 Use New-AzureRmMapsAccountKey (New-AzureRmMapsAccountKey.md)to regenerate a key.
 
 ## EXAMPLES
@@ -69,7 +67,7 @@ Returns the keys for the specified Azure Maps Account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,7 +82,7 @@ Accept wildcard characters: False
 Maps Account piped from Get-AzureRmMapsAccount.
 
 ```yaml
-Type: PSMapsAccount
+Type: Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 Maps Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases: MapsAccountName, AccountName
 
@@ -114,7 +112,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -129,7 +127,7 @@ Accept wildcard characters: False
 Maps Account ResourceId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -148,6 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

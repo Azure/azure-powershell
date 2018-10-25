@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 7BFCD982-EC80-418B-BB52-C9941D028F76
@@ -21,7 +21,6 @@ Get-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-Version <String
 ## DESCRIPTION
 The **Get-AzureRmLogicApp** cmdlet gets a logic app.
 This cmdlet returns a **Workflow** object.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -61,7 +60,7 @@ This command gets a logic app from the resource group named ResourceGroup11.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 Specifies the name of the logic app that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -91,9 +90,9 @@ Accept wildcard characters: False
 Specifies the name for a resource group in which this cmdlet gets a logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,9 +105,9 @@ Accept wildcard characters: False
 Specifies the version of a logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,12 +121,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.Logic.Models.Workflow
+
+### Microsoft.Azure.Management.Logic.Models.WorkflowVersion
 
 ## NOTES
 

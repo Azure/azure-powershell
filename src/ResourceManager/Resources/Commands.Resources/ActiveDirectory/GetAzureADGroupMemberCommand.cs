@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups members.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.ObjectId, SupportsPaging = true), OutputType(typeof(List<PSADObject>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADGroupMember", DefaultParameterSetName = ParameterSet.ObjectId, SupportsPaging = true), OutputType(typeof(PSADObject))]
     public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "Object Id of the group.")]

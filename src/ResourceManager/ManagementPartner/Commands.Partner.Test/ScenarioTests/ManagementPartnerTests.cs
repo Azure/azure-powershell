@@ -23,44 +23,47 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
 {
     public class ManagementPartnerTests : RMTestBase
     {
-        public ManagementPartnerTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ManagementPartnerTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartner()
         {
-            TestController.NewInstance.RunPsTest( "Test-GetPartner");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetPartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartnerNoParnterId()
         {
-            TestController.NewInstance.RunPsTest("Test-GetPartnerNoPartnerId");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetPartnerNoPartnerId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewParnter()
         {
-            TestController.NewInstance.RunPsTest("Test-NewPartner");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewPartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateParnter()
         {
-            TestController.NewInstance.RunPsTest("Test-UpdatePartner");
+            TestController.NewInstance.RunPsTest(_logger, "Test-UpdatePartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveParnter()
         {
-            TestController.NewInstance.RunPsTest("Test-RemovePartner");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemovePartner");
         }
     }
 }

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql server communication link
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlServerCommunicationLink",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerCommunicationLink",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class NewAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>

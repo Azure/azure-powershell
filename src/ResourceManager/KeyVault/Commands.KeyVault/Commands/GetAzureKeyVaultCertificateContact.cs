@@ -23,9 +23,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Get-AzureKeyVaultCertificateContact gets the list of contacts for certificate objects in key vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,        
-        DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateContact",        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class GetAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names

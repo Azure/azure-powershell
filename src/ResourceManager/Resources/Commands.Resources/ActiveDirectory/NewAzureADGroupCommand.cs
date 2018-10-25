@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADGroup", SupportsShouldProcess = true), OutputType(typeof(PSADGroup))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADGroup", SupportsShouldProcess = true), OutputType(typeof(PSADGroup))]
     public class NewAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for the group.")]

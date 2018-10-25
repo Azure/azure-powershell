@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
-    [Alias("Get-AzureRmResourceProviderAction")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceProviderAction")]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";

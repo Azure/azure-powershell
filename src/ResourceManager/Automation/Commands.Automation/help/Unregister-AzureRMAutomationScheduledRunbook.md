@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: C7C193CF-4E3A-4275-8289-946C99B1C553
@@ -46,9 +46,9 @@ This command removes the association between the runbook named Runbk01 and the s
 Specifies an Automation account for the runbook on which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,9 +76,9 @@ Accept wildcard characters: False
 ps_force
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,9 +91,9 @@ Accept wildcard characters: False
 Specifies the ID of a scheduled runbook.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: ByJobScheduleId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,9 +106,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for the scheduled runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Specifies the name of the runbook that this cmdlet dissociates from a schedule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookNameAndScheduleName
 Aliases: Name
 
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 Specifies the name of the schedule from which this cmdlet dissociates a runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookNameAndScheduleName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -167,7 +167,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -183,10 +183,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

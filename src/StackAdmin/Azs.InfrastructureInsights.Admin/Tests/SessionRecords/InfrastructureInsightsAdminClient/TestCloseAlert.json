@@ -1,0 +1,212 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts?api-version=2016-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWMwZGFhMDQtMDFhZS00ZGY5LWE1ZDgtNDkxYjc1NWY1Mjg4L3Jlc291cmNlR3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LkluZnJhc3RydWN0dXJlSW5zaWdodHMuQWRtaW4vcmVnaW9uSGVhbHRocy9sb2NhbC9hbGVydHM/YXBpLXZlcnNpb249MjAxNi0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e9c0dc9e-0d5e-41ed-b630-b05097ae4d1d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/WindowsServer2016Datacenter",
+          "OSVersion/6.3.14393",
+          "Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/148820f7-807a-4edd-857b-a23c3dcb6acf\",\r\n      \"name\": \"148820f7-807a-4edd-857b-a23c3dcb6acf\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T04:52:27.9460892Z\",\r\n        \"createdTimestamp\": \"2017-08-25T04:44:12.8595509Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"The infrastructure role Infrastructure management controller is experiencing issues.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"faultId\": \"ServiceFabric:/FabricControllerRing/FabricControllerRing\",\r\n        \"alertId\": \"148820f7-807a-4edd-857b-a23c3dcb6acf\",\r\n        \"faultTypeId\": \"ServiceFabricClusterUnhealthy\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T04:52:27.9460892Z\",\r\n        \"alertProperties\": {\r\n          \"healthState\": \"Error\",\r\n          \"name\": \"Infrastructure management controller\",\r\n          \"fabricName\": \"FabricControllerRing\",\r\n          \"description\": null,\r\n          \"serviceType\": \"FabricControllerRing\"\r\n        },\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"Please contact Support. Before you do, start the log file collection process using the guidance from \",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"linkType\": \"Uri\",\r\n            \"uri\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"LinkBegin\"\r\n          },\r\n          {\r\n            \"text\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"type\": \"LinkEnd\"\r\n          },\r\n          {\r\n            \"text\": \".\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceRegistrationId\": \"ca96c335-e545-4563-9d65-058db3a8ef15\",\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Infrastructure role is unhealthy\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/FabricControllerRing\",\r\n        \"impactedResourceDisplayName\": \"Infrastructure management controller\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/17d030ef-7be7-4e12-a653-6158a3bc7643\",\r\n      \"name\": \"17d030ef-7be7-4e12-a653-6158a3bc7643\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T18:48:31.0247234Z\",\r\n        \"createdTimestamp\": \"2017-08-25T18:40:15.9830227Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"The infrastructure role Region Management is experiencing issues.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"faultId\": \"ServiceFabric:/HealthResourceProvider/fabric:/HealthResourceProvider\",\r\n        \"alertId\": \"17d030ef-7be7-4e12-a653-6158a3bc7643\",\r\n        \"faultTypeId\": \"ServiceFabricApplicationUnhealthy\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T18:48:31.0247234Z\",\r\n        \"alertProperties\": {\r\n          \"healthState\": \"Warning\",\r\n          \"name\": \"Region Management\",\r\n          \"fabricName\": \"fabric:/HealthResourceProvider\",\r\n          \"description\": null,\r\n          \"serviceType\": \"HealthResourceProvider\"\r\n        },\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"Please contact Support. Before you do, start the log file collection process using the guidance from \",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"linkType\": \"Uri\",\r\n            \"uri\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"LinkBegin\"\r\n          },\r\n          {\r\n            \"text\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"type\": \"LinkEnd\"\r\n          },\r\n          {\r\n            \"text\": \".\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Infrastructure role is unhealthy\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/HealthResourceProvider\",\r\n        \"impactedResourceDisplayName\": \"HealthResourceProvider\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/356fd53c-b355-4522-ab5b-1a0f385381fa\",\r\n      \"name\": \"356fd53c-b355-4522-ab5b-1a0f385381fa\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T18:21:34.6732222Z\",\r\n        \"createdTimestamp\": \"2017-08-25T18:19:19.5859341Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"Azure Stack is not activated.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"alertId\": \"356fd53c-b355-4522-ab5b-1a0f385381fa\",\r\n        \"faultTypeId\": \"AzureStackNotActivated\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T18:21:34.6732222Z\",\r\n        \"alertProperties\": {},\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Activation Required\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n        \"impactedResourceDisplayName\": \"Capacity\",\r\n        \"closedByUserAlias\": \"ciserviceadmin@msazurestack.onmicrosoft.com\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/37fab95e-8981-4657-872a-d0a904308d26\",\r\n      \"name\": \"37fab95e-8981-4657-872a-d0a904308d26\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T04:33:12.719326Z\",\r\n        \"createdTimestamp\": \"2017-08-25T04:24:57.7138362Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"The infrastructure role Region Management is experiencing issues.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"faultId\": \"ServiceFabric:/HealthResourceProvider/fabric:/HealthResourceProvider\",\r\n        \"alertId\": \"37fab95e-8981-4657-872a-d0a904308d26\",\r\n        \"faultTypeId\": \"ServiceFabricApplicationUnhealthy\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T04:33:12.719326Z\",\r\n        \"alertProperties\": {\r\n          \"healthState\": \"Error\",\r\n          \"name\": \"Region Management\",\r\n          \"fabricName\": \"fabric:/HealthResourceProvider\",\r\n          \"description\": null,\r\n          \"serviceType\": \"HealthResourceProvider\"\r\n        },\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"Please contact Support. Before you do, start the log file collection process using the guidance from \",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"linkType\": \"Uri\",\r\n            \"uri\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"LinkBegin\"\r\n          },\r\n          {\r\n            \"text\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"type\": \"LinkEnd\"\r\n          },\r\n          {\r\n            \"text\": \".\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Infrastructure role is unhealthy\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/HealthResourceProvider\",\r\n        \"impactedResourceDisplayName\": \"HealthResourceProvider\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/7ff5f418-75e1-41e3-85c3-229e369313a3\",\r\n      \"name\": \"7ff5f418-75e1-41e3-85c3-229e369313a3\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T04:52:27.9304636Z\",\r\n        \"createdTimestamp\": \"2017-08-25T04:44:12.8595509Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"The infrastructure role Region Management is experiencing issues.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"faultId\": \"ServiceFabric:/HealthResourceProvider/fabric:/HealthResourceProvider\",\r\n        \"alertId\": \"7ff5f418-75e1-41e3-85c3-229e369313a3\",\r\n        \"faultTypeId\": \"ServiceFabricApplicationUnhealthy\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T04:52:27.9304636Z\",\r\n        \"alertProperties\": {\r\n          \"healthState\": \"Error\",\r\n          \"name\": \"Region Management\",\r\n          \"fabricName\": \"fabric:/HealthResourceProvider\",\r\n          \"description\": null,\r\n          \"serviceType\": \"HealthResourceProvider\"\r\n        },\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"Please contact Support. Before you do, start the log file collection process using the guidance from \",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"linkType\": \"Uri\",\r\n            \"uri\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"LinkBegin\"\r\n          },\r\n          {\r\n            \"text\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"type\": \"LinkEnd\"\r\n          },\r\n          {\r\n            \"text\": \".\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Infrastructure role is unhealthy\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/HealthResourceProvider\",\r\n        \"impactedResourceDisplayName\": \"HealthResourceProvider\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/b8f81ea8-cf7d-4909-a9f4-0779909e15eb\",\r\n      \"name\": \"b8f81ea8-cf7d-4909-a9f4-0779909e15eb\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T04:33:12.7349528Z\",\r\n        \"createdTimestamp\": \"2017-08-25T04:24:57.7450873Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"The infrastructure role Infrastructure management controller is experiencing issues.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"faultId\": \"ServiceFabric:/FabricControllerRing/FabricControllerRing\",\r\n        \"alertId\": \"b8f81ea8-cf7d-4909-a9f4-0779909e15eb\",\r\n        \"faultTypeId\": \"ServiceFabricClusterUnhealthy\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T04:33:12.7349528Z\",\r\n        \"alertProperties\": {\r\n          \"healthState\": \"Error\",\r\n          \"name\": \"Infrastructure management controller\",\r\n          \"fabricName\": \"FabricControllerRing\",\r\n          \"description\": null,\r\n          \"serviceType\": \"FabricControllerRing\"\r\n        },\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"Please contact Support. Before you do, start the log file collection process using the guidance from \",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"linkType\": \"Uri\",\r\n            \"uri\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"LinkBegin\"\r\n          },\r\n          {\r\n            \"text\": \"https://aka.ms/azurestacklogfiles\",\r\n            \"type\": \"Text\"\r\n          },\r\n          {\r\n            \"type\": \"LinkEnd\"\r\n          },\r\n          {\r\n            \"text\": \".\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceRegistrationId\": \"ca96c335-e545-4563-9d65-058db3a8ef15\",\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Infrastructure role is unhealthy\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/FabricControllerRing\",\r\n        \"impactedResourceDisplayName\": \"Infrastructure management controller\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/c0328148-006b-482b-9c75-ad58c454225b\",\r\n      \"name\": \"c0328148-006b-482b-9c75-ad58c454225b\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T18:16:49.2779296Z\",\r\n        \"createdTimestamp\": \"2017-08-22T05:29:09.4699501Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"Azure Stack is not activated.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"alertId\": \"c0328148-006b-482b-9c75-ad58c454225b\",\r\n        \"faultTypeId\": \"AzureStackNotActivated\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T18:16:49.2779296Z\",\r\n        \"alertProperties\": {},\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Activation Required\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n        \"impactedResourceDisplayName\": \"Capacity\",\r\n        \"closedByUserAlias\": \"ciserviceadmin@msazurestack.onmicrosoft.com\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/cf278262-78cd-43eb-8cd8-9c4cac5e75f7\",\r\n      \"name\": \"cf278262-78cd-43eb-8cd8-9c4cac5e75f7\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"closedTimestamp\": \"2017-08-25T18:29:55.676245Z\",\r\n        \"createdTimestamp\": \"2017-08-25T18:24:19.5943758Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"Azure Stack is not activated.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"alertId\": \"cf278262-78cd-43eb-8cd8-9c4cac5e75f7\",\r\n        \"faultTypeId\": \"AzureStackNotActivated\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T18:29:55.676245Z\",\r\n        \"alertProperties\": {},\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Closed\",\r\n        \"title\": \"Activation Required\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n        \"impactedResourceDisplayName\": \"Capacity\",\r\n        \"closedByUserAlias\": \"ciserviceadmin@msazurestack.onmicrosoft.com\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n      \"name\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n      \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"createdTimestamp\": \"2017-08-25T18:29:19.6067697Z\",\r\n        \"description\": [\r\n          {\r\n            \"text\": \"Azure Stack is not activated.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"alertId\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n        \"faultTypeId\": \"AzureStackNotActivated\",\r\n        \"lastUpdatedTimestamp\": \"2017-08-25T18:44:19.6267677Z\",\r\n        \"alertProperties\": {},\r\n        \"remediation\": [\r\n          {\r\n            \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n            \"type\": \"Text\"\r\n          }\r\n        ],\r\n        \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n        \"severity\": \"Warning\",\r\n        \"state\": \"Active\",\r\n        \"title\": \"Activation Required\",\r\n        \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n        \"impactedResourceDisplayName\": \"Capacity\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "13432"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-correlation-request-id": [
+          "578d2cd2-d06e-4fa7-9ddb-9479c3e2b9ad"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14467"
+        ],
+        "x-ms-request-id": [
+          "578d2cd2-d06e-4fa7-9ddb-9479c3e2b9ad"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20170825T185018Z:578d2cd2-d06e-4fa7-9ddb-9479c3e2b9ad"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 25 Aug 2017 18:50:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+43MWlsSWOvO0VCC+/ddLKPymNklxcfR4Xxb+2gwZMcoYd/cqyFxZH9a88ZW5amCbAvLLkz9QF46fDRqQcrg6Ky8VCV8+HQrr6cCRZ5jAW0o2xcEUNYujpkVXCsQDhlOu+nA5NEklm33t3pqiP0h"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/db1a20c7-08f4-4453-96b5-0d73461a8cac?api-version=2016-05-01&user=Admin",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWMwZGFhMDQtMDFhZS00ZGY5LWE1ZDgtNDkxYjc1NWY1Mjg4L3Jlc291cmNlR3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LkluZnJhc3RydWN0dXJlSW5zaWdodHMuQWRtaW4vcmVnaW9uSGVhbHRocy9sb2NhbC9hbGVydHMvZGIxYTIwYzctMDhmNC00NDUzLTk2YjUtMGQ3MzQ2MWE4Y2FjP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDEmdXNlcj1BZG1pbg==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"createdTimestamp\": \"08/25/2017 18:29:19\",\r\n    \"description\": [\r\n      {\r\n        \"text\": \"Azure Stack is not activated.\",\r\n        \"type\": \"Text\"\r\n      }\r\n    ],\r\n    \"alertId\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n    \"faultTypeId\": \"AzureStackNotActivated\",\r\n    \"lastUpdatedTimestamp\": \"08/25/2017 18:44:19\",\r\n    \"alertProperties\": {},\r\n    \"remediation\": [\r\n      {\r\n        \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n        \"type\": \"Text\"\r\n      }\r\n    ],\r\n    \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n    \"severity\": \"Warning\",\r\n    \"state\": \"Closed\",\r\n    \"title\": \"Activation Required\",\r\n    \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n    \"impactedResourceDisplayName\": \"Capacity\"\r\n  },\r\n  \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/db1a20c7-08f4-4453-96b5-0d73461a8cac\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1131"
+        ],
+        "x-ms-client-request-id": [
+          "9d568855-4648-4e06-b115-9dddd60b3da5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/WindowsServer2016Datacenter",
+          "OSVersion/6.3.14393",
+          "Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n  \"name\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n  \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n  \"location\": \"local\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"closedTimestamp\": \"2017-08-25T18:50:18.7385957Z\",\r\n    \"createdTimestamp\": \"2017-08-25T18:29:19.6067697Z\",\r\n    \"description\": [\r\n      {\r\n        \"text\": \"Azure Stack is not activated.\",\r\n        \"type\": \"Text\"\r\n      }\r\n    ],\r\n    \"alertId\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n    \"faultTypeId\": \"AzureStackNotActivated\",\r\n    \"lastUpdatedTimestamp\": \"2017-08-25T18:50:18.7385957Z\",\r\n    \"alertProperties\": {},\r\n    \"remediation\": [\r\n      {\r\n        \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n        \"type\": \"Text\"\r\n      }\r\n    ],\r\n    \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n    \"severity\": \"Warning\",\r\n    \"state\": \"Closed\",\r\n    \"title\": \"Activation Required\",\r\n    \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n    \"impactedResourceDisplayName\": \"Capacity\",\r\n    \"closedByUserAlias\": \"ciserviceadmin@msazurestack.onmicrosoft.com\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1213"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-correlation-request-id": [
+          "15636563-78b4-4dbd-9e5e-1740e5fbeb4d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-request-id": [
+          "15636563-78b4-4dbd-9e5e-1740e5fbeb4d"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20170825T185018Z:15636563-78b4-4dbd-9e5e-1740e5fbeb4d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 25 Aug 2017 18:50:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv2WcZW5HDBm2LPh+pn7F3uhGzX7D7tNxsHGhlwiJ4O7OBp5Af0uIUs9fjnR7LlKIFpl9HVtHy2Dk0zkxEhZorN90ge+hFRUkjuZ7/t1R69cku8zfeKL9OWY4fOAi0LxHHVDPZCOUgvCi4u1K7XxVr"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/db1a20c7-08f4-4453-96b5-0d73461a8cac?api-version=2016-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWMwZGFhMDQtMDFhZS00ZGY5LWE1ZDgtNDkxYjc1NWY1Mjg4L3Jlc291cmNlR3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LkluZnJhc3RydWN0dXJlSW5zaWdodHMuQWRtaW4vcmVnaW9uSGVhbHRocy9sb2NhbC9hbGVydHMvZGIxYTIwYzctMDhmNC00NDUzLTk2YjUtMGQ3MzQ2MWE4Y2FjP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "25e7cccb-be15-4aff-9c36-32486a51e79e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/WindowsServer2016Datacenter",
+          "OSVersion/6.3.14393",
+          "Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n  \"name\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n  \"type\": \"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts\",\r\n  \"location\": \"local\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"closedTimestamp\": \"2017-08-25T18:50:18.7385957Z\",\r\n    \"createdTimestamp\": \"2017-08-25T18:29:19.6067697Z\",\r\n    \"description\": [\r\n      {\r\n        \"text\": \"Azure Stack is not activated.\",\r\n        \"type\": \"Text\"\r\n      }\r\n    ],\r\n    \"alertId\": \"db1a20c7-08f4-4453-96b5-0d73461a8cac\",\r\n    \"faultTypeId\": \"AzureStackNotActivated\",\r\n    \"lastUpdatedTimestamp\": \"2017-08-25T18:50:18.7385957Z\",\r\n    \"alertProperties\": {},\r\n    \"remediation\": [\r\n      {\r\n        \"text\": \"ERROR - Template for FaultType AzureStackNotActivated has invalid values.\",\r\n        \"type\": \"Text\"\r\n      }\r\n    ],\r\n    \"resourceProviderRegistrationId\": \"e56bc7b8-c8b5-4e25-b00c-4f951effb22c\",\r\n    \"severity\": \"Warning\",\r\n    \"state\": \"Closed\",\r\n    \"title\": \"Activation Required\",\r\n    \"impactedResourceId\": \"/subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local\",\r\n    \"impactedResourceDisplayName\": \"Capacity\",\r\n    \"closedByUserAlias\": \"ciserviceadmin@msazurestack.onmicrosoft.com\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1213"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-correlation-request-id": [
+          "e330cf33-fc8c-44c0-b5e3-7dfc90da1a6a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14466"
+        ],
+        "x-ms-request-id": [
+          "e330cf33-fc8c-44c0-b5e3-7dfc90da1a6a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20170825T185018Z:e330cf33-fc8c-44c0-b5e3-7dfc90da1a6a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 25 Aug 2017 18:50:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvIFbCYthj0so2N7Lw4tLXSNR5Gha8p9ifzZorWcwyPunMcyCNZMNj65BL1EQnFmM6qldgzCipcN67Z1lOh24z7M9JCTyWdUIMBM+/ueMI42fhghno8w5eZwJeKuKmrzZmRp+YixlApG17LErJKshZ"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "1c0daa04-01ae-4df9-a5d8-491b755f5288"
+  }
+}

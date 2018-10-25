@@ -23,9 +23,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public class JobTests : RMTestBase
     {
-        public JobTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public JobTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetJobs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobs");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobs");
         }
 
         [Fact]
@@ -43,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetJobsTimeFilter()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobsTimeFilter");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobsTimeFilter");
         }
 
         [Fact]
@@ -52,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMWaitJob()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMWaitJob");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMWaitJob");
         }
 
         [Fact]
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMCancelJob()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMCancelJob");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMCancelJob");
         }
     }
 }

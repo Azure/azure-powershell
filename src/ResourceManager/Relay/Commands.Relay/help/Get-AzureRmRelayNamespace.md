@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelaynamespace
 schema: 2.0.0
 ---
@@ -25,6 +25,17 @@ The **Get-AzureRmRelayNamespace** cmdlet gets a description for the specified Re
 ### Example 1
 ```
 PS C:\> Get-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
+
+ProvisioningState  : Succeeded
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
+Location           : West US
+Tags               : {[tag1, Tag1Value]}
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
+Name               : TestNameSpace-Relay1
+Type               : Microsoft.Relay/namespaces
 ```
 
 Returns a description of the specified Relay namespace.
@@ -35,7 +46,7 @@ Returns a description of the specified Relay namespace.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +61,9 @@ Accept wildcard characters: False
 Relay Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -65,9 +76,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -81,27 +92,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-ProvisioningState  : Succeeded
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
-Location           : West US
-Tags               : {[tag1, Tag1Value]}
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
-Name               : TestNameSpace-Relay1
-Type               : Microsoft.Relay/namespaces
+### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

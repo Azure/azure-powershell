@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Starts an Azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
     [OutputType(typeof(Job), ParameterSetName = new[] { AutomationCmdletParameterSets.ByAsynchronousReturnJob })]
     [OutputType(typeof(PSObject), ParameterSetName = new[] { AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
     public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet

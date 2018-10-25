@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -80,7 +80,7 @@ Show details of an Azure IoT Hub device provisioning service 'myiotdps'.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 Name of the IoT Device Provisioning Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetIotDpsByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListIotDpsByResourceGroup
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetIotDpsByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -138,15 +138,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
-System.String
+### None
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 
 ## RELATED LINKS
-

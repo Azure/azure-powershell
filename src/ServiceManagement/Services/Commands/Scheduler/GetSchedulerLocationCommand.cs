@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Scheduler
     /// <summary>
     /// Cmdlet to list available regions
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSchedulerLocation"), OutputType(typeof(IList<string>))]
+    [Cmdlet(VerbsCommon.Get, "AzureSchedulerLocation"), OutputType(typeof(string))]
     public class GetSchedulerLocationCommand : SchedulerBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebustopic
 schema: 2.0.0
 ---
@@ -50,8 +50,8 @@ Status                              : Active
 SubscriptionCount                   : 
 SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 3:16:43 AM
-
 ```
+
 Creates a new Service Bus topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
@@ -60,9 +60,9 @@ Creates a new Service Bus topic `SB-Topic_exampl1` in the specified Service Bus 
 Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies the duration after which the message expires, starting from when the message is sent to Service Bus.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Indicates whether server-side batched operations are enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TRUE, FALSE
 
 Required: False
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 Indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TRUE, FALSE
 
 Required: False
@@ -152,9 +152,9 @@ Accept wildcard characters: False
 Specifies whether to enable the topic to be partitioned across multiple message brokers. 
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TRUE, FALSE
 
 Required: True
@@ -168,9 +168,9 @@ Accept wildcard characters: False
 The maximum size of the topic in megabytes, which is the size of memory allocated for the topic.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,12 +183,12 @@ Accept wildcard characters: False
 Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: TopicName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -213,9 +213,9 @@ Accept wildcard characters: False
 Indicates whether the topic requires duplication detection.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TRUE, FALSE
 
 Required: False
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -244,9 +244,9 @@ Accept wildcard characters: False
 Specifies the size of the topic in bytes.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -259,9 +259,9 @@ Accept wildcard characters: False
 Indicates whether the topic supports ordering.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TRUE, FALSE
 
 Required: False
@@ -275,7 +275,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -291,7 +291,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -308,19 +308,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
 
-### -ResourceGroup
- System.String
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -EnablePartitioning
- System.Boolean?
+### System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
@@ -329,4 +320,3 @@ System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral
 ## NOTES
 
 ## RELATED LINKS
-

@@ -21,15 +21,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     ///    A wrapper for all ADLA supported data sources.
     ///    This object is returned from a GET
     /// </summary>
-    public class PSStorageAccountInfo : StorageAccountInfo
+    public class PSStorageAccountInfo : StorageAccountInformation
     {
-        public PSStorageAccountInfo(StorageAccountInfo baseAccount) :
+        [Obsolete("This property is no longer populated and will be removed in a future release")]
+        public string AccessKey { get; set; }
+
+        public PSStorageAccountInfo(StorageAccountInformation baseAccount) :
             base(
-                baseAccount.Name,
-                baseAccount.AccessKey,
-                baseAccount.Id,
-                baseAccount.Type,
-                baseAccount.Suffix)
+                id: baseAccount.Id,
+                name: baseAccount.Name,
+                type: baseAccount.Type,
+                suffix: baseAccount.Suffix)
         { }
     }
 }

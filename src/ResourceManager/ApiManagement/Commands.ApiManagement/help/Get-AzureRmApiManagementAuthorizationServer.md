@@ -49,8 +49,9 @@ This command gets the specified authorization server.
 ## PARAMETERS
 
 ### -Context
+
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -63,9 +64,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +79,7 @@ Accept wildcard characters: False
 
 ### -ServerId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByServerId
 Aliases:
 
@@ -94,16 +95,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer
-The details of the Authorization Server in a given Api Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer>
-The list of Authorization Server in a given Api Management service.
 
 ## NOTES
 

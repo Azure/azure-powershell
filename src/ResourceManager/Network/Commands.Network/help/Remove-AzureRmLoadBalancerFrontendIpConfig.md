@@ -14,8 +14,8 @@ Removes a front-end IP configuration from a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzureRmLoadBalancerFrontendIpConfig [-Name <String>] -LoadBalancer <PSLoadBalancer>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,6 @@ PS C:> Remove-AzureRmLoadBalancerFrontendIpConfig -Name "frontendName" -LoadBala
 ```
 
 The first command gets the load balancer that is associated with the front-end IP configuration you want to remove, and then stores it in the $loadbalancer variable.
-
 The second command removes the associated frontend IP configuration from the load balancer in $loadbalancer.
 
 ## PARAMETERS
@@ -39,7 +38,7 @@ The second command removes the associated frontend IP configuration from the loa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,14 +53,14 @@ Accept wildcard characters: False
 Specifies the load balancer that contains the front-end IP configuration to remove.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -69,9 +68,39 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP address configuration to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -85,8 +114,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 

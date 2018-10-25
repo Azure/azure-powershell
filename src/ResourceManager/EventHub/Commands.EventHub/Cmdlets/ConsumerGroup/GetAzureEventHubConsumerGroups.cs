@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <para> If consumerGroup name provided, a single Consumergroup detials will be returned</para>
     /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ConsumerGroupVerb), OutputType(typeof(List<PSConsumerGroupAttributes>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup"), OutputType(typeof(PSConsumerGroupAttributes))]
     public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
 
@@ -65,19 +65,39 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of ConsumerGroups  to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                // Get a ConsumnerGroup
-                PSConsumerGroupAttributes consumergroupAttributesList = Client.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
-                WriteObject(consumergroupAttributesList);
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    // Get a ConsumnerGroup
+                    PSConsumerGroupAttributes consumergroupAttributesList = Client.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                    WriteObject(consumergroupAttributesList);
+                }
+                else
+                {
+                    if (MaxCount.HasValue)
+                    {
+                        // Get all ConsumnerGroups
+                        IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub, MaxCount);
+                        WriteObject(consumergroupAttributesList.ToList(), true);
+                    }
+                    else
+                    {
+                        // Get all ConsumnerGroups
+                        IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
+                        WriteObject(consumergroupAttributesList.ToList(), true);
+                    }
+                }
             }
-            else
+            catch (Management.EventHub.Models.ErrorResponseException ex)
             {
-                // Get all ConsumnerGroups
-                IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
-                WriteObject(consumergroupAttributesList.ToList(), true);
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
         }
     }

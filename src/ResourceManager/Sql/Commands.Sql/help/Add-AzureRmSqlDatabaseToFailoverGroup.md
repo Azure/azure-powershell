@@ -20,9 +20,7 @@ Add-AzureRmSqlDatabaseToFailoverGroup [-ServerName] <String> [-FailoverGroupName
 
 ## DESCRIPTION
 Adds one or more databases on a Azure SQL Database Failover Group's primary server to to that Failover Group. The databases must not be secondary databases in existing replication relationships. The command will start geo-replication of any added databases to the Failover Group's secondary server.
-
 To obtain database objects with which to populate the '-Database' parameter, use (for example) the Get-AzureRmSqlDatabase cmdlet.
-
 The Failover Group's primary server must be used to execute the command.
 
 ## EXAMPLES
@@ -72,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +85,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Database Failover Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +100,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +115,7 @@ Accept wildcard characters: False
 The name of the primary Azure SQL Database Server of the Failover Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,11 +132,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null\]\]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.11.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AzureSqlFailoverGroupModel
 
 ## NOTES
 

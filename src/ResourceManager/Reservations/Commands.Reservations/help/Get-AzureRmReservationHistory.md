@@ -14,12 +14,14 @@ Get `Reservation` revision history.
 
 ### CommandLine (Default)
 ```
-Get-AzureRmReservationHistory -ReservationOrderId <String> -ReservationId <String> [<CommonParameters>]
+Get-AzureRmReservationHistory -ReservationOrderId <Guid> -ReservationId <Guid>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Get-AzureRmReservationHistory -Reservation <PSReservation> [<CommonParameters>]
+Get-AzureRmReservationHistory -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,13 +38,28 @@ Get the revision history of the specific reservation
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Reservation
 Pipe object parameter for `Reservation`s
 
 ```yaml
-Type: PSReservation
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -55,9 +72,9 @@ Accept wildcard characters: False
 ReservationId of the `Reservation` of which history is to be shown
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -70,9 +87,9 @@ Accept wildcard characters: False
 ReservationOrderId for the `ReservationOrder` that contains the `Reservation`
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,8 +103,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Reservations.Models.PSReservation
+### System.Guid
+
+### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+Parameters: Reservation (ByValue)
 
 ## OUTPUTS
 
@@ -96,4 +115,3 @@ Microsoft.Azure.Commands.Reservations.Models.PSReservation
 ## NOTES
 
 ## RELATED LINKS
-

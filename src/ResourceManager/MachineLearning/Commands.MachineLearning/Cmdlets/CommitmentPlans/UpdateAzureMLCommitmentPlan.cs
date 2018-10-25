@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using System.Collections.Generic;
     using System.Linq;
 
-    [Cmdlet(VerbsData.Update, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan))]
     public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {

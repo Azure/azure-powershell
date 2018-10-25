@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.IotHub.Models;
     using Newtonsoft.Json;
 
     public class PSRoutingEndpoints
@@ -40,5 +39,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "eventHubs")]
         public IList<PSRoutingEventHubProperties> EventHubs { get; set; }
+
+        /// <summary>
+        /// The list of storage container endpoints to which IoT hub routes the
+        /// messages to, based on the routing rules.
+        /// </summary>
+        [JsonProperty(PropertyName = "storageContainers")]
+        public IList<PSRoutingStorageContainerProperties> StorageContainers { get; set; }
     }
 }

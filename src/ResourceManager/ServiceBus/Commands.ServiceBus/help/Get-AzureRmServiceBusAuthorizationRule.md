@@ -10,7 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets a description of the specified authorization rule for a given Namespace or Queue or Topic or Alias (GeoDR Configurations). 
 
-
 ## SYNTAX
 
 ### NamespaceAuthorizationRuleSet (Default)
@@ -76,7 +75,7 @@ Returns the specified authorization rule description for a specified namespace a
 GeoDR Configuration Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AliasAuthoRuleSet
 Aliases:
 
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,7 +105,7 @@ Accept wildcard characters: False
 AuthorizationRule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AuthorizationRuleName
 
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -136,7 +135,7 @@ Accept wildcard characters: False
 Queue Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: QueueAuthorizationRuleSet
 Aliases: QueueName
 
@@ -151,7 +150,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +165,7 @@ Accept wildcard characters: False
 Topic Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicAuthorizationRuleSet
 Aliases: TopicName
 
@@ -178,18 +177,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
-
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes
 
 ## NOTES
 

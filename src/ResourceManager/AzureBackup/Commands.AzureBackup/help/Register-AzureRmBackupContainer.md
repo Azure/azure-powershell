@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 394500DB-D2BB-4793-8D9F-2CAF4D892A55
@@ -41,7 +41,6 @@ PS C:\> Register-AzureRmBackupContainer -Vault $Vault -Name "Contoso03Vm" -Servi
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores the vault in the $Vault variable.
-
 The second command registers the virtual machine named Contoso03Vm with the vault in $Vault.
 That virtual machine belongs to the service named ContosoService27.
 
@@ -51,7 +50,7 @@ That virtual machine belongs to the service named ContosoService27.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +65,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine that this cmdlet registers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,9 +80,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: V2VM
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -94,17 +93,15 @@ Accept wildcard characters: False
 
 ### -ServiceName
 Specifies the service name of the virtual machine that this cmdlet registers.
-
 Typically, a cloud service name has a suffix .cloudapp.net.
 Do not include the suffix when you specify this parameter.
-
 To obtain information about a virtual machine, use the Get-AzureRMVM cmdlet.
 The service name is the **DeploymentName** property of the virtual machine object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: V1VM
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -118,9 +115,9 @@ Specifies the Backup vault to which this cmdlet registers virtual machine.
 To obtain an **AzureRmBackupVault** object, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -134,11 +131,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupVault
+### System.String
+
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

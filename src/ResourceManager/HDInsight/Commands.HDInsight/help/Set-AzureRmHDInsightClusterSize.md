@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: A9A8C4B9-6346-4186-9D73-3A56437BFB2F
@@ -36,9 +36,9 @@ This command sets the size of the cluster named your-hadoop-001.
 Specifies the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,9 +81,9 @@ Accept wildcard characters: False
 Specifies the desired number of Worker nodes in the cluster.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -98,7 +98,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
@@ -107,4 +106,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

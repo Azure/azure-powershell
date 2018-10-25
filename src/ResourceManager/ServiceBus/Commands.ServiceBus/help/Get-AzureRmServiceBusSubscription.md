@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebussubscription
@@ -14,7 +14,7 @@ Returns a subscription description for the specified topic.
 
 ```
 Get-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Name] <String>] [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,13 +44,27 @@ UpdatedAt                                 : 1/20/2017 3:18:54 AM
 
 Returns a subscription description for the specified Service Bus topic.
 
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+```
+
+Returns list of subscriptions for specified Service Bus topic. By default 100 subscriptions will be returned, for number of subscriptions please use -MaxCount Parameter
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 150
+```
+
+Returns list of first 150 subscriptions for specified Service Bus topic.
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,11 +75,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Subscription Name.
+### -MaxCount
+Determine the maximum number of Subscriptions to return.
 
 ```yaml
-Type: String
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Subscription Name
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases: SubscriptionName
 
@@ -77,10 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -95,7 +124,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -107,10 +136,10 @@ Accept wildcard characters: False
 ```
 
 ### -Topic
-Topic Name.
+Topic Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: TopicName
 
@@ -126,21 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
- 
-
-### -NamespaceName
- System.String
- 
-
-### -TopicName
- System.String
- 
-
-### -SubscriptionName
- System.String
- 
+### System.String
 
 ## OUTPUTS
 
@@ -149,4 +164,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

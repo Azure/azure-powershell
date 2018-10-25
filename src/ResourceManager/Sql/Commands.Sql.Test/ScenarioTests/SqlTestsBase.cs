@@ -87,7 +87,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     Helper.RMProfileModule,
+#if !NETSTANDARD
                     Helper.RMStorageDataPlaneModule,
+#else
+                    Helper.RMStorageModule,
+#endif
                     Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
@@ -101,10 +105,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             Management.Sql.SqlManagementClient client =
                 context.GetServiceClient<Management.Sql.SqlManagementClient>(
                     RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationRetryTimeout = 0;
-            }
             return client;
         }
 
@@ -112,10 +112,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             Management.Internal.Resources.ResourceManagementClient client =
                 context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationRetryTimeout = 0;
-            }
             return client;
         }
 
@@ -124,10 +120,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             NetworkManagementClient client =
                 context.GetServiceClient<NetworkManagementClient>(
                     RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationRetryTimeout = 0;
-            }
             return client;
         }
 
@@ -170,14 +162,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 #else
             var client = TestBase.GetServiceClient<StorageManagementClient>(new CSMTestEnvironmentFactory());
 #endif
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-#if !NETSTANDARD
-                client.LongRunningOperationInitialTimeout = 0;
-#endif
-                client.LongRunningOperationRetryTimeout = 0;
-            }
             return client;
         }
     }

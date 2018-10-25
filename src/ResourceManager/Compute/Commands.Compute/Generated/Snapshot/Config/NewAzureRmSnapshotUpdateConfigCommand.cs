@@ -20,8 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -32,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmSnapshotUpdateConfig", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -91,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
 
             // Sku
-            Microsoft.Azure.Management.Compute.Models.DiskSku vSku = null;
+            Microsoft.Azure.Management.Compute.Models.SnapshotSku vSku = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
             {
@@ -124,22 +122,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vSku == null)
                 {
-                    vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
+                    vSku = new Microsoft.Azure.Management.Compute.Models.SnapshotSku();
                 }
                 vSku.Name = this.SkuName;
             }
 
             var vSnapshotUpdate = new PSSnapshotUpdate
             {
-                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?) null,
-                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null,
+                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
+                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 EncryptionSettings = vEncryptionSettings,
-                Sku = vSku,
+                Sku = new DiskSku
+                {
+                    Name = vSku.Name.ToString()
+                }
             };
 
             WriteObject(vSnapshotUpdate);
         }
     }
 }
-

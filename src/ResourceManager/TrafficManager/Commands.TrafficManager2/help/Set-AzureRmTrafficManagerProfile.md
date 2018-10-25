@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.TrafficManager
 ms.assetid: 975DD42E-61B6-437B-884D-C15A8DB7A667
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerprofile
 schema: 2.0.0
@@ -49,7 +49,7 @@ The third command updates the Traffic Manager profile named ContosoProfile to ma
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,9 +65,9 @@ Specifies a local **TrafficManagerProfile** object.
 This cmdlet updates Traffic Manager to match this local object.
 
 ```yaml
-Type: TrafficManagerProfile
+Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

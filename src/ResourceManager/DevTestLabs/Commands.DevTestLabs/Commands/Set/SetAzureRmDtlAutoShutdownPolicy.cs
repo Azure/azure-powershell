@@ -23,10 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoShutdownPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri,
-        DefaultParameterSetName = ParameterSetEnable,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DtlAutoShutdownPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSSchedule))]
     public class SetAzureRmDtlAutoShutdownPolicy : DtlPolicyCmdletBase
     {

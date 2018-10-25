@@ -68,7 +68,7 @@ This command creates a Premium-tier API Management service in an Azure virtual n
 Additional deployment regions of Azure API Management.
 
 ```yaml
-Type: PsApiManagementRegion[]
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Specifies the originating email address for all notifications that the API Management system sends.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Specifies the SKU capacity of the Azure API Management service.
 The default is one (1).
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 Custom hostname configurations. Default value is $null. Passing $null will set the default hostname.
 
 ```yaml
-Type: PsApiManagementCustomHostNameConfiguration[]
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -142,9 +142,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -157,12 +157,11 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location to create the Api Management service.
-
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +176,7 @@ Accept wildcard characters: False
 Specifies a name for the API Management deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +192,7 @@ Specifies the name of an organization.
 API Management uses this address in the developer portal in email notifications.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +207,7 @@ Accept wildcard characters: False
 Specifies the name of the of resource group under which this cmdlet creates an API Management deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -222,15 +221,13 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the tier of the API Management service.
 Valid values are: 
-
 - Developer 
 - Standard 
 - Premium 
-
 The default is Developer.
 
 ```yaml
-Type: PsApiManagementSku
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Developer, Basic, Standard, Premium
@@ -246,7 +243,7 @@ Accept wildcard characters: False
 Certificates issued by Internal CA to be installed on the service. Default value is $null.
 
 ```yaml
-Type: PsApiManagementSystemCertificate[]
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +273,7 @@ Accept wildcard characters: False
 Virtual Network Configuration of master Azure API Management deployment region.
 
 ```yaml
-Type: PsApiManagementVirtualNetwork
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +291,7 @@ Virtual Network Type of the ApiManagement Deployment. Valid Values are
 - "Internal" (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)
 
 ```yaml
-Type: PsApiManagementVpnType
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, External, Internal
@@ -311,8 +308,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=6.1.2.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+
+### System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]
 
 ## OUTPUTS
 

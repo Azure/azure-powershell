@@ -22,8 +22,8 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.Insights.ActionGroups;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 {

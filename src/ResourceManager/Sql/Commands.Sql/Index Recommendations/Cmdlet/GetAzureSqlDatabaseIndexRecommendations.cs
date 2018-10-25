@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseIndexRecommendations cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(IndexRecommendation))]
     public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>

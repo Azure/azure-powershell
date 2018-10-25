@@ -56,7 +56,7 @@ This command gets the certificate issuer named TestIssuer01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Specifies the name of the certificate issuer to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: IssuerName
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -133,6 +133,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

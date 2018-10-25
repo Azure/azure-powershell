@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/get-azurermmlopcluster
@@ -56,7 +56,7 @@ Gets all the operationalization clusters in a subscription.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 The name of the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 The name of the resource group for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,9 +120,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-
 ## NOTES
 
 ## RELATED LINKS
-

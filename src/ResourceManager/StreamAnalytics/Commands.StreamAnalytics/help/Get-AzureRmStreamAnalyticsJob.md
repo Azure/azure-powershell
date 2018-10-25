@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
 Module Name: AzureRM.StreamAnalytics
 ms.assetid: 1D10C1EA-632A-4953-85B1-596A45C30B24
@@ -56,7 +56,7 @@ This command returns information about the Stream Analytics job StreamingJob in 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure Stream Analytics job to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Indicates the cmdlet will retrieve the Azure Stream Analytics job, but not return information on its inputs, outputs, and transformation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the Azure Stream Analytics job belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -117,12 +117,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics]]            Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob
 
 ## NOTES
 

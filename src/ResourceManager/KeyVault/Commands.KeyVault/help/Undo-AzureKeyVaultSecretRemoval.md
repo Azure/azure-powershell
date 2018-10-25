@@ -45,7 +45,7 @@ Not Before   :
 Created      : 4/19/2018 5:56:02 PM
 Updated      : 4/26/2018 7:48:40 PM
 Content Type :
-Tags         : 
+Tags         :
 ```
 
 This command will recover the secret 'MySecret' that was previously deleted, into an active and usable state.
@@ -56,7 +56,7 @@ This command will recover the secret 'MySecret' that was previously deleted, int
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Deleted secret object
 
 ```yaml
-Type: PSDeletedKeyVaultSecretIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -87,7 +87,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -103,7 +103,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -134,7 +134,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -151,6 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

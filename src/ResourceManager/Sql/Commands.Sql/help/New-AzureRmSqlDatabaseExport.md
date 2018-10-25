@@ -23,7 +23,6 @@ New-AzureRmSqlDatabaseExport [-DatabaseName] <String> [-ServerName] <String> -St
 ## DESCRIPTION
 The **New-AzureRmSqlDatabaseExport** cmdlet exports an Azure SQL Database as a .bacpac file to a storage account.
 The get export database status request may be sent to retrieve status information for this request.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -54,7 +53,7 @@ This command creates an export request for the specified database.
 Specifies the name of the SQL administrator.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 Specifies the password of the SQL administrator.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -83,20 +82,17 @@ Accept wildcard characters: False
 ### -AuthenticationType
 Specifies the type of authentication used to access the server.
 The default value is SQL if no authentication type is set.
-
 The acceptable values for this parameter are:
-
 - Sql.
 SQL authentication.
 Set the *AdministratorLogin* and *AdministratorLoginPassword* to the SQL administrator username and password. 
 - ADPassword.
 Azure Active Directory authentication.
 Set *AdministratorLogin* and *AdministratorLoginPassword* to the Azure AD administrator username and password.
-
 This parameter is only available on SQL Database V12 servers.
 
 ```yaml
-Type: AuthenticationType
+Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Sql, AdPassword
@@ -112,7 +108,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +123,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,7 +138,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the SQL Database server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +153,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Database server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +168,7 @@ Accept wildcard characters: False
 Specifies the access key for the storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,16 +181,14 @@ Accept wildcard characters: False
 
 ### -StorageKeyType
 Specifies the type of access key for the storage account.
-
 The acceptable values for this parameter are:
-
 - StorageAccessKey.
 This value uses a storage account key. 
 - SharedAccessKey.
 This value uses a Shared Access Signature (SAS) key.
 
 ```yaml
-Type: StorageKeyType
+Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType
 Parameter Sets: (All)
 Aliases:
 Accepted values: StorageAccessKey, SharedAccessKey
@@ -210,7 +204,7 @@ Accept wildcard characters: False
 Specifies the blob link, as a URL, to the .bacpac file.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +219,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -241,7 +235,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -257,12 +251,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseImportExportBaseModel
+### Microsoft.Azure.Commands.Sql.ImportExport.Model.AzureSqlDatabaseImportExportBaseModel
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql

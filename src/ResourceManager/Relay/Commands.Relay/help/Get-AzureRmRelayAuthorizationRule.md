@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelayauthorizationrule
 schema: 2.0.0
 ---
@@ -39,6 +39,12 @@ The **Get-AzureRmRelayAuthorizationRule** cmdlet gets the description of the spe
 ### Example 1 - Namespace
 ```
 PS C:\> Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/Aut
+         hoRule1
 ```
 
 Returns the specified authorization rule description for a specified namespace.
@@ -46,6 +52,12 @@ Returns the specified authorization rule description for a specified namespace.
 ### Example 2 - WcfRelay
 ```
 PS C:\>Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
+         1/authorizationRules/AuthoRule1
 ```
 
 Returns the specified authorization rule description for a given WcfRelay.
@@ -53,6 +65,12 @@ Returns the specified authorization rule description for a given WcfRelay.
 ### Example 3 - HybridConnection
 ```
 PS C:\> Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/Test
+         HybridConnection/authorizationRules/AuthoRule1
 ```
 
 Returns the specified authorization rule description for a given HybridConnection.
@@ -63,7 +81,7 @@ Returns the specified authorization rule description for a given HybridConnectio
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,9 +96,9 @@ Accept wildcard characters: False
 HybridConnection Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -93,9 +111,9 @@ Accept wildcard characters: False
 AuthorizationRule Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -108,9 +126,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamespaceAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -120,9 +138,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -135,9 +153,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -150,9 +168,9 @@ Accept wildcard characters: False
 WcfRelay Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WcfRelayAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -166,48 +184,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String 
-
-### -NamespaceName
- System.String 
- 
-
-### -HybridConnectionsName
- System.String 
-
-### -WcfRelayName
- System.String 
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-
-### Example 1 - Namespace
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/Aut
-         hoRule1
-
-### Example 2 - WcfRelay
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
-         1/authorizationRules/AuthoRule1
-
-### Example 3 - HybridConnection
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/Test
-         HybridConnection/authorizationRules/AuthoRule1
+### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

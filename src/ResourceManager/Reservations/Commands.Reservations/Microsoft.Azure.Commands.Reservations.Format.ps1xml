@@ -49,14 +49,6 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Tier</Label>
-                <PropertyName>Tier</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Size</Label>
-                <PropertyName>Size</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Terms</Label>
                 <ScriptBlock>$_.PrintTerms()</ScriptBlock>
               </ListItem>
@@ -65,8 +57,8 @@
                 <ScriptBlock>$_.PrintLocations()</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Capabilities</Label>
-                <ScriptBlock>$_.PrintCapabilities()</ScriptBlock>
+                <Label>SkuProperties</Label>
+                <ScriptBlock>$_.PrintSkuProperties()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Restrictions</Label>
@@ -183,12 +175,16 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Kind</Label>
-                <PropertyName>Kind</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Type</Label>
                 <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReservedResourceType</Label>
+                <PropertyName>ReservedResourceType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InstanceFlexibility</Label>
+                <PropertyName>InstanceFlexibility</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>DisplayName</Label>
@@ -214,10 +210,6 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ProvisioningSubState</Label>
-                <PropertyName>ProvisioningSubState</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>EffectiveDateTime</Label>
                 <PropertyName>EffectiveDateTime</PropertyName>
               </ListItem>
@@ -231,6 +223,10 @@
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.EstimatedExpiryDateTime</ScriptBlock>
                 </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <Label>SkuDescription</Label>
+                <PropertyName>SkuDescription</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ExtendedStatusInfo</Label>

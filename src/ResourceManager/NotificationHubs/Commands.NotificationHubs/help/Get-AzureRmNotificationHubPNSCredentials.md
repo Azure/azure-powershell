@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 2CCDF339-9D6E-4B0C-9201-BE641C8827F6
@@ -38,7 +38,7 @@ This command gets the PNS credentials for the notification hub named ContosoInte
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,13 +51,12 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace to which the notification hub is assigned.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -68,13 +67,12 @@ Accept wildcard characters: False
 
 ### -NotificationHub
 Specifies the notification hub that the PNS credentials are assigned to.
-
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -85,13 +83,12 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the notification hub is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -105,8 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

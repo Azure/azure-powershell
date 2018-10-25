@@ -23,18 +23,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ContainerTests : RMTestBase
     {
-        public ContainerTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.DPM)]
         public void TestBmsGetContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Dpm, "Test-BmsGetContainer");
+                _logger, PsBackupProviderTypes.Dpm, "Test-BmsGetContainer");
         }
 
         [Fact]
@@ -43,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestBmsUnregisterContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Dpm, "Test-BmsUnregisterContainer");
+                _logger, PsBackupProviderTypes.Dpm, "Test-BmsUnregisterContainer");
         }
     }
 }

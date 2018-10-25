@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHubAuthorizationRules", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

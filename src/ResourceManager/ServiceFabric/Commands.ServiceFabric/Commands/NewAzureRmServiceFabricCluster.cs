@@ -38,8 +38,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureRmServiceFabricCluster, SupportsShouldProcess = true, DefaultParameterSetName = ByDefaultArmTemplate),
-     OutputType(typeof(PSDeploymentResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricCluster", SupportsShouldProcess = true, DefaultParameterSetName = ByDefaultArmTemplate),OutputType(typeof(PSDeploymentResult))]
     public class NewAzureRmServiceFabricCluster : ServiceFabricClusterCertificateCmdlet
     {
         public const string WindowsTemplateRelativePath = @"Template\Windows";

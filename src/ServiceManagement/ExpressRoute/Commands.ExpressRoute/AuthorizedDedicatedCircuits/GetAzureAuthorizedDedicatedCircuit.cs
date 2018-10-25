@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureAuthorizedDedicatedCircuit"), OutputType(typeof(AzureAuthorizedDedicatedCircuit), typeof(IEnumerable<AzureAuthorizedDedicatedCircuit>))]
+    [Cmdlet(VerbsCommon.Get, "AzureAuthorizedDedicatedCircuit"), OutputType(typeof(AzureAuthorizedDedicatedCircuit))]
     public class GetAzureAuthorizedDedicatedCircuitCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,

@@ -8,12 +8,13 @@ schema: 2.0.0
 # Get-AzureRmReservationCatalog
 
 ## SYNOPSIS
-Get the catalog of available reservation
+Get the catalog of available reservations
 
 ## SYNTAX
 
 ```
-Get-AzureRmReservationCatalog [-SubscriptionId <String>] [<CommonParameters>]
+Get-AzureRmReservationCatalog [-SubscriptionId <Guid>] -ReservedResourceType <String> [-Location <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +24,72 @@ Get the regions and skus that are available for Reserved Instance purchase for t
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservationCatalog
+PS C:\> Get-AzureRmReservationCatalog -ReservedResourceType VirtualMachines -Location westus
 ```
 
-Get the catalog for the default subscription
+Get the VirtualMachines catalog in westus for the default subscription
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmReservationCatalog -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+PS C:\> Get-AzureRmReservationCatalog -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservedResourceType SuseLinux
 ```
 
-Get the catalog for the specified subscription
+Get the SuseLinux catalog for the specified subscription
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location of the reserved resources in the catalog
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservedResourceType
+Specifies the type of the reserved resources in the catalog
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SubscriptionId
 Id of the subscription
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -61,9 +107,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Reservations.Models.PSCatalog
 
 ## NOTES
 
 ## RELATED LINKS
-

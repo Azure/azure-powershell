@@ -83,7 +83,7 @@ This command gets all users within the specified group.
 Specifies an instance of **PsApiManagementContext**.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,7 +115,7 @@ If this parameter is specified, this cmdlet finds a user by email.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -132,7 +132,7 @@ If this parameter is specified, this cmdlet finds a user by first name.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -149,7 +149,7 @@ If specified, this cmdlet finds all users within the specified group.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -166,7 +166,7 @@ If specified, this cmdlet finds users by last name.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -183,7 +183,7 @@ If specified, this cmdlet finds users in this state.
 This parameter is optional.
 
 ```yaml
-Type: PsApiManagementUserState
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState]
 Parameter Sets: GetByUser
 Aliases:
 Accepted values: Active, Blocked, Deleted, Pending
@@ -201,7 +201,7 @@ If specified, this cmdlet finds the user by this identifier.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUserId
 Aliases:
 
@@ -217,16 +217,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
+
+### System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser
-The details of User in API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser>
-The list of User in the API Management  service.
 
 ## NOTES
 

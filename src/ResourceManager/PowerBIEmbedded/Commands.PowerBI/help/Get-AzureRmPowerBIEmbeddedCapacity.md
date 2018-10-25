@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Module Name: AzureRM.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
@@ -13,12 +13,16 @@ Gets the details of a PowerBI Embedded Capacity.
 
 ## SYNTAX
 
+### ByCapacityOrResourceGroupOrSubscription (Default)
 ```
-Get-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName] <String>] 
-    [<CommonParameters>]
+Get-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
-Get-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] <String> [-Name] <String> 
-    [<CommonParameters>]
+### ByResourceId
+```
+Get-AzureRmPowerBIEmbeddedCapacity -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,23 +71,24 @@ Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}
-
 ```
 
 This command gets the Azure PowerBI Embedded Capacity named testcapacity in the resource group named testRG.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
-Parameter Sets: ByResourceGroup, ByCapacity
-Aliases: 
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -91,13 +96,29 @@ Accept wildcard characters: False
 Name of the PowerBI Embedded Capacity
 
 ```yaml
-Type: String
-Parameter Sets: ByCapacity
-Aliases: 
+Type: System.String
+Parameter Sets: ByCapacityOrResourceGroupOrSubscription
+Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
+
+```yaml
+Type: System.String
+Parameter Sets: ByCapacityOrResourceGroupOrSubscription
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -105,12 +126,12 @@ Accept wildcard characters: False
 Azure resource ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -121,12 +142,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity>
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 

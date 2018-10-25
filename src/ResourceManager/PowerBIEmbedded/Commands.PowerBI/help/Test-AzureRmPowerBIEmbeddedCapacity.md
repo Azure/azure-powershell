@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Module Name: AzureRM.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
@@ -14,9 +14,8 @@ Tests the existence of an instance of PowerBI Embedded Capacity.
 ## SYNTAX
 
 ```
-Test-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[<CommonParameters>]
+Test-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,16 +33,33 @@ This command will test if there is a capacity named testcapacity
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the PowerBI Embedded Capacity
 
 ```yaml
-Type: String
-Aliases: 
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -53,7 +69,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

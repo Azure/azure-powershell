@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C791C593-F7D5-4961-97F9-E4909813FFE7
@@ -72,7 +72,7 @@ Gets the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' and p
 The application id of the application to remove.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdParameterSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The display name of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationDisplayNameParameterSet
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Switch to delete an application without a confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 The object representing the application to remove.
 
 ```yaml
-Type: PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 The object id of the application to delete.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -193,7 +193,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -209,9 +209,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to remove the provided application.
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

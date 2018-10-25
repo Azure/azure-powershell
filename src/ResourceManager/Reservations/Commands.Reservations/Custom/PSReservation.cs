@@ -1,9 +1,6 @@
 ﻿using Microsoft.Azure.Management.Reservations.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Reservations.Models
 {
@@ -12,15 +9,18 @@ namespace Microsoft.Azure.Commands.Reservations.Models
         public string Sku { get; set; }
 
         public string Location { get; private set; }
+
         public string Etag { get; private set; }
 
         public string Id { get; private set; }
 
         public string Name { get; private set; }
 
-        public Kind? Kind { get; set; }
-
         public string Type { get; set; }
+
+        public string ReservedResourceType { get; set; }
+
+        public string InstanceFlexibility { get; set; }
 
         public string DisplayName { get; set; }
 
@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Reservations.Models
         public DateTime? LastUpdatedDateTime { get; set; }
 
         public DateTime? ExpiryDate { get; set; }
+
+        public string SkuDescription { get; set; }
 
         public ExtendedStatusInfo ExtendedStatusInfo { get; set; }
 
@@ -119,8 +121,9 @@ namespace Microsoft.Azure.Commands.Reservations.Models
                 Etag = Reservation.Etag == null ? "" : Reservation.Etag.ToString();
                 Id = Reservation.Id;
                 Name = Reservation.Name;
-                Kind = Reservation.Kind;
                 Type = Reservation.Type;
+                ReservedResourceType = Reservation.Properties.ReservedResourceType;
+                InstanceFlexibility = Reservation.Properties.InstanceFlexibility;
                 DisplayName = Reservation.Properties.DisplayName;
                 AppliedScopes = Reservation.Properties.AppliedScopes;
                 AppliedScopeType = Reservation.Properties.AppliedScopeType;
@@ -129,6 +132,7 @@ namespace Microsoft.Azure.Commands.Reservations.Models
                 EffectiveDateTime = Reservation.Properties.EffectiveDateTime;
                 LastUpdatedDateTime = Reservation.Properties.LastUpdatedDateTime;
                 ExpiryDate = Reservation.Properties.ExpiryDate;
+                SkuDescription = Reservation.Properties.SkuDescription;
                 ExtendedStatusInfo = Reservation.Properties.ExtendedStatusInfo;
                 SplitProperties = Reservation.Properties.SplitProperties;
                 MergeProperties = Reservation.Properties.MergeProperties;

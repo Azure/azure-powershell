@@ -36,7 +36,7 @@ This command sets the owner for the root directory to Patti Fuller.
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the object ID of the AzureActive Directory user, group, or service principal to use as the owner.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Indicates the resulting updated owner should be returned.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the item to modify, starting with the root directory (/).
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Specifies the type of owner to set.
 The acceptable values for this parameter are: User and Group.
 
 ```yaml
-Type: Owner
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner
 Parameter Sets: (All)
 Aliases:
 Accepted values: User, Group
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -144,7 +144,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -160,13 +160,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner
+
+### System.Guid
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### string
-If PassThru is specified, returns the updated owner.
+### System.Boolean
 
 ## NOTES
 

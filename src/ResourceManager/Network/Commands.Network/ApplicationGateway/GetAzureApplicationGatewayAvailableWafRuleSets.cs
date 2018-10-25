@@ -24,9 +24,8 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayAvailableWafRuleSets"), 
-        OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
-    [Alias("List-AzureRmApplicationGatewayAvailableWafRuleSets")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSets"), OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
+    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSets")]
     public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -39,4 +38,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

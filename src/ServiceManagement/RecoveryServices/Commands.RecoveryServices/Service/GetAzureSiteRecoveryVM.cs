@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Virtual Machine.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVM", DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [OutputType(typeof(IEnumerable<ASRVirtualMachine>))]
+    [OutputType(typeof(ASRVirtualMachine))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]

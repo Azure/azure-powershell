@@ -21,8 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataFactory, DefaultParameterSetName = ParameterSetNames.BySubscriptionId),
-        OutputType(typeof(List<PSDataFactory>), typeof(PSDataFactory))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", DefaultParameterSetName = ParameterSetNames.BySubscriptionId),OutputType(typeof(PSDataFactory))]
     public class GetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

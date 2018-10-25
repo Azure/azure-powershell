@@ -22,23 +22,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
     public class RecoveryServicesTests : RMTestBase
     {
-        public RecoveryServicesTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public RecoveryServicesTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecoveryServicesVaultCRUD()
         {
-            TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCRUD");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RecoveryServicesVaultCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRSVaultSettingsFile()
         {
-            TestController.NewInstance.RunPsTest("Test-GetRSVaultSettingsFile");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetRSVaultSettingsFile");
         }
     }
 }

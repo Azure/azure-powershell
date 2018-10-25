@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <para> If HybridConnections name provided, a single HybridConnections detials will be returned</para>
     /// <para> If WcfRelayHybridConnections name not provided, list of WcfRelayHybridConnections will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionVerb), OutputType(typeof(List<HybridConnectionAttibutes>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection"), OutputType(typeof(HybridConnectionAttibutes))]
     public class GetAzureRmRelayHybridConnection : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

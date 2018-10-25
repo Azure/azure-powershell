@@ -49,11 +49,26 @@ Admin user has to be enabled for the container registry \`MyRegistry\` to get lo
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Container Registry Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameResourceGroupParameterSet
 Aliases: ContainerRegistryName, RegistryName, ResourceName
 
@@ -68,9 +83,9 @@ Accept wildcard characters: False
 Container Registry Object.
 
 ```yaml
-Type: PSContainerRegistry
+Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
 Parameter Sets: RegistryObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -83,27 +98,12 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 The container registry resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases: Id
 
@@ -129,8 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSContainerRegistry
-Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeline
+### System.String
 
 ## OUTPUTS
 

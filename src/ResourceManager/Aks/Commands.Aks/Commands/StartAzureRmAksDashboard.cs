@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -31,7 +31,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Start", KubeNounStr + "Dashboard", DefaultParameterSetName = GroupNameParameterSet)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksDashboard", DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(KubeTunnelJob))]
     public class StartAzureRmAksDashboard : KubeCmdletBase
     {

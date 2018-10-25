@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
+Module Name: Azure.AnalysisServices
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/add-azureanalysisservicesaccount
 schema: 2.0.0
 ---
@@ -65,9 +66,9 @@ This example will add the application service principal account specified by the
 The application ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalWithCertificateParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,9 +81,9 @@ Accept wildcard characters: False
 Certificate Hash (Thumbprint)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalWithCertificateParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,9 +96,9 @@ Accept wildcard characters: False
 Login credentials
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: UserParameterSetName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -107,9 +108,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: ServicePrincipalWithPasswordParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -122,9 +123,9 @@ Accept wildcard characters: False
 Name of the Azure Analysis Services environment to which to logon to. Given the full name of the server for example asazure://westcentralus.asazure.windows.net/testserver , the correct value for this variable will be westcentralus.asazure.windows.net
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UserParameterSetName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -134,9 +135,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -149,9 +150,9 @@ Accept wildcard characters: False
 Indicates that this account authenticates by providing service principal credentials.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -164,9 +165,9 @@ Accept wildcard characters: False
 Tenant name or ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -179,7 +180,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -195,7 +196,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -212,7 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
@@ -222,4 +222,3 @@ This cmdlet does not accept any input.
 Alias: Login-AzureAsAccount
 
 ## RELATED LINKS
-

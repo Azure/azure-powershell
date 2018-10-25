@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 08D03498-D18D-47FE-8916-702FA2E7D719
@@ -22,18 +22,14 @@ Get-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String>
 The **Get-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet returns information about the Shared Access Signature (SAS) authorization rules associated with a notification hub namespace.
 You can return information about all the rules associated with the namespace.
 Alternatively, and by including the *AuthorizationRule* parameter, you can return information for a specific rule.
-
 Authorization rules manage access to namespaces.
 This is done through the creation of links, as URIs, based on different permission levels.
 Platform levels can be one of the following: 
-
 - Listen
 - Send
 - Manage
-
 Clients are directed to one of these URIs based on the appropriate permission level.
 For instance, a client given the Listen permission will be directed to the URI for that permission.
-
 This cmdlet only gets the authorization rules associated with a namespace.
 To get information about the namespace itself, use Get-AzureRmNotificationHubsNamespace.
 
@@ -61,9 +57,9 @@ Specifies the name of a SAS authentication rule.
 These rules determine the type of access that users have to the namespace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -76,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,9 +88,9 @@ Specifies the namespace to which the authorization rules are assigned.
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -105,13 +101,12 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the authorization rules are assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -125,12 +120,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes]
+### Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes
 
 ## NOTES
 

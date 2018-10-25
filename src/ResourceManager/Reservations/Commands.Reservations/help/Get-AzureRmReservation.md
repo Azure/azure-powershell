@@ -14,13 +14,20 @@ Get `Reservation`s in a given reservation Order
 
 ### CommandLine (Default)
 ```
-Get-AzureRmReservation -ReservationOrderId <String> [-ReservationId <String>] [<CommonParameters>]
+Get-AzureRmReservation -ReservationOrderId <Guid> [-ReservationId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Get-AzureRmReservation [-ReservationOrder <PSReservationOrder>]
- [-ReservationOrderPage <PSReservationOrderPage>] [<CommonParameters>]
+Get-AzureRmReservation [-ReservationOrder <PSReservationOrder>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### PagePipeObject
+```
+Get-AzureRmReservation [-ReservationOrderPage <PSReservationOrderPage>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,18 +51,33 @@ Get specific `Reservation` details.
 
 ## PARAMETERS
 
-### -ReservationId
-Id of the `Reservation` to look at
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
-Parameter Sets: CommandLine
-Aliases: 
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationId
+Id of the `Reservation` to look at
+
+```yaml
+Type: System.Guid
+Parameter Sets: CommandLine
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -63,9 +85,9 @@ Accept wildcard characters: False
 Pipe object parameter for `ReservationOrder`
 
 ```yaml
-Type: PSReservationOrder
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,9 +100,9 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` that contains the `Reservation`. Required.
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,9 +115,9 @@ Accept wildcard characters: False
 Pipe object parameter for `ReservationOrder`
 
 ```yaml
-Type: PSReservationOrderPage
-Parameter Sets: PipeObject
-Aliases: 
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
+Parameter Sets: PagePipeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -109,16 +131,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
-Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
+### System.Guid
+
+### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
+Parameters: ReservationOrder (ByValue)
+
+### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
+Parameters: ReservationOrderPage (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservationPage
-Microsoft.Azure.Commands.Reservations.Models.PSReservation
+
+### Microsoft.Azure.Commands.Reservations.Models.PSReservation
 
 ## NOTES
 
 ## RELATED LINKS
-

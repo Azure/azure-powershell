@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
 
 
@@ -116,6 +118,8 @@ namespace Microsoft.Azure.Commands.Compute
                             this.ResourceGroupName,
                             this.Name).GetAwaiter().GetResult();
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
                         WriteObject(result);
                     });
                 }

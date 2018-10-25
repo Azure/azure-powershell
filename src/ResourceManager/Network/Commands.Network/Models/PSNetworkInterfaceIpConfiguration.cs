@@ -16,10 +16,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIpAddressVersion { get; set; }
 
         [JsonProperty(Order = 2)]
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool Primary { get; set; }
 
         [JsonProperty(Order = 2)]

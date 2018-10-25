@@ -1,0 +1,3311 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2015-12-01-preview",
+    "title": "StorageAdminClient",
+    "description": "Storage Admin Client"
+  },
+  "host": "adminmanagement.local.azurestack.external",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/providers/Microsoft.Storage.Admin/operations": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of support rest operations.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "description": "Get the list of support rest operations.",
+        "tags": [
+          "Commerce"
+        ],
+        "operationId": "Operations_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of operations has been returned.",
+            "schema": {
+              "$ref": "#/definitions/OperationList"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/acquisitions": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of page blob acquistions.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Acquisitions"
+        ],
+        "operationId": "Acquisitions_List",
+        "description": "Returns a list of blob acquistions.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/FilterParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of acquisitions has been returned.",
+            "schema": {
+              "$ref": "#/definitions/AcquisitionList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm cannot be found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/blobservices/default": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the blob service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "BlobServices"
+        ],
+        "operationId": "BlobServices_Get",
+        "description": "Returns the blob service.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The blob service has been returned.",
+            "schema": {
+              "$ref": "#/definitions/BlobService"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/blobservices/default/metricdefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the list of metric definitions for blob service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "BlobServices"
+        ],
+        "operationId": "BlobServices_ListMetricDefinitions",
+        "description": "Returns the list of metric definitions for blob service.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- This list of metric definitions for blob service has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/blobservices/default/metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metrics for blob service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "BlobServices"
+        ],
+        "operationId": "BlobServices_ListMetrics",
+        "description": "Returns a list of metrics for blob service.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metrics has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/operationresults/{operationId}": {
+      "post": {
+        "x-ms-examples": {
+          "Cancel a container migration job.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Containers"
+        ],
+        "operationId": "Containers_CancelMigration",
+        "description": "Cancel a container migration job.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/OperationIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Operation has been accepted and processed"
+          },
+          "202": {
+            "description": "ACCEPTED - Operation has been accepted will be processed asynchronously"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "x-ms-examples": {
+          "Returns the status of a container migration job.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Containers"
+        ],
+        "operationId": "Containers_MigrationStatus",
+        "description": "Returns the status of a container migration job.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/OperationIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Operation has been accepted and processed",
+            "schema": {
+              "$ref": "#/definitions/MigrationResult"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/{shareName}/containers": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the list of containers which can be migrated in the specified share.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Containers"
+        ],
+        "operationId": "Containers_List",
+        "description": "Returns the list of containers which can be migrated in the specified share.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ShareNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/MigrationIntentParameter"
+          },
+          {
+            "$ref": "#/parameters/MaxCountParameter"
+          },
+          {
+            "$ref": "#/parameters/StartIndexParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of containers has been returned.",
+            "schema": {
+              "$ref": "#/definitions/ContainerList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm or share was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/{shareName}/destinationshares": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of destination shares that the system considers as best candidates for migration.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Containers"
+        ],
+        "operationId": "Containers_ListDestinationShares",
+        "description": "Returns a list of destination shares that the system considers as best candidates for migration.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ShareNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of shares has been returned.",
+            "schema": {
+              "$ref": "#/definitions/ShareList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm or share was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/{shareName}/migrate": {
+      "post": {
+        "x-ms-examples": {
+          "Starts a container migration job to migrate containers to the specified destination share.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Containers"
+        ],
+        "operationId": "Containers_Migrate",
+        "description": "Starts a container migration job to migrate containers to the specified destination share.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ShareNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/MigrationParameterParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Container has been migrated",
+            "schema": {
+              "description": "Migration job ID.",
+              "type": "string"
+            }
+          },
+          "202": {
+            "description": "ACCEPTED -- Operation accepted and will be performed asynchronously",
+            "schema": {
+              "description": "Migration job ID.",
+              "type": "string"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}": {
+      "put": {
+        "x-ms-examples": {
+          "Create a new storage farm.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "description": "Create a new storage farm.",
+        "operationId": "Farms_Create",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The new storage farm has been created.",
+            "schema": {
+              "$ref": "#/definitions/Farm"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "x-ms-examples": {
+          "Returns the Storage properties and settings for a specified storage farm.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "description": "Returns the Storage properties and settings for a specified storage farm.",
+        "operationId": "Farms_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The farm has been returned.",
+            "schema": {
+              "$ref": "#/definitions/Farm"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "patch": {
+        "x-ms-examples": {
+          "Update an existing storage farm.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "description": "Update an existing storage farm.",
+        "operationId": "Farms_Update",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The properties and settings of storage farm have been updated.",
+            "schema": {
+              "$ref": "#/definitions/Farm"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/metricdefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metric definitions for a storage farm.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "description": "Returns a list of metric definitions for a storage farm.",
+        "operationId": "Farms_ListMetricDefinitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metric definitions has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of storage farm metrics.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "description": "Returns a list of storage farm metrics.",
+        "operationId": "Farms_ListMetrics",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metrics has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of all storage farms.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "description": "Returns a list of all storage farms.",
+        "operationId": "Farms_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of storage farms has been returned.",
+            "schema": {
+              "$ref": "#/definitions/FarmList"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/ondemandgc": {
+      "post": {
+        "x-ms-examples": {
+          "Start garbage collection on deleted storage objects.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Farms"
+        ],
+        "operationId": "Farms_StartGarbageCollection",
+        "description": "Start garbage collection on deleted storage objects.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Garbage collection has completed."
+          },
+          "202": {
+            "description": "ACCEPTED -- Garbage collection has started."
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/operationresults/{operationId}": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the state of the garbage collection job.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "GC"
+        ],
+        "operationId": "Farms_GetGarbageCollectionState",
+        "description": "Returns the state of the garbage collection job.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/OperationIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The state of garbage collection has been returned.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm or garbage collection job can not be found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/queueservices/default": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the queue service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "QueueServices"
+        ],
+        "description": "Returns the queue service.",
+        "operationId": "QueueServices_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Queue service has been returned.",
+            "schema": {
+              "$ref": "#/definitions/QueueService"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/queueservices/default/metricdefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metric definitions for queue service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "QueueServices"
+        ],
+        "description": "Returns a list of metric definitions for queue service.",
+        "operationId": "QueueServices_ListMetricDefinitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metric definitions has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/queueservices/default/metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metrics for the queue service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "QueueServices"
+        ],
+        "description": "Returns a list of metrics for the queue service.",
+        "operationId": "QueueServices_ListMetrics",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metrics has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}": {
+      "put": {
+        "x-ms-examples": {
+          "Create or update an existing storage quota.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "StorageQuotas"
+        ],
+        "description": "Create or update an existing storage quota.",
+        "operationId": "StorageQuotas_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/QuotaNameParameter"
+          },
+          {
+            "$ref": "#/parameters/StorgeQuotaParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The storage quota has been created or updated.",
+            "schema": {
+              "$ref": "#/definitions/StorageQuota"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The location or quota was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Delete an existing storage quota..": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "StorageQuotas"
+        ],
+        "description": "Delete an existing quota",
+        "operationId": "StorageQuotas_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/QuotaNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The storage quota has been deleted."
+          },
+          "404": {
+            "description": "NOT FOUND -- The location or storage quota cannot be found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "x-ms-examples": {
+          "Returns the specified storage quota.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "StorageQuotas"
+        ],
+        "description": "Returns the specified storage quota.",
+        "operationId": "StorageQuotas_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/QuotaNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The storage quota has been returned.",
+            "schema": {
+              "$ref": "#/definitions/StorageQuota"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The location or storage quota cannot be found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of storage quotas at the given location.": {
+            "parameters": {},
+            "responses": {
+              "200": {
+                "body": {}
+              }
+            }
+          }
+        },
+        "tags": [
+          "StorageQuotas"
+        ],
+        "description": "Returns a list of storage quotas at the given location.",
+        "operationId": "StorageQuotas_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of storage quotas has been returned.",
+            "schema": {
+              "$ref": "#/definitions/StorageQuotaList"
+            }
+          },
+          "404": {
+            "description": "OK -- The location does not exist."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of storage shares.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Shares"
+        ],
+        "description": "Returns a list of storage shares.",
+        "operationId": "Shares_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of storage shares has been returned.",
+            "schema": {
+              "$ref": "#/definitions/ShareList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The farm cannot be found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/{shareName}/metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metrics for a storage share.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Shares"
+        ],
+        "description": "Returns a list of metrics for a storage share.",
+        "operationId": "Shares_ListMetrics",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ShareNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metrics has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The farm or share cannot be found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/{shareName}/metricdefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metric definitions for a storage share.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Shares"
+        ],
+        "description": "Returns a list of metric definitions for a storage share.",
+        "operationId": "Shares_ListMetricDefinitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ShareNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metric definitions has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The farm cannot be found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/shares/{shareName}": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a storage share.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "Shares"
+        ],
+        "description": "Returns a storage share.",
+        "operationId": "Shares_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ShareNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The storage share has been returned.",
+            "schema": {
+              "$ref": "#/definitions/Share"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The farm or storage share cannot be found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/storageaccounts": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of storage accounts.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "StorageAccounts"
+        ],
+        "operationId": "StorageAccounts_List",
+        "description": "Returns a list of storage accounts.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SummaryParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of storage accounts has been returned.",
+            "schema": {
+              "$ref": "#/definitions/StorageAccountList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/storageaccounts/{accountId}": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the requested storage account.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "StorageAccounts"
+        ],
+        "operationId": "StorageAccounts_Get",
+        "description": "Returns the requested storage account.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/AccountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The storage account has been returned.",
+            "schema": {
+              "$ref": "#/definitions/StorageAccount"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The storage account or farm was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "x-ms-examples": {
+          "Undelete a deleted storage account.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "StorageAccounts"
+        ],
+        "operationId": "StorageAccounts_Undelete",
+        "description": "Undelete a deleted storage account.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/AccountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Undelete either has been performed or account was not deleted."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/tableservices/default": {
+      "get": {
+        "x-ms-examples": {
+          "Returns the table servie.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "TableServices"
+        ],
+        "description": "Returns the table servie.",
+        "operationId": "TableServices_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- Table service has been returned.",
+            "schema": {
+              "$ref": "#/definitions/TableService"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/tableservices/default/metricdefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metric definitions for table service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "TableServices"
+        ],
+        "description": "Returns a list of metric definitions for table service.",
+        "operationId": "TableServices_ListMetricDefinitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metric definitions has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/farms/{farmId}/tableservices/default/metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Returns a list of metrics for table service.": {
+            "parameters": {},
+            "responses": {
+              "200": {}
+            }
+          }
+        },
+        "tags": [
+          "TableServices"
+        ],
+        "description": "Returns a list of metrics for table service.",
+        "operationId": "TableServices_ListMetrics",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/FarmIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- The list of metrics has been returned.",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND -- The specified farm was not found."
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "WritableSettings": {
+      "description": "Storage service settings.",
+      "type": "object",
+      "properties": {
+        "frontEndCallbackThreadsCount": {
+          "description": "Front end callback threads count.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndCpuBasedKeepAliveThrottlingEnabled": {
+          "description": "Switch of front end CPU based keep-alive throttling.",
+          "type": "boolean"
+        },
+        "frontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold": {
+          "description": "Threshold (% percentage) of front end CPU based keep-alive throttling.",
+          "type": "number",
+          "format": "float"
+        },
+        "frontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle": {
+          "description": "Threshold (% percentage) of requests to throttle in front end CPU based keep-alive throttling.",
+          "type": "number",
+          "format": "float"
+        },
+        "frontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds": {
+          "description": "Interval (in second) of CPU monitor for front end CPU based keep-alive throttling.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndMemoryThrottlingEnabled": {
+          "description": "Switch of front end memory throttling.",
+          "type": "boolean"
+        },
+        "frontEndMaxMillisecondsBetweenMemorySamples": {
+          "description": "Maxium interval (in millisecond) between memory samples of front end.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndMemoryThrottleThresholdSettings": {
+          "description": "Front end memory throttle threshold settings.",
+          "type": "string"
+        },
+        "frontEndMinThreadPoolThreads": {
+          "description": "Front end minimum number of threads in thread pool.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndThreadPoolBasedKeepAliveIOCompletionThreshold": {
+          "description": "Threshold of front end thread pool based keep-alive IO completion.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndThreadPoolBasedKeepAliveWorkerThreadThreshold": {
+          "description": "Threshold of front end thread pool based keep-alive worker thread.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds": {
+          "description": "Monitor interval (in seconds) of front end thread pool based keep-alive monitor.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndThreadPoolBasedKeepAlivePercentage": {
+          "description": "Percentage (%) of front end thread pool based keep-alive.",
+          "type": "number",
+          "format": "float"
+        },
+        "frontEndUseSlaTimeInAvailability": {
+          "description": "Switch of whether front end uses SLA time in availability.",
+          "type": "boolean"
+        }
+      }
+    },
+    "WritableServiceSettings": {
+      "description": "Settings of storage services.",
+      "type": "object",
+      "properties": {
+        "frontEndHttpsListenPort": {
+          "description": "The HTTPs port of the storage service front end.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frontEndHttpListenPort": {
+          "description": "The HTTP port of the storage service front end.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/WritableSettings"
+        }
+      ]
+    },
+    "LocalizableString": {
+      "description": "Localizable string.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Value of the string.",
+          "type": "string"
+        },
+        "localizedValue": {
+          "description": "Localized value of the string.",
+          "type": "string"
+        }
+      }
+    },
+    "MetricAvailability": {
+      "description": "Metric availability.",
+      "type": "object",
+      "properties": {
+        "timeGrain": {
+          "description": "Time grain.",
+          "type": "string"
+        },
+        "retention": {
+          "description": "Retention of metric.",
+          "type": "string"
+        }
+      }
+    },
+    "AggregateType": {
+      "description": "Aggregate type.",
+      "readOnly": true,
+      "type": "string",
+      "enum": [
+        "None",
+        "Average",
+        "Total",
+        "Minimum",
+        "Maximum",
+        "Last"
+      ],
+      "x-ms-enum": {
+        "name": "AggregateType",
+        "modelAsString": true
+      }
+    },
+    "MetricUnit": {
+      "description": "Metric unit.",
+      "type": "string",
+      "enum": [
+        "Count",
+        "Bytes",
+        "Seconds",
+        "CountPerSecond",
+        "BytesPerSecond"
+      ],
+      "x-ms-enum": {
+        "name": "MetricUnit",
+        "modelAsString": true
+      }
+    },
+    "MetricDefinition": {
+      "description": "Metric definition.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Metric name.",
+          "readOnly": true,
+          "$ref": "#/definitions/LocalizableString"
+        },
+        "unit": {
+          "description": "Metric unit.",
+          "$ref": "#/definitions/MetricUnit",
+          "readOnly": true
+        },
+        "primaryAggregationType": {
+          "description": "Aggregation type of metric.",
+          "$ref": "#/definitions/AggregateType",
+          "readOnly": true
+        },
+        "metricAvailabilities": {
+          "description": "Metric availabilities.",
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetricAvailability"
+          }
+        }
+      }
+    },
+    "Metric": {
+      "description": "Metric information.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Metric Name.",
+          "readOnly": true,
+          "$ref": "#/definitions/LocalizableString"
+        },
+        "metricUnit": {
+          "description": "Metric Unit.",
+          "$ref": "#/definitions/MetricUnit"
+        },
+        "timeGrain": {
+          "description": "Metric time grain.",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Metric start time.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "description": "Metric end time.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "metricValues": {
+          "description": "List of metric values.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetricValue"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "MetricDefinitionList": {
+      "description": "Pageable list of metric definitions.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of metric definitions.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetricDefinition"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "description": "URI to the next page.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "MetricList": {
+      "description": "Pageable list of metrics.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of metrics.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "description": "URI to the next page.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "MetricValue": {
+      "description": "Metric value.",
+      "properties": {
+        "timeStamp": {
+          "description": "Timestamp of metric value.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "average": {
+          "description": "Average value of metric.",
+          "type": "number",
+          "format": "float"
+        },
+        "minimum": {
+          "description": "Minimum value of metric.",
+          "type": "number",
+          "format": "float"
+        },
+        "maximum": {
+          "description": "Maximum value of metric.",
+          "type": "number",
+          "format": "float"
+        },
+        "total": {
+          "description": "Total value of metric.",
+          "type": "number",
+          "format": "float"
+        },
+        "count": {
+          "description": "Count of metric values.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "properties": {
+          "description": "Metric value properties.",
+          "type": "string"
+        }
+      }
+    },
+    "HealthStatus": {
+      "readOnly": true,
+      "description": "Current health status.",
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Healthy",
+        "Warning",
+        "Critical"
+      ],
+      "x-ms-enum": {
+        "name": "HealthStatus",
+        "modelAsString": true
+      }
+    },
+    "Resource": {
+      "description": "Base resource object.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Resource ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Resource Name.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "Resource type.",
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "description": "Resource location.",
+          "type": "string",
+          "readOnly": true
+        },
+        "tags": {
+          "description": "Resource tags.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "readOnly": true
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "Service": {
+      "description": "Storage service.",
+      "properties": {
+        "version": {
+          "description": "Storage service version.",
+          "type": "string"
+        },
+        "healthStatus": {
+          "description": "Health status of storage service.",
+          "$ref": "#/definitions/HealthStatus"
+        }
+      }
+    },
+    "Operation": {
+      "description": "Describes the supported REST operation.",
+      "properties": {
+        "name": {
+          "description": "The name of the operation being performed on this particular object. It should match the action name that appears in RBAC / the event service.",
+          "type": "string"
+        },
+        "display": {
+          "description": "Contains the localized display information for this particular operation / action.",
+          "$ref": "#/definitions/Display"
+        }
+      }
+    },
+    "Display": {
+      "description": "Contains the localized display information for this particular operation / action.",
+      "properties": {
+        "provider": {
+          "description": "The localized friendly form of the resource provider name – it is expected to also include the publisher/company responsible. It should use Title Casing and begin with \"Microsoft\" for 1st party services. e.g. \"Microsoft Monitoring Insights\" or \"Microsoft Compute.\"",
+          "type": "string"
+        },
+        "resource": {
+          "description": "The localized friendly form of the resource type related to this action/operation – it should match the public documentation for the resource provider.",
+          "type": "string"
+        },
+        "operation": {
+          "description": "The localized friendly name for the operation, as it should be shown to the user.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The localized friendly description for the operation, as it should be shown to the user. It should be thorough, yet concise – it will be used in tool tips and detailed views.",
+          "type": "string"
+        }
+      }
+    },
+    "OperationList": {
+      "description": "Pageable list of supported operations.",
+      "properties": {
+        "value": {
+          "description": "List of operations",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Operation"
+          }
+        },
+        "nextLink": {
+          "description": "URI to the next page of operations.",
+          "type": "string"
+        }
+      }
+    },
+    "AcquisitionStatus": {
+      "description": "The status of page blob acquisition.",
+      "type": "string",
+      "enum": [
+        "InProgress",
+        "Success",
+        "Failed"
+      ],
+      "x-ms-enum": {
+        "name": "AcquisitionStatus",
+        "modelAsString": true
+      }
+    },
+    "AcquisitionProperties": {
+      "description": "The Properties of page blob acquisition.",
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "description": "The file path of the page blob file on storage cluster.",
+          "type": "string"
+        },
+        "maximumblobsize": {
+          "description": "The maximum size of the page blob.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "The status of the page blob acquisition.",
+          "$ref": "#/definitions/AcquisitionStatus"
+        },
+        "susbcriptionid": {
+          "description": "ID of the subscription associated with the the page blob.",
+          "type": "string"
+        },
+        "storageaccount": {
+          "description": "The storage account that holds the page blob.",
+          "type": "string"
+        },
+        "container": {
+          "description": "The container associated with the the page blob.",
+          "type": "string"
+        },
+        "blob": {
+          "description": "The name of the page blob.",
+          "type": "string"
+        },
+        "acquisitionid": {
+          "description": "The ID of page blob acquisition.",
+          "type": "string"
+        }
+      }
+    },
+    "Acquisition": {
+      "description": "The acquisition of page blob.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "The properties of page blob acquisition.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/AcquisitionProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "AcquisitionList": {
+      "description": "The list of page blob acquisitions.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Acquisition"
+      }
+    },
+    "BlobServiceWritableSettings": {
+      "description": "Settings of blob service.",
+      "type": "object",
+      "properties": {
+        "blobSvcContainerGcInterval": {
+          "description": "The interval (in seconds) of container garbage collection.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "blobSvcShallowGcInterval": {
+          "description": "The interval (in seconds) of shallow garbage collection.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "blobSvcStreamMapMinContainerOccupancyPercent": {
+          "description": "The minimal container occupancy percent for stream mapping.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/WritableServiceSettings"
+        }
+      ]
+    },
+    "BlobServiceSettings": {
+      "description": "Blob service settings.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/BlobServiceWritableSettings"
+        }
+      ]
+    },
+    "BlobServiceProperties": {
+      "description": "Blob service properties.",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/BlobServiceSettings",
+          "description": "Blob service settings."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Service"
+        }
+      ]
+    },
+    "BlobService": {
+      "description": "The blob service.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Blob service properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/BlobServiceProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "Container": {
+      "description": "Container properties.",
+      "type": "object",
+      "properties": {
+        "sharename": {
+          "description": "The name of the share where the container locates.",
+          "type": "string"
+        },
+        "accountname": {
+          "description": "The name of storage account where the container locates.",
+          "type": "string"
+        },
+        "containername": {
+          "description": "Container name.",
+          "type": "string"
+        },
+        "containerid": {
+          "description": "The container ID.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "accountid": {
+          "description": "The ID of storage account.",
+          "type": "string"
+        },
+        "usedBytesInPrimaryVolume": {
+          "description": "The used space (in Bytes) of the container in the primary volume.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "containerState": {
+          "description": "The current state of the container.",
+          "type": "string"
+        }
+      }
+    },
+    "ContainerList": {
+      "description": "List of containers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Container"
+      }
+    },
+    "MigrationResult": {
+      "description": "The result of the container migration.",
+      "type": "object",
+      "required": [
+        "jobId",
+        "sourceShareName",
+        "storageAccountName",
+        "containerName"
+      ],
+      "properties": {
+        "jobId": {
+          "description": "The migration job ID.",
+          "type": "string"
+        },
+        "sourceShareName": {
+          "description": "The name of source storage share.",
+          "type": "string"
+        },
+        "storageAccountName": {
+          "description": "The storage account name.",
+          "type": "string"
+        },
+        "containerName": {
+          "description": "The name of container to be migrated.",
+          "type": "string"
+        },
+        "destinationShareName": {
+          "description": "The name of destination storage share.",
+          "type": "string"
+        },
+        "migrationStatus": {
+          "description": "The migration status.",
+          "type": "string"
+        },
+        "subEntitiesCompleted": {
+          "description": "The number of entities which have been migrated.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "subEntitiesFailed": {
+          "description": "The number of entities which failed in migration.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "failureReason": {
+          "description": "The migration failure reason.",
+          "type": "string"
+        }
+      }
+    },
+    "MigrationParameters": {
+      "description": "Parameters of container migration job.",
+      "type": "object",
+      "properties": {
+        "storageAccountName": {
+          "type": "string",
+          "description": "The name of storage account where the container locates."
+        },
+        "containerName": {
+          "type": "string",
+          "description": "NThe name of the container to be migrated."
+        },
+        "destinationShareUncPath": {
+          "type": "string",
+          "description": "The UNC path of the destination share for migration."
+        }
+      },
+      "required": [
+        "storageAccountName",
+        "containerName",
+        "destinationShareUncPath"
+      ]
+    },
+    "ShareProperties": {
+      "description": "Storage share properties.",
+      "type": "object",
+      "properties": {
+        "shareName": {
+          "description": "The name of the storage share.",
+          "type": "string"
+        },
+        "uncPath": {
+          "description": "The UNC path to the storage share.",
+          "type": "string"
+        },
+        "totalCapacity": {
+          "description": "The total capacity of the storage share in bytes.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "usedCapacity": {
+          "description": "The used capacity of the storage share in bytes.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "freeCapacity": {
+          "description": "The free space of the storage share in bytes.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "healthStatus": {
+          "description": "The health status of the storage share.",
+          "$ref": "#/definitions/HealthStatus"
+        }
+      }
+    },
+    "Share": {
+      "description": "Storage share.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Storage share properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ShareProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "ShareList": {
+      "description": "List of storage shares.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Share"
+      }
+    },
+    "FarmList": {
+      "description": "Pageable list of storage farms.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of storage farms.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Farm"
+          }
+        },
+        "nextLink": {
+          "description": "URI to the next page.",
+          "type": "string"
+        }
+      }
+    },
+    "FarmCreationProperties": {
+      "description": "Storage farm properties.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Storage farm properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/SettingAccessString"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "Farm": {
+      "description": "Storage farm.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Storage farm properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/FarmProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "FarmSettings": {
+      "description": "Storage farm settings.",
+      "type": "object",
+      "properties": {
+        "settingsPollingIntervalInSecond": {
+          "description": "The polling interval (in second).",
+          "type": "integer",
+          "format": "int32"
+        },
+        "retentionPeriodForDeletedStorageAccountsInDays": {
+          "description": "The retention period (in days) for deleted storage account.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "hostStyleHttpPort": {
+          "description": "Host style HTTP port.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "hostStyleHttpsPort": {
+          "description": "Host style HTTPs port.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "corsAllowedOriginsList": {
+          "description": "The list of allowed origins.",
+          "type": "string"
+        },
+        "dataCenterUriHostSuffixes": {
+          "description": "The suffixes of URI of hosts in data center.",
+          "type": "string"
+        },
+        "bandwidthThrottleIsEnabled": {
+          "description": "Switch of bandwidth throttle enablement.",
+          "type": "boolean"
+        },
+        "usageCollectionIntervalInSeconds": {
+          "description": "Interval (in seconds) of storage usage collection.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "feedbackRefreshIntervalInSeconds": {
+          "description": "Interval (in seconds) of feedback refresh.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfAccountsToSync": {
+          "description": "Number of accounts to sync.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "defaultThrottleProbabilityDecayIntervalInSeconds": {
+          "description": "Interval (in seconds) of default throttle probability decay.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "gracePeriodForFullThrottlingInRefreshIntervals": {
+          "description": "Grace period for full throttling in refresh intervals.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "gracePeriodMaxThrottleProbability": {
+          "description": "Maximum probability of throttle in grace period.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallRequestThresholdInTps": {
+          "description": "Overall request threshold (in TPS).",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultRequestThresholdInTps": {
+          "description": "Default request threshold (in TPS).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumRequestThresholdInTps": {
+          "description": "Minimum request threshold (in TPS).",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForTps": {
+          "description": "Tolerance factor for TPS.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallIngressThresholdInGbps": {
+          "description": "Overall ingress threshold (in Gbps)",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultIngressThresholdInGbps": {
+          "description": "Default ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumIngressThresholdInGbps": {
+          "description": "Minimum ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForIngress": {
+          "description": "Tolerance factor for ingress.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallIntranetIngressThresholdInGbps": {
+          "description": "Overall Intranet ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultIntranetIngressThresholdInGbps": {
+          "description": "Default Intranet ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumIntranetIngressThresholdInGbps": {
+          "description": "Minimum Intranet ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForIntranetIngress": {
+          "description": "Tolerance factor for Intranet ingress.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallEgressThresholdInGbps": {
+          "description": "Overall egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultEgressThresholdInGbps": {
+          "description": "Default egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumEgressThresholdInGbps": {
+          "description": "Minimum egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForEgress": {
+          "description": "Tolerance factor for egress.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallIntranetEgressThresholdInGbps": {
+          "description": "Overall Intranet egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultIntranetEgressThresholdInGbps": {
+          "description": "Default Intranet egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumIntranetEgressThresholdInGbps": {
+          "description": "Minimum Intranet egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForIntranetEgress": {
+          "description": "Tolerance factor for Intranet egress.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallTotalIngressThresholdInGbps": {
+          "description": "Overall total ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultTotalIngressThresholdInGbps": {
+          "description": "Default total ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumTotalIngressThresholdInGbps": {
+          "description": "Minimum total ingress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForTotalIngress": {
+          "description": "Tolerance factor for total ingress.",
+          "type": "number",
+          "format": "float"
+        },
+        "overallTotalEgressThresholdInGbps": {
+          "description": "Overall total egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "defaultTotalEgressThresholdInGbps": {
+          "description": "Default total egress threshold (in Gbps).",
+          "type": "number",
+          "format": "float"
+        },
+        "minimumTotalEgressThresholdInGbps": {
+          "description": "Minimum total egress threshold (in Gbp",
+          "type": "number",
+          "format": "float"
+        },
+        "toleranceFactorForTotalEgress": {
+          "description": "Tolerance factor for total egress.",
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "FarmPropertiesBase": {
+      "description": "Storage farm properties base object.",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "The properties of storage farm.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/FarmSettings"
+        }
+      }
+    },
+    "FarmProperties": {
+      "description": "The properties of storage farm.",
+      "type": "object",
+      "properties": {
+        "settingsStore": {
+          "description": "The settings of storage farm.",
+          "type": "string"
+        },
+        "healthStatus": {
+          "description": "The health status of storage farm.",
+          "$ref": "#/definitions/HealthStatus"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/FarmPropertiesBase"
+        }
+      ]
+    },
+    "SettingAccessString": {
+      "description": "Setting access string.",
+      "type": "object",
+      "properties": {
+        "settingAccessString": {
+          "description": "Setting access string.",
+          "type": "string"
+        }
+      }
+    },
+    "QueueServiceProperties": {
+      "description": "Queue service properties.",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Queue service settings.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/WritableServiceSettings"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Service"
+        }
+      ]
+    },
+    "QueueService": {
+      "description": "Queue service.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Queue service properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/QueueServiceProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "StorageQuota": {
+      "description": "Storage quota.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Storage quota properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/StorageQuotaProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "StorageQuotaProperties": {
+      "description": "Storage quota properties.",
+      "type": "object",
+      "properties": {
+        "numberOfStorageAccounts": {
+          "description": "Total number of storage accounts.",
+          "type": "integer",
+          "format": "int32",
+          "default": 20
+        },
+        "capacityInGb": {
+          "description": "Maxium capacity (GB).",
+          "type": "integer",
+          "format": "int32",
+          "default": 500
+        }
+      }
+    },
+    "StorageCreationProperties": {
+      "description": "Properties of the storage quota being created or updated.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Storage quota properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/StorageQuotaProperties"
+        }
+      }
+    },
+    "StorageQuotaList": {
+      "description": "Pageable list of storage quotas.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of storage quotas.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StorageQuota"
+          }
+        },
+        "nextLink": {
+          "description": "URI to the next page.",
+          "type": "string"
+        }
+      }
+    },
+    "StorageAccountState": {
+      "readOnly": true,
+      "description": "Storage account state.",
+      "type": "string",
+      "enum": [
+        "PreCreate",
+        "Created",
+        "Suspended"
+      ],
+      "x-ms-enum": {
+        "name": "StorageAccountState",
+        "modelAsString": true
+      }
+    },
+    "StorageAccountType": {
+      "description": "Storage account type.",
+      "type": "string",
+      "enum": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ],
+      "x-ms-enum": {
+        "name": "StorageAccountType",
+        "modelAsString": true
+      }
+    },
+    "LocationStatus": {
+      "readOnly": true,
+      "type": "string",
+      "description": "Gets the status indicating whether the primary location of the storage account is available or unavailable.",
+      "enum": [
+        "available",
+        "unavailable"
+      ],
+      "x-ms-enum": {
+        "name": "LocationStatus",
+        "modelAsString": true
+      }
+    },
+    "StorageAccountOperation": {
+      "readOnly": true,
+      "description": "The permissions of storage account in WAC.",
+      "type": "string",
+      "enum": [
+        "None",
+        "Create",
+        "Update",
+        "Suspend",
+        "Delete",
+        "Undelete"
+      ],
+      "x-ms-enum": {
+        "name": "StorageAccountOperation",
+        "modelAsString": true
+      }
+    },
+    "StorageAccountStatus": {
+      "description": "The state of storage account in WAC.",
+      "type": "string",
+      "enum": [
+        "Active",
+        "Deleted",
+        "OutOfRetentionPeriod",
+        "Recycled"
+      ],
+      "x-ms-enum": {
+        "name": "StorageAccountStatus",
+        "modelAsString": true
+      }
+    },
+    "WacAccountPermissions": {
+      "description": "Current operation being performed on Storage Account",
+      "type": "string",
+      "enum": [
+        "Empty",
+        "None",
+        "Read",
+        "Delete",
+        "Write",
+        "Full"
+      ],
+      "x-ms-enum": {
+        "name": "WacAccountPermissions",
+        "modelAsString": true
+      }
+    },
+    "WacAccountStates": {
+      "description": "Current operation being performed on Storage Account",
+      "type": "string",
+      "enum": [
+        "None",
+        "Active",
+        "Deleted",
+        "AboveQuota",
+        "Suspended",
+        "All"
+      ],
+      "x-ms-enum": {
+        "name": "WacAccountStates",
+        "modelAsString": true
+      }
+    },
+    "StorageAccountProperties": {
+      "description": "Properties of a storage account.",
+      "type": "object",
+      "properties": {
+        "tenantViewId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Resource URI of storage account from tenant view."
+        },
+        "accountType": {
+          "readOnly": true,
+          "description": "Storage account type.",
+          "$ref": "#/definitions/StorageAccountType"
+        },
+        "provisioningState": {
+          "description": "The provisioning state of storage account.",
+          "$ref": "#/definitions/StorageAccountState"
+        },
+        "primaryEndpoints": {
+          "description": "The URLs that are used to perform a retrieval of a public blob, queue, or table object.",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "readOnly": true
+        },
+        "creationTime": {
+          "description": "The creation date and time of storage account in UTC.",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "alternateName": {
+          "description": "Alternative storage account name being used during undelete operation.",
+          "type": "string"
+        },
+        "primaryLocation": {
+          "description": "The primary location for the storage account.",
+          "type": "string",
+          "readOnly": true
+        },
+        "statusOfPrimary": {
+          "description": "The status of primary location of storage account.",
+          "$ref": "#/definitions/LocationStatus"
+        },
+        "tenantSubscriptionId": {
+          "description": "Subscription ID of the subscription under which the storage account locates.",
+          "type": "string",
+          "readOnly": true
+        },
+        "tenantStorageAccountName": {
+          "description": "Storage account name from tenant view.",
+          "type": "string"
+        },
+        "tenantResourceGroupName": {
+          "description": "The name of resource group under which the storage account locates.",
+          "type": "string"
+        },
+        "currentOperation": {
+          "description": "Current operation being performed on Storage Account",
+          "$ref": "#/definitions/StorageAccountOperation",
+          "readOnly": true
+        },
+        "customDomain": {
+          "description": "The custom domain the user assigned to this storage account.",
+          "type": "string",
+          "readOnly": true
+        },
+        "acquisitionOperationCount": {
+          "description": "The count of acquisitions in the storage account.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "deletedTime": {
+          "description": "The date-time when the storage account was deleted.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "accountStatus": {
+          "$ref": "#/definitions/StorageAccountStatus",
+          "description": "The status of storage account."
+        },
+        "recoveredTime": {
+          "description": "The time when the storage account is undeleted.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "recycledTime": {
+          "description": "The time when the storage account is physically deleted.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "permissions": {
+          "description": "The permissions on the storage account.",
+          "$ref": "#/definitions/WacAccountPermissions",
+          "readOnly": true
+        },
+        "accountId": {
+          "description": "Internal storage account ID, which is not visible to tenant.",
+          "type": "string",
+          "readOnly": true
+        },
+        "wacInternalState": {
+          "description": "The internal state of storage account in WAC.",
+          "$ref": "#/definitions/WacAccountStates",
+          "readOnly": true
+        },
+        "resourceAdminApiVersion": {
+          "description": "Storage admin REST API version.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "StorageAccount": {
+      "description": "Properties of the storage account.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Properties of the storage account.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/StorageAccountProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "StorageAccountList": {
+      "description": "Pageable list of storage accounts.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of storage accounts.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StorageAccount"
+          }
+        },
+        "nextLink": {
+          "description": "URI to the next page.",
+          "type": "string"
+        }
+      }
+    },
+    "TableService": {
+      "description": "Table service.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Table service properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/TableServiceProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "TableServiceProperties": {
+      "description": "Table service properties.",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Table service settings.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/WritableServiceSettings"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Service"
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "ShareNameParameter": {
+      "description": "Share name.",
+      "name": "shareName",
+      "type": "string",
+      "in": "path",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "FilterParameter": {
+      "description": "Filter string",
+      "name": "$filter",
+      "type": "string",
+      "in": "query",
+      "x-ms-parameter-location": "method"
+    },
+    "LocationParameter": {
+      "description": "Resource location.",
+      "name": "location",
+      "type": "string",
+      "in": "path",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "SubscriptionIdParameter": {
+      "description": "Subscription Id.",
+      "name": "subscriptionId",
+      "type": "string",
+      "in": "path",
+      "required": true
+    },
+    "FarmIdParameter": {
+      "description": "Farm Id.",
+      "type": "string",
+      "name": "farmId",
+      "in": "path",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "ApiVersionParameter": {
+      "description": "REST Api Version.",
+      "name": "api-version",
+      "type": "string",
+      "in": "query",
+      "required": true
+    },
+    "ResourceGroupNameParameter": {
+      "description": "Resource group name.",
+      "name": "resourceGroupName",
+      "type": "string",
+      "in": "path",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "OperationIdParameter": {
+      "description": "Operation Id.",
+      "name": "operationId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "MigrationIntentParameter": {
+      "description": "The container migration intent.",
+      "name": "Intent",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "MaxCountParameter": {
+      "description": "The max count of containers.",
+      "name": "MaxCount",
+      "in": "query",
+      "type": "integer",
+      "format": "int32",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "StartIndexParameter": {
+      "description": "The start index of get containers.",
+      "name": "StartIndex",
+      "in": "query",
+      "type": "integer",
+      "format": "int32",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "MigrationParameterParameter": {
+      "description": "The parameters of container migration job.",
+      "name": "migrationParameters",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/MigrationParameters"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "FarmParameters": {
+      "name": "parameters",
+      "description": "Parameters used to create a farm",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/FarmCreationProperties"
+      }
+    },
+    "QuotaNameParameter": {
+      "description": "The name of the storage quota.",
+      "name": "quotaName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "StorgeQuotaParameters": {
+      "description": "The properties of quota being created or updated.",
+      "name": "parameters",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/StorageCreationProperties"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "AccountIdParameter": {
+      "description": "Internal storage account ID, which is not visible to tenant.",
+      "name": "accountId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "SummaryParameter": {
+      "description": "Switch for wheter summary or detailed information is returned.",
+      "name": "summary",
+      "in": "query",
+      "required": true,
+      "type": "boolean",
+      "x-ms-parameter-location": "method"
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Authorization uses an Azure Active Directory OAuth2 flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ]
+}

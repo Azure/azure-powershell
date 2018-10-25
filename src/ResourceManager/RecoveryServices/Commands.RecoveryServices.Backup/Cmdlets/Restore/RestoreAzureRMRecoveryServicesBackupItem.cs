@@ -19,18 +19,28 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Restores an item using the recovery point provided within the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
-        OutputType(typeof(JobBase))]
-    public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
+    public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
+        /// <summary>
+        /// Location of the Recovery Services Vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault.",
+            ValueFromPipeline = true)]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        [ValidateNotNullOrEmpty]
+        public string VaultLocation { get; set; }
+
         /// <summary>
         /// Recovery point of the item to be restored
         /// </summary>
@@ -56,6 +66,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string StorageAccountResourceGroupName { get; set; }
 
         /// <summary>
+        /// The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.TargetResourceGroupName)]
+        [ValidateNotNullOrEmpty]
+        public string TargetResourceGroupName { get; set; }
+
+        /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
@@ -67,25 +85,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 GenericResource storageAccountResource = GetStorageAccountResource();
                 WriteDebug(string.Format("StorageId = {0}", storageAccountResource.Id));
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(
-                    new Dictionary<Enum, object>()
-                {
-                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                    {RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id},
-                    {RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location},
-                    {RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type},
-                    {RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent}
-                }, ServiceClientAdapter);
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(VaultParams.VaultName, vaultName);
+                providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
+                providerParameters.Add(VaultParams.VaultLocation, VaultLocation);
+                providerParameters.Add(RestoreBackupItemParams.RecoveryPoint, RecoveryPoint);
+                providerParameters.Add(RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id);
+                providerParameters.Add(RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location);
+                providerParameters.Add(RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type);
+                providerParameters.Add(RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent);
 
+                if (TargetResourceGroupName != null)
+                {
+                    providerParameters.Add(RestoreBackupItemParams.TargetResourceGroupName, TargetResourceGroupName);
+                }
+
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
 
                 WriteDebug(string.Format("Restore submitted"));
-                HandleCreatedJob(jobResponse, Resources.RestoreOperation);
+                HandleCreatedJob(
+                    jobResponse,
+                    Resources.RestoreOperation,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
             }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
         }
 

@@ -14,6 +14,13 @@
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    public enum VaultParams
+    {
+        VaultName,
+        ResourceGroupName,
+        VaultLocation,
+    }
+
     public enum ContainerParams
     {
         Vault,
@@ -46,6 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         StorageAccountId,
         StorageAccountLocation,
         StorageAccountType,
+        TargetResourceGroupName,
         OsaOption
     }
 
@@ -76,5 +84,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         DeleteBackupData,
         BackupManagementType,
         ExpiryDateTimeUTC,
+    }
+
+    public enum ProtectionCheckParams
+    {
+        Name,
+        ResourceGroupName,
     }
 }

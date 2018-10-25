@@ -22,16 +22,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
     public class LocationTests
     {
+        public XunitTracingInterceptor _logger;
+
         public LocationTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureLocation()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AzureLocation");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureLocation");
         }
     }
 }

@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
     public class GetAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(

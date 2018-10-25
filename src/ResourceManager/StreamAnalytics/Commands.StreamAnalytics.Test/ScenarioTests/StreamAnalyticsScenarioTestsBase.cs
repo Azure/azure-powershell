@@ -17,6 +17,7 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -57,8 +58,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
                 authorizationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            helper.TracingInterceptor = logger;
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
             Dictionary<string, string> d = new Dictionary<string, string>();

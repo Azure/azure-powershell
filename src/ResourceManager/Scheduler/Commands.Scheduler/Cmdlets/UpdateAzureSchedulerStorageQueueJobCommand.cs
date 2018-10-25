@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// <summary>
     /// Update existing storage queue job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSchedulerStorageQueueJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SchedulerStorageQueueJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
     public class UpdateAzureSchedulerStorageQueueJobCommand : JobBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]

@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineSize, DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSize", DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
     [OutputType(typeof(PSVirtualMachineSize))]
     public class GetAzureVMSizeCommand : VirtualMachineSizeBaseCmdlet
     {

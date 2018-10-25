@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: F94415DA-1A4A-4D37-A626-1EDF5D1EFE74
@@ -39,7 +39,7 @@ This command gets a workspace named MyWorkspace in the resource group named Cont
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,9 +54,9 @@ Accept wildcard characters: False
 Specifies the workspace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -69,9 +69,9 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -85,12 +85,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace]
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 

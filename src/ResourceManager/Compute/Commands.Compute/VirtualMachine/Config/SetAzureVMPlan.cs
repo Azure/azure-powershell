@@ -19,11 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachinePlan),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMPlan"),OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMPlanCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

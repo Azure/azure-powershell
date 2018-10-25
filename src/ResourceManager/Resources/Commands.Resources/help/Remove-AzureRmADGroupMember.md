@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadgroupmember
@@ -81,7 +81,7 @@ Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes i
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The display name of the group to remove the member(s) from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The object representation of the group to remove the member from.
 
 ```yaml
-Type: PSADGroup
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The object id of the group to remove the member from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 The object id of the member.
 
 ```yaml
-Type: Guid[]
+Type: System.Guid[]
 Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupObjectId
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The UPN of the member(s) to remove.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
@@ -171,11 +171,11 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -202,7 +202,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -219,8 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
-
-This cmdlet accepts a PSADGroup object from the pipeline. You can pipe the output of Get-AzureRmADGroup to this cmdlet to get members of the provided group.
+Parameters: GroupObject (ByValue)
 
 ## OUTPUTS
 

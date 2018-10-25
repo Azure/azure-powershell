@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 9B0BBBB4-A7A0-4243-9264-362A00F5B399
@@ -58,9 +58,9 @@ This command gets the hybrid runbook workers in the hybrid runbook worker group 
 Specifies the name of an Automation account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the hybrid runbook worker group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: Group
 
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -119,14 +119,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'Name' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: Name (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker
+### Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup
 
 ## NOTES
 
 ## RELATED LINKS
-

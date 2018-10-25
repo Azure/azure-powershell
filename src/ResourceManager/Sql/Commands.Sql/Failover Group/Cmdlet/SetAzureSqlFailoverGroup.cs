@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup",ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

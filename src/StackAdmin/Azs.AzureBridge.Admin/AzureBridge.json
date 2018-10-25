@@ -1,0 +1,1058 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2016-01-01",
+    "title": "AzureBridgeAdminClient",
+    "description": "AzureBridge Admin Client"
+  },
+  "host": "adminmanagement.local.azurestack.external",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/downloadedProducts": {
+      "get": {
+        "x-ms-examples": {
+          "Get a list of downloaded products.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of downloaded products.",
+        "tags": [
+          "DownloadedProducts"
+        ],
+        "operationId": "DownloadedProducts_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DownloadedProductResourcesPage"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/downloadedProducts/{productName}": {
+      "get": {
+        "x-ms-examples": {
+          "Gets the specified downloaded product.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a downloaded product.",
+        "tags": [
+          "DownloadedProducts"
+        ],
+        "operationId": "DownloadedProducts_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ProductNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DownloadedProductResource"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Deletes the specified downloaded product.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a downloaded product.",
+        "tags": [
+          "DownloadedProducts"
+        ],
+        "operationId": "DownloadedProducts_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ProductNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "schema": {
+              "$ref": "#/definitions/DownloadedProductResource"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/products": {
+      "get": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Return product name.",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "Products_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductResourcesPage"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/products/{productName}": {
+      "get": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Return product name.",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "Products_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ProductNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductResource"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/default/products/{productName}/download": {
+      "post": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Downloads a product from azure marketplace.",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "Products_Download",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ProductNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations": {
+      "get": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns the list of activations.",
+        "tags": [
+          "Activations"
+        ],
+        "operationId": "Activations_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivationResourcesPage"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}": {
+      "get": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns activation name.",
+        "tags": [
+          "Activations"
+        ],
+        "operationId": "Activations_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivationResource"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new activation.",
+        "tags": [
+          "Activations"
+        ],
+        "operationId": "Activations_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivationResource"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Return product name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an activation.",
+        "tags": [
+          "Activations"
+        ],
+        "operationId": "Activations_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ActivationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivationResource"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "description": "Base Resource Object",
+      "type": "object",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "description": "URI of the resource.",
+          "type": "string"
+        },
+        "name": {
+          "readOnly": true,
+          "description": "Name of the resource.",
+          "type": "string"
+        },
+        "type": {
+          "readOnly": true,
+          "description": "Type of resource.",
+          "type": "string"
+        },
+        "location": {
+          "readOnly": true,
+          "description": "Location where resource is location.",
+          "type": "string"
+        },
+        "tags": {
+          "readOnly": true,
+          "description": "List of key value pairs.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "ProvisioningState": {
+      "description": "The provisioning state of the resource.",
+      "enum": [
+        "Stopped",
+        "Starting",
+        "Running",
+        "Stopping"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "ProvisioningState"
+      }
+    },
+    "ProductBase": {
+      "description": "Base object for all product classes.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "description": "Name displayed for the product.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the product.",
+          "type": "string"
+        },
+        "publisherDisplayName": {
+          "description": "Name of publisher.",
+          "type": "string"
+        },
+        "publisherIdentifier": {
+          "description": "Publisher identifier.",
+          "type": "string"
+        },
+        "offer": {
+          "description": "Offer name.",
+          "type": "string"
+        },
+        "offerVersion": {
+          "description": "Offer version.",
+          "type": "string"
+        },
+        "sku": {
+          "description": "Product SKU.",
+          "type": "string"
+        },
+        "billingPartNumber": {
+          "description": "Billing part number.",
+          "type": "string"
+        },
+        "galleryItemIdentity": {
+          "description": "Gallery item identity.",
+          "type": "string"
+        },
+        "iconUris": {
+          "description": "Information about gallery icons.",
+          "$ref": "#/definitions/GalleryIcons"
+        },
+        "payloadLength": {
+          "description": "Size in bytes.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "productKind": {
+          "description": "The kind. E.g. VirtualMachineProductProperties.ProductKind or WebApp, SolutionTemplate.",
+          "type": "string"
+        },
+        "productProperties": {
+          "description": "the product properties. At the moment only VirtualMachineProductProperties is allowed.",
+          "$ref": "#/definitions/ProductProperties"
+        }
+      }
+    },
+    "GalleryIcons": {
+      "description": "Icons for the gallery items.",
+      "type": "object",
+      "properties": {
+        "hero": {
+          "description": "The hero (815x290) icon relative path.",
+          "type": "string"
+        },
+        "large": {
+          "description": "The large (115x115) icon relative path.",
+          "type": "string"
+        },
+        "wide": {
+          "description": "The wide (255x115) icon relative path.",
+          "type": "string"
+        },
+        "medium": {
+          "description": "The medium (90x90) icon relative path.",
+          "type": "string"
+        },
+        "small": {
+          "description": "The small (40x40) icon relative path.",
+          "type": "string"
+        }
+      }
+    },
+    "ProductProperties": {
+      "description": "Additional properties of the product",
+      "type": "object",
+      "properties": {
+        "version": {
+          "description": "The version of the product",
+          "type": "string"
+        }
+      }
+    },
+    "ProductLink": {
+      "description": "Link to a product.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "description": "Displayed name of product.",
+          "type": "string"
+        },
+        "uri": {
+          "description": "URI to product.",
+          "type": "string"
+        }
+      }
+    },
+    "ProductLinks": {
+      "description": "List of product links.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductLink"
+      }
+    },
+    "DownloadedProductResource": {
+      "description": "Downloaded product resource.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties of the resource.",
+          "$ref": "#/definitions/DownloadedProduct"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "DownloadedProduct": {
+      "description": "Properties for aggregate usage.",
+      "type": "object",
+      "properties": {
+        "vmExtensionType": {
+          "description": "Extension type of the VM.",
+          "type": "string"
+        },
+        "links": {
+          "description": "Gallery item identity.",
+          "$ref": "#/definitions/ProductLinks"
+        },
+        "legalTerms": {
+          "description": "Legal terms for the product.",
+          "type": "string"
+        },
+        "privacyPolicy": {
+          "description": "Privacy policy of the product.",
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ProductBase"
+        }
+      ]
+    },
+    "DownloadedProductResourcesPage": {
+      "description": "Holds an array of downloaded products and the URI to the next page.",
+      "properties": {
+        "value": {
+          "description": "Array of downloaded products.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DownloadedProductResource"
+          }
+        },
+        "nextLink": {
+          "description": "URI to next page.",
+          "type": "string"
+        }
+      }
+    },
+    "ProductResource": {
+      "description": "Product resource.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties of the resource.",
+          "$ref": "#/definitions/Product"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "Product": {
+      "description": "Properties for a product.",
+      "type": "object",
+      "properties": {
+        "vmExtensionType": {
+          "description": "Extension type of the VM.",
+          "type": "string"
+        },
+        "links": {
+          "description": "Gallery item identity.",
+          "$ref": "#/definitions/ProductLinks"
+        },
+        "legalTerms": {
+          "description": "Legal terms for the product.",
+          "type": "string"
+        },
+        "privacyPolicy": {
+          "description": "Privacy policy of the product.",
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ProductBase"
+        }
+      ]
+    },
+    "ProductResourcesPage": {
+      "description": "Holds an array of products and the next link.",
+      "properties": {
+        "value": {
+          "description": "List of products.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductResource"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URI to the next page."
+        }
+      }
+    },
+    "ActivationResource": {
+      "description": "Published product resource.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties of the resource.",
+          "$ref": "#/definitions/Activation"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "Activation": {
+      "description": "Holds properties related to activation.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "description": "Name displayed for the product.",
+          "type": "string"
+        },
+        "azureRegistrationResourceIdentifier": {
+          "description": "Azure registration resource identifier.",
+          "type": "string"
+        },
+        "provisioningState": {
+          "description": "Provisioning state of the resource.",
+          "$ref": "#/definitions/ProvisioningState"
+        },
+        "expiration": {
+          "description": "The activation expiration.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "marketplaceSyndicationEnabled": {
+          "description": "Value indicating whether the marketplace syndication feature is enabled.",
+          "type": "boolean"
+        },
+        "usageReportingEnabled": {
+          "description": "Value indicating whether the usage reporting feature is enabled.",
+          "type": "boolean"
+        }
+      }
+    },
+    "ActivationResourcesPage": {
+      "description": "Holds an array of activation resources and the next link.",
+      "properties": {
+        "value": {
+          "description": "List of activation resources.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActivationResource"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URI to the next page."
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+      "required": true,
+      "type": "string"
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "description": "Client Api Version.",
+      "required": true,
+      "type": "string",
+      "default": "2016-01-01"
+    },
+    "ActivationNameParameter": {
+      "name": "activationName",
+      "in": "path",
+      "description": "Name of the activation.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ProductNameParameter": {
+      "name": "productName",
+      "in": "path",
+      "description": "Name of the product.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ResourceGroupParameter": {
+      "description": "The resource group the resource is located under.",
+      "name": "resourceGroup",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "RegistrationNameParameter": {
+      "name": "registrationName",
+      "in": "path",
+      "description": "Name of the registration.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ActivationParameter": {
+      "name": "activation",
+      "in": "body",
+      "description": "new activation.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/Activation"
+      },
+      "x-ms-parameter-location": "method"
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Authorization uses an Azure Active Directory OAuth2 flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ]
+}

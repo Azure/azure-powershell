@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 15CAC050-F2E9-4872-88E7-516A6D194FAB
@@ -45,7 +45,7 @@ The command stores the data in specified local path.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Indicates that the virtual machine runs the Linux operating system.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: LinuxParamSet
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Specifies the local path for the boot diagnostics data.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsParamSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LinuxParamSet
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine for which this cmdlet gets diagnostics data.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VMName
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Indicates that the virtual machine runs the Windows operating system.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: WindowsParamSet
 Aliases:
 
@@ -148,8 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

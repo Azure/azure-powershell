@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/update-azurermadserviceprincipal
@@ -70,7 +70,7 @@ Gets the service principal with object id '784136ca-3ae2-4fdd-a388-89d793e7c780'
 The application id of the service principal to update.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: SpApplicationIdWithDisplayNameParameterSet
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 The display name for the service principal.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SpObjectIdWithDisplayNameParameterSet, SPNWithDisplayNameParameterSet
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputObjectWithDisplayNameParameterSet
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The homepage for the service principal.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The identifier URI(s) for the service principal.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The object representing the service principal to update.
 
 ```yaml
-Type: PSADServicePrincipal
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: InputObjectWithDisplayNameParameterSet
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 The key credential(s) for the service principal.
 
 ```yaml
-Type: KeyCredential[]
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.Models.KeyCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 The object id of the service principal to update.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: SpObjectIdWithDisplayNameParameterSet
 Aliases: ServicePrincipalObjectId
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 The password credential(s) for the service principal.
 
 ```yaml
-Type: PasswordCredential[]
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.Models.PasswordCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 The SPN of the service principal to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SPNWithDisplayNameParameterSet
 Aliases: SPN
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -248,7 +248,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -264,9 +264,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### System.Guid
 
-This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to update the provided service principal.
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

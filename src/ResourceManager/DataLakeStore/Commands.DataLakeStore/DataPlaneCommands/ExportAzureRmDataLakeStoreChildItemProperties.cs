@@ -3,7 +3,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Export-AdlStoreChildItemProperties")]
     public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             DataLakeStoreFileSystemClient.GetFileProperties(Account, Path.TransformedPath, GetAcl, OutputPath,
-                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFile, HideConsistentAcl, MaximumDepth);
+                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFile, HideConsistentAcl, MaximumDepth, this, CmdletCancellationToken);
             if (PassThru)
             {
                 WriteObject(true);

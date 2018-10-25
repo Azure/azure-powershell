@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 055526FA-5DB7-4F1D-81B3-5D9753283FE2
@@ -36,9 +36,9 @@ This command regenerates the primary key for the Azure Automation account named 
 Specifies the name of an Automation account for which this cmdlet regenerates keys.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,14 +65,13 @@ Accept wildcard characters: False
 ### -KeyType
 Specifies the type of the agent registration key.
 Valid values are: 
-
 - Primary 
 - Secondary
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Primary, Secondary
 
 Required: True
@@ -87,9 +86,9 @@ Specifies the name of a resource group.
 This cmdlet regenerates keys for an Automation account in the resource group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -103,8 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
@@ -113,4 +111,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

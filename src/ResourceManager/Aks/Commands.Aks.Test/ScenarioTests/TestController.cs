@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -12,6 +12,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Reflection;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
@@ -34,17 +35,20 @@ namespace Commands.Aks.Test.ScenarioTests
 
         public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>
                 {
-                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"}
+                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"},
+                    {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
                 };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");

@@ -45,7 +45,7 @@ Identifier of the API Version Set.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandedParameter
 Aliases:
 
@@ -61,7 +61,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: ExpandedParameter
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Instance of PsApiManagementApiVersionSet. This parameter is required.
 
 ```yaml
-Type: PsApiManagementApiVersionSet
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -107,7 +107,7 @@ If specified will write true in case operation succeeds.
 This parameter is optional.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -138,7 +138,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -155,8 +155,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-System.String
-System.Management.Automation.SwitchParameter
+Parameters: Context (ByValue)
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

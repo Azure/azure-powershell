@@ -15,15 +15,15 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Gets detailed information about a particular job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails",
-        DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
-    public class GetAzureRmRecoveryServicesBackupJobDetails : RecoveryServicesBackupCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJobDetails",DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
+    public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -50,6 +50,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 if (ParameterSetName == JobFilterSet)
                 {
                     JobId = Job.JobId;
@@ -57,7 +61,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug("Fetching job with ID: " + JobId);
 
-                var adapterResponse = ServiceClientAdapter.GetJob(JobId);
+                var adapterResponse = ServiceClientAdapter.GetJob(
+                    JobId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));
             });
         }

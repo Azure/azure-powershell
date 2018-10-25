@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Lists all the connected ISCSI initiators
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceConnectedInitiator"), OutputType(typeof(List<IscsiConnection>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceConnectedInitiator"), OutputType(typeof(IscsiConnection))]
     public class GetAzureStorSimpleDeviceConnectedInitiator : StorSimpleCmdletBase
     {
         [Alias("ID")]

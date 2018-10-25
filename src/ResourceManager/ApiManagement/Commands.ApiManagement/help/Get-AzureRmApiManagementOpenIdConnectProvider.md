@@ -66,7 +66,7 @@ This command gets the provider named Contoso OpenID Connect Provider.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,7 +97,7 @@ Specifies a friendly name of a provider.
 If you specify a name, this cmdlet gets that provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -113,7 +113,7 @@ Specifies an ID of the provider that this cmdlet removes.
 If you specify an ID, this cmdlet gets that provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByOpenIdConnectProviderId
 Aliases:
 
@@ -129,16 +129,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider
-The detail of the OpenId connect Provider configured in API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider>
-The list of OpenId Connect Providers configured in API Management service.
 
 ## NOTES
 

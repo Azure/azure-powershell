@@ -61,7 +61,7 @@ Get's the Next Hop for outbound communication from the primary Network Interface
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Destination IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByLocation
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases: Name
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Source IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Target network interface Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 The target virtual machine ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
+Parameters: NetworkWatcher (ByValue)
+
+### System.String
+Parameters: NetworkWatcherName (ByValue)
 
 ## OUTPUTS
 

@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.TrafficManager
 ms.assetid: 2129C457-592B-484C-A148-828BFD5895D4
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/remove-azurermtrafficmanagerendpoint
 schema: 2.0.0
@@ -51,7 +51,7 @@ This command removes the Azure endpoint named contoso from the profile named Con
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,9 +81,9 @@ Accept wildcard characters: False
 Specifies the name of the Traffic Manager endpoint that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,9 +97,9 @@ Specifies the name of a Traffic Manager profile from which this cmdlet removes a
 To obtain a profile, use the Get-AzureRmTrafficManagerProfile cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,9 +113,9 @@ Specifies the name of a resource group.
 This cmdlet removes a Traffic Manager endpoint from a Traffic Manager profile in the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,9 +129,9 @@ Specifies the Traffic Manager endpoint that this cmdlet removes.
 To obtain a **TrafficManagerEndpoint** object, use the Get-AzureRmTrafficManagerEndpoint cmdlet.
 
 ```yaml
-Type: TrafficManagerEndpoint
+Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -149,9 +149,9 @@ Valid values are:
 - NestedEndpoints
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 Accepted values: AzureEndpoints, ExternalEndpoints, NestedEndpoints
 
 Required: True
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +181,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

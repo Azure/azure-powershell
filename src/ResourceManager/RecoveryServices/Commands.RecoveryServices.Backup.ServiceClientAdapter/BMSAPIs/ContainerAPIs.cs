@@ -31,12 +31,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>List of protection containers</returns>
         public IEnumerable<ProtectionContainerResource> ListContainers(
             ODataQuery<BMSContainerQueryObject> queryFilter,
-            string skipToken = default(string))
+            string skipToken = default(string),
+            string vaultName = null,
+            string resourceGroupName = null)
         {
             Func<RestAzureNS.IPage<ProtectionContainerResource>> listAsync =
                 () => BmsAdapter.Client.BackupProtectionContainers.ListWithHttpMessagesAsync(
-                    BmsAdapter.GetResourceName(),
-                    BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
@@ -54,13 +56,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="queryParams">Query parameters</param>
         /// <returns>List of backup engines</returns>
         public IEnumerable<BackupEngineBaseResource> ListBackupEngines(
-            ODataQuery<BMSBackupEnginesQueryObject> queryParams)
+            ODataQuery<BMSBackupEnginesQueryObject> queryParams,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
             queryParams.Top = 200;
             Func<RestAzureNS.IPage<BackupEngineBaseResource>> listAsync =
                 () => BmsAdapter.Client.BackupEngines.ListWithHttpMessagesAsync(
-                    BmsAdapter.GetResourceName(),
-                    BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     queryParams,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
@@ -76,13 +80,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns>Response of the job created in the service</returns>
-        public RestAzureNS.AzureOperationResponse RefreshContainers()
+        public RestAzureNS.AzureOperationResponse RefreshContainers(
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
             var response = BmsAdapter.Client.ProtectionContainers.RefreshWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
             return response;
@@ -92,14 +96,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Triggers unregister of a container in service
         /// </summary>
         /// <param name="containerName">Name of the container to unregister</param>
-        public RestAzureNS.AzureOperationResponse UnregisterContainers(string containerName)
+        public RestAzureNS.AzureOperationResponse UnregisterContainers(
+            string containerName,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             var response = RSAdapter.Client.RegisteredIdentities.DeleteWithHttpMessagesAsync(
-                resourceGroupName,
-                resourceName,
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 containerName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
             return response;

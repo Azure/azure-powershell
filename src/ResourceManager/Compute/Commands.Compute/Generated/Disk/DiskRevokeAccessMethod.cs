@@ -30,79 +30,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateDiskRevokeAccessDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pDiskName = new RuntimeDefinedParameter();
-            pDiskName.Name = "DiskName";
-            pDiskName.ParameterType = typeof(string);
-            pDiskName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDiskName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DiskName", pDiskName);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteDiskRevokeAccessMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateDiskRevokeAccessParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string diskName = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "DiskName" },
-                 new object[] { resourceGroupName, diskName });
-        }
-    }
-
-    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsSecurity.Revoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RevokeAzureRmDiskAccess : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.DiskName, VerbsSecurity.Revoke))
@@ -110,10 +44,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
 
-                    var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
-                    var psObject = new PSOperationStatusResponse();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                    WriteObject(psObject);
+                    var result = DisksClient.RevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }

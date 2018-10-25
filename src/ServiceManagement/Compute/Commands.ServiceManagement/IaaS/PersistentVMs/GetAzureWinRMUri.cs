@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Get, "AzureWinRMUri"), OutputType(typeof(Uri), typeof(List<Uri>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWinRMUri"), OutputType(typeof(Uri))]
     public class GetAzureWinRMUri : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Service name.")]

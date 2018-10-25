@@ -23,10 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(
-        VerbsCommon.New, 
-        WebServicesCmdletBase.CommandletSuffix,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
     public class NewAzureMLWebService : WebServicesCmdletBase
     {

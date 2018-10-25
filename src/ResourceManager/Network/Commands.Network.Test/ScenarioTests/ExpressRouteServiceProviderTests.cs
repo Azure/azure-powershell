@@ -21,9 +21,12 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ExpressRouteServiceProviderTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ExpressRouteServiceProviderTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -31,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRouteServiceProviderList()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteServiceProviderList");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteServiceProviderList");
         }
     }
 }

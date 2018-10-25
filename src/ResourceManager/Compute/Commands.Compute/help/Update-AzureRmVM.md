@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
@@ -60,7 +60,7 @@ To obtain a virtual machine object, use the **Get-AzureRmVM** cmdlet.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Specify the system assigned identity for the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AssignIdentityParameterSet
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Specifies the Resource ID of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSetName
 Aliases:
 
@@ -121,7 +121,7 @@ Specifies the list of user identities associated with the virtual machine scale 
 The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The type of identity used for the virtual machine. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 
 ```yaml
-Type: ResourceIdentityType
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType]
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSetName, AssignIdentityParameterSet, ExplicitIdentityParameterSet
 Aliases:
 
@@ -184,7 +184,7 @@ Adding tags to resources enables you to group resources together across resource
 Each resource or resource group can have a maximum of 15 tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +201,7 @@ To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 This virtual machine object contains the updated state for the virtual machine.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -229,11 +229,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -249,8 +248,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## OUTPUTS
 

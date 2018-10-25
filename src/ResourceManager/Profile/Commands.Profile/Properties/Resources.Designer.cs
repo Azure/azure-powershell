@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -84,6 +84,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string AccountIdRequired {
             get {
                 return ResourceManager.GetString("AccountIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add aliases.
+        /// </summary>
+        internal static string AddAlias {
+            get {
+                return ResourceManager.GetString("AddAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LocalMachine scope can only be set in PowerShell administrative mode..
+        /// </summary>
+        internal static string AliasImportFailure {
+            get {
+                return ResourceManager.GetString("AliasImportFailure", resourceCulture);
             }
         }
         
@@ -156,6 +174,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string BothSubscriptionIdAndNameProvided {
             get {
                 return ResourceManager.GetString("BothSubscriptionIdAndNameProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot create a context for subscription with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotCreateContext {
+            get {
+                return ResourceManager.GetString("CannotCreateContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to get context name for subscription with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotGetContextName {
+            get {
+                return ResourceManager.GetString("CannotGetContextName", resourceCulture);
             }
         }
         
@@ -538,6 +574,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to set profile because environment variable &apos;${0}&apos; is null..
+        /// </summary>
+        internal static string ProfilePathNull {
+            get {
+                return ResourceManager.GetString("ProfilePathNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personally identifiable information and secrets may be written to the file at &apos;{0}&apos;.  Please ensure that the saved file is assigned appropriate access controls.
         /// </summary>
         internal static string ProfileWriteWarning {
@@ -714,6 +759,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SendFeedbackRecommendationQuestion {
             get {
                 return ResourceManager.GetString("SendFeedbackRecommendationQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided service principal secret will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        /// </summary>
+        internal static string ServicePrincipalWarning {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWarning", resourceCulture);
             }
         }
         

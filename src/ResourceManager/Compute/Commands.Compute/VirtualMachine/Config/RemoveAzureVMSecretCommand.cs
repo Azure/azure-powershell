@@ -20,12 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VaultSecretGroup,
-        SupportsShouldProcess = true),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSecret",SupportsShouldProcess = true),OutputType(typeof(PSVirtualMachine))]
     public class RemoveAzureVMSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

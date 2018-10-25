@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlcommitmentplanusagehistory
@@ -22,7 +22,7 @@ Retrieves usage history information for a specified commitment plan, including r
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Get usage history for a specific commitment plan  --------------------------
+### Example 1: Get usage history for a specific commitment plan
 ```
 Get-AzureRmMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
@@ -33,7 +33,7 @@ Get-AzureRmMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Na
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -48,9 +48,9 @@ Accept wildcard characters: False
 The name of the Azure ML commitment plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -63,9 +63,9 @@ Accept wildcard characters: False
 The name of the resource group for the Azure ML commitment plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,14 +80,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory[]
+### Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

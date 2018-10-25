@@ -36,7 +36,7 @@ The **Get-AzureRmCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN)
 Specifies the CDN endpoint object to which the origin belongs.
 
 ```yaml
-Type: PSEndpoint
+Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the name of the endpoint to which the origin server belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Specifies the name of the origin server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies the name of the profile to which the origin server belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the origin server belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -127,13 +127,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSEndpoint
-Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
+Parameters: CdnEndpoint (ByValue)
 
 ## OUTPUTS
 
-###  
-This cmdlet returns an origin server object.
+### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
 
 ## NOTES
 

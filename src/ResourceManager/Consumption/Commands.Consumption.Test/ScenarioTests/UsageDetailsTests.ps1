@@ -25,7 +25,6 @@ function Test-ListUsageDetails
 	{
 		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
-		Assert-Null $usage.BillableQuantity
 		Assert-NotNull $usage.BillingPeriodId
 		Assert-NotNull $usage.ConsumedService
 		Assert-NotNull $usage.CostCenter
@@ -35,7 +34,6 @@ function Test-ListUsageDetails
 		Assert-NotNull $usage.InstanceId
 		Assert-NotNull $usage.InstanceLocation
 		Assert-NotNull $usage.InstanceName
-		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
 		Assert-Null $usage.MeterDetails
 		Assert-NotNull $usage.MeterId
@@ -63,7 +61,6 @@ function Test-ListUsageDetailsWithMeterDetailsExpand
 	{
 		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
-		Assert-Null $usage.BillableQuantity
 		Assert-NotNull $usage.BillingPeriodId
 		Assert-NotNull $usage.ConsumedService
 		Assert-NotNull $usage.CostCenter
@@ -73,7 +70,6 @@ function Test-ListUsageDetailsWithMeterDetailsExpand
 		Assert-NotNull $usage.InstanceId
 		Assert-NotNull $usage.InstanceLocation
 		Assert-NotNull $usage.InstanceName
-		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
 		Assert-NotNull $usage.MeterDetails
 		Assert-NotNull $usage.MeterId
@@ -102,7 +98,6 @@ function Test-ListUsageDetailsWithDateFilter
 	{
 		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
-		Assert-Null $usage.BillableQuantity
 		Assert-NotNull $usage.BillingPeriodId
 		Assert-NotNull $usage.ConsumedService
 		Assert-NotNull $usage.CostCenter
@@ -112,7 +107,6 @@ function Test-ListUsageDetailsWithDateFilter
 		Assert-NotNull $usage.InstanceId
 		Assert-NotNull $usage.InstanceLocation
 		Assert-NotNull $usage.InstanceName
-		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
 		Assert-Null $usage.MeterDetails
 		Assert-NotNull $usage.MeterId
@@ -141,7 +135,6 @@ function Test-ListBillingPeriodUsageDetails
 	{
 		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
-		Assert-Null $usage.BillableQuantity
 		Assert-NotNull $usage.BillingPeriodId
 		Assert-NotNull $usage.ConsumedService
 		Assert-NotNull $usage.CostCenter
@@ -151,7 +144,6 @@ function Test-ListBillingPeriodUsageDetails
 		Assert-NotNull $usage.InstanceId
 		Assert-NotNull $usage.InstanceLocation
 		Assert-NotNull $usage.InstanceName
-		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
 		Assert-Null $usage.MeterDetails
 		Assert-NotNull $usage.MeterId
@@ -179,7 +171,6 @@ function Test-ListBillingPeriodUsageDetailsWithFilterOnInstanceName
 	{
 		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
-		Assert-Null $usage.BillableQuantity
 		Assert-NotNull $usage.BillingPeriodId
 		Assert-NotNull $usage.ConsumedService
 		Assert-NotNull $usage.CostCenter
@@ -190,7 +181,6 @@ function Test-ListBillingPeriodUsageDetailsWithFilterOnInstanceName
 		Assert-NotNull $usage.InstanceLocation
 		Assert-NotNull $usage.InstanceName
 		Assert-AreEqual "1c2052westus" $usage.InstanceName
-		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
 		Assert-Null $usage.MeterDetails
 		Assert-NotNull $usage.MeterId
@@ -219,7 +209,6 @@ function Test-ListBillingPeriodUsageDetailsWithDateFilter
 	{
 		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
-		Assert-Null $usage.BillableQuantity
 		Assert-NotNull $usage.BillingPeriodId
 		Assert-NotNull $usage.ConsumedService
 		Assert-NotNull $usage.CostCenter
@@ -229,7 +218,6 @@ function Test-ListBillingPeriodUsageDetailsWithDateFilter
 		Assert-NotNull $usage.InstanceId
 		Assert-NotNull $usage.InstanceLocation
 		Assert-NotNull $usage.InstanceName
-		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
 		Assert-Null $usage.MeterDetails
 		Assert-NotNull $usage.MeterId

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Microsoft.Azure.Management.Internal.Network.Common;
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkInterface : PSTopLevelResource, INetworkInterfaceReference
     {
@@ -24,18 +25,27 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
+        public List<PSNetworkInterfaceTapConfiguration> TapConfigurations { get; set; }
+
         public PSNetworkInterfaceDnsSettings DnsSettings { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string MacAddress { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? Primary { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableAcceleratedNetworking {get; set;}
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableIPForwarding { get; set; }
+
+        public List<string> HostedWorkloads { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -48,6 +58,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TapConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(TapConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

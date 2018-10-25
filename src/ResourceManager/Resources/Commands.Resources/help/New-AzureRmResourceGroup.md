@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 0632DAD6-F331-454F-9E7E-2164AB413E77
@@ -20,10 +20,8 @@ New-AzureRmResourceGroup -Name <String> -Location <String> [-Tag <Hashtable>] [-
 
 ## DESCRIPTION
 The **New-AzureRmResourceGroup** cmdlet creates an Azure resource group.
-
 You can create a resource group by using just a name and location, and then use the
 New-AzureRmResource cmdlet to create resources to add to the resource group.
-
 To add a deployment to an existing resource group, use the New-AzureRmResourceGroupDeployment
 cmdlet. To add a resource to an existing resource group, use the **New-AzureRmResource** cmdlet. An
 Azure resource is a user-managed Azure entity, such as a database server, database, or website. An
@@ -65,7 +63,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,7 +93,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,12 +108,11 @@ Accept wildcard characters: False
 Specifies the location of the resource group. Specify an Azure data center location, such as West
 US or Southeast Asia. You can place a resource group in any location. The resource group does not
 have to be in the same location your Azure subscription or in the same location as its resources.
-
 To determine which location supports each resource type, use the Get-AzureRmResourceProvider cmdlet
 with the *ProviderNamespace* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +129,7 @@ resource group that has that name already exists, the command prompts you for co
 replacing the existing resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroupName
 
@@ -147,7 +144,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -160,20 +157,16 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
-
 To add or change a tag, you must replace the collection of tags for the resource group.
-
 After you assign tags to resources and groups, you can use the *Tag* parameter of
 Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or
 by name and value. You can use tags to categorize your resources, such as by department or cost
 center, or to track notes or comments about the resources.
-
 To get your predefined tags, use the Get-AzureRMTag cmdlet.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -188,7 +181,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -204,7 +197,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

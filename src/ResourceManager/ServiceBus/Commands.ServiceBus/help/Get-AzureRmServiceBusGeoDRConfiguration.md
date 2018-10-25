@@ -14,19 +14,19 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ### GeoDRPropertiesSet (Default)
 ```
-Get-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+Get-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Get-AzureRmServiceBusGeoDRConfiguration [-InputObject] <PSNamespaceAttributes> [[-Name] <String>]
+Get-AzureRmServiceBusGeoDRConfiguration [-InputObject] <PSNamespaceAttributes> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmServiceBusGeoDRConfiguration [-ResourceId] <String> [[-Name] <String>]
+Get-AzureRmServiceBusGeoDRConfiguration [-ResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -45,6 +45,7 @@ Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
 ProvisioningState : Accepted
 PartnerNamespace  : SampleNamespace_Secondary
 Role              : Primary
+PendingReplicationOperationsCount : 0
 ```
 
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"
@@ -55,7 +56,7 @@ Retrieves alias "SampleDRCongifName" configuration for primary namespace "Sample
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +71,7 @@ Accept wildcard characters: False
 Namespace Object
 
 ```yaml
-Type: PSNamespaceAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 Parameter Sets: NamespaceInputObjectSet
 Aliases:
 
@@ -85,12 +86,12 @@ Accept wildcard characters: False
 DR Configuration Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
@@ -115,7 +116,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
@@ -130,7 +131,7 @@ Accept wildcard characters: False
 Namespace Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -142,19 +143,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
-
+### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
 ## NOTES
 

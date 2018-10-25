@@ -1,10 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"id\": \"testJobCompletesWhenTaskFails\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"\"\r\n        },\r\n        \"targetDedicatedNodes\": 3\r\n      }\r\n    }\r\n  },\r\n  \"onTaskFailure\": \"performExitOptionsJobAction\",\r\n  \"usesTaskDependencies\": false\r\n}",
+      "RequestBody": "{\r\n  \"id\": \"testJobCompletesWhenTaskFails\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"\"\r\n        },\r\n        \"targetDedicatedNodes\": 3\r\n      }\r\n    }\r\n  },\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\",\r\n  \"usesTaskDependencies\": false\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata; charset=utf-8"
@@ -13,32 +13,32 @@
           "520"
         ],
         "client-request-id": [
-          "b0478c10-3f64-4455-8412-91dcb64eb1c6"
+          "d0ab98ca-7f4c-40ce-8ba9-e14bb11674b0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "9c8966ec-400b-4365-8217-68b350106ccc"
+          "30ff3298-5826-4637-a6ae-f655d49321c9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,16 +50,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
+          "https://batchtestaccount.westus.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:34 GMT"
         ],
         "ETag": [
-          "0x8D50C69B71E68DB"
+          "0x8D5C26F48842F97"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
+          "https://batchtestaccount.westus.batch.azure.com/jobs/job-1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/testJobCompletesWhenTaskFails/tasks?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGVzdEpvYkNvbXBsZXRlc1doZW5UYXNrRmFpbHMvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/testJobCompletesWhenTaskFails/tasks?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnMvdGVzdEpvYkNvbXBsZXRlc1doZW5UYXNrRmFpbHMvdGFza3M/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"taskId-1\",\r\n  \"commandLine\": \"cmd /c exit 3\",\r\n  \"exitConditions\": {\r\n    \"exitCodeRanges\": [\r\n      {\r\n        \"start\": 2,\r\n        \"end\": 4,\r\n        \"exitOptions\": {\r\n          \"jobAction\": \"terminate\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
@@ -80,32 +80,32 @@
           "251"
         ],
         "client-request-id": [
-          "08d97835-2606-4d56-8ad1-ba3c4ab7b9f9"
+          "7e7360f8-d02d-468a-925a-b48d6d6b0c40"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "30cad118-23d6-4be3-a631-548ed6597156"
+          "6fa386dd-44dd-4e3e-8d88-7ad2a42f4ad4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,16 +117,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails/tasks/taskId-1"
+          "https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails/tasks/taskId-1"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "ETag": [
-          "0x8D50C69B701AA51"
+          "0x8D5C26F48A397A7"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails/tasks/taskId-1"
+          "https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails/tasks/taskId-1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -135,29 +135,29 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "37694e8e-8af2-4c20-94db-c1ba802c8521"
+          "aaf04973-d277-4bb3-a28f-e769299e6198"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -166,7 +166,7 @@
           "chunked"
         ],
         "request-id": [
-          "95ea9a70-0b96-4cd1-9ae7-5735fcf4a8a5"
+          "0016faf3-c795-477c-aab4-14888d70a955"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -178,7 +178,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -187,29 +187,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "2832e31b-2b70-4bd5-b651-f23ed840895d"
+          "02de13d8-61ee-4c35-ac1d-51dd0bccc3e9"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -218,7 +218,7 @@
           "chunked"
         ],
         "request-id": [
-          "07a800b7-614c-406c-bffd-170fc33342d0"
+          "6bde6d96-97de-4ad1-9b9c-715153887cb0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -230,7 +230,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:24:12 GMT"
+          "Fri, 25 May 2018 18:42:35 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -239,29 +239,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "8a8e5b60-f1da-4a16-9150-5af221d30e83"
+          "e832ea93-4446-4ad3-a9a7-c66452707022"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:24:32 GMT"
+          "Fri, 25 May 2018 18:42:56 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -270,7 +270,7 @@
           "chunked"
         ],
         "request-id": [
-          "69f29e35-9b49-4074-8196-f18c42e409d1"
+          "dd844b62-ab91-4545-a63e-5792acfc8b45"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -282,7 +282,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:24:32 GMT"
+          "Fri, 25 May 2018 18:42:55 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -291,29 +291,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "fe062ccf-9a1a-4027-9443-c680a6908b7e"
+          "b5eb7036-6489-45f7-98be-5dfcb0cd072f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:24:52 GMT"
+          "Fri, 25 May 2018 18:43:16 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -322,7 +322,7 @@
           "chunked"
         ],
         "request-id": [
-          "a44731a6-0e7f-4b24-84ce-da5497794de9"
+          "fd5563ca-bdc2-41d4-816d-e2b8c9b392d6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -334,7 +334,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:24:52 GMT"
+          "Fri, 25 May 2018 18:43:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -343,29 +343,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0eb53407-0aaa-481f-88b7-4c0e23955142"
+          "ad0d9bc2-6538-4c9c-a9be-5bf04f2c5d30"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:25:12 GMT"
+          "Fri, 25 May 2018 18:43:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -374,7 +374,7 @@
           "chunked"
         ],
         "request-id": [
-          "59f26fb8-c729-43a3-b0e5-741bedbd7fb2"
+          "4c05d0e2-cb41-40ba-9612-3c80ad455a63"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -386,7 +386,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:25:12 GMT"
+          "Fri, 25 May 2018 18:43:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -395,29 +395,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "3a1fafe6-8218-458b-bd10-fd5c0b28a36c"
+          "466d9296-b2b7-47be-8f38-2e0407da23ad"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:25:32 GMT"
+          "Fri, 25 May 2018 18:43:56 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -426,7 +426,7 @@
           "chunked"
         ],
         "request-id": [
-          "a1ded034-5202-40f3-b802-34d0723e5ecf"
+          "78f4621f-1127-4a42-86a8-e117c0abcc7f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -438,7 +438,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:25:33 GMT"
+          "Fri, 25 May 2018 18:43:56 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -447,29 +447,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "7936ccc1-e5f2-482c-be20-41d489e709e9"
+          "fd9ee365-c50f-4101-a185-703b89715530"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:25:53 GMT"
+          "Fri, 25 May 2018 18:44:16 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -478,7 +478,7 @@
           "chunked"
         ],
         "request-id": [
-          "f00a93d5-e352-48d9-a054-8b0928c7f640"
+          "3500f305-a6fd-4ba6-b20f-c51dca27e66c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -490,7 +490,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:25:53 GMT"
+          "Fri, 25 May 2018 18:44:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -499,29 +499,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e1c7581d-75e1-4126-9669-48d9f3ab4e1f"
+          "15e87c56-0760-458c-a33b-16a60e61a8e7"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:26:13 GMT"
+          "Fri, 25 May 2018 18:44:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -530,7 +530,7 @@
           "chunked"
         ],
         "request-id": [
-          "bc3ef108-57cc-45b5-bdae-0118e27ba2be"
+          "e75693d8-47e1-41c8-9274-aef06f9cd3ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -542,7 +542,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:26:13 GMT"
+          "Fri, 25 May 2018 18:44:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -551,29 +551,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "eef6c490-8f51-453e-bdb1-c7045566f949"
+          "4ca9555a-95b3-431b-933c-0492415d240c"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:26:33 GMT"
+          "Fri, 25 May 2018 18:44:56 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -582,7 +582,7 @@
           "chunked"
         ],
         "request-id": [
-          "c80b5b4e-5918-49aa-bc25-ebf57a19e698"
+          "92771775-05a6-43de-aed0-d4e35147ba2a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -594,7 +594,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:26:33 GMT"
+          "Fri, 25 May 2018 18:44:55 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -603,29 +603,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f087ca57-1b33-45b7-b39f-6f66fefa1091"
+          "1c79048b-f0ea-4ab9-97b7-22abba1d57cf"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:26:53 GMT"
+          "Fri, 25 May 2018 18:45:16 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -634,7 +634,7 @@
           "chunked"
         ],
         "request-id": [
-          "7f9bf8eb-e5f4-4a84-8b7f-299070d6c349"
+          "8c682867-977f-4f5d-bbb7-a8fc46ee4b85"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -646,7 +646,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:26:53 GMT"
+          "Fri, 25 May 2018 18:45:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -655,29 +655,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c4ab737c-2a9f-4f53-90d9-1eb63838754a"
+          "dad199b6-319c-439c-a262-a21e0fa95828"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:27:13 GMT"
+          "Fri, 25 May 2018 18:45:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -686,7 +686,7 @@
           "chunked"
         ],
         "request-id": [
-          "f3b32e4a-7911-4cf0-894f-3c7039fe72e9"
+          "5b8381ff-d9e0-464d-8c54-4129ca7f10e0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -698,7 +698,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:27:13 GMT"
+          "Fri, 25 May 2018 18:45:35 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -707,29 +707,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "10fca4ed-7f2f-4bc1-a575-36390d6e9878"
+          "6c1cb19a-052c-4760-ae13-e13cda0ffc7e"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:27:33 GMT"
+          "Fri, 25 May 2018 18:45:56 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -738,7 +738,7 @@
           "chunked"
         ],
         "request-id": [
-          "b915ba1d-6b8e-47bb-aab0-a2dfd4a0358a"
+          "7c3ec309-76c6-4bab-ad61-7cb4ae91f429"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -750,7 +750,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:27:33 GMT"
+          "Fri, 25 May 2018 18:45:56 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -759,29 +759,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c9890939-7235-41c3-8113-dbf929df1e6f"
+          "46ba6bf2-cd5d-473f-b19a-93b74401ec2f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:27:53 GMT"
+          "Fri, 25 May 2018 18:46:16 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -790,7 +790,7 @@
           "chunked"
         ],
         "request-id": [
-          "73d28fdf-3197-4c40-a5ab-0caea0b72289"
+          "4514968e-e5e6-47b8-a534-d6ca2a01108c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -802,7 +802,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:27:53 GMT"
+          "Fri, 25 May 2018 18:46:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -811,29 +811,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "01e5df43-f60b-4f1f-8e05-4105890819e2"
+          "3f9749e1-1ec6-4f35-9360-5786a1bc299e"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:28:13 GMT"
+          "Fri, 25 May 2018 18:46:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -842,7 +842,7 @@
           "chunked"
         ],
         "request-id": [
-          "ab72a7ae-9daf-4f9e-91e7-7a393831d30d"
+          "4019a970-085d-420b-8b2e-e580e7e7d044"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -854,7 +854,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:28:13 GMT"
+          "Fri, 25 May 2018 18:46:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -863,29 +863,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "56ca236f-8fc2-47b8-b117-43a42de88e75"
+          "29665b96-61e0-4686-beae-f13788dd0113"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:28:33 GMT"
+          "Fri, 25 May 2018 18:46:57 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -894,7 +894,7 @@
           "chunked"
         ],
         "request-id": [
-          "ac9844b1-0940-4500-820d-f1104f14a48f"
+          "12aa202d-88c3-40c6-b3f9-bd7662685400"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -906,7 +906,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:28:33 GMT"
+          "Fri, 25 May 2018 18:46:56 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -915,29 +915,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "823debb4-c3fc-4231-9c72-907ad1ae26e3"
+          "f7c942cc-e102-4511-aa7d-1522e075b2a6"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:28:53 GMT"
+          "Fri, 25 May 2018 18:47:17 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -946,7 +946,7 @@
           "chunked"
         ],
         "request-id": [
-          "0eb28cb0-deb6-447d-8939-fdbf712af69c"
+          "0ba3a466-005d-48bd-92f6-b7c67db3238e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -958,7 +958,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:28:53 GMT"
+          "Fri, 25 May 2018 18:47:17 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -967,29 +967,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "6606ebd5-96f1-4560-b7f1-ba68567898de"
+          "f80bbda2-94c0-4447-868e-a891dcc3905d"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:29:13 GMT"
+          "Fri, 25 May 2018 18:47:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C69B71E68DB\",\r\n      \"lastModified\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -998,7 +998,7 @@
           "chunked"
         ],
         "request-id": [
-          "8548b094-02c5-4878-8123-92c0acbce97d"
+          "0d36b71b-0d1b-4a84-9479-269c8e4fdd3c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1010,7 +1010,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:29:13 GMT"
+          "Fri, 25 May 2018 18:47:37 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1019,29 +1019,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ead39e41-99b9-4e21-bb88-f587468a9cb5"
+          "b5d38941-8200-42b1-bff3-ce1e7dccc774"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:29:33 GMT"
+          "Fri, 25 May 2018 18:47:57 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C6A6EF3EC75\",\r\n      \"lastModified\": \"2017-10-06T03:29:21.0339445Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:29:21.0339445Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -1050,7 +1050,7 @@
           "chunked"
         ],
         "request-id": [
-          "c4c03222-2427-4139-8e1e-7a262878a7ed"
+          "6fa52128-b2c3-4aad-b157-7cb33ada6e59"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1062,7 +1062,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:29:33 GMT"
+          "Fri, 25 May 2018 18:47:57 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1071,29 +1071,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e41c6c28-18eb-42a1-8980-9e40a9f6e755"
+          "b8703193-c0e8-434d-930e-9534e9c0e3be"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:29:53 GMT"
+          "Fri, 25 May 2018 18:48:17 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D50C6A6EF3EC75\",\r\n      \"lastModified\": \"2017-10-06T03:29:21.0339445Z\",\r\n      \"creationTime\": \"2017-10-06T03:24:12.5875951Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:29:51.2590939Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2017-10-06T03:24:12.6116059Z\",\r\n        \"endTime\": \"2017-10-06T03:29:51.2590939Z\",\r\n        \"poolId\": \"TestSpecPrefix_B587A395-FE6F-45C8-8F5E-85DF33150AAB\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C26F48842F97\",\r\n      \"lastModified\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -1102,7 +1102,7 @@
           "chunked"
         ],
         "request-id": [
-          "921507a7-0368-4fcb-8ce8-7f2879eba4cd"
+          "ba0d5d1f-faa5-4349-b0b6-df5cbaf563e2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1114,7 +1114,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:29:52 GMT"
+          "Fri, 25 May 2018 18:48:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1123,26 +1123,494 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/testJobCompletesWhenTaskFails?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGVzdEpvYkNvbXBsZXRlc1doZW5UYXNrRmFpbHM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "e7db670a-c649-4515-abcf-82b895204e07"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:48:37 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "15903609-0682-4c48-bc42-89cb1ff85a91"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:48:36 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "7a0be8c9-9886-4d79-ab35-55750a91aead"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:48:57 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    },\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"eTag\": \"0x8D5C26F0E9DCA4B\",\r\n      \"lastModified\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4923578Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:40:58.5173579Z\",\r\n        \"endTime\": \"2018-05-25T18:40:59.5582527Z\",\r\n        \"poolId\": \"testPool\",\r\n        \"terminateReason\": \"TerminateWorkitem\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "4232934d-9eef-43e4-bb83-59bd601d11a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:48:57 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "b2da5df3-72c4-4fad-ac84-7aefce7ffd2f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:49:17 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "fee7e3f9-f21f-41e3-8c08-aa6a29f05683"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:49:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "77ca4ca8-c327-4dae-8613-b45c6877d9b4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:49:37 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "5df6d15b-0005-423e-987b-d5ffbde1e3af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:49:36 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "6025547e-8987-426a-8529-e75544f66304"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:49:58 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "f8655189-028a-4d98-871a-18399b5ab755"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:49:57 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "a633cf0d-1022-47a6-a113-f900a6acb11a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:50:18 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "b8f38a2a-6a16-495e-9d6e-7978808028b6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:50:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "0b63ab55-cd14-4d49-8818-cfd206b2a749"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:50:38 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "23ccac9a-6646-467c-bd43-8a3de481c27e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:50:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "c87f7e93-16c2-42fc-a3e4-24f62ad51d59"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:50:58 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"terminating\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "cfd99e56-c969-4b16-a572-56cfac39205c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:50:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "2f955960-673f-4be3-bfa2-106b27f1296d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 25 May 2018 18:51:18 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testJobCompletesWhenTaskFails\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testJobCompletesWhenTaskFails\",\r\n      \"eTag\": \"0x8D5C270201731EE\",\r\n      \"lastModified\": \"2018-05-25T18:48:37.3309934Z\",\r\n      \"creationTime\": \"2018-05-25T18:42:35.6283563Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:51:08.4190681Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"autoPoolSpecification\": {\r\n          \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n          \"poolLifetimeOption\": \"job\",\r\n          \"keepAlive\": false,\r\n          \"pool\": {\r\n            \"vmSize\": \"small\",\r\n            \"maxTasksPerNode\": 1,\r\n            \"taskSchedulingPolicy\": {\r\n              \"nodeFillType\": \"Spread\"\r\n            },\r\n            \"resizeTimeout\": \"PT15M\",\r\n            \"targetDedicatedNodes\": 3,\r\n            \"targetLowPriorityNodes\": 0,\r\n            \"enableAutoScale\": false,\r\n            \"enableInterNodeCommunication\": false,\r\n            \"cloudServiceConfiguration\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2018-05-25T18:42:35.6574103Z\",\r\n        \"endTime\": \"2018-05-25T18:51:08.4190681Z\",\r\n        \"poolId\": \"TestSpecPrefix_1CC0EF2F-E59E-409E-95DB-D52F78721864\",\r\n        \"terminateReason\": \"TaskFailed\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "6600eeeb-6682-4a94-8a61-d3bffccfa975"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 25 May 2018 18:51:18 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/testJobCompletesWhenTaskFails?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnMvdGVzdEpvYkNvbXBsZXRlc1doZW5UYXNrRmFpbHM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0d64cde0-1f37-4350-b431-f6215c14a904"
+          "c771052c-574b-4a2a-a6e2-bb4fcd09204f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:13 GMT"
+          "Fri, 25 May 2018 18:51:38 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -1151,7 +1619,7 @@
           "chunked"
         ],
         "request-id": [
-          "82fc7c97-3d5d-4b0e-b373-6f0d49046ec4"
+          "5e5d2013-627d-4a8e-8135-92bcfd9de39e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1163,7 +1631,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:13 GMT"
+          "Fri, 25 May 2018 18:51:37 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1174,9 +1642,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "ac86108b-e8ec-4858-8603-2f80105f96db",
+    "AZURE_BATCH_ACCOUNT": "batchtestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://batchtestaccount.westus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "antoniowtestbatchrg"
   }
 }

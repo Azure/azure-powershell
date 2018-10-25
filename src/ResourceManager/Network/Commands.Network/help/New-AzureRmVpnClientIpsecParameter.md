@@ -15,7 +15,7 @@ This command allows the users to create the Vpn ipsec parameters object specifyi
 ```
 New-AzureRmVpnClientIpsecParameter [-SALifeTime <Int32>] [-SADataSize <Int32>] [-IpsecEncryption <String>]
  [-IpsecIntegrity <String>] [-IkeEncryption <String>] [-IkeIntegrity <String>] [-DhGroup <String>]
- [-PfsGroup <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PfsGroup <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +28,7 @@ This command allows the users to create the Vpn ipsec parameters object specifyi
 PS C:\> $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameter -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86473 -SADataSize 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
 PS C:\> $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName $rname -ResourceGroupName $rgname -VpnClientIPsecParameter $vpnclientipsecparams1
 ```
+
 New-AzureRmVpnClientIpsecParameter cmdlet is used to create the vpn ipsec parameters object of using the passed one or all parameters' values which user can set for any existing Virtual network gateway in ResourceGroup.
 This created VpnClientIPsecParameters object is passed to Set-AzureRmVpnClientIpsecParameter command to set the specified Vpn ipsec custom policy on Virtual network gateway as shown in above example. This command returns object of VpnClientIPsecParameters which shows set parameters.
 
@@ -37,7 +38,7 @@ This created VpnClientIPsecParameters object is passed to Set-AzureRmVpnClientIp
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 The Vpnclient DH Groups used in IKE Phase 1 for initial SA.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 The Vpnclient IKE encryption algorithm (IKE Phase 2)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GCMAES256, GCMAES128, AES256, AES128
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 The Vpnclient IKE integrity algorithm (IKE Phase 2)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SHA384, SHA256
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec encryption algorithm (IKE Phase 1)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GCMAES256, GCMAES128, AES256, AES128
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec integrity algorithm (IKE Phase 1)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GCMAES256, GCMAES128, SHA256
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 The Vpnclient PFS Groups used in IKE Phase 2 for new child SA
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: PFS24, PFSMM, ECP384, ECP256, PFS14, PFS2, None
@@ -148,7 +149,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -163,39 +164,9 @@ Accept wildcard characters: False
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

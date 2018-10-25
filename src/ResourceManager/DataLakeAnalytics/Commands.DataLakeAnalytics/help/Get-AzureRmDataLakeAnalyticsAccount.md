@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 4EA01047-021C-4FA5-82F0-5102BA114BC2
@@ -48,7 +48,7 @@ This command gets information about the account named ContosoAdlAccount.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,9 +63,9 @@ Accept wildcard characters: False
 Specifies the name of the Data Lake Analytics account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySpecificAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySpecificAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -106,16 +106,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### PSDataLakeAnalyticsAccount
-The specified account details.
-
-### List<PSDataLakeAnalyticsAccountBasic>
-The list of accounts in the specified resource group or subscription.
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount
 
 ## NOTES
 

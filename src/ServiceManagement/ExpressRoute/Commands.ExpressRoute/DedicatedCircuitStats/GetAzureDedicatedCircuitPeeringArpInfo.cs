@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringArpInfo"), OutputType(typeof(string), typeof(IEnumerable<string>))]
+    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringArpInfo"), OutputType(typeof(string))]
     public class GetAzureDedicatedCircuitPeeringArpInfoCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,

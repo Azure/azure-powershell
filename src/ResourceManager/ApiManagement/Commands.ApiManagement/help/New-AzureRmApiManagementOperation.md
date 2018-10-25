@@ -72,7 +72,7 @@ This example creates an API management operation with request and response detai
 Specifies the identifier of the API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Identifier of API Revision. This parameter is optional. If not specified, the operation will be attached to the currently active api revision.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Specifies the instance of the **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -115,9 +115,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Specifies the description of new API operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the HTTP method of the new API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Specifies the display name of new API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Specifies the identifier of the API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 Specifies the details of the API management operation.
 
 ```yaml
-Type: PsApiManagementRequest
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 Specifies an array of possible API management operation responses.
 
 ```yaml
-Type: PsApiManagementResponse[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse[]
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +223,7 @@ Specifies an array of parameters defined in parameter *UrlTemplate*.
 If you do not specify this parameter, a default value will be generated based on the *UrlTemplate*.
 
 ```yaml
-Type: PsApiManagementParameter[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 Specifies the URL template.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,8 +254,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter[]
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse[]
 
 ## OUTPUTS
 

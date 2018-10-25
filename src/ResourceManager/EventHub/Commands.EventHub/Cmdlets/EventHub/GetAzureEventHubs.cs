@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmEventHub"), OutputType(typeof(List<PSEventHubAttributes>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub"), OutputType(typeof(PSEventHubAttributes))]
     public class GetAzureRmEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -42,22 +42,41 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of EventHubs to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                // Get a EventHub
-                PSEventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
-                WriteObject(eventHub);
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    // Get a EventHub
+                    PSEventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
+                    WriteObject(eventHub);
+                }
+                else
+                {
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace, MaxCount);
+                        WriteObject(eventHubsList.ToList(), true);
+                    }
+                    else
+                    {
+                        // Get all EventHubs
+                        IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
+                        WriteObject(eventHubsList.ToList(), true);
+                    }
+                }
             }
-            else
+            catch (Management.EventHub.Models.ErrorResponseException ex)
             {
-                // Get all EventHubs
-                IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
-                WriteObject(eventHubsList.ToList(), true);
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
         }
     }

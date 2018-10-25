@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,23 +21,26 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class MetricsTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public MetricsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMetrics()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetMetrics");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetMetrics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMetricDefinitions()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetMetricDefinitions");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetMetricDefinitions");
         }
     }
 }

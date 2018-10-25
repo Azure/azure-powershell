@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmKeyVault",
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {

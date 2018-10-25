@@ -168,13 +168,14 @@ namespace Microsoft.Azure.Commands.Dns.Models
             string zoneName,
             string resourceGroupName,
             string relativeRecordSetName,
-            uint ttl,
+            uint? ttl,
             RecordType recordType,
             Hashtable tags,
             bool overwrite,
-            DnsRecordBase[] resourceRecords)
+            DnsRecordBase[] resourceRecords,
+            string targetResourceId)
         {
-            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords);
+            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, targetResourceId);
 
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 resourceGroupName,
@@ -188,13 +189,19 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, response);
         }
 
-        private RecordSet ConstructRecordSetPropeties(string recordSetName, RecordType recordType, uint ttl, Hashtable tags, DnsRecordBase[] resourceRecords)
+        private RecordSet ConstructRecordSetPropeties(
+            string recordSetName,
+            RecordType recordType,
+            uint? ttl,
+            Hashtable tags,
+            DnsRecordBase[] resourceRecords,
+            string targetResourceId)
         {
 
             var properties = new RecordSet
             {
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
-                TTL = ttl,
+                TTL = ttl
             };
 
             if (resourceRecords != null && resourceRecords.Length != 0)
@@ -211,7 +218,13 @@ namespace Microsoft.Azure.Commands.Dns.Models
             else
             {
                 FillEmptyRecordsForType( properties, recordType);
+
+                if (!string.IsNullOrEmpty(targetResourceId))
+                {
+                    properties.TargetResource = new Sdk.SubResource(targetResourceId);
+                }
             }
+
             return properties;
         }
 
@@ -281,6 +294,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 new RecordSet
                 {
                     TTL = recordSet.Ttl,
+                    TargetResource = string.IsNullOrWhiteSpace(recordSet.TargetResourceId) ? null : new Sdk.SubResource(recordSet.TargetResourceId),
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
                         recordSet.RecordType == RecordType.AAAA
@@ -424,6 +438,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return new DnsRecordSet
             {
                 Etag = mamlRecordSet.Etag,
+                Id = mamlRecordSet.Id,
                 Name = mamlRecordSet.Name,
                 RecordType = recordType,
                 Records = GetPowerShellRecords(mamlRecordSet),
@@ -431,6 +446,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 ResourceGroupName = resourceGroupName,
                 Ttl = (uint) mamlRecordSet.TTL.GetValueOrDefault(),
                 ZoneName = zoneName,
+                TargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
+                ProvisioningState = mamlRecordSet.ProvisioningState,
             };
         }
 

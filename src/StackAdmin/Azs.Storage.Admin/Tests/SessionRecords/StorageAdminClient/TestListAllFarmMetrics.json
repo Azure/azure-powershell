@@ -1,0 +1,136 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGFiMjU1MWQtNDFlNS00ODliLTkyNzMtMWNkZjFjYmM3ZGM2L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2UuQWRtaW4vZmFybXM/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "56dcc365-d6a7-48d3-8519-cfd3852a36ea"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourceGroups/System.local/providers/Microsoft.Storage.Admin/farms/1346c918-6b29-4d63-afb1-7f5767f1550b\",\r\n      \"name\": \"1346c918-6b29-4d63-afb1-7f5767f1550b\",\r\n      \"type\": \"Microsoft.Storage.Admin/farms\",\r\n      \"location\": \"local\",\r\n      \"properties\": {\r\n        \"farmId\": \"1346c918-6b29-4d63-afb1-7f5767f1550b\",\r\n        \"version\": \"2015-12-01-preview\",\r\n        \"settingsStore\": \"AzS-ACS01.azurestack.local:19000\",\r\n        \"settings\": {\r\n          \"settingsPollingIntervalInSecond\": 60,\r\n          \"retentionPeriodForDeletedStorageAccountsInDays\": 0,\r\n          \"hostStyleHttpPort\": 0,\r\n          \"hostStyleHttpsPort\": 0,\r\n          \"corsAllowedOriginsList\": \"https://adminportal.local.azurestack.external/;https://adminportal.local.azurestack.external:12649/;https://portal.local.azurestack.external/;https://portal.local.azurestack.external:12649/\",\r\n          \"dataCenterUriHostSuffixes\": \"local.azurestack.external\",\r\n          \"bandwidthThrottleIsEnabled\": false,\r\n          \"usageCollectionIntervalInSeconds\": 10,\r\n          \"feedbackRefreshIntervalInSeconds\": 10,\r\n          \"numberOfAccountsToSync\": 20,\r\n          \"defaultThrottleProbabilityDecayIntervalInSeconds\": 240,\r\n          \"gracePeriodForFullThrottlingInRefreshIntervals\": 3,\r\n          \"gracePeriodMaxThrottleProbability\": 0.9,\r\n          \"overallRequestThresholdInTps\": 10000.0,\r\n          \"defaultRequestThresholdInTps\": 200.0,\r\n          \"minimumRequestThresholdInTps\": 1.0,\r\n          \"toleranceFactorForTps\": 2.0,\r\n          \"overallIngressThresholdInGbps\": 25.0,\r\n          \"defaultIngressThresholdInGbps\": 2.0,\r\n          \"minimumIngressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForIngress\": 2.0,\r\n          \"overallIntranetIngressThresholdInGbps\": 25.0,\r\n          \"defaultIntranetIngressThresholdInGbps\": 2.0,\r\n          \"minimumIntranetIngressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForIntranetIngress\": 2.0,\r\n          \"overallEgressThresholdInGbps\": 30.0,\r\n          \"defaultEgressThresholdInGbps\": 3.0,\r\n          \"minimumEgressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForEgress\": 2.0,\r\n          \"overallIntranetEgressThresholdInGbps\": 30.0,\r\n          \"defaultIntranetEgressThresholdInGbps\": 3.0,\r\n          \"minimumIntranetEgressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForIntranetEgress\": 2.0,\r\n          \"overallTotalIngressThresholdInGbps\": 50.0,\r\n          \"defaultTotalIngressThresholdInGbps\": 5.0,\r\n          \"minimumTotalIngressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForTotalIngress\": 2.0,\r\n          \"overallTotalEgressThresholdInGbps\": 50.0,\r\n          \"defaultTotalEgressThresholdInGbps\": 5.0,\r\n          \"minimumTotalEgressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForTotalEgress\": 2.0\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2888"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Mar 2018 22:06:15 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvy1hfZLrRbM/FGJCf5q3gz2eglmwdfJwPH7GpisN9byXF5eaXvK3kWz6R810S5QH9D0/bqglYcP0GFcE1FuwdTuortokMt2B+VuMevQW2oaRvkdDatpYbAnUz++c5xV8Q/uQXtOtotXSa+3n3Yr+j"
+        ],
+        "x-ms-request-id": [
+          "ce974452-714e-4530-9f7f-5ea934d60051"
+        ],
+        "x-ms-correlation-request-id": [
+          "3016c858-1c68-4cf6-9ddf-f54bdc54fb66"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14420"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180320T220615Z:3016c858-1c68-4cf6-9ddf-f54bdc54fb66"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms/1346c918-6b29-4d63-afb1-7f5767f1550b/metrics?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGFiMjU1MWQtNDFlNS00ODliLTkyNzMtMWNkZjFjYmM3ZGM2L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2UuQWRtaW4vZmFybXMvMTM0NmM5MTgtNmIyOS00ZDYzLWFmYjEtN2Y1NzY3ZjE1NTBiL21ldHJpY3M/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1bea9727-d976-413f-904b-52ad9d2af30c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [],\r\n      \"name\": {\r\n        \"localizedValue\": \"Processor time percentage\",\r\n        \"value\": \"ProcessorTime\"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    },\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [],\r\n      \"name\": {\r\n        \"localizedValue\": \"Available memory\",\r\n        \"value\": \"AvailableMemory\"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    },\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-19T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-18T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-17T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-16T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-15T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-14T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2728176648192.0,\r\n          \"timeStamp\": \"2018-03-13T00:00:00Z\"\r\n        }\r\n      ],\r\n      \"name\": {\r\n        \"localizedValue\": \"Total Capacity\",\r\n        \"value\": \"TotalCapacity\"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    },\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [\r\n        {\r\n          \"average\": 701796694698.66663,\r\n          \"timeStamp\": \"2018-03-19T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 596136020650.66663,\r\n          \"timeStamp\": \"2018-03-18T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 523682208597.33331,\r\n          \"timeStamp\": \"2018-03-17T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 448996747776.0,\r\n          \"timeStamp\": \"2018-03-16T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 397576304640.0,\r\n          \"timeStamp\": \"2018-03-15T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 373199974058.66669,\r\n          \"timeStamp\": \"2018-03-14T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 292567628800.0,\r\n          \"timeStamp\": \"2018-03-13T00:00:00Z\"\r\n        }\r\n      ],\r\n      \"name\": {\r\n        \"localizedValue\": \"Used Capacity\",\r\n        \"value\": \"UsedCapacity\"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    },\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [\r\n        {\r\n          \"average\": 2026379953493.3333,\r\n          \"timeStamp\": \"2018-03-19T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2132040627541.3333,\r\n          \"timeStamp\": \"2018-03-18T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2204494439594.6665,\r\n          \"timeStamp\": \"2018-03-17T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2279179900416.0,\r\n          \"timeStamp\": \"2018-03-16T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2330600343552.0,\r\n          \"timeStamp\": \"2018-03-15T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2354976674133.3335,\r\n          \"timeStamp\": \"2018-03-14T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 2435609019392.0,\r\n          \"timeStamp\": \"2018-03-13T00:00:00Z\"\r\n        }\r\n      ],\r\n      \"name\": {\r\n        \"localizedValue\": \"Free Space\",\r\n        \"value\": \"FreeSpace\"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    },\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [\r\n        {\r\n          \"average\": 0.25724019563167105,\r\n          \"timeStamp\": \"2018-03-19T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.2185107848664177,\r\n          \"timeStamp\": \"2018-03-18T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.19195318930113445,\r\n          \"timeStamp\": \"2018-03-17T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.16457759363696489,\r\n          \"timeStamp\": \"2018-03-16T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.14572967806299467,\r\n          \"timeStamp\": \"2018-03-15T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.13679465158753243,\r\n          \"timeStamp\": \"2018-03-14T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.10723925409811297,\r\n          \"timeStamp\": \"2018-03-13T00:00:00Z\"\r\n        }\r\n      ],\r\n      \"name\": {\r\n        \"localizedValue\": \"Used Capacity Percentage\",\r\n        \"value\": \"UsedCapacityPercentage \"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    },\r\n    {\r\n      \"endTime\": \"2018-03-20T22:06:15.7311873Z\",\r\n      \"metricUnit\": \"Count\",\r\n      \"metricValues\": [\r\n        {\r\n          \"average\": 0.74275980436832889,\r\n          \"timeStamp\": \"2018-03-19T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.78148921513358216,\r\n          \"timeStamp\": \"2018-03-18T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.80804681069886553,\r\n          \"timeStamp\": \"2018-03-17T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.83542240636303511,\r\n          \"timeStamp\": \"2018-03-16T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.85427032193700547,\r\n          \"timeStamp\": \"2018-03-15T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.86320534841246754,\r\n          \"timeStamp\": \"2018-03-14T00:00:00Z\"\r\n        },\r\n        {\r\n          \"average\": 0.89276074590188725,\r\n          \"timeStamp\": \"2018-03-13T00:00:00Z\"\r\n        }\r\n      ],\r\n      \"name\": {\r\n        \"localizedValue\": \"Free Space Percentage\",\r\n        \"value\": \"FreeSpacePercentage \"\r\n      },\r\n      \"startTime\": \"2018-03-13T00:00:00Z\",\r\n      \"timeGrain\": \"P1D\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "6073"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Mar 2018 22:06:15 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvQ11Xefr/ckmNNauCze3KiJJVj24IRtZKg4IyfU1RAyvyNgHDF4jjdGXX62W54Xu6ACmcLSUAF72dob/A0Bf7L4FiWx1yI+aLu7Mr9Fc9u+XGtTiH2OvPxawVYIMg/r9FWa9UUsxr9TeMWsh2KDNi"
+        ],
+        "x-ms-request-id": [
+          "1fa36960-c984-4a74-a04a-c51dd8123172"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2027953-53e5-43d7-8f86-1cbb0975802e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14419"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180320T220615Z:c2027953-53e5-43d7-8f86-1cbb0975802e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8ab2551d-41e5-489b-9273-1cdf1cbc7dc6"
+  }
+}

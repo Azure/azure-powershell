@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 7915A7AC-5A47-4868-B846-2896BCEBFAB2
@@ -14,7 +14,8 @@ Gets metric definitions.
 ## SYNTAX
 
 ```
-Get-AzureRmMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-MetricNamespace <String>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +133,7 @@ The output is detailed.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -148,9 +149,24 @@ Indicates that this operation included detailed output.
 If you do not specify this parameter, the output is summarized.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MetricName
+Specifies an array of names of metrics.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -159,11 +175,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MetricName
-Specifies an array of names of metrics.
+### -MetricNamespace
+Specifies the metric namespace to query metric definitions for.
 
 ```yaml
-Type: String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,9 +194,9 @@ Accept wildcard characters: False
 Specifies the resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -194,17 +210,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.String[]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[]
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition
 
 ## NOTES
 
 ## RELATED LINKS
 
 [Get-AzureRmMetric](./Get-AzureRmMetric.md)
+[New-AzureRmMetricFilter](./New-AzureRmMetricFilter.md)
 
 

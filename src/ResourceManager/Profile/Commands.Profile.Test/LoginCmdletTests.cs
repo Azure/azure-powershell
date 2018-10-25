@@ -31,6 +31,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -181,6 +182,26 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginWithNoSubscriptionAndTenantDomain()
+        {
+            var cmdlt = new ConnectAzureRmAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.TenantId = "microsoft.onmicrosoft.com";
+            cmdlt.SetParameterSet("UserWithSubscriptionId");
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id);
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionname()
         {
             var cmdlt = new ConnectAzureRmAccountCommand();
@@ -327,7 +348,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                              "For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&clcid=0x409 " +
                              "for more information about the difference between an organizational account and a Microsoft account.",
                              ex.Message);
-            }            
+            }
         }
 
         [Fact]
@@ -351,6 +372,43 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginPopulatesContextList()
+        {
+            // Before running this test, make sure to clear the contexts on your machine by removing the following two files:
+            // - %APPDATA%/Windows Azure Powershell/AzureRmContext.json
+            // - %APPDATA%/Windows Azure Powershell/AzureRmContextSettings.json
+            // This will clear all existing contexts on your machine so that this test can re-populate the list with a context for each subscription
+
+            var cmdlt = new ConnectAzureRmAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            var profile = AzureRmProfileProvider.Instance.Profile as AzureRmProfile;
+            Assert.NotNull(profile);
+            Assert.NotNull(profile.Contexts);
+            Assert.NotNull(profile.Subscriptions);
+            Assert.True(profile.Contexts.Count > 1);
+            Assert.True(profile.Subscriptions.Count() > 1);
+            Assert.Equal(profile.Subscriptions.Count(), profile.Contexts.Count);
+
+            foreach (var sub in profile.Subscriptions)
+            {
+                var contextName = string.Format("{0} - {1}", sub.Name, sub.Id);
+                Assert.True(profile.Contexts.ContainsKey(contextName));
+                var context = profile.Contexts[contextName];
+                Assert.NotNull(context);
+                Assert.Equal(sub.Id, context.Subscription.Id);
+                Assert.Equal(sub.GetTenant(), context.Tenant.Id);
+            }
         }
 
         [Fact]
@@ -404,6 +462,95 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
             Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id, cmdlt.Subscription);
             Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id, cmdlt.TenantId);
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void AddEnvironmentUpdatesContext()
+        {
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock,
+                Name = "Katal",
+                ARMEndpoint = "https://management.azure.com/",
+                AzureKeyVaultDnsSuffix = "vault.local.azurestack.external",
+                AzureKeyVaultServiceEndpointResourceId = "https://vault.local.azurestack.external"
+
+            };
+            var dict = new Dictionary<string, object>
+            {
+                { "ARMEndpoint", "https://management.azure.com/" },
+                { "AzureKeyVaultDnsSuffix", "vault.local.azurestack.external" },
+                { "AzureKeyVaultServiceEndpointResourceId", "https://vault.local.azurestack.external" }
+            };
+
+            cmdlet.SetBoundParameters(dict);
+            cmdlet.SetParameterSet("ARMEndpoint");
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            commandRuntimeMock = new MockCommandRuntime();
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments.First((e) => string.Equals(e.Name, "KaTaL", StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(env.Name, cmdlet.Name);
+            Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix), dict["AzureKeyVaultDnsSuffix"]);
+            Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId), dict["AzureKeyVaultServiceEndpointResourceId"]);
+
+            var cmdlet1 = new ConnectAzureRmAccountCommand();
+            cmdlet1.CommandRuntime = commandRuntimeMock;
+            cmdlet1.Environment = "Katal";
+
+            dict.Clear();
+            dict = new Dictionary<string, object>
+            {
+                { "Environment", cmdlet1.Environment }
+            };
+
+            cmdlet1.SetBoundParameters(dict);
+            cmdlet1.InvokeBeginProcessing();
+            cmdlet1.ExecuteCmdlet();
+            cmdlet1.InvokeEndProcessing();
+            commandRuntimeMock = new MockCommandRuntime();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment.Name, cmdlet1.Environment);
+
+            var cmdlet2 = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock,
+                Name = "Katal",
+                ARMEndpoint = "https://management.azure.com/",
+                AzureKeyVaultDnsSuffix = "adminvault.local.azurestack.external",
+                AzureKeyVaultServiceEndpointResourceId = "https://adminvault.local.azurestack.external"
+            };
+
+            dict.Clear();
+            dict = new Dictionary<string, object>
+            {
+                { "ARMEndpoint", "https://management.azure.com/" },
+                { "AzureKeyVaultDnsSuffix", "adminvault.local.azurestack.external" },
+                { "AzureKeyVaultServiceEndpointResourceId", "https://adminvault.local.azurestack.external" }
+            };
+
+            cmdlet2.SetBoundParameters(dict);
+            cmdlet2.SetParameterSet("ARMEndpoint");
+            cmdlet2.InvokeBeginProcessing();
+            cmdlet2.ExecuteCmdlet();
+            cmdlet2.InvokeEndProcessing();
+
+            profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            env = AzureRmProfileProvider.Instance.Profile.Environments.First((e) => string.Equals(e.Name, "KaTaL", StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(env.Name, cmdlet.Name);
+            Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix), dict["AzureKeyVaultDnsSuffix"]);
+            Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId), dict["AzureKeyVaultServiceEndpointResourceId"]);
+
+            var context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+            Assert.NotNull(context);
+            Assert.NotNull(context.Environment);
+            Assert.Equal(context.Environment.Name, env.Name);
+            Assert.Equal(context.Environment.AzureKeyVaultDnsSuffix, env.AzureKeyVaultDnsSuffix);
+            Assert.Equal(context.Environment.AzureKeyVaultServiceEndpointResourceId, env.AzureKeyVaultServiceEndpointResourceId);
         }
     }
 }

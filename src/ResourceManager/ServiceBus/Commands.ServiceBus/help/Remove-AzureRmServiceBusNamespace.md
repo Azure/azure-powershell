@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebusnamespace
@@ -12,8 +12,21 @@ Removes the namespace from the specified resource group.
 
 ## SYNTAX
 
+### NamespacePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### NamespaceInputObjectSet
+```
+Remove-AzureRmServiceBusNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### NamespaceResourceIdParameterSet
+```
+Remove-AzureRmServiceBusNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,13 +42,51 @@ PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-West
 
 Removes the Service Bus namespace `SB-Example1` from the specified resource group `Default-ServiceBus-WestUS`.
 
+### Example 2.1 - InputObject - Using variable:
+```
+PS C:\> $inputobject = Get-AzureRmServiceBusNamespace <params>
+PS C:\> Remove-AzureRmServiceBusNamespace -InputObject $inputobject
+```
+
+Removes the Service Bus namespace provided through the $inputobject.
+
+### Example 2.2 - InputObject - Using Piping:
+```
+PS C:\> Get-AzureRmServiceBusNamespace <params> | Remove-AzureRmServiceBusNamespace
+```
+
+Removes the Service Bus namespace using Piping.
+
+### Example 3 - ResourceId
+```
+PS c:\> $ResourceId = (Get-AzureRmResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
+PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId $resourceid
+```
+
+Removes the Service Bus namespace provided through ARM id in $resourceid for -ResourceId parameter or through piping.
+
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -46,12 +97,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Service Bus Namespace Object
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Parameter Sets: NamespaceInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Namespace Name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: NamespacePropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -61,13 +127,43 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Specifying this will return true if the command was successful.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: NamespacePropertiesSet
 Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Service Bus Namespace Resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: NamespaceResourceIdParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -80,13 +176,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -96,13 +192,13 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,17 +208,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
 
-### -NamespaceName
- System.String
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-

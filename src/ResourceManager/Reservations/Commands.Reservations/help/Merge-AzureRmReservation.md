@@ -14,13 +14,14 @@ Merges two `Reservation`s.
 
 ### CommandLine (Default)
 ```
-Merge-AzureRmReservation -ReservationOrderId <String> -ReservationId <String[]> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Merge-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Merge-AzureRmReservation -Reservation <PSReservation[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Merge-AzureRmReservation -Reservation <PSReservation[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,18 +38,33 @@ Merge the two specified `Reservation`s into one `Reservation`
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Reservation
 Comma-separated strings of two ReservationIds to merge
 
 ```yaml
-Type: PSReservation[]
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation[]
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -56,9 +72,9 @@ Accept wildcard characters: False
 ReservationOrderId for the `ReservationOrder` that contains the two `Reservation`s
 
 ```yaml
-Type: String[]
+Type: System.Guid[]
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,9 +87,9 @@ Accept wildcard characters: False
 {{Fill ReservationOrderId Description}}
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,7 +102,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -101,7 +117,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -117,13 +133,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSReservation[]
+### None
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Reservations.Models.PSReservation
 
 ## NOTES
 
 ## RELATED LINKS
-

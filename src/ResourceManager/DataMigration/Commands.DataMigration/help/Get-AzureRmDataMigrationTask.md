@@ -92,7 +92,7 @@ The above example illustrates the use of Get-AzureRmDataMigrationTask cmdlet to 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,9 +107,9 @@ Accept wildcard characters: False
 Expand output
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetByInputObject, GetByResourceId, GetByComponent
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -119,9 +119,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetByInputObjectResultType, GetByResourceIdResultType, GetByComponentResultType
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 PSProject Object.
 
 ```yaml
-Type: PSProject
+Type: Microsoft.Azure.Commands.DataMigration.Models.PSProject
 Parameter Sets: ListByInputObject
 Aliases: Project
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSProject
+Type: Microsoft.Azure.Commands.DataMigration.Models.PSProject
 Parameter Sets: GetByInputObject, GetByInputObjectResultType
 Aliases: Project
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The name of the task.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByInputObject, GetByInputObjectResultType, GetByResourceId, GetByResourceIdResultType, GetByComponentResultType
 Aliases: TaskName
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByComponent
 Aliases: TaskName
 
@@ -188,9 +188,9 @@ Accept wildcard characters: False
 The name of the project.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -203,9 +203,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -218,9 +218,9 @@ Accept wildcard characters: False
 Project Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -230,9 +230,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceId, GetByResourceIdResultType
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -245,10 +245,10 @@ Accept wildcard characters: False
 Expand output of given result type.
 
 ```yaml
-Type: ResultTypeEnum
+Type: Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum
 Parameter Sets: GetByInputObjectResultType, GetByResourceIdResultType, GetByComponentResultType
-Aliases: 
-Accepted values: MigrationLevelOutput, DatabaseLevelOutput, TableLevelOutput, MigrationValidationOutput, MigrationValidationDatabaseLevelOutput
+Aliases:
+Accepted values: MigrationLevelOutput, DatabaseLevelOutput, TableLevelOutput, MigrationValidationOutput, MigrationValidationDatabaseLevelOutput, LoginLevelOutput, AgentJobLevelOutput
 
 Required: True
 Position: Named
@@ -261,9 +261,9 @@ Accept wildcard characters: False
 Database Migration Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -276,10 +276,10 @@ Accept wildcard characters: False
 Filter by TaskType.
 
 ```yaml
-Type: TaskTypeEnum
+Type: System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]
 Parameter Sets: ListByComponent, ListByInputObject, ListByResourceId
-Aliases: 
-Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql
+Aliases:
+Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, MigrateSqlServerSqlDbMi, ValidateSqlServerSqlDbMi
 
 Required: False
 Position: Named
@@ -294,13 +294,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSProject
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask
 
 ## NOTES
 
 ## RELATED LINKS
-

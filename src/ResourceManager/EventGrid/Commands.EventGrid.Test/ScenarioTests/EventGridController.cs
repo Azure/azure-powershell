@@ -27,6 +27,7 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 {
@@ -60,10 +61,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             this.RunPsTestWorkflow(
                 () => scripts,
@@ -108,7 +111,6 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     helper.GetRMModulePath(@"AzureRM.EventGrid.psd1"),
                     "AzureRM.Resources.ps1");

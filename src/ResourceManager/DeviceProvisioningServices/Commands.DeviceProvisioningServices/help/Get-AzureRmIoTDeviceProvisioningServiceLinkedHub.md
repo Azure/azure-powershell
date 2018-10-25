@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -68,7 +68,7 @@ Show details of linked IoT hub "myiothub1" in an Azure IoT Hub device provisioni
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: PSProvisioningServiceDescription
+Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Host name of linked IoT Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,9 +113,9 @@ Accept wildcard characters: False
 Name of the IoT Device Provisioning Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,9 +143,9 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -160,14 +160,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
-System.String
+Parameters: DpsObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions
 
 ## NOTES
 
 ## RELATED LINKS
-

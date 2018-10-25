@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,16 +21,19 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class ActivityLogAlertsTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ActivityLogAlertsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetListUpdateRemoveActivityLogAlert()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetGetListUpdateRemoveActivityLogAlert");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetGetListUpdateRemoveActivityLogAlert");
         }
     }
 }

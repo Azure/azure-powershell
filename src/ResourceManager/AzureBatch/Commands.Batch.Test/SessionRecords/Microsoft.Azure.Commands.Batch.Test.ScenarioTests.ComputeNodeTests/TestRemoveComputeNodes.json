@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"removenodepool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 2,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
       "RequestHeaders": {
@@ -13,32 +13,32 @@
           "245"
         ],
         "client-request-id": [
-          "db83f097-cafc-4b46-bd1d-f81dc2b99ea1"
+          "c830e452-ac6c-48f3-90f3-bd8578aea788"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "582b71e3-4bf6-433f-87c3-695c9d0b98de"
+          "c45b685c-8f11-4f3e-9e48-95328bbc6407"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -53,10 +53,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Location": [
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool"
@@ -68,41 +68,41 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "96dbe51c-1324-4b26-b3d4-4f64432df2ac"
+          "7ffc4122-eef5-4289-8f9c-a6db73cd75b3"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "ccd41bf6-5260-40b0-9dee-33d82c62403e"
+          "b346770a-fca1-4ebc-b56d-1462ea969c08"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,10 +114,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -126,41 +126,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "466827d3-cb55-4608-8b84-ec4707f6b4d6"
+          "59a93190-d588-4daf-96b3-03f6e2b5786d"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:12:41 GMT"
+          "Tue, 05 Jun 2018 23:29:18 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "54079d61-1ba3-4bb2-a060-65b23f7ff50b"
+          "f4d56c3a-4ca8-4369-a5b5-091fff158824"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -172,10 +172,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:12:41 GMT"
+          "Tue, 05 Jun 2018 23:29:18 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -184,41 +184,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "8151e5b1-faeb-4ce8-8050-07fda5dd1163"
+          "725eca2a-f1d5-4978-beca-7124375428bd"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:12:46 GMT"
+          "Tue, 05 Jun 2018 23:29:23 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "d13fd821-eb40-487c-a061-4cfc5e875a5b"
+          "3a6f146b-b8a3-4c6e-81a6-d5814a39c3d9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -230,10 +230,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:12:46 GMT"
+          "Tue, 05 Jun 2018 23:29:23 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -242,41 +242,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ba0be64d-3555-4f05-b1cb-e8a3648bf96d"
+          "3aebe097-76ff-408e-b19f-326199ca0670"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:12:51 GMT"
+          "Tue, 05 Jun 2018 23:29:28 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "94a74ccf-09b1-47c8-98a4-48eb3aad7fc5"
+          "28a7f5e8-19d4-4660-b6db-dcc92899191c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -288,10 +288,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:12:51 GMT"
+          "Tue, 05 Jun 2018 23:29:28 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -300,41 +300,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "3d73bdda-1bd9-47a4-8f8d-e1eb09661201"
+          "345f83cb-d5c0-4ab2-8b18-290ece494f19"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:12:56 GMT"
+          "Tue, 05 Jun 2018 23:29:33 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "46a8699d-bcae-4fe0-818d-34cda008785c"
+          "67eeca04-0be5-4311-8acd-ac6c53556677"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -346,10 +346,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:12:56 GMT"
+          "Tue, 05 Jun 2018 23:29:33 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -358,41 +358,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "8c60e689-460a-4580-afc9-1df0e13ac6ba"
+          "93fcac3e-eaf2-4a65-8253-db483d2a2e3f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:01 GMT"
+          "Tue, 05 Jun 2018 23:29:38 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "df8b980a-1eda-4dd7-aebb-3eeb7a0971a2"
+          "a9ab49c0-da43-4c4d-9849-814b121f495c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -404,10 +404,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:01 GMT"
+          "Tue, 05 Jun 2018 23:29:38 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -416,41 +416,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "eda42e7e-070c-4abb-a488-478fe8275dd9"
+          "03bac1ae-2295-4ba8-9f60-14cc49a5d8d3"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:06 GMT"
+          "Tue, 05 Jun 2018 23:29:43 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "73aab365-ec24-4eb8-a846-c719d1236da8"
+          "b04fbbd6-ffa2-4347-9482-570f56f49215"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -462,10 +462,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:06 GMT"
+          "Tue, 05 Jun 2018 23:29:43 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -474,41 +474,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "171be4c3-33f7-44fd-bd48-c4e4eb6de9e7"
+          "04d60358-72bc-4d49-bbcf-3df723293c9d"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:11 GMT"
+          "Tue, 05 Jun 2018 23:29:48 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "51e7de3f-e671-47e9-9cc8-1e770c793dbb"
+          "6bd7ea08-1c91-4f99-83f2-05b3c877faa4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -520,10 +520,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:11 GMT"
+          "Tue, 05 Jun 2018 23:29:48 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -532,41 +532,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "6a9b9558-a000-43fd-973e-f680c9fd2cba"
+          "9a16f500-27db-4a28-8d8a-014fce4d6954"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:16 GMT"
+          "Tue, 05 Jun 2018 23:29:53 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "7b34a1b4-c7a3-4960-9cba-24cdafde4da7"
+          "20553962-5b7a-42d7-bb48-36a8de82b419"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -578,10 +578,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:17 GMT"
+          "Tue, 05 Jun 2018 23:29:53 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -590,41 +590,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "663b895c-a3e9-4bb4-9cd8-f9763a3b4827"
+          "2f2046b6-4736-478d-9167-91ee0fc8ae18"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:21 GMT"
+          "Tue, 05 Jun 2018 23:29:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D50C681833F9BF\",\r\n  \"lastModified\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"creationTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:36.4984767Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:13:21.4509962Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 2,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:12:36 GMT"
+          "Tue, 05 Jun 2018 23:29:13 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "098ff11f-9d9f-428b-bf2f-1ef691faf9a0"
+          "1f0544a2-e762-4aae-9d29-687afbd2dee0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -636,10 +636,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:22 GMT"
+          "Tue, 05 Jun 2018 23:29:58 GMT"
         ],
         "ETag": [
-          "0x8D50C681833F9BF"
+          "0x8D5CB3C25C21026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -648,29 +648,87 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "1fe5f720-7fc6-4b4b-893e-5932adff58ee"
+          "a7faeea2-e475-42ac-8bcb-76049592b6c6"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:22 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20171006t031320z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool/nodes/tvm-892191217_1-20171006t031320z\",\r\n      \"state\": \"creating\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:13:20.0217943Z\",\r\n      \"allocationTime\": \"2017-10-06T03:13:20.0217943Z\",\r\n      \"ipAddress\": \"10.72.32.83\",\r\n      \"affinityId\": \"TVM:tvm-892191217_1-20171006t031320z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"isDedicated\": true\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20171006t031320z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool/nodes/tvm-892191217_2-20171006t031320z\",\r\n      \"state\": \"creating\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:13:20.0217943Z\",\r\n      \"allocationTime\": \"2017-10-06T03:13:20.0217943Z\",\r\n      \"ipAddress\": \"10.72.16.116\",\r\n      \"affinityId\": \"TVM:tvm-892191217_2-20171006t031320z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"isDedicated\": true\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"removenodepool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool\",\r\n  \"eTag\": \"0x8D5CB3C25C21026\",\r\n  \"lastModified\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"creationTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-06-05T23:29:13.4744614Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2018-06-05T23:30:03.1676056Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 2,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Tue, 05 Jun 2018 23:29:13 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "8c4e2ebf-6900-446b-bce9-3ed9f53477f3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Tue, 05 Jun 2018 23:30:04 GMT"
+        ],
+        "ETag": [
+          "0x8D5CB3C25C21026"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "fd5e226a-52b3-4e24-ba94-51f4828cbbaa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Tue, 05 Jun 2018 23:30:04 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20180605t233002z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool/nodes/tvm-892191217_1-20180605t233002z\",\r\n      \"state\": \"creating\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2018-06-05T23:30:02.2131109Z\",\r\n      \"allocationTime\": \"2018-06-05T23:30:02.2131109Z\",\r\n      \"ipAddress\": \"10.72.4.92\",\r\n      \"affinityId\": \"TVM:tvm-892191217_1-20180605t233002z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"isDedicated\": true\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20180605t233002z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool/nodes/tvm-892191217_2-20180605t233002z\",\r\n      \"state\": \"creating\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2018-06-05T23:30:02.2131109Z\",\r\n      \"allocationTime\": \"2018-06-05T23:30:02.2131109Z\",\r\n      \"ipAddress\": \"10.72.68.45\",\r\n      \"affinityId\": \"TVM:tvm-892191217_2-20180605t233002z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"isDedicated\": true\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -679,7 +737,7 @@
           "chunked"
         ],
         "request-id": [
-          "66794846-72f5-4dc2-b1a9-27657b057a52"
+          "619e4b9c-b53c-4fef-b543-df9066f28edc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -691,7 +749,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:21 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -700,10 +758,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/removenodes?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL3JlbW92ZW5vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool/removenodes?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL3JlbW92ZW5vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"nodeList\": [\r\n    \"tvm-892191217_1-20171006t031320z\",\r\n    \"tvm-892191217_2-20171006t031320z\"\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"nodeList\": [\r\n    \"tvm-892191217_1-20180605t233002z\",\r\n    \"tvm-892191217_2-20180605t233002z\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata; charset=utf-8"
@@ -712,32 +770,32 @@
           "107"
         ],
         "client-request-id": [
-          "3b0fab4d-98ec-485c-ab7b-2ca53443afb0"
+          "1745cdc3-fdb2-414f-91e9-e1ee866a81c2"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:22 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:13:22 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "9f8cc0b9-1103-40c7-bdd0-db44a61a48f9"
+          "12ae2f16-94f2-447a-9a47-ca44058253d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -752,10 +810,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/removenodepool/removenodes"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:21 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "ETag": [
-          "0x8D50C68339211CB"
+          "0x8D5CB3C44498BDF"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -764,29 +822,29 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1&$select=id%2Cstate",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4xJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "40edc3a0-c12a-4cda-800f-6b5fb4601279"
+          "a5e06e3b-6bdd-43e4-baf2-ed9663079eaa"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:22 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20171006t031320z\",\r\n      \"state\": \"creating\"\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20171006t031320z\",\r\n      \"state\": \"creating\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20180605t233002z\",\r\n      \"state\": \"creating\"\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20180605t233002z\",\r\n      \"state\": \"creating\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -795,7 +853,7 @@
           "chunked"
         ],
         "request-id": [
-          "322d3782-be19-46da-95cd-7fb17ddc3fae"
+          "996ac076-8351-457f-8835-f57b9d11d1aa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -807,7 +865,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:21 GMT"
+          "Tue, 05 Jun 2018 23:30:04 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -816,29 +874,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1&$select=id%2Cstate",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4xJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "aff14874-3a05-4af1-aa94-14f5ff0157cd"
+          "f95db703-6589-4920-9e07-3b6d85f6b6ed"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:23 GMT"
+          "Tue, 05 Jun 2018 23:30:05 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20171006t031320z\",\r\n      \"state\": \"creating\"\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20171006t031320z\",\r\n      \"state\": \"creating\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20180605t233002z\",\r\n      \"state\": \"creating\"\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20180605t233002z\",\r\n      \"state\": \"creating\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -847,7 +905,7 @@
           "chunked"
         ],
         "request-id": [
-          "94b4133c-4052-4b3f-8fa5-506face5d2ba"
+          "3cfad172-eeac-41d6-9681-b7d1cf5f8ec8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -859,7 +917,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:23 GMT"
+          "Tue, 05 Jun 2018 23:30:05 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -868,29 +926,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1&$select=id%2Cstate",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4xJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "cb787b64-b7ee-4466-a2ff-15b20800ca39"
+          "e6968436-702f-43ce-bb17-1a3325316c7d"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:24 GMT"
+          "Tue, 05 Jun 2018 23:30:06 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20171006t031320z\",\r\n      \"state\": \"leavingpool\"\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20171006t031320z\",\r\n      \"state\": \"creating\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20180605t233002z\",\r\n      \"state\": \"leavingpool\"\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20180605t233002z\",\r\n      \"state\": \"leavingpool\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -899,7 +957,7 @@
           "chunked"
         ],
         "request-id": [
-          "dec2ac38-145f-4669-8c9b-3ac57402bef5"
+          "8269b8c0-1557-4d72-8bf6-af5d61e9dd63"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -911,7 +969,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:24 GMT"
+          "Tue, 05 Jun 2018 23:30:06 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -920,26 +978,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "12f73726-34f7-447b-a00a-ee81cbb4a0c5"
+          "d9f6d1b2-75ab-4da9-9c67-21dacfe31792"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:13:24 GMT"
+          "Tue, 05 Jun 2018 23:30:07 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.1.1"
         ]
       },
       "ResponseBody": "",
@@ -948,7 +1006,7 @@
           "chunked"
         ],
         "request-id": [
-          "07df5627-5d66-4261-999f-e6552e860931"
+          "67d62864-2da6-470e-a187-23e1f32e978f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -960,7 +1018,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:13:24 GMT"
+          "Tue, 05 Jun 2018 23:30:06 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

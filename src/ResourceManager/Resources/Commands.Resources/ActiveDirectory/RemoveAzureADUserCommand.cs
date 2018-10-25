@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes the AD user.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(bool))]
     public class RemoveAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.UPNOrObjectId, HelpMessage = "The userPrincipalName or ObjectId of the user to be deleted.")]

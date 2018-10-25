@@ -34,9 +34,7 @@ New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyRe
 The **New-AzureRmSqlDatabaseCopy** cmdlet creates a copy of an Azure SQL Database that uses the
 snapshot of the data at the current time. Use this cmdlet instead of the Start-AzureSqlDatabaseCopy
 cmdlet to create a one-time database copy. This cmdlet returns the **Database** object of the copy.
-
 Note: Use the New-AzureRmSqlDatabaseSecondary cmdlet to configure geo-replication for a database.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -45,8 +43,9 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -58,10 +57,10 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation of teh Azure Sql Database copy.
+The compute generation to assign to the new copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
 
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Database copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Resource Group in which to assign the copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +105,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Server which hosts the copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Database to copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +135,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -151,7 +150,7 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool in which to assign the copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
 
@@ -164,11 +163,11 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -181,7 +180,7 @@ Accept wildcard characters: False
 Specifies the name of the Resource Group that contains the database to copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +195,7 @@ Accept wildcard characters: False
 Specifies the name of the  SQL Server that contains the database to copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +210,7 @@ Accept wildcard characters: False
 Specifies the name of the service objective to assign to the copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
 
@@ -224,11 +223,10 @@ Accept wildcard characters: False
 
 ### -Tags
 Specifies the Key-value pairs in the form of a hash table to associate with the Azure SQL Database copy. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -243,7 +241,7 @@ Accept wildcard characters: False
 The Vcore numbers of the Azure Sql Database copy.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: VcoreBasedDatabase
 Aliases: Capacity
 
@@ -258,7 +256,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -274,7 +272,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -290,13 +288,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Replication.Model.AzureSqlDatabaseCopyModel
-This cmdlet returns a **Database** object that represents the copied database.
 
 ## NOTES
 

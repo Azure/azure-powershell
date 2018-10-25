@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null(environment.BatchEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpoint);
+            Assert.Null(environment.AzureAnalysisServicesEndpointSuffix);
+
         }
 
         [Theory]
@@ -69,21 +71,21 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
             ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net",
-            "https://api.loganalytics.io", "https://api.loganalytics.io/v1")]
+            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
         {
             AzureEnvironment azEnvironment = CreateEnvironment(name, onPremise, activeDirectory,
                 serviceResource, adTenant, dataLakeJobs, dataLakeFiles, kvDnsSuffix,
                 kvResource, gallery, graph, graphResource, portal, publishSettings,
                 resourceManager, serviceManagement, sqlSuffix, storageSuffix,
                 trafficManagerSuffix, batchResource, dataLakeResource,
-                azureOperationalInsightsEndpointResourceId, azureOperationalInsightsEndpoint);
+                azureOperationalInsightsEndpointResourceId, azureOperationalInsightsEndpoint, analysisServicesSuffix);
             var environment = (PSAzureEnvironment)azEnvironment;
             Assert.NotNull(environment);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment,
@@ -128,6 +130,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, azEnvironment,
+                environment.AzureAnalysisServicesEndpointSuffix);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -163,7 +167,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix));
         }
+
         [Theory]
         [InlineData("TestAll", true, "https://login.microsoftonline.com", "https://management.core.windows.net/",
             "Common", "https://mangement.azure.com/dataLakeJobs", "https://management.azure.com/dataLakeFiles",
@@ -172,14 +178,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
             ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net",
-            "https://api.loganalytics.io", "https://api.loganalytics.io/v1")]
+            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidPSEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
         {
             PSAzureEnvironment environment = new PSAzureEnvironment
             {
@@ -206,6 +212,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 BatchEndpointResourceId = batchResource,
                 AzureOperationalInsightsEndpointResourceId = azureOperationalInsightsEndpointResourceId,
                 AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,
+                AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix
             };
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);
@@ -251,6 +258,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, azEnvironment,
+                environment.AzureAnalysisServicesEndpointSuffix);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -261,7 +270,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
         {
             var environment = new AzureEnvironment() { Name = name, OnPremise = onPremise };
             SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, environment, activeDirectory);
@@ -306,6 +315,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 azureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, environment,
                 azureOperationalInsightsEndpoint);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, environment,
+                analysisServicesSuffix);
             return environment;
 
         }

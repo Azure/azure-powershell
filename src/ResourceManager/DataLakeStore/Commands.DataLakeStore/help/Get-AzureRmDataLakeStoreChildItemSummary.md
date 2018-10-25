@@ -35,7 +35,7 @@ It lists number of total directories, files and their size contained under /a.
 The Data Lake Store account to execute the filesystem operation in
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -51,7 +51,7 @@ Indicates the number of files/directories processed in parallel.
 Default will be computed as a best effort based on system specification.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,7 +82,7 @@ The path in the specified Data Lake account that should be retrieve.
 Can be a file or folder In the format '/folder/file.txt', where the first '/' after the DNS indicates the root of the file system.
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -113,7 +113,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -130,12 +130,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-System.Int32
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+
+### System.Int32
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels.DataLakeStoreChildItemSummary
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreChildItemSummary
 
 ## NOTES
 

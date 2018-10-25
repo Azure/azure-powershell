@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,7 +45,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Monitor">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.20.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
+      <Name>Microsoft.Azure.Management.Monitor</Name>
     </Reference>
     <Reference Include="System.Collections" />
   </ItemGroup>
@@ -78,11 +80,12 @@
     <Compile Include="Autoscale\GetAzureRmAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookCommand.cs" />
     <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Diagnostics\RemoveAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="LogsCmdletBase.cs" />
     <Compile Include="ActivityLogs\GetAzureRmLogCommand.cs" />
-    <Compile Include="MonitorClientCmdletBase.cs" />
+    <Compile Include="Metrics\NewAzureRmMetricFilterCommand.cs" />
     <Compile Include="MonitorCmdletBase.cs" />
     <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
     <Compile Include="LogProfiles\GetAzureRmLogProfileCommand.cs" />
@@ -152,11 +155,50 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
+    <Compile Include="TransitionalClasses\ActivityLogAlertActionGroup.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertActionList.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertAllOfCondition.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertLeafCondition.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertResource.cs" />
+    <Compile Include="TransitionalClasses\AlertRuleResource.cs" />
+    <Compile Include="TransitionalClasses\AutoscaleNotification.cs" />
+    <Compile Include="TransitionalClasses\AutoscaleProfile.cs" />
+    <Compile Include="TransitionalClasses\AutoscaleSettingResource.cs" />
+    <Compile Include="TransitionalClasses\ComparisonOperatorType.cs" />
+    <Compile Include="TransitionalClasses\ConditionOperator.cs" />
+    <Compile Include="TransitionalClasses\EmailNotification.cs" />
+    <Compile Include="TransitionalClasses\LocationThesholdRuleCondition.cs" />
+    <Compile Include="TransitionalClasses\LogProfileResource.cs" />
+    <Compile Include="TransitionalClasses\MetricTrigger.cs" />
+    <Compile Include="TransitionalClasses\ReceiverStatus.cs" />
+    <Compile Include="TransitionalClasses\Recurrence.cs" />
+    <Compile Include="TransitionalClasses\RecurrentSchedule.cs" />
+    <Compile Include="TransitionalClasses\RuleAction.cs" />
+    <Compile Include="TransitionalClasses\RuleCondition.cs" />
+    <Compile Include="TransitionalClasses\RuleDataSource.cs" />
+    <Compile Include="TransitionalClasses\RuleEmailAction.cs" />
+    <Compile Include="TransitionalClasses\RuleMetricDataSource.cs" />
+    <Compile Include="TransitionalClasses\RuleWebhookAction.cs" />
+    <Compile Include="TransitionalClasses\ScaleAction.cs" />
+    <Compile Include="TransitionalClasses\ScaleCapacity.cs" />
+    <Compile Include="TransitionalClasses\ThresholdRuleCondition.cs" />
+    <Compile Include="TransitionalClasses\TimeAggregationOperator.cs" />
+    <Compile Include="TransitionalClasses\TimeWindow.cs" />
+    <Compile Include="TransitionalClasses\TransitionHelpers.cs" />
+    <Compile Include="TransitionalClasses\LogSettings.cs" />
+    <Compile Include="TransitionalClasses\MetricSettings.cs" />
+    <Compile Include="TransitionalClasses\MetricStatisticType.cs" />
+    <Compile Include="TransitionalClasses\RecurrenceFrequency.cs" />
+    <Compile Include="TransitionalClasses\RetentionPolicy.cs" />
+    <Compile Include="TransitionalClasses\ScaleDirection.cs" />
+    <Compile Include="TransitionalClasses\ScaleRule.cs" />
+    <Compile Include="TransitionalClasses\ScaleType.cs" />
+    <Compile Include="TransitionalClasses\TimeAggregationType.cs" />
+    <Compile Include="TransitionalClasses\WebhookNotification.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Insights.psd1">
-      <Link>AzureRM.Insights.psd1</Link>
+    <None Include="AzureRM.Insights.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="Microsoft.Azure.Commands.Insights.format.ps1xml">
@@ -167,9 +209,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\ResourcesForAlertCmdlets.resx">
@@ -187,21 +227,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

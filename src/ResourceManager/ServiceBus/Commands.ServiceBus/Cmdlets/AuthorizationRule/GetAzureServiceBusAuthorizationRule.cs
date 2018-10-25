@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(List<PSSharedAccessAuthorizationRuleAttributes>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class GetAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -60,67 +61,73 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public override void ExecuteCmdlet()
         {
 
-            //Get Namespace Authorization Rule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a Namespace AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
-                    WriteObject(authRule);
-                }
-                else
-                {
-                    // Get all Namespace AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
-                    WriteObject(authRuleList, true);
-                }
-
-
-            // Get Queue authorizationRule
-            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+            try
+            {
+                //Get Namespace Authorization Rule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                     if (!string.IsNullOrEmpty(Name))
                     {
-                    // Get a Queue AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name);
+                        // Get a Namespace AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
                         WriteObject(authRule);
                     }
                     else
                     {
-                    // Get all Queue AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue);
+                        // Get all Namespace AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
                         WriteObject(authRuleList, true);
                     }
 
-            // Get Topic authorizationRule
-            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a Topic AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name);
-                    WriteObject(authRule);
-                }
-                else
-                {
-                    // Get all Topic AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic);
-                    WriteObject(authRuleList, true);
-                }
 
-            // Get Alias authorizationRule
-            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a Topic AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
-                    WriteObject(authRule);
-                }
-                else
-                {
-                    // Get all Topic AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
-                    WriteObject(authRuleList, true);
-                }
+                // Get Queue authorizationRule
+                if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        // Get a Queue AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name);
+                        WriteObject(authRule);
+                    }
+                    else
+                    {
+                        // Get all Queue AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue);
+                        WriteObject(authRuleList, true);
+                    }
 
+                // Get Topic authorizationRule
+                if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        // Get a Topic AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name);
+                        WriteObject(authRule);
+                    }
+                    else
+                    {
+                        // Get all Topic AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic);
+                        WriteObject(authRuleList, true);
+                    }
+
+                // Get Alias authorizationRule
+                if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        // Get a Topic AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
+                        WriteObject(authRule);
+                    }
+                    else
+                    {
+                        // Get all Topic AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
+                        WriteObject(authRuleList, true);
+                    }
+            }
+            catch (ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

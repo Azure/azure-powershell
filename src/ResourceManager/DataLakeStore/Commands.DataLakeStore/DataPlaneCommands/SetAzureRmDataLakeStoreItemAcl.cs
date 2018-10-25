@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
-        OutputType(typeof(DataLakeStoreItemAce))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemAcl", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAcl")]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
@@ -65,6 +64,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
+        [Parameter(Mandatory = false,
+            HelpMessage =
+                "If passed then progress status is showed. Only applicable when recursive Acl Set is done."
+        )]
+        public SwitchParameter ShowProgress { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteWarning(Resources.IncorrectOutputTypeWarning);
@@ -77,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         {
                             DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                                 Account,
-                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency);
+                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
                         }
                         else
                         {

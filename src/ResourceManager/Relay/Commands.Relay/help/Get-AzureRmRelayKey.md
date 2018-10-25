@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelaykey
 schema: 2.0.0
 ---
@@ -38,16 +38,34 @@ The **Get-AzureRmRelayKey** cmdlet returns the primary and secondary connection 
 ### Example 1 - Namespace
 ```
 PS C:\> Get-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 ```
 
 ### Example 2 - WcfRelay
 ```
 PS C:\> Get-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1  -WcfRelay TestWCFRelay1 -Name AuthoRule1
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 ```
 
 ### Example 3 - HybridConnection
 ```
 PS C:\> Get-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 ```
 
 Primary and secondary connection string to the specified Relay entities (Namespace/WcfRelay/HybridConnection).
@@ -58,7 +76,7 @@ Primary and secondary connection string to the specified Relay entities (Namespa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,9 +91,9 @@ Accept wildcard characters: False
 HybridConnection Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -88,9 +106,9 @@ Accept wildcard characters: False
 AuthorizationRule Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -103,9 +121,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamespaceAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -115,9 +133,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -130,9 +148,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -145,9 +163,9 @@ Accept wildcard characters: False
 WcfRelay Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WcfRelayAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -161,48 +179,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String 
-
-### -NamespaceName
- System.String 
- 
-
-### -HybridConnectionsName
- System.String 
-
-### -WcfRelayName
- System.String 
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
 
-### Example 1 - Namespace
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
-
-### Example 2 - WcfRelay
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
-
-### Example 3 - HybridConnection
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
-
 ## NOTES
 
 ## RELATED LINKS
-

@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.ActivityRun, DefaultParameterSetName = ParameterSetNames.ByFactoryName),
-        OutputType(typeof(List<PSActivityRun>), typeof(PSActivityRun))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2ActivityRun", DefaultParameterSetName = ParameterSetNames.ByFactoryName),OutputType(typeof(PSActivityRun))]
     public class GetAzureDataFactoryActivityRunCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = true,
@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string Status { get; set; }
 
+        [CmdletParameterBreakingChange("LinkedServiceName", ChangeDescription = Constants.DeprecatingParameter)]
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 6, Mandatory = false,
             HelpMessage = Constants.HelpLinkedServiceName)]
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 7, Mandatory = false,

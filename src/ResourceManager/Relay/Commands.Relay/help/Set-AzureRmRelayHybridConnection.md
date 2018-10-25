@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/set-azurermrelayhybridconnection
 schema: 2.0.0
 ---
@@ -74,7 +74,7 @@ This example updates the UserMetadata property with new value.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 HybridConnections object.
 
 ```yaml
-Type: HybridConnectionAttibutes
+Type: Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
 Parameter Sets: HybridConnectionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 HybridConnections Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -119,9 +119,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -134,9 +134,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -150,9 +150,9 @@ Gets or sets usermetadata is a placeholder to store user-defined string data for
 it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: HybridConnectionPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +181,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -197,20 +197,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
+### System.String
 
-### -NamespaceName
-System.String
-
-### -WcfRelayName
-System.String
-
-### -InputObject
-Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-
-### -UserMetadata
-System.String
+### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
@@ -219,4 +209,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-

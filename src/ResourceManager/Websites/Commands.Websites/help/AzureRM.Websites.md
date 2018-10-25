@@ -23,6 +23,9 @@ Gets usage metrics for an Azure Web App.
 ### [Get-AzureRmWebApp](Get-AzureRmWebApp.md)
 Gets Azure Web Apps in the specified resource group.
 
+### [Get-AzureRmDeletedWebApp](Get-AzureRmDeletedWebApp.md)
+Gets deleted web apps in the subscription.
+
 ### [Get-AzureRmWebAppBackup](Get-AzureRmWebAppBackup.md)
 Gets an Azure Web App backup.
 
@@ -34,6 +37,9 @@ Gets all backups of an Azure Web App.
 
 ### [Get-AzureRmWebAppCertificate](Get-AzureRmWebAppCertificate.md)
 Gets an Azure Web App certificate.
+
+### [Get-AzureRmWebAppContainerContinuousDeploymentUrl](Get-AzureRmWebAppContainerContinuousDeploymentUrl.md)
+Gets the continuous deployment url for a container web app
 
 ### [Get-AzureRmWebAppMetrics](Get-AzureRmWebAppMetrics.md)
 Gets Azure Web App metrics.
@@ -52,6 +58,9 @@ Gets metrics for an Azure Web App slot.
 
 ### [Get-AzureRmWebAppSlotPublishingProfile](Get-AzureRmWebAppSlotPublishingProfile.md)
 Gets an Azure Web App slot publishing profile.
+
+### [Get-AzureRmWebAppSnapshot](Get-AzureRmWebAppSnapshot.md)
+Gets the snapshots available for a web app.
 
 ### [Get-AzureRmWebAppSSLBinding](Get-AzureRmWebAppSSLBinding.md)
 Gets an Azure Web App certificate SSL binding.
@@ -103,6 +112,12 @@ Restarts an Azure Web App slot.
 
 ### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
 Restores an Azure Web App from a backup.
+
+### [Restore-AzureRmDeletedWebApp](Restore-AzureRmDeletedWebApp.md)
+Restores a deleted web app to a new or existing web app.
+
+### [Restore-AzureRmWebAppSnapshot](Restore-AzureRmWebAppSnapshot.md)
+Restores a web app snapshot.
 
 ### [Set-AzureRmAppServicePlan](Set-AzureRmAppServicePlan.md)
 Sets an Azure App Service plan.

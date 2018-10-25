@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 95FF3F7A-5CC6-4AA6-A393-5EBB5579D9A2
@@ -76,7 +76,7 @@ For more information, type `Get-Help Measure-Object`.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,9 +93,9 @@ If more than one Backup vault has the same name, this cmdlet returns them all.
 Specify the *ResourceGroupName* parameter to get a unique vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group in which this cmdlet gets a Backup vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -125,14 +125,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 
 ## NOTES
-* None
 
 ## RELATED LINKS
 

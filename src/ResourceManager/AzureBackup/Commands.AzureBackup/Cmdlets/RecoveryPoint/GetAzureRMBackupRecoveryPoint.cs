@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of Azure Recovery Points
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupRecoveryPoint"), OutputType(typeof(AzureRMBackupRecoveryPoint), typeof(List<AzureRMBackupRecoveryPoint>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupRecoveryPoint"), OutputType(typeof(AzureRMBackupRecoveryPoint))]
     public class GetAzureRMBackupRecoveryPoint : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RecoveryPointId)]
@@ -93,4 +93,3 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
-

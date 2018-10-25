@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
@@ -43,7 +43,6 @@ PS C:\>Disable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Defaul
 ```
 
 This command disables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
-
 This command changes the tags property of the activity log alert called alert1 and disables it.
 
 ### Example 2: Disable an activity log alert using a PSActivityLogAlertResource object as input
@@ -67,7 +66,7 @@ This command disables the ActivityLogAlert using the ResourceId parameter from t
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,9 +81,9 @@ Accept wildcard characters: False
 Sets the InputObject tags property of the call to extract the required name, resource group name, and the optional tag properties.
 
 ```yaml
-Type: PSActivityLogAlertResource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
 Parameter Sets: DisableByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,9 +96,9 @@ Accept wildcard characters: False
 The name of the activity log alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisableByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -112,9 +111,9 @@ Accept wildcard characters: False
 The name of the resource group where the alert resource is going to exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisableByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,9 +126,9 @@ Accept wildcard characters: False
 Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisableByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -157,7 +156,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,8 +172,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

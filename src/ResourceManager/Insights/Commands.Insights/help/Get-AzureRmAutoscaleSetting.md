@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 989CE245-FD1D-4E1D-90A2-2D7DA3975D0B
@@ -14,7 +14,8 @@ Gets Autoscale settings.
 ## SYNTAX
 
 ```
-Get-AzureRmAutoscaleSetting -ResourceGroupName <String> [-Name <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmAutoscaleSetting -ResourceGroupName <String> [-Name <String>] [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,7 +206,7 @@ This command gets the Autoscale setting named DefaultServerFarm-Default-Web-East
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -220,9 +221,9 @@ Accept wildcard characters: False
 Indicates that this operation displays full details in the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -235,9 +236,9 @@ Accept wildcard characters: False
 Specifies the name of the setting to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -250,7 +251,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -266,12 +267,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### List<PSAutoscaleSetting>
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting
 
 ## NOTES
 

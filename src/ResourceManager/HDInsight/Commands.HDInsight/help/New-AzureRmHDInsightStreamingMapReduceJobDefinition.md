@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 17CB76E7-2F91-4EFE-9DA3-F083F02235E1
@@ -51,9 +51,9 @@ Specifies an array of arguments for the job.
 The arguments are passed as command-line arguments to each task.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies an array of command-line environment variables to set when a job runs on worker nodes.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,9 +96,9 @@ Accept wildcard characters: False
 Specifies Hadoop configuration values to set for when the job runs.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,9 +112,9 @@ Specifies the path to a file that contains a query to run.
 You can use this parameter instead of the *Query* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 Specifies a collection of files that are associated with a Hive job.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,9 +142,9 @@ Accept wildcard characters: False
 Specifies the path to the input files.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -157,9 +157,9 @@ Accept wildcard characters: False
 Specifies a Mapper file name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -172,9 +172,9 @@ Accept wildcard characters: False
 Specifies the path for the job output.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -187,9 +187,9 @@ Accept wildcard characters: False
 Specifies a Reducer file name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,9 +202,9 @@ Accept wildcard characters: False
 Specifies the location of the folder that contains standard outputs and error outputs for a job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -219,7 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

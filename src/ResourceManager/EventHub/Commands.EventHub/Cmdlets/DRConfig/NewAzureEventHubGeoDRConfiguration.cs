@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'New-AzureRmEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -63,38 +63,45 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             if (!string.IsNullOrEmpty(AlternateName))
                 drConfiguration.AlternateName = AlternateName;
 
-            if (ParameterSetName == NamespaceInputObjectParameterSet)
+            try
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                if (ParameterSetName == NamespaceInputObjectParameterSet)
                 {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
+                    ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+
+                    if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                     {
-                        WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                        if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
+                        {
+                            WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                        }
+                    }
+                }
+
+                if (ParameterSetName == NamespaceResourceIdParameterSet)
+                {
+                    ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+
+                    if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                    {
+                        if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
+                        {
+                            WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                        }
+                    }
+                }
+
+                if (ParameterSetName == GeoDRParameterSet)
+                {
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, Namespace)))
+                    {
+                        WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
                     }
                 }
             }
-
-            if (ParameterSetName == NamespaceResourceIdParameterSet)
+            catch (Management.EventHub.Models.ErrorResponseException ex)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
-                    {
-                        WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
-                    }   
-                }
-            }
-
-            if(ParameterSetName == GeoDRParameterSet)
-            {
-                if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, Namespace)))
-                {
-                    WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
-                }
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
         }
     }

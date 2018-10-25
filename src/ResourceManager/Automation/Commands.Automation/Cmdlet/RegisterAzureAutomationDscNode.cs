@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Registers the dsc node.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmAutomationDscNode")]
+    [Cmdlet("Register", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscNode"), OutputType(typeof(void))]
     // [OutputType(typeof(DscNode))]
     public class RegisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
@@ -178,6 +178,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            string parametersPassed = $"ResourceGroupName: {this.ResourceGroupName}, AutomationAccountName: {this.AutomationAccountName}, AzureVMName: {this.AzureVMName}, " +
+                $"NodeConfigurationName: {this.NodeConfigurationName}, ConfigurationMode: {this.ConfigurationMode}, ConfigurationModeFrequencyMins: {this.ConfigurationModeFrequencyMins}, " +
+                $"RefreshFrequencyMins: {this.RefreshFrequencyMins}, RebootNodeIfNeeded: {this.RebootNodeIfNeeded}, ActionAfterReboot: {this.ActionAfterReboot}, " +
+                $" AllowModuleOverwrite: {this.AllowModuleOverwrite}, AzureVMResourceGroup: {this.AzureVMResourceGroup}, AzureVMLocation: {this.AzureVMLocation}";
+            WriteDebug(parametersPassed);
+
             this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName, this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite, this.AzureVMResourceGroup, this.AzureVMLocation);
         }
     }

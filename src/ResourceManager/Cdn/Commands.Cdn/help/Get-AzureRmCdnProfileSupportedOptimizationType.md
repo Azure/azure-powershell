@@ -44,7 +44,7 @@ Get the supported optimization types for a CDN profile.
 The Azure CDN profile object.
 
 ```yaml
-Type: PSProfile
+Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The name of the profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The resource group to which the profile belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -106,10 +106,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
+Parameters: CdnProfile (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType
 
 ## NOTES
 

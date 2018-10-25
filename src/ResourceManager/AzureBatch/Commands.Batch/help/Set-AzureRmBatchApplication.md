@@ -38,7 +38,7 @@ The command does not change the default version or display name of the applicati
 Specifies the name of the Batch account for which this cmdlet modifies an application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 Specifies whether packages within the application can be overwritten using the same version string.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Specifies the ID of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Specifies which package to use if a client requests the application but does not specify a version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies the display name for the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Batch account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,10 +144,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

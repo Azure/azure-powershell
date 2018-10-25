@@ -14,35 +14,34 @@ Gets one or more long term retention backups.
 
 ### Location (Default)
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-OnlyLatestPerDatabase]
- [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-Location] <String> [-OnlyLatestPerDatabase]
+ [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerName
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ServerName] <String>
- [[-DatabaseName] <String>] [-OnlyLatestPerDatabase] [[-DatabaseState] <String>]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
+ [-DatabaseName <String>] [-OnlyLatestPerDatabase] [-DatabaseState <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupName
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ServerName] <String>
- [-DatabaseName] <String> [-BackupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
+ -DatabaseName <String> [-BackupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### GetBackupByResourceId
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ResourceId] <String> [-BackupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ResourceId] <String>
+ [-BackupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupsByResourceId
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ResourceId] <String>
- [-OnlyLatestPerDatabase] [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ResourceId] <String>
+ [-OnlyLatestPerDatabase] [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,8 +54,7 @@ Get-AzureRmSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseMo
 ### GetBackupsByInputObject
 ```
 Get-AzureRmSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseModel> [-OnlyLatestPerDatabase]
- [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,7 +132,7 @@ This command gets all long term retention backups for database01
 The name of the backup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BackupName, GetBackupByResourceId, GetBackupByInputObject
 Aliases:
 
@@ -149,24 +147,24 @@ Accept wildcard characters: False
 The name of the Azure SQL Database the backup is from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServerName
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BackupName
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -177,13 +175,13 @@ The state of the database whose backups you want to find, Alive, Deleted, or All
 Defaults to All
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Location, ServerName, GetBackupsByResourceId, GetBackupsByInputObject
 Aliases:
 Accepted values: All, Deleted, Live
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -193,7 +191,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -208,7 +206,7 @@ Accept wildcard characters: False
 The database object to get backups for.
 
 ```yaml
-Type: AzureSqlDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 Parameter Sets: GetBackupByInputObject, GetBackupsByInputObject
 Aliases:
 
@@ -223,12 +221,12 @@ Accept wildcard characters: False
 The location of the backups' source server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Location, ServerName, BackupName, GetBackupByResourceId, GetBackupsByResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -239,7 +237,7 @@ Whether or not to only get the latest backup per database.
 Defaults to false.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Location, ServerName, GetBackupsByResourceId, GetBackupsByInputObject
 Aliases:
 
@@ -254,7 +252,7 @@ Accept wildcard characters: False
 The database Resource ID to get backups for.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBackupByResourceId, GetBackupsByResourceId
 Aliases:
 
@@ -269,7 +267,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Server the backups are under.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServerName, BackupName
 Aliases:
 
@@ -284,7 +282,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -300,7 +298,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -312,13 +310,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameters: InputObject (ByValue)
+
 ### System.String
-Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## OUTPUTS
 

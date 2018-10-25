@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Filters resource group deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeployment", DefaultParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(List<PSResourceGroupDeployment>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSResourceGroupDeployment))]
     public class GetAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions()
             {
                 ResourceGroupName = ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(Id),
                 DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id))

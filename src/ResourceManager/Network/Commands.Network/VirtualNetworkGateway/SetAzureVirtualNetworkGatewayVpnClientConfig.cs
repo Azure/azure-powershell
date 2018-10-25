@@ -26,11 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set,
-         "AzureRmVirtualNetworkGatewayVpnClientConfig",
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default,
-         SupportsShouldProcess = true),
-     OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayVpnClientConfig",DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default,SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGateway))]
     [Obsolete("Set-AzureRmVirtualNetworkGatewayVpnClientConfig command let will be removed in next release. Please use Set-AzureRmVirtualNetworkGateway command let instead.")]
     public class SetAzureVirtualNetworkGatewayVpnClientConfigCommand : VirtualNetworkGatewayBaseCmdlet
     {

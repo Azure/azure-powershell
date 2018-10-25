@@ -36,7 +36,7 @@ This command gets the patch schedule from the cache named RedisCache06.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 Specifies the name of a cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group which contains the cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,13 +82,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry
-This cmdlet returns the of patch schedule entries set on the cache.
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website

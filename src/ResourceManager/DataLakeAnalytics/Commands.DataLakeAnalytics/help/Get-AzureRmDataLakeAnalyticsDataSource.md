@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0377C4E9-C1DC-49BA-BBC4-5598C83234F8
@@ -56,7 +56,7 @@ This command gets all Data Lake Store accounts from a Data Lake Analytics accoun
 Specifies the Data Lake Analytics account that this cmdlet gets data sources.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Blob Storage data source.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBlobStorageAccount
 Aliases: AzureBlob
 
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDataLakeStoreAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,9 +116,9 @@ Accept wildcard characters: False
 Specifies the resource group name that contains the data source.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -132,19 +132,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### PSStorageAccountInfo
-The specified Azure Storage account details.
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo
 
-### PSDataLakeStoreAccountInfo
-The specified Data Lake Store account details
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo
 
-### List<AdlDataSource>
-The list of both Azure Storage accounts and Data Lake Store accounts in the specified Data Lake Analytics account.
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource
 
 ## NOTES
 

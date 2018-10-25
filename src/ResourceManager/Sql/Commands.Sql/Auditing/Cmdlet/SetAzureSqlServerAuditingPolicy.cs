@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
-    [Alias("Set-AzureRmSqlDatabaseServerAuditingPolicy")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseServerAuditingPolicy")]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlServerAuditing' command to configure Blob auditing.", false)]
     public class SetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
@@ -176,6 +176,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
+
+            model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
         }
 
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)

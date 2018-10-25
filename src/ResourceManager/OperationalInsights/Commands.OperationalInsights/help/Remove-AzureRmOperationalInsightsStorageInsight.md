@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 92261663-CF50-4EBD-85D2-C2E254F39B41
@@ -53,7 +53,7 @@ The first command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,9 +68,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 Specifies the name of the Storage Insight.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -113,9 +113,9 @@ Accept wildcard characters: False
 Specifies the workspace that contains the Storage Insight.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Specifies the name of the workspace that contains the Storage Insight.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -159,7 +159,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -175,10 +175,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

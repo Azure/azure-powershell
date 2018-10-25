@@ -25,12 +25,9 @@ New-AzureRmSqlDatabaseDataMaskingRule -MaskingFunction <String> [-PrefixSize <UI
 The **New-AzureRmSqlDatabaseDataMaskingRule** cmdlet creates a data masking rule for an Azure SQL database.
 To use the cmdlet, use the *ResourceGroupName*, *ServerName*, *DatabaseName*, and *RuleId* parameters to identify the rule.
 Provide the *TableName* and *ColumnName* to specify the target of the rule and the *MaskingFunction* parameter to define how the data is masked.
-
 If *MaskingFunction* has a value of Number or Text, you can specify the *NumberFrom* and *NumberTo* parameters, for number masking, or the *PrefixSize*, *ReplacementString*, and *SuffixSize* for text masking.
-
 If the command succeeds and the *PassThru* parameter is used, the cmdlet returns an object describing the data masking rule properties in addition to the rule identifiers.
 Rule identifiers include, but are not limited to, *ResourceGroupName*, *ServerName*, *DatabaseName*, and *RuleID*.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -51,7 +48,7 @@ The rule is named Rule01.
 Specifies the name of the column targeted by the masking rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +63,7 @@ Accept wildcard characters: False
 Specifies the name of the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,7 +92,6 @@ Accept wildcard characters: False
 ### -MaskingFunction
 Specifies the masking function that the rule uses.
 The acceptable values for this parameter are:
-
 - Default
 - NoMasking
 - Text
@@ -103,11 +99,10 @@ The acceptable values for this parameter are:
 - SocialSecurityNumber
 - CreditCardNumber
 - Email
-
 The default value is Default.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NoMasking, Default, Text, Number, SocialSecurityNumber, CreditCardNumber, Email
@@ -125,7 +120,7 @@ Specify this parameter only if you specify a value of Number for the *MaskingFun
 The default value is 0.
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +137,7 @@ Specify this parameter only if you specify a value of Number for the *MaskingFun
 The default value is 0.
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +153,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +170,7 @@ Specify this parameter only if you specify a value of Text for the *MaskingFunct
 The default value is 0.
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +187,7 @@ Specify this parameter only if you specify a value of Text for the *MaskingFunct
 The default value is an empty string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +202,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the database is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +217,7 @@ Accept wildcard characters: False
 Specifies the name of a schema.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -237,7 +232,7 @@ Accept wildcard characters: False
 Specifies the name of the server that hosts the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +249,7 @@ Specify this parameter only if you specify a value of Text for the *MaskingFunct
 The default value is 0.
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +264,7 @@ Accept wildcard characters: False
 Specifies the name of the database table that contains the masked column.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -284,7 +279,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -300,7 +295,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -316,12 +311,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-None.
+### System.String
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel
+### Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel
 
 ## NOTES
 

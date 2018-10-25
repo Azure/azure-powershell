@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 381F5B34-983C-4733-B384-35D6579B79A2
@@ -22,7 +22,6 @@ Use-AzureRmSqlServerAuditingPolicy [-PassThru] [-ServerName] <String> [-Database
 The **Use-AzureRmSqlServerAuditingPolicy** cmdlet specifies that a database uses the auditing policy of its host server.
 Specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 If no auditing policy is defined for the database server, this cmdlet fails.
-
 If the host uses server level auditing, threat detection is removed.
 
 ## EXAMPLES
@@ -40,7 +39,7 @@ This command specifies that the database named Database01 on Server02 uses the a
 Specifies the name of the database that will use the auditing policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +70,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the server is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +100,7 @@ Accept wildcard characters: False
 Specifies the name of the server that hosts the database that uses the auditing policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,12 +116,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel
 
 ## NOTES
 

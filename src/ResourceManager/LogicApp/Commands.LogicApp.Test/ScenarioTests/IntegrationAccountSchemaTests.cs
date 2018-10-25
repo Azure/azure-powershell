@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using Microsoft.Rest.Azure;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     /// <summary>
@@ -25,6 +26,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class IntegrationAccountSchemaTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public IntegrationAccountSchemaTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
 
         /// <summary>
         /// Test New-AzureRmIntegrationAccountSchema command to create a new integration account schema.
@@ -33,7 +41,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateIntegrationAccountSchema()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateIntegrationAccountSchema");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountSchema");
         }
 
         /// <summary>
@@ -43,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountSchema()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountSchema");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountSchema");
         }
 
         /// <summary>
@@ -53,7 +61,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveIntegrationAccountSchema()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveIntegrationAccountSchema");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountSchema");
         }        
 
         /// <summary>
@@ -63,7 +71,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateIntegrationAccountSchema()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountSchema");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountSchema");
         }
 
         /// <summary>
@@ -73,7 +81,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListIntegrationAccountSchema()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountSchema");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountSchema");
         }
     }
 }

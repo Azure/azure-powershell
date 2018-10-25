@@ -48,7 +48,7 @@ Sets the properties of the Event Grid topic \`Topic1\` in resource group \`MyRes
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameter Sets: TopicInputObjectParameterSet
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 EventGrid Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicNameParameterSet
 Aliases: TopicName
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicNameParameterSet
 Aliases: ResourceGroup
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 EventGrid Topic ResourceID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Hashtables which represents resource Tag.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: TopicInputObjectParameterSet
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -166,7 +166,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -183,11 +183,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameters: InputObject (ByValue)
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.EventGrid.Models.Topic
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 
 ## NOTES
 

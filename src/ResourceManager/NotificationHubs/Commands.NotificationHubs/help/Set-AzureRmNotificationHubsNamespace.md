@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 1B2AA717-ECD6-4CC0-AB6D-A199AF21A4A5
@@ -21,15 +21,12 @@ Set-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <Str
 
 ## DESCRIPTION
 The **Set-AzureRmNotificationHubsNamespace** cmdlet sets the property values of an existing notification hub namespace.
-
 Namespaces are logical containers that help you organize and manage your notification hubs.
 You must have at least one notification hub namespace.
 Additionally, all notification hubs must have an assigned namespace.
-
 This cmdlet is primarily used to enable and disable a namespace.
 When a namespace is disabled, users cannot connect to any of the notification hubs in the namespace, nor can administrators use those hubs to send push notifications.
 To re-enable a disabled namespace, use this cmdlet to set the **State** property of the namespace to Active.
-
 You can also use this cmdlet to tag a namespace as critical.
 This prevents the namespace from being deleted.
 To remove a critical namespace you must first remove the Critical tag.
@@ -58,7 +55,7 @@ Critical namespaces cannot be deleted.
 To delete a critical namespace, you must set the value of this property to False in order to mark the namespace as non-critical.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +85,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,13 +99,11 @@ Accept wildcard characters: False
 ### -Location
 Specifies the display name of the datacenter that hosts the namespace.
 Although you can set this parameter to any valid Azure location, for optimal performance you should use a datacenter located near the majority of your users.
-
 To get an up-to-date list of Azure locations run the following command:
-
 `Get-AzureLocation | Select-Object DisplayName`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,11 +116,10 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace that this cmdlet modifies.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,11 +132,10 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the namespace is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +150,7 @@ Accept wildcard characters: False
 Sku tier of the namespace
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +166,7 @@ Specifies the current state of the namespace.
 The acceptable values for this parameter are: Active and Disabled.
 
 ```yaml
-Type: NamespaceState
+Type: Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Unknown, Active, Disabled
@@ -189,19 +182,15 @@ Accept wildcard characters: False
 Specifies name-value pairs that can be used to categorize and organize Azure items.
 Tags function similar to keywords, and operate across a deployment.
 For example, if you search for all items with the tag Department:IT the search will return all the Azure items that have that tag, regardless of such things as item type, location, or resource group.
-
 An individual tag consists of two parts: the *Name* and (optionally) the *Value*.
 For example, in Department:IT, the tag name is Department and the tag value is IT.
 To add a tag, use hash table syntax similar to this, which creates the tag CalendarYear:2016:
-
 -Tags @{Name="CalendarYear";Value="2016"}
-
 To add multiple tags in the same command, separate the individual tags by using commas:
-
 -Tag @{Name="CalendarYear";Value="2016"}, @{Name="FiscalYear";Value="2017"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +205,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -231,7 +220,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -247,8 +236,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState
+
+### System.Boolean
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

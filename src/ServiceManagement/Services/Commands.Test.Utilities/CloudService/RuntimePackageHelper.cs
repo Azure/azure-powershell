@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefiniti
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.CloudService
 {
-    using TestResources = Commands.Common.Test.Properties.Resources;
+    using TestResources = Commands.Test.Utilities.Properties.Resources;
 
     public class RuntimePackageHelper
     {
@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.CloudService
 
             if (overrideUrl != null)
             {
-                environment = SetRuntimeEnvironment(environment, Resources.RuntimeOverrideKey, overrideUrl);
+                environment = SetRuntimeEnvironment(environment, Commands.Utilities.Properties.Resources.RuntimeOverrideKey, overrideUrl);
                 changed = true;
             }
 
@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.CloudService
         public static string GetRoleRuntimeUrl(ServiceDefinition definition, string roleName)
         {
             Variable v = GetRoleRuntimeEnvironment(definition, roleName).FirstOrDefault<Variable>(
-                variable => string.Equals(variable.name, Resources.RuntimeUrlKey));
+                variable => string.Equals(variable.name, Commands.Utilities.Properties.Resources.RuntimeUrlKey));
             return (null == v ? null : v.value);
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.CloudService
         public static string GetRoleRuntimeOverrideUrl(ServiceDefinition definition, string roleName)
         {
             Variable v = GetRoleRuntimeEnvironment(definition, roleName).FirstOrDefault<Variable>(
-                variable => string.Equals(variable.name, Resources.RuntimeOverrideKey));
+                variable => string.Equals(variable.name, Commands.Utilities.Properties.Resources.RuntimeOverrideKey));
             return (null == v ? null : v.value);
         }
 

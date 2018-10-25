@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class SetAzureRmSnapshotUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -101,4 +101,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

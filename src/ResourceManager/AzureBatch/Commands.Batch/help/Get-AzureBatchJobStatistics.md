@@ -45,7 +45,6 @@ WriteIOps          : 146946
 
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
-
 The second command gets the summary statistics for all of the jobs.
 The command uses the $Context value from the first command.
 
@@ -56,7 +55,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,12 +86,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### PSJobStatistics
+### Microsoft.Azure.Commands.Batch.Models.PSJobStatistics
 
 ## NOTES
 

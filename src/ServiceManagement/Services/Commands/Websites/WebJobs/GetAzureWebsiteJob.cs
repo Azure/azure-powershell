@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebJobs;
 
 namespace Microsoft.WindowsAzure.Commands.Websites.WebJobs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureWebsiteJob"), OutputType(typeof(List<IPSWebJob>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWebsiteJob"), OutputType(typeof(IPSWebJob))]
     public class GetAzureWebsiteJobCommand : WebsiteContextBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The web job name.")]

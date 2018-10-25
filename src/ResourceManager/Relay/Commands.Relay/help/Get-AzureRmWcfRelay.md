@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermwcfrelay
 schema: 2.0.0
 ---
@@ -25,9 +25,22 @@ The **Get-AzureRmWcfRelay** cmdlet returns a description of the specified WcfRel
 ### Example 1
 ```
 PS C:\> Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
+
+RelayType                   : NetTcp
+CreatedAt                   : 4/12/2017 2:23:08 AM
+UpdatedAt                   : 4/12/2017 2:23:08 AM
+ListenerCount               : 0
+RequiresClientAuthorization : True
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : User Meta data
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/W
+                              cfRelays/TestWCFRelay1
+Name                        : TestWCFRelay1
+Type                        : Microsoft.Relay/WcfRelays
 ```
 
-Returns the description of the WcfRelay. 
+Returns the description of the WcfRelay.
 
 ## PARAMETERS
 
@@ -35,7 +48,7 @@ Returns the description of the WcfRelay.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +63,9 @@ Accept wildcard characters: False
 WcfRelay Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -65,9 +78,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -80,9 +93,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -96,34 +109,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String
- 
-
-### -Namespace
- System.String
- 
-
-### -Name
- System.String 
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-RelayType                   : NetTcp
-CreatedAt                   : 4/12/2017 2:23:08 AM
-UpdatedAt                   : 4/12/2017 2:23:08 AM
-ListenerCount               : 0
-RequiresClientAuthorization : True
-RequiresTransportSecurity   : True
-IsDynamic                   : False
-UserMetadata                : User Meta data
-Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/W
-                              cfRelays/TestWCFRelay1
-Name                        : TestWCFRelay1
-Type                        : Microsoft.Relay/WcfRelays
+### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

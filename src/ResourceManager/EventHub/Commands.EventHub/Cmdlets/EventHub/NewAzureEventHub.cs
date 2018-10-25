@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
-using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
-using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
@@ -23,7 +21,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <summary>
     /// 'New-AzureRmEventHub' Cmdlet creates a new EventHub
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubVerb, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", DefaultParameterSetName = EventhubPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class NewAzureRmEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         {
             PSEventHubAttributes eventHub = new PSEventHubAttributes();
 
-            if (InputObject != null)
+            if (ParameterSetName == EventhubInputObjectParameterSet)
             {
                 eventHub = InputObject;
             }
@@ -77,7 +75,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
             if(ShouldProcess(target:eventHub.Name, action:string.Format(Resources.CreateEventHub,eventHub.Name,Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, Namespace, eventHub.Name, eventHub));
+                try
+                {
+                    WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, Namespace, eventHub.Name, eventHub));
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }
                         
         }

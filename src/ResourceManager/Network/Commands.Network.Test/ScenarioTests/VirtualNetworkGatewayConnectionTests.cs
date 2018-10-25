@@ -21,9 +21,12 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class VirtualNetworkGatewayConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        public VirtualNetworkGatewayConnectionTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public VirtualNetworkGatewayConnectionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -31,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayConnectionCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionCRUD");
         }
 
         [Fact]
@@ -39,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayConnectionSharedKeyCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
         }
 
         [Fact(Skip = "Rerecord tests")]
@@ -47,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkeExpressRouteGatewayConnectionCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
         }
 
         [Fact]
@@ -55,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
         }
 
         [Fact]
@@ -63,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
 	    }
 
         [Fact]
@@ -71,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
         }
 
         [Fact]
@@ -79,7 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
         }
     }
 }

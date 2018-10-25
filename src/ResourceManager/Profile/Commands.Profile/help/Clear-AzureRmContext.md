@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/clear-azurermcontext
@@ -13,7 +13,7 @@ Remove all Azure credentials, account, and subscription information.
 ## SYNTAX
 
 ```
-Clear-AzureRmContext -Scope <ContextModificationScope> [-PassThru] [-Force]
+Clear-AzureRmContext [-PassThru] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Remove all account, subscription, and credential information for any powershell 
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +50,9 @@ Accept wildcard characters: False
 Delete all users and groups from the global scope without prompting
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 Return a value indicating success or failure
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,12 +80,12 @@ Accept wildcard characters: False
 Clear the context only for the current PowerShell session, or for all sessions.
 
 ```yaml
-Type: ContextModificationScope
+Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +112,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -133,9 +133,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Boolean
-True if the context was successfully cleared, false otherwise.
 
 ## NOTES
 
 ## RELATED LINKS
-

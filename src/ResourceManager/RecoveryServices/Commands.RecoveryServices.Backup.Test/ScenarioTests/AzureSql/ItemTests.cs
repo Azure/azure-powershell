@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -21,6 +22,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public ItemTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -28,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlGetItems()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetItems");
+                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetItems");
         }
 
         [Fact]
@@ -37,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlDisableProtection()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.AzureSql, "Test-AzureSqlDisableProtection");
+                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlDisableProtection");
         }
 
         [Fact]
@@ -46,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlGetRPs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetRPs");
+                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetRPs");
         }
     }
 }

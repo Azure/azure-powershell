@@ -24,6 +24,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
@@ -44,15 +45,17 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
+            _helper.TracingInterceptor = logger;
+
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -84,8 +87,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                                         .Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
+#if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
+#endif
                     _helper.RMStorageModule,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",

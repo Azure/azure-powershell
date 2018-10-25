@@ -21,9 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsLifecycle.Invoke,
-        Constants.CommandNames.AzureHDInsightHiveJob),
-    OutputType(typeof(string))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightHiveJob"),OutputType(typeof(string))]
     public class InvokeHiveCommand : HDInsightCmdletBase
     {
         private readonly NewAzureHDInsightHiveJobDefinitionCommand hiveJobDefinitionCommand;

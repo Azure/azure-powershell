@@ -36,7 +36,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The ExpressRoute circuit object containing the peering configuration.
 
 ```yaml
-Type: PSExpressRouteCircuit
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The name of the peering configuration to be retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,8 +82,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSExpressRouteCircuit
-Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Parameters: ExpressRouteCircuit (ByValue)
 
 ## OUTPUTS
 

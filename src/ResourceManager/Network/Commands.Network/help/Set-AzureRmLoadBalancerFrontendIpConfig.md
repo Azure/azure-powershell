@@ -13,32 +13,32 @@ Sets the goal state for a front-end IP configuration in a load balancer.
 
 ## SYNTAX
 
-### SetByResourceSubnet
+### SetByResourceSubnet (Default)
 ```
-Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -Subnet <PSSubnet> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <System.Collections.Generic.List`1[System.String]>] -Subnet <PSSubnet>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdSubnet
 ```
-Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -SubnetId <String> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <System.Collections.Generic.List`1[System.String]>] -SubnetId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
-Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddressId <String> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-Zone <System.Collections.Generic.List`1[System.String]>] -PublicIpAddressId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
-Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddress <PSPublicIpAddress> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-Zone <System.Collections.Generic.List`1[System.String]>] -PublicIpAddress <PSPublicIpAddress>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,11 +55,8 @@ PS C:\> $slb | Set-AzureRmLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subn
 ```
 
 The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.
-
 The second command gets the associated load balancer named MyLoadBalancer, and then stores it in the $slb variable.
-
 The third command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerFrontendIpConfig, which creates a front-end IP configuration named NewFrontend for $slb.
-
 The fourth command passes the load balancer in $slb to **Set-AzureRmLoadBalancerFrontendIpConfig**, which saves and updates the front-end IP configuration.
 
 ## PARAMETERS
@@ -68,7 +65,7 @@ The fourth command passes the load balancer in $slb to **Set-AzureRmLoadBalancer
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,14 +81,14 @@ Specifies a load balancer.
 This cmdlet sets the goal state for a front-end configuration for the load balancer that this parameter specifies.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -99,7 +96,7 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP configuration to set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,14 +112,14 @@ Specifies the private IP address of the load balancer that is associated with th
 Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -130,14 +127,14 @@ Accept wildcard characters: False
 Specifies the **PublicIpAddress** object that is associated with the front-end IP configuration to set.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -145,14 +142,14 @@ Accept wildcard characters: False
 Specifies the ID of the **PublicIpAddress** object that is associated with the front-end IP configuration that this cmdlet sets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdPublicIpAddress
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -160,14 +157,14 @@ Accept wildcard characters: False
 Specifies the **Subnet** object that contains the front-end IP configuration that this cmdlet sets.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResourceSubnet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -175,14 +172,14 @@ Accept wildcard characters: False
 Specifies the ID of the subnet that contains the front-end IP configuration that this cmdlet sets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdSubnet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -201,13 +198,45 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
+
+### System.Collections.Generic.List\`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

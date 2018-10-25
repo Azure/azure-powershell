@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 ms.assetid: 89ED4231-7616-47D0-BDAA-D849C245DC79
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermappserviceplan
 schema: 2.0.0
@@ -49,7 +49,7 @@ This command gets all App Service plans located in the "West US" region.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,9 +64,9 @@ Accept wildcard characters: False
 Location 
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 App Service Plan Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -94,9 +94,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -111,13 +111,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku
-
-### Microsoft.Azure.Management.WebSites.Models.ServerFarmCollection
+### Microsoft.Azure.Management.WebSites.Models.AppServicePlan
 
 ## NOTES
 

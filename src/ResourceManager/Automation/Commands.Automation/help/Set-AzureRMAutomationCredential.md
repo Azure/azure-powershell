@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: D6325A22-2D1B-4228-A5BC-3F1071E26FB2
@@ -33,12 +33,9 @@ PS C:\> Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -Name
 ```
 
 The first command assigns a user name to the $User variable.
-
 The second command converts a plain text password into a secure string by using the ConvertTo-SecureString cmdlet.
 The command stores that object in the $Password variable.
-
 The third command creates a credential based on $User and $Password, and then stores it in the $Credential variable.
-
 The final command modifies the Automation credential named ContosoCredential to use the credential in $Credential.
 
 ## PARAMETERS
@@ -47,9 +44,9 @@ The final command modifies the Automation credential named ContosoCredential to 
 Specifies the name of the Automation account for which this cmdlet modifies a credential.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -62,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,9 +74,9 @@ Accept wildcard characters: False
 Specifies a description for the credential that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,9 +89,9 @@ Accept wildcard characters: False
 Specifies the name of the credential that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -107,9 +104,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for which this cmdlet modifies a credential.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -122,9 +119,9 @@ Accept wildcard characters: False
 Specifies the credentials as a **PSCredential** object.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,8 +135,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.PSCredential
 
 ## OUTPUTS
 

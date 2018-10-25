@@ -70,7 +70,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases: StorageAccountName
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ManagedStorageAccount object.
 
 ```yaml
-Type: PSKeyVaultManagedStorageAccountIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Specifies whether to show the previously deleted storage sas definitions in the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +131,7 @@ Storage sas definition name.
 Cmdlet constructs the FQDN of a storage sas definition from vault name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SasDefinitionName
 
@@ -147,7 +147,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases:
 
@@ -163,13 +163,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinition
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinitionIdentityItem
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinition
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageSasDefinition
 

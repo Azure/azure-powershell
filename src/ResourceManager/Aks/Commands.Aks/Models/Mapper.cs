@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
-using Microsoft.Azure.Commands.Aks.Generated.Models;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
 
 namespace Microsoft.Azure.Commands.Aks.Models
 {

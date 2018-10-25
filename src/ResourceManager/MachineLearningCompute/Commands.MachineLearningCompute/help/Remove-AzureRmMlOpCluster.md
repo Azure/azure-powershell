@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/remove-azurermmlopcluster
@@ -12,22 +12,22 @@ Removes an operationalization cluster.
 
 ## SYNTAX
 
-### RemoveByNameAndResourceGroup
+### RemoveByNameAndResourceGroup (Default)
 ```
-Remove-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeAllResources] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-IncludeAllResources]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeAllResources] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-IncludeAllResources]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
-Remove-AzureRmMlOpCluster -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeAllResources] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmMlOpCluster -ResourceId <String> [-IncludeAllResources]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster | Re
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Removes all resources that were created with the cluster.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The operationalization cluster object.
 
 ```yaml
-Type: PSOperationalizationCluster
+Type: Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 Parameter Sets: RemoveByInputObject
 Aliases: Cluster
 
@@ -96,9 +96,9 @@ Accept wildcard characters: False
 The name of the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -111,9 +111,9 @@ Accept wildcard characters: False
 The name of the resource group for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -126,9 +126,9 @@ Accept wildcard characters: False
 The Azure resource id for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -157,7 +157,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -174,6 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
+Parameters: InputObject (ByValue)
 
 ### System.String
 
@@ -184,4 +185,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
