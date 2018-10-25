@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
