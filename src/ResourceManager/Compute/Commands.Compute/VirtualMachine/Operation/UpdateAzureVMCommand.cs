@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ExplicitIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public bool OsDiskWriteAccelerator { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public bool UltraSSDEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -162,6 +167,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.StorageProfile.OsDisk = new OSDisk();
                         }
                         parameters.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
+                    }
+
+                    if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+                    {
+                        if (parameters.AdditionalCapabilities == null)
+                        {
+                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
+                        }
+                        parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
                     var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
