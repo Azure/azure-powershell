@@ -51,13 +51,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" /> 
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Azure.Management.Automation">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.4.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\AccountTests.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
     <Compile Include="ScenarioTests\UpdateManagement\UpdateManagementTests.cs" />
@@ -121,6 +122,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="ScenarioTests\AccountTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AutomationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -151,6 +155,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+	<Content Include="SessionRecords\Microsoft.Azure.Commands.Automation.Test.AccountTests\*.json">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCNonAzureOnly.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
