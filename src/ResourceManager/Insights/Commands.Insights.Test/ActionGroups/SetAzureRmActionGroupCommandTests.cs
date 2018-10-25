@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsOperationsMock = new Mock<IActionGroupsOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetAzureRmActionGroupCommand
             {
