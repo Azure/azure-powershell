@@ -21,38 +21,35 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     {
         public PSDataLakeStoreAccount(DataLakeStoreAccount baseAccount) :
             base(
-                baseAccount.Location,
                 baseAccount.Id,
                 baseAccount.Name,
                 baseAccount.Type,
+                baseAccount.Location,
                 baseAccount.Tags,
                 baseAccount.Identity,
+                baseAccount.AccountId,
                 baseAccount.ProvisioningState,
                 baseAccount.State,
                 baseAccount.CreationTime,
                 baseAccount.LastModifiedTime,
                 baseAccount.Endpoint,
-                baseAccount.AccountId,
+                baseAccount.DefaultGroup,
+
+                // TODO: Work around to null out properties that are returned empty.
+                // Swagger deserialization will put a default value of an enum in an empty object.
+                // Once the server correctly returns nothing (instead of empty objects), this can
+                // be removed.
+                baseAccount.EncryptionState == Management.DataLake.Store.Models.EncryptionState.Disabled ? null : baseAccount.EncryptionConfig,
+
                 baseAccount.EncryptionState,
                 baseAccount.EncryptionProvisioningState,
-                baseAccount.EncryptionConfig,
-                baseAccount.FirewallState,
                 baseAccount.FirewallRules,
-                baseAccount.TrustedIdProviderState,
+                baseAccount.VirtualNetworkRules,
+                baseAccount.FirewallState,
+                baseAccount.FirewallAllowAzureIps,
                 baseAccount.TrustedIdProviders,
-                baseAccount.DefaultGroup,
+                baseAccount.TrustedIdProviderState,
                 baseAccount.NewTier,
-                baseAccount.CurrentTier,
-                baseAccount.FirewallAllowAzureIps)
-        {
-            // TODO: Work around to null out properties that are returned empty.
-            // Swagger deserialization will put a default value of an enum in an empty object.
-            // Once the server correctly returns nothing (instead of empty objects), this can
-            // be removed.
-            if (EncryptionState == Management.DataLake.Store.Models.EncryptionState.Disabled)
-            {
-                this.EncryptionConfig = null;
-            }
-        }
+                baseAccount.CurrentTier) {}
     }
 }

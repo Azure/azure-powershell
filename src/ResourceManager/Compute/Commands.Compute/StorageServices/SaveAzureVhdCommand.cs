@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

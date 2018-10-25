@@ -29,9 +29,26 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 ## AzureRM Module Support
 AzureRM will continue to be supported, and important bugs will be fixed, but new development and new Azure capabilities will be shipped only in Az starting December 2018.
 
+## Authentication Changes
+   - ADAL has removed support for the "not recommended" user credential auth flow.
+     - Connect-AzAccount will no longer accept PSCredential from Get-Credential
+     - Here are a couple issues that describe why ADAL has removed this support   
+        - [Azure ActiveDirectory UserPasswordCredential doesn't support .NET core](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/482#issuecomment-262256236)
+        - [Connect-AzureRmAccount with user credential login does not work in Az](https://github.com/Azure/azure-powershell/issues/7430#issuecomment-426480499)
+
+  - Service Principal improvements
+    - Self-renewing Service Principal Authentication
+    - Service Principal Certificate Authentication (in the future)
+  - Device Auth Flow
+  - Future Improvements
+    - [Interactive user credential login in az](https://github.com/Azure/azure-powershell/issues/7358)
+
+
 ## Migrating From AzureRM
 
 To make it easier for existing scripts to migrate from AzureRM to Az, we have provided cmdlets to create aliases that map the cmdlet names in AzureRM into the appropriate cmdlets in Az.  When the aliases are enabled, any script that uses AzureRM cmdlet names should run against Az without modification.
+
+Note: Connect-AzAccount aka Connect-AzureRmAccount no longer supports $pscredential. See [Authentication Changes](#authentication-changes) for more
 
 ```powershell
 PS C:\> Enable-AzureRmAlias
@@ -90,8 +107,8 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.Consumption | Az.Consumption* |
 | AzureRM.ContainerInstance | Az.ContainerInstance* |
 | AzureRM.ContainerRegistry | Az.ContainerRegistry* |
-| AzureRM.DataFactories | Az.DataFactories*** |
-| AzureRM.DataFactoryV2 | Az.FataFactoryV2* |
+| AzureRM.DataFactories | Az.DataFactory |
+| AzureRM.DataFactoryV2 | Az.DataFactory |
 | AzureRM.DataLakeAnalytics | Az.DataLakeAnalytics |
 | AzureRM.DataLakeStore | Az.DataLakeStore |
 | AzureRM.DataMigration | Az.DataMigration |

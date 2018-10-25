@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual network name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

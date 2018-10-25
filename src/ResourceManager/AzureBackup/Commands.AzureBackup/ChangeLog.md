@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.11
+* Deprecated Azure Backup cmdlets.
+
 ## Version 4.0.10
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

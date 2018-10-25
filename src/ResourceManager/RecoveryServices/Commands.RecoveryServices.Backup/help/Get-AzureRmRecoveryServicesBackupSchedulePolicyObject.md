@@ -62,12 +62,13 @@ Specifies the Backup management type.
 The acceptable values for this parameter are:
 - AzureVM 
 - AzureSQLDatabase
+- AzureStorage
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage
 
 Required: False
 Position: 1
@@ -96,12 +97,13 @@ Specifies the workload type.
 The acceptable values for this parameter are:
 - AzureVM 
 - AzureSQLDatabase
+- AzureFiles
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles
 
 Required: True
 Position: 0

@@ -109,7 +109,7 @@ Name of the Azure Resource whose representative item needs to be checked if it i
 Type: System.String
 Parameter Sets: Name
 Aliases:
-Accepted values: AzureVM
+Accepted values: AzureVM, AzureFiles
 
 Required: True
 Position: Named

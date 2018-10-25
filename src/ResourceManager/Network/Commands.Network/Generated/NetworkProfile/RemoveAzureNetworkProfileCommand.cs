@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the network profile.",
             ParameterSetName = "RemoveByNameParameterSet",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Network/networkProfiles", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
