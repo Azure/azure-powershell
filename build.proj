@@ -292,7 +292,7 @@
     <Copy SourceFiles="$(LibraryToolsFolder)\AzureRM\AzureRM.psm1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false"
-          Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
+          Condition="'$(CodeSign)' == 'false' and '$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
 
     <!-- Stack Specific -->
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureRM\AzureRM.psd1"
@@ -315,7 +315,7 @@
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psd1"
           DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psm1"
-          DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
+          DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition="'$(CodeSign)' == 'false' and '$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
 
     <!-- Stack -->
     <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureRM.psd1"
