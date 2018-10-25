@@ -104,7 +104,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             {
                 { "Microsoft.Resources", null },
                 { "Microsoft.Features", null },
-                { "Microsoft.Authorization", null }
+                { "Microsoft.Authorization", null },
+                { "Microsoft.Storage", null }
             };
 
             var providersToIgnore = new Dictionary<string, string>
