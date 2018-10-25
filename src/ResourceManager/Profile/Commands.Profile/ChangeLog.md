@@ -20,6 +20,8 @@
 ## Current Release
 * Fix issue with context name clashing for accounts with no subscriptions in tenant
     - https://github.com/Azure/azure-powershell/issues/7453
+* Fix error message for failed login when providing tenant domain
+    - https://github.com/Azure/azure-powershell/issues/6936
 
 ## Version 5.7.0
 * Fix issue with Get-AzureRmSubscription in CloudShell

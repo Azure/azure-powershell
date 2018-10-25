@@ -19,18 +19,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Azure VM specific recovery point class.
     /// </summary>
-    public class AzureVmRecoveryPoint : RecoveryPointBase
+    public class AzureVmRecoveryPoint : AzureRecoveryPoint
     {
-        /// <summary>
-        /// Type of recovery point (appConsistent\CrashConsistent etc) 
-        /// </summary>
-        public String RecoveryPointType { get; set; }
-
-        /// <summary>
-        /// Time when this recovery point was created
-        /// </summary>
-        public DateTime RecoveryPointTime { get; set; }
-
         /// <summary>
         /// Additional info associated with this recovery point serialized into a string.
         /// </summary>
