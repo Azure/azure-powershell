@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
-        public RestAzureNS.AzureOperationResponse GetRefreshContainerOperationResult(
+        public RestAzureNS.AzureOperationResponse GetContainerRefreshOrInquiryOperationResult(
             string operationId,
             string vaultName = null,
             string resourceGroupName = null)
@@ -73,6 +73,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     AzureFabricName,
+                    operationId).Result;
+        }
+
+        /// <summary>
+        /// Gets result of the refresh operation on the protection container using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.ProtectionContainerResource>
+            GetRegisterContainerOperationResult(
+            string operationId,
+            string containerName,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            return BmsAdapter
+                .Client
+                .ProtectionContainerOperationResults
+                .GetWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    containerName,
                     operationId).Result;
         }
 

@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated tenantId description for Connect-AzureRmAccount
+* Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
+* Updated TenantId description for Connect-AzureRmAccount
+* Fix error message for failed login when providing tenant domain
+    - https://github.com/Azure/azure-powershell/issues/6936
 
 ## Version 5.7.0
 * Fix issue with Get-AzureRmSubscription in CloudShell

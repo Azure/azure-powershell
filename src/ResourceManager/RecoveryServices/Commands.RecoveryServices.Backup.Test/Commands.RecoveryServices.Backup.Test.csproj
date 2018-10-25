@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.22.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.23.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -52,10 +52,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\ContainerTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\ItemTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\JobTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\PolicyTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\ProtectionCheckTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ProtectionCheckTests.cs" />
     <Compile Include="TestConstants.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\Common.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\ContainerTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\ItemTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\JobTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\PolicyTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\ProtectionCheckTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AzureSql\ContainerTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -64,6 +87,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AzureSql\PolicyTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Dpm\ContainerTests.ps1">
@@ -103,6 +129,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureVMGetContainers.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureFSContainer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureFSUnregisterContainer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureSqlGetContainers.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -119,6 +151,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestMabUnregisterContainer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSItem.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSProtection.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSGetRPs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFSBackup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureVMBackup.json">
@@ -151,6 +195,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureVMSetVaultContext.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureFSGetJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureFSWaitJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureVMCancelJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -163,10 +213,16 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureVMWaitJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureFSPolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureSqlPolicy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureVMPolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ProtectionCheckTests\TestAzureFSProtectionCheck.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ProtectionCheckTests\TestAzureVMProtectionCheck.json">
