@@ -21,7 +21,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public class JobTests : RMTestBase
+    public partial class JobTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
