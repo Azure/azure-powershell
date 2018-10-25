@@ -36,7 +36,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Billing" Version="2.1.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.CognitiveServices" Version="4.1.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Consumption" Version="3.0.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.3-preview" PrivateAssets="All" />
