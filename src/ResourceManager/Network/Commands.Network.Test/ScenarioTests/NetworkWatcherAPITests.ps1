@@ -14,7 +14,6 @@
 
 <#
 .SYNOPSIS
-.SYNOPSIS
 Deployment of resources: VM, storage account, network interface, nsg, virtual network and route table.
 #>
 
@@ -136,7 +135,7 @@ function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
 
 function Get-CanaryLocation
 {
-    Get-Location "Microsoft.Network" "networkWatchers" "eastus2euap";
+    Get-Location "Microsoft.Network" "networkWatchers" "centraluseuap";
 }
 
 function Get-PilotLocation
@@ -693,7 +692,7 @@ function Test-ConnectivityCheck
         Assert-AreEqual $check.ConnectionStatus "Reachable"
         Assert-AreEqual $check.ProbesFailed 0
         Assert-AreEqual $check.Hops.Count 2
-		Assert-True { $check.Hops[0].Type -eq "19" -or $check.Hops[0].Type -eq "VirtualMachine"}
+        Assert-True { $check.Hops[0].Type -eq "19" -or $check.Hops[0].Type -eq "VirtualMachine"}
         Assert-AreEqual $check.Hops[1].Type "Internet"
         Assert-AreEqual $check.Hops[0].Address "10.17.3.4"
     }
