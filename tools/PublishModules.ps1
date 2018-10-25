@@ -268,13 +268,13 @@ function Get-ClientModules {
 
             # Get all module directories
             if ($IsNetCore) {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Az.*"}
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Az.*" -or $_.Name -eq "Az"}
             } else {
                 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Azure*"}
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Profile', 'Az')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Profile')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {
@@ -670,7 +670,7 @@ function Add-Module {
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
         $file = Get-Item $moduleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
-        
+
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
         if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null) {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
@@ -683,7 +683,7 @@ function Add-Module {
             Write-Output "Deleting the module: $moduleNupkgPath"
             Remove-Item -Path $moduleNupkgPath -Force
         }
-        
+
         Write-Output "Publishing the module $moduleName"
         Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
         Write-Output "$moduleName published"

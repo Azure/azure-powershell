@@ -136,7 +136,7 @@ function Test-VirtualMachine
         # VM Compact output
         $vm1.DisplayHint = "Compact";
         $a = $vm1 | Out-String;
-		Assert-NotNull $a
+        Assert-NotNull $a
         Assert-False {$a.Contains("Sku");}
 
         # Table format output
@@ -209,20 +209,20 @@ function Test-VirtualMachine
         $a = $vms | Out-String;
         Write-Verbose("Get-AzureRmVM (List) output:");
         Write-Verbose($a);
-		Assert-NotNull $a
+        Assert-NotNull $a
         Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
 
-		Assert-NotNull $vms[0]
+        Assert-NotNull $vms[0]
         # VM Compact output
         $a = $vms[0] | Format-Custom | Out-String;
-		Assert-NotNull $a
+        Assert-NotNull $a
         Assert-False {$a.Contains("Sku");}
 
         # VM Expand output
         $vms[0].DisplayHint = "Expand";
         $a = $vms[0] | Format-Custom | Out-String;
-		Assert-NotNull $a
+        Assert-NotNull $a
         Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
@@ -2057,11 +2057,13 @@ function Test-VirtualMachineListWithPaging
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-
-        $st = New-AzureRmResourceGroupDeployment -Name "${rgname}dp" -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile;
+        $st = New-AzureRmResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile;
 
         $vms = Get-AzureRmVM -ResourceGroupName $rgname;
         Assert-True { $vms.Count -eq $numberOfInstances };
+
+        $vms = Get-AzureRmVM -Location $loc;
+        Assert-True { $vms.Count -ge $numberOfInstances };
 
         $vms = Get-AzureRmVM;
         Assert-True { $vms.Count -ge $numberOfInstances };
