@@ -19,13 +19,13 @@ Deployment of resources: VM, storage account, network interface, nsg, virtual ne
 
 function Get-TestResourcesDeployment([string]$rgn)
 {
-    $virtualMachineName = Get-ResourceName
-    $storageAccountName = Get-ResourceName
-    $routeTableName = Get-ResourceName
-    $virtualNetworkName = Get-ResourceName
-    $networkInterfaceName = Get-ResourceName
-    $networkSecurityGroupName = Get-ResourceName
-    $diagnosticsStorageAccountName = Get-ResourceName
+    $virtualMachineName = Get-NrpResourceName
+    $storageAccountName = Get-NrpResourceName
+    $routeTableName = Get-NrpResourceName
+    $virtualNetworkName = Get-NrpResourceName
+    $networkInterfaceName = Get-NrpResourceName
+    $networkSecurityGroupName = Get-NrpResourceName
+    $diagnosticsStorageAccountName = Get-NrpResourceName
     
         $paramFile = (Resolve-Path ".\TestData\DeploymentParameters.json").Path
         $paramContent =
@@ -98,6 +98,16 @@ function Get-TestResourcesDeployment([string]$rgn)
         New-AzureRmResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
+function Get-NrpResourceName
+{
+	Get-ResourceName "psNrp";
+}
+
+function Get-NrpResourceGroupName
+{
+	Get-ResourceGroupName "psNrp";
+}
+
 <#
 .SYNOPSIS
 Get existing Network Watcher.
@@ -140,12 +150,12 @@ Test GetTopology NetworkWatcher API.
 function Test-GetTopology
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
+    $nwRgName = Get-NrpResourceGroupName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
 
     try 
@@ -186,15 +196,15 @@ function Test-GetTopology
 Test GetSecurityGroupView NetworkWatcher API.
 #>
 function Test-GetSecurityGroupView
-{
+{ 
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
-    $location = Get-CanaryLocation
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $securityRuleName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityRuleName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
@@ -253,13 +263,13 @@ Test GetNextHop NetworkWatcher API.
 function Test-GetNextHop
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $securityRuleName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityRuleName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
@@ -311,13 +321,13 @@ Test VerifyIPFlow NetworkWatcher API.
 function Test-VerifyIPFlow
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $securityGroupName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
@@ -380,16 +390,16 @@ Test PacketCapture API.
 function Test-PacketCapture
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
-    $location = Get-CanaryLocation
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $securityGroupName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $pcName1 = Get-ResourceName
-    $pcName2 = Get-ResourceName
+    $pcName1 = Get-NrpResourceName
+    $pcName2 = Get-NrpResourceName
     
     try 
     {
@@ -477,17 +487,17 @@ Test Troubleshoot API.
 function Test-Troubleshoot
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $location = Get-PilotLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $domainNameLabel = Get-ResourceName
-    $vnetName = Get-ResourceName
-    $publicIpName = Get-ResourceName
-    $vnetGatewayConfigName = Get-ResourceName
-    $gwName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $domainNameLabel = Get-NrpResourceName
+    $vnetName = Get-NrpResourceName
+    $publicIpName = Get-NrpResourceName
+    $vnetGatewayConfigName = Get-NrpResourceName
+    $gwName = Get-NrpResourceName
     
     try 
     {
@@ -548,19 +558,19 @@ Test Flow log API.
 function Test-FlowLog
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
 	#Since Traffic Analytics is not available in all Azure regions, hardcoded locations are used
     #Once Traffic Analytics is available in all Azure regions, the below two location variables should be updated to Get-Location
     $location = "westcentralus"
 	$workspaceLocation = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $domainNameLabel = Get-ResourceName
-    $nsgName = Get-ResourceName
-	$stoname =  Get-ResourceName
-	$workspaceName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $domainNameLabel = Get-NrpResourceName
+    $nsgName = Get-NrpResourceName
+	$stoname =  Get-NrpResourceName
+	$workspaceName = Get-NrpResourceName
     
     try 
     {
@@ -637,16 +647,16 @@ function Test-ConnectivityCheck
     . ".\AzureRM.Resources.ps1"
 
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $location = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $securityGroupName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $pcName1 = Get-ResourceName
-    $pcName2 = Get-ResourceName
+    $pcName1 = Get-NrpResourceName
+    $pcName2 = Get-NrpResourceName
     
     try 
     {
@@ -682,7 +692,7 @@ function Test-ConnectivityCheck
         Assert-AreEqual $check.ConnectionStatus "Reachable"
         Assert-AreEqual $check.ProbesFailed 0
         Assert-AreEqual $check.Hops.Count 2
-        Assert-AreEqual $check.Hops[0].Type "Source"
+        Assert-True { $check.Hops[0].Type -eq "19" -or $check.Hops[0].Type -eq "VirtualMachine"}
         Assert-AreEqual $check.Hops[1].Type "Internet"
         Assert-AreEqual $check.Hops[0].Address "10.17.3.4"
     }
@@ -701,8 +711,8 @@ Test ReachabilityReport NetworkWatcher API.
 function Test-ReachabilityReport
 {
     # Setup
-    $rgname = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $rgname = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $location = "westcentralus"
     
@@ -744,8 +754,8 @@ Test ProvidersList NetworkWatcher API.
 function Test-ProvidersList
 {
     # Setup
-    $rgname = Get-ResourceGroupName
-    $nwName = Get-ResourceName
+    $rgname = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $location = "westcentralus"
     
@@ -781,17 +791,17 @@ Test ConnectionMonitor APIs.
 function Test-ConnectionMonitor
 {
     # Setup
-    $resourceGroupName = Get-ResourceGroupName
-    $nwName = Get-ResourceName
-    $location = Get-CanaryLocation
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-ResourceGroupName
-    $securityGroupName = Get-ResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $cmName1 = Get-ResourceName
-    $cmName2 = Get-ResourceName
-    
+    $cmName1 = Get-NrpResourceName
+    $cmName2 = Get-NrpResourceName
+	
     try 
     {
         . ".\AzureRM.Resources.ps1"
@@ -865,5 +875,5 @@ function Test-ConnectionMonitor
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
         Clean-ResourceGroup $nwRgName
-    }
+    }  
 }

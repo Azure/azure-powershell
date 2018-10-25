@@ -93,18 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             catch (Exception e)
             {
                 PrintSdkExceptionDetail(e);
-
-                if (e.InnerException != null)
-                {
-                    while (e.InnerException != null)
-                    {
-                        e = e.InnerException;
-                    }
-
-                    throw;
-                }
-
-                throw;
+                throw GetInnerException(e);
             }
 
             return new PSCluster(cluster);
@@ -163,18 +152,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             catch (Exception e)
             {
                 PrintSdkExceptionDetail(e);
-
-                if (e.InnerException != null)
-                {
-                    while (e.InnerException != null)
-                    {
-                        e = e.InnerException;
-                    }
-
-                    throw;
-                }
-
-                throw;
+                throw GetInnerException(e);
             }
 
             return new PSCluster(cluster);
@@ -193,17 +171,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Exception e)
             {
-                if (e.InnerException != null)
-                {
-                    while (e.InnerException != null)
-                    {
-                        e = e.InnerException;
-                    }
-
-                    throw;
-                }
-
-                throw;
+                throw GetInnerException(e);
             }
         }
 
@@ -348,6 +316,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             exceptions.ForEach(PrintSdkExceptionDetail);
             task.Wait();
+        }
+
+        protected Exception GetInnerException(Exception exception)
+        {
+            while (exception.InnerException != null)
+            {
+                exception = exception.InnerException;
+            }
+
+            return exception;
         }
     }
 }
