@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -73,7 +73,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -277,7 +277,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -834,7 +834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -884,23 +884,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -910,7 +893,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -1080,7 +1063,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -1495,7 +1478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties",
               "ResourceGroupName": "System.String",
@@ -1554,7 +1537,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -1740,7 +1723,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -2148,7 +2131,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -2352,7 +2335,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -2837,7 +2820,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -2896,7 +2879,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -3100,7 +3083,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -3561,7 +3544,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -3614,16 +3597,54 @@
         },
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
+            "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
+              "AllocationWeight": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "LinkedHubName": "System.String",
+              "ConnectionString": "System.String",
+              "Location": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3637,7 +3658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -3863,7 +3884,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -4526,7 +4547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -4579,16 +4600,54 @@
         },
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
+            "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
+              "AllocationWeight": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "LinkedHubName": "System.String",
+              "ConnectionString": "System.String",
+              "Location": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4602,7 +4661,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -4772,7 +4831,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -5206,7 +5265,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -5392,7 +5451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
                     "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -5853,7 +5912,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -5912,7 +5971,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -6118,7 +6177,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
                     "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -6683,7 +6742,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -6732,23 +6791,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -6758,7 +6800,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -6953,7 +6995,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -7437,7 +7479,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -7486,23 +7528,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -7512,7 +7537,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -7682,7 +7707,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -8116,7 +8141,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -8301,7 +8326,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "Name": "System.String",
@@ -8761,7 +8786,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -8819,7 +8844,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -9011,7 +9036,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "Name": "System.String",
@@ -9468,7 +9493,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -9529,7 +9554,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -9739,7 +9764,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -9896,7 +9921,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -10553,7 +10578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -10601,23 +10626,6 @@
                 "Parameters": []
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -10934,7 +10942,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -11104,7 +11112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -11519,7 +11527,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -12144,7 +12152,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsVerified": "System.Nullable`1[System.Boolean]",
         "Expiry": "System.Nullable`1[System.DateTime]",
@@ -12425,60 +12433,10 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate": {
-      "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
-      "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "Id": "System.String",
-        "CertificateName": "System.String",
-        "Etag": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IotHubs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription]",
         "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription]",
@@ -12529,7 +12487,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12541,7 +12499,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
         "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -12603,7 +12561,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12615,7 +12573,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ResourceGroupName": "System.String",
         "Name": "System.String",
@@ -12664,7 +12622,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int64]",
         "Tier": "System.String",
@@ -12722,7 +12680,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsVerified": "System.Nullable`1[System.Boolean]",
         "Expiry": "System.Nullable`1[System.DateTime]",
@@ -12731,157 +12689,6 @@
         "VerificationCode": "System.String",
         "Subject": "System.String",
         "Thumbprint": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions": {
-      "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
-      "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
-        "AllocationWeight": "System.Nullable`1[System.Int32]",
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "LinkedHubName": "System.String",
-        "ConnectionString": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights": {
-      "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
-      "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRights, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "KeyName": "System.String",
-        "PrimaryKey": "System.String",
-        "SecondaryKey": "System.String",
-        "Rights": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription": {
-      "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
-      "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServicesDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
-        "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

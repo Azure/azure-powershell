@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 EventGrid Domain object.
 
 ```yaml
-Type: PSDomain
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
 Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 EventGrid Domain Topic object.
 
 ```yaml
-Type: PSDomainTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
 Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Name of the event subscription that needs to be removed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, TopicNameParameterSet, DomainNameParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicNameParameterSet, DomainNameParameterSet
 Aliases: ResourceGroup
 
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 Identifier of the resource whose event subscription needs to be removed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -288,7 +288,7 @@ Accept wildcard characters: False
 Event Grid Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicNameParameterSet
 Aliases:
 
@@ -303,7 +303,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -319,7 +319,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -336,11 +336,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameters: CustomTopicInputObject (ByValue)
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Parameters: DomainInputObject (ByValue)
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
+Parameters: DomainTopicInputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

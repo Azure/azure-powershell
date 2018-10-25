@@ -138,23 +138,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -775,23 +758,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Rest.Azure",
-            "Name": "Microsoft.Rest.Azure.IPage`1[Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate]",
-            "AssemblyQualifiedName": "Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -1110,23 +1076,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Rest.Azure",
-            "Name": "Microsoft.Rest.Azure.IPage`1[Microsoft.Azure.Management.Logic.Models.IntegrationAccount]",
-            "AssemblyQualifiedName": "Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Logic.Models.IntegrationAccount, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccount"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -1314,7 +1263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -1357,23 +1306,6 @@
                 "Parameters": []
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1776,23 +1708,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Rest.Azure",
-            "Name": "Microsoft.Rest.Azure.IPage`1[Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap]",
-            "AssemblyQualifiedName": "Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -2126,23 +2041,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Rest.Azure",
-            "Name": "Microsoft.Rest.Azure.IPage`1[Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner]",
-            "AssemblyQualifiedName": "Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -2372,7 +2270,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -2865,23 +2763,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Rest.Azure",
-            "Name": "Microsoft.Rest.Azure.IPage`1[Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema]",
-            "AssemblyQualifiedName": "Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -7105,7 +6986,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -7370,7 +7267,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -7635,7 +7548,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -7858,7 +7787,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -8123,7 +8068,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -8388,7 +8349,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -8705,7 +8682,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -10785,7 +10778,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -12262,7 +12255,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -13285,8 +13278,8 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13563,14 +13556,262 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.Workflow",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.Workflow, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "IntegrationAccount": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+              "Sku": "Microsoft.Azure.Management.Logic.Models.Sku",
+              "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowParameter]",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState]",
+              "State": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowState]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Definition": "System.Object",
+              "Version": "System.String",
+              "AccessEndpoint": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "provisioningState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "createdTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "changedTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "version",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "accessEndpoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "integrationAccount",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "definition",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "parameters",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowVersion",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowVersion, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "IntegrationAccount": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+              "Sku": "Microsoft.Azure.Management.Logic.Models.Sku",
+              "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowParameter]",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "State": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowState]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Definition": "System.Object",
+              "Version": "System.String",
+              "AccessEndpoint": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "createdTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "changedTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "version",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "accessEndpoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "integrationAccount",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "definition",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "parameters",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -13800,14 +14041,118 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowRunAction",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowRunAction, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "InputsLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "OutputsLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "Correlation": "Microsoft.Azure.Management.Logic.Models.Correlation",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "Error": "System.Object",
+              "TrackedProperties": "System.Object",
+              "Code": "System.String",
+              "TrackingId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "startTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "endTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "status",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "code",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "error",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trackingId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "correlation",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "inputsLink",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outputsLink",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trackedProperties",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14079,14 +14424,123 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowRun",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowRun, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Correlation": "Microsoft.Azure.Management.Logic.Models.Correlation",
+              "Workflow": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+              "Trigger": "Microsoft.Azure.Management.Logic.Models.WorkflowRunTrigger",
+              "Response": "Microsoft.Azure.Management.Logic.Models.WorkflowRunTrigger",
+              "Outputs": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter]",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "Error": "System.Object",
+              "Code": "System.String",
+              "CorrelationId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "startTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "endTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "status",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "code",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "error",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "correlationId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "correlation",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "workflow",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trigger",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outputs",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "response",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14316,14 +14770,58 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerCallbackUrl",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerCallbackUrl, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Value": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "value",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14553,14 +15051,113 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowTrigger",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowTrigger, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Workflow": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+              "Recurrence": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerRecurrence",
+              "State": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowState]",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "LastExecutionTime": "System.Nullable`1[System.DateTime]",
+              "NextExecutionTime": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "provisioningState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "createdTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "changedTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "status",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastExecutionTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "nextExecutionTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "recurrence",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "workflow",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14790,14 +15387,123 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Management.Logic.Models",
+            "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerHistory",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerHistory, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "InputsLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "OutputsLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "Correlation": "Microsoft.Azure.Management.Logic.Models.Correlation",
+              "Run": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]",
+              "Fired": "System.Nullable`1[System.Boolean]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "Error": "System.Object",
+              "Code": "System.String",
+              "TrackingId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "startTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "endTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "status",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "code",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "error",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trackingId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "correlation",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "inputsLink",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outputsLink",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "fired",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "run",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -15760,7 +16466,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -16000,7 +16706,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -16234,8 +16940,8 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16471,8 +17177,8 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -17857,8 +18563,8 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -24012,130 +24718,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement": {
-      "Namespace": "Microsoft.Azure.Management.Logic.Models",
-      "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Content": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
-        "AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
-        "HostIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-        "GuestIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "CreatedTime": "System.Nullable`1[System.DateTime]",
-        "ChangedTime": "System.Nullable`1[System.DateTime]",
-        "Metadata": "System.Object",
-        "HostPartner": "System.String",
-        "GuestPartner": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "agreementType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "hostPartner",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "guestPartner",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "hostIdentity",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "guestIdentity",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "content",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "createdTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "changedTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "metadata",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -24437,110 +25019,6 @@
         }
       ]
     },
-    "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate": {
-      "Namespace": "Microsoft.Azure.Management.Logic.Models",
-      "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Key": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "CreatedTime": "System.Nullable`1[System.DateTime]",
-        "ChangedTime": "System.Nullable`1[System.DateTime]",
-        "Metadata": "System.Object",
-        "PublicCertificate": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "createdTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "changedTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "metadata",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "key",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "publicCertificate",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku": {
       "Namespace": "Microsoft.Azure.Management.Logic.Models",
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
@@ -24695,99 +25173,10 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Logic.Models.IntegrationAccount": {
-      "Namespace": "Microsoft.Azure.Management.Logic.Models",
-      "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Sku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Properties": "System.Object",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "properties",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sku",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.Commands.LogicApp, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -24799,7 +25188,7 @@
     "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType": {
       "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
       "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.Commands.LogicApp, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -24902,63 +25291,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber": {
-      "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
-      "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=4.0.4.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ControlNumberChangedTime": "System.DateTime",
-        "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-        "IsMessageProcessingFailed": "System.Nullable`1[System.Boolean]",
-        "AgreementName": "System.String",
-        "ControlNumber": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "icn",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "agreementName",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "Microsoft.Azure.Management.Logic.Models.ContentLink": {
       "Namespace": "Microsoft.Azure.Management.Logic.Models",
@@ -25254,125 +25586,6 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap": {
-      "Namespace": "Microsoft.Azure.Management.Logic.Models",
-      "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-        "ParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
-        "MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "CreatedTime": "System.Nullable`1[System.DateTime]",
-        "ChangedTime": "System.Nullable`1[System.DateTime]",
-        "Content": "System.Object",
-        "Metadata": "System.Object",
-        "ContentType": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "mapType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "parametersSchema",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "createdTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "changedTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "content",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "contentType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "contentLink",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "metadata",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Management.Logic.Models.PartnerContent": {
       "Namespace": "Microsoft.Azure.Management.Logic.Models",
       "Name": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
@@ -25588,110 +25801,6 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner": {
-      "Namespace": "Microsoft.Azure.Management.Logic.Models",
-      "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Content": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
-        "PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "CreatedTime": "System.Nullable`1[System.DateTime]",
-        "ChangedTime": "System.Nullable`1[System.DateTime]",
-        "Metadata": "System.Object",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "partnerType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "content",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "createdTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "changedTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "metadata",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Management.Logic.Models.SchemaType": {
       "Namespace": "Microsoft.Azure.Management.Logic.Models",
       "Name": "Microsoft.Azure.Management.Logic.Models.SchemaType",
@@ -25787,26 +25896,77 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema": {
+    "Microsoft.Azure.Management.Logic.Models.ResourceReference": {
       "Namespace": "Microsoft.Azure.Management.Logic.Models",
-      "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.ResourceReference, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-        "SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "CreatedTime": "System.Nullable`1[System.DateTime]",
-        "ChangedTime": "System.Nullable`1[System.DateTime]",
-        "Metadata": "System.Object",
-        "Content": "System.Object",
-        "TargetNamespace": "System.String",
-        "DocumentName": "System.String",
-        "FileName": "System.String",
-        "ContentType": "System.String",
         "Id": "System.String",
         "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "id",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "type",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.Logic.Models.Sku": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.Sku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.Sku, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Plan": "Microsoft.Azure.Management.Logic.Models.ResourceReference",
+        "Name": "Microsoft.Azure.Management.Logic.Models.SkuName"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25853,47 +26013,180 @@
           "ReturnType": null,
           "Parameters": [
             {
-              "Name": "schemaType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
               "Name": "name",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
+            {
+              "Name": "plan",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.Logic.Models.SkuName": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.SkuName",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.SkuName, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowParameter]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowParameter]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.Logic.Models.WorkflowParameter, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.Logic.Models.WorkflowParameter"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowParameter": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowParameter, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Type": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.ParameterType]",
+        "Value": "System.Object",
+        "Metadata": "System.Object",
+        "Description": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
             {
               "Name": "type",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "targetNamespace",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "documentName",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "fileName",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "createdTime",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "changedTime",
+              "Name": "value",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
@@ -25901,20 +26194,1383 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "content",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "contentType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "contentLink",
+              "Name": "description",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
         }
       ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.ParameterType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.ParameterType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.ParameterType, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.ParameterType"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.ParameterType": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.ParameterType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.ParameterType, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowProvisioningState, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowState]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowState]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.WorkflowState, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.WorkflowState"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowState": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowState, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.Correlation": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.Correlation",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.Correlation, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "ClientTrackingId": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "clientTrackingId",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.WorkflowStatus, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.WorkflowStatus"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowStatus": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowStatus, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowRunTrigger": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowRunTrigger",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowRunTrigger, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "InputsLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+        "OutputsLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+        "Correlation": "Microsoft.Azure.Management.Logic.Models.Correlation",
+        "Status": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowStatus]",
+        "StartTime": "System.Nullable`1[System.DateTime]",
+        "EndTime": "System.Nullable`1[System.DateTime]",
+        "Inputs": "System.Object",
+        "Outputs": "System.Object",
+        "Error": "System.Object",
+        "TrackedProperties": "System.Object",
+        "Name": "System.String",
+        "TrackingId": "System.String",
+        "Code": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "inputs",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "inputsLink",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "outputs",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "outputsLink",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "startTime",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "endTime",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "trackingId",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "correlation",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "code",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "status",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "error",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "trackedProperties",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowOutputParameter, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Type": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.ParameterType]",
+        "Error": "System.Object",
+        "Value": "System.Object",
+        "Metadata": "System.Object",
+        "Description": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "type",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "value",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "metadata",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "description",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "error",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerRecurrence": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerRecurrence",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerRecurrence, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Schedule": "Microsoft.Azure.Management.Logic.Models.RecurrenceSchedule",
+        "Frequency": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency]",
+        "StartTime": "System.Nullable`1[System.DateTime]",
+        "EndTime": "System.Nullable`1[System.DateTime]",
+        "Interval": "System.Nullable`1[System.Int32]",
+        "TimeZone": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "frequency",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "interval",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "startTime",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "endTime",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "timeZone",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "schedule",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.Logic.Models.RecurrenceSchedule": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.RecurrenceSchedule",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.RecurrenceSchedule, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "MonthlyOccurrences": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence]",
+        "WeekDays": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DaysOfWeek]]",
+        "Minutes": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
+        "Hours": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
+        "MonthDays": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "minutes",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "hours",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "weekDays",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "monthDays",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "monthlyOccurrences",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.RecurrenceScheduleOccurrence, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Day": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DayOfWeek]",
+        "Occurrence": "System.Nullable`1[System.Int32]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "day",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "occurrence",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DayOfWeek]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DayOfWeek]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.DayOfWeek, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.DayOfWeek"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.DayOfWeek": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.DayOfWeek",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.DayOfWeek, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DaysOfWeek]]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DaysOfWeek]]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.DaysOfWeek, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DaysOfWeek]"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DaysOfWeek]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.DaysOfWeek]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.DaysOfWeek, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.DaysOfWeek"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.DaysOfWeek": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.DaysOfWeek",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.DaysOfWeek, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Nullable`1[System.Int32]"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.RecurrenceFrequency, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState": {
+      "Namespace": "Microsoft.Azure.Management.Logic.Models",
+      "Name": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.WorkflowTriggerProvisioningState, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
     }
   }
 }

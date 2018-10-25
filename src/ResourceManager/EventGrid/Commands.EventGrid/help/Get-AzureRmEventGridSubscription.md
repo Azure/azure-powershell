@@ -162,7 +162,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,7 +178,7 @@ EventGrid Topic object.
 
 ```yaml
 Type: PSDomain
-Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
+Parameter Sets: Microsoft.Azure.Commands.EventGrid.Models.EventSubscriptionDomainInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 EventGrid topic type name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionDomainNameParameterSet
 Aliases:
 
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSDomainTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
 Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -237,8 +237,9 @@ Accept wildcard characters: False
 The name of the event subscription
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
+
 Aliases:
 
 Required: False
@@ -267,7 +268,7 @@ Accept wildcard characters: False
 Location
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
 Aliases:
 
@@ -282,7 +283,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
 Aliases: ResourceGroup
 
@@ -297,7 +298,7 @@ Accept wildcard characters: False
 Identifier of the resource to which event subscriptions have been created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -312,7 +313,7 @@ Accept wildcard characters: False
 EventGrid Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet
 Aliases:
 
@@ -327,7 +328,7 @@ Accept wildcard characters: False
 TopicType name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
 Aliases:
 
@@ -344,13 +345,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-System.Management.Automation.SwitchParameter
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance, Microsoft.Azure.Commands.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

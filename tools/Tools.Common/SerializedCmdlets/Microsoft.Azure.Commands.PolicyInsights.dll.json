@@ -12,16 +12,80 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
+            "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+              "IsCompliant": "System.Nullable`1[System.Boolean]",
+              "Timestamp": "System.Nullable`1[System.DateTime]",
+              "PolicyDefinitionReferenceId": "System.String",
+              "ManagementGroupIds": "System.String",
+              "PolicySetDefinitionParameters": "System.String",
+              "PolicySetDefinitionCategory": "System.String",
+              "PolicySetDefinitionOwner": "System.String",
+              "PolicySetDefinitionName": "System.String",
+              "PolicySetDefinitionId": "System.String",
+              "PolicyDefinitionCategory": "System.String",
+              "PolicyDefinitionAction": "System.String",
+              "PolicyDefinitionName": "System.String",
+              "PolicyAssignmentScope": "System.String",
+              "PolicyAssignmentOwner": "System.String",
+              "TenantId": "System.String",
+              "PolicyAssignmentName": "System.String",
+              "ResourceTags": "System.String",
+              "ResourceGroup": "System.String",
+              "ResourceLocation": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "EffectiveParameters": "System.String",
+              "PolicyDefinitionId": "System.String",
+              "PolicyAssignmentId": "System.String",
+              "ResourceId": "System.String",
+              "PolicyAssignmentParameters": "System.String",
+              "PrincipalOid": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "policyEvent",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2397,16 +2461,78 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
+            "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+              "IsCompliant": "System.Nullable`1[System.Boolean]",
+              "Timestamp": "System.Nullable`1[System.DateTime]",
+              "PolicySetDefinitionParameters": "System.String",
+              "PolicySetDefinitionCategory": "System.String",
+              "PolicySetDefinitionOwner": "System.String",
+              "PolicySetDefinitionName": "System.String",
+              "PolicySetDefinitionId": "System.String",
+              "PolicyDefinitionCategory": "System.String",
+              "PolicyDefinitionAction": "System.String",
+              "PolicyDefinitionName": "System.String",
+              "PolicyAssignmentScope": "System.String",
+              "PolicyAssignmentParameters": "System.String",
+              "PolicyAssignmentName": "System.String",
+              "ManagementGroupIds": "System.String",
+              "ResourceTags": "System.String",
+              "ResourceGroup": "System.String",
+              "ResourceLocation": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "EffectiveParameters": "System.String",
+              "PolicyDefinitionId": "System.String",
+              "PolicyAssignmentId": "System.String",
+              "ResourceId": "System.String",
+              "PolicyAssignmentOwner": "System.String",
+              "PolicyDefinitionReferenceId": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "policyState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4994,7 +5120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
               "PolicyAssignments": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]"
@@ -6915,82 +7041,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent": {
-      "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
-      "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
-        "IsCompliant": "System.Nullable`1[System.Boolean]",
-        "Timestamp": "System.Nullable`1[System.DateTime]",
-        "PolicyDefinitionReferenceId": "System.String",
-        "ManagementGroupIds": "System.String",
-        "PolicySetDefinitionParameters": "System.String",
-        "PolicySetDefinitionCategory": "System.String",
-        "PolicySetDefinitionOwner": "System.String",
-        "PolicySetDefinitionName": "System.String",
-        "PolicySetDefinitionId": "System.String",
-        "PolicyDefinitionCategory": "System.String",
-        "PolicyDefinitionAction": "System.String",
-        "PolicyDefinitionName": "System.String",
-        "PolicyAssignmentScope": "System.String",
-        "PolicyAssignmentOwner": "System.String",
-        "TenantId": "System.String",
-        "PolicyAssignmentName": "System.String",
-        "ResourceTags": "System.String",
-        "ResourceGroup": "System.String",
-        "ResourceLocation": "System.String",
-        "ResourceType": "System.String",
-        "SubscriptionId": "System.String",
-        "EffectiveParameters": "System.String",
-        "PolicyDefinitionId": "System.String",
-        "PolicyAssignmentId": "System.String",
-        "ResourceId": "System.String",
-        "PolicyAssignmentParameters": "System.String",
-        "PrincipalOid": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "policyEvent",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "System.Collections.Generic.IDictionary`2[System.String,System.Object]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -7249,84 +7299,10 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState": {
-      "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
-      "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
-        "IsCompliant": "System.Nullable`1[System.Boolean]",
-        "Timestamp": "System.Nullable`1[System.DateTime]",
-        "PolicySetDefinitionParameters": "System.String",
-        "PolicySetDefinitionCategory": "System.String",
-        "PolicySetDefinitionOwner": "System.String",
-        "PolicySetDefinitionName": "System.String",
-        "PolicySetDefinitionId": "System.String",
-        "PolicyDefinitionCategory": "System.String",
-        "PolicyDefinitionAction": "System.String",
-        "PolicyDefinitionName": "System.String",
-        "PolicyAssignmentScope": "System.String",
-        "PolicyAssignmentParameters": "System.String",
-        "PolicyAssignmentName": "System.String",
-        "ManagementGroupIds": "System.String",
-        "ResourceTags": "System.String",
-        "ResourceGroup": "System.String",
-        "ResourceLocation": "System.String",
-        "ResourceType": "System.String",
-        "SubscriptionId": "System.String",
-        "EffectiveParameters": "System.String",
-        "PolicyDefinitionId": "System.String",
-        "PolicyAssignmentId": "System.String",
-        "ResourceId": "System.String",
-        "PolicyAssignmentOwner": "System.String",
-        "PolicyDefinitionReferenceId": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "policyState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "NonCompliantResources": "System.Nullable`1[System.Int32]",
         "NonCompliantPolicies": "System.Nullable`1[System.Int32]"
@@ -7388,7 +7364,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -7400,7 +7376,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
         "PolicyDefinitions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]",
@@ -7452,7 +7428,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -7464,11 +7440,12 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.Commands.PolicyInsights, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
-        "Effect": "System.String",
-        "PolicyDefinitionId": "System.String"
+        "PolicyDefinitionId": "System.String",
+        "PolicyDefinitionReferenceId": "System.String",
+        "Effect": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

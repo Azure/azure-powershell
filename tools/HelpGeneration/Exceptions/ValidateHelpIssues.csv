@@ -305,3 +305,14 @@ Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy.md,No entry was found for
 Update-AzureRmIoTDeviceProvisioningServiceLinkedHub.md,No entry was found for the online version field in the header. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/azurerm.deviceprovisioningservices/update-azurermiotdeviceprovisioningservicelinkedhub
 Get-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md,No entry was found for the online version field in the header. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/azurerm.deviceprovisioningservices/get-azurermiotdeviceprovisioningservicecertificateverificationcode
 New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md,No entry was found for the online version field in the header. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/azurerm.deviceprovisioningservices/new-azurermiotdeviceprovisioningservicecertificateverificationcode
+Get-AzureRmVirtualWan.md,No examples found
+Get-AzureRmVpnSite.md,No examples found
+New-AzureRmVirtualHubRoute.md,No examples found
+New-AzureRmVpnConnection.md,No examples found
+New-AzureRmVpnGateway.md,No examples found
+New-AzureRmVpnSite.md,No examples found
+Remove-AzureRmVpnGateway.md,No examples found
+Update-AzureRmVpnConnection.md,No examples found
+Update-AzureRmVpnGateway.md,No examples found
+Update-AzureRmVpnSite.md,No examples found
+

@@ -477,7 +477,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericTypeA
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(List<string>))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(string))]
     public class TestChangeOutputGenericTypeArgument : Cmdlet
     {
         protected override void BeginProcessing()

@@ -1951,25 +1951,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllApis",
-            "GetByName",
-            "GetByProductId"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -2031,7 +2012,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByApiId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -2718,23 +2699,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -3079,23 +3043,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllAuthorizationServers"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -3159,7 +3106,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByServerId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -3516,23 +3463,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllBackends"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -3589,7 +3519,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByBackendId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -3946,23 +3876,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllCertificates"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -4013,7 +3926,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByCertificateId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -4370,25 +4283,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllGroups",
-            "GetByUserId",
-            "GetByProductId"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -4440,7 +4334,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByGroupId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -5199,23 +5093,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "AllIdentityProviders"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -5266,7 +5143,7 @@
             ]
           },
           "ParameterSets": [
-            "IdentityProviderByType"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -5793,23 +5670,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllLoggers"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -5860,7 +5720,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByLoggerId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -6217,23 +6077,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllOpenIdConnectProviders"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -6286,7 +6129,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByOpenIdConnectProviderId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -6787,23 +6630,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllApiOperations"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -6859,7 +6685,7 @@
             ]
           },
           "ParameterSets": [
-            "GetById"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -8533,24 +8359,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllProducts",
-            "GetByTitle"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -8605,7 +8413,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByProductId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -9106,25 +8914,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllProperties",
-            "GetByName",
-            "GetByTag"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -9176,7 +8965,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByPropertyId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -9874,23 +9663,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -10182,25 +9954,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GetAllSubscriptions",
-            "GetByProductId",
-            "GetByUserId"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -10260,7 +10013,7 @@
             ]
           },
           "ParameterSets": [
-            "GetBySubscriptionId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -11164,24 +10917,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "GeAllUsers",
-            "GetByUser"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
@@ -11236,7 +10971,7 @@
             ]
           },
           "ParameterSets": [
-            "GetByUserId"
+            "__AllParameterSets"
           ]
         }
       ],
@@ -12168,23 +11903,6 @@
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
@@ -50473,67 +50191,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Protocols": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]",
-        "IsOnline": "System.Boolean",
-        "IsCurrent": "System.Boolean",
-        "ApiId": "System.String",
-        "Id": "System.String",
-        "ApiVersion": "System.String",
-        "ApiRevision": "System.String",
-        "SubscriptionKeyQueryParamName": "System.String",
-        "SubscriptionKeyHeaderName": "System.String",
-        "AuthorizationScope": "System.String",
-        "AuthorizationServerId": "System.String",
-        "ApiType": "System.String",
-        "Path": "System.String",
-        "ServiceUrl": "System.String",
-        "Description": "System.String",
-        "Name": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]",
@@ -50639,57 +50296,6 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "CreatedDateTime": "System.Nullable`1[System.DateTime]",
-        "UpdatedDateTime": "System.Nullable`1[System.DateTime]",
-        "ReleaseId": "System.String",
-        "ApiId": "System.String",
-        "Notes": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
@@ -50711,69 +50317,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AccessTokenSendingMethods": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAccessTokenSendingMethod[]",
-        "AuthorizationRequestMethods": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAuthorizationRequestMethod[]",
-        "ClientAuthenticationMethods": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementClientAuthenticationMethod[]",
-        "GrantTypes": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGrantType[]",
-        "SupportState": "System.Boolean",
-        "TokenBodyParameters": "System.Collections.Hashtable",
-        "Id": "System.String",
-        "ResourceOwnerPassword": "System.String",
-        "ResourceOwnerUsername": "System.String",
-        "ClientSecret": "System.String",
-        "ClientId": "System.String",
-        "ServerId": "System.String",
-        "ResourceGroupName": "System.String",
-        "TokenEndpointUrl": "System.String",
-        "AuthorizationEndpointUrl": "System.String",
-        "ClientRegistrationPageUrl": "System.String",
-        "Description": "System.String",
-        "Name": "System.String",
-        "DefaultScope": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAccessTokenSendingMethod[]": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
@@ -51205,62 +50748,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Credentials": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackendCredential",
-        "Proxy": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackendProxy",
-        "ServiceFabricCluster": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementServiceFabric",
-        "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
-        "BackendId": "System.String",
-        "Protocol": "System.String",
-        "ResourceId": "System.String",
-        "Title": "System.String",
-        "Description": "System.String",
-        "Url": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackendCredential": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackendCredential",
@@ -51513,107 +51000,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ExpirationDate": "System.DateTime",
-        "CertificateId": "System.String",
-        "Subject": "System.String",
-        "Thumbprint": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Type": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroupType",
-        "System": "System.Boolean",
-        "GroupId": "System.String",
-        "Name": "System.String",
-        "Description": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroupType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroupType",
@@ -51709,56 +51095,6 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Type": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType",
-        "ClientId": "System.String",
-        "ClientSecret": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String",
-        "AllowedTenants": "System.String[]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType",
@@ -51853,56 +51189,6 @@
         }
       ],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Type": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLoggerType",
-        "IsBuffered": "System.Nullable`1[System.Boolean]",
-        "LoggerId": "System.String",
-        "Description": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLoggerType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
@@ -52010,113 +51296,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "OpenIdConnectProviderId": "System.String",
-        "Name": "System.String",
-        "ClientId": "System.String",
-        "ClientSecret": "System.String",
-        "Description": "System.String",
-        "MetadataEndpoint": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "TemplateParameters": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter[]",
-        "Request": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest",
-        "Responses": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse[]",
-        "ApiId": "System.String",
-        "OperationId": "System.String",
-        "Name": "System.String",
-        "Method": "System.String",
-        "UrlTemplate": "System.String",
-        "Description": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter[]": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
@@ -52338,60 +51517,6 @@
         }
       ]
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "State": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProductState",
-        "SubscriptionRequired": "System.Nullable`1[System.Boolean]",
-        "ApprovalRequired": "System.Nullable`1[System.Boolean]",
-        "SubscriptionsLimit": "System.Nullable`1[System.Int32]",
-        "ProductId": "System.String",
-        "Title": "System.String",
-        "Description": "System.String",
-        "LegalTerms": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProductState": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProductState",
@@ -52486,167 +51611,6 @@
         }
       ],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Secret": "System.Boolean",
-        "PropertyId": "System.String",
-        "Name": "System.String",
-        "Value": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String",
-        "Tags": "System.String[]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRevision, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "IsOnline": "System.Nullable`1[System.Boolean]",
-        "IsCurrent": "System.Nullable`1[System.Boolean]",
-        "CreatedDateTime": "System.Nullable`1[System.DateTime]",
-        "UpdatedDateTime": "System.Nullable`1[System.DateTime]",
-        "ApiId": "System.String",
-        "ApiRevision": "System.String",
-        "Description": "System.String",
-        "PrivateUrl": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "State": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscriptionState",
-        "CreatedDate": "System.DateTime",
-        "StartDate": "System.Nullable`1[System.DateTime]",
-        "ExpirationDate": "System.Nullable`1[System.DateTime]",
-        "EndDate": "System.Nullable`1[System.DateTime]",
-        "NotificationDate": "System.Nullable`1[System.DateTime]",
-        "SubscriptionId": "System.String",
-        "UserId": "System.String",
-        "ProductId": "System.String",
-        "Name": "System.String",
-        "PrimaryKey": "System.String",
-        "SecondaryKey": "System.String",
-        "StateComment": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscriptionState": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
@@ -52743,60 +51707,6 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "State": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState",
-        "Identities": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "RegistrationDate": "System.DateTime",
-        "UserId": "System.String",
-        "FirstName": "System.String",
-        "LastName": "System.String",
-        "Email": "System.String",
-        "Note": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState",
@@ -52891,58 +51801,6 @@
         }
       ],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiVersionSet, Microsoft.Azure.Commands.ApiManagement.ServiceManagement, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "VersioningScheme": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementVersioningScheme",
-        "ApiVersionSetId": "System.String",
-        "Description": "System.String",
-        "VersionQueryName": "System.String",
-        "VersionHeaderName": "System.String",
-        "DisplayName": "System.String",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "ServiceName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementVersioningScheme": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models",

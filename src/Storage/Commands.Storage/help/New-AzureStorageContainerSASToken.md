@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 6FF04E82-4921-4F7B-83D0-6997316BC5FD
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainersastoken
 schema: 2.0.0
@@ -16,14 +17,14 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzureStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzureStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,9 +60,9 @@ Specifies an Azure storage context.
 You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -70,16 +71,30 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpiryTime
 Specifies the time at which the shared access signature becomes invalid.
-
 If the user sets the start time but not the expiry time, the expiry time is set to the start time plus one hour.
 If neither the start time nor the expiry time is specified, the expiry time is set to the current time plus one hour.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,9 +107,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet return the full blob URI and the shared access signature token.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -108,9 +123,9 @@ Specifies the IP address or range of IP addresses from which to accept requests,
 The range is inclusive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +138,7 @@ Accept wildcard characters: False
 Specifies an Azure storage container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Container
 
@@ -136,11 +151,12 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions for a storage container.
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SasPermission
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,9 +169,9 @@ Accept wildcard characters: False
 Specifies an Azure Stored Access Policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,13 +185,12 @@ Specifies the protocol permitted for a request.
 The acceptable values for this parameter are:
 * HttpsOnly
 * HttpsOrHttp
-
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: SharedAccessProtocol
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -189,9 +204,9 @@ Accept wildcard characters: False
 Specifies the time at which the shared access signature becomes valid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -205,13 +220,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### System.String
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
-### String
-
-Parameter 'Name' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 

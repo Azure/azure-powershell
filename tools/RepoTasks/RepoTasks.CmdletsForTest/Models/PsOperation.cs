@@ -11,12 +11,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace RepoTasks.CmdletsForTest.Models
 {
     using System.Net;
     public class PsOperation
     {
+        [Ps1Xml(Label = "RequestId", Target = ViewControl.All, Position = 1, GroupByThis = true)]
         public string RequestId { get; set; }
+
         public HttpStatusCode StatusCode { get; set; }
     }
 }

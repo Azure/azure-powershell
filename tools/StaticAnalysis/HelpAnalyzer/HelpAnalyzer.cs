@@ -150,7 +150,12 @@ namespace StaticAnalysis.HelpAnalyzer
                             h.HelpFile = helpFileName;
                             h.Assembly = cmdletFileName;
                         }, "Cmdlet");
-                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                        var proxy =
+#if !NETSTANDARD
+                            EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#else
+                            new CmdletLoader();
+#endif
                         var module = proxy.GetModuleMetadata(cmdletFile);
                         var cmdlets = module.Cmdlets;
                         var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
@@ -242,7 +247,12 @@ namespace StaticAnalysis.HelpAnalyzer
                                 h.Assembly = assemblyFileName;
                             }, "Cmdlet");
                             processedHelpFiles.Add(assemblyFileName);
-                            var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                            var proxy =
+#if !NETSTANDARD
+                                EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#else
+                                new CmdletLoader();
+#endif
                             var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
                             var cmdlets = module.Cmdlets;
                             allCmdlets.AddRange(cmdlets);

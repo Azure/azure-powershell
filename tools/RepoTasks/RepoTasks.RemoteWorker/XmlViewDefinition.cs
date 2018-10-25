@@ -33,6 +33,14 @@ namespace RepoTasks.RemoteWorker
         public ViewSelectedBy ViewSelectedBy { get; set; }
         public TableControl TableControl { get; set; }
         public ListControl ListControl { get; set; }
+        public GroupBy GroupBy { get; set; }
+    }
+
+    public class GroupBy
+    {
+        public string PropertyName {get;set;}
+        public string ScriptBlock { get;set;}
+        public string Label { get;set;}
     }
 
     public class ViewSelectedBy
@@ -96,7 +104,7 @@ namespace RepoTasks.RemoteWorker
     public class TableColumnHeader : Alignable
     {
         public string Label { get; set; }
-        public int? Width { get; set; }
+        public uint? Width { get; set; }
         public bool ShouldSerializeWidth()
         {
             return Width.HasValue;

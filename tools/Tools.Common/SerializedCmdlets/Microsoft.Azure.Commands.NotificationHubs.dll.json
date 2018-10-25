@@ -12,16 +12,75 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
+              "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
+              "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
+              "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
+              "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
+              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "RegistrationTtl": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "nhResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "pnsCredentialsResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -247,16 +306,58 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "authRuleResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -865,7 +966,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -1159,7 +1260,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -1293,7 +1394,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -1616,7 +1717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
                     "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -1799,7 +1900,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -1934,7 +2035,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -2288,7 +2389,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -2902,7 +3003,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroup",
@@ -3161,7 +3278,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroup",
@@ -3467,7 +3600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -3601,7 +3734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -3990,7 +4123,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
                     "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
@@ -4197,7 +4330,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -4332,7 +4465,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -4752,7 +4885,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -4964,16 +5097,58 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "authRuleResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -5498,7 +5673,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -5615,7 +5790,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -5921,7 +6096,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -6749,7 +6924,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -6866,7 +7041,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -7238,7 +7413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -7426,16 +7601,83 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Critical": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "Status": "System.String",
+              "ScaleUnit": "System.String",
+              "Region": "System.String",
+              "ProvisioningState": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String",
+              "SubscriptionId": "System.String",
+              "SkuName": "System.String",
+              "ServiceBusEndpoint": "System.Uri"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "nsResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "nsResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -7621,7 +7863,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
@@ -8002,7 +8244,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroup",
@@ -8224,7 +8482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
@@ -8366,7 +8624,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
             "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8651,7 +8909,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
                   "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9033,77 +9291,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes": {
-      "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-      "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
-        "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-        "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
-        "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-        "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-        "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
-        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-        "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
-        "Id": "System.String",
-        "Type": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
-        "RegistrationTtl": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "nhResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "pnsCredentialsResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
@@ -9918,60 +10105,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes": {
-      "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-      "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-        "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
-        "Id": "System.String",
-        "Type": "System.String",
-        "Name": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "authRuleResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
@@ -9983,85 +10116,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes": {
-      "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-      "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-        "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "Critical": "System.Nullable`1[System.Boolean]",
-        "CreatedAt": "System.Nullable`1[System.DateTime]",
-        "Status": "System.String",
-        "ScaleUnit": "System.String",
-        "Region": "System.String",
-        "ProvisioningState": "System.String",
-        "ResourceGroupName": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Id": "System.String",
-        "SubscriptionId": "System.String",
-        "SkuName": "System.String",
-        "ServiceBusEndpoint": "System.Uri"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "resourceGroup",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "nsResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "nsResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]": {
       "Namespace": "System",

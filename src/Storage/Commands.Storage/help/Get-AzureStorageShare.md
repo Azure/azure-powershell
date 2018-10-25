@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: FD3A0013-4365-4E65-891C-5C50A9D5658C
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageshare
 schema: 2.0.0
@@ -15,14 +16,15 @@ Gets a list of file shares.
 ### MatchingPrefix (Default)
 ```
 Get-AzureStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Specific
 ```
-Get-AzureStorageShare [-Name] <String> [-SnapshotTime <DateTimeOffset>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+Get-AzureStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset>] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +53,6 @@ PS C:\> Get-AzureStorageShare -Context $Context
 ```
 
 The first command uses the **New-AzureStorageContext** cmdlet to create a context by using the *Local* parameter, and then stores that context object in the $Context variable.
-
 The second command gets the file shares for the context object stored in $Context.
 
 ### Example 4: Get a file share snapshot with specific share name and SnapshotTime
@@ -69,9 +70,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,9 +89,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,9 +105,9 @@ Specifies an Azure Storage context.
 To obtain a context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -115,14 +116,29 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the file share.
 This cmdlet gets the file share that this parameter specifies, or nothing if you specify the name of a file share that does not exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Specific
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -136,9 +152,9 @@ Specifies the prefix for file shares.
 This cmdlet gets file shares that match the prefix that this parameter specifies, or no file shares if no file shares match the specified prefix.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MatchingPrefix
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -151,9 +167,9 @@ Accept wildcard characters: False
 Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,12 +182,12 @@ Accept wildcard characters: False
 SnapshotTime of the file share snapshot to be received.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: Specific
-Aliases: 
+Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -182,11 +198,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 
 ## NOTES
 

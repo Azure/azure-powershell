@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: BB139312-A536-4B61-A005-6CAF02BE1637
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragefilesastoken
 schema: 2.0.0
@@ -16,26 +17,30 @@ Generates a shared access signature token for a Storage file.
 ```
 New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### NameSasPolicy
 ```
 New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### FileSasPermission
 ```
 New-AzureStorageFileSASToken -File <CloudFile> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [<CommonParameters>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FileSasPolicy
 ```
 New-AzureStorageFileSASToken -File <CloudFile> -Policy <String> [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [<CommonParameters>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,10 +64,8 @@ PS C:\> New-AzureStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" 
 
 The first command creates a **DateTime** object by using the Get-Date cmdlet.
 The command stores the current time in the $StartTime variable.
-
 The second command adds two hours to the object in $StartTime, and then stores the result in the $EndTime variable.
 This object is a time two hours in the future.
-
 The third command generates a shared access signature token that has the specified permissions.
 This token becomes valid at the current time.
 The token remains valid until time stored in $EndTime.
@@ -74,9 +77,9 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: NameSasPermission, NameSasPolicy
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,13 +88,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpiryTime
 Specifies the time at which the shared access signature becomes invalid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,9 +123,9 @@ Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdlet.
 
 ```yaml
-Type: CloudFile
+Type: Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter Sets: FileSasPermission, FileSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,9 +138,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet return the full blob URI and the shared access signature token.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,9 +154,9 @@ Specifies the IP address or range of IP addresses from which to accept requests,
 The range is inclusive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,9 +169,9 @@ Accept wildcard characters: False
 Specifies the path of the file relative to a Storage share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameSasPermission, NameSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -164,11 +182,12 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies the permissions for a Storage file.
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameSasPermission, FileSasPermission
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -181,9 +200,9 @@ Accept wildcard characters: False
 Specifies the stored access policy for a file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameSasPolicy, FileSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -197,13 +216,12 @@ Specifies the protocol permitted for a request.
 The acceptable values for this parameter are:
 * HttpsOnly
 * HttpsOrHttp
-
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: SharedAccessProtocol
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -217,9 +235,9 @@ Accept wildcard characters: False
 Specifies the name of the Storage share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameSasPermission, NameSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -232,9 +250,9 @@ Accept wildcard characters: False
 Specifies the time at which the shared access signature becomes valid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -248,21 +266,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### System.String
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.WindowsAzure.Storage.File.CloudFile
 
-### CloudFile
-
-Parameter 'File' accepts value of type 'CloudFile' from the pipeline
-
-### String
-
-Parameter 'Path' accepts value of type 'String' from the pipeline
-
-### String
-
-Parameter 'ShareName' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByValue)
 
 ## OUTPUTS
 

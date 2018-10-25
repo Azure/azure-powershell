@@ -92,5 +92,10 @@ namespace Tools.Common.Models
                            this.Type.Equals(other.Type);
             return paramsEqual;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

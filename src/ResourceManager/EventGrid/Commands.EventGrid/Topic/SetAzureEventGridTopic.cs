@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(VerbsCommon.Set, EventGridTopicVerb, SupportsShouldProcess = true, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(PSTopic))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopic", SupportsShouldProcess = true, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(PSTopic))]
     public class SetAzureEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
