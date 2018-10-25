@@ -15,8 +15,10 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
+//using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
         public StorageSyncManagementClient StorageSyncClient { get; private set; }
 
-        public Azure.Management.ResourceManager.SubscriptionClient SubscriptionClient { get; private set; }
+        public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -102,8 +104,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             {
                 { "Microsoft.Resources", null },
                 { "Microsoft.Features", null },
-                { "Microsoft.Authorization", null },
-                { "Microsoft.Storage", null }
+                { "Microsoft.Authorization", null }
             };
 
             var providersToIgnore = new Dictionary<string, string>
@@ -123,13 +124,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
                 InitializeComponent(context);
 
-                //environmentSetupHelper.SetupEnvironment(AzureModule.AzureResourceManager);
-                environmentSetupHelper.SetupAzureEnvironmentFromEnvironmentVariables(AzureModule.AzureResourceManager);
+                environmentSetupHelper.SetupEnvironment(AzureModule.AzureResourceManager);
+                //environmentSetupHelper.SetupAzureEnvironmentFromEnvironmentVariables(AzureModule.AzureResourceManager);
 
                 string callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 environmentSetupHelper.SetupModules(AzureModule.AzureResourceManager,
                     environmentSetupHelper.RMProfileModule,
+                    environmentSetupHelper.RMStorageModule,
                     environmentSetupHelper.GetRMModulePath("AzureRm.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
                     $"ScenarioTests\\{callingClassName}.ps1",
@@ -178,9 +180,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context) =>context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
-        private SubscriptionClient GetSubscriptionClient(MockContext context)
+        private Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
