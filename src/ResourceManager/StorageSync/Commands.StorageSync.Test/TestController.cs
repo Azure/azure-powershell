@@ -132,6 +132,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
                 environmentSetupHelper.SetupModules(AzureModule.AzureResourceManager,
                     environmentSetupHelper.RMProfileModule,
+#if !NETSTANDARD
+                    environmentSetupHelper.RMStorageDataPlaneModule,
+#endif
                     environmentSetupHelper.RMStorageModule,
                     environmentSetupHelper.GetRMModulePath("AzureRm.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
