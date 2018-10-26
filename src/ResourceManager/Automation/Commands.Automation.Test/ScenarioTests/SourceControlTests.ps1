@@ -95,7 +95,7 @@ function WaitForSourceControlSyncJobState
 
     } while ($state -ne $ExpectedState -and $retries -gt 0) 
 
-    Assert-True {$retries -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
+    Assert-True {$retries -gt 0} "Timeout waiting for provisioning state to reach '$ExpectedState'"
 }
 
 #endregion
