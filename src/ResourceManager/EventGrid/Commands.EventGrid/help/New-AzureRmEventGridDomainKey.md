@@ -62,7 +62,7 @@ Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 EventGrid Domain object.
 
 ```yaml
-Type: PSDomain
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
 Parameter Sets: DomainInputObjectParameterSet
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The name of the key that needs to be regenerated
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainInputObjectParameterSet
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases: ResourceGroup
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

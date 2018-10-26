@@ -147,7 +147,7 @@ Gets the list of all event subscriptions created for the specific resource group
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
@@ -177,8 +177,8 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSDomain
-Parameter Sets: Microsoft.Azure.Commands.EventGrid.Models.EventSubscriptionDomainInputObjectParameterSet
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 EventGrid domain topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionDomainNameParameterSet
 Aliases:
 
@@ -239,7 +239,6 @@ The name of the event subscription
 ```yaml
 Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
-
 Aliases:
 
 Required: False
@@ -253,7 +252,7 @@ Accept wildcard characters: False
 Include the full endpoint URL of the event subscription destination.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionTopicTypeNameParameterSet
 Aliases:
 

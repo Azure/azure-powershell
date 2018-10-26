@@ -153,7 +153,7 @@ Creates a new event subscription \`EventSubscription1\` to an EventHub namespace
 Advanced filter that specifies the list of attributes to be included.
 
 ```yaml
-Type: Hashtable[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: /subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -225,10 +225,10 @@ Accept wildcard characters: False
 The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default value is inputeventschema.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventV01Schema
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventV01Schema, EventGridSchema, CustomInputSchema, CloudEventV01Schema
 
 Required: False
 Position: Named
@@ -238,10 +238,10 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventV01Schema
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventV01Schema, EventGridSchema, CustomInputSchema, CloudEventV01Schema
 
 Required: False
 Position: Named
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 EventGrid Domain object.
 
 ```yaml
-Type: PSDomain
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
 Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
 Aliases:
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 The name of the domain to which the event subscription should be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 EventGrid Domain Topic object.
 
 ```yaml
-Type: PSDomainTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
 Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 The name of the domain topic to which the event subscription should be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -346,7 +346,7 @@ This can be webhook, eventhub, storagequeue or hybridconnection. Default value i
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, webhook, eventhub, storagequeue, hybridconnection
 
 Required: False
 Position: 4
@@ -359,7 +359,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, webhook, eventhub, storagequeue, hybridconnection
 
 Required: False
 Position: 4
@@ -399,7 +399,7 @@ Accept wildcard characters: False
 The time in minutes for the event delivery. This value must be between 1 and 1440
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -411,7 +411,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -426,7 +426,7 @@ Accept wildcard characters: False
 Determines the expiration DateTime for the event subscription after which event subscription will retire.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -495,7 +495,7 @@ Accept wildcard characters: False
 The maximum number of attempts to deliver the event. This value must be between 1 and 30
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -507,7 +507,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -534,7 +534,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases: ResourceGroup
 
@@ -565,7 +565,7 @@ Filter that specifies that only events matching the specified subject prefix wil
 If not specified, events with all subject prefixes will be included.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -577,7 +577,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -609,7 +609,7 @@ Filter that specifies that only events matching the specified subject suffix wil
 If not specified, events with all subject suffixes will be included.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -621,7 +621,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 

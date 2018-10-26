@@ -355,9 +355,7 @@ function DomainTopicTests {
     $resourceGroupName = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
     $eventSubscriptionName = Get-EventSubscriptionName
-    ##### $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw=="
-
+    $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
 
     Write-Debug "Creating resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -400,9 +398,6 @@ function DomainTopicTests {
 
     Write-Debug "Deleting the created EventSubscription $eventSubscriptionName to domain topic $domainTopicName3 under domain $domainName in resource group $resourceGroupName"
     $result = Remove-AzureRmEventGridSubscription -EventSubscriptionName $eventSubscriptionName -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName/topics/$domainTopicName3"
-
-    ######## TODO: check this
-    ############## -ResourceGroup $resourceGroupName -DomainName $domainName -DomainTopicName $domainTopicName3 -EventSubscriptionName $eventSubscriptionName
 
     try
     {

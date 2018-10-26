@@ -91,44 +91,59 @@
     <None Include="ScenarioTests\TopicTypeTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.DomainTests\EventGrid_DomainsCreateGetAndDelete.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.DomainTests\EventGrid_DomainsGetKey.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.DomainTests\EventGrid_DomainsInputMappingCreateGetAndDelete.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.DomainTests\EventGrid_DomainsNewKey.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.DomainTests\EventGrid_DomainTopics.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToAzureSubscription.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToAzureSubscription2.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToCustomTopics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToCustomTopics2.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToResourceCRUD.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToResourceGroup.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToResourceGroup2.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscription_Deadletter.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsCreateGetAndDelete.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsGetKey.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsInputMappingCreateGetAndDelete.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsNewKey.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsSet.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTypeTests\EventGrid_TopicTypes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -114,7 +114,7 @@ Removes the event subscription \`EventSubscription1\` to an Event Grid Topic.
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 EventGrid domain topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases:
 

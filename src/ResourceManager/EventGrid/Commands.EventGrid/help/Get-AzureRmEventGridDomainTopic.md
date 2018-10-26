@@ -65,7 +65,7 @@ List all the Event Grid domain topics under Event Grid domain \`Domain1\` in res
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicNameParameterSet
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 EventGrid domain topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicNameParameterSet
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicNameParameterSet
 Aliases: ResourceGroup
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Domain or Grid Domain Topic.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 

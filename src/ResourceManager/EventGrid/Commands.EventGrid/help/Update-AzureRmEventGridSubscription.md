@@ -111,7 +111,7 @@ Updates the properties of the event subscription \`ES1\` for the resource group 
 Advanced filter that specifies the list of attributes to be included.
 
 ```yaml
-Type: Hashtable[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: /subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The name of the domain to which the event subscription should be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 The name of the domain topic to which the event subscription should be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 The time in minutes for the event delivery. This value must be between 1 and 1440
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 Determines the expiration DateTime for the event subscription after which event subscription will retire.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -333,7 +333,7 @@ Accept wildcard characters: False
 The maximum number of attempts to deliver the event. This value must be between 1 and 30
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -345,7 +345,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
