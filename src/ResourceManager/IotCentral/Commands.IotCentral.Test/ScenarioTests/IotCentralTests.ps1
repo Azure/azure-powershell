@@ -61,7 +61,7 @@ function Test-IotCentralAppLifecycleManagement{
 		$rname2 = ($rname1) + "-2"
 
 		New-AzureRmIotCentralApp $rgname $rname2 $rname2
-		$list = Get-AzureRmResourceGroup $rgname | Get-AzureRmIotCentralApp
+		$list = Get-AzureRmIotCentralApp -ResourceGroupName $rgname
 		$app1 = $list | where {$_.Name -eq $rname1} | Select-Object -First 1
 		$app2 = $list | where {$_.Name -eq $rname2} | Select-Object -First 1
 
@@ -77,11 +77,9 @@ function Test-IotCentralAppLifecycleManagement{
 		# Test getting from empty group
 		$emptyrg = ($rgname) + "empty"
 		New-AzureRmResourceGroup -Name $emptyrg -Location $location
-		$listViaPiping = Get-AzureRmResourceGroup -Name $emptyrg | Get-AzureRmIotCentralApp
 		$listViaDirect = Get-AzureRmIotCentralApp -ResourceGroupName $emptyrg
 
 		# Assert
-		Assert-AreEqual 0 @($listViaPiping).Count
 		Assert-AreEqual 0 @($listViaDirect).Count
 
 		# Update App
