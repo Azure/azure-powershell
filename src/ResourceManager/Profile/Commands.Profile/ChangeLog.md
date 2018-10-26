@@ -20,6 +20,7 @@
 ## Current Release
 * Update common code to use latest version of ClientRuntime
 * Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
+* Updated TenantId description for Connect-AzureRmAccount
 * Fix error message for failed login when providing tenant domain
     - https://github.com/Azure/azure-powershell/issues/6936
 * Fix issue with context name clashing for accounts with no subscriptions in tenant
