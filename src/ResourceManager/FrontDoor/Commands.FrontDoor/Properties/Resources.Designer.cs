@@ -61,23 +61,41 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing Front Door with name &apos;{0}&apos; in the resource group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Create Front Door?.
+        /// </summary>
+        internal static string CreateFrontDoor {
+            get {
+                return ResourceManager.GetString("CreateFrontDoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create WebApplicationFirewallPolicy?.
+        /// </summary>
+        internal static string CreateWebApplicationFirewallPolicy {
+            get {
+                return ResourceManager.GetString("CreateWebApplicationFirewallPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already an existing Front Door with name &apos;{0}&apos; in the resource group &apos;{1}&apos;.
         /// </summary>
         internal static string Error_CreateExistingFrontDoor {
             get {
                 return ResourceManager.GetString("Error_CreateExistingFrontDoor", resourceCulture);
             }
         }
-                
+        
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing WebApplicationFirewallPolicy with name &apos;{0}&apos; in the resource group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to There is already an existing WAF policy with name &apos;{0}&apos; in the resource group &apos;{1}&apos;..
         /// </summary>
         internal static string Error_CreateExistingWebApplicationFirewallPolicy {
             get {
                 return ResourceManager.GetString("Error_CreateExistingWebApplicationFirewallPolicy", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Front Door with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
@@ -95,17 +113,25 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
                 return ResourceManager.GetString("Error_DeleteNonExistingWebApplicationFirewallPolicy", resourceCulture);
             }
         }
-  
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error response received. Error Message: &apos;{0}&apos;.
+        /// </summary>
+        internal static string Error_ErrorResponseFromServer {
+            get {
+                return ResourceManager.GetString("Error_ErrorResponseFromServer", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Front Door with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
-        internal static string Error_FrontDoorNotFound
-        {
+        internal static string Error_FrontDoorNotFound {
             get {
                 return ResourceManager.GetString("Error_FrontDoorNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to WebApplicationFirewallPolicy with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
@@ -114,34 +140,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
                 return ResourceManager.GetString("Error_WebApplicationFirewallPolicyNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Error Response Received. Error Message: &apos;{0}&apos;.
-        /// </summary>
-        internal static string Error_ErrorResponseFromServer {
-            get {
-                return ResourceManager.GetString("Error_ErrorResponseFromServer", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Current context.
-        /// </summary>
-        internal static string FrontDoorTarget {
-            get {
-                return ResourceManager.GetString("FrontDoorTarget", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Current context.
-        /// </summary>
-        internal static string WebApplicationFirewallPolicyTarget {
-            get {
-                return ResourceManager.GetString("WebApplicationFirewallPolicyTarget", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Updating Front Door &apos;{0}&apos;.
         /// </summary>
@@ -150,7 +149,43 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
                 return ResourceManager.GetString("FrontDoorChangeWarning", resourceCulture);
             }
         }
-               
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current context.
+        /// </summary>
+        internal static string FrontDoorTarget {
+            get {
+                return ResourceManager.GetString("FrontDoorTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purge Contents?.
+        /// </summary>
+        internal static string PurgeFrontDoor {
+            get {
+                return ResourceManager.GetString("PurgeFrontDoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Front Door?.
+        /// </summary>
+        internal static string RemoveFrontDoor {
+            get {
+                return ResourceManager.GetString("RemoveFrontDoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove WebApplicationFirewallPolicy?.
+        /// </summary>
+        internal static string RemoveWebApplicationFirewallPolicy {
+            get {
+                return ResourceManager.GetString("RemoveWebApplicationFirewallPolicy", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Updating WebApplicationFirewallPolicy &apos;{0}&apos;.
         /// </summary>
@@ -161,38 +196,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Front Door?.
+        ///   Looks up a localized string similar to Current context.
         /// </summary>
-        internal static string CreateFrontDoor {
+        internal static string WebApplicationFirewallPolicyTarget {
             get {
-                return ResourceManager.GetString("CreateFrontDoor", resourceCulture);
-            }
-        }   
-             
-        /// <summary>
-        ///   Looks up a localized string similar to Create WebApplicationFirewallPolicy?.
-        /// </summary>
-        internal static string CreateWebApplicationFirewallPolicy {
-            get {
-                return ResourceManager.GetString("CreateWebApplicationFirewallPolicy", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Remove Front Door?.
-        /// </summary>
-        internal static string RemoveFrontDoor {
-            get {
-                return ResourceManager.GetString("RemoveFrontDoor", resourceCulture);
-            }
-        }   
-             
-        /// <summary>
-        ///   Looks up a localized string similar to Remove WebApplicationFirewallPolicy?.
-        /// </summary>
-        internal static string RemoveWebApplicationFirewallPolicy {
-            get {
-                return ResourceManager.GetString("RemoveWebApplicationFirewallPolicy", resourceCulture);
+                return ResourceManager.GetString("WebApplicationFirewallPolicyTarget", resourceCulture);
             }
         }
     }

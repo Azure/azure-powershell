@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             cmdlt.InvokeBeginProcessing();
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.TenantId = "microsoft.onmicrosoft.com";
+            cmdlt.Tenant = "microsoft.onmicrosoft.com";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.Subscription = "Node CLI Test";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             // NOTE: Use owner1@AzureSDKTeam.onmicrosoft.com credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
+            cmdlt.Tenant = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
             Assert.Equal("AzureSDKTeam.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
-            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id.ToString());
+            Assert.Equal(cmdlt.Tenant, AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id.ToString());
             Assert.Null(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription);
         }
 
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // NOTE: Use rbac SPN credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.ServicePrincipal = true;
-            cmdlt.TenantId = "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a";
+            cmdlt.Tenant = "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a";
             cmdlt.ApplicationId = "99edf981-74c0-4284-bddf-3e9d092ba4e2";
             cmdlt.CertificateThumbprint = "F064B7C7EACC942D10662A5115E047E94FA18498";
             cmdlt.SetParameterSet("ServicePrincipalCertificateWithSubscriptionId");
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
-            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id.ToString());
+            Assert.Equal(cmdlt.Tenant, AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(cmdlt.ApplicationId, AzureRmProfileProvider.Instance.Profile.DefaultContext.Account.Id.ToString());
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription);
             Assert.Equal(
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.AccessToken = "test";
             cmdlt.AccessToken = "test@microsoft.com";
             cmdlt.SkipValidation = true;
-            cmdlt.TenantId = Guid.NewGuid().ToString();
+            cmdlt.Tenant = Guid.NewGuid().ToString();
             cmdlt.Subscription = Guid.NewGuid().ToString();
             cmdlt.SetBoundParameters(new Dictionary<string, object>() { { "Subscription", cmdlt.Subscription } });
             cmdlt.SetParameterSet("AccessTokenWithSubscriptionId");
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
             Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id, cmdlt.Subscription);
-            Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id, cmdlt.TenantId);
+            Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id, cmdlt.Tenant);
         }
 
         [Fact]

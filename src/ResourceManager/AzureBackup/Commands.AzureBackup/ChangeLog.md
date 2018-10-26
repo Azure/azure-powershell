@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.11
 * Deprecated Azure Backup cmdlets.
 
 ## Version 4.0.10

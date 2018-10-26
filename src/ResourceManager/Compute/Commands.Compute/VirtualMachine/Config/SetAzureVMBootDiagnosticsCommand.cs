@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = EnableParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMBootDiagnosticsResourceGroupName)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

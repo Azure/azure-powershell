@@ -32,7 +32,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents any Azure Sql containers.
         /// </summary>
-        AzureSQL
+        AzureSQL,
+
+        /// <summary>
+        /// Represents any Azure Storage containers.
+        /// </summary>
+        AzureStorage
     }
 
     /// <summary>
@@ -60,6 +65,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         AzureBackupServer,
         AzureSQL,
+
+        /// <summary>
+        /// Represents Azure File Storage. https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
+        /// </summary>
+        AzureStorage,
     }
 
     /// <summary>
@@ -88,6 +98,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         AzureVM = 1,
         AzureSQLDatabase,
+
+        /// <summary>
+        /// Represents Azure File https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
+        /// </summary>
+        AzureFiles,
     }
 
     /// <summary>
@@ -113,7 +128,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents the Data Protection Manager provider for powershell cmdlets.
         /// </summary>
-        Dpm
+        Dpm,
+
+        /// <summary>
+        /// Represents the Azure File provider for powershell cmdlets.
+        /// </summary>
+        AzureFiles,
     }
 
     /// <summary>

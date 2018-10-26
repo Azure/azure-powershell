@@ -128,12 +128,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ResourceId = resourceId;
             }
 
-            if (!string.IsNullOrEmpty(ResourceId))
+            if (!string.IsNullOrEmpty(ResourceId) && IsValidResourceId(ResourceId))
             {
                 var resource = ResourceManagerSdkClient.GetById(ResourceId, DefaultApiVersion);
                 WriteObject(resource);
             }
-            else if (this.IsParameterBound(c => c.ApiVersion) || this.IsParameterBound(c => c.ExpandProperties))
+            else if (this.IsParameterBound(c => c.ApiVersion) || this.IsParameterBound(c => c.ExpandProperties) || !string.IsNullOrEmpty(ResourceId))
             {
                 this.RunCmdlet();
             }
@@ -211,6 +211,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             WriteObject(result, true);
+        }
+
+        private bool IsValidResourceId(string resourceId)
+        {
+            return resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Length % 2 == 0;
         }
 
         private bool ShouldConstructResourceId(out string resourceId)
