@@ -136,7 +136,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
                     environmentSetupHelper.GetRMModulePath("AzureRm.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
                     $"ScenarioTests\\{callingClassName}.ps1",
-                    "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
                 try

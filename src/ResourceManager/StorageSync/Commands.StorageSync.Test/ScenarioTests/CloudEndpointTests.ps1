@@ -25,6 +25,9 @@ function Test-CloudEndpoint
 
     try
     {
+        Get-Help New-AzureRmStorageAccount | Out-file New-AzureRmStorageAccount.txt
+
+        $UseStorageModule= $true
         # Test
         $storageSyncServiceName = Get-StorageManagementTestResourceName
         $syncGroupName = Get-StorageManagementTestResourceName
@@ -42,18 +45,29 @@ function Test-CloudEndpoint
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
-        
-        Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzureRmStorageAccount  -SkuName Standard_LRS -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $resourceLocation
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-        $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $StorageAccount.Context
+
+        if($UseStorageModule)
+        {
+            Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
+            $storageAccount = New-AzureRmStorageAccount  -SkuName Standard_LRS -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $resourceLocation
+            Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $StorageAccount.Context
+
+            $storageAccountResourceId = $storageAccount.Id
+            $azureFileShareName = $azureFileShare.Name 
+        }
+        else
+        {
+            $storageAccountResourceId = "/subscriptions/1d16f9b3-bbe3-48d4-930a-27a74dca003b/resourceGroups/sasdkwestcentralus/providers/Microsoft.Storage/storageAccounts/sasdkwestcentralus"
+            $azureFileShareName = "afsfileshareps1"
+        }
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzureRmStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccount.Id -StorageAccountShareName $azureFileShare.Name -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzureRmStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
-        Assert-AreEqual $StorageAccount.Id $cloudEndpoint.StorageAccountResourceId
+        Assert-AreEqual $storageAccountResourceId $cloudEndpoint.StorageAccountResourceId
         Assert-AreEqual $StorageAccountTenantId $cloudEndpoint.StorageAccountTenantId
 
         Write-Verbose "Get CloudEndpoint by Name"
@@ -82,9 +96,9 @@ function Test-CloudEndpoint
         Remove-AzureRMStorageSyncCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Executing Piping Scenarios"
-        New-AzureRMStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccount.Id -StorageAccountShareName $azureFileShare.Name -StorageAccountTenantId $StorageAccountTenantId | Get-AzureRMStorageSyncCloudEndpoint  | Remove-AzureRMStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
+        New-AzureRMStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId | Get-AzureRMStorageSyncCloudEndpoint  | Remove-AzureRMStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
 
-        New-AzureRMStorageSyncCloudEndpoint -ParentResourceId $syncGroup.ResourceId -Name $cloudEndpointName -StorageAccountResourceId $storageAccount.Id -StorageAccountShareName $azureFileShare.Name -StorageAccountTenantId $StorageAccountTenantId | Remove-AzureRMStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
+        New-AzureRMStorageSyncCloudEndpoint -ParentResourceId $syncGroup.ResourceId -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId | Remove-AzureRMStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
         Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
