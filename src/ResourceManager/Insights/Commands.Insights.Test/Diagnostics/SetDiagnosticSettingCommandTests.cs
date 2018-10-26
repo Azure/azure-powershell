@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             this.insightsDiagnosticsOperationsMock = new Mock<IDiagnosticSettingsOperations>();
-            this.insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            this.insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
             this.cmdlet = new SetAzureRmDiagnosticSettingCommand()
             {
