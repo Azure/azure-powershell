@@ -28,7 +28,7 @@ function Test-IotCentralAppLifecycleManagement{
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$subdomain = ($rname) + "subdomain"
-	$location = "westus" #Get-Location "Microsoft.IoTCentral" "IotApps"
+	$location = Get-Location "Microsoft.IoTCentral" "IotApps"
 	$sku = "S1"
 	$displayName = "Custom IoT Central App DisplayName"
 	$tagKey = "key1"

@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         public override void ExecuteCmdlet()
         {
+            this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.RemoveIotCentralApp))
             {
-                this.SetNameAndResourceGroup();
                 this.IotCentralClient.Apps.Delete(this.ResourceGroupName, this.Name);
                 if (PassThru)
                 {

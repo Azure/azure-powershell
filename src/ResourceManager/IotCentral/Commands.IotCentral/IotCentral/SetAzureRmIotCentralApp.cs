@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         public override void ExecuteCmdlet()
         {
+            this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.SetIotCentralApp))
             {
-                this.SetNameAndResourceGroup();
                 AppPatch applicationPatch = CreateApplicationPatch();
                 App updatedIotCentralApplication = this.IotCentralClient.Apps.Update(this.ResourceGroupName, this.Name, applicationPatch);
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(updatedIotCentralApplication));

@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Name of the Resource Group.",
             ParameterSetName = InteractiveIotCentralParameterSet)]
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Name of the Iot Central Application Resource.",
             ParameterSetName = InteractiveIotCentralParameterSet)]
