@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
-            MonitorClientMock = new Mock<MonitorManagementClient>();
+            MonitorClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAlertHistoryCommand()
             {

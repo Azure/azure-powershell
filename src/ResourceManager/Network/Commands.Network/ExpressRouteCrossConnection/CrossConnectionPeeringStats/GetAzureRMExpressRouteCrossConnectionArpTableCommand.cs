@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The PeeringType")]
         [ValidateSet(
            MNM.ExpressRoutePeeringType.AzurePrivatePeering,

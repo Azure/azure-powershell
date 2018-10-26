@@ -91,7 +91,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Update="Microsoft.Rest.ClientRuntime" Version="2.3.16" />
+    <PackageReference Update="Microsoft.Rest.ClientRuntime" Version="2.3.17" />
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
