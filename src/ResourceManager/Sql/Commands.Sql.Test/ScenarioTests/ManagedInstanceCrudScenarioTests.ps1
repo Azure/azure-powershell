@@ -21,13 +21,14 @@
 function Test-CreateManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
-	 	
+    $rgName = "ps2110"
+	$rg = Create-ResourceGroupWithName($rgName)
+    $vnetName1 = "ps2255"
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "dummylogin"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
  	$managedInstancePassword = "Un53cuRE!"
- 	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
@@ -36,10 +37,14 @@ function Test-CreateManagedInstance
 
  	try
  	{
+		# Setup VNET 
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $rg $vnetName1 $rg.Location
+		$subnetId = $virtualNetwork1.Subnets[0].Id
+	
  		# With SKU name specified
  		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob 
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -56,12 +61,13 @@ function Test-CreateManagedInstance
 
 		$edition = "GeneralPurpose"
 		$computeGeneration = "Gen4"
+		$dnsZonePartner = $managedInstance1.ResourceId
 		$managedInstanceName = Get-ManagedInstanceName
 
 		# With edition and computeGeneration specified
  		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -DnsZonePartner $dnsZonePartner  -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -97,6 +103,7 @@ function Test-SetManagedInstance
 	try
 	{
 		# Test using parameters
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -115,6 +122,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 		
 		# Test using piping
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
 
@@ -133,6 +141,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test Set using InputObject
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -151,6 +160,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test Set using ResourceId
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
@@ -189,6 +199,7 @@ function Test-UpdateManagedInstance
 	try
 	{
 		# Test update using all parameters
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -207,6 +218,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 
 		# Test update using piping
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd1234!!!"
 		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
 
@@ -225,6 +237,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test update using InputObject
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
@@ -243,6 +256,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test update using ResourceId
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
@@ -360,6 +374,7 @@ function Test-CreateManagedInstanceWithIdentity
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "login"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
  	$managedInstancePassword = "Un5!"
  	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
@@ -382,4 +397,54 @@ function Test-CreateManagedInstanceWithIdentity
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetworkForManagedInstance ($resourceGroup, $vnetName, $location = "westcentralus")
+{
+	$vNetAddressPrefix = "10.0.0.0/16"
+	$defaultSubnetName = "default"
+	$defaultSubnetAddressPrefix = "10.0.0.0/24"
+
+	$virtualNetwork = New-AzureRmVirtualNetwork `
+						  -ResourceGroupName $resourceGroup.ResourceGroupName `
+						  -Location $location `
+						  -Name $vNetName `
+						  -AddressPrefix $vNetAddressPrefix
+
+	$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+						  -Name $defaultSubnetName `
+						  -AddressPrefix $defaultSubnetAddressPrefix `
+						  -VirtualNetwork $virtualNetwork
+
+	$virtualNetwork | Set-AzureRmVirtualNetwork
+
+	$routeTableMiManagementService = New-AzureRmRouteTable `
+						  -Name 'myRouteTableMiManagementService' `
+						  -ResourceGroupName $resourceGroup.ResourceGroupName `
+						  -location $location
+
+	Set-AzureRmVirtualNetworkSubnetConfig `
+						  -VirtualNetwork $virtualNetwork `
+						  -Name $defaultSubnetName `
+						  -AddressPrefix $defaultSubnetAddressPrefix `
+						  -RouteTable $routeTableMiManagementService | `
+						Set-AzureRmVirtualNetwork
+
+	Get-AzureRmRouteTable `
+						  -ResourceGroupName $resourceGroup.ResourceGroupName `
+						  -Name "myRouteTableMiManagementService" `
+						  | Add-AzureRmRouteConfig `
+						  -Name "ToManagedInstanceManagementService" `
+						  -AddressPrefix 0.0.0.0/0 `
+						  -NextHopType "Internet" `
+						 | Set-AzureRmRouteTable
+				
+	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup.ResourceGroupName
+	
+	return $getVnet
 }

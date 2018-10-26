@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
             pair.PartnerManagedInstanceId = string.Format(
                 AzureSqlInstanceFailoverGroupModel.PartnerManagedInstanceIdTemplate,
                 _subscription.Id.ToString(),
-                model.ResourceGroupName,
+                model.PartnerResourceGroupName,
                 model.PartnerManagedInstanceName);
             pairs.Add(pair);
 
