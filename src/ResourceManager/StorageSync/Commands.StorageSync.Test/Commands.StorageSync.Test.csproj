@@ -75,13 +75,20 @@
     <Compile Include="UnitTests\SystemValidationsProcessorTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
+      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
+      <Name>Commands.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj">
+      <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
+      <Name>Commands.Management.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.StorageSync\Commands.StorageSync.csproj">
       <Project>{fa564d6f-0ee0-4ac8-abaf-65d8d79259f2}</Project>
       <Name>Commands.StorageSync</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
