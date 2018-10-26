@@ -419,13 +419,13 @@
           DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false" />
 
+    <!-- Cleanup extraneous files. -->
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
 
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psd1" DestinationFolder="$(LibraryToolsFolder)\Az" />
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1" DestinationFolder="$(LibraryToolsFolder)\Az" />
-
-    <!-- Cleanup extraneous files. -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
   </Target>
 
 
