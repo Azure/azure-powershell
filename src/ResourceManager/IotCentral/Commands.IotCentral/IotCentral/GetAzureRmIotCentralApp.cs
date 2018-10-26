@@ -32,13 +32,11 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Name of the Resource Group.",
             ParameterSetName = InteractiveIotCentralParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Name of the Resource Group.",
             ParameterSetName = ListIotCentralAppsParameterSet)]

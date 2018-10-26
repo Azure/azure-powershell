@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - IotCentral service cmdlets for Azure Resource Manager'
 
 # Minimum version of the Windows PowerShell engine required by this module
-# PowerShellVersion = '5.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -45,13 +45,13 @@ Description = 'Microsoft Azure PowerShell - IotCentral service cmdlets for Azure
 DotNetFrameworkVersion = '4.5.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# CLRVersion = '4.0'
+CLRVersion = '4.0'
 
 # Processor architecture (None, X86, Amd64) required by this module
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @('.\Microsoft.Azure.Management.IotCentral.dll')
