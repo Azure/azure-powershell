@@ -12,7 +12,7 @@
         # RootModule = ''
 
         # Version number of this module.
-        ModuleVersion = '0.1.0'
+        ModuleVersion = '0.1.1'
 
         # Supported PSEditions
         # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@
         # ProcessorArchitecture = ''
 
         # Modules that must be imported into the global environment prior to importing this module
-        RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
+        RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; })
 
         # Assemblies that must be loaded prior to importing this module
         RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceGraph.dll'

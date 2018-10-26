@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,9 +26,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="3.0.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.0.3" />
-    <PackageReference Include="Microsoft.WindowsAzure.Management.Storage" Version="5.1.1" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.2.0" />
+    <Reference Include="Microsoft.Azure.Commands.EventGrid">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventGrid\Microsoft.Azure.Commands.EventGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.EventHub">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventHub\Microsoft.Azure.Commands.EventHub.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

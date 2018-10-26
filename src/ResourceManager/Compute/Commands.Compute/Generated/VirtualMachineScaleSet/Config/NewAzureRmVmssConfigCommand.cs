@@ -192,6 +192,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -302,7 +307,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
             }
-            vUpgradePolicy.AutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+            if (vUpgradePolicy.AutomaticOSUpgradePolicy == null)
+            {
+                vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+            }
+            vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
             {
@@ -310,11 +319,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
-                if (vUpgradePolicy.AutoOSUpgradePolicy == null)
+                if (vUpgradePolicy.AutomaticOSUpgradePolicy == null)
                 {
-                    vUpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                    vUpgradePolicy.AutomaticOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutomaticOSUpgradePolicy();
                 }
-                vUpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
+                vUpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback = this.DisableAutoRollback;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("OsProfile"))
@@ -418,6 +427,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
             }
 
+            if (this.EnableUltraSSD.IsPresent)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.AdditionalCapabilities == null)
+                {
+                    vVirtualMachineProfile.AdditionalCapabilities = new Microsoft.Azure.Management.Compute.Models.AdditionalCapabilities(true);
+                }
+            }
+
             if (this.AssignIdentity.IsPresent)
             {
                 if (vIdentity == null)
@@ -462,9 +483,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 Plan = vPlan,
-                UpgradePolicy = vUpgradePolicy,
+                UpgradePolicy = (vUpgradePolicy == null) ? null : new PSUpgradePolicy(vUpgradePolicy),
                 VirtualMachineProfile = vVirtualMachineProfile,
-                Identity = new PSVirtualMachineScaleSetIdentity(vIdentity),
+                Identity = (vIdentity == null) ? null : new PSVirtualMachineScaleSetIdentity(vIdentity),
             };
 
             WriteObject(vVirtualMachineScaleSet);

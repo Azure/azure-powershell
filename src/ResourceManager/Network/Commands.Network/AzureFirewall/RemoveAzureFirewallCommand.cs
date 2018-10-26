@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 

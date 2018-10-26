@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Unregisters container from the recovery services vault.
     /// </summary>
-    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer",SupportsShouldProcess = true), OutputType(typeof(ContainerBase))]
+    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer", SupportsShouldProcess = true), OutputType(typeof(ContainerBase))]
     public class UnregisterAzureRmRecoveryServicesBackupContainer
         : RSBackupVaultCmdletBase
     {
@@ -54,7 +54,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (!((Container.ContainerType == ContainerType.Windows &&
                        Container.BackupManagementType == BackupManagementType.MARS) ||
                     (Container.ContainerType == ContainerType.AzureSQL &&
-                     Container.BackupManagementType == BackupManagementType.AzureSQL)))
+                     Container.BackupManagementType == BackupManagementType.AzureSQL) ||
+                     (Container.ContainerType == ContainerType.AzureStorage &&
+                       Container.BackupManagementType == BackupManagementType.AzureStorage)))
                 {
                     throw new ArgumentException(string.Format(Resources.UnsupportedContainerException,
                         Container.ContainerType, Container.BackupManagementType));
