@@ -100,12 +100,12 @@ function Get-TestResourcesDeployment([string]$rgn)
 
 function Get-NrpResourceName
 {
-	Get-ResourceName "psNrp";
+	Get-ResourceName "psnrp";
 }
 
 function Get-NrpResourceGroupName
 {
-	Get-ResourceGroupName "psNrp";
+	Get-ResourceGroupName "psnrp";
 }
 
 <#
