@@ -44,7 +44,7 @@ function Test-CloudEndpoint
         $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
         
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $storageAccount = New-AzureRmStorageAccount  -SkuName Standard_LRS -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $resourceLocation
         Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
         $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $StorageAccount.Context
 
