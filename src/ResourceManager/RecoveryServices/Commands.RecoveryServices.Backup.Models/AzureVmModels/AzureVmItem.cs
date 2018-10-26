@@ -20,40 +20,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// IaaSVM Item Class
     /// </summary>
-    public class AzureVmItem : ItemBase
+    public class AzureVmItem : AzureItem
     {
         public string VirtualMachineId { get; set; }
-
-        /// <summary>
-        /// Protection Status of the item
-        /// </summary>
-        public ItemProtectionStatus ProtectionStatus { get; set; }
-
-        /// <summary>
-        /// Protection State of the item
-        /// </summary>
-        public ItemProtectionState ProtectionState { get; set; }
-
-        /// <summary>
-        /// Last Backup Status for the item
-        /// </summary>
-        public string LastBackupStatus { get; set; }
-
-        /// <summary>
-        /// Last Backup Time for the item
-        /// </summary>
-        public DateTime? LastBackupTime { get; set; }
-
-        /// <summary>
-        /// Protection Policy Name for the Item
-        /// </summary>
-        public string ProtectionPolicyName { get; set; }
-
-        /// <summary>
-        /// ExtendedInfo for the Item
-        /// </summary
-        public AzureVmItemExtendedInfo ExtendedInfo { get; set; }
-
+        
         /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
@@ -64,12 +34,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <param name="policyName">Name of the protection policy associated with this protected item</param>
         public AzureVmItem(ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType, string policyName)
-            : base(protectedItemResource, containerName, containerType)
+            : base(protectedItemResource, containerName, containerType, policyName)
         {
             AzureIaaSVMProtectedItem protectedItem = (AzureIaaSVMProtectedItem)protectedItemResource.Properties;
             LastBackupStatus = protectedItem.LastBackupStatus;
             LastBackupTime = protectedItem.LastBackupTime;
-            ProtectionPolicyName = policyName;
             ProtectionState =
                 EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
@@ -80,21 +49,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// IaaSVM Item ExtendedInfo Class
     /// </summary>
-    public class AzureVmItemExtendedInfo : ItemExtendedInfoBase
-    {
-        /// <summary>
-        /// Oldest Recovery Point for the Item
-        /// </summary
-        public DateTime? OldestRecoveryPoint { get; set; }
-
-        /// <summary>
-        /// Recovery Points Count for the Item
-        /// </summary
-        public int RecoveryPointCount { get; set; }
-
-        /// <summary>
-        /// PolicyState for the Item
-        /// </summary
-        public string PolicyState { get; set; }
-    }
+    public class AzureVmItemExtendedInfo : AzureItemExtendedInfo
+    { }
 }
