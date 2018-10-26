@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PolicyInsights", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6ABFB030-9CD9-4863-9A62-54C0BC738B83}"
 	ProjectSection(SolutionItems) = preProject
-		ChangeLog.md = ChangeLog.md
+		Commands.PolicyInsights\ChangeLog.md = Commands.PolicyInsights\ChangeLog.md
 		documentation\current-breaking-changes.md = documentation\current-breaking-changes.md
 		documentation\upcoming-breaking-changes.md = documentation\upcoming-breaking-changes.md
 	EndProjectSection

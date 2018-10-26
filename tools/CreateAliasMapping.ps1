@@ -5,7 +5,7 @@ $psd1s = Get-ChildItem -Path $PSScriptRoot/../src -Recurse | `
     -and $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*`\Package`\*" -and $_.FullName -notlike "*Test*" -and $_.FullName -notlike "*`\bin`\*" -and $_.FullName -notlike "*`\obj`\*"}
 
 $psd1s | ForEach-Object {
-    $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", ""
+    $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", "" -replace "RecoveryServices.SiteRecovery", "RecoveryServices" -replace "RecoveryServices.Backup", "RecoveryServices"
     if (!($mapping.Contains($name)))
     {
         $mapping.Add($name, [ordered]@{})

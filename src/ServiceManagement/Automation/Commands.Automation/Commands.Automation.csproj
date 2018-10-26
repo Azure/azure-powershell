@@ -8,8 +8,8 @@
     <ProjectGuid>{47CD7E95-5330-4384-ABCE-2C267C57085C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Automation</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Automation</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.Automation</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Automation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -140,7 +140,7 @@
     <Compile Include="Common\RequestSettings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Automation.dll-help.xml">
+    <Content Include="Microsoft.WindowsAzure.Commands.Automation.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

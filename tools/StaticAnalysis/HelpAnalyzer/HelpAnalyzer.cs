@@ -40,7 +40,9 @@ namespace StaticAnalysis.HelpAnalyzer
         public AnalysisLogger Logger { get; set; }
         public string Name { get; private set; }
 
+#if !NETSTANDARD
         private AppDomain _appDomain;
+#endif
 
         private static bool IsAssemblyFile(string path)
         {
@@ -161,7 +163,9 @@ namespace StaticAnalysis.HelpAnalyzer
                         var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
                         ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
                         helpLogger.Decorator.Remove("Cmdlet");
+#if !NETSTANDARD
                         AppDomain.Unload(_appDomain);
+#endif
                     }
                 }
 
@@ -257,7 +261,9 @@ namespace StaticAnalysis.HelpAnalyzer
                             var cmdlets = module.Cmdlets;
                             allCmdlets.AddRange(cmdlets);
                             helpLogger.Decorator.Remove("Cmdlet");
+#if !NETSTANDARD
                             AppDomain.Unload(_appDomain);
+#endif
                         }
                     }
 

@@ -20,6 +20,23 @@
 -->
 ## Current Release
 
+## Version 5.7.2
+* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
+* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.
+* Shared Gallery cmdlets
+
+## Version 5.7.1
+* Add DiskIOPSReadWrite and  DiskMBpsReadWrite parameters to New-AzureRmDiskConfig and New-AzureRmDiskUpdateConfig cmdlets 
+* Add DiffDiskSetting parameter to Set-AzureRmVmOSDisk and Set-AzureRmVmssStorageProfile cmdlets
+* Add Location parameter to Get-AzureRmVM
+* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for `New-AzureRmVm`
+* Added ResourceName argument completer to all cmdlets.
+
+## Version 5.7.0
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+
 ## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies
 * Add support for more virutal machine sizes to AEM cmdlets

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+* Add Get-AzureRmCognitiveServicesAccountSkus operation.
+
+## Version 0.9.11
 * Support Get-AzureRmCognitiveServicesAccountSkus without an existing account.
 
 ## Version 0.9.10
