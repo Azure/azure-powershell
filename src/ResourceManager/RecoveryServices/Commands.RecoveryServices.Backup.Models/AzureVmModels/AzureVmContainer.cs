@@ -19,36 +19,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Azure VM specific container class.
     /// </summary>
-    public class AzureVmContainer : ContainerBase
+    public class AzureVmContainer : AzureContainer
     {
-        /// <summary>
-        /// Resource Group where the Container is present
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Friendly name of the container
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Registration Status
-        /// </summary>
-        public ContainerRegistrationStatus Status { get; set; }
-
         /// <summary>
         /// Constructor. Takes the service client object representing the container 
         /// and converts it in to the PS container model
         /// </summary>
         /// <param name="protectionContainer">Service client object representing the container</param>
         public AzureVmContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer)
-        {
-            IaaSVMContainer iaasVmProtectionContainer =
-                (IaaSVMContainer)protectionContainer.Properties;
-            ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
-            FriendlyName = iaasVmProtectionContainer.FriendlyName;
-            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(iaasVmProtectionContainer.RegistrationStatus);
-        }
+            : base(protectionContainer) { }
     }
 }
