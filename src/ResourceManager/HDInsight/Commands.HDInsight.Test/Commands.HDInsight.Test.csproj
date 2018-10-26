@@ -40,7 +40,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.2.0.4\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.2.0.7\lib\net452\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
