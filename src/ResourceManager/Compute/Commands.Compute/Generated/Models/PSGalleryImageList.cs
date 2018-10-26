@@ -21,11 +21,11 @@
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSVirtualMachineList : PSVirtualMachine
+    public class PSGalleryImageList : PSGalleryImage
     {
-        public PSVirtualMachine ToPSVirtualMachine ()
+        public PSGalleryImage ToPSGalleryImage ()
         {
-            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachine>(this);
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryImage>(this);
         }
     }
 }
