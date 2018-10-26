@@ -29,14 +29,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Custom Display Name of the Iot Central Application.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Iot Central Application Resource Tags.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
