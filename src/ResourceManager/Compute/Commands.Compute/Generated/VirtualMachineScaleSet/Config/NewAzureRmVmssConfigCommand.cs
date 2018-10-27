@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.StorageProfile = this.StorageProfile;
             }
 
-			if (this.EnableUltraSSD.IsPresent)
+            if (this.EnableUltraSSD.IsPresent)
             {
                 if (vVirtualMachineProfile == null)
                 {

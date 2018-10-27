@@ -1828,8 +1828,18 @@ function Test-VirtualMachineScaleSetVMUpdate
         | New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname0;
         $disk0 = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname0;
 
+        $vmssVM = Add-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVMs[0] -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id;
+        $vmssVM = Add-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Caching 'ReadOnly' -DiskSizeInGB 100 -Lun 0 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id;
+        Assert-AreEqual 2 $vmssVM.StorageProfile.DataDisks.Count;
+
+        $vmssVM = Remove-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Lun 1;
+        Assert-AreEqual 1 $vmssVM.StorageProfile.DataDisks.Count;
+
+        $vmssVM = Remove-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Lun 0;
+        Assert-Null $vmssVM.StorageProfile.DataDisks;
+
         $result = $vmssVMs[0] `
-                  | Add-AzureRmVmDataDisk -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id `
+                  | Add-AzureRmVmssVMDataDisk -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id `
                   | Update-AzureRmVmssVM;
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
