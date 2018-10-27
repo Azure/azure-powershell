@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
 
 ## Version 5.7.2
 * Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
