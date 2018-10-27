@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.New,
-        EventGridDomainVerb,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomain",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DomainNameParameterSet),
-     OutputType(typeof(PSDomain))]
+    OutputType(typeof(PSDomain))]
+
     public class NewAzureEventGridDomain : AzureEventGridCmdletBase
     {
         [Parameter(

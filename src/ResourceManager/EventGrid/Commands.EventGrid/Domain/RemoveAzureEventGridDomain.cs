@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        EventGridDomainVerb,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomain",
         DefaultParameterSetName = DomainNameParameterSet,
         SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
+    OutputType(typeof(bool))]
 
     public class RemoveAzureEventGridDomain : AzureEventGridCmdletBase
     {

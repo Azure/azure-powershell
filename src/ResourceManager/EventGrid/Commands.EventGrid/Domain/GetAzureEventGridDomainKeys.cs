@@ -20,7 +20,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(VerbsCommon.Get, EventGridDomainKeyVerb, DefaultParameterSetName = DomainNameParameterSet), OutputType(typeof(DomainSharedAccessKeys))]
+    [Cmdlet(
+        VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainKey",
+        DefaultParameterSetName = DomainNameParameterSet),
+    OutputType(typeof(DomainSharedAccessKeys))]
+
     public class GetAzureEventGridDomainKeys : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,

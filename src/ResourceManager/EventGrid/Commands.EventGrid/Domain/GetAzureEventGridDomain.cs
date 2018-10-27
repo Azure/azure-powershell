@@ -26,11 +26,12 @@ namespace Microsoft.Azure.Commands.EventGrid
     /// <para> If Domain name provided, a single Domain details will be returned</para>
     /// <para> If Domain name not provided, list of Domains will be returned</para>
     /// </summary>
+
     [Cmdlet(
         VerbsCommon.Get,
-        EventGridDomainVerb,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomain",
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-     OutputType(typeof(PSDomain), typeof(List<PSDomainListInstance>))]
+    OutputType(typeof(PSDomain), typeof(PSDomainListInstance))]
 
     public class GetAzureEventGridDomain : AzureEventGridCmdletBase
     {
