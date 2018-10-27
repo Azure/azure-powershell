@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Automation.Test
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            const string RootNamespace = "ScenarioTests";
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
@@ -54,15 +53,16 @@ namespace Microsoft.Azure.Commands.Automation.Test
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var psModuleFile = this.GetType().FullName.Contains(RootNamespace) ?
-                    this.GetType().FullName.Split(new[] { RootNamespace }, StringSplitOptions.RemoveEmptyEntries).Last().Replace(".", "\\") :
-                    $"\\{this.GetType().Name}";
+                var callingClassName = callingClassType?
+                    .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                    .Last();
 
-                _helper.SetupModules(AzureModule.AzureResourceManager,
-                    $"{RootNamespace}{psModuleFile}.ps1",
+                var scriptLocation = Path.Combine("ScenarioTests", callingClassName + ".ps1");
+                _helper.SetupModules(
+                    AzureModule.AzureResourceManager,
+                    scriptLocation,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
-
                 _helper.RunPowerShellTest(scripts);
             }
         }
