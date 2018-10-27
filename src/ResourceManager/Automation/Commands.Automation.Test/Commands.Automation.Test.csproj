@@ -62,7 +62,7 @@
     <Compile Include="ScenarioTests\AutomationTests.cs" />
     <Compile Include="ScenarioTests\HybridWorkerGroupTests.cs" />
     <Compile Include="ScenarioTests\SourceControlTests.cs" />
-    <Compile Include="ScenarioTests\UpdateManagement\UpdateManagementTests.cs" />
+    <Compile Include="ScenarioTests\UpdateManagementTests.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
@@ -132,6 +132,9 @@
     <None Include="ScenarioTests\SourceControlTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\UpdateManagementTests.ps1">
+     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Resources\fastjob.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -149,9 +152,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Resources\Write-DebugAndVerboseOutput.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\UpdateManagement\UpdateManagementTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateGitHubSourceControlAndSync.json">
