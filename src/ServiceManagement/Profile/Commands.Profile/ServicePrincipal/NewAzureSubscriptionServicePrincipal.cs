@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Models;
@@ -24,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
     /// </summary>
     [Cmdlet(VerbsCommon.New, AzureSubscriptionServicePrincipalNounName)]
-    [OutputType(typeof(ServicePrincipal))]
+    [OutputType(typeof(PSSubscriptionServicePrincipal))]
     public class NewAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
         public NewAzureSubscriptionServicePrincipal() 
@@ -33,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "ServicePrincipal Object Id")]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }
@@ -45,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 ManagementClient.SubscriptionServicePrincipals.Create(new SubscriptionServicePrincipalCreateParameters(ServicePrincipalObjectId));
                 SubscriptionServicePrincipalGetResponse response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
-                WriteObject(response.ToSubscriptionServicePrincipal());
+                WriteObject(response.ToPSSubscriptionServicePrincipal());
             }
             catch(Exception ex)
             {

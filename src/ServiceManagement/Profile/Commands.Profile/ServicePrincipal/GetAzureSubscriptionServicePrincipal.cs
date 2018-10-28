@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
 using static Microsoft.WindowsAzure.Management.Models.SubscriptionServicePrincipalListResponse;
@@ -22,10 +23,9 @@ using static Microsoft.WindowsAzure.Management.Models.SubscriptionServicePrincip
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, AzureSubscriptionServicePrincipalNounName, DefaultParameterSetName = ListAllServicePrincipalObjectIdsParameterSet)]
-    [OutputType(typeof(ServicePrincipal[]))]
+    [OutputType(typeof(PSSubscriptionServicePrincipal))]
     public class GetAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
-        protected const string ServicePrincipalObjectIdParameterSet = "ServicePrincipalObjectIdParameterSet";
         protected const string ListAllServicePrincipalObjectIdsParameterSet = "ListAllServicePrincipalObjectIdsParameterSet";
         public GetAzureSubscriptionServicePrincipal()
             : base()
@@ -33,23 +33,23 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ServicePrincipal[] servicePrincipals = null;
+            PSSubscriptionServicePrincipal[] servicePrincipals = null;
             if (string.IsNullOrEmpty(this.ServicePrincipalObjectId))
             {
                 var response = ManagementClient.SubscriptionServicePrincipals.List();
-                servicePrincipals = response.ServicePrincipals.ToArray();
+                servicePrincipals = response.ServicePrincipals.Select(sp => new PSSubscriptionServicePrincipal(sp)).ToArray();
             }
             else
             {
                 var response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
-                servicePrincipals = new ServicePrincipal[] { response.ToSubscriptionServicePrincipal() };
+                servicePrincipals = new PSSubscriptionServicePrincipal[] { response.ToPSSubscriptionServicePrincipal() };
             }
             WriteObject(servicePrincipals, true);
         }

@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "ServicePrincipal Object Id")]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }

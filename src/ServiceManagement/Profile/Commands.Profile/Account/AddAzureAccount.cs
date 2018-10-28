@@ -61,8 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Alias("TenantId")]
         public string Tenant { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalByCredentialsParameterSetName, Mandatory = false, HelpMessage = "Subscription Id")]
-        [Parameter(ParameterSetName = ServicePrincipalByCertificateParameterSetName, Mandatory = false, HelpMessage = "Subscription Id")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
@@ -118,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (IsLoginViaSPN)
             {
-                account = AddAcountFromSPNAndLoadSubscription(azureAccount, environment, password);
+                account = AddAccountFromSPNAndLoadSubscription(azureAccount, environment, password);
             }
             else
             {
@@ -148,11 +146,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
         }
 
-        private IAzureAccount AddAcountFromSPNAndLoadSubscription(AzureAccount account, IAzureEnvironment environment, SecureString password)
+        private IAzureAccount AddAccountFromSPNAndLoadSubscription(IAzureAccount account, IAzureEnvironment environment, SecureString password)
         {
             IAzureAccount tenantAccount = new AzureAccount();
             CopyAccount(account, tenantAccount);
-            WriteDebugWithTimestamp("AzureSession.Instance.AuthenticationFactory.Authenticate");
+            WriteDebugWithTimestamp("Calling AuthenticationFctory.Authenticate");
             IAccessToken tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                 tenantAccount,
                 environment,
@@ -165,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 tenantAccount = account;
             }
             tenantAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, new string[] { Tenant });
-            WriteDebugWithTimestamp("Create mangement client");
+            WriteDebugWithTimestamp("Create Management client");
             using (var managementClient = AzureSession.Instance.ClientFactory.CreateCustomClient<ManagementClient>(
                             new TokenCloudCredentials(SubscriptionId, tenantToken.AccessToken),
                             environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
