@@ -23,6 +23,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
+
+        /// <summary>
+        /// Inquire protection containers in the vault according to the query params
+        /// </summary>
+        /// <param name="containerName">Name of the container to unregister</param>
+        /// <param name="queryFilter">Query parameters</param>
+        /// <returns>Response of the job created in the service</returns>
+        public RestAzureNS.AzureOperationResponse InquireContainer(
+            string containerName,
+            ODataQuery<BMSContainersInquiryQueryObject> queryFilter,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            return BmsAdapter.Client.ProtectionContainers.InquireWithHttpMessagesAsync(
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                AzureFabricName,
+                containerName,
+                queryFilter,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+        }
+
         /// <summary>
         /// Fetches protection containers in the vault according to the query params
         /// </summary>
@@ -77,17 +99,66 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Fetches unregistered containers in the vault according to the query params
+        /// </summary>
+        /// <param name="queryFilter">Query parameters</param>
+        /// <param name="skipToken">Skip token for pagination</param>
+        /// <returns>List of protectable containers</returns>
+        public IEnumerable<ProtectableContainerResource> ListUnregisteredContainers(
+            ODataQuery<BMSContainerQueryObject> queryFilter,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<ProtectableContainerResource>> listAsync =
+                () => BmsAdapter.Client.ProtectableContainers.ListWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    queryFilter,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, RestAzureNS.IPage<ProtectableContainerResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.ProtectableContainers.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList(listAsync, listNextAsync);
+        }
+
+        /// <summary>
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns>Response of the job created in the service</returns>
         public RestAzureNS.AzureOperationResponse RefreshContainers(
             string vaultName = null,
-            string resourceGroupName = null)
+            string resourceGroupName = null,
+            ODataQuery<BMSRefreshContainersQueryObject> queryParam = null)
         {
             var response = BmsAdapter.Client.ProtectionContainers.RefreshWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
+                queryParam,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+            return response;
+        }
+
+        /// <summary>
+        /// Triggers register of container in service
+        /// </summary>
+        /// <returns>Response of the job created in the service</returns>
+        public RestAzureNS.AzureOperationResponse<ProtectionContainerResource> RegisterContainer(
+            string containerName,
+            ProtectionContainerResource parameters,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var response = BmsAdapter.Client.ProtectionContainers.RegisterWithHttpMessagesAsync(
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                AzureFabricName,
+                containerName,
+                parameters,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
             return response;
         }

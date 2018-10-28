@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="$(ProjectDir)..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
@@ -42,7 +42,7 @@
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.2-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.3.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="1.2.0-preview" PrivateAssets="All" />
@@ -59,7 +59,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.10.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" PrivateAssets="All" />
@@ -68,7 +68,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Relay" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="1.4.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" PrivateAssets="All" />
@@ -76,7 +76,7 @@
     <PackageReference Include="Microsoft.Azure.Management.TrafficManager" Version="2.5.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="0.9.0-preview" PrivateAssets="All" />
-    <PackageReference Include="YamlDotNet.Signed" Version="4.2.4" PrivateAssets="All" />
+    <PackageReference Include="YamlDotNet.Signed" Version="5.2.1" PrivateAssets="All" />
     <PackageReference Include="Moq" Version="4.7.145" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="xunit" Version="2.4.0" />

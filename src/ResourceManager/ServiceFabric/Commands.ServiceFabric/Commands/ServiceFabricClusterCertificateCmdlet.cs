@@ -415,6 +415,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var secretGroup = vmss.VirtualMachineProfile.OsProfile.Secrets.SingleOrDefault(
                 s => s.SourceVault.Id.Equals(certInformation.KeyVault.Id, StringComparison.OrdinalIgnoreCase));
+
+
+            string configStore = null;
+            if (vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration != null)
+            {
+                configStore = Constants.DefaultCertificateStore;
+            }
+
             if (secretGroup == null)
             {
                 vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
@@ -428,7 +436,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                           new VaultCertificate()
                           {
-                          CertificateStore = Constants.DefaultCertificateStore,
+                          CertificateStore = configStore,
                           CertificateUrl = certInformation.SecretUrl
                           }
                         }
@@ -449,7 +457,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         secretGroup.VaultCertificates.Add(
                             new VaultCertificate()
                             {
-                                CertificateStore = Constants.DefaultCertificateStore,
+                                CertificateStore = configStore,
                                 CertificateUrl = certInformation.SecretUrl
                             });
                     }
@@ -460,7 +468,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         new VaultCertificate()
                         {
-                            CertificateStore = Constants.DefaultCertificateStore,
+                            CertificateStore = configStore,
                             CertificateUrl = certInformation.SecretUrl
                         }
                    };
@@ -586,7 +594,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException("secretUrl");
             }
 
-            var secretBundle = this.KeyVaultClient.GetSecretAsync(secretUrl).Result;
+            SecretBundle secretBundle;
+            try
+            {
+                secretBundle = this.KeyVaultClient.GetSecretAsync(secretUrl).Result;
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
             var secretValue = secretBundle.Value;
             try
             {
@@ -615,7 +632,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 jsonBlob.Password,
                                 X509KeyStorageFlags.Exportable);
 
-                            return certCollection[0].Thumbprint;
+                            var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
+                            if (lastCert?.Thumbprint != null)
+                            {
+                                return lastCert.Thumbprint;
+                            }
                         }
                     }
                 }

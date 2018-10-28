@@ -368,6 +368,7 @@
     "Get-AzCognitiveServicesAccount": "Get-AzureRmCognitiveServicesAccount",
     "Get-AzCognitiveServicesAccountKey": "Get-AzureRmCognitiveServicesAccountKey",
     "Get-AzCognitiveServicesAccountSkus": "Get-AzureRmCognitiveServicesAccountSkus",
+    "Get-AzCognitiveServicesAccountType": "Get-AzureRmCognitiveServicesAccountType",
     "Get-AzCognitiveServicesAccountUsage": "Get-AzureRmCognitiveServicesAccountUsage",
     "New-AzCognitiveServicesAccount": "New-AzureRmCognitiveServicesAccount",
     "New-AzCognitiveServicesAccountKey": "New-AzureRmCognitiveServicesAccountKey",
