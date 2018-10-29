@@ -78,8 +78,8 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestFlowLog()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FlowLog");
