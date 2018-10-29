@@ -695,11 +695,11 @@ function Test-ExpressRouteCircuitPeeringWithRouteFilter
 
         $deletion = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName -PassThru -Force
         Assert-AreEqual $true $deletion
-        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName } "${circuitName} not found"
+        Assert-ThrowsLike { Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName } "*${circuitName}*not found*"
 
         $deletion = Remove-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName -PassThru -Force
         Assert-AreEqual $true $deletion
-        Assert-ThrowsContains { Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName } "${filterName} not found"
+        Assert-ThrowsLike { Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName } "*${filterName}*not found*"
     }
     finally
     {
