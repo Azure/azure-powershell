@@ -12,8 +12,21 @@ Removes an ExpressRoutePort.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
 ```
 Remove-AzureRmExpressRoutePort -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzureRmExpressRoutePort -InputObject <PSExpressRoutePort> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzureRmExpressRoutePort -ResourceId <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,13 +42,26 @@ PS C:\> Remove-AzureRmExpressRoutePort -Name $PortName -ResourceGroupName $rg
 
 Removes $PortName ExpressRoutePort resource in $rg resource group in your subscription.
 
+### Example 2
+```powershell
+PS C:\> Remove-AzureRmExpressRoutePort -InputObject $erPort
+```
+Removes the ExpressRoutePort resource in InputObject.
+
+### Example 3
+```powershell
+PS C:\> Remove-AzureRmExpressRoutePort -Name $ResourceId $id
+```
+
+Removes the ExpressRoutePort resource with ResourceId $id.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -50,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +91,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to delete resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -76,12 +102,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The express route port object
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the ExpressRoutePort.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -96,7 +137,7 @@ Returns an object representing the item with which you are working. By default, 
 not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,8 +152,23 @@ Accept wildcard characters: False
 The resource group name of the ExpressRoutePort.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the express route port.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -126,7 +182,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -142,7 +198,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -159,6 +215,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
 
 ## OUTPUTS
 

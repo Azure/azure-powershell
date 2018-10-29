@@ -12,8 +12,15 @@ Gets an ExpressRoutePort link configuration.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
 ```
 Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> -ResourceId <String> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,11 +31,18 @@ of an ExpressRoutePort.
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```powershell 
 PS C:\> Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort $erport -Name Link1
 ```
 
 Gets the Link1 configuration of ExpressRoutePort $erport
+
+### Example 2
+```powershell
+PS C:\> Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort $erport -ResourceId $id
+```
+
+Gets the configuration of link with ResourceId $id in ExpressRoutePort $erport
 
 ## PARAMETERS
 
@@ -36,7 +50,7 @@ Gets the Link1 configuration of ExpressRoutePort $erport
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +65,7 @@ Accept wildcard characters: False
 The reference of the ExpressRoutePort resource.
 
 ```yaml
-Type: PSExpressRoutePort
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
 Parameter Sets: (All)
 Aliases:
 
@@ -66,14 +80,29 @@ Accept wildcard characters: False
 Name of the link.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the link.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -29,6 +29,13 @@ $erport.Links[0].AdminState = 'Enabled'
 Set-AzureRmExpressRoutePort -ExpressRoutePort $erport
 ```
 
+### Example 2
+```powershell
+$erport = Get-AzureRmExpressRoutePort -Name $PortName -ResourceGroupName $rg
+$erport.Links[0].AdminState = 'Enabled'
+Set-AzureRmExpressRoutePort -InputObject $erport
+```
+
 Modifies the admin state of a link of an ExpressRoutePort
 
 ## PARAMETERS
@@ -37,7 +44,7 @@ Modifies the admin state of a link of an ExpressRoutePort
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +74,9 @@ Accept wildcard characters: False
 The ExpressRoutePort object.
 
 ```yaml
-Type: PSExpressRoutePort
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
 Parameter Sets: (All)
-Aliases:
+Aliases: InputObject
 
 Required: True
 Position: Named
@@ -82,7 +89,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -98,7 +105,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

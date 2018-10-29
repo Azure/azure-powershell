@@ -12,6 +12,7 @@ Creates an Azure ExpressRoutePort.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
 ```
 New-AzureRmExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringLocation <String>
  -BandwidthInGbps <Int32> -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
@@ -19,8 +20,17 @@ New-AzureRmExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringL
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdParameterSet
+```
+New-AzureRmExpressRoutePort -ResourceId <String> -PeeringLocation <String> -BandwidthInGbps <Int32>
+ -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
+ [-Link <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink]>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzureRmExpressRoutePort** cmdlet creates an Azure ExpressRoutePort
+
 ## EXAMPLES
 
 ### Example 1
@@ -36,13 +46,25 @@ PS C:\> $parameters = @{
 PS C:\> New-AzureRmExpressRoutePort @parameters
 ```
 
+### Example 2
+```powershell
+PS C:\> $parameters = @{
+    ResourceId='/subscriptions/<SubId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/expressRoutePorts/<PortName>'
+    Location='West US'
+    PeeringLocation='Silicon Valley'
+    BandwidthInGbps=100
+    Encapsulation='QinQ'
+}
+PS C:\> New-AzureRmExpressRoutePort @parameters
+```
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +79,7 @@ Accept wildcard characters: False
 Bandwidth of procured ports in Gbps
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +109,7 @@ Accept wildcard characters: False
 Encapsulation method on physical ports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +124,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +154,7 @@ Accept wildcard characters: False
 The location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,8 +169,8 @@ Accept wildcard characters: False
 The name of the ExpressRoutePort.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -162,7 +184,7 @@ Accept wildcard characters: False
 The name of the peering location that the ExpressRoutePort is mapped to physically.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,8 +199,23 @@ Accept wildcard characters: False
 The resource group name of the ExpressRoutePort.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the express route port.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -192,7 +229,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +244,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -223,7 +260,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
