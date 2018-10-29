@@ -21,17 +21,26 @@ function NamespaceAuthTests
 {
     # Setup    
     $location = Get-Location
+	$locationKafka = "westus"
 	$resourceGroupName = getAssetName "RGName"
 	$namespaceName = getAssetName "Eventhub-Namespace-"
+	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
 	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule"
     
     Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
     
+	Write-Debug " Create new Eventhub Kafka namespace"
+    Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
+    $resultkafka = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka
+	Assert-AreEqual $resultkafka.Name $namespaceNameKafka "Namespace created earlier is not found."
+	Assert-True ($resultkafka.KafkaEnabled, "Namespace is not kafka enabled")
+
+
+
     Write-Debug " Create new Eventhub namespace"
-    Write-Debug "Namespace name : $namespaceName"
-	
+    Write-Debug "Namespace name : $namespaceName"	
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
     
 	Write-Debug " Get the created namespace within the resource group"
