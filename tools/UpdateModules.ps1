@@ -29,7 +29,7 @@ param(
     [string] $BuildConfig,
 
     [Parameter(Mandatory = $false, Position = 1)]
-    [ValidateSet("All", "Latest", "Stack", "NetCore","ServiceManagement","AzureStorage")]
+    [ValidateSet("All", "Latest", "Stack", "NetCore", "ServiceManagement", "AzureStorage")]
     [string] $Scope
 )
 
