@@ -28,7 +28,7 @@
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Analysis" Version="2.0.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.4-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="2.0.6" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Batch" Version="4.2.0" PrivateAssets="All" />
@@ -41,7 +41,7 @@
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="2.0.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.0.0-preview" PrivateAssets="All" />
