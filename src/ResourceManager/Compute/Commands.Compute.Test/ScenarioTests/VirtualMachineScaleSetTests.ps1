@@ -1011,6 +1011,7 @@ function Test-VirtualMachineScaleSetIdentity
         Assert-AreEqual "SystemAssigned" $result.Identity.Type;
         Assert-NotNull $result.Identity.PrincipalId;
         Assert-NotNull $result.Identity.TenantId;
+        Assert-Null $result.Identity.UserAssignedIdentities;
 
         # Validate Network Profile
         Assert-AreEqual 'test' $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
@@ -1046,6 +1047,7 @@ function Test-VirtualMachineScaleSetIdentity
         Assert-AreEqual "SystemAssigned" $vmssResult.Identity.Type;
         Assert-NotNull $vmssResult.Identity.PrincipalId;
         Assert-NotNull $vmssResult.Identity.TenantId;
+        Assert-Null $result.Identity.UserAssignedIdentities;
 
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
