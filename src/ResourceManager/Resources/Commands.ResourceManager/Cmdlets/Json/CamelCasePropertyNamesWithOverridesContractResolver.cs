@@ -35,13 +35,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             var result = base.CreateProperty(member, memberSerialization);
 
             var attributes = member.GetCustomAttributes(attributeType: typeof(JsonPropertyAttribute), inherit: true);
-            if (attributes.Any())
+            if (!attributes.Any()) return result;
+
+            var propertyName = attributes.Cast<JsonPropertyAttribute>().Single().PropertyName;
+            if (!string.IsNullOrEmpty(propertyName))
             {
-                var propertyName = attributes.Cast<JsonPropertyAttribute>().Single().PropertyName;
-                if (!string.IsNullOrEmpty(propertyName))
-                {
-                    result.PropertyName = propertyName;
-                }
+                result.PropertyName = propertyName;
             }
 
             return result;
@@ -55,13 +54,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
         {
             var contract = base.CreateDictionaryContract(objectType);
 
+// TODO: Remove IfDef code
+#if !NETSTANDARD
             var attributes = objectType.GetCustomAttributes(attributeType: typeof(JsonPreserveCaseDictionaryAttribute), inherit: true);
             if (attributes.Any())
             {
-#if !NETSTANDARD
                 contract.PropertyNameResolver = propertyName => propertyName;
-#endif
             }
+#endif
 
             return contract;
         }
