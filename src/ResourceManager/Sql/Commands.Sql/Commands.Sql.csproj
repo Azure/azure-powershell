@@ -62,16 +62,8 @@
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlServerAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlDatabaseAuditingSettingsCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingSettingsCmdletBase.cs" />
-    <Compile Include="Auditing\Cmdlet\ExtendedAuditingSettings\GetAzureSqlServerExtendedAuditing.cs" />
-    <Compile Include="Auditing\Cmdlet\ExtendedAuditingSettings\SetAzureSqlDatabaseExtendedAuditing.cs" />
-    <Compile Include="Auditing\Cmdlet\ExtendedAuditingSettings\SetAzureSqlServerExtendedAuditing.cs" />
-    <Compile Include="Auditing\Cmdlet\ExtendedAuditingSettings\SqlDatabaseExtendedAuditingSettingsCmdletBase.cs" />
-    <Compile Include="Auditing\Cmdlet\ExtendedAuditingSettings\SqlServerExtendedAuditingSettingsCmdletBase.cs" />
-    <Compile Include="Auditing\Cmdlet\ExtendedAuditingSettings\GetAzureSqlDatabaseExtendedAuditing.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
-    <Compile Include="Auditing\Model\DatabaseExtendedBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
-    <Compile Include="Auditing\Model\ServerExtendedBlobAuditingSettingsModel.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
     <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationCmdletBase.cs" />
     <Compile Include="Database Activation\Cmdlet\ResumeAzureSqlDatabase.cs" />

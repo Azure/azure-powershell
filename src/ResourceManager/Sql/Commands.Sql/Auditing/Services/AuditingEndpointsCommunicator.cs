@@ -17,8 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using System.Net.Http;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
@@ -96,22 +94,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         }
 
         /// <summary>
-        /// Gets the database blob auditing policy for the given database in the given database server in the given resource group
-        /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out DatabaseBlobAuditingPolicy policy)
-        {
-            policy = GetCurrentSqlClient().DatabaseBlobAuditingPolicies.Get(resourceGroupName, serverName, databaseName);
-        }
-
-        /// <summary>
-        /// Gets the database server blob auditing policy for the given database server in the given resource group
-        /// </summary>
-        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, out ServerBlobAuditingPolicy policy)
-        {
-            policy = GetCurrentSqlClient().ServerBlobAuditingPolicies.Get(resourceGroupName, serverName);
-        }
-
-        /// <summary>
         /// Calls the set blob audit APIs for the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
         public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseBlobAuditingPolicy policy)
@@ -138,10 +120,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public void GetExtendedDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out ExtendedDatabaseBlobAuditingPolicy policy)
         {
             policy = GetCurrentSqlClient().ExtendedDatabaseBlobAuditingPolicies.Get(resourceGroupName, serverName, databaseName);
-            if (policy.PredicateExpression == string.Empty)
-            {
-                policy.PredicateExpression = null;
-            }
         }
 
         /// <summary>
@@ -150,10 +128,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public void GetExtendedServerAuditingPolicy(string resourceGroupName, string serverName, out ExtendedServerBlobAuditingPolicy policy)
         {
             policy = GetCurrentSqlClient().ExtendedServerBlobAuditingPolicies.Get(resourceGroupName, serverName);
-            if (policy.PredicateExpression == string.Empty)
-            {
-                policy.PredicateExpression = null;
-            }
         }
 
         /// <summary>
