@@ -113,6 +113,16 @@ namespace Microsoft.Azure.Commands.Network
 
             MNM.ConnectivityParameters parameters = new MNM.ConnectivityParameters();
 
+            if (string.IsNullOrEmpty(this.DestinationId) && string.IsNullOrEmpty(this.DestinationAddress))
+            {
+                throw new ArgumentException("Connectivity check missing destination resource id or address");
+            }
+
+            if (!string.IsNullOrEmpty(this.DestinationId) && string.Equals(this.SourceId, this.DestinationId, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Connectivity check destination resource id must not be the same as source: {0}", this.SourceId);
+            }
+
             parameters.Source = new MNM.ConnectivitySource();
             parameters.Source.ResourceId = this.SourceId;
 
@@ -128,6 +138,10 @@ namespace Microsoft.Azure.Commands.Network
             if (this.DestinationPort > 0)
             {
                 parameters.Destination.Port = this.DestinationPort;
+            }
+            else if (this.ProtocolConfiguration == null || string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol) || !string.Equals(this.ProtocolConfiguration.Protocol, "Icmp", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Connectivity check missing destination port");
             }
 
             if (this.ProtocolConfiguration != null && !string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol))

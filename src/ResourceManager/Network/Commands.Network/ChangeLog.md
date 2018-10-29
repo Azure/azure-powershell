@@ -20,6 +20,7 @@
 ## Current Release
 * Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
 * Added ICMP back to supported AzureFirewall Network Protocols
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
 
 ## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
