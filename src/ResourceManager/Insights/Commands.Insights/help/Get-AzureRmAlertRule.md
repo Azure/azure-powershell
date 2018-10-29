@@ -46,7 +46,7 @@ The output does not contain details about the rules because the *DetailedOutput*
 
 ### Example 2: Get an alert rule by name
 ```
-PS C:\>Get-AzureRmAlertRule -ResourcGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+PS C:\>Get-AzureRmAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 ```
 
 This command gets the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8.
