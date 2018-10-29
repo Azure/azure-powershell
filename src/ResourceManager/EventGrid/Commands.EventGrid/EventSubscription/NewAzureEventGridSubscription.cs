@@ -231,13 +231,11 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 5,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
             ParameterSetName = DomainEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 5,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
             ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
         [Parameter(

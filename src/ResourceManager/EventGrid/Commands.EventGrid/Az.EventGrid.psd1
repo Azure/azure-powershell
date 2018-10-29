@@ -79,7 +79,7 @@ CmdletsToExport = 'New-AzEventGridTopic', 'Get-AzEventGridTopic',
     'Update-AzEventGridSubscription', 
     'Remove-AzEventGridSubscription', 
     'Get-AzEventGridSubscription', 'Get-AzEventGridTopicType', 
-    'New-AzureRmEventGridDomain', 'Get-AzEventGridDomain', 
+    'New-AzEventGridDomain', 'Get-AzEventGridDomain', 
     'Get-AzEventGridDomainTopic','Get-AzEventGridDomainKey', 
     'New-AzEventGridDomainKey','Remove-AzEventGridDomain'
 
