@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            HelpMessage = "ResourceId of the express route port.",
+            HelpMessage = "ResourceId of the link.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

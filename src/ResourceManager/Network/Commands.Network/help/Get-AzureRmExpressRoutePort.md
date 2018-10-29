@@ -12,9 +12,16 @@ Gets an Azure ExpressRoutePort resource.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
 ```
 Get-AzureRmExpressRoutePort [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmExpressRoutePort -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,10 +33,17 @@ operate on ExpressRoutePort.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePort -Name $PortName -ResourceGroupName $rg 
+PS C:\> Get-AzureRmExpressRoutePort -Name $PortName -ResourceGroupName $rg
 ```
 
 Gets the ExpressRoutePort object with name $PortName in resource group $rg in your subscription.
+
+### Example 2
+```powershell
+PS C:\> Get-AzureRmExpressRoutePort -ResourceId $id
+```
+
+Gets the ExpressRoutePort object with ResourceId $id. 
 
 ## PARAMETERS
 
@@ -37,7 +51,7 @@ Gets the ExpressRoutePort object with name $PortName in resource group $rg in yo
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -52,8 +66,8 @@ Accept wildcard characters: False
 The name of the ExpressRoutePort.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
 Aliases: ResourceName
 
 Required: False
@@ -67,11 +81,26 @@ Accept wildcard characters: False
 The resource group name of the ExpressRoutePort.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the express route port.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
