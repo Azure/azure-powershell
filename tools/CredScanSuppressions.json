@@ -180,8 +180,16 @@
         {
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
+		},
+		{
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json",
+            "_justification": "Legitimate test session record"
         },
-        {
+		    {
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json",
+            "_justification": "Legitimate test session record"
+        },
+		    {
             "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
             "_justification": "Legitimate test session record, resources are deleted"
         },
