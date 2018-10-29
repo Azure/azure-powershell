@@ -99,9 +99,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -118,10 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.2.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.3.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

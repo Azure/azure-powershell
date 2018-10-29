@@ -40,13 +40,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.2.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ScenarioTests\ConsumerGroups.cs" />
     <Compile Include="ScenarioTests\DRConfigurations.cs" />
     <Compile Include="ScenarioTests\EventHubsConsumerGroupsSkipTopTests.cs" />
@@ -120,6 +113,12 @@
       <Project>{1e60d2ac-dea7-403c-86dc-7b8c47f54668}</Project>
       <Name>Commands.EventHub</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.3.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
