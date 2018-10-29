@@ -51,10 +51,10 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Automation.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Automation.dll', '.\Microsoft.Azure.Management.ResourceManager.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
