@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         }
 
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ListAllServicePrincipalObjectIdsParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }

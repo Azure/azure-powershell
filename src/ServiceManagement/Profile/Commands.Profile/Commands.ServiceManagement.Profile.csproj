@@ -58,6 +58,7 @@
     <Compile Include="Models\PSAzureSubscriptionExtended.cs" />
     <Compile Include="DataCollection\EnableAzureDataCollection.cs" />
     <Compile Include="DataCollection\DisableAzureDataCollection.cs" />
+    <Compile Include="Models\PSSubscriptionServicePrincipal.cs" />
     <Compile Include="Profile\SelectAzureProfile.cs" />
     <Compile Include="Profile\NewAzureProfile.cs" />
     <Compile Include="Profile\ClearAzureProfile.cs" />
