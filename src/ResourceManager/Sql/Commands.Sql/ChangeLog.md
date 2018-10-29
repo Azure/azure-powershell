@@ -18,17 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Modified existing Auditing Policy management cmdlets.
-    - Implementaion was modified to use SQL clients instead of Legacy clients.
+* Enabled Extended Auditing Policy management on a server or a database.
+	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
+	- Cmdlets were modified to use SQL clients instead of Legacy clients.
 	- Set-AzureRmSqlServerAuditing.
 	- Get-AzureRmSqlServerAuditing.
 	- Set-AzureRmSqlDatabaseAuditing.
 	- Get-AzureRmSqlDatabaseAuditing.
-* New cmdlets were added to support Extended Auditing Policy management.
-	- Set-AzureRmSqlServerExtendedAuditing.
-	- Get-AzureRmSqlServerExtendedAuditing.
-	- Set-AzureRmSqlDatabaseExtendedAuditing.
-	- Get-AzureRmSqlDatabaseExtendedAuditing.
+
 ## Version 4.11.5
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription
 
