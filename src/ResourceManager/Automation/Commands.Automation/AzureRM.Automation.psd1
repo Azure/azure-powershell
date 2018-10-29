@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.0.0'
+ModuleVersion = '6.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -177,10 +177,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Swagger based Azure Automation cmdlets
-* Added Update Management cmdlets
-* Added Source Control cmdlets
-* Added Remove-AzureRmAutomationHybridWorkerGroup  cmdlet'
+        ReleaseNotes = '* Fixed the DSC Register Node command'
 
         # Prerelease string of this module
         Prerelease = 'preview'
