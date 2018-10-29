@@ -51,15 +51,12 @@ namespace Microsoft.Azure.Commands.Automation.Test
             {
                 SetupManagementClients(context);
 
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
                 var callingClassName = callingClassType?
                     .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
 
                 var scriptLocation = Path.Combine("ScenarioTests", callingClassName + ".ps1");
                 _helper.SetupModules(
-                    AzureModule.AzureResourceManager,
                     scriptLocation,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
