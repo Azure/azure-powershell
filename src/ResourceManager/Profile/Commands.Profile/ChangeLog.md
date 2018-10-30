@@ -27,6 +27,8 @@
     - https://github.com/Azure/azure-powershell/issues/7453
 * Fix issue with DataLake endpoints when using MSI
     - https://github.com/Azure/azure-powershell/issues/7462
+* Fix issue where `Disconnect-AzureRmAccount` would throw if not connected
+    - https://github.com/Azure/azure-powershell/issues/7167
 
 ## Version 5.7.0
 * Fix issue with Get-AzureRmSubscription in CloudShell
