@@ -89,10 +89,6 @@
   <ItemGroup>
     <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Update="Microsoft.Rest.ClientRuntime" Version="2.3.17" />
-  </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
