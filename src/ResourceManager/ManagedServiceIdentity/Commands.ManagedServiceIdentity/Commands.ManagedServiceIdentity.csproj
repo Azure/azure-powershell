@@ -36,8 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.ManagedServiceIdentity, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagedServiceIdentity.0.9.0-preview\lib\net452\Microsoft.Azure.Management.ManagedServiceIdentity.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.ManagedServiceIdentity, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagedServiceIdentity.0.10.0-preview\lib\net452\Microsoft.Azure.Management.ManagedServiceIdentity.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
