@@ -46,7 +46,7 @@ function Test-LoadBalancerCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Dependency parameters
     $PublicIPAddressName = "PublicIPAddressName";
     $PublicIPAddressAllocationMethod = "Static";
@@ -94,11 +94,13 @@ function Test-LoadBalancerCRUDMinimalParameters
         Assert-AreEqual $rname $vLoadBalancer.Name;
 
         # Remove LoadBalancer
-        $removeLoadBalancer = Remove-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $job = Remove-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeLoadBalancer = $job | Receive-Job;
         Assert-AreEqual $true $removeLoadBalancer;
 
         # Get LoadBalancer should fail
-        Assert-ThrowsContains { Get-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsContains { Get-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -117,7 +119,7 @@ function Test-LoadBalancerCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Tag = @{tag1='test'};
     $Sku = "Basic";
@@ -189,11 +191,13 @@ function Test-LoadBalancerCRUDAllParameters
         Assert-AreEqualObjectProperties $TagSet $vLoadBalancer.Tag;
 
         # Remove LoadBalancer
-        $removeLoadBalancer = Remove-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $job = Remove-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeLoadBalancer = $job | Receive-Job;
         Assert-AreEqual $true $removeLoadBalancer;
 
         # Get LoadBalancer should fail
-        Assert-ThrowsContains { Get-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsContains { Get-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -213,7 +217,7 @@ function Test-FrontendIPConfigurationCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = "eastus2";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers" "East US 2";
     # Dependency parameters
     $SubnetName = "SubnetName";
     $SubnetAddressPrefix = "10.0.1.0/24";
@@ -250,6 +254,7 @@ function Test-FrontendIPConfigurationCRUDMinimalParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerFrontendIpConfig -Name $rname -LoadBalancer $vLoadBalancer -Subnet $Subnet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get FrontendIPConfiguration
         $vFrontendIPConfiguration = Get-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -261,6 +266,7 @@ function Test-FrontendIPConfigurationCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerFrontendIpConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Subnet $Subnet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get FrontendIPConfiguration
         $vFrontendIPConfiguration = Get-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -268,9 +274,13 @@ function Test-FrontendIPConfigurationCRUDMinimalParameters
         Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerFrontendIpConfig" $vFrontendIPConfiguration };
         Assert-AreEqual $rnameAdd $vFrontendIPConfiguration.Name;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerFrontendIpConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Subnet $Subnet } "already exists";
+
         # Remove FrontendIPConfiguration
-        Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get FrontendIPConfiguration should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -293,7 +303,7 @@ function Test-FrontendIPConfigurationCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = "eastus2";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers" "East US 2";
     # Resource's parameters
     $PrivateIpAddress = "10.0.1.13";
     # Resource's parameters for Set test
@@ -336,6 +346,7 @@ function Test-FrontendIPConfigurationCRUDAllParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerFrontendIpConfig -Name $rname -LoadBalancer $vLoadBalancer -Subnet $Subnet -PrivateIpAddress $PrivateIpAddressSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get FrontendIPConfiguration
         $vFrontendIPConfiguration = Get-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -348,6 +359,7 @@ function Test-FrontendIPConfigurationCRUDAllParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerFrontendIpConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Subnet $Subnet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get FrontendIPConfiguration
         $vFrontendIPConfiguration = Get-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -355,9 +367,13 @@ function Test-FrontendIPConfigurationCRUDAllParameters
         Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerFrontendIpConfig" $vFrontendIPConfiguration };
         Assert-AreEqual $rnameAdd $vFrontendIPConfiguration.Name;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerFrontendIpConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Subnet $Subnet } "already exists";
+
         # Remove FrontendIPConfiguration
-        Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get FrontendIPConfiguration should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -380,7 +396,7 @@ function Test-BackendAddressPoolCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Dependency parameters
     $PublicIPAddressName = "PublicIPAddressName";
     $PublicIPAddressAllocationMethod = "Static";
@@ -412,6 +428,7 @@ function Test-BackendAddressPoolCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get BackendAddressPool
         $vBackendAddressPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -419,9 +436,17 @@ function Test-BackendAddressPoolCRUDMinimalParameters
         Assert-True { Check-CmdletReturnType "Get-AzureRmLoadBalancerBackendAddressPoolConfig" $vBackendAddressPool };
         Assert-AreEqual $rnameAdd $vBackendAddressPool.Name;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer } "already exists";
+
         # Remove BackendAddressPool
-        Remove-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get BackendAddressPool should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -444,7 +469,7 @@ function Test-LoadBalancingRuleCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     $FrontendPort = 1024;
@@ -503,6 +528,7 @@ function Test-LoadBalancingRuleCRUDMinimalParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolSet -FrontendPort $FrontendPortSet -BackendPort $BackendPortSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get LoadBalancingRule
         $vLoadBalancingRule = Get-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -517,6 +543,7 @@ function Test-LoadBalancingRuleCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get LoadBalancingRule
         $vLoadBalancingRule = Get-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -527,9 +554,17 @@ function Test-LoadBalancingRuleCRUDMinimalParameters
         Assert-AreEqual $FrontendPortAdd $vLoadBalancingRule.FrontendPort;
         Assert-AreEqual $BackendPortAdd $vLoadBalancingRule.BackendPort;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd } "already exists";
+
         # Remove LoadBalancingRule
-        Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get LoadBalancingRule should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -552,7 +587,7 @@ function Test-LoadBalancingRuleCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     $LoadDistribution = "Default";
@@ -631,6 +666,7 @@ function Test-LoadBalancingRuleCRUDAllParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolSet -LoadDistribution $LoadDistributionSet -FrontendPort $FrontendPortSet -BackendPort $BackendPortSet -IdleTimeoutInMinutes $IdleTimeoutInMinutesSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get LoadBalancingRule
         $vLoadBalancingRule = Get-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -649,6 +685,7 @@ function Test-LoadBalancingRuleCRUDAllParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -LoadDistribution $LoadDistributionAdd -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get LoadBalancingRule
         $vLoadBalancingRule = Get-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -663,9 +700,17 @@ function Test-LoadBalancingRuleCRUDAllParameters
         Assert-AreEqual $EnableFloatingIPAdd $vLoadBalancingRule.EnableFloatingIP;
         Assert-AreEqual $EnableTcpResetAdd $vLoadBalancingRule.EnableTcpReset;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -LoadDistribution $LoadDistributionAdd -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd } "already exists";
+
         # Remove LoadBalancingRule
-        Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get LoadBalancingRule should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -688,7 +733,7 @@ function Test-ProbeCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Port = 2424;
     $IntervalInSeconds = 6;
@@ -738,6 +783,7 @@ function Test-ProbeCRUDMinimalParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerProbeConfig -Name $rname -LoadBalancer $vLoadBalancer -Port $PortSet -IntervalInSeconds $IntervalInSecondsSet -ProbeCount $ProbeCountSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get Probe
         $vProbe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -752,6 +798,7 @@ function Test-ProbeCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get Probe
         $vProbe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -762,9 +809,17 @@ function Test-ProbeCRUDMinimalParameters
         Assert-AreEqual $IntervalInSecondsAdd $vProbe.IntervalInSeconds;
         Assert-AreEqual $ProbeCountAdd $vProbe.NumberOfProbes;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd } "already exists";
+
         # Remove Probe
-        Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get Probe should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -787,7 +842,7 @@ function Test-ProbeCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Http";
     $Port = 2424;
@@ -844,6 +899,7 @@ function Test-ProbeCRUDAllParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerProbeConfig -Name $rname -LoadBalancer $vLoadBalancer -Protocol $ProtocolSet -Port $PortSet -IntervalInSeconds $IntervalInSecondsSet -ProbeCount $ProbeCountSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get Probe
         $vProbe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -859,6 +915,7 @@ function Test-ProbeCRUDAllParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get Probe
         $vProbe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -869,9 +926,17 @@ function Test-ProbeCRUDAllParameters
         Assert-AreEqual $IntervalInSecondsAdd $vProbe.IntervalInSeconds;
         Assert-AreEqual $ProbeCountAdd $vProbe.NumberOfProbes;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd } "already exists";
+
         # Remove Probe
-        Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get Probe should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -894,7 +959,7 @@ function Test-InboundNatRuleCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $FrontendPort = 123;
     $BackendPort = 456;
@@ -948,6 +1013,7 @@ function Test-InboundNatRuleCRUDMinimalParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerInboundNatRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -FrontendPort $FrontendPortSet -BackendPort $BackendPortSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatRule
         $vInboundNatRule = Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -961,6 +1027,7 @@ function Test-InboundNatRuleCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerInboundNatRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatRule
         $vInboundNatRule = Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -970,9 +1037,17 @@ function Test-InboundNatRuleCRUDMinimalParameters
         Assert-AreEqual $FrontendPortAdd $vInboundNatRule.FrontendPort;
         Assert-AreEqual $BackendPortAdd $vInboundNatRule.BackendPort;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerInboundNatRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd } "already exists";
+
         # Remove InboundNatRule
-        Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatRule should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -995,7 +1070,7 @@ function Test-InboundNatRuleCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     $FrontendPort = 123;
@@ -1069,6 +1144,7 @@ function Test-InboundNatRuleCRUDAllParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerInboundNatRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolSet -FrontendPort $FrontendPortSet -BackendPort $BackendPortSet -IdleTimeoutInMinutes $IdleTimeoutInMinutesSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatRule
         $vInboundNatRule = Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -1086,6 +1162,7 @@ function Test-InboundNatRuleCRUDAllParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerInboundNatRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatRule
         $vInboundNatRule = Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -1099,9 +1176,17 @@ function Test-InboundNatRuleCRUDAllParameters
         Assert-AreEqual $EnableFloatingIPAdd $vInboundNatRule.EnableFloatingIP;
         Assert-AreEqual $EnableTcpResetAdd $vInboundNatRule.EnableTcpReset;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerInboundNatRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPort $FrontendPortAdd -BackendPort $BackendPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd } "already exists";
+
         # Remove InboundNatRule
-        Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatRule should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -1124,7 +1209,7 @@ function Test-InboundNatPoolCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     $FrontendPortRangeStart = 555;
@@ -1181,6 +1266,7 @@ function Test-InboundNatPoolCRUDMinimalParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerInboundNatPoolConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolSet -FrontendPortRangeStart $FrontendPortRangeStartSet -FrontendPortRangeEnd $FrontendPortRangeEndSet -BackendPort $BackendPortSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatPool
         $vInboundNatPool = Get-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -1196,6 +1282,7 @@ function Test-InboundNatPoolCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPortRangeStart $FrontendPortRangeStartAdd -FrontendPortRangeEnd $FrontendPortRangeEndAdd -BackendPort $BackendPortAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatPool
         $vInboundNatPool = Get-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -1207,9 +1294,17 @@ function Test-InboundNatPoolCRUDMinimalParameters
         Assert-AreEqual $FrontendPortRangeEndAdd $vInboundNatPool.FrontendPortRangeEnd;
         Assert-AreEqual $BackendPortAdd $vInboundNatPool.BackendPort;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPortRangeStart $FrontendPortRangeStartAdd -FrontendPortRangeEnd $FrontendPortRangeEndAdd -BackendPort $BackendPortAdd } "already exists";
+
         # Remove InboundNatPool
-        Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatPool should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -1232,7 +1327,7 @@ function Test-InboundNatPoolCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     $FrontendPortRangeStart = 555;
@@ -1304,6 +1399,7 @@ function Test-InboundNatPoolCRUDAllParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerInboundNatPoolConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolSet -FrontendPortRangeStart $FrontendPortRangeStartSet -FrontendPortRangeEnd $FrontendPortRangeEndSet -BackendPort $BackendPortSet -IdleTimeoutInMinutes $IdleTimeoutInMinutesSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatPool
         $vInboundNatPool = Get-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -1322,6 +1418,7 @@ function Test-InboundNatPoolCRUDAllParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPortRangeStart $FrontendPortRangeStartAdd -FrontendPortRangeEnd $FrontendPortRangeEndAdd -BackendPort $BackendPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatPool
         $vInboundNatPool = Get-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -1336,9 +1433,17 @@ function Test-InboundNatPoolCRUDAllParameters
         Assert-AreEqual $EnableFloatingIPAdd $vInboundNatPool.EnableFloatingIP;
         Assert-AreEqual $EnableTcpResetAdd $vInboundNatPool.EnableTcpReset;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $ProtocolAdd -FrontendPortRangeStart $FrontendPortRangeStartAdd -FrontendPortRangeEnd $FrontendPortRangeEndAdd -BackendPort $BackendPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd } "already exists";
+
         # Remove InboundNatPool
-        Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get InboundNatPool should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -1361,7 +1466,7 @@ function Test-OutboundRuleCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     # Resource's parameters for Set test
@@ -1415,6 +1520,7 @@ function Test-OutboundRuleCRUDMinimalParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerOutboundRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Protocol $ProtocolSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get OutboundRule
         $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -1427,6 +1533,7 @@ function Test-OutboundRuleCRUDMinimalParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerOutboundRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfigurationAdd -BackendAddressPool $BackendAddressPoolAdd -Protocol $ProtocolAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
         Assert-NotNull $vLoadBalancer.FrontendIpConfigurations;
         Assert-True { $vLoadBalancer.FrontendIpConfigurations.Length -gt 0 };
         Assert-NotNull $vLoadBalancer.BackendAddressPools;
@@ -1439,9 +1546,17 @@ function Test-OutboundRuleCRUDMinimalParameters
         Assert-AreEqual $rnameAdd $vOutboundRule.Name;
         Assert-AreEqual $ProtocolAdd $vOutboundRule.Protocol;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerOutboundRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfigurationAdd -BackendAddressPool $BackendAddressPoolAdd -Protocol $ProtocolAdd } "already exists";
+
         # Remove OutboundRule
-        Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get OutboundRule should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
@@ -1464,7 +1579,7 @@ function Test-OutboundRuleCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/LoadBalancers";
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers";
     # Resource's parameters
     $Protocol = "Udp";
     $AllocatedOutboundPort = 8;
@@ -1533,6 +1648,7 @@ function Test-OutboundRuleCRUDAllParameters
         $vLoadBalancer = Set-AzureRmLoadBalancerOutboundRuleConfig -Name $rname -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Protocol $ProtocolSet -AllocatedOutboundPort $AllocatedOutboundPortSet -IdleTimeoutInMinutes $IdleTimeoutInMinutesSet;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get OutboundRule
         $vOutboundRule = Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
@@ -1548,6 +1664,7 @@ function Test-OutboundRuleCRUDAllParameters
         $vLoadBalancer = Add-AzureRmLoadBalancerOutboundRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfigurationAdd -BackendAddressPool $BackendAddressPoolAdd -Protocol $ProtocolAdd -AllocatedOutboundPort $AllocatedOutboundPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
         Assert-NotNull $vLoadBalancer.FrontendIpConfigurations;
         Assert-True { $vLoadBalancer.FrontendIpConfigurations.Length -gt 0 };
         Assert-NotNull $vLoadBalancer.BackendAddressPools;
@@ -1563,9 +1680,17 @@ function Test-OutboundRuleCRUDAllParameters
         Assert-AreEqual $EnableTcpResetAdd $vOutboundRule.EnableTcpReset;
         Assert-AreEqual $IdleTimeoutInMinutesAdd $vOutboundRule.IdleTimeoutInMinutes;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmLoadBalancerOutboundRuleConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -FrontendIPConfiguration $FrontendIPConfigurationAdd -BackendAddressPool $BackendAddressPoolAdd -Protocol $ProtocolAdd -AllocatedOutboundPort $AllocatedOutboundPortAdd -IdleTimeoutInMinutes $IdleTimeoutInMinutesAdd } "already exists";
+
         # Remove OutboundRule
-        Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
+        $vLoadBalancer = Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vLoadBalancer = Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
+        # Update parent resource
         $vLoadBalancer = Set-AzureRmLoadBalancer -LoadBalancer $vLoadBalancer;
+        Assert-NotNull $vLoadBalancer;
 
         # Get OutboundRule should fail
         Assert-ThrowsContains { Get-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd } "Sequence contains no matching element";
