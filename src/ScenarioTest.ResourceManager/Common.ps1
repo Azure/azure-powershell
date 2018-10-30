@@ -79,9 +79,9 @@ function Run-Test
          Write-Log "[run-test]: Running test without file comparison"
     }
         
-    $oldPref = $ErrorActionPreference	 
+    $oldPref = $ErrorActionPreference
     $ErrorActionPreference = "SilentlyContinue"
-    #Start-Transcript -Path $transFile	
+    #Start-Transcript -Path $transFile
     $success = $false;
     $ErrorActionPreference = $oldPref
     try 
@@ -92,7 +92,7 @@ function Run-Test
     finally 
     {
         Test-Cleanup
-        $oldPref = $ErrorActionPreference	 
+        $oldPref = $ErrorActionPreference
         $ErrorActionPreference = "SilentlyContinue"
         #Stop-Transcript
         $ErrorActionPreference = $oldPref
@@ -406,7 +406,7 @@ function getTestName
         }
     }
 
-	return $testName
+    return $testName
 }
 
 <#
@@ -479,7 +479,7 @@ function getTestCredentialFromString
   if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::UserIdKey) -or ((-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey))))))
   {
     throw "The connection string '$connectionString' must have a valid value, including username and password " +`
-		    "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+            "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
   }
   return $(createTestCredential $parsedString[[Microsoft.Azure.Test.TestEnvironment]::UserIdKey] $parsedString[[Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey])
 }
@@ -498,7 +498,7 @@ function getSubscriptionFromString
   if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey)))
   {
     throw "The connection string '$connectionString' must have a valid value, including subscription " +`
-		    "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+            "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
   }
   return $($parsedString[[Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey])
 }
@@ -518,22 +518,22 @@ function getCredentialFromEnvironment
    {
        $environmentVariable = $null;
        if ([System.string]::Equals($testEnvironment, "rdfe", [System.StringComparison]::OrdinalIgnoreCase))
-	   {
-	       $environmentVariable = [Microsoft.Azure.Test.RDFETestEnvironmentFactory]::TestOrgIdAuthenticationKey
-	   }
-	   else
-	   {
-	       $environmentVariable = [Microsoft.Azure.Test.CSMTestEnvironmentFactory]::TestCSMOrgIdConnectionStringKey
-	   }
+       {
+           $environmentVariable = [Microsoft.Azure.Test.RDFETestEnvironmentFactory]::TestOrgIdAuthenticationKey
+       }
+       else
+       {
+           $environmentVariable = [Microsoft.Azure.Test.CSMTestEnvironmentFactory]::TestCSMOrgIdConnectionStringKey
+       }
 
-	   $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
-	   if ([System.string]::IsNullOrEmpty($environmentValue))
-	   {
-	      throw "The environment variable '$environmentVariable' must have a valid value, including username and password " +`
-		    "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
-	   }
+       $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
+       if ([System.string]::IsNullOrEmpty($environmentValue))
+       {
+          throw "The environment variable '$environmentVariable' must have a valid value, including username and password " +`
+            "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+       }
 
-	   $credential = $(getTestCredentialFromString $environmentValue)
+       $credential = $(getTestCredentialFromString $environmentValue)
    }
 
    return $credential
@@ -555,22 +555,22 @@ function getSubscriptionFromEnvironment
    {
        $environmentVariable = $null;
        if ([System.string]::Equals($testEnvironment, "rdfe", [System.StringComparison]::OrdinalIgnoreCase))
-	   {
-	       $environmentVariable = [Microsoft.Azure.Test.RDFETestEnvironmentFactory]::TestOrgIdAuthenticationKey
-	   }
-	   else
-	   {
-	       $environmentVariable = [Microsoft.Azure.Test.CSMTestEnvironmentFactory]::TestCSMOrgIdConnectionStringKey
-	   }
+       {
+           $environmentVariable = [Microsoft.Azure.Test.RDFETestEnvironmentFactory]::TestOrgIdAuthenticationKey
+       }
+       else
+       {
+           $environmentVariable = [Microsoft.Azure.Test.CSMTestEnvironmentFactory]::TestCSMOrgIdConnectionStringKey
+       }
 
-	   $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
-	   if ([System.string]::IsNullOrEmpty($environmentValue))
-	   {
-	      throw "The environment variable '$environmentVariable' must have a valid value, including subscription id" +`
-		    "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
-	   }
+       $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
+       if ([System.string]::IsNullOrEmpty($environmentValue))
+       {
+          throw "The environment variable '$environmentVariable' must have a valid value, including subscription id" +`
+            "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+       }
 
-	   $subscription = $(getSubscriptionFromString $environmentValue)
+       $subscription = $(getSubscriptionFromString $environmentValue)
    }
    else
    {
@@ -582,7 +582,7 @@ function getSubscriptionFromEnvironment
 
 function Get-Location
 {
-    param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation)
+    param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation, [switch]$UseCanonical)
     $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
     $resourceTypes = $null
     if ( ( $provider.ResourceTypes -ne $null ) -and ( $provider.ResourceTypes.Count -gt 0 ) )
@@ -590,31 +590,41 @@ function Get-Location
         $nameFound = $provider.ResourceTypes[0]| Get-Member | Where-Object { $_.Name -eq "Name" }
         $resourceTypeNameFound = $provider.ResourceTypes[0]| Get-Member | Where-Object { $_.Name -eq "ResourceTypeName" }
         if ( $nameFound -ne $null )
-	{
-            $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType }    
+        {
+            $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType }
         }
-	elseif ( $resourceTypeNameFound -ne $null )
+        elseif ( $resourceTypeNameFound -ne $null )
         {
             $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceTypeName -eq $resourceType }
         }
-	else
-	{
+        else
+        {
             $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceType -eq $resourceType }
         }
     }
-    $location = $resourceTypes.Locations | Where-Object { $_ -eq $preferredLocation }
+    $locations = $resourceTypes.Locations
+    if($UseCanonical)
+    {
+        $locations = $locations | ForEach-Object { Normalize-Location $_ }
+    }
+    $location = $locations | Where-Object { $_ -eq $preferredLocation }
     if ($location -eq $null)
     {
-        if ($resourceTypes.Locations.Length -ne 0)
+        if ($locations.Count -ne 0)
         {
-            return $resourceTypes.Locations[0]
+            return $locations[0]
         }
-        else 
+        else
         {
-            return "West US"
+            $defaultLocation = "West US"
+            if($UseCanonical)
+            {
+                $defaultLocation = "westus"
+            }
+            return $defaultLocation
         }
     }
-    else 
+    else
     {
         return $location
     }
@@ -622,9 +632,9 @@ function Get-Location
 
 function Normalize-Location
 {
-	param([string]$location)
-	$outputLocation = $location.ToLower()
-	$outputLocation = $outputLocation -replace '\s', ''
-	$outputLocation = $outputLocation -replace '-', ''
-	$outputLocation = $outputLocation -replace '_', ''
+    param([string]$location)
+    $outputLocation = $location.ToLower()
+    $outputLocation = $outputLocation -replace '\s', ''
+    $outputLocation = $outputLocation -replace '-', ''
+    return $outputLocation -replace '_', ''
 }
