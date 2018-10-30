@@ -46,7 +46,7 @@
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="1.2.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.3.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Logic" Version="3.0.0" PrivateAssets="All" />

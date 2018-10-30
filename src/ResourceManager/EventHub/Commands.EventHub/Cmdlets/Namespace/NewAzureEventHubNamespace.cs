@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// Indicates whether Kafka is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         public SwitchParameter EnableKafka { get; set; }
 
         /// <summary>
