@@ -12,6 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+/*
+Prerequisites:
+To develop automated tests for Source Control, you will need to create a private repo
+in GitHub and two in Azure Repos (one for Git and one for TFVC). These will need to contain
+at least one sample runbook to sync. For the current tests, I am using a PowerShell runbook.
+
+After the repos are created, you will need to create a personal access token (PAT),
+which will be used to register the source control. Please note that after the tests are recorded,
+you should revoke access for PAT--this way no one can access to your private repos after the tests
+are recorded.
+
+$testReposInfo = @{
+    VsoGit = @{
+        Name = "AASourceControl-VsoGit"
+        RepoUrl = "https://francisco-gamino.visualstudio.com/_git/VsoGit-SwaggerAndCmdletsTests"
+        Branch = "preview"
+        FolderPath = "Azure/MyRunbooks"
+        SourceType = "VsoGit"
+        PersonalAccessToken = "3qdxa22lutnhezd4atpna74jn3m7wgo6o6kfbwezjfnvgbjhvoca"
+    }
+
+    VsoTfvc =  @{
+        Name = "AASourceControl-VsoTfvc"
+        RepoUrl = "https://francisco-gamino.visualstudio.com/VsoTfvc-SwaggerAndCmdletsTests/_versionControl"
+        FolderPath = "/MyRunbooks"
+        SourceType = "VsoTfvc"
+        PersonalAccessToken = "3qdxa22lutnhezd4atpna74jn3m7wgo6o6kfbwezjfnvgbjhvoca"
+    }
+
+    GitHub = @{
+        Name = "AASourceControl-GitHub"
+        RepoUrl = "https://github.com/Francisco-Gamino/SwaggerAndCmdletsTests.git"
+        Branch = "master"
+        FolderPath = "/"
+        SourceType = "GitHub"
+        PersonalAccessToken = "5fd81166a9ebaebc60da4756f2094a598f1d4c01"
+    }
+}
+ */
+
 namespace Commands.Automation.Test
 {
     using Microsoft.Azure.Commands.Automation.Test;
