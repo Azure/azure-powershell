@@ -337,7 +337,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"suW1KihBblKnSJsnOCu4Q7Lmk3fptb56eGDh4GF8dNM=\",\r\n  \"key2\": \"lva6XbwCE6Tq6AA7NIJFN/zIOe/hU0aJeKJEgIykYMw=\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "109"
@@ -400,7 +400,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"suW1KihBblKnSJsnOCu4Q7Lmk3fptb56eGDh4GF8dNM=\",\r\n  \"key2\": \"lva6XbwCE6Tq6AA7NIJFN/zIOe/hU0aJeKJEgIykYMw=\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "109"
@@ -463,7 +463,7 @@
           "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"suW1KihBblKnSJsnOCu4Q7Lmk3fptb56eGDh4GF8dNM=\",\r\n  \"key2\": \"lva6XbwCE6Tq6AA7NIJFN/zIOe/hU0aJeKJEgIykYMw=\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "109"
