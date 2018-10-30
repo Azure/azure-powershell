@@ -14,7 +14,6 @@
 
 # Automation account information
 $resourceGroupName = "frangom-test"
-$subscriptionId = "52d8cf1b-bcac-493a-bbae-f234b5ff38b0"
 $automationAccountName = "frangom-sdkCmdlet-tests"
 $hybridWorkerGroupName = "test"
 

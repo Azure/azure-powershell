@@ -17,20 +17,16 @@ WaitForProvisioningState
 #>
 function WaitForProvisioningState() {
     param([string] $Name, [string] $ExpectedState)
-    $state = ""
-    $timeoutInSeconds = 120
-    $retries = $timeoutInSeconds / 5
-    while($state -ne $ExpectedState -and $retries -gt 0) {
-        $suc = Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
-                                                                -AutomationAccountName $aa `
-                                                                -Name $Name
-        $state = $suc.ProvisioningState
-        Write-Output "SoftwareUpdateConfiguration Provisioning state: $state"
-        sleep -Seconds 5
-        $retries = $retries - 1
-    } 
 
-    Assert-True {$retries -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
+    $waitTimeInSeconds = 2
+    $retries = 40
+
+    $jobCompleted = Retry-Function {
+        return (Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
+                                                                 -AutomationAccountName $aa `
+                                                                 -Name $Name).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
+
+    Assert-True {$jobCompleted -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
 }
 
 <#
@@ -253,7 +249,7 @@ function Test-DeleteSoftwareUpdateConfiguration {
     Remove-AzureRmAutomationSoftwareUpdateConfiguration   -ResourceGroupName $rg `
                                                           -AutomationAccountName $aa `
                                                           -Name $name
-    sleep -Seconds 5
+    Wait-Seconds 5
 	Assert-Throws { 
 		Get-AzureRmAutomationSoftwareUpdateConfiguration   -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa `
