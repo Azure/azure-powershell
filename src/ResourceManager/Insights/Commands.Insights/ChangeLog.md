@@ -18,12 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue #7267 (Autoscale area)
+    - Issues with creating a new autoscale rule not properly setting enumerated parameters (would always set them to the default value).
 
 * Fixed issue #7513 [Insights] Set-AzureRMDiagnosticSetting requires explicit specification of categories during creation of setting
     - Now the cmdlet does not require explicit indication of the categories to enable during creation, i.e. it works as it is documented
 
 ## Version 5.1.4
-
 * Fixed issues #6833 and #7102 (Diagnostic Settings area)
     - Issues with the default name, i.e. "service", during creation and listing/getting of diagnostic settings
     - Issues creating diagnostic settings with categories
