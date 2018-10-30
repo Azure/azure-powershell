@@ -46,7 +46,7 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/ApplicationSecurityGroups";
+    $location = Get-ProviderLocation "Microsoft.Network/applicationSecurityGroups";
 
     try
     {
@@ -65,11 +65,13 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
 
         # Remove ApplicationSecurityGroup
-        $removeApplicationSecurityGroup = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $job = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeApplicationSecurityGroup = $job | Receive-Job;
         Assert-AreEqual $true $removeApplicationSecurityGroup;
 
         # Get ApplicationSecurityGroup should fail
-        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -88,7 +90,7 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/ApplicationSecurityGroups";
+    $location = Get-ProviderLocation "Microsoft.Network/applicationSecurityGroups";
     # Resource's parameters
     $Tag = @{tag1='test'};
 
@@ -111,11 +113,13 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
         Assert-AreEqualObjectProperties $Tag $vApplicationSecurityGroup.Tag;
 
         # Remove ApplicationSecurityGroup
-        $removeApplicationSecurityGroup = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $job = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeApplicationSecurityGroup = $job | Receive-Job;
         Assert-AreEqual $true $removeApplicationSecurityGroup;
 
         # Get ApplicationSecurityGroup should fail
-        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {

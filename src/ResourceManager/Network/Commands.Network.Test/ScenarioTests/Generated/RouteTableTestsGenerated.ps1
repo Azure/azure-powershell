@@ -46,7 +46,7 @@ function Test-RouteTableCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/RouteTables";
+    $location = Get-ProviderLocation "Microsoft.Network/routeTables";
     # Dependency parameters
     $RouteName = "RouteName";
     $RouteAddressPrefix = "10.0.0.0/8";
@@ -73,11 +73,13 @@ function Test-RouteTableCRUDMinimalParameters
         Assert-AreEqual $rname $vRouteTable.Name;
 
         # Remove RouteTable
-        $removeRouteTable = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $job = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeRouteTable = $job | Receive-Job;
         Assert-AreEqual $true $removeRouteTable;
 
         # Get RouteTable should fail
-        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -96,7 +98,7 @@ function Test-RouteTableCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/RouteTables";
+    $location = Get-ProviderLocation "Microsoft.Network/routeTables";
     # Resource's parameters
     $Tag = @{tag1='test'};
     # Resource's parameters for Set test
@@ -144,11 +146,13 @@ function Test-RouteTableCRUDAllParameters
         Assert-AreEqualObjectProperties $TagSet $vRouteTable.Tag;
 
         # Remove RouteTable
-        $removeRouteTable = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $job = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeRouteTable = $job | Receive-Job;
         Assert-AreEqual $true $removeRouteTable;
 
         # Get RouteTable should fail
-        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -168,7 +172,7 @@ function Test-RouteCRUDMinimalParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/RouteTables";
+    $location = Get-ProviderLocation "Microsoft.Network/routeTables";
     # Resource's parameters
     $AddressPrefix = "10.0.0.0/8";
     # Resource's parameters for Set test
@@ -200,6 +204,7 @@ function Test-RouteCRUDMinimalParameters
         $vRouteTable = Set-AzureRmRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet;
         Assert-NotNull $vRouteTable;
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
 
         # Get Route
         $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
@@ -212,6 +217,7 @@ function Test-RouteCRUDMinimalParameters
         $vRouteTable = Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd;
         Assert-NotNull $vRouteTable;
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
 
         # Get Route
         $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
@@ -220,9 +226,17 @@ function Test-RouteCRUDMinimalParameters
         Assert-AreEqual $rnameAdd $vRoute.Name;
         Assert-AreEqual $AddressPrefixAdd $vRoute.AddressPrefix;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd } "already exists";
+
         # Remove Route
-        Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        # Update parent resource
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
 
         # Get Route should fail
         Assert-ThrowsContains { Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd } "Sequence contains no matching element";
@@ -245,7 +259,7 @@ function Test-RouteCRUDAllParameters
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $rnameAdd = "${rname}Add";
-    $location = Get-ProviderLocation "Microsoft.Network/RouteTables";
+    $location = Get-ProviderLocation "Microsoft.Network/routeTables";
     # Resource's parameters
     $AddressPrefix = "10.0.0.0/8";
     $NextHopType = "VirtualNetworkGateway";
@@ -282,6 +296,7 @@ function Test-RouteCRUDAllParameters
         $vRouteTable = Set-AzureRmRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet -NextHopType $NextHopTypeSet;
         Assert-NotNull $vRouteTable;
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
 
         # Get Route
         $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
@@ -295,6 +310,7 @@ function Test-RouteCRUDAllParameters
         $vRouteTable = Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopTypeAdd;
         Assert-NotNull $vRouteTable;
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
 
         # Get Route
         $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
@@ -304,9 +320,17 @@ function Test-RouteCRUDAllParameters
         Assert-AreEqual $AddressPrefixAdd $vRoute.AddressPrefix;
         Assert-AreEqual $NextHopTypeAdd $vRoute.NextHopType;
 
+        # Try Add again
+        Assert-ThrowsContains { Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopTypeAdd } "already exists";
+
         # Remove Route
-        Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        # Additional call to test handling of already deleted subresource
+        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        # Update parent resource
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
 
         # Get Route should fail
         Assert-ThrowsContains { Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd } "Sequence contains no matching element";
