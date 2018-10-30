@@ -91,6 +91,12 @@
     <None Include="ScenarioTests\TopicTypeTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToDomains.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToDomainTopics.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.DomainTests\EventGrid_DomainsCreateGetAndDelete.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
