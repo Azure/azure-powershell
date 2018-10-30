@@ -34,10 +34,11 @@ function Test-ExpressRoutePortCRUD
     $rgname = Get-ResourceGroupName
     $rglocation = Get-ProviderLocation ResourceManagement
     $rname = Get-ResourceName
-	$location = Get-Location "Microsoft.Network" "ExpressRouteCircuits" "Central US EUAP"
-	$peeringLocation = "Unalaska"
+	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+    $location = Get-ProviderLocation $resourceTypeParent
+	$peeringLocation = "Cheyenne-ERDirect"
 	$encapsulation = "QinQ"
-	$bandwidthInGbps = 1.0
+	$bandwidthInGbps = 100.0
 
     try
     {
@@ -48,7 +49,7 @@ function Test-ExpressRoutePortCRUD
         Assert-NotNull $vExpressRoutePort
         Assert-True { Check-CmdletReturnType "New-AzureRmExpressRoutePort" $vExpressRoutePort }
         Assert-NotNull $vExpressRoutePort.Links
-        Assert-True { $vExpressRoutePort.Links.Length -eq 2 }
+        Assert-True { $vExpressRoutePort.Links.Count -eq 2 }
         Assert-AreEqual $rname $vExpressRoutePort.Name
 
         # Get ExpressRoutePort
@@ -68,7 +69,7 @@ function Test-ExpressRoutePortCRUD
 
 		# List ExpressRouteLinks
 		$vExpressRouteLinksList = $vExpressRoutePort | Get-AzureRmExpressRoutePortLinkConfig
-		Assert-True { $vExpressRouteLinksList.Length -eq 2 }
+		Assert-True { $vExpressRouteLinksList.Count -eq 2 }
 
         # Remove ExpressRoutePort
         $removeExpressRoutePort = Remove-AzureRmExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force

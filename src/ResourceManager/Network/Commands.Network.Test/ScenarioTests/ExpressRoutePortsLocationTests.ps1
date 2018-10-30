@@ -20,17 +20,17 @@ function Test-ExpressRoutePortsLocationRead
 {
     $vExpressRoutePortsLocationList = Get-AzureRmExpressRoutePortsLocation
     Assert-NotNull $vExpressRoutePortsLocationList
-	Assert-True { $vExpressRoutePortsLocationList.Length -eq 4 }
+	Assert-True { $vExpressRoutePortsLocationList.Count -eq 6 }
 	Assert-NotNull $vExpressRoutePortsLocationList[0].Address
 	Assert-NotNull $vExpressRoutePortsLocationList[0].Contact
 	Assert-NotNull $vExpressRoutePortsLocationList[0].AvailableBandwidths
-	Assert-True { $vExpressRoutePortsLocationList[0].AvailableBandwidths.Length -eq 0 }
+	Assert-True { $vExpressRoutePortsLocationList[0].AvailableBandwidths.Count -eq 0 }
 
 	# Get details of a location
-	$vExpressRoutePortsLocation = Get-AzureRmExpressRoutePortsLocation -LocationName "Unalaska"
+	$vExpressRoutePortsLocation = Get-AzureRmExpressRoutePortsLocation -LocationName "Cheyenne-ERDirect"
 	Assert-NotNull $vExpressRoutePortsLocation
 	Assert-NotNull $vExpressRoutePortsLocation.Address
 	Assert-NotNull $vExpressRoutePortsLocation.Contact
 	Assert-NotNull $vExpressRoutePortsLocation.AvailableBandwidths
-	Assert-True { $vExpressRoutePortsLocation.AvailableBandwidths.Length -gt 0 }
+	Assert-True { $vExpressRoutePortsLocation.AvailableBandwidths.Count -eq 1 }
 }
