@@ -101,11 +101,7 @@ namespace Commands.Automation.Test
             RunPowerShellTest(logger, "Test-DeleteSoftwareUpdateConfiguration");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "Test needs to be re-recorded after issue https://github.com/Azure/azure-powershell/issues/7705 is fixed.")]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRuns()
@@ -113,11 +109,7 @@ namespace Commands.Automation.Test
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRuns");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "Test needs to be re-recorded after issue https://github.com/Azure/azure-powershell/issues/7705 is fixed.")]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFilters()
