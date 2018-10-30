@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.MarketplaceOrdering">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MarketplaceOrdering.1.0.0\lib\net452\Microsoft.Azure.Management.MarketplaceOrdering.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MarketplaceOrdering.1.0.1\lib\net452\Microsoft.Azure.Management.MarketplaceOrdering.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

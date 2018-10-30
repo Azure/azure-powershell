@@ -18,8 +18,10 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -141,4 +143,6 @@ namespace Microsoft.Azure.Commands.Profile
             throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
         }
     }
+
+
 }
