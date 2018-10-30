@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Options to resolve conflict for a file share
     /// </summary>
-    public enum RestoreFSResolveConfictOption
+    public enum RestoreFSResolveConflictOption
     {
         Overwrite,
         Skip

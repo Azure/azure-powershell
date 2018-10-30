@@ -77,15 +77,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Resolve conflict option
         /// </summary>
-        [Parameter(Mandatory = true, Position = 3, ParameterSetName = AzureFileParameterSet,
+        [Parameter(Mandatory = true, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.ResolveConflict)]
         [ValidateNotNullOrEmpty]
-        public RestoreFSResolveConfictOption ResolveConflict { get; set; }
+        public RestoreFSResolveConflictOption ResolveConflict { get; set; }
 
         /// <summary>
         /// Source File Path of the file to be recovered
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, ParameterSetName = AzureFileParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.SourceFilePath)]
         [ValidateNotNullOrEmpty]
         public string SourceFilePath { get; set; }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Source File Type of the file to be recovered
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, ParameterSetName = AzureFileParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.SourceFilePath)]
         [ValidateNotNullOrEmpty]
         public SourceFileType? SourceFileType { get; set; }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Target storage account name where the disks need to be recovered
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6, ParameterSetName = AzureFileParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.TargetStorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string TargetStorageAccountName { get; set; }
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary> 
         /// The target file share name to which the files are restored.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, ParameterSetName = AzureFileParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.TargetFileShareName)]
         [ValidateNotNullOrEmpty]
         public string TargetFileShareName { get; set; }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary> 
         /// The target folder name to which the files are restored.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8, ParameterSetName = AzureFileParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.TargetFolder)]
         [ValidateNotNullOrEmpty]
         public string TargetFolder { get; set; }
