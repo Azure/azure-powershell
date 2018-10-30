@@ -35,9 +35,7 @@ function NamespaceAuthTests
     Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
     $resultkafka = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka
 	Assert-AreEqual $resultkafka.Name $namespaceNameKafka "Namespace created earlier is not found."
-	Assert-True ($resultkafka.KafkaEnabled, "Namespace is not kafka enabled")
-
-
+	Assert-True{$resultkafka.KafkaEnabled}
 
     Write-Debug " Create new Eventhub namespace"
     Write-Debug "Namespace name : $namespaceName"	
@@ -168,6 +166,7 @@ function NamespaceTests
 	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
     $resourceGroupName = getAssetName "RGName1-"
 	$secondResourceGroup = getAssetName "RGName2-"
+	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
 
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -181,6 +180,12 @@ function NamespaceTests
 
 	$checkNameResult = Test-AzureRmEventHubName -Namespace $namespaceName 
 	Assert-True {$checkNameResult.NameAvailable}
+
+	Write-Debug " Create new Eventhub Kafka namespace"
+    Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
+    $resultkafka = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka
+	Assert-AreEqual $resultkafka.Name $namespaceNameKafka "Namespace created earlier is not found."
+	Assert-True {$resultkafka.KafkaEnabled}
      
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
