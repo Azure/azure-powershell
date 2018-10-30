@@ -115,12 +115,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.IsNullOrEmpty(this.DestinationId) && string.IsNullOrEmpty(this.DestinationAddress))
             {
-                throw new ArgumentException("Connectivity check missing destination resource id or address");
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationResourceIdOrAddress);
             }
 
             if (!string.IsNullOrEmpty(this.DestinationId) && string.Equals(this.SourceId, this.DestinationId, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException("Connectivity check destination resource id must not be the same as source: {0}", this.SourceId);
+                throw new ArgumentException(string.Format(Properties.Resources.ConnectivityDestinationIsMustNotBeTheSameAsSource, this.SourceId));
             }
 
             parameters.Source = new MNM.ConnectivitySource();
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (this.ProtocolConfiguration == null || string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol) || !string.Equals(this.ProtocolConfiguration.Protocol, "Icmp", StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException("Connectivity check missing destination port");
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationPort);
             }
 
             if (this.ProtocolConfiguration != null && !string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol))
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new ArgumentException(string.Format(Properties.Resources.NoNetworkWatcherInLocation, this.Location));
                 }
 
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
