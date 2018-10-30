@@ -31,7 +31,7 @@ of an ExpressRoutePort.
 ## EXAMPLES
 
 ### Example 1
-```powershell 
+```powershell
 PS C:\> Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort $erport -Name Link1
 ```
 
