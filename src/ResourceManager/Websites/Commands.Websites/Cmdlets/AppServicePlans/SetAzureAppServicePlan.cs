@@ -19,9 +19,6 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 
-#if NETSTANDARD
-using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
-#endif
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
@@ -61,7 +58,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     AppServicePlan = new PSAppServicePlan(WebsitesClient.GetAppServicePlan(ResourceGroupName, Name));
                     AppServicePlan.Sku.Tier = string.IsNullOrWhiteSpace(Tier) ? AppServicePlan.Sku.Tier : Tier;
                     AppServicePlan.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : AppServicePlan.Sku.Capacity;
-                    int workerSizeAsNumber = 0;
+                    int workerSizeAsNumber;
                     int.TryParse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value, out workerSizeAsNumber);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
