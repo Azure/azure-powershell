@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Analysis" Version="2.0.3" />
+    <PackageReference Include="Microsoft.Azure.Management.Analysis" Version="2.0.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -139,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.2.0.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.2.0.1\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -358,10 +358,10 @@
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
-    <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
-
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+    
+    <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
   </Target>
 
   <!-- Do everything possible except Publish -->
