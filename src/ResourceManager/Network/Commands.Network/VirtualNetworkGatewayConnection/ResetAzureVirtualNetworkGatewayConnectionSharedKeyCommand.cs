@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/connections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -55,7 +56,9 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name);            ConfirmAction(
+            var present = this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name);
+
+            ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
                 Properties.Resources.ResettingResourceMessage,
@@ -65,7 +68,8 @@ namespace Microsoft.Azure.Commands.Network
                     var virtualNetworkGatewayConnectionSharedKey = ResetVirtualNetworkGatewayConnectionSharedKey();
                     WriteObject(virtualNetworkGatewayConnectionSharedKey);
                 },
-                () => present);        }
+                () => present);
+        }
 
         private string ResetVirtualNetworkGatewayConnectionSharedKey()
         {

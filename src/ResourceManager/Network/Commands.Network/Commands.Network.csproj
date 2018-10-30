@@ -95,6 +95,16 @@
     <Compile Include="ApplicationGateway\ConnectionDraining\NewAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\RemoveAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\SetAzureApplicationGatewayConnectionDrainingCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\AddAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\AddAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\AzureCustomErrorBase.cs" />
+    <Compile Include="ApplicationGateway\CustomError\GetAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\GetAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\NewAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\RemoveAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\RemoveAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\SetAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\SetAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\AzureApplicationGatewayWebApplicationFirewallConfigurationBase.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
@@ -378,6 +388,7 @@
     <Compile Include="InterfaceEndpoint\GetAzureInterfaceEndpointCommand.cs" />
     <Compile Include="Models\PSApplicationGatewayFirewallExclusion.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallFqdnTag.cs" />
+    <Compile Include="Models\PSApplicationGatewayCustomError.cs" />
     <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
     <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />
@@ -790,4 +801,3 @@
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>
-

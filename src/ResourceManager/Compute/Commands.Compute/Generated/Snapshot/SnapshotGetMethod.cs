@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceNameCompleter("Microsoft.Compute/snapshots", "ResourceGroupName")]
         [Alias("Name")]
         public string SnapshotName { get; set; }
     }

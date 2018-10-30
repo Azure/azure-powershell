@@ -125,11 +125,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     NodeTypes = cluster.NodeTypes
                 };
 
-                var patchTask = PatchAsync(patchArg);
+                var psCluster = SendPatchRequest(patchArg);
 
-                WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask, patchTask }, true, this.NodeType);
+                WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask }, false, this.NodeType);
 
-                var psCluster = new PSCluster(patchTask.Result);
                 WriteObject(psCluster, true);
             }
         }

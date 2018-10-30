@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNotFound()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NotFound");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestInvalidName()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-InvalidName");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestDuplicateResource()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-DuplicateResource");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestIntersectAddressSpace()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-IntersectAddressSpace");

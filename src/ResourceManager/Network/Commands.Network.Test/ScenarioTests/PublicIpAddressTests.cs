@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDPublicIPPrefix()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-PublicIPPrefix");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDNoDomainNameLabel()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-NoDomainNameLabel");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDStaticAllocation()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-StaticAllocation");
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDEditDomainNameLavel()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-EditDomainNameLavel");
@@ -71,7 +71,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDReverseFqdn()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-ReverseFqdn");
@@ -79,7 +79,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDIpTag()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-IpTag");
@@ -87,7 +87,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressIpVersion()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressIpVersion");
@@ -95,7 +95,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressVmss()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressVmss");
@@ -103,7 +103,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpBasicSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-BasicSku");
@@ -111,7 +111,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-StandardSku");
@@ -119,7 +119,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressZones()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressZones");

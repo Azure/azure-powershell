@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -125,6 +125,15 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Remove-AzApplicationGatewayHttpListener', 
     'Set-AzApplicationGatewayHttpListener', 
     'New-AzApplicationGateway', 
+    'New-AzApplicationGatewayCustomError', 
+    'Add-AzApplicationGatewayCustomError', 
+    'Get-AzApplicationGatewayCustomError', 
+    'Remove-AzApplicationGatewayCustomError', 
+    'Set-AzApplicationGatewayCustomError', 
+    'Add-AzApplicationGatewayHttpListenerCustomError', 
+    'Get-AzApplicationGatewayHttpListenerCustomError', 
+    'Remove-AzApplicationGatewayHttpListenerCustomError', 
+    'Set-AzApplicationGatewayHttpListenerCustomError', 
     'New-AzApplicationGatewayPathRuleConfig', 
     'Add-AzApplicationGatewayProbeConfig', 
     'Get-AzApplicationGatewayProbeConfig', 
