@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Peering with the specified name does not exist");
             }
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (string.Equals(ParameterSetName, ParamSetByRouteFilter))
             {
                 if (this.RouteFilter != null)
                 {

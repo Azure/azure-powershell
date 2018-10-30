@@ -180,6 +180,10 @@
         {
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
+		},
+		{
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json",
+            "_justification": "Legitimate test session record"
         },
 		    {
             "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json",
@@ -720,6 +724,10 @@
         {
             "file": "\\src\\ResourceManager\\ApplicationInsights\\Commands.ApplicationInsights.Test\\SessionRecords\\Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests.PricingAndDailyCapTests\\TestSetAppInsightsDailyCap.json",
             "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Automation\\Commands.Automation\\Microsoft.WindowsAzure.Commands.Automation.dll-help.xml",
+            "_justification": "Module example help information using fake passwords"
         }
     ]
 }
