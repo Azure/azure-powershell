@@ -109,8 +109,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -109,9 +109,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update SignalR SDK version to 0.10.0-preview
-* Update SKU names to Free_F1 and Standard_S1
-* Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.'
+        ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
         # Prerelease string of this module
         # Prerelease = ''

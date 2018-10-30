@@ -107,7 +107,7 @@
                 # IconUri = ''
 
                 # ReleaseNotes of this module
-                ReleaseNotes = 'Initial Release'
+                ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
                 # Prerelease string of this module
                 # Prerelease = ''
