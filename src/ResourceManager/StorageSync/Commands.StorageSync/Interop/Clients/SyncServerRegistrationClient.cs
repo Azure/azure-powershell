@@ -136,7 +136,8 @@ namespace Commands.StorageSync.Interop.Clients
             string syncServerId;
             hr = this.EcsManagementInteropClient.GetSyncServerId(out syncServerId);
             //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:GetSyncServerId HRESULT: {hr}");
-            if(!Guid.TryParse(syncServerId, out Guid serverGuid))
+            bool hasServerGuid = Guid.TryParse(syncServerId, out Guid serverGuid);
+            if (!hasServerGuid)
             {
                 throw new ArgumentException(nameof(serverGuid));
             }
@@ -226,7 +227,8 @@ namespace Commands.StorageSync.Interop.Clients
 
             if (isInCluster)
             {
-                if(!Guid.TryParse(clusterId, out Guid clusterGuid))
+                bool clusterGuidValue = Guid.TryParse(clusterId, out Guid clusterGuid);
+                if (!clusterGuidValue)
                 {
                     throw new ArgumentException(nameof(clusterId));
                 }
@@ -253,12 +255,14 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>success status</returns>
         public override bool Persist(RegisteredServer registeredServerResource, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
-            if (!Guid.TryParse(registeredServerResource.StorageSyncServiceUid, out Guid storageSyncServiceUid))
+            bool hasStorageSyncServiceUid = Guid.TryParse(registeredServerResource.StorageSyncServiceUid, out Guid storageSyncServiceUid);
+            if (!hasStorageSyncServiceUid)
             {
                 throw new ArgumentException(nameof(registeredServerResource.StorageSyncServiceUid));
             }
 
-            if (!Enum.TryParse(registeredServerResource.ServerRole, out ServerRoleType serverRole))
+            bool hasServerRole = Enum.TryParse(registeredServerResource.ServerRole, out ServerRoleType serverRole);
+            if (!hasServerRole)
             {
                 throw new ArgumentException(nameof(registeredServerResource.ServerRole));
             }
