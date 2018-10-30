@@ -938,15 +938,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account location should be same as vault location.
-        /// </summary>
-        public static string RestoreDiskIncorrectRegion {
-            get {
-                return ResourceManager.GetString("RestoreDiskIncorrectRegion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Found more than one StorageAccount with same name. Some thing went wrong.
         /// </summary>
         public static string RestoreDiskMoreThanOneAccFound {
@@ -1078,6 +1069,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string TriggerEnquiryFailureErrorCode {
             get {
                 return ResourceManager.GetString("TriggerEnquiryFailureErrorCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account location should be same as vault location.
+        /// </summary>
+        public static string TriggerRestoreIncorrectRegion {
+            get {
+                return ResourceManager.GetString("TriggerRestoreIncorrectRegion", resourceCulture);
             }
         }
         
