@@ -26,7 +26,6 @@
 
 # Automation account information
 $resourceGroupName = "frangom-test"
-$subscriptionId = "52d8cf1b-bcac-493a-bbae-f234b5ff38b0"
 $automationAccountName = "frangom-sdkCmdlet-tests"
 
 #region Helper functions
@@ -75,27 +74,15 @@ function WaitForSourceControlSyncJobState
         $ExpectedState
     )
 
-    $state = ""
-    $waitTimeInSeconds = 5
-    $retries = 20
+    $waitTimeInSeconds = 2
+    $retries = 40
+    $jobCompleted = Retry-Function {
+        return (Get-AzureRmAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
+                                                          -AutomationAccountName $automationAccountName  `
+                                                          -Name $Name `
+                                                          -JobId $JobId).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
 
-    do
-    {
-        $syncJob = Get-AzureRmAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
-                                                             -AutomationAccountName $automationAccountName  `
-                                                             -Name $Name `
-                                                             -JobId $JobId
-
-        $state = $syncJob.ProvisioningState
-        Write-Output "Source control sync job Provisioning state: $state"
-
-        # Wait for 5 seconds and try again
-        sleep -Seconds 5
-        $retries--
-
-    } while ($state -ne $ExpectedState -and $retries -gt 0) 
-
-    Assert-True {$retries -gt 0} "Timeout waiting for provisioning state to reach '$ExpectedState'"
+    Assert-True {$jobCompleted -gt 0} "Timeout waiting for provisioning state to reach '$ExpectedState'"
 }
 
 #endregion
