@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -219,7 +219,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
+        ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
         # Prerelease string of this module
         # Prerelease = ''
