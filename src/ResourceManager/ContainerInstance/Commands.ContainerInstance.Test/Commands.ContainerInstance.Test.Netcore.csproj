@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.3-preview" />
   </ItemGroup>
 
   <ItemGroup>

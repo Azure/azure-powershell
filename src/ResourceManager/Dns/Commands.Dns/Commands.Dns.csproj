@@ -93,7 +93,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Dns">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.3.0.0\lib\net452\Microsoft.Azure.Management.Dns.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.3.0.1\lib\net452\Microsoft.Azure.Management.Dns.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration.Install" />
   </ItemGroup>
