@@ -25,8 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
   </ItemGroup>
 
   <ItemGroup>

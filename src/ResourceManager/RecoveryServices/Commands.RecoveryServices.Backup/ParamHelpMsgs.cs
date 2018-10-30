@@ -110,8 +110,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
+        }
+
+        internal static class RestoreVM
+        {
             public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
+        }
+
+        internal static class RestoreFS
+        {
+            public const string SourceFilePath = "Used for a particular item restore from a file share. The path of the item to be restored within the file share.";
+            public const string SourceFileType = "Whether the item to be restored is a file or a folder";
+            public const string ResolveConflict = "In case the restored item also exists in the destination, use this to indicate whether to overwrite or not.";
+            public const string TargetStorageAccountName = "The storage account to which the file share has to be restored to.";
+            public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
+            public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
+
         }
 
         internal static class ProtectionCheck
