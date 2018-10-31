@@ -142,3 +142,14 @@ function Test-SetModule {
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
 }
+
+<#
+Test-RemoveModule
+#>
+function Test-RemoveModule {
+	EnsureTestModuleImported
+
+	$output = Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+
+	Assert-Null $output
+}
