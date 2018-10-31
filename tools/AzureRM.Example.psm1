@@ -9,11 +9,18 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
-if (Test-Path -Path "$PSScriptRoot\StartupScripts")
+try
 {
-    Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
-        . $_.FullName
+    if (Test-Path -Path "$PSScriptRoot\StartupScripts")
+    {
+        Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
+            . $_.FullName
+        }
     }
+}
+catch
+{
+    throw "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
 }
 
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
