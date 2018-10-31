@@ -24,7 +24,7 @@ function EnsureTestModuleImported {
 		$timeout = New-TimeSpan -Minutes 2
 		$endTime = $startTime + $timeout
 
-        while ($output.ProvisioningState -ne 'Created') {
+        while ($output.ProvisioningState -ne 'Succeeded') {
             Start-Sleep -Seconds 10
             $output = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount
 
