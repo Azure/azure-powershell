@@ -33,6 +33,7 @@ function EventSubscriptionTests_CustomTopic {
     Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
     Write-Debug "Topic: $topicName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
@@ -43,8 +44,6 @@ function EventSubscriptionTests_CustomTopic {
     $AdvFilter3=@{operator="NumberLessThan"; key="Data.Key12"; Value=5.12} 
     $AdvFilter4=@{operator="BoolEquals"; key="Data.Key6"; Value=$false}
     $AdvFilter5=@{operator="StringBeginsWith"; key="Subject"; Values=@("string3","string4")}
-
-    Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
     $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName

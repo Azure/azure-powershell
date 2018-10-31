@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = DomainNameParameterSet)]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = EventGridConstants.DomainLocationHelp,
             ParameterSetName = DomainNameParameterSet)]

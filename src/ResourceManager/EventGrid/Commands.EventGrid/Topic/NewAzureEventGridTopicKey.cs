@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.TopicNameHelp)]
@@ -45,19 +45,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.KeyNameHelp)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
