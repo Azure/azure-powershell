@@ -633,8 +633,5 @@ function Get-Location
 function Normalize-Location
 {
     param([string]$location)
-    $outputLocation = $location.ToLower()
-    $outputLocation = $outputLocation -replace '\s', ''
-    $outputLocation = $outputLocation -replace '-', ''
-    return $outputLocation -replace '_', ''
+    return $location.ToLower() -replace '[^a-z0-9]'
 }
