@@ -126,8 +126,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.FrontDoor, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.FrontDoor.0.9.0-preview\lib\net452\Microsoft.Azure.Management.FrontDoor.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.FrontDoor, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.FrontDoor.0.10.0-preview\lib\net452\Microsoft.Azure.Management.FrontDoor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
