@@ -20,6 +20,7 @@
 ## Current Release
 * Fix for https://github.com/Azure/azure-powershell/issues/7402
     - Allow listing resources using the `-ResourceId` parameter for `Get-AzureRmResource`
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 6.7.0
 * Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to `RoleDefinitionNameParameterSet`.

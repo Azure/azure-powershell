@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 5.7.2
 * Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
