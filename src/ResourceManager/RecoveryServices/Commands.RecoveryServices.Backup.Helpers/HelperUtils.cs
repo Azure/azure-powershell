@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using ResourceManagerModel = Microsoft.Azure.Management.Internal.Resources.Models;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -301,6 +302,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static List<T> GetPagedList<T>(
             Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
             where T : ServiceClientModel.Resource
+        {
+            var resources = new List<T>();
+            string nextLink = null;
+
+            var pagedResources = listResources();
+
+            foreach (var pagedResource in pagedResources)
+            {
+                resources.Add(pagedResource);
+            }
+
+            nextLink = pagedResources.NextPageLink;
+
+            while (!string.IsNullOrEmpty(nextLink))
+            {
+                pagedResources = listNext(nextLink);
+                nextLink = pagedResources.NextPageLink;
+
+                foreach (var pagedResource in pagedResources)
+                {
+                    resources.Add(pagedResource);
+                }
+            }
+
+            return resources;
+        }
+
+        public static List<T> GetPagedRMList<T>(
+            Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
+            where T : ResourceManagerModel.Resource
         {
             var resources = new List<T>();
             string nextLink = null;
