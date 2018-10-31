@@ -27,6 +27,7 @@ function EnsureTestModuleImported {
 
     if (-not $foundModule) {
         $output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
+		Write-Verbose "Module $($testNonGlobalModule.Name) provisioning state: $($output.ProvisioningState)"
 
 		$startTime = Get-Date
 		$timeout = New-TimeSpan -Minutes 3
@@ -35,6 +36,7 @@ function EnsureTestModuleImported {
         while ($output.ProvisioningState -ne 'Succeeded') {
             Start-Sleep -Seconds 10
             $output = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount
+			Write-Verbose "Module $($testNonGlobalModule.Name) provisioning state: $($output.ProvisioningState)"
 
 			if ((Get-Date) -gt $endTime) {
 				throw "Module $($testNonGlobalModule.Name) took longer than $timeout to import"
