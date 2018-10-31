@@ -161,12 +161,14 @@ Tests New Parameter for EventHub Namespace Create List Remove operations.
 function NamespaceTests
 {
     # Setup    
-    $location = Get-Location
+    $location = Get-Location	
+	$locationKafka = "westus"
 	$namespaceName = getAssetName "Eventhub-Namespace1-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
     $resourceGroupName = getAssetName "RGName1-"
 	$secondResourceGroup = getAssetName "RGName2-"
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
+
 
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
