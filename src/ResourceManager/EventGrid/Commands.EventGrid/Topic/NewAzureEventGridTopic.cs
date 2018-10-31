@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = EventGridConstants.TopicLocationHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputSchemaHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingFieldHelp,
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable InputMappingField { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable InputMappingDefaultValue { get; set; }

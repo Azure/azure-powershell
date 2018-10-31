@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     public class RemoveAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]

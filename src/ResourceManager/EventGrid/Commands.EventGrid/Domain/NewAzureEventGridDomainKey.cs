@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = DomainInputObjectParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]

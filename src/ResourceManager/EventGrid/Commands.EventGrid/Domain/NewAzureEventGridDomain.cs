@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainNameParameterSet)]
@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputSchemaHelp,
             ParameterSetName = DomainNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -85,14 +85,14 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingFieldHelp,
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingField { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingDefaultValue { get; set; }
