@@ -33,18 +33,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="storageAccountType">Type of the storage account where to restore the disk</param>
         /// <returns>Job created by this operation</returns>
         public RestAzureNS.AzureOperationResponse RestoreDisk(
-            AzureVmRecoveryPoint rp,
-            string storageAccountId,
+            AzureRecoveryPoint rp,
             string storageAccountLocation,
-            string storageAccountType,
-            string targetResourceGroupName,
-            bool osaOption,
+            RestoreRequestResource triggerRestoreRequest,
             string vaultName = null,
             string resourceGroupName = null,
             string vaultLocation = null)
         {
-            var useOsa = ShouldUseOsa(rp, osaOption);
-
             vaultLocation = vaultLocation ?? BmsAdapter.GetResourceLocation();
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -53,39 +48,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             //validtion block
             if (storageAccountLocation != vaultLocation)
             {
-                throw new Exception(Resources.RestoreDiskIncorrectRegion);
+                throw new Exception(Resources.TriggerRestoreIncorrectRegion);
             }
-
-            string vmType = containerUri.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase)
-                ? "Classic" : "Compute";
-            string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts",
-                StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
-            if (vmType != strType)
-            {
-                throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
-            }
-
-            if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
-            {
-                Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
-            }
-
-            IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
-            {
-                CreateNewCloudService = false,
-                RecoveryPointId = recoveryPointId,
-                RecoveryType = RecoveryType.RestoreDisks,
-                Region = vaultLocation,
-                StorageAccountId = storageAccountId,
-                SourceResourceId = rp.SourceResourceId,
-                TargetResourceGroupId = targetResourceGroupName != null ?
-                    "/subscriptions/" + BmsAdapter.Client.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
-                    null,
-                OriginalStorageAccountOption = useOsa,
-            };
-
-            RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
-            triggerRestoreRequest.Properties = restoreRequest;
 
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
@@ -98,24 +62,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
-        }
-
-        private bool ShouldUseOsa(AzureVmRecoveryPoint rp, bool osaOption)
-        {
-            bool useOsa = false;
-            if (osaOption)
-            {
-                if (rp.OriginalSAEnabled)
-                {
-                    useOsa = true;
-                }
-                else
-                {
-                    throw new Exception("This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.");
-                }
-            }
-
-            return useOsa;
         }
     }
 }

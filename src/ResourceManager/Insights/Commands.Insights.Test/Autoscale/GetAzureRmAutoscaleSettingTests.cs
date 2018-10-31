@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleSettingCommand()
             {

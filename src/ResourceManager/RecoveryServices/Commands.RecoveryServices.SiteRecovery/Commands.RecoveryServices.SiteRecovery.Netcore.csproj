@@ -29,8 +29,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="1.2.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="1.2.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

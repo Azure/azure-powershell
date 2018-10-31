@@ -832,5 +832,19 @@ namespace StaticAnalysis.Test
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParameterReplacedByAlias()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-ParameterReplacedByAlias", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
     }
 }
