@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMT9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "40124a62-45a1-404d-8594-cf7b1dc95d16"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://eus2-agentservice-prod-1.azure-automation.net/accounts/70c03a7a-1ee5-4c33-972c-b84fe0b1b31f\",\r\n    \"creationTime\": \"2018-10-18T16:39:00.267-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-10-30T11:07:37.56-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "579"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-automation-accountid": [
+          "70c03a7a-1ee5-4c33-972c-b84fe0b1b31f"
+        ],
+        "x-ms-request-id": [
+          "40124a62-45a1-404d-8594-cf7b1dc95d16"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "80975baf-5971-499d-924b-8ae7cfd6fb60"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181030T182334Z:80975baf-5971-499d-924b-8ae7cfd6fb60"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 30 Oct 2018 18:23:34 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}

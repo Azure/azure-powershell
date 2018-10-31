@@ -16,8 +16,10 @@ using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
@@ -30,8 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         private RemoveAzureAutomationConnection cmdlet;
 
-        [TestInitialize]
-        public void SetupTest()
+        public RemoveAzureAutomationConnectionTest()
         {
             this.mockAutomationClient = new Mock<IAutomationPSClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             };
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureAutomationConnectionByNameSuccessfull()
         {
             // Setup

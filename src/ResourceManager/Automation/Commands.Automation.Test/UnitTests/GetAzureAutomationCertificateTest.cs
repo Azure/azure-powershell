@@ -17,10 +17,12 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
@@ -33,8 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         private GetAzureAutomationCertificate cmdlet;
 
-        [TestInitialize]
-        public void SetupTest()
+        public GetAzureAutomationCertificateTest()
         {
             this.mockAutomationClient = new Mock<IAutomationPSClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             };
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationCertificateByNameSuccessfull()
         {
             // Setup
@@ -66,7 +68,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient.Verify(f => f.GetCertificate(resourceGroupName, accountName, certificateName), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationCertificateByAllSuccessfull()
         {
             // Setup

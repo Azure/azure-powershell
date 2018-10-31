@@ -17,11 +17,14 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System;
 using System.Collections.Generic;
+using Xunit;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
@@ -32,6 +35,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         private MockCommandRuntime mockCommandRuntime;
 
         private GetAzureAutomationScheduledRunbook cmdlet;
+
+        public GetAzureAutomationScheduledRunbookTest()
+        {
+            this.mockAutomationClient = new Mock<IAutomationPSClient>();
+            this.mockCommandRuntime = new MockCommandRuntime();
+            this.cmdlet = new GetAzureAutomationScheduledRunbook
+            {
+                AutomationClient = this.mockAutomationClient.Object,
+                CommandRuntime = this.mockCommandRuntime
+            };
+        }
 
         [TestInitialize]
         public void SetupTest()
@@ -45,7 +59,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             };
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationScheduledRunbookByIdSuccessfull()
         {
             // Setup
@@ -66,7 +81,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient.Verify(f => f.GetJobSchedule(resourceGroupName, accountName, jobScheduleId), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationScheduledRunbookByrunbookNameAndScheduleNameSuccessfull()
         {
             // Setup
@@ -89,7 +105,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient.Verify(f => f.GetJobSchedule(resourceGroupName, accountName, runbookName, scheduleName), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationScheduledRunbookByRunbookNameSuccessfull()
         {
             // Setup
@@ -111,7 +128,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient.Verify(f => f.ListJobSchedules(resourceGroupName, accountName, ref nextLink), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationScheduledRunbookByScheduleNameSuccessfull()
         {
             // Setup
@@ -133,7 +151,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient.Verify(f => f.ListJobSchedules(resourceGroupName, accountName, ref nextLink), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationScheduledRunbookByAllSuccessfull()
         {
             // Setup

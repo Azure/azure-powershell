@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" /> 
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Azure.Management.Automation">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.4.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
@@ -60,7 +60,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
+    <Compile Include="ScenarioTests\CertificateTests.cs" />
+    <Compile Include="ScenarioTests\ConnectionTests.cs" />
+    <Compile Include="ScenarioTests\CredentialTests.cs" />
+    <Compile Include="ScenarioTests\JobScheduleTests.cs" />
+    <Compile Include="ScenarioTests\ScheduleTests.cs" />
     <Compile Include="ScenarioTests\UpdateManagement\UpdateManagementTests.cs" />
+    <Compile Include="ScenarioTests\VariableTests.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
@@ -121,8 +127,22 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="ScenarioTests\AutomationTestCommon.ps1" />
     <None Include="ScenarioTests\AutomationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\CertificateTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Common.ps1" />
+    <None Include="ScenarioTests\ConnectionTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\CredentialTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\JobScheduleTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Resources\fastjob.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -143,7 +163,19 @@
     <None Include="ScenarioTests\Resources\Write-DebugAndVerboseOutput.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ScheduleTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\sdkTestCert.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\sdkTestCert2.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\UpdateManagement\UpdateManagementTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\VariableTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxWeeklySUC.json" />
