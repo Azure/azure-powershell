@@ -71,13 +71,15 @@
     <None Include="help\Remove-AzureRmIotCentralApp.md" />
     <None Include="help\Set-AzureRmIotCentralApp.md" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.IotCentral, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.IotCentral, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotCentral.1.0.0\lib\net452\Microsoft.Azure.Management.IotCentral.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotCentral.2.0.0\lib\net452\Microsoft.Azure.Management.IotCentral.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime" />
   </ItemGroup>
