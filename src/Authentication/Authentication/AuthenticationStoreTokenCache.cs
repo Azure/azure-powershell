@@ -17,7 +17,11 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Threading;
 
+#if NETSTANDARD
 namespace Microsoft.Azure.Commands.Common.Authentication
+#else
+namespace Microsoft.Azure.Commands.Common.Authentication.Desktop
+#endif
 {
     [Serializable]
     public class AuthenticationStoreTokenCache : TokenCache, IAzureTokenCache, IDisposable

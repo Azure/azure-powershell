@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#endif
+
 using System;
 using System.Threading;
 

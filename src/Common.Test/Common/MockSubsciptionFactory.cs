@@ -23,6 +23,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#endif
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {

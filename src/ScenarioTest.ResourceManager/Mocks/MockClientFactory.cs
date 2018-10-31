@@ -33,6 +33,9 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#endif
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {

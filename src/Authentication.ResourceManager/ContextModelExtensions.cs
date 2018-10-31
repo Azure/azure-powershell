@@ -15,6 +15,9 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Linq;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {

@@ -14,6 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
