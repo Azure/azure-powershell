@@ -113,7 +113,9 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="StartupScripts\*.ps1" />
+    <None Include="StartupScripts\AzureRmError.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

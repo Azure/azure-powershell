@@ -9,6 +9,13 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
+if (Test-Path -Path "$PSScriptRoot\StartupScripts")
+{
+    Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
+        . $_.FullName
+    }
+}
+
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
 if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath))
 {
@@ -41,13 +48,6 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath))
 
 
 %IMPORTED-DEPENDENCIES%
-
-if (Test-Path -Path "$PSScriptRoot\StartupScripts")
-{
-    Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
-        . $_.FullName
-    }
-}
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 
