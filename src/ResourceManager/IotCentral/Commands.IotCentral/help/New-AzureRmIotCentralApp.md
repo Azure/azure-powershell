@@ -168,7 +168,7 @@ Pricing tier for IoT Central applications.
 Default value is S1.
 
 ```yaml
-Type: PSIotCentralAppSku
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: S1
@@ -264,8 +264,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
-### System.Nullable`1[[Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSku, Microsoft.Azure.Commands.IotCentral, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Collections.Hashtable
 

@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Set to receive boolean success output from Cmdlet.
 
 ```yaml
 Type: SwitchParameter
