@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.LocationBasedServices" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.LocationBasedServices" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
