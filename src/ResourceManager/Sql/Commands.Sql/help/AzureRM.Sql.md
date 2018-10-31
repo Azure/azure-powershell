@@ -140,6 +140,9 @@ Gets elastic pool recommendations.
 ### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
+### [Get-AzureRmSqlInstanceDatabase](Get-AzureRmSqlInstanceDatabase.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
 
@@ -245,6 +248,9 @@ Creates a secondary database for an existing database and starts data replicatio
 ### [New-AzureRmSqlElasticPool](New-AzureRmSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
+### [New-AzureRmSqlInstanceDatabase](New-AzureRmSqlInstanceDatabase.md)
+{{Fill in the Synopsis}}
+
 ### [New-AzureRmSqlServer](New-AzureRmSqlServer.md)
 Creates a SQL Database server.
 
@@ -305,6 +311,9 @@ Removes the threat detection policy from a database.
 ### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
 Deletes an elastic database pool.
 
+### [Remove-AzureRmSqlInstanceDatabase](Remove-AzureRmSqlInstanceDatabase.md)
+{{Fill in the Synopsis}}
+
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
 
@@ -346,6 +355,9 @@ Removes an Azure SQL Database Sync Member.
 
 ### [Restore-AzureRmSqlDatabase](Restore-AzureRmSqlDatabase.md)
 Restores a SQL database.
+
+### [Restore-AzureRmSqlInstanceDatabase](Restore-AzureRmSqlInstanceDatabase.md)
+{{Fill in the Synopsis}}
 
 ### [Resume-AzureRmSqlDatabase](Resume-AzureRmSqlDatabase.md)
 Resumes a SQL Data Warehouse database.

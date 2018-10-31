@@ -21,36 +21,36 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabase",
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
         DefaultParameterSetName = GetByNameAndResourceGroupParameterSet),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class GetAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {
         protected const string GetByNameAndResourceGroupParameterSet =
-            "GetManagedDatabaseFromInputParameters";
+            "GetInstanceDatabaseFromInputParameters";
 
         protected const string GetByResourceIdParameterSet =
-            "GetManagedDatabaseFromAzureResourceId";
+            "GetInstanceDatabaseFromAzureResourceId";
 
         protected const string GetByInputObjectParameterSet =
-            "GetManagedDatabaseFromManagedInstanceObject";
+            "GetInstanceDatabaseFromManagedInstanceObject";
 
         /// <summary>
-        /// Gets or sets the name of the managed database to use.
+        /// Gets or sets the name of the instance database to use.
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Managed Database to retrieve.")]
+            HelpMessage = "The name of the Azure SQL Instance Database to retrieve.")]
         [Parameter(ParameterSetName = GetByResourceIdParameterSet,
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Managed Database to retrieve.")]
+            HelpMessage = "The name of the Azure SQL Instance Database to retrieve.")]
         [Parameter(ParameterSetName = GetByInputObjectParameterSet,
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Managed Database to retrieve.")]
-        [Alias("ManagedDatabaseName")]
+            HelpMessage = "The name of the Azure SQL Instance Database to retrieve.")]
+        [Alias("InstanceDatabaseName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureSqlManagedInstanceModel object to use for getting Managed database")]
+            HelpMessage = "The AzureSqlManagedInstanceModel object to use for getting Instance database")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel ManagedInstanceObject { get; set; }
 

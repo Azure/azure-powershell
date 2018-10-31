@@ -26,28 +26,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Managed Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabase",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
         DefaultParameterSetName = CreateNewByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class NewAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
         protected const string CreateNewByNameAndResourceGroupParameterSet =
-            "CreateNewManagedDatabaseFromInputParameters";
+            "CreateNewInstanceDatabaseFromInputParameters";
 
         protected const string CreateNewByInputObjectParameterSet =
-            "CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string CreateNewByResourceIdParameterSet =
-            "CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId";
+            "CreateNewInstanceDatabaseFromAzureSqlManagedInstanceResourceId";
 
         /// <summary>
         /// Gets or sets the name of the managed database to create.
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Managed Database to create.")]
-        [Alias("ManagedDatabaseName")]
+            HelpMessage = "The name of the Azure SQL Instance Database to create.")]
+        [Alias("InstanceDatabaseName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the name of the Azure SQL Managed Database collation to use
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The collation of the Azure SQL Managed Database collation to use.")]
+            HelpMessage = "The collation of the Azure SQL Instance Database collation to use.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("SQL_Latin1_General_CP1_CI_AS", "Latin1_General_100_CS_AS_SC")]
         public string Collation { get; set; }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the tags associated with the Azure Sql Managed Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Managed Database")]
+            HelpMessage = "The tags to associate with the Azure Sql Instance Database")]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             // The managed database already exists
             throw new PSArgumentException(
                 string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.Name, this.ManagedInstanceName),
-                "ManagedDatabaseName");
+                "InstanceDatabaseName");
         }
 
         /// <summary>

@@ -1,43 +1,43 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlmanageddatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlManagedDatabase
+# Get-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
 Gets one or more managed databases.
 
 ## SYNTAX
 
-### GetManagedDatabaseFromInputParameters
+### GetInstanceDatabaseFromInputParameters (Default)
 ```
-Get-AzureRmSqlManagedDatabase [[-Name] <String>] [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetManagedDatabaseFromAzureResourceId
+### GetInstanceDatabaseFromAzureResourceId
 ```
-Get-AzureRmSqlManagedDatabase [[-Name] <String>] -ManagedInstanceResourceId <String>
+Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-ManagedInstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetManagedDatabaseFromManagedInstanceObject
+### GetInstanceDatabaseFromManagedInstanceObject
 ```
-Get-AzureRmSqlManagedDatabase [[-Name] <String>] -ManagedInstanceObject <AzureSqlManagedInstanceModel>
+Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-ManagedInstanceObject] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlManagedDatabase** cmdlet gets one or more Azure SQL Managed databases from an Azure SQL Database Managed Instance.
+The **Get-AzureRmSqlInstanceDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Database Managed Instance.
 
 ## EXAMPLES
 
 ### Example 1: Get all databases on a Managed instance
 ```
-PS C:\>Get-AzureRmSqlManagedDatabase -ManagedInstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
+PS C:\>Get-AzureRmSqlInstanceDatabase -ManagedInstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -81,7 +81,7 @@ This command gets all databases on the managed instance named managedInstance1.
 
 ### Example 2: Get a database by name on a Managed instance
 ```
-PS C:\>Get-AzureRmSqlManagedDatabase -Name "managedDatabase1" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzureRmSqlInstanceDatabase -Name "managedDatabase1" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -126,7 +126,7 @@ The Azure Sql Managed Instance name.
 
 ```yaml
 Type: String
-Parameter Sets: GetManagedDatabaseFromInputParameters
+Parameter Sets: GetInstanceDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -137,15 +137,15 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedInstanceObject
-The AzureSqlManagedInstanceModel object to use for getting Managed database
+The AzureSqlManagedInstanceModel object to use for getting Instance database
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
-Parameter Sets: GetManagedDatabaseFromManagedInstanceObject
+Parameter Sets: GetInstanceDatabaseFromManagedInstanceObject
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -156,23 +156,23 @@ The resource id of Managed Instance object to get
 
 ```yaml
 Type: String
-Parameter Sets: GetManagedDatabaseFromAzureResourceId
+Parameter Sets: GetInstanceDatabaseFromAzureResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL Managed Database to retrieve.
+The name of the Azure SQL Instance Database to retrieve.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ManagedDatabaseName
+Aliases: InstanceDatabaseName
 
 Required: False
 Position: 0
@@ -186,7 +186,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: GetManagedDatabaseFromInputParameters
+Parameter Sets: GetInstanceDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -197,19 +197,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-
 
 ## NOTES
 

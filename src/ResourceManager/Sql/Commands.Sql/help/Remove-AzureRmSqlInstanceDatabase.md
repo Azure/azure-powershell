@@ -1,46 +1,47 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlmanageddatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlManagedDatabase
+# Remove-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
-Removes an Azure SQL Managed database.
+Removes an Azure SQL Managed instance database.
 
 ## SYNTAX
 
-### RemoveManagedDatabaseFromInputParameters
+### RemoveInstanceDatabaseFromInputParameters (Default)
 ```
-Remove-AzureRmSqlManagedDatabase [-Name] <String> [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmSqlInstanceDatabase [-Name] <String> [-ManagedInstanceName] <String>
+ [-ResourceGroupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### RemoveManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
+### RemoveInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Remove-AzureRmSqlManagedDatabase -InputObject <AzureSqlManagedDatabaseModel> [-Force]
+Remove-AzureRmSqlInstanceDatabase [-InputObject] <AzureSqlManagedDatabaseModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveManagedDatabaseFromAzureResourceId
+### RemoveInstanceDatabaseFromAzureResourceId
 ```
-Remove-AzureRmSqlManagedDatabase -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzureRmSqlInstanceDatabase [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlManagedDatabase** cmdlet removes an Azure SQL Managed database.
+The **Remove-AzureRmSqlInstanceDatabase** cmdlet removes an Azure SQL Managed Instance database.
 
 ## EXAMPLES
 
 ### Example 1: Remove a database from an Azure SQL Managed instance
 ```
-PS C:\>Remove-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzureRmSqlInstanceDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
-This command removes the managed database named Database01 from managed instance managedInstance1.
+This command removes the database named Database01 from managed instance managedInstance1.
 
 ## PARAMETERS
 
@@ -75,15 +76,15 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Managed Database object to remove
+The Instance Database object to remove
 
 ```yaml
 Type: AzureSqlManagedDatabaseModel
-Parameter Sets: RemoveManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
-Aliases: ManagedDatabase
+Parameter Sets: RemoveInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
+Aliases: InstanceDatabase
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -94,7 +95,7 @@ The Azure Sql Managed Instance name.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveManagedDatabaseFromInputParameters
+Parameter Sets: RemoveInstanceDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -105,12 +106,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL Managed Database to remove.
+The name of the Azure SQL Instance Database to remove.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveManagedDatabaseFromInputParameters
-Aliases: ManagedDatabaseName
+Parameter Sets: RemoveInstanceDatabaseFromInputParameters
+Aliases: InstanceDatabaseName
 
 Required: True
 Position: 0
@@ -124,7 +125,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveManagedDatabaseFromInputParameters
+Parameter Sets: RemoveInstanceDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -135,15 +136,15 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of Managed Database object to remove
+The resource id of Instance Database object to remove
 
 ```yaml
 Type: String
-Parameter Sets: RemoveManagedDatabaseFromAzureResourceId
+Parameter Sets: RemoveInstanceDatabaseFromAzureResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -181,19 +182,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-
 
 ## NOTES
 
