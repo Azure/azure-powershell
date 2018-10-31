@@ -87,7 +87,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.Azure.Commands.Profile.types.ps1xml'
+TypesToProcess = '.\Microsoft.Azure.Commands.Profile.Desktop.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
