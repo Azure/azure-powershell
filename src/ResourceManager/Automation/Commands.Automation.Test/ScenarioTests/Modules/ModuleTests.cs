@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
-        public void FirstModuleTest()
+        public void GetAllModulesInAutomationAccount()
         {
-            RunPowerShellTest(logger, "Test-FirstModuleTest");
+            RunPowerShellTest(logger, "Test-GetAllModulesInAutomationAccount");
         }
     }
 }
