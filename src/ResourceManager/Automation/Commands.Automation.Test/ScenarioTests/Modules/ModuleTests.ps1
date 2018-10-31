@@ -11,9 +11,9 @@ $testGlobalModule = @{
 }
 
 $testNonGlobalModule = @{
-    Name = 'AzureRM.profile'
-	Version = '5.4.0'
-    ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/azurerm.profile.5.4.0.nupkg'
+    Name = 'Pester'
+	Version = '3.0.3'
+    ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg'
 }
 
 function EnsureTestModuleImported {
