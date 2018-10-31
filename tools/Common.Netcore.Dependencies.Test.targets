@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.1" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" >
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.5" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.1" >
@@ -35,8 +35,7 @@
       <HintPath>$(windir)\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
     <PackageReference Include="Microsoft.Azure.PowerShell.Storage.TestPrerequisites" Version="*" IncludeAssets="All" PrivateAssets="none" Condition="'$(UseStorageDataPlane)' == 'true'"/>
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" Condition="'$(UseStorageDataPlane)' != 'true'"/>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" Condition="'$(UseStorageDataPlane)' == 'true'"/>
+    <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">

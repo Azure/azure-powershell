@@ -364,6 +364,36 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
 
 <#
 .SYNOPSIS
+Test Get-AzureRmCognitiveServicesAccountType
+#>
+function Test-GetAzureRmCognitiveServicesAccountType
+{
+    try
+    {
+        $typeName = (Get-AzureRmCognitiveServicesAccountType -TypeName 'Face');
+        Assert-AreEqual 'Face' $typeName
+
+        $typeName = (Get-AzureRmCognitiveServicesAccountType -TypeName 'InvalidKind');
+        Assert-Null $typeName
+		
+		$typeNames = (Get-AzureRmCognitiveServicesAccountType -Location 'westus');
+        Assert-True {$typeNames.Contains('Face')}
+
+		$typeNames = (Get-AzureRmCognitiveServicesAccountType);
+        Assert-True {$typeNames.Contains('Face')}
+
+		$typeNames = (Get-AzureRmCognitiveServicesAccountType -Location 'global');
+        Assert-False {$typeNames.Contains('Face')}
+        Assert-True {$typeNames.Contains('Bing.Search.v7')}
+    }
+    finally
+    {
+    }
+}
+
+
+<#
+.SYNOPSIS
 Test Get-AzureRmCognitiveServicesAccount | Get-AzureRmCognitiveServicesAccountKey
 #>
 function Test-PipingGetAccountToGetKey
