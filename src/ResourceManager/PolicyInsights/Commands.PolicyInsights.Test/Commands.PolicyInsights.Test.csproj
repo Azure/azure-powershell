@@ -41,14 +41,15 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.PolicyInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.PolicyInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PolicyInsights.1.0.0\lib\net452\Microsoft.Azure.Management.PolicyInsights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PolicyInsights.2.0.1\lib\net452\Microsoft.Azure.Management.PolicyInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\RemediationTests.cs" />
     <Compile Include="ScenarioTests\QueryOptionTests.cs" />
     <Compile Include="ScenarioTests\PolicyStateTests.cs" />
     <Compile Include="ScenarioTests\PolicyStateSummaryTests.cs" />
@@ -67,6 +68,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\RemediationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\PolicyStateSummaryTests.ps1">
@@ -196,6 +200,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithTop.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.RemediationTests\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

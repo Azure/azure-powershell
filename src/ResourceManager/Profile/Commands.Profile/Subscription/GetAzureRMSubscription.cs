@@ -18,8 +18,10 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -104,8 +106,24 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 try
                 {
-                    var subscriptions = _client.ListSubscriptions(tenant);
-                    WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                    if (DefaultContext.Account.Type.Equals("ManagedService"))
+                    {
+                        if (tenant == null)
+                        {
+                            tenant = DefaultContext.Tenant.Id;
+                        }
+
+                        if (tenant.Equals(DefaultContext.Tenant.Id))
+                        {
+                            var subscriptions = _client.ListSubscriptions(tenant);
+                            WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                        }
+                    }
+                    else
+                    {
+                        var subscriptions = _client.ListSubscriptions(tenant);
+                        WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                    }
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -125,4 +143,6 @@ namespace Microsoft.Azure.Commands.Profile
             throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
         }
     }
+
+
 }

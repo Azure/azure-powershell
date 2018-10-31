@@ -26,28 +26,29 @@ Returns a description for the specified Service Bus queue.
 ```
 PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 
-LockDuration                        : 
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/SB-Queue_example1
+Name                                : SB-Queue_example1
+LockDuration                        : PT1M
 AccessedAt                          : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:35 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 10/11/2018 12:37:11 AM
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
 DeadLetteringOnMessageExpiration    : False
 EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
+EnablePartitioning                  : False
+MaxDeliveryCount                    : 10
+MaxSizeInMegabytes                  : 81920
+MessageCount                        : 0
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 RequiresDuplicateDetection          : False
 RequiresSession                     : False
-SizeInBytes                         : 
+SizeInBytes                         : 0
 Status                              : Active
-UpdatedAt                           : 1/20/2017 2:51:37 AM
-Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
-                                      B-Queue_example1
-Name                                : SB-Queue_example1
-Type                                : Microsoft.ServiceBus/Queues
+UpdatedAt                           : 10/11/2018 12:37:11 AM
+ForwardTo                           :
+ForwardDeadLetteredMessagesTo       :
+EnableBatchedOperations             : False
 ```
 
 Returns the description of the queue.

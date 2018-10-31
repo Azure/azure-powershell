@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         }
                         return Task.FromResult(result);
                     });
-            var client = new Mock<SubscriptionClient>();
+            var client = new Mock<SubscriptionClient>() { CallBase = true };
             client.SetupGet(c => c.Subscriptions).Returns(subscriptionMock.Object);
             client.SetupGet(c => c.Tenants).Returns(tenantMock.Object);
             return client.Object;

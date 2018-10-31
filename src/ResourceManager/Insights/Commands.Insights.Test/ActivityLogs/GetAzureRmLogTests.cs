@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
-            MonitorClientMock = new Mock<MonitorManagementClient>();
+            MonitorClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmLogCommand()
             {

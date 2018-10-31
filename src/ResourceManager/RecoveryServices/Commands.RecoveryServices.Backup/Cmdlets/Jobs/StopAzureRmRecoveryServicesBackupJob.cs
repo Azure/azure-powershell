@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Cancels a job. Returns the corresponding job object after the trigger of the cancellation finishes. 
     /// The job may not cancel successfully. The cmdlet will ensure that the service is notified that a cancellation has been triggered.
     /// </summary>
-    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet,SupportsShouldProcess = true), OutputType(typeof(JobBase))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet, SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class StopAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";

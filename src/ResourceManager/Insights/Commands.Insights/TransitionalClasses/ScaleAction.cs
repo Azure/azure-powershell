@@ -25,12 +25,32 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// <summary>
         /// Gets or sets the ScaleType of the scale action
         /// </summary>
-        public new ScaleType Type { get; set; }
+        public new ScaleType Type
+        {
+            get
+            {
+                return (ScaleType)System.Enum.Parse(typeof(ScaleType), base.Type.ToString());
+            }
+            set
+            {
+                base.Type = (Monitor.Models.ScaleType)System.Enum.Parse(typeof(Monitor.Models.ScaleType), value.ToString());
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Direction of the scale action
         /// </summary>
-        public new ScaleDirection Direction { get; set; }
+        public new ScaleDirection Direction
+        {
+            get
+            {
+                return (ScaleDirection)System.Enum.Parse(typeof(ScaleDirection), base.Direction.ToString());
+            }
+            set
+            {
+                base.Direction = (Monitor.Models.ScaleDirection)System.Enum.Parse(typeof(Monitor.Models.ScaleDirection), value.ToString());
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the ScaleAction class.
