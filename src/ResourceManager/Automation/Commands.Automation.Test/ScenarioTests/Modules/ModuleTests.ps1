@@ -35,7 +35,8 @@ function EnsureTestModuleImported {
 		$endTime = $startTime + $timeout
 
         while ($output.ProvisioningState -ne 'Succeeded') {
-            Start-Sleep -Seconds 10
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(10*1000)
+
             $output = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount
 			Write-Verbose "Module $($testNonGlobalModule.Name) provisioning state: $($output.ProvisioningState)"
 
