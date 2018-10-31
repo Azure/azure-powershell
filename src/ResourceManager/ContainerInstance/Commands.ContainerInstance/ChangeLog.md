@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 0.2.10
 * Fixed issue with default resource groups not being set.

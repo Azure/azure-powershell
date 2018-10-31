@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 4.6.1
 * Fix Copy Blob/File won't copy metadata when destination has metadata issue

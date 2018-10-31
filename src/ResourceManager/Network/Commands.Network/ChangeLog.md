@@ -25,6 +25,7 @@
     - Get-AzureRMExpressRouteCrossConnectionArpTable
     - Get-AzureRMExpressRouteCrossConnectionRouteTable
     - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
