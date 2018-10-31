@@ -74,6 +74,8 @@
     <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs" />
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\RunnerTests.cs" />
+    <Compile Include="ScenarioTests\StrategiesVirtualMachineTests.cs" />
+    <Compile Include="ScenarioTests\StrategiesVmssTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineRunCommandTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineScaleSetExtensionTests.cs" />
