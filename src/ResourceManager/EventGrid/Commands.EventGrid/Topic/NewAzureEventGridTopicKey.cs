@@ -44,19 +44,19 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string TopicName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.KeyNameHelp)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,

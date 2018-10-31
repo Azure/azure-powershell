@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Hashtable which represents resource Tags.",
