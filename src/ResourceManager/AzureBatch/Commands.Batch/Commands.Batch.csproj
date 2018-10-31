@@ -43,10 +43,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Batch, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.8.1.2\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
+      <HintPath>..\..\..\packages\Azure.Batch.8.1.3\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.4.2.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.4.2.1\lib\net452\Microsoft.Azure.Management.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

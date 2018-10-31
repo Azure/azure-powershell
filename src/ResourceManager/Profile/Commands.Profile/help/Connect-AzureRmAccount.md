@@ -470,7 +470,7 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-Optional tenant name or ID
+Optional domain name or tenant ID. Domain name will not work in all sign-in situations. For Cloud Solution Provider (CSP) sign-in, tenant ID is required.
 
 ```yaml
 Type: System.String

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource group name of the virtual machine scale set.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
