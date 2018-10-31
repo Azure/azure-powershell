@@ -1,4 +1,30 @@
-﻿## 6.10.0 - October 2018
+﻿## 6.11.0 - October 2018
+#### AzureRM.Profile
+* Fix issue with Get-AzureRmSubscription in CloudShell
+* Update common code to use latest version of ClientRuntime
+
+#### AzureRM.Backup
+* Deprecated Azure Backup cmdlets.
+
+#### AzureRM.Compute
+* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for 'New-AzureRmVm'
+* Added ResourceName argument completer to all cmdlets.
+
+#### AzureRM.DataLakeStore
+* Adding support for Virtual Network Rules
+    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
+    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
+    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
+    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.
+
+#### AzureRM.Network
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
+* Added ResourceName argument completer to all cmdlets.
+
+#### AzureRM.Resources
+* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to 'RoleDefinitionNameParameterSet'.
+
+## 6.10.0 - October 2018
 #### Azure.Storage
 * Fix Copy Blob/File won't copy metadata when destination has metadata issue
     - Start-AzureStorageBlobCopy

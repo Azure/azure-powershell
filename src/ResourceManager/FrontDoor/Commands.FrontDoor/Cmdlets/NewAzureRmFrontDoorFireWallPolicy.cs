@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.FrontDoor;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Custom rules inside the policy
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Custom rules inside the policy")]
+        [Parameter(Mandatory = false, HelpMessage = "Custom rules inside the policy")]
         [ValidateNotNullOrEmpty]
         public PSCustomRule[] Customrule { get; set; }
 
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 Location = "global",
                 CustomRules = new Management.FrontDoor.Models.CustomRules {
-                    Rules = Customrule.ToList().Select(x => x.ToSdkCustomRule()).ToList()
+                    Rules = Customrule?.ToList().Select(x => x.ToSdkCustomRule()).ToList()
                 },
                 ManagedRules = new Management.FrontDoor.Models.ManagedRuleSets
                 {
@@ -96,8 +97,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 },
                 PolicySettings = new Management.FrontDoor.Models.PolicySettings
                 {
-                    EnabledState = EnabledState.ToString(),
-                    Mode = Mode.ToString()
+                    EnabledState = this.IsParameterBound(c => c.EnabledState) ? EnabledState.ToString() : PSEnabledState.Enabled.ToString(),
+                    Mode = this.IsParameterBound(c => c.Mode) ? Mode.ToString() : PSMode.Prevention.ToString()
                 }
             };
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.CreateWebApplicationFirewallPolicy, Name)))
