@@ -377,7 +377,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="RestoreAzureStorageNotFound" xml:space="preserve">
     <value>Storage account not found</value>
   </data>
-  <data name="RestoreDiskIncorrectRegion" xml:space="preserve">
+  <data name="TriggerRestoreIncorrectRegion" xml:space="preserve">
     <value>Storage account location should be same as vault location</value>
   </data>
   <data name="RestoreDiskMoreThanOneAccFound" xml:space="preserve">
