@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
          public string ExpressRouteCircuitName { get; set; }		
  		
          [Parameter(		
-             Mandatory = false,		
+             Mandatory = true,		
              HelpMessage = "The PeeringType")]		
          [ValidateSet(		
             MNM.ExpressRoutePeeringType.AzurePrivatePeering,		
