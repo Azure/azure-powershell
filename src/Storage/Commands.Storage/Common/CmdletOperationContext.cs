@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     _startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
 #else
                 string message = String.Format(Resources.StartRemoteCall,
-                    startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
+                    _startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
 #endif
 
                 try
