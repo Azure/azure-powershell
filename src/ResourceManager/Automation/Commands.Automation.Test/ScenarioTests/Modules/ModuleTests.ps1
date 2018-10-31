@@ -93,3 +93,9 @@ function Test-NewModule {
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
 }
+
+function Test-ImportModuleIsAliasForNewModule {
+    $command = Get-Command Import-AzureRmAutomationModule
+    Assert-AreEqual $command.CommandType 'Alias'
+    Assert-AreEqual $command.Definition 'New-AzureRmAutomationModule'
+}
