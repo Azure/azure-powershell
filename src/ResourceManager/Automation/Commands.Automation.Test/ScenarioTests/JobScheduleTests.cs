@@ -38,7 +38,7 @@ namespace Commands.Automation.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestCRUDJobSchedules()
+        public void TestE2EJobSchedules()
         {
             RunPowerShellTest(logger, "Test-E2EJobSchedules");
         }

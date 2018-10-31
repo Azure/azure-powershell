@@ -50,23 +50,6 @@ function Test-E2EConnections
     Assert-AreEqual $thumbprint.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("CertificateThumbprint")
     Assert-AreEqual $subscriptionId.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("SubscriptionId")
 
-    Set-AzureRmAutomationConnectionFieldValue -Name $connectionAssetName `
-                                              -ResourceGroupName $resourceGroupName `
-                                              -AutomationAccountName $automationAccountName `
-                                              -ConnectionFieldName "TenantId" `
-                                              -Value $tenantIdChanged
-
-    $getConnectionAssetCreated = Get-AzureRmAutomationConnection -ResourceGroupName $resourceGroupName `
-                                                                 -AutomationAccountName $automationAccountName `
-                                                                 -Name $connectionAssetName
-
-    Assert-AreEqual $connectionAssetName  $getConnectionAssetCreated.Name
-    Assert-NotNull $getConnectionAssetCreated.FieldDefinitionValues
-    Assert-AreEqual $applicationId.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("ApplicationId")
-    Assert-AreEqual $tenantIdChanged $getConnectionAssetCreated.FieldDefinitionValues.Item("TenantId")
-    Assert-AreEqual $thumbprint.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("CertificateThumbprint")
-    Assert-AreEqual $subscriptionId.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("SubscriptionId")   
-
     Remove-AzureRmAutomationConnection -Name $connectionAssetName `
                                        -ResourceGroupName $resourceGroupName `
                                        -AutomationAccountName $automationAccountName `
