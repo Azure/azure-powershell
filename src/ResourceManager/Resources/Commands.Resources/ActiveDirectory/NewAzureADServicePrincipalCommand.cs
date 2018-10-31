@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (!this.IsParameterBound(c => c.EndDate))
                 {
-                    WriteVerbose("No value specified for -EndDate parameter; setting the value to one year after start date.");
+                    WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);
                 }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             if (!this.IsParameterBound(c => c.EndDate))
             {
                 EndDate = StartDate.AddYears(1);
-                WriteVerbose("No end date provided - using the default value of one year after the start date.");
+                WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
             }
 
             if (!this.IsParameterBound(c => c.DisplayName))
