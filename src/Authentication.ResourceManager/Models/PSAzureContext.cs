@@ -23,7 +23,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
+#if NETSTANDARD
 namespace Microsoft.Azure.Commands.Profile.Models
+#else
+namespace Microsoft.Azure.Commands.Profile.Models.Desktop
+#endif
 {
     /// <summary>
     /// The context for connecting cmdlets in the current session to Azure.

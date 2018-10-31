@@ -18,7 +18,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
+#if NETSTANDARD
 namespace Microsoft.Azure.Commands.Profile.Models
+#else
+namespace Microsoft.Azure.Commands.Profile.Models.Desktop
+#endif
 {
     /// <summary>
     /// Credential and environment data for connecting with an Azure instance in the current session.
