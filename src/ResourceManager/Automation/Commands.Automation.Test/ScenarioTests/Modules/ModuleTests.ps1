@@ -17,7 +17,15 @@ $testNonGlobalModule = @{
 }
 
 function EnsureTestModuleImported {
-    if (-not (Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore)) {
+	$foundModule = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
+    if ($foundModule) {
+		if ($foundModule.ProvisioningState -ne 'Succeeded') {
+			Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+			$foundModule = $null
+		}
+	}
+
+    if (-not $foundModule) {
         $output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
 		$startTime = Get-Date
