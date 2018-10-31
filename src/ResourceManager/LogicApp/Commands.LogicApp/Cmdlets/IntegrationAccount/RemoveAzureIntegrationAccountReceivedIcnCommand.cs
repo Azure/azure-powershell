@@ -71,21 +71,21 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(AgreementType))
+            if (string.IsNullOrEmpty(this.AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                AgreementType = "X12";
+                this.AgreementType = "X12";
             }
 
             this.ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "received control number", this.Name),
-                target: Name,
+                target: this.Name,
                 action : () => {
-                    IntegrationAccountClient.RemoveIntegrationAccountReceivedControlNumber(
+                    this.IntegrationAccountClient.RemoveIntegrationAccountReceivedControlNumber(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
                         integrationAccountAgreementName: this.AgreementName,
-                        agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
+                        agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true),
                         controlNumber: this.ControlNumberValue);
                 });
         }

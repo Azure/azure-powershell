@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrWhiteSpace(this.Version))
             {
-                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(this.LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
             }
             else
             {
-                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+                this.WriteObject(this.LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
             }
         }
     }

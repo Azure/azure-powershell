@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var workflow = LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
+            var workflow = this.LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
 
             if (this.Definition == null)
             {
@@ -153,19 +153,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.State))
             {
-                workflow.State = (WorkflowState) Enum.Parse(typeof(WorkflowState), this.State);
+                workflow.State = this.State;
             }
 
-            if (UseConsumptionModel.IsPresent)
+            if (this.UseConsumptionModel.IsPresent)
             {
                 workflow.Sku = null;
             }
             else if (!string.IsNullOrEmpty(this.AppServicePlan))
             {
-                var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
+                var servicePlan = this.WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
                 workflow.Sku = new Sku
                 {
-                    Name = (SkuName) Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),
+                    Name = servicePlan.Sku.Tier,
                     Plan = new ResourceReference(id: servicePlan.Id)
                 };
             }
@@ -175,15 +175,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 throw new PSArgumentException(Properties.Resource.DefinitionMissingWarning);
             }
 
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/workflows", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/workflows", this.Name),
-                Name,
+            this.ConfirmAction(this.Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/workflows", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/workflows", this.Name),
+                this.Name,
                 () =>
                 {
-                    this.WriteObject(LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
+                    this.WriteObject(this.LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
                 },
                 null);
         }

@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of triggers in the workflow</returns>
         public Page<WorkflowTrigger> GetWorkflowTriggers(string resourceGroupName, string workflowName)
         {
-            return (Page<WorkflowTrigger>)
-                    this.LogicManagementClient.WorkflowTriggers.List(resourceGroupName, workflowName);
+            return (Page<WorkflowTrigger>)this.LogicManagementClient.WorkflowTriggers.List(resourceGroupName, workflowName);
         }
 
         /// <summary>
@@ -68,10 +67,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public Page<WorkflowTriggerHistory> GetWorkflowTriggerHistories(string resourceGroupName, string workflowName,
             string triggerName)
         {
-            return
-                (Page<WorkflowTriggerHistory>)
-                    this.LogicManagementClient.WorkflowTriggerHistories.List(resourceGroupName, workflowName,
-                        triggerName);
+            return (Page<WorkflowTriggerHistory>)this.LogicManagementClient.WorkflowTriggerHistories.List(resourceGroupName, workflowName, triggerName);
         }
 
         /// <summary>
@@ -94,8 +90,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
         /// <param name="triggerName">Name of the trigger</param>
-        public void RunWorkflowTrigger(string resourceGroupName, string workflowName,
-            string triggerName)
+        public void RunWorkflowTrigger(string resourceGroupName, string workflowName, string triggerName)
         {
             this.LogicManagementClient.WorkflowTriggers.Run(resourceGroupName, workflowName, triggerName);
         }

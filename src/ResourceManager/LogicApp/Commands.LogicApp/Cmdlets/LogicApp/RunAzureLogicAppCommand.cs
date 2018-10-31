@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            LogicAppClient.RunWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName);
+            this.LogicAppClient.RunWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName);
         }
     }
 }

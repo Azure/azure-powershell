@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
 
-            LogicAppClient.ValidateWorkflow(this.ResourceGroupName, this.Location, this.Name, new Workflow
+            this.LogicAppClient.ValidateWorkflow(this.ResourceGroupName, this.Location, this.Name, new Workflow
             {
                 Location = this.Location,
                 Definition = this.Definition,
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 IntegrationAccount = string.IsNullOrEmpty(this.IntegrationAccountId)
                     ? null
                     : new ResourceReference(this.IntegrationAccountId),
-                State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State)
+                State = this.State
             });
         }
     }

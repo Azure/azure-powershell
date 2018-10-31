@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             string certificate = null;
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (!string.IsNullOrEmpty(this.PublicCertificateFilePath))
             {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 {
                     KeyName = this.KeyName,
                     KeyVersion = this.KeyVersion,
-                    KeyVault = new KeyVaultKeyReferenceKeyVault()
+                    KeyVault = new KeyVaultKeyReferenceKeyVault
                     {
                         Id = this.KeyVaultId
                     }
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             this.WriteObject(
-                IntegrationAccountClient.CreateIntegrationAccountCertificate(this.ResourceGroupName,
+                this.IntegrationAccountClient.CreateIntegrationAccountCertificate(this.ResourceGroupName,
                     integrationAccount.Name,
                     this.CertificateName, new IntegrationAccountCertificate
                     {

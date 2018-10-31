@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <summary>
         /// Edifact message type
         /// </summary>
-        Edifact
+        Edifact,
+        
+        /// <summary>
+        /// AS2 message type
+        /// </summary>
+        AS2
     }
 }

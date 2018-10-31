@@ -61,16 +61,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.HistoryName))
             {
-                var enumerator =
-                    LogicAppClient.GetWorkflowTriggerHistories(this.ResourceGroupName, this.Name, this.TriggerName)
-                        .GetEnumerator();
-                this.WriteObject(enumerator.ToIEnumerable<WorkflowTriggerHistory>(), true);
+                var enumerator =this.LogicAppClient.GetWorkflowTriggerHistories(this.ResourceGroupName, this.Name, this.TriggerName).GetEnumerator();
+                this.WriteObject(enumerator.ToIEnumerable(), true);
             }
             else
             {
-                this.WriteObject(
-                    LogicAppClient.GetWorkflowTriggerHistory(this.ResourceGroupName, this.Name, this.TriggerName,
-                        this.HistoryName), true);
+                this.WriteObject(this.LogicAppClient.GetWorkflowTriggerHistory(this.ResourceGroupName, this.Name, this.TriggerName, this.HistoryName), true);
             }
         }
     }

@@ -115,15 +115,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
-                this.HostPartner);
-            var guestPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
-                this.GuestPartner);
+            var hostPartner = this.IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.HostPartner);
+            var guestPartner = this.IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.GuestPartner);
 
-            var hostIdentity =
-                hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
+            var hostIdentity = hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
                     s => s.Qualifier == this.HostIdentityQualifier && s.Value == this.HostIdentityQualifierValue);
 
             if (hostIdentity == null)
@@ -132,8 +129,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     Properties.Resource.InvalidQualifierSpecified, this.HostIdentityQualifier, this.HostPartner));
             }
 
-            var guestIdentity =
-                guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
+            var guestIdentity = guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
                     s => s.Qualifier == this.GuestIdentityQualifier && s.Value == this.GuestIdentityQualifierValue);
 
             if (guestIdentity == null)
@@ -144,12 +140,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.AgreementContent))
             {
-                this.AgreementContent =
-                    CmdletHelper.GetContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
+                this.AgreementContent = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
             }
 
             this.WriteObject(
-                IntegrationAccountClient.CreateIntegrationAccountAgreement(this.ResourceGroupName, integrationAccount.Name,
+                this.IntegrationAccountClient.CreateIntegrationAccountAgreement(this.ResourceGroupName, integrationAccount.Name,
                     this.AgreementName,
                     new IntegrationAccountAgreement
                     {

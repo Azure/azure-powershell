@@ -18,14 +18,20 @@ Test New-AzureRmIntegrationAccount command
 #>
 function Test-CreateIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 
 	$location = Get-LocationName
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
-	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
-	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	$integrationAccountNameBasic = "IA-Basic-" + (getAssetname)
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Location $location -Sku "Basic" 	
+	Assert-AreEqual $integrationAccountNameBasic $integrationAccount.Name 
+
+	$integrationAccountNameStandard = "IA-Standard-" + (getAssetname)
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Location $location -Sku "Standard" 	
+	Assert-AreEqual $integrationAccountNameStandard $integrationAccount.Name 
+
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Force
 }
 
 <#
@@ -34,8 +40,8 @@ Test Get-AzureRmIntegrationAccount command
 #>
 function Test-CreateAndGetIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	$location = Get-LocationName
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
@@ -56,8 +62,8 @@ Test Remove-AzureRmIntegrationAccount command
 #>
 function Test-RemoveIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	$location = Get-LocationName
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
@@ -73,8 +79,8 @@ Test Update-AzureRmIntegrationAccount command
 #>
 function Test-UpdateIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	$location = Get-LocationName
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
@@ -101,8 +107,8 @@ Test Get-AzureRmIntegrationAccountCallbackUrl command
 #>
 function Test-GetIntegrationAccountCallbackUrl
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	$location = Get-LocationName
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	

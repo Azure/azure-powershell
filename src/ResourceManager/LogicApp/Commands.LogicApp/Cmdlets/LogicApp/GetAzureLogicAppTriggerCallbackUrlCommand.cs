@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.WriteObject(
-                LogicAppClient.GetWorkflowTriggerCallbackUrl(this.ResourceGroupName, this.Name, this.TriggerName), true);
+            this.WriteObject(this.LogicAppClient.GetWorkflowTriggerCallbackUrl(this.ResourceGroupName, this.Name, this.TriggerName), true);
         }
     }
 }

@@ -323,16 +323,6 @@ function Test-ValidateLogicApp
 	# Test 2: Using definition object and parameter file.
 	$definition = [IO.File]::ReadAllText($definitionFilePath)
 	Test-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $locationName -Definition $definition -ParameterFilePath $parameterFilePath
-    
-	# Test 3: Failure for an invalid definition.
-	try
-	{
-		Test-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $locationName -Definition '{}'
-	}
-	catch
-	{		
-		Assert-AreEqual $_.Exception.Message "Operation returned an invalid status code 'BadRequest'"
-	}
 
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
 }

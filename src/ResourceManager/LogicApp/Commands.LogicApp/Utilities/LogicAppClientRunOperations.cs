@@ -69,8 +69,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public WorkflowRunAction GetWorkflowRunAction(string resourceGroupName, string workflowName,
             string runName, string actionName)
         {
-            return this.LogicManagementClient.WorkflowRunActions.Get(resourceGroupName, workflowName, runName,
-                actionName);
+            return this.LogicManagementClient.WorkflowRunActions.Get(resourceGroupName, workflowName, runName, actionName);
         }
 
         /// <summary>

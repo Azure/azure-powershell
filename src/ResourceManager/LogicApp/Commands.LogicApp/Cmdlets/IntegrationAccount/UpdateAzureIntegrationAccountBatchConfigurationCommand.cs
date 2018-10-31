@@ -1,0 +1,107 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
+{
+    using System;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Globalization;
+    using ResourceManager.Common.ArgumentCompleters;
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// Updates the integration account batch configuration.
+    /// </summary>
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", SupportsShouldProcess = true)]
+    [OutputType(typeof(BatchConfiguration))]
+    public class UpdateAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
+    {
+        #region Input Paramters
+
+        [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.", ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The integration account name.", ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The integration account batch configuration name.", ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string BatchConfigurationName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The integration account batch configuration file path.")]
+        [ValidateNotNullOrEmpty]
+        public string BatchConfigurationFilePath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The integration account batch configuration definition.")]
+        [ValidateNotNullOrEmpty]
+        public string BatchConfigurationDefinition { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The integration account batch configuration metadata.", ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public object Metadata { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        #endregion Input Parameters
+
+        /// <summary>
+        /// Executes the integration account batch configuration update command.
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+
+            var integrationAccountBatchConfiguration = this.IntegrationAccountClient.GetIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.Name, this.BatchConfigurationName);
+
+            if (string.IsNullOrEmpty(this.BatchConfigurationDefinition))
+            {
+                this.BatchConfigurationDefinition = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.BatchConfigurationFilePath));
+            }
+            var properties = CmdletHelper.ConvertToBatchConfigurationProperties(this.BatchConfigurationDefinition);
+
+            if (this.Metadata != null)
+            {
+                this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
+            }
+
+            var integrationAccountBatchConfigurationCopy = new BatchConfiguration(
+                id: integrationAccountBatchConfiguration.Id,
+                name: integrationAccountBatchConfiguration.Name,
+                type: integrationAccountBatchConfiguration.Type,
+                location: integrationAccountBatchConfiguration.Location,
+                tags: integrationAccountBatchConfiguration.Tags,
+                properties: properties);
+
+            this.ConfirmAction(this.Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/batch configurations", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/batch configurations", this.Name),
+                this.Name,
+                () =>
+                {
+                    this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.Name, this.BatchConfigurationName, integrationAccountBatchConfigurationCopy), true);
+                },
+                null);
+        }
+    }
+}
