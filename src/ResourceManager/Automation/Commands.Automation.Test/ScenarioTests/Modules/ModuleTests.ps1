@@ -26,3 +26,26 @@ function Test-GetAllModulesInAutomationAccount {
 	Assert-NotNull $azureModule.LastModifiedTime
 	Assert-AreEqual $azureModule.ProvisioningState 'Created'
 }
+
+<#
+Test-GetModuleByName
+#>
+function Test-GetModuleByName {
+	$output = Get-AzureRmAutomationModule -Name Azure @testAutomationAccount
+
+	Assert-NotNull $output
+
+	$outputCount = $output | Measure-Object | % Count;
+	Assert-AreEqual $outputCount 1
+
+	Assert-AreEqual $output.AutomationAccountName $testAutomationAccount.AutomationAccountName
+	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
+	Assert-AreEqual $output.Name 'Azure'
+	Assert-True { $output.IsGlobal }
+	Assert-AreEqual $output.Version '1.0.3'
+	Assert-AreEqual $output.SizeInBytes 41338511
+	Assert-AreEqual $output.ActivityCount 673
+	Assert-NotNull $output.CreationTime
+	Assert-NotNull $output.LastModifiedTime
+	Assert-AreEqual $output.ProvisioningState 'Created'
+}
