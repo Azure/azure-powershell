@@ -14,6 +14,7 @@ $testNonGlobalModule = @{
     Name = 'Pester'
 	Version = '3.0.3'
     ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg'
+	Size = 74921
 }
 
 function EnsureTestModuleImported {
@@ -145,8 +146,8 @@ function Test-SetModule {
 	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
 	Assert-AreEqual $output.Name $testNonGlobalModule.Name
 	Assert-False { $output.IsGlobal }
-	Assert-Null $output.Version
-	Assert-AreEqual $output.SizeInBytes 0
+	Assert-AreEqual $output.Version $testNonGlobalModule.Version
+	Assert-AreEqual $output.SizeInBytes $testNonGlobalModule.Size
 	Assert-AreEqual $output.ActivityCount 0
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
