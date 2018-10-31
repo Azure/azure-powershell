@@ -14,7 +14,7 @@ Create WAF policy
 
 ```
 New-AzureRmFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
- [-Mode <PSMode>] -Customrule <PSCustomRule[]> [-ManagedRule <PSManagedRule[]>]
+ [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

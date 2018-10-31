@@ -67,13 +67,13 @@ This command gets the protection policy named DefaultPolicy, and then stores it 
 
 ### -BackupManagementType
 Specifies the Backup management type.
-Currently, only AzureVM is supported.
+Currently, only AzureVM, AzureStorage is supported.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage
 
 Required: True
 Position: 3
@@ -129,13 +129,13 @@ Accept wildcard characters: False
 
 ### -WorkloadType
 Specifies the workload type.
-Currently, only AzureVM is supported.
+Currently, only AzureVM, AzureFiles is supported.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType]
 Parameter Sets: WorkloadParamSet, WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles
 
 Required: True
 Position: 2

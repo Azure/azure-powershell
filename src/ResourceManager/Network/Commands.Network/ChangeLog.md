@@ -18,6 +18,17 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
+## Version 6.9.1
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
+* Added ResourceName argument completer to all cmdlets.
 
 ## Version 6.9.0
 * Added NetworkProfile functionality. new cmdlets added

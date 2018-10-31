@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -20,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -40,6 +42,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         public DataLakeStoreAccountManagementClient DataLakeStoreAccountManagementClient { get; private set; }
 
+        public NetworkManagementClient NetworkClient { get; private set; }
+        
         public static AdlsTestsBase NewInstance => new AdlsTestsBase();
 
 
@@ -75,7 +79,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Network", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
@@ -95,6 +100,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+                    _helper.RMNetworkModule,
                     _helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -118,7 +124,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
             SetDataLakeStoreFileSystemManagementClient();
             NewResourceManagementClient = GetNewResourceManagementClient(context);
-            _helper.SetupManagementClients(NewResourceManagementClient, DataLakeStoreAccountManagementClient);
+            NetworkClient = GetNetworkClient(context);
+            _helper.SetupManagementClients(NewResourceManagementClient, NetworkClient, DataLakeStoreAccountManagementClient);
         }
 
         #region client creation helpers
@@ -141,6 +148,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             {
                 AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
             }
+        }
+
+        protected NetworkManagementClient GetNetworkClient(MockContext context)
+        {
+            NetworkManagementClient client =
+                context.GetServiceClient<NetworkManagementClient>(
+                    TestEnvironmentFactory.GetTestEnvironment());
+            return client;
         }
         #endregion
     }

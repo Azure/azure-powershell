@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IDiagnosticSettingsOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmDiagnosticSettingCommand()
             {

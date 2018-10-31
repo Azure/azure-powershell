@@ -71,13 +71,13 @@ This script polls the first job that is currently in progress until the job has 
 
 ### -BackupManagementType
 Specifies the Backup management type.
-Currently, only AzureVM is supported.
+Currently, only AzureVM, AzureStorage is supported.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage
 
 Required: False
 Position: Named

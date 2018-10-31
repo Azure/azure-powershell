@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "Specifies the name of the DDoS protection plan to be removed.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Network/ddosProtectionPlans", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
