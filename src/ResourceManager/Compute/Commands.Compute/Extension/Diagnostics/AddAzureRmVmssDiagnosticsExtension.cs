@@ -120,19 +120,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
                 }
 
                 // ExtensionProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
                 }
 
                 // Extensions
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension>();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
                 }
 
                 bool shouldContinue = true;
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                     // Parse configs, and auto fill incomplete parts
                     Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);
 
-                    var newDiagnosticsExtension = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
+                    var newDiagnosticsExtension = new VirtualMachineScaleSetExtension();
 
                     newDiagnosticsExtension.Name = this.Name;
                     newDiagnosticsExtension.Publisher = DiagnosticsExtensionConstants.ExtensionPublisher;

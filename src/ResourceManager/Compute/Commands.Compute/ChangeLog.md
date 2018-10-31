@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
 * Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
 
 ## Version 5.7.2
