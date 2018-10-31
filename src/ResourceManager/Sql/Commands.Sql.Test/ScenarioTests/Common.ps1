@@ -654,7 +654,7 @@ function Create-ManagedInstanceForTest ($resourceGroup)
  	$vCore = 16
  	$skuName = "GP_Gen4"
 
-	$managedInstance = New-AzureRmSqlManagedInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
+	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
 

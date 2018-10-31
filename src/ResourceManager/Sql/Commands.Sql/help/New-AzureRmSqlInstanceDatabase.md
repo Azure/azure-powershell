@@ -1,46 +1,46 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlmanageddatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlManagedDatabase
+# New-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
-Creates a managed database.
+Creates a database in Sql Managed Instance.
 
 ## SYNTAX
 
-### CreateNewManagedDatabaseFromInputParameters
+### CreateNewInstanceDatabaseFromInputParameters (Default)
 ```
-New-AzureRmSqlManagedDatabase [-Name] <String> [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlInstanceDatabase [-Name] <String> [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
  [-Collation <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
+### CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-New-AzureRmSqlManagedDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
+New-AzureRmSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
  [-ManagedInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId
+### CreateNewInstanceDatabaseFromAzureSqlManagedInstanceResourceId
 ```
-New-AzureRmSqlManagedDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
- -ManagedInstanceResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzureRmSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
+ [-ManagedInstanceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlManagedDatabase** cmdlet creates an Azure SQL Managed database.
+The **New-AzureRmSqlInstanceDatabase** cmdlet creates an Azure SQL Managed instance database.
 
 ## EXAMPLES
 
-### Example 1: Create a managed database on a specified managed instance
+### Example 1: Create a database on a specified managed instance
 ```
-PS C:\>New-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>New-AzureRmSqlInstanceDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -Collation
-The collation of the Azure SQL Managed Database collation to use.
+The collation of the Azure SQL Instance Database collation to use.
 
 ```yaml
 Type: String
@@ -115,7 +115,7 @@ The Azure Sql Managed Instance name.
 
 ```yaml
 Type: String
-Parameter Sets: CreateNewManagedDatabaseFromInputParameters
+Parameter Sets: CreateNewInstanceDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -130,7 +130,7 @@ The Azure Sql Managed Instance object
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
-Parameter Sets: CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
+Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 Aliases: InputObject
 
 Required: True
@@ -145,23 +145,23 @@ The Managed Instance resource id
 
 ```yaml
 Type: String
-Parameter Sets: CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId
+Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlManagedInstanceResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL Managed Database to create.
+The name of the Azure SQL Instance Database to create.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ManagedDatabaseName
+Aliases: InstanceDatabaseName
 
 Required: True
 Position: 0
@@ -175,7 +175,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: CreateNewManagedDatabaseFromInputParameters
+Parameter Sets: CreateNewInstanceDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Azure Sql Managed Database
+The tags to associate with the Azure Sql Instance Database
 
 ```yaml
 Type: Hashtable
@@ -232,19 +232,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-
 
 ## NOTES
 

@@ -27,9 +27,9 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlManagedInstance cmdlet
+    /// Defines the Set-AzureRmSqlInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstance",
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]

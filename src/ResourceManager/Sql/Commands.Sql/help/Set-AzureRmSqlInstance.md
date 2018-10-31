@@ -1,42 +1,44 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlmanagedinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlinstance
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlManagedInstance
+# Set-AzureRmSqlInstance
 
 ## SYNOPSIS
 Modifies properties of a SQL Database Managed instance. Properties that are not specified are set to their default values.
 
 ## SYNTAX
 
-### SetManagedInstanceFromInputParameters
+### SetManagedInstanceFromInputParameters (Default)
 ```
-Set-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
- [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
- [-Tag <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorPassword <SecureString>]
+ [-Edition <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>]
+ [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-Set-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorPassword <SecureString>]
+ [-Edition <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>]
+ [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetManagedInstanceFromAzureResourceId
 ```
-Set-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity] [-ResourceId] <String>
+Set-AzureRmSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>] [-Edition <String>]
+ [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Properties that are not specified are set to their default values.
+The **Set-AzureRmSqlInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Properties that are not specified are set to their default values.
+
+## EXAMPLES
 
 ## EXAMPLES
 
@@ -44,7 +46,7 @@ The **Set-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure SQL
 ```
 PS C:\>$ManagedInstancePassword = "Newpassword1234"
 PS C:\> $SecureString = ConvertTo-SecureString $ManagedInstancePassword -AsPlainText -Force
-PS C:\> Set-AzureRmSqlManagedInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16
+PS C:\> Set-AzureRmSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -102,6 +104,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Edition
+The edition to assign to the Azure SQL Managed Database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

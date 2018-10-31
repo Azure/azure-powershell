@@ -27,7 +27,7 @@ function Test-CreateManagedDatabase
 		# Create with all values
 		$managedDatabaseName = Get-ManagedDatabaseName
 		$collation = "SQL_Latin1_General_CP1_CI_AS"
-		$job1 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
+		$job1 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -37,14 +37,14 @@ function Test-CreateManagedDatabase
 
 		# Create new by using ManagedInstance as input
 		$managedDatabaseName = Get-ManagedDatabaseName
-		$db = New-AzureRmSqlManagedDatabase -ManagedInstanceObject $managedInstance -Name $managedDatabaseName
+		$db = New-AzureRmSqlInstanceDatabase -ManagedInstanceObject $managedInstance -Name $managedDatabaseName
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Collation
 		Assert-NotNull $db.CreationDate
 
 		# Create with default values via piping
 		$managedDatabaseName = Get-ManagedDatabaseName
-		$db = $managedInstance | New-AzureRmSqlManagedDatabase -Name $managedDatabaseName
+		$db = $managedInstance | New-AzureRmSqlInstanceDatabase -Name $managedDatabaseName
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Collation
 		Assert-NotNull $db.CreationDate
@@ -67,34 +67,34 @@ function Test-GetManagedDatabase
 	
 	# Create with default values
 	$managedDatabaseName = Get-ManagedDatabaseName
-	$db1 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$db1 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
 	Assert-AreEqual $db1.Name $managedDatabaseName
 
 	$managedDatabaseName = Get-ManagedDatabaseName
-	$db2 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$db2 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
 	Assert-AreEqual $db2.Name $managedDatabaseName
 
 	try
 	{
 		# Test Get using all parameters
-		$gdb1 = Get-AzureRmSqlManagedDatabase -ResourceGroupName $managedInstance.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $db1.Name
+		$gdb1 = Get-AzureRmSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $db1.Name
 		Assert-NotNull $gdb1
 		Assert-AreEqual $db1.Name $gdb1.Name
 		Assert-AreEqual $db1.Collation $gdb1.Collation
 
 		# Test Get using ResourceGroupName and ManagedInstanceName
-		$all = Get-AzureRmSqlManagedDatabase -ResourceGroupName $managedInstance.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName
+		$all = Get-AzureRmSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-NotNull $all
 		Assert-AreEqual $all.Count 2
 
 		# Test Get using ResourceId
-		$gdb2 = Get-AzureRmSqlManagedDatabase -ManagedInstanceResourceId $managedInstance.Id -Name $db1.Name
+		$gdb2 = Get-AzureRmSqlInstanceDatabase -ManagedInstanceResourceId $managedInstance.Id -Name $db1.Name
 		Assert-NotNull $gdb2
 		Assert-AreEqual $db1.Name $gdb2.Name
 		Assert-AreEqual $db1.Collation $gdb2.Collation
 
 		# Test Get from piping
-		$all = $managedInstance | Get-AzureRmSqlManagedDatabase
+		$all = $managedInstance | Get-AzureRmSqlInstanceDatabase
 		Assert-AreEqual $all.Count 2
 	}
 	finally
@@ -115,48 +115,48 @@ function Test-RemoveManagedDatabase
 	
 	# Create with default values
 	$managedDatabaseName = Get-ManagedDatabaseName
-	$db1 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$db1 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
 	Assert-AreEqual $db1.Name $managedDatabaseName
 
 	$managedDatabaseName = Get-ManagedDatabaseName
-	$db2 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$db2 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
 	Assert-AreEqual $db2.Name $managedDatabaseName
 
 	$managedDatabaseName = Get-ManagedDatabaseName
-	$db3 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$db3 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
 	Assert-AreEqual $db3.Name $managedDatabaseName
 
 	$managedDatabaseName = Get-ManagedDatabaseName
-	$db4 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$db4 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
 	Assert-AreEqual $db4.Name $managedDatabaseName
 
-	$all = $managedInstance | Get-AzureRmSqlManagedDatabase
+	$all = $managedInstance | Get-AzureRmSqlInstanceDatabase
 	Assert-AreEqual $all.Count 4
 
 	try
 	{
 		# Test remove using all parameters
-		Remove-AzureRmSqlManagedDatabase -ResourceGroupName $managedInstance.ResourceGroupname -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $db1.Name -Force
+		Remove-AzureRmSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupname -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $db1.Name -Force
 		
-		$all = $managedInstance | Get-AzureRmSqlManagedDatabase
+		$all = $managedInstance | Get-AzureRmSqlInstanceDatabase
 		Assert-AreEqual $all.Count 3
 
 		# Test remove using piping
-		$db2 | Remove-AzureRmSqlManagedDatabase -Force
+		$db2 | Remove-AzureRmSqlInstanceDatabase -Force
 
-		$all = $managedInstance | Get-AzureRmSqlManagedDatabase
+		$all = $managedInstance | Get-AzureRmSqlInstanceDatabase
 		Assert-AreEqual $all.Count 2
 
 		# Test remove using input object
-		Remove-AzureRmSqlManagedDatabase -InputObject $db3 -Force
+		Remove-AzureRmSqlInstanceDatabase -InputObject $db3 -Force
 		
-		$all = $managedInstance | Get-AzureRmSqlManagedDatabase
+		$all = $managedInstance | Get-AzureRmSqlInstanceDatabase
 		Assert-AreEqual $all.Count 1
 
 		# Test remove using database resourceId
-		Remove-AzureRmSqlManagedDatabase -ResourceId $db4.Id -Force
+		Remove-AzureRmSqlInstanceDatabase -ResourceId $db4.Id -Force
 		
-		$all = $managedInstance | Get-AzureRmSqlManagedDatabase
+		$all = $managedInstance | Get-AzureRmSqlInstanceDatabase
 		Assert-AreEqual $all.Count 0
 	}
 	finally
@@ -182,7 +182,7 @@ function Test-RestoreManagedDatabase
 		# Create with all values
 		$managedDatabaseName = Get-ManagedDatabaseName
 		$collation = "SQL_Latin1_General_CP1_CI_AS"
-		$job1 = New-AzureRmSqlManagedDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
+		$job1 = New-AzureRmSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -195,14 +195,14 @@ function Test-RestoreManagedDatabase
 		Wait-Seconds 450
 
 		# restore managed database to the same instance
-		$restoredDb = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName
+		$restoredDb = Restore-AzureRmSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetInstanceDatabaseName $targetManagedDatabaseName
 		Assert-NotNull $restoredDb
 		Assert-AreEqual $restoredDb.Name $targetManagedDatabaseName
 		Assert-AreEqual $restoredDb.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $restoredDb.ManagedInstanceName $managedInstance.ManagedInstanceName
 
 		# restore managed database to the another instance, different resource group and managed instance
-		$restoredDb2 = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName -TargetManagedInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
+		$restoredDb2 = Restore-AzureRmSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetInstanceDatabaseName $targetManagedDatabaseName -TargetManagedInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
 		Assert-NotNull $restoredDb2
 		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName
 		Assert-AreEqual $restoredDb2.ResourceGroupName $rg2.ResourceGroupName

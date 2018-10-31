@@ -21,20 +21,20 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabase",
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
         DefaultParameterSetName = RemoveByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class RemoveAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
-            "RemoveManagedDatabaseFromInputParameters";
+            "RemoveInstanceDatabaseFromInputParameters";
 
         protected const string RemoveByInputObjectParameterSet =
-            "RemoveManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
+            "RemoveInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
 
         protected const string RemoveByResourceIdParameterSet =
-            "RemoveManagedDatabaseFromAzureResourceId";
+            "RemoveInstanceDatabaseFromAzureResourceId";
 
         /// <summary>
         /// Gets or sets the name of the managed database to remove.
@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet, 
             Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Managed Database to remove.")]
-        [Alias("ManagedDatabaseName")]
+            HelpMessage = "The name of the Azure SQL Instance Database to remove.")]
+        [Alias("InstanceDatabaseName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Managed Database object to remove")]
+            HelpMessage = "The Instance Database object to remove")]
         [ValidateNotNullOrEmpty]
-        [Alias("ManagedDatabase")]
+        [Alias("InstanceDatabase")]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Managed Database object to remove")]
+            HelpMessage = "The resource id of Instance Database object to remove")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

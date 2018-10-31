@@ -5,39 +5,39 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/r
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlManagedInstance
+# Remove-AzureRmSqlInstance
 
 ## SYNOPSIS
 Removes an Azure SQL Database Managed instance.
 
 ## SYNTAX
 
-### RemoveMManagedInstanceFromInputParameters
+### RemoveMManagedInstanceFromInputParameters (Default)
 ```
-Remove-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
+Remove-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-Remove-AzureRmSqlManagedInstance -InputObject <AzureSqlManagedInstanceModel> [-Force]
+Remove-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveMManagedInstanceFromAzureResourceId
 ```
-Remove-AzureRmSqlManagedInstance -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmSqlInstance [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlManagedInstance** cmdlet removes an Azure SQL Database Managed Instance.
+The **Remove-AzureRmSqlInstance** cmdlet removes an Azure SQL Database Managed Instance.
 
 ## EXAMPLES
 
 ### Example 1: Remove a managed instance
 ```
-PS C:\>Remove-AzureRmSqlManagedInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzureRmSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the Azure SQL Database Managed instance named managedInstance1.
@@ -83,7 +83,7 @@ Parameter Sets: RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDe
 Aliases: ManagedInstance
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -128,7 +128,7 @@ Parameter Sets: RemoveMManagedInstanceFromAzureResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

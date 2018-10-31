@@ -1,20 +1,20 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/update-azurermsqlmanagedinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/update-azurermsqlinstance
 schema: 2.0.0
 ---
 
-# Update-AzureRmSqlManagedInstance
+# Update-AzureRmSqlInstance
 
 ## SYNOPSIS
 Modifies properties of a SQL Database Managed instance. Only properties that are explicitly set will be updated.
 
 ## SYNTAX
 
-### UpdateManagedInstanceFromInputParameters
+### UpdateManagedInstanceFromInputParameters (Default)
 ```
-Update-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
+Update-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Edition <String>]
  [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
  [-Tag <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -22,21 +22,21 @@ Update-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
 
 ### UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-Update-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Edition <String>]
+ [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-Tag <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateManagedInstanceFromAzureResourceId
 ```
-Update-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity] [-ResourceId] <String>
+Update-AzureRmSqlInstance [-ResourceId] <String> [-Edition <String>] [-AdministratorPassword <SecureString>]
+ [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Only properties that are explicitly set will be updated.
+The **Update-AzureRmSqlInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Only properties that are explicitly set will be updated.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ The **Update-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure 
 ```
 PS C:\>$ManagedInstancePassword = "Newpassword1234"
 PS C:\> $SecureString = ConvertTo-SecureString $ManagedInstancePassword -AsPlainText -Force
-PS C:\> Update-AzureRmSqlManagedInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString
+PS C:\> Update-AzureRmSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -102,6 +102,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Edition
+The edition to assign to the Azure SQL Managed Database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
