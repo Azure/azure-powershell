@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteResourceId,
             Mandatory = true,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualWans", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

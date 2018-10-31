@@ -200,10 +200,41 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         {
                             // Creating a new setting with settingName as name
                             WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Diagnostic setting named: '{0}' not found in list of {1} settings. Creating a new one.", settingName, listSettings.Count));
-                            
+
                             properties = new DiagnosticSettingsResource();
                             properties.Logs = new List<LogSettings>();
                             properties.Metrics = new List<MetricSettings>();
+
+                            WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Retrieving supported categories for resource: '{0}'", this.ResourceId));
+                            IList<DiagnosticSettingsCategoryResource> supportedCategories = this.MonitorManagementClient.DiagnosticSettingsCategory.ListAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result.Value;
+                            if (supportedCategories != null)
+                            {
+                                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Setting supported categories for resource: '{0}'", this.ResourceId));
+                                foreach (var category in supportedCategories)
+                                {
+                                    if (category.CategoryType == CategoryType.Metrics)
+                                    {
+                                        properties.Metrics.Add(
+                                            new MetricSettings(
+                                                enabled: false,
+                                                category: category.Name,
+                                                retentionPolicy: null,
+                                                timeGrain: null));
+                                    }
+                                    else
+                                    {
+                                        properties.Logs.Add(
+                                            new LogSettings(
+                                                enabled: false,
+                                                category: category.Name,
+                                                retentionPolicy: null));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                WriteWarningWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Resource: '{0}' does not support any category yet.", this.ResourceId));
+                            }
                         }
                         else
                         {

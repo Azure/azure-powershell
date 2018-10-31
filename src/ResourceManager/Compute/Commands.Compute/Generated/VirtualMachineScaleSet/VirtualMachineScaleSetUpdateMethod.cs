@@ -70,13 +70,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
 
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
@@ -262,6 +263,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceVersion { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public bool UltraSSDEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -469,7 +475,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
-                this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgrade = this.AutomaticOSUpgrade;
+                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutomaticOSUpgrade;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
@@ -482,11 +492,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
-                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutoOSUpgradePolicy == null)
+                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                    this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
                 }
-                this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
+                this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback = this.DisableAutoRollback;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup"))
@@ -1028,7 +1038,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
@@ -1075,22 +1085,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
-                this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgrade = this.AutomaticOSUpgrade;
+                if (this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutomaticOSUpgradePolicy();
+                }
+                this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutomaticOSUpgrade;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
-                if (this.VirtualMachineScaleSet.UpgradePolicy.AutoOSUpgradePolicy == null)
+                if (this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutomaticOSUpgradePolicy();
                 }
-                this.VirtualMachineScaleSet.UpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
+                this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback = this.DisableAutoRollback;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup"))
@@ -1115,7 +1129,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.Mode = this.UpgradePolicyMode;
             }
@@ -1172,7 +1186,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
@@ -1311,7 +1325,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
@@ -1363,11 +1377,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer = this.ImageReferenceOffer;
             }
 
+            if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities = new Microsoft.Azure.Management.Compute.Models.AdditionalCapabilities();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
+            }
+
             if (this.MyInvocation.BoundParameters.ContainsKey("PauseTimeBetweenBatches"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
                 }
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {

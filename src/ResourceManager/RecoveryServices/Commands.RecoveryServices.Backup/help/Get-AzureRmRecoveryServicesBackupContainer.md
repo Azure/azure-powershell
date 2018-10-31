@@ -50,13 +50,15 @@ The acceptable values for this parameter are:
 - AzureVM
 - MARS
 - AzureSQL
+- AzureStorage
+
 This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, AzureSQL
+Accepted values: AzureVM, MARS, AzureSQL, AzureStorage
 
 Required: False
 Position: 2
@@ -71,12 +73,13 @@ The acceptable values for this parameter are:
 - AzureVM 
 - Windows
 - AzureSQL
+- AzureStorage
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, Windows, AzureSQL
+Accepted values: AzureVM, Windows, AzureSQL, AzureStorage
 
 Required: True
 Position: 1
