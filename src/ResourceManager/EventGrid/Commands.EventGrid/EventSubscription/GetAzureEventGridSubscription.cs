@@ -27,17 +27,17 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -45,17 +45,17 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         [ResourceGroupCompleter]
@@ -73,28 +73,28 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         public string TopicName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         public string DomainName { get; set; }
 
         [Parameter(
           Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
+          ValueFromPipelineByPropertyName = true,
           HelpMessage = EventGridConstants.DomainTopicNameHelp,
           ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         public string DomainTopicName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicTypeNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location",
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [LocationCompleter("Microsoft.EventGrid/eventSubscriptions")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
             {
-                // Since an EventSubscription name is specified, we need to retrieve 
+                // Since an EventSubscription name is specified, we need to retrieve
                 // only the particular event subscription corresponding to this name.
                 if (this.CustomTopicInputObject != null)
                 {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
                 else if (string.IsNullOrEmpty(this.ResourceId))
                 {
-                    // ResourceID not specified, retrieve the event subscription for either the 
+                    // ResourceID not specified, retrieve the event subscription for either the
                     // subscription, or resource group, or custom topic depending on which of the parameters are provided.
 
                     scope = EventGridUtils.GetScope(
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
                 else
                 {
-                    // Since both a ResourceId and EventSubscriptionName are specified, we need to retrieve 
+                    // Since both a ResourceId and EventSubscriptionName are specified, we need to retrieve
                     // only this particular event subscription corresponding to this resource ID.
                     scope = this.ResourceId;
                 }
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
             else
             {
-                // EventSubscription name was not specified, we need to retrieve a list of 
+                // EventSubscription name was not specified, we need to retrieve a list of
                 // event subscriptions based on the provided parameters.
                 IEnumerable<EventSubscription> eventSubscriptionsList = null;
 
