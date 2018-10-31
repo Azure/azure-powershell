@@ -54,7 +54,8 @@ function Remove-TestNonGlobalModule {
 }
 
 <#
-Test-GetAllModules
+.SYNOPSIS
+Tests getting all modules from an Automation account.
 #>
 function Test-GetAllModules {
 	$output = Get-AzureRmAutomationModule @testAutomationAccount
@@ -77,7 +78,8 @@ function Test-GetAllModules {
 }
 
 <#
-Test-GetModuleByName
+.SYNOPSIS
+Tests getting a specific module from an Automation account by module name.
 #>
 function Test-GetModuleByName {
 	$output = Get-AzureRmAutomationModule -Name $testGlobalModule.Name @testAutomationAccount
@@ -99,7 +101,8 @@ function Test-GetModuleByName {
 }
 
 <#
-Test-NewModule
+.SYNOPSIS
+Tests importing a new module into an Automation account.
 #>
 function Test-NewModule {
 	Remove-TestNonGlobalModule
@@ -123,7 +126,8 @@ function Test-NewModule {
 }
 
 <#
-Test-ImportModule
+.SYNOPSIS
+Tests that Import-AzureRmAutomationModule is an alias for New-AzureRmAutomationModule.
 #>
 function Test-ImportModule {
     $command = Get-Command Import-AzureRmAutomationModule
@@ -132,7 +136,8 @@ function Test-ImportModule {
 }
 
 <#
-Test-SetModule
+.SYNOPSIS
+Tests updating a module already imported into an Automation account.
 #>
 function Test-SetModule {
 	EnsureTestModuleImported
@@ -156,7 +161,8 @@ function Test-SetModule {
 }
 
 <#
-Test-RemoveModule
+.SYNOPSIS
+Tests removing a module from an Automation account.
 #>
 function Test-RemoveModule {
 	EnsureTestModuleImported
