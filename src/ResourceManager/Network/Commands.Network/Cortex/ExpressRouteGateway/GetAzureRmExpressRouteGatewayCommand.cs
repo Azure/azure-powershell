@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network.Models;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using System;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteGateway",
@@ -42,12 +44,30 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Alias("expressRouteGatewayId")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the expressRouteGateway to be deleted.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/expressRouteGateways")]
+        public string ResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
             if (ParameterSetName.Equals("ListByResourceGroupName") && !string.IsNullOrEmpty(this.Name))
             {
+                var expressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.Name);
+                WriteObject(expressRouteGateway);
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteGatewayResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                Name = parsedResourceId.ResourceName;
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
                 var expressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.Name);
                 WriteObject(expressRouteGateway);
             }

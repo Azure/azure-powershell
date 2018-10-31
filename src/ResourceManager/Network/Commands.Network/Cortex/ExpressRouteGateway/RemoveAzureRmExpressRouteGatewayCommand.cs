@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayName,
             Mandatory = true,
-            HelpMessage = "The vpnGateway name.")]
+            HelpMessage = "The expressRouteGateway name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSExpressRouteGateway InputObject { get; set; }
 
-        [Alias("vpnGatewayId")]
+        [Alias("expressRouteGatewayId")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayResourceId,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Azure resource ID for the vpnGateway to be deleted.")]
+            HelpMessage = "The Azure resource ID for the expressRouteGateway to be deleted.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/expressRouteGateways")]
         public string ResourceId { get; set; }
