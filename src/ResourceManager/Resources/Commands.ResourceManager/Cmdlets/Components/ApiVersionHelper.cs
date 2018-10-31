@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 #if NETSTANDARD
                 Cache = new MemoryCache(new MemoryCacheOptions());
 #else
-                _cache = MemoryCache.Default;
+                Cache = MemoryCache.Default;
 #endif
             }
             /// <summary>
