@@ -10,9 +10,9 @@ $testModule = @{
 }
 
 <#
-Test-GetAllModulesInAutomationAccount
+Test-GetAllModules
 #>
-function Test-GetAllModulesInAutomationAccount {
+function Test-GetAllModules {
 	$output = Get-AzureRmAutomationModule @testAutomationAccount
 
 	Assert-NotNull $output
