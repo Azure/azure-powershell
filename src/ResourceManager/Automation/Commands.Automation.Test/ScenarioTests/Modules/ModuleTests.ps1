@@ -16,6 +16,12 @@ $testNonGlobalModule = @{
     ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/azurerm.profile.5.4.0.nupkg'
 }
 
+function Remove-TestNonGlobalModule {
+    if (Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore) {
+        Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+    }
+}
+
 <#
 Test-GetAllModules
 #>
@@ -67,6 +73,8 @@ function Test-GetModuleByName {
 Test-NewModule
 #>
 function Test-NewModule {
+	Remove-TestNonGlobalModule
+
 	$output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
 	Assert-NotNull $output
