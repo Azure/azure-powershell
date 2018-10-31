@@ -136,7 +136,8 @@ namespace Commands.StorageSync.Interop.Clients
             string syncServerId;
             hr = this.EcsManagementInteropClient.GetSyncServerId(out syncServerId);
             //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:GetSyncServerId HRESULT: {hr}");
-            bool hasServerGuid = Guid.TryParse(syncServerId, out Guid serverGuid);
+            Guid serverGuid = Guid.Empty;
+            bool hasServerGuid = Guid.TryParse(syncServerId, out serverGuid);
             if (!hasServerGuid)
             {
                 throw new ArgumentException(nameof(serverGuid));
@@ -227,7 +228,8 @@ namespace Commands.StorageSync.Interop.Clients
 
             if (isInCluster)
             {
-                bool clusterGuidValue = Guid.TryParse(clusterId, out Guid clusterGuid);
+                Guid clusterGuid = Guid.Empty;
+                bool clusterGuidValue = Guid.TryParse(clusterId, out clusterGuid);
                 if (!clusterGuidValue)
                 {
                     throw new ArgumentException(nameof(clusterId));
@@ -255,13 +257,15 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>success status</returns>
         public override bool Persist(RegisteredServer registeredServerResource, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
-            bool hasStorageSyncServiceUid = Guid.TryParse(registeredServerResource.StorageSyncServiceUid, out Guid storageSyncServiceUid);
+            Guid storageSyncServiceUid = Guid.Empty;
+            bool hasStorageSyncServiceUid = Guid.TryParse(registeredServerResource.StorageSyncServiceUid, out storageSyncServiceUid);
             if (!hasStorageSyncServiceUid)
             {
                 throw new ArgumentException(nameof(registeredServerResource.StorageSyncServiceUid));
             }
 
-            bool hasServerRole = Enum.TryParse(registeredServerResource.ServerRole, out ServerRoleType serverRole);
+            ServerRoleType serverRole;
+            bool hasServerRole = Enum.TryParse(registeredServerResource.ServerRole, out serverRole);
             if (!hasServerRole)
             {
                 throw new ArgumentException(nameof(registeredServerResource.ServerRole));

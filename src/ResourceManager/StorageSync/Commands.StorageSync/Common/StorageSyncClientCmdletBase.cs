@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (subscriptionId == null)
                 {
-                    bool hasAzureContext = TryGetDefaultContext(out IAzureContext context);
+                    IAzureContext context = null;
+                    bool hasAzureContext = TryGetDefaultContext(out context);
                     if (hasAzureContext && !string.IsNullOrEmpty(context.Subscription?.Id))
                     {
                         subscriptionId = context.Subscription.GetId();
