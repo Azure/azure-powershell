@@ -44,5 +44,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         {
             RunPowerShellTest(logger, "Test-GetModuleByName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void NewModule()
+        {
+            RunPowerShellTest(logger, "Test-NewModule");
+        }
     }
 }
