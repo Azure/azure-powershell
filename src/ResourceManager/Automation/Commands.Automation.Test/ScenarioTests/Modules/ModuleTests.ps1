@@ -3,7 +3,7 @@ $testAutomationAccount = @{
     AutomationAccountName = 'anatolib-azureps-test-aa'
 }
 
-$testModule = @{
+$testNonGlobalModule = @{
     Name = 'AzureRM.profile'
 	Version = '5.4.0'
     ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/azurerm.profile.5.4.0.nupkg'
@@ -60,7 +60,7 @@ function Test-GetModuleByName {
 Test-NewModule
 #>
 function Test-NewModule {
-	$output = New-AzureRmAutomationModule -Name $testModule.Name -ContentLinkUri $testModule.ContentLinkUri @testAutomationAccount
+	$output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
 	Assert-NotNull $output
 
@@ -69,7 +69,7 @@ function Test-NewModule {
 
 	Assert-AreEqual $output.AutomationAccountName $testAutomationAccount.AutomationAccountName
 	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
-	Assert-AreEqual $output.Name $testModule.Name
+	Assert-AreEqual $output.Name $testNonGlobalModule.Name
 	Assert-False { $output.IsGlobal }
 	Assert-Null $output.Version
 	Assert-AreEqual $output.SizeInBytes 0
