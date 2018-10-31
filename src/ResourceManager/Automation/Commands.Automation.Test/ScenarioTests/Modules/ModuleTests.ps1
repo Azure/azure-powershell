@@ -163,5 +163,5 @@ function Test-RemoveModule {
 
 	Assert-Null $output
 	$moduleFound = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
-	Assert-Null { $moduleFound }
+	Assert-Null $moduleFound
 }
