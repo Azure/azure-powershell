@@ -49,10 +49,6 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet as a job in the background.")]
-        public SwitchParameter AsJob { get; set; }
-
-
         protected IIotCentralClient IotCentralClient
         {
             get

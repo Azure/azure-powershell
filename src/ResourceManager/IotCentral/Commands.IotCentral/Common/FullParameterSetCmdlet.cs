@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
         [ValidateNotNullOrEmpty]
         public PSIotCentralApp InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet as a job in the background.")]
+        public SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// Uses the applicable parameter group to set the Name and ResouceName for the current execution.
         /// </summary>

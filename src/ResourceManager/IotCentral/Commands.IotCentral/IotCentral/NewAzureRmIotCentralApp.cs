@@ -57,8 +57,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Pricing tier for IoT Central applications. Default value is S1.")]
+        [PSArgumentCompleter("S1")]
         [ValidateNotNullOrEmpty]
-        public PSIotCentralAppSku? Sku { get; set; }
+        public string Sku { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -74,6 +75,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             HelpMessage = "Iot Central Application Resource Tags.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet as a job in the background.")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -113,7 +117,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private string GetAppSkuName()
         {
-            return this.Sku?.ToString() ?? PSIotCentralAppSku.S1.ToString();
+            return this.Sku ?? PSIotCentralAppSku.S1.ToString();
         }
 
         private string GetDisplayName()

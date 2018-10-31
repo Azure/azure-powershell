@@ -14,19 +14,19 @@ Gets properties for either one or several IoT Central Applications.
 
 ### ListIotCentralAppsParameterSet (Default)
 ```
-Get-AzureRmIotCentralApp [[-ResourceGroupName] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmIotCentralApp [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Get-AzureRmIotCentralApp [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
+Get-AzureRmIotCentralApp [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmIotCentralApp -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -133,21 +133,6 @@ SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet as a job in the background.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
