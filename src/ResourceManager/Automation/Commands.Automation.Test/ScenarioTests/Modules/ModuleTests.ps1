@@ -29,7 +29,7 @@ function EnsureTestModuleImported {
         $output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
 		$startTime = Get-Date
-		$timeout = New-TimeSpan -Minutes 2
+		$timeout = New-TimeSpan -Minutes 3
 		$endTime = $startTime + $timeout
 
         while ($output.ProvisioningState -ne 'Succeeded') {
@@ -160,4 +160,6 @@ function Test-RemoveModule {
 	$output = Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
 
 	Assert-Null $output
+	$moduleFound = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
+	Assert-Null { $moduleFound }
 }
