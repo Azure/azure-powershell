@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
 
         public CloudEndpointTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(_logger = new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
