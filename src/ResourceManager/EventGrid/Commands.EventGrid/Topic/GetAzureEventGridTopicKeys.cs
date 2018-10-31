@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     public class GetAzureRmEventGridTopicKeys : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 0,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.TopicNameHelp)]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic InputObject { get; set; }
+        public PSTopic TopicObject { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
             }
-            else if (this.InputObject != null)
+            else if (this.TopicObject != null)
             {
-                resourceGroupName = this.InputObject.ResourceGroupName;
-                topicName = this.InputObject.TopicName;
+                resourceGroupName = this.TopicObject.ResourceGroupName;
+                topicName = this.TopicObject.TopicName;
             }
             else
             {

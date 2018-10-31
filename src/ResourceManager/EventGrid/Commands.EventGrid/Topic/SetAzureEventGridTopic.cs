@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(
             Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(

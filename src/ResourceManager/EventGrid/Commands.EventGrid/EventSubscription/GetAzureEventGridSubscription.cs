@@ -25,19 +25,19 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),OutputType(typeof(PSEventSubscription))]
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -45,27 +45,25 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         [ResourceGroupCompleter]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.ResourceIdNameHelp,
@@ -75,46 +73,44 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         public string TopicName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         public string DomainName { get; set; }
 
         [Parameter(
           Mandatory = false,
-          ValueFromPipelineByPropertyName = true,
-          Position = 3,
+          ValueFromPipelineByPropertyName = false,
           HelpMessage = EventGridConstants.DomainTopicNameHelp,
           ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         public string DomainTopicName { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.TopicTypeNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicTypeName { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = "Location",
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [LocationCompleter("Microsoft.EventGrid/eventSubscriptions")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = EventGridConstants.TopicInputObjectHelp,
@@ -122,7 +118,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSTopic CustomTopicInputObject { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = EventGridConstants.DomainInputObjectHelp,
@@ -130,7 +127,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSDomain DomainInputObject { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = EventGridConstants.DomainTopicInputObjectHelp,
@@ -138,16 +136,20 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSDomainTopic DomainTopicInputObject { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             HelpMessage = EventGridConstants.EventSubscriptionFullUrlInResponseHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         public SwitchParameter IncludeFullEndpointUrl { get; set; }

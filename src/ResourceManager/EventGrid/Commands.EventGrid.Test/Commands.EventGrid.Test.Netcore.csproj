@@ -24,9 +24,12 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'"> 
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="3.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.EventGrid">
       <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventGrid\Microsoft.Azure.Commands.EventGrid.dll</HintPath>
     </Reference>

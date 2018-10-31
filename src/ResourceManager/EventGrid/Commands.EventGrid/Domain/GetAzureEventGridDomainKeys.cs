@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     public class GetAzureEventGridDomainKeys : AzureEventGridCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 0,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
@@ -38,8 +39,9 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.DomainNameHelp)]
@@ -47,15 +49,17 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias("DomainName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = EventGridConstants.DomainInputObjectHelp,
             ParameterSetName = DomainInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSDomain InputObject { get; set; }
+        public PSDomain DomainObject { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.DomainResourceIdHelp,
@@ -72,10 +76,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
             }
-            else if (this.InputObject != null)
+            else if (this.DomainObject != null)
             {
-                resourceGroupName = this.InputObject.ResourceGroupName;
-                domainName = this.InputObject.DomainName;
+                resourceGroupName = this.DomainObject.ResourceGroupName;
+                domainName = this.DomainObject.DomainName;
             }
             else
             {
