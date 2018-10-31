@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                var availabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(this.Name);
+                var inputs = new OperationInputs(this.Name, "IotApps");
+                var availabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(inputs);
                 if (!(availabilityInfo.NameAvailable == true))
                 {
                     throw new PSArgumentException(availabilityInfo.Message);

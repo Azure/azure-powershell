@@ -67,7 +67,7 @@
   <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.IotCentral">
-      <Version>1.0.0</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
