@@ -115,7 +115,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
             # ReleaseNotes of this module
             ReleaseNotes = '## 2018.12
-            * Added a warning to recommend running Test-AzureStack before Install-AzsUpdate
+            * Added a warning to recommend running Test-AzureStack before Install-AzsUpdate, supported with 1810 update
             '
 
         } # End of PSData hashtable
