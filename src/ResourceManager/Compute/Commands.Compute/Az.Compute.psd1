@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.4.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -175,7 +175,13 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
     'Export-AzLogAnalyticThrottledRequests', 
     'Repair-AzVmssServiceFabricUpdateDomain', 
     'New-AzVMDataDisk', 'Update-AzVmssVM',
-    'New-AzVmssIpTagConfig', 'Invoke-AzVmssVMRunCommand'
+    'New-AzVmssIpTagConfig', 'Invoke-AzVmssVMRunCommand',
+    'New-AzGallery', 'Update-AzGallery',
+    'Get-AzGallery', 'Remove-AzGallery',
+    'New-AzGalleryImageDefinition', 'Update-AzGalleryImageDefinition',
+    'Get-AzGalleryImageDefinition', 'Remove-AzGalleryImageDefinition',
+    'New-AzGalleryImageVersion', 'Update-AzGalleryImageVersion',
+    'Get-AzGalleryImageVersion', 'Remove-AzGalleryImageVersion'
 
 # Variables to export from this module
 # VariablesToExport = @()

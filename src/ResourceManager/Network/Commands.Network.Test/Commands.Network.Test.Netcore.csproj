@@ -30,11 +30,11 @@
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.2-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.0" />
-    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="23.0.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.3-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
