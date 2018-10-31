@@ -137,7 +137,7 @@ This cmdlet supports Xslt as a map type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Xslt
+Accepted values: Xslt, Xslt20, Xslt30, Liquid
 
 Required: False
 Position: Named

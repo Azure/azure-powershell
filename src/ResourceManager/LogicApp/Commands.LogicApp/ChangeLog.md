@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 4.2.0
+* Update to Logic App SDK 4.0.0
+* New cmdlets for Assemblies
+	- Get-AzureRmIntegrationAccountAssembly
+	- New-AzureRmIntegrationAccountAssembly
+	- Remove-AzureRmIntegrationAccountAssembly
+	- Set-AzureRmIntegrationAccountAssembly
+* New cmdlets for Batch Configuration
+	- Get-AzureRmIntegrationAccountBatchConfiguration
+	- New-AzureRmIntegrationAccountBatchConfiguration
+	- Remove-AzureRmIntegrationAccountBatchConfiguration
+	- Set-AzureRmIntegrationAccountBatchConfiguration
+
 ## Version 4.1.4
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
