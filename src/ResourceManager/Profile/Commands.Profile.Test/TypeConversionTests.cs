@@ -14,6 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Desktop;
+#endif
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
