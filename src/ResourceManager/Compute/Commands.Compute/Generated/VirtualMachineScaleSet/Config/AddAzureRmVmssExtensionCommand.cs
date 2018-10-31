@@ -100,22 +100,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
             }
 
             // ExtensionProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
             }
 
             // Extensions
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension>();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
             }
 
-            var vExtensions = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
+            var vExtensions = new VirtualMachineScaleSetExtension();
 
             vExtensions.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vExtensions.ForceUpdateTag = this.MyInvocation.BoundParameters.ContainsKey("ForceUpdateTag") ? this.ForceUpdateTag : null;
