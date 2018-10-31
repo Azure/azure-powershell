@@ -177,7 +177,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             DateTime currentTime = DateTime.UtcNow;
             StartDate = currentTime;
-            EndDate = currentTime.AddYears(1);
         }
 
         public override void ExecuteCmdlet()
@@ -188,6 +187,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     CreateSimpleServicePrincipal();
                     return;
+                }
+
+                if (!this.IsParameterBound(c => c.EndDate))
+                {
+                    WriteVerbose("No value specified for -EndDate parameter; setting the value to one year after start date.");
+                    EndDate = StartDate.AddYears(1);
                 }
 
                 if (this.IsParameterBound(c => c.ApplicationObject))
