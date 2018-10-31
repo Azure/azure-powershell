@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.4.1.0\lib\net452\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.4.1.1\lib\net452\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
