@@ -1,0 +1,584 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMT9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dbf1ada0-aa37-444c-92d3-f8da148c4e6a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://eus2-agentservice-prod-1.azure-automation.net/accounts/70c03a7a-1ee5-4c33-972c-b84fe0b1b31f\",\r\n    \"creationTime\": \"2018-10-18T16:39:00.267-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-10-30T17:07:38.583-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "580"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-automation-accountid": [
+          "70c03a7a-1ee5-4c33-972c-b84fe0b1b31f"
+        ],
+        "x-ms-request-id": [
+          "dbf1ada0-aa37-444c-92d3-f8da148c4e6a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "f6d2877d-2a69-406a-ab64-f77cb89ef23d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001008Z:f6d2877d-2a69-406a-ab64-f77cb89ef23d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:07 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8dc5cbb9-cbdb-493c-8fc5-d31a0650bbc1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "32"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8dc5cbb9-cbdb-493c-8fc5-d31a0650bbc1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "a7af8656-0f0a-4047-b095-0ee2bd181721"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001009Z:a7af8656-0f0a-4047-b095-0ee2bd181721"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:08 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "54113f41-fdcb-4a31-8244-069371c29c73"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection\",\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Connections\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"description\": null,\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"tenantIdString\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    },\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "671"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "54113f41-fdcb-4a31-8244-069371c29c73"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "41765467-cd88-491a-925a-a93c235dc667"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001010Z:41765467-cd88-491a-925a-a93c235dc667"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:09 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bf4e9c33-0bfc-44dd-b7d4-540a91316d59"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection\",\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Connections\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"description\": null,\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"tenantIdString\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    },\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "671"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bf4e9c33-0bfc-44dd-b7d4-540a91316d59"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "49df02bc-be5c-4afc-9256-22e1faa94b7e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001010Z:49df02bc-be5c-4afc-9256-22e1faa94b7e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:09 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dbde2848-c2fb-477a-89cf-1db1ea92f2ce"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection\",\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Connections\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:11.2-07:00\",\r\n    \"description\": null,\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"\\\"ContosoCertificate2\\\"\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    },\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "678"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "dbde2848-c2fb-477a-89cf-1db1ea92f2ce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-correlation-request-id": [
+          "52c73801-4d25-4af2-abd7-1e1689cf8b84"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001011Z:52c73801-4d25-4af2-abd7-1e1689cf8b84"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:11 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "57bc2728-d65b-4e4c-af1b-34b6242eb666"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection\",\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Connections\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:11.2-07:00\",\r\n    \"description\": null,\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"\\\"ContosoCertificate2\\\"\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    },\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "678"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "57bc2728-d65b-4e4c-af1b-34b6242eb666"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "42608b00-7927-43b4-9870-641aa534eb3d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001011Z:42608b00-7927-43b4-9870-641aa534eb3d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:11 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"properties\": {\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    },\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"tenantIdString\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "380"
+        ],
+        "x-ms-client-request-id": [
+          "7dc4ed9b-5e79-4aef-85fc-55cfa802a4fe"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection\",\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Connections\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"description\": null,\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"tenantIdString\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    },\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "671"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7dc4ed9b-5e79-4aef-85fc-55cfa802a4fe"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "3af9508d-f068-4c19-9c7e-dbf75d4752ab"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001010Z:3af9508d-f068-4c19-9c7e-dbf75d4752ab"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:09 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jb25uZWN0aW9ucy9DcmVhdGVOZXdBenVyZVNlcnZpY2VQcmluY2lwYWxDb25uZWN0aW9uP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"properties\": {\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"\\\"ContosoCertificate2\\\"\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "317"
+        ],
+        "x-ms-client-request-id": [
+          "b06cb56a-fbda-4544-a189-13f6e7c00e11"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/connections/CreateNewAzureServicePrincipalConnection\",\r\n  \"name\": \"CreateNewAzureServicePrincipalConnection\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Connections\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2018-10-30T17:10:09.543-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:11.2-07:00\",\r\n    \"description\": null,\r\n    \"fieldDefinitionValues\": {\r\n      \"SubscriptionId\": \"subscriptionIdString\",\r\n      \"ApplicationId\": \"applicationIdString\",\r\n      \"TenantId\": \"\\\"ContosoCertificate2\\\"\",\r\n      \"CertificateThumbprint\": \"thumbprintIdString\"\r\n    },\r\n    \"connectionType\": {\r\n      \"name\": \"AzureServicePrincipal\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "678"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b06cb56a-fbda-4544-a189-13f6e7c00e11"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "bc18a8e2-ef56-4d5a-90b8-f86a75eb2016"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001011Z:bc18a8e2-ef56-4d5a-90b8-f86a75eb2016"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:11 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}

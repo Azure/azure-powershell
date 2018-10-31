@@ -1,0 +1,578 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a8ebb5cd-e3da-4ff2-b3db-77d0016f34d3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Certificate not found.\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "54"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a8ebb5cd-e3da-4ff2-b3db-77d0016f34d3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-correlation-request-id": [
+          "771b190b-632a-4add-975f-9d197a69e19f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001003Z:771b190b-632a-4add-975f-9d197a69e19f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:03 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6ca99953-545f-4b57-803f-bcef08717ad2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate\",\r\n  \"name\": \"ContosoCertificate\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Certificates\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"isExportable\": false,\r\n    \"thumbprint\": \"3A7DFABED24F7443E79E815239C51826042737DC\",\r\n    \"expiryTime\": \"2028-10-30T15:03:02-07:00\",\r\n    \"creationTime\": \"2018-10-30T17:10:04.87-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:04.87-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "521"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6ca99953-545f-4b57-803f-bcef08717ad2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "66054b98-c74e-4ffa-a33d-8d0653ee3ce6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001005Z:66054b98-c74e-4ffa-a33d-8d0653ee3ce6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1387b904-26cd-4618-af6a-b06c9c545463"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate\",\r\n  \"name\": \"ContosoCertificate\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Certificates\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"isExportable\": false,\r\n    \"thumbprint\": \"3A7DFABED24F7443E79E815239C51826042737DC\",\r\n    \"expiryTime\": \"2028-10-30T15:03:02-07:00\",\r\n    \"creationTime\": \"2018-10-30T17:10:04.87-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:04.87-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "521"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1387b904-26cd-4618-af6a-b06c9c545463"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "3d4fd1ae-1eee-47e8-ba70-9a77929f1887"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001005Z:3d4fd1ae-1eee-47e8-ba70-9a77929f1887"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "89a2ab6c-3bd8-419b-ba48-c37df433e944"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate\",\r\n  \"name\": \"ContosoCertificate\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Certificates\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"isExportable\": false,\r\n    \"thumbprint\": \"38DAE807AD6FB1F42BDE1658B5ABEC85ACE5615E\",\r\n    \"expiryTime\": \"2028-10-30T15:56:07-07:00\",\r\n    \"creationTime\": \"2018-10-30T17:10:04.87-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:05.497-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "524"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "89a2ab6c-3bd8-419b-ba48-c37df433e944"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-correlation-request-id": [
+          "c6a24ae3-b3be-40bf-bf25-1e689ee5d52e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001005Z:c6a24ae3-b3be-40bf-bf25-1e689ee5d52e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "93fbc422-a882-49a2-8154-95f1067b1da4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Certificate not found.\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "54"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "93fbc422-a882-49a2-8154-95f1067b1da4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-correlation-request-id": [
+          "fdfcddc4-bfb0-42f3-86bc-aaae50c2e415"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001006Z:fdfcddc4-bfb0-42f3-86bc-aaae50c2e415"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"ContosoCertificate\",\r\n  \"properties\": {\r\n    \"base64Value\": \"MIIEBgIBAzCCA8IGCSqGSIb3DQEHAaCCA7MEggOvMIIDqzCCA6cGCSqGSIb3DQEHBqCCA5gwggOUAgEAMIIDjQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQMwDgQILB6QzMMD8aYCAgfQgIIDYEBGQpeSnZ+/uWoeDORfoK7TwBJjH+21tyxdK7HLF7nCqsmp5O4UIclI0kjEs0uIr+OcoEX6AhqaY6dOAz+0d7h4R/M0W8/LE+GmQSDy6+AXdRcXMXUrFr4a9bYj+D24Evc9zh7S+3jQutw9ns0wEIvx4upajU9rWLMvdYRkXjghFsth03k+PPgXsCNyyhRj5nX9C4P/ywdy0iSfllJ4BW7X1P+N/9tX+MGQFR5rkvZRcsirR63xdJlD2R/l6qpn/3temsPwWknjyjoD7H6wLfqaoKIhDh5UZTEV1wEJ++ot9YdZzR/WHHdBKCyWgsYKB6zBXOUS0LXBI+r+pBQqZXzeIbJ0XwvlQS8+R7B6y9tyPj04kHKSrb7VqyO6G50O3mDTms4szYvMU5Lz53ySUqJJTNLxu4+ab8FV2OUSlaWPXWNuLrGCmj/VHrB8rO+pZic0t76/oBpxfPLqae7aIy24okB2ofPCVCp2HgVlljXL2TIA3hgJR2P1AETBa7yhVF7F15zRccQ3TqGEF3t68OjdjVrl68sbv51V7DDIdVqcCABS8dO3Fx9DgtQjlVvvpJnQVgVTurWBbL6T2UavsOA3tKVJ9cE7XyTyJ0n882GR8CAFLHFq6dTEmKZix4BaArwJdbnrMjeNhk48GQh1rnRTZvGDzBHTE/VNAg5X5RpXvFBOvnoGtR8KFtrwwfKx+QSOEwWDc/oE5QwrExiL2tpKbJmWn1YKycMyVmViGODlI85z39/FVBK+6CM6xvOdNW79vzCEOKjBWV8yQdWs5WfEM0i0G+KB6ZbnpeizdhQQrUyZ1TuEXHcACQAdPHX+JVCYBVB+xLNi/kQWPZRYJw2nSY7bInCctikX04k5FKATaIzcjgbALeD42fDdwAzorDIwQpV8LddfgoSSGNy2hylAJICUtRLKfwyi9V1CPDhL1aNdWdHftTbVey+h37TlmJGcvoYin97mKpv24v+twQoXiu/hNmc/UNgWSzDXt6R3nTv5e7GaWhgRc/oPwWcbgdKnvXTIti5Ic3fGgxhBmh+CpgEzoaDl9e81MPS3QR744mFBDXeuqNoSgQH39p84bsdEskx3vRfNngyVgS+qMT2MRoGBlrBF+MO2THm8PALPVvrDABT2Bv4T95jTnFQLljA7MB8wBwYFKw4DAhoEFP4y/wnDHEKsO3hnmi1UHsV35laDBBSfGxSXz6eA3BhCnUZWbqKJKja5xgICB9A=\",\r\n    \"description\": \"Hello\",\r\n    \"thumbprint\": \"3A7DFABED24F7443E79E815239C51826042737DC\",\r\n    \"isExportable\": false\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1584"
+        ],
+        "x-ms-client-request-id": [
+          "cfd9b85a-34ec-431c-99cc-2bf8f28b40d3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate\",\r\n  \"name\": \"ContosoCertificate\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Certificates\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"isExportable\": false,\r\n    \"thumbprint\": \"3A7DFABED24F7443E79E815239C51826042737DC\",\r\n    \"expiryTime\": \"2028-10-30T15:03:02-07:00\",\r\n    \"creationTime\": \"2018-10-30T17:10:04.87-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:04.87-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "521"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cfd9b85a-34ec-431c-99cc-2bf8f28b40d3"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2ceab59-d39b-4d46-a928-d316c295fc71"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001004Z:f2ceab59-d39b-4d46-a928-d316c295fc71"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:04 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"ContosoCertificate\",\r\n  \"properties\": {\r\n    \"base64Value\": \"MIIEBgIBAzCCA8IGCSqGSIb3DQEHAaCCA7MEggOvMIIDqzCCA6cGCSqGSIb3DQEHBqCCA5gwggOUAgEAMIIDjQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQMwDgQIhnWnF4xPgvICAgfQgIIDYOMNbp7tcOODqRhmQBn9YneZceq1SUcApdoiniG5JQu0MlzuL2LVh54jAKmXmQ3HafWsR0i8lIueVqAMm/ZeeY32TY57AVJ+eO4HyLH8ldqjtghhs0MsnhUA1vdAxZM1bXU+KTPRc90eLeyEu6+HvxXOrAzBq144t23Tnwc2f+7FVFTsDZpOG+iSqx1JzWP2zZ/27bdxR4OwEXQ30Ocx9mIynxVlSJ6AMPWsIWSwQhhWn2mIy1219re6BZw3yOomUT+0iO+yLyDhEa2OydzljKMwRLo4FdZgmP/GhF4/yDZKdv8pHmZy+eA0JAiFNDfY/cS2zexEeZlMMRwfW6UHG7xMo1TOfgyZcNPfRckPcT1pKA7YFUVPWksklpzi0lw955pX40zwl4EHw3PA0t+cLAEjmlyb0fDzcqf36pk4lG8CRrMEVvZbwAwrlbX1zenWh9/1gw50zzQxmv/0klIgFvTpMbeieJ+yfX4tbmPmERglYHfpH0djMEsKnVDb5pLGxPmPSBS9IV8ztptew4ceRGZZaJxqvKlY3RP4Aeg+jsRkPLAYpcvWCZcV+/FaKUf0Fb1kTsRlQcLG6dxvuLgSkvj/99H7MJoaZHGGKKq9EgxRvAG+lVA++u6KvVhxEK58Lb28BPFYR1G6Q8yrD0RIbXsCg4aZCxSBHICmAa7waTNuU7A+NSXLgBezS51OeZISFHg//XrOU8stWEJQwjibttZygZJKyTnEAop8NDcvvb/FXzEul4bLINLqDRL7UGNb/EfvB+XtpOMvmUOG1aDGljBB1Kzqk+eMsq7btQ8esrKo9Q0wpbfMRJZidvP4tycrkvxC/hpPxXLJdTvG/nNhM0HWpNZ/4byH+hEDcVO3II1gLunK8i0uX24eGLlJU3JIEH5CZHyCjANGqa829WASt7hqunbL1lTywGjgVN5R2Ik+HtB8qIQAEzqcgJIdbIml8QBxW1SHRUbrkW8OfdbAy0iWanboUPiNv+oTU1vzaiqO5YlaLSVYahfyCkn6HeehhGNRW8y61ksuV166Gxz+MWjCQjeuzZ2iur9zrIv2eagi5djjs0YwDUJCFMuJi6/2/4uWEEByTUIYj8dr9w70j142nR+y1WDjDsFqLAPmQIHOX/OnBd1QdOjigHPizSUkRzA7MB8wBwYFKw4DAhoEFPTCzKijHgjwRDr5TFQrSb6CwuEvBBSCWwJaFt1YM59/If8j1xplo3e8OwICB9A=\",\r\n    \"description\": \"Goodbye\",\r\n    \"thumbprint\": \"38DAE807AD6FB1F42BDE1658B5ABEC85ACE5615E\",\r\n    \"isExportable\": false\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1586"
+        ],
+        "x-ms-client-request-id": [
+          "389f4c04-1b4c-4007-abc0-2e74beb6256c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": \"ContosoCertificate\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Certificates\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"isExportable\": false,\r\n    \"thumbprint\": \"38DAE807AD6FB1F42BDE1658B5ABEC85ACE5615E\",\r\n    \"expiryTime\": \"2028-10-30T15:56:07-07:00\",\r\n    \"creationTime\": \"2018-10-30T17:10:04.87-07:00\",\r\n    \"lastModifiedTime\": \"2018-10-30T17:10:05.497-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "355"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "389f4c04-1b4c-4007-abc0-2e74beb6256c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "e12c44c7-de4d-4783-b0d9-7ad7690078f4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001005Z:e12c44c7-de4d-4783-b0d9-7ad7690078f4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/certificates/ContosoCertificate?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9jZXJ0aWZpY2F0ZXMvQ29udG9zb0NlcnRpZmljYXRlP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8a4b5c29-619f-4a11-aeca-2d6a2c3a4e61"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8a4b5c29-619f-4a11-aeca-2d6a2c3a4e61"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "b159aab9-9e8f-4cdc-83f4-20090073abe8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181031T001006Z:b159aab9-9e8f-4cdc-83f4-20090073abe8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 31 Oct 2018 00:10:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}
