@@ -3,6 +3,13 @@ $testAutomationAccount = @{
     AutomationAccountName = 'anatolib-azureps-test-aa'
 }
 
+$testGlobalModule = @{
+	Name = 'Azure'
+	Version = '1.0.3'
+	Size = 41338511
+	ActivityCount = 673
+}
+
 $testNonGlobalModule = @{
     Name = 'AzureRM.profile'
 	Version = '5.4.0'
@@ -20,14 +27,14 @@ function Test-GetAllModules {
 	$outputCount = $output | Measure-Object | % Count;
 	Assert-True { $outputCount -gt 1 } "Get-AzureRmAutomationModule should output more than one object"
 
-    $azureModule = $output | ?{ $_.Name -eq 'Azure' }
+    $azureModule = $output | ?{ $_.Name -eq $testGlobalModule.Name }
 	Assert-AreEqual $azureModule.AutomationAccountName $testAutomationAccount.AutomationAccountName
 	Assert-AreEqual $azureModule.ResourceGroupName $testAutomationAccount.ResourceGroupName
-	Assert-AreEqual $azureModule.Name 'Azure'
+	Assert-AreEqual $azureModule.Name $testGlobalModule.Name
 	Assert-True { $azureModule.IsGlobal }
-	Assert-AreEqual $azureModule.Version '1.0.3'
-	Assert-AreEqual $azureModule.SizeInBytes 41338511
-	Assert-AreEqual $azureModule.ActivityCount 673
+	Assert-AreEqual $azureModule.Version $testGlobalModule.Version
+	Assert-AreEqual $azureModule.SizeInBytes $testGlobalModule.Size
+	Assert-AreEqual $azureModule.ActivityCount $testGlobalModule.ActivityCount
 	Assert-NotNull $azureModule.CreationTime
 	Assert-NotNull $azureModule.LastModifiedTime
 	Assert-AreEqual $azureModule.ProvisioningState 'Created'
@@ -37,7 +44,7 @@ function Test-GetAllModules {
 Test-GetModuleByName
 #>
 function Test-GetModuleByName {
-	$output = Get-AzureRmAutomationModule -Name Azure @testAutomationAccount
+	$output = Get-AzureRmAutomationModule -Name $testGlobalModule.Name @testAutomationAccount
 
 	Assert-NotNull $output
 
@@ -46,11 +53,11 @@ function Test-GetModuleByName {
 
 	Assert-AreEqual $output.AutomationAccountName $testAutomationAccount.AutomationAccountName
 	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
-	Assert-AreEqual $output.Name 'Azure'
+	Assert-AreEqual $output.Name $testGlobalModule.Name
 	Assert-True { $output.IsGlobal }
-	Assert-AreEqual $output.Version '1.0.3'
-	Assert-AreEqual $output.SizeInBytes 41338511
-	Assert-AreEqual $output.ActivityCount 673
+	Assert-AreEqual $output.Version $testGlobalModule.Version
+	Assert-AreEqual $output.SizeInBytes $testGlobalModule.Size
+	Assert-AreEqual $output.ActivityCount $testGlobalModule.ActivityCount
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Created'
