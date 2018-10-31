@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
-        public void ImportModuleIsAliasForNewModule()
+        public void ImportModule()
         {
-            RunPowerShellTest(logger, "Test-ImportModuleIsAliasForNewModule");
+            RunPowerShellTest(logger, "Test-ImportModule");
         }
 
         [Fact]

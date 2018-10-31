@@ -122,9 +122,9 @@ function Test-NewModule {
 }
 
 <#
-Test-ImportModuleIsAliasForNewModule
+Test-ImportModule
 #>
-function Test-ImportModuleIsAliasForNewModule {
+function Test-ImportModule {
     $command = Get-Command Import-AzureRmAutomationModule
     Assert-AreEqual $command.CommandType 'Alias'
     Assert-AreEqual $command.Definition 'New-AzureRmAutomationModule'
