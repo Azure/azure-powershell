@@ -96,9 +96,7 @@ function Test-IotCentralAppLifecycleManagement{
 		$job | Wait-Job
 		$result = $job | Receive-Job
 
-		$job = Get-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job
+		$actual = Get-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname
 
 		# Assert
 		Assert-AreEqual $actual.Tag.Count 2
