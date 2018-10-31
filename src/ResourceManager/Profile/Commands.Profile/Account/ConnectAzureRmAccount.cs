@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Commands.Profile
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Alias("Domain")]
+        [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
-        public string TenantId { get; set; }
+        public string Tenant { get; set; }
 
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "AccessToken for Azure Resource Manager")]
@@ -264,9 +264,9 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetThumbprint(CertificateThumbprint);
             }
 
-            if (!string.IsNullOrEmpty(TenantId))
+            if (!string.IsNullOrEmpty(Tenant))
             {
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
+                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
             }
 
 #if NETSTANDARD
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Profile
                    WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,
                         _environment,
-                        TenantId,
+                        Tenant,
                         subscriptionId,
                         subscriptionName,
                         password,

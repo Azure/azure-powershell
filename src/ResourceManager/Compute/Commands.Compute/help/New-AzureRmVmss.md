@@ -49,7 +49,7 @@ $vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force
 $vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword)
 
 #Create a VMSS using the default settings
-New-AzureRmVmss -Credential $vmCred -VMScaleSetName $vmssName 
+New-AzureRmVmss -Credential $vmCred -VMScaleSetName $vmssName
 ```
 
 The command above creates the following with the name `$vmssName` :
@@ -61,9 +61,8 @@ The command above creates the following with the name `$vmssName` :
 
 The default image chosen for the VMs in the VMSS is `2016-Datacenter Windows Server` and the SKU is `Standard_DS1_v2`
 
-
 ### Example 2: Create a VMSS using the **`DefaultParameterSet`**
-``` powershell
+```powershell
 # Common
 $LOC = "WestUs";
 $RGName = "rgkyvms";
