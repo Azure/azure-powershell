@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.4-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.5-preview" />
   </ItemGroup>
 
   <ItemGroup>

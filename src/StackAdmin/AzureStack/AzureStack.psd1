@@ -9,7 +9,7 @@
 @{
 
     # Root Module
-    RootModule             = "AzureStack.psm1"
+    # RootModule = ''
 
     # Version number of this module.
     ModuleVersion          = '1.5.1'

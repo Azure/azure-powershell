@@ -9,7 +9,7 @@
 @{
 
     # RootModule
-    RootModule             = "AzureRM.psm1"
+    # RootModule = ''
 
     # Version number of this module.
     ModuleVersion          = '2.3.0.1'
