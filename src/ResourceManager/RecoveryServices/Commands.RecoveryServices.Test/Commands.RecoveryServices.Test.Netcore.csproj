@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

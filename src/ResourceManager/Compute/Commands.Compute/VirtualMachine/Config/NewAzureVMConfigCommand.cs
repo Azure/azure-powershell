@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.Compute
 		[Alias("Tag")]
 		public Hashtable Tags { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -131,6 +136,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 vm.HardwareProfile = new HardwareProfile();
                 vm.HardwareProfile.VmSize = this.VMSize;
+            }
+
+            if (this.EnableUltraSSD.IsPresent)
+            {
+                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
             }
 
             WriteObject(vm);
