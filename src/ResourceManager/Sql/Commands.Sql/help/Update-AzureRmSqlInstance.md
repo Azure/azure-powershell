@@ -8,11 +8,11 @@ schema: 2.0.0
 # Update-AzureRmSqlInstance
 
 ## SYNOPSIS
-Modifies properties of a SQL Database Managed instance. Only properties that are explicitly set will be updated.
+Updates an Azure SQL Database Managed Instance.
 
 ## SYNTAX
 
-### UpdateManagedInstanceFromInputParameters (Default)
+### UpdateInstanceFromInputParameters (Default)
 ```
 Update-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Edition <String>]
  [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
@@ -20,7 +20,7 @@ Update-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Editi
  [<CommonParameters>]
 ```
 
-### UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+### UpdateInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Update-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Edition <String>]
  [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
@@ -28,7 +28,7 @@ Update-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Editio
  [<CommonParameters>]
 ```
 
-### UpdateManagedInstanceFromAzureResourceId
+### UpdateInstanceFromAzureResourceId
 ```
 Update-AzureRmSqlInstance [-ResourceId] <String> [-Edition <String>] [-AdministratorPassword <SecureString>]
  [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
@@ -42,8 +42,8 @@ The **Update-AzureRmSqlInstance** cmdlet modifies properties of an Azure SQL Dat
 
 ### Example 1: Reset the administrator password
 ```
-PS C:\>$ManagedInstancePassword = "Newpassword1234"
-PS C:\> $SecureString = ConvertTo-SecureString $ManagedInstancePassword -AsPlainText -Force
+PS C:\>$InstancePassword = "Newpassword1234"
+PS C:\> $SecureString = ConvertTo-SecureString $InstancePassword -AsPlainText -Force
 PS C:\> Update-AzureRmSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
@@ -61,12 +61,12 @@ VCores                   : 16
 StorageSizeInGB          : 1024
 ```
 
-This command resets the administrator password on the Azure SQL managed instance named managedinstance1.
+This command resets the administrator password on the instance named managedinstance1.
 
 ## PARAMETERS
 
 ### -AdministratorPassword
-The new SQL administrator password for the Managed instance.
+The new SQL administrator password for the instance.
 
 ```yaml
 Type: SecureString
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.
+Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: SwitchParameter
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Edition
-The edition to assign to the Azure SQL Managed Database.
+The edition to assign to the instance.
 
 ```yaml
 Type: String
@@ -145,8 +145,8 @@ The AzureSqlManagedInstanceModel object to remove
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
-Parameter Sets: UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
-Aliases: ManagedInstance
+Parameter Sets: UpdateInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+Aliases: SqlInstance
 
 Required: True
 Position: 0
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-Determines which License Type of Sql Azure Managed Instance to use
+Determines which License Type of instance to use
 
 ```yaml
 Type: String
@@ -171,12 +171,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Database Managed instance name.
+SQL Database instance name.
 
 ```yaml
 Type: String
-Parameter Sets: UpdateManagedInstanceFromInputParameters
-Aliases: ManagedInstanceName
+Parameter Sets: UpdateInstanceFromInputParameters
+Aliases: InstanceName
 
 Required: True
 Position: 0
@@ -190,7 +190,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: UpdateManagedInstanceFromInputParameters
+Parameter Sets: UpdateInstanceFromInputParameters
 Aliases:
 
 Required: True
@@ -201,11 +201,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the Managed instance to remove
+The resource id of the instance to remove
 
 ```yaml
 Type: String
-Parameter Sets: UpdateManagedInstanceFromAzureResourceId
+Parameter Sets: UpdateInstanceFromAzureResourceId
 Aliases:
 
 Required: True
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageSizeInGB
-Determines how much Storage size to associate with Managed instance
+Determines how much Storage size to associate with instance
 
 ```yaml
 Type: Int32
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Managed instance.
+The tags to associate with the instance.
 
 ```yaml
 Type: Hashtable
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -VCore
-Determines how much VCore to associate with Managed instance
+Determines how much VCore to associate with instance
 
 ```yaml
 Type: Int32
@@ -292,19 +292,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

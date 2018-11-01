@@ -8,13 +8,13 @@ schema: 2.0.0
 # Restore-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
-Restores a SQL Managed instance database.
+Restores an Azure SQL Managed Instance database.
 
 ## SYNTAX
 
 ### PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters (Default)
 ```
-Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-Name] <String> [-ManagedInstanceName] <String>
+Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-Name] <String> [-InstanceName] <String>
  [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,16 +35,16 @@ Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <Strin
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-Name] <String> [-ManagedInstanceName] <String>
+Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-Name] <String> [-InstanceName] <String>
  [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
- -TargetManagedInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
 Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseModel>
- -PointInTime <DateTime> -TargetInstanceDatabaseName <String> -TargetManagedInstanceName <String>
+ -PointInTime <DateTime> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
  -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -52,31 +52,29 @@ Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <Azur
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
 ```
 Restore-AzureRmSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
- -TargetInstanceDatabaseName <String> -TargetManagedInstanceName <String> -TargetResourceGroupName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureRmSqlInstanceDatabase** cmdlet restores a SQL Managed database from a point in time in a live database.
-The restored database is created as a new managed instance database.
+The **Restore-AzureRmSqlInstanceDatabase** cmdlet restores an instance database from a point in time in a live database.
+The restored database is created as a new instance database.
 
 ## EXAMPLES
 
-## EXAMPLES
-
-### Example 1: Restore a managed instance database from a point in time
+### Example 1: Restore a instance database from a point in time
 ```
-PS C:\> Restore-AzureRmSqlinstanceDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
+PS C:\> Restore-AzureRmSqlinstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
 ```
 
-The command restores the managed instance database Database01 from the specified point-in-time backup to the managed instance database named Database01_restored.
+The command restores the instance database Database01 from the specified point-in-time backup to the instance database named Database01_restored.
 
-### Example 2: Restore a managed instance database from a point in time to another managed instance on different resource group
+### Example 2: Restore a instance database from a point in time to another instance on different resource group
 ```
-PS C:\> Restore-AzureRmSqlInstanceDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored" -TargetManagedInstanceName "managedInstance1" -TargetResourceGroupName "ResourceGroup02"
+PS C:\> Restore-AzureRmSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored" -TargetInstanceName "managedInstance1" -TargetResourceGroupName "ResourceGroup02"
 ```
 
-The command restores the managed instance database Database01 on managed instance managedInstance1 on resource group ResourceGroup01 from the specified point-in-time backup to the managed instance database named Database01_restored on managed instance managedInstance2 on resource group ResourceGroup02.
+The command restores the instance database Database01 on instance managedInstance1 on resource group ResourceGroup01 from the specified point-in-time backup to the instance database named Database01_restored on instance managedInstance2 on resource group ResourceGroup02.
 
 ## PARAMETERS
 
@@ -131,7 +129,7 @@ The Instance Database object to restore
 ```yaml
 Type: AzureSqlManagedDatabaseModel
 Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
-Aliases: ManagedDatabase
+Aliases: InstanceDatabase
 
 Required: True
 Position: 0
@@ -140,8 +138,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The Managed instance name.
+### -InstanceName
+The instance name.
 
 ```yaml
 Type: String
@@ -230,9 +228,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetManagedInstanceName
-The name of the target managed instance to restore to.
-If not specified, the target managed instance is the same as the source managed instance.
+### -TargetInstanceName
+The name of the target instance to restore to.
+If not specified, the target instance is the same as the source instance.
 
 ```yaml
 Type: String

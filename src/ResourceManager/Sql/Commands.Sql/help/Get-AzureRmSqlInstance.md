@@ -8,17 +8,17 @@ schema: 2.0.0
 # Get-AzureRmSqlInstance
 
 ## SYNOPSIS
-Returns information about SQL Database Managed instances.
+Returns information about Azure SQL Managed Database Instance.
 
 ## SYNTAX
 
-### GetManagedInstanceByResourceGroup (Default)
+### GetInstanceByResourceGroup (Default)
 ```
 Get-AzureRmSqlInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### GetManagedInstanceByNameAndResourceGroup
+### GetInstanceByNameAndResourceGroup
 ```
 Get-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -26,11 +26,11 @@ Get-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String>
 
 ## DESCRIPTION
 The **Get-AzureRmSqlInstance** cmdlet returns information about one or more Azure SQL Managed Instances.
-Specify the name of a managed instance to see information for only that managed instance.
+Specify the name of a instance to see information for only that instance.
 
 ## EXAMPLES
 
-### Example 1: Get all instances of SQL Managed instance assigned to a resource group
+### Example 1: Get all instances assigned to a resource group
 ```
 PS C:\>Get-AzureRmSqlInstance -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
@@ -64,9 +64,9 @@ VCores                   : 8
 StorageSizeInGB          : 512
 ```
 
-This command gets information about all the Azure SQL Database Managed instances assigned to the resource group ResourceGroup01.
+This command gets information about all instances assigned to the resource group ResourceGroup01.
 
-### Example 2: Get information about an Azure SQL Database Managed instance
+### Example 2: Get information about an  instance
 ```
 PS C:\>Get-AzureRmSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
@@ -85,7 +85,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 ```
 
-This command gets information about the Azure SQL Database Managed instance named managedInstance1.
+This command gets information about the instance named managedInstance1.
 
 ## PARAMETERS
 
@@ -105,12 +105,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL managed instance name.
+SQL instance name.
 
 ```yaml
 Type: String
-Parameter Sets: GetManagedInstanceByNameAndResourceGroup
-Aliases: ManagedInstanceName
+Parameter Sets: GetInstanceByNameAndResourceGroup
+Aliases: InstanceName
 
 Required: True
 Position: 0
@@ -124,7 +124,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: GetManagedInstanceByResourceGroup
+Parameter Sets: GetInstanceByResourceGroup
 Aliases:
 
 Required: False
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: GetManagedInstanceByNameAndResourceGroup
+Parameter Sets: GetInstanceByNameAndResourceGroup
 Aliases:
 
 Required: True
@@ -147,18 +147,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

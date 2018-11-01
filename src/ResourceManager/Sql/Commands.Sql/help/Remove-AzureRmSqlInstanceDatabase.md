@@ -8,15 +8,14 @@ schema: 2.0.0
 # Remove-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
-Removes an Azure SQL Managed instance database.
+Removes an Azure SQL Managed Instance database.
 
 ## SYNTAX
 
 ### RemoveInstanceDatabaseFromInputParameters (Default)
 ```
-Remove-AzureRmSqlInstanceDatabase [-Name] <String> [-ManagedInstanceName] <String>
- [-ResourceGroupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
@@ -36,12 +35,12 @@ The **Remove-AzureRmSqlInstanceDatabase** cmdlet removes an Azure SQL Managed In
 
 ## EXAMPLES
 
-### Example 1: Remove a database from an Azure SQL Managed instance
+### Example 1: Remove a database from an instance
 ```
-PS C:\>Remove-AzureRmSqlInstanceDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzureRmSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
-This command removes the database named Database01 from managed instance managedInstance1.
+This command removes the database named Database01 from instance managedInstance1.
 
 ## PARAMETERS
 
@@ -90,8 +89,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The Azure Sql Managed Instance name.
+### -InstanceName
+The instance name.
 
 ```yaml
 Type: String

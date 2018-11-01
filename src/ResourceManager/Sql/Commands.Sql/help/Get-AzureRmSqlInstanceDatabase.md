@@ -8,25 +8,25 @@ schema: 2.0.0
 # Get-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
-Gets one or more managed databases.
+Returns information about Azure SQL Managed Instance database.
 
 ## SYNTAX
 
 ### GetInstanceDatabaseFromInputParameters (Default)
 ```
-Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-InstanceName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetInstanceDatabaseFromAzureResourceId
 ```
-Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-ManagedInstanceResourceId] <String>
+Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-InstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetInstanceDatabaseFromManagedInstanceObject
+### GetInstanceDatabaseFromInstanceObject
 ```
-Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-ManagedInstanceObject] <AzureSqlManagedInstanceModel>
+Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-InstanceObject] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,9 +35,9 @@ The **Get-AzureRmSqlInstanceDatabase** cmdlet gets one or more Azure SQL databas
 
 ## EXAMPLES
 
-### Example 1: Get all databases on a Managed instance
+### Example 1: Get all databases on a instance
 ```
-PS C:\>Get-AzureRmSqlInstanceDatabase -ManagedInstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
+PS C:\>Get-AzureRmSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -77,11 +77,11 @@ SourceDatabaseId         :
 FailoverGroupId          :
 ```
 
-This command gets all databases on the managed instance named managedInstance1.
+This command gets all databases on the instance named managedInstance1.
 
 ### Example 2: Get a database by name on a Managed instance
 ```
-PS C:\>Get-AzureRmSqlInstanceDatabase -Name "managedDatabase1" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzureRmSqlInstanceDatabase -Name "managedDatabase1" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -102,7 +102,7 @@ SourceDatabaseId         :
 FailoverGroupId          :
 ```
 
-This command gets a database named managedDatabase1 from a managed instance named managedInstance1.
+This command gets a database named managedDatabase1 from a instance named managedInstance1.
 
 ## PARAMETERS
 
@@ -121,8 +121,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The Azure Sql Managed Instance name.
+### -InstanceName
+The instance name.
 
 ```yaml
 Type: String
@@ -136,13 +136,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceObject
-The AzureSqlManagedInstanceModel object to use for getting Instance database
-
-```yaml
+### -InstanceObject
+The instance object to use for getting instance database```yaml
 Type: AzureSqlManagedInstanceModel
-Parameter Sets: GetInstanceDatabaseFromManagedInstanceObject
-Aliases:
+Parameter Sets: GetInstanceDatabaseFromInstanceObject
+Aliases: ParentObject
 
 Required: True
 Position: 0
@@ -151,13 +149,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceResourceId
-The resource id of Managed Instance object to get
+### -InstanceResourceId
+The resource id of instance object to get
 
 ```yaml
 Type: String
 Parameter Sets: GetInstanceDatabaseFromAzureResourceId
-Aliases:
+Aliases: ParentResourceId
 
 Required: True
 Position: 0

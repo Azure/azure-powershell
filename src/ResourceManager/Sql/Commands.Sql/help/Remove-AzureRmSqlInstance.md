@@ -8,23 +8,23 @@ schema: 2.0.0
 # Remove-AzureRmSqlInstance
 
 ## SYNOPSIS
-Removes an Azure SQL Database Managed instance.
+Removes an Azure SQL Managed Database Instance.
 
 ## SYNTAX
 
-### RemoveMManagedInstanceFromInputParameters (Default)
+### RemoveInstanceFromInputParameters (Default)
 ```
 Remove-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+### RemoveInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Remove-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveMManagedInstanceFromAzureResourceId
+### RemoveInstanceFromAzureResourceId
 ```
 Remove-AzureRmSqlInstance [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -35,12 +35,12 @@ The **Remove-AzureRmSqlInstance** cmdlet removes an Azure SQL Database Managed I
 
 ## EXAMPLES
 
-### Example 1: Remove a managed instance
+### Example 1: Remove instance
 ```
 PS C:\>Remove-AzureRmSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
-This command removes the Azure SQL Database Managed instance named managedInstance1.
+This command removes the instance named managedInstance1.
 
 ## PARAMETERS
 
@@ -79,8 +79,8 @@ The AzureSqlManagedInstanceModel object to remove
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
-Parameter Sets: RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
-Aliases: ManagedInstance
+Parameter Sets: RemoveInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+Aliases: SqlInstance
 
 Required: True
 Position: 0
@@ -90,12 +90,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Managed instance name.
+SQL instance name.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveMManagedInstanceFromInputParameters
-Aliases: ManagedInstanceName
+Parameter Sets: RemoveInstanceFromInputParameters
+Aliases: InstanceName
 
 Required: True
 Position: 0
@@ -109,7 +109,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveMManagedInstanceFromInputParameters
+Parameter Sets: RemoveInstanceFromInputParameters
 Aliases:
 
 Required: True
@@ -120,11 +120,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of Managed instance object to remove
+The resource id of instance object to remove
 
 ```yaml
 Type: String
-Parameter Sets: RemoveMManagedInstanceFromAzureResourceId
+Parameter Sets: RemoveInstanceFromAzureResourceId
 Aliases:
 
 Required: True
@@ -166,19 +166,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

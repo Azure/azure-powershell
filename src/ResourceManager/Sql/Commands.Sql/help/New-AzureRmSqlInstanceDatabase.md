@@ -8,13 +8,13 @@ schema: 2.0.0
 # New-AzureRmSqlInstanceDatabase
 
 ## SYNOPSIS
-Creates a database in Sql Managed Instance.
+Creates an Azure SQL Managed Instance database.
 
 ## SYNTAX
 
 ### CreateNewInstanceDatabaseFromInputParameters (Default)
 ```
-New-AzureRmSqlInstanceDatabase [-Name] <String> [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
  [-Collation <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -22,14 +22,14 @@ New-AzureRmSqlInstanceDatabase [-Name] <String> [-ManagedInstanceName] <String> 
 ### CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 New-AzureRmSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
- [-ManagedInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### CreateNewInstanceDatabaseFromAzureSqlManagedInstanceResourceId
+### CreateNewInstanceDatabaseFromAzureSqlInstanceResourceId
 ```
 New-AzureRmSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
- [-ManagedInstanceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InstanceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -38,9 +38,9 @@ The **New-AzureRmSqlInstanceDatabase** cmdlet creates an Azure SQL Managed insta
 
 ## EXAMPLES
 
-### Example 1: Create a database on a specified managed instance
+### Example 1: Create a database on a specified instance
 ```
-PS C:\>New-AzureRmSqlInstanceDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>New-AzureRmSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -61,7 +61,7 @@ SourceDatabaseId         :
 FailoverGroupId          :
 ```
 
-This command creates a managed database named Database01 on managed instance managedInstance1.
+This command creates a instance database named Database01 on instance managedInstance1.
 
 ## PARAMETERS
 
@@ -110,8 +110,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The Azure Sql Managed Instance name.
+### -InstanceName
+The instance name.
 
 ```yaml
 Type: String
@@ -125,13 +125,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceObject
-The Azure Sql Managed Instance object
+### -InstanceObject
+The instance object
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
-Aliases: InputObject
+Aliases: ParentObject
 
 Required: True
 Position: 0
@@ -140,13 +140,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceResourceId
-The Managed Instance resource id
+### -InstanceResourceId
+The instance resource id
 
 ```yaml
 Type: String
-Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlManagedInstanceResourceId
-Aliases:
+Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlInstanceResourceId
+Aliases: ParentResourceId
 
 Required: True
 Position: 0

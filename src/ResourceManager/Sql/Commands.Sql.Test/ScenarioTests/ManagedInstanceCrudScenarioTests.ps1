@@ -22,11 +22,12 @@ function Test-CreateManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
- 	$managedInstanceName = Get-ManagedInstanceName
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$credentials = Get-ServerCredential
- 	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
@@ -34,6 +35,10 @@ function Test-CreateManagedInstance
 
  	try
  	{
+		# Setup VNET 
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
  		# With SKU name specified
  		$job = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
@@ -76,7 +81,7 @@ function Test-CreateManagedInstance
  	}
  	finally
  	{
- 		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rg
  	}
 }
 
@@ -90,7 +95,14 @@ function Test-SetManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$managedInstance = Create-ManagedInstanceForTest $rg
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
+	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
 	try
 	{
@@ -101,7 +113,7 @@ function Test-SetManagedInstance
 		$vCore = 8
 
 		$managedInstance1 = Set-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
@@ -118,7 +130,7 @@ function Test-SetManagedInstance
 		$vCore = 16
 
 		$managedInstance2 = $managedInstance | Set-AzureRmSqlInstance -AdministratorPassword $credentials.Password `
-			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance2.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance2.AdministratorLogin $managedInstance.AdministratorLogin
@@ -134,7 +146,7 @@ function Test-SetManagedInstance
 		$vCore = 8
 
 		$managedInstance3 = Set-AzureRmSqlInstance -InputObject $managedInstance `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance3.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance3.AdministratorLogin $managedInstance.AdministratorLogin
@@ -150,7 +162,7 @@ function Test-SetManagedInstance
 		$vCore = 16
 
 		$managedInstance4 = Set-AzureRmSqlInstance -ResourceId $managedInstance.Id `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance4.AdministratorLogin $managedInstance.AdministratorLogin
@@ -175,7 +187,14 @@ function Test-UpdateManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$managedInstance = Create-ManagedInstanceForTest $rg
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
+	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
 	try
 	{
@@ -186,7 +205,7 @@ function Test-UpdateManagedInstance
 		$vCore = 8
 
 		$managedInstance1 = Update-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
@@ -203,7 +222,7 @@ function Test-UpdateManagedInstance
 		$vCore = 16
 
 		$managedInstance2 = $managedInstance | Update-AzureRmSqlInstance -AdministratorPassword $credentials.Password `
-			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance2.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance2.AdministratorLogin $managedInstance.AdministratorLogin
@@ -219,7 +238,7 @@ function Test-UpdateManagedInstance
 		$vCore = 8
 
 		$managedInstance3 = Update-AzureRmSqlInstance -InputObject $managedInstance `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance3.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance3.AdministratorLogin $managedInstance.AdministratorLogin
@@ -235,7 +254,7 @@ function Test-UpdateManagedInstance
 		$vCore = 16
 
 		$managedInstance4 = Update-AzureRmSqlInstance -ResourceId $managedInstance.Id `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance4.AdministratorLogin $managedInstance.AdministratorLogin
@@ -262,8 +281,15 @@ function Test-GetManagedInstance
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$rg1 = Create-ResourceGroupForTest
-	$managedInstance1 = Create-ManagedInstanceForTest $rg
-	$managedInstance2 = Create-ManagedInstanceForTest $rg1
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
+	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance2 = Create-ManagedInstanceForTest $rg1 $subnetId
 
 	try
 	{
@@ -304,23 +330,29 @@ function Test-RemoveManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
 
 	try
 	{
 		# Test using parameters
-		$managedInstance1 = Create-ManagedInstanceForTest $rg
+		$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
 		Remove-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -Force
 		
 		# Test using InputObject
-		$managedInstance2 = Create-ManagedInstanceForTest $rg
+		$managedInstance2 = Create-ManagedInstanceForTest $rg $subnetId
 		Remove-AzureRmSqlInstance -InputObject $managedInstance2 -Force
 
 		# Test using ResourceId
-		$managedInstance3 = Create-ManagedInstanceForTest $rg
+		$managedInstance3 = Create-ManagedInstanceForTest $rg $subnetId
 		Remove-AzureRmSqlInstance -ResourceId $managedInstance3.Id -Force
 
 		# Test piping
-		$managedInstance4 = Create-ManagedInstanceForTest $rg
+		$managedInstance4 = Create-ManagedInstanceForTest $rg $subnetId
 		$managedInstance4 | Remove-AzureRmSqlInstance -Force
 
 		$all = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName
@@ -340,11 +372,16 @@ function Test-CreateManagedInstanceWithIdentity
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$credentials = Get-ServerCredential
- 	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16

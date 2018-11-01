@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public SwitchParameter FromPointInTimeBackup { get; set; }
 
         /// <summary> 
-        /// Gets or sets the managed database name to restore
+        /// Gets or sets the instance database name to restore
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
@@ -89,18 +89,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Managed instance to use
+        /// Gets or sets the name of the instance to use
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The Managed instance name.")]
+            HelpMessage = "The name of the instance.")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The Managed instance name.")]
+            HelpMessage = "The name of the instance.")]
         [ValidateNotNullOrEmpty]
-        public override string ManagedInstanceName { get; set; }
+        public override string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -118,58 +118,42 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Managed database object to remove
+        /// Instance database object to remove
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Instance Database object to restore")]
+            HelpMessage = "The instance database object to restore")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Instance Database object to restore")]
+            HelpMessage = "The instance database object to restore")]
         [ValidateNotNullOrEmpty]
-        [Alias("ManagedDatabase")]
+        [Alias("InstanceDatabase")]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the Managed database to remove
+        /// Gets or sets the resource id of the instance database to remove
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Instance Database object to restore")]
+            HelpMessage = "The resource id of instance database object to restore")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Instance Database object to restore")]
+            HelpMessage = "The resource id of instance database object to restore")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the point in time to restore the managed database to
+        /// Gets or sets the point in time to restore the instance database to
         /// </summary>
-        [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            HelpMessage = "The point in time to restore the database to.")]
-        [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromInputObjectParameterSet,
-            Mandatory = true,
-            HelpMessage = "The point in time to restore the database to.")]
-        [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromResourceIdParameterSet,
-            Mandatory = true,
-            HelpMessage = "The point in time to restore the database to.")]
-        [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            HelpMessage = "The point in time to restore the database to.")]
-        [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
-            Mandatory = true,
-            HelpMessage = "The point in time to restore the database to.")]
-        [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromResourceIdParameterSet,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
 
@@ -181,18 +165,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public string TargetInstanceDatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the target managed instance to restore to.
+        /// Gets or sets the name of the target instance to restore to.
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
-            HelpMessage = "The name of the target managed instance to restore to. If not specified, the target managed instance is the same as the source managed instance.")]
+            HelpMessage = "The name of the target instance to restore to. If not specified, the target instance is the same as the source instance.")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromResourceIdParameterSet,
             Mandatory = true,
-            HelpMessage = "The name of the target managed instance to restore to. If not specified, the target managed instance is the same as the source managed instance.")]
+            HelpMessage = "The name of the target instance to restore to. If not specified, the target instance is the same as the source instance.")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
-            HelpMessage = "The name of the target managed instance to restore to. If not specified, the target managed instance is the same as the source managed instance.")]
-        public string TargetManagedInstanceName { get; set; }
+            HelpMessage = "The name of the target instance to restore to. If not specified, the target instance is the same as the source instance.")]
+        public string TargetInstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the target resource group to restore to.
@@ -222,13 +206,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         {
             AzureSqlManagedDatabaseModel model;
             DateTime restorePointInTime = DateTime.MinValue;
-            string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, ManagedInstanceName);
+            string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
 
             if (string.Equals(this.ParameterSetName, PointInTimeSameInstanceRestoreFromInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(this.ParameterSetName, PointInTimeCrossInstanceRestoreFromInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
+                InstanceName = InputObject.ManagedInstanceName;
                 Name = InputObject.Name;
             }
             else if (string.Equals(this.ParameterSetName, PointInTimeSameInstanceRestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
@@ -237,13 +221,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
+                InstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
                 Name = resourceInfo.ResourceName;
             }
 
-            if (String.IsNullOrEmpty(TargetManagedInstanceName))
+            if (String.IsNullOrEmpty(TargetInstanceName))
             {
-                TargetManagedInstanceName = ManagedInstanceName;
+                TargetInstanceName = InstanceName;
             }
 
             if (String.IsNullOrEmpty(TargetResourceGroupName))
@@ -255,13 +239,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             {
                 Location = location,
                 ResourceGroupName = TargetResourceGroupName,
-                ManagedInstanceName = TargetManagedInstanceName,
+                ManagedInstanceName = TargetInstanceName,
                 Name = TargetInstanceDatabaseName,
                 CreateMode = "PointInTimeRestore",
                 RestorePointInTime = PointInTime
             };
 
-            string sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, ManagedInstanceName, Name);
+            string sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, InstanceName, Name);
 
             return ModelAdapter.RestoreManagedDatabase(sourceManagedDatabaseId, model);
         }
