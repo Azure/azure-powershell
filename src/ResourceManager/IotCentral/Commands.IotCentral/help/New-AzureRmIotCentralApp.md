@@ -264,7 +264,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-### System.Nullable`1[[Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSku, Microsoft.Azure.Commands.IotCentral, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 ### System.Collections.Hashtable
 ## OUTPUTS
 
