@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.2.0'
+ModuleVersion = '6.2.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -163,11 +163,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Adding support for Virtual Network Rules
-    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
-    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
-    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
-    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.'
+        ReleaseNotes = '* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.'
 
         # Prerelease string of this module
         # Prerelease = ''

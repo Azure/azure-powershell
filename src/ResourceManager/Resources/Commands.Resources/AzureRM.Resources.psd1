@@ -172,7 +172,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Fix for https://github.com/Azure/azure-powershell/issues/7402
-    - Allow listing resources using the ''-ResourceId'' parameter for ''Get-AzureRmResource'''
+    - Allow listing resources using the ''-ResourceId'' parameter for ''Get-AzureRmResource''
+    * Fix for https://github.com/Azure/azure-powershell/issues/7700
+    - Fix issue where `EndDate` parameter was not being honored for AD cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''

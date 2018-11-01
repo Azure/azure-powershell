@@ -19,9 +19,13 @@
 * Add Get-AzureRmCognitiveServicesAccountSkus operation.
 
 #### AzureRM.Compute
-* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
-* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.
-* Shared Gallery cmdlets
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+
+#### AzureRM.DataLakeStore
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
 
 #### AzureRM.Insights
 * Fixed issue #7267 (Autoscale area)
