@@ -708,6 +708,10 @@
 		{
 			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestGetWebAppBackupList.json",
 			"_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "src\\ResourceManager\\Automation\\Commands.Automation.Test\\ScenarioTests\\SourceControlTests.ps1",
+            "_justification": "Legitimate personal access tokens. After recording the tests, the tokens were revoked"
 		}
 	]
 }

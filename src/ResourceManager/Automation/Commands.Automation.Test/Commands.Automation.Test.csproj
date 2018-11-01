@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" /> 
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Azure.Management.Automation">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.4.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
@@ -60,7 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
-    <Compile Include="ScenarioTests\UpdateManagement\UpdateManagementTests.cs" />
+    <Compile Include="ScenarioTests\HybridWorkerGroupTests.cs" />
+    <Compile Include="ScenarioTests\SourceControlTests.cs" />
+    <Compile Include="ScenarioTests\UpdateManagementTests.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
@@ -124,6 +126,15 @@
     <None Include="ScenarioTests\AutomationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\HybridWorkerGroupTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SourceControlTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\UpdateManagementTests.ps1">
+     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Resources\fastjob.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -143,54 +154,64 @@
     <None Include="ScenarioTests\Resources\Write-DebugAndVerboseOutput.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\UpdateManagement\UpdateManagementTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxWeeklySUC.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsMonthlySUC.json" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCNonAzureOnly.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateGitHubSourceControlAndSync.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCWithAllOption.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateVsoGitSourceControlAndSync.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCWithDefaults.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateVsoTfvcSourceControlAndSync.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsOneTimeSUCWithAllOption.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.HybridWorkerGroupTests\E2EHybridWorkerGroup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsOneTimeSUCWithDefaults.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateLinuxWeeklySUC.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\DeleteSUC.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateWindowsMonthlySUC.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllMachineRuns.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateLinuxOneTimeSUCNonAzureOnly.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllMachineRunsWithFilters.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateLinuxOneTimeSUCWithAllOption.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllMachineRunsWithFiltersNoResults.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateLinuxOneTimeSUCWithDefaults.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllRuns.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateWindowsOneTimeSUCWithAllOption.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllRunsWithFilters.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\CreateWindowsOneTimeSUCWithDefaults.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllRunsWithFiltersNoResults.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\DeleteSUC.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllSUCs.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllMachineRuns.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllSUCsForVM.json">
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllMachineRunsWithFilters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllMachineRunsWithFiltersNoResults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllRuns.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllRunsWithFilters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllRunsWithFiltersNoResults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllSUCs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllSUCsForVM.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
