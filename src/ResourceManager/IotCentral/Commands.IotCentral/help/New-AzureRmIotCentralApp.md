@@ -13,9 +13,9 @@ Creates a new IoT Central Application.
 ## SYNTAX
 
 ```
-New-AzureRmIotCentralApp [-Subdomain] <String> [-DisplayName <String>] [-Template <String>]
- [-Sku <PSIotCentralAppSku>] [-Location <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String>
- [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmIotCentralApp [-Subdomain] <String> [-DisplayName <String>] [-Template <String>] [-Sku <String>]
+ [-Location <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -264,13 +264,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
+### System.Nullable`1[[Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSku, Microsoft.Azure.Commands.IotCentral, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 ### System.Collections.Hashtable
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## NOTES
 
 ## RELATED LINKS
