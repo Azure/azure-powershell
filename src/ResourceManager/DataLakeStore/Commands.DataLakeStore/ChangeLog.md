@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
 
 ## Version 6.2.0
 * Adding support for Virtual Network Rules
