@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.2
 * Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
 
 ## Version 5.1.1
