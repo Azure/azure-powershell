@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.6.10'
+ModuleVersion = '0.7.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -124,8 +124,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Added swtich parameter - EnableKafka in New-AzureRmEventHubNamespace to support Kafka enable namepaces'
 
         # Prerelease string of this module
         # Prerelease = ''

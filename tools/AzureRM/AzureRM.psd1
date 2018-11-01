@@ -63,18 +63,18 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.0';
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.6'; }, 
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.12'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.7.2'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.8.0'; }, 
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.7'; }, 
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.2.10'; }, 
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '1.0.10'; }, 
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '5.0.3'; }, 
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.5.11'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '5.1.4'; }, 
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.2.0'; }, 
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.2.1'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.9'; }, 
                @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.1.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.7'; }, 
-               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.6.10'; }, 
+               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.7.0'; }, 
                @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.1.8'; }, 
                @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.1.5'; }, 
                @{ModuleName = 'AzureRM.IotHub'; RequiredVersion = '3.1.8'; }, 
@@ -182,9 +182,16 @@ AzureRM.CognitiveServices
 * Add Get-AzureRmCognitiveServicesAccountSkus operation.
 
 AzureRM.Compute
-* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
-* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.
-* Shared Gallery cmdlets
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+
+AzureRM.DataLakeStore
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
+
+AzureRM.EventHub
+* Added swtich parameter - EnableKafka in New-AzureRmEventHubNamespace to support Kafka enable namepaces
 
 AzureRM.Insights
 * Fixed issue #7267 (Autoscale area)
@@ -210,6 +217,8 @@ AzureRM.RecoveryServices.Backup
 AzureRM.Resources
 * Fix for https://github.com/Azure/azure-powershell/issues/7402
     - Allow listing resources using the ''-ResourceId'' parameter for ''Get-AzureRmResource''
+* Fix for https://github.com/Azure/azure-powershell/issues/7700
+    - Fix issue where `EndDate` parameter was not being honored for AD cmdlets
 
 AzureRM.ServiceBus
 * Added MigrationState read-only property to PSServiceBusMigrationConfigurationAttributes which will help to know the Migration state.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.7.0
 * Added swtich parameter - EnableKafka in New-AzureRmEventHubNamespace to support Kafka enable namepaces
 
 ## Version 0.6.10
