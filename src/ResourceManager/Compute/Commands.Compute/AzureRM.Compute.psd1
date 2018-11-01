@@ -181,7 +181,8 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'New-AzureRmGalleryImageDefinition', 'Update-AzureRmGalleryImageDefinition',
                'Get-AzureRmGalleryImageDefinition', 'Remove-AzureRmGalleryImageDefinition',
                'New-AzureRmGalleryImageVersion', 'Update-AzureRmGalleryImageVersion',
-               'Get-AzureRmGalleryImageVersion', 'Remove-AzureRmGalleryImageVersion'
+               'Get-AzureRmGalleryImageVersion', 'Remove-AzureRmGalleryImageVersion',
+               'Add-AzureRmVmssVMDataDisk', 'Remove-AzureRmVmssVMDataDisk'
 
 # Variables to export from this module
 # VariablesToExport = @()

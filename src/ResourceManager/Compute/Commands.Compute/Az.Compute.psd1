@@ -181,7 +181,8 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
     'New-AzGalleryImageDefinition', 'Update-AzGalleryImageDefinition',
     'Get-AzGalleryImageDefinition', 'Remove-AzGalleryImageDefinition',
     'New-AzGalleryImageVersion', 'Update-AzGalleryImageVersion',
-    'Get-AzGalleryImageVersion', 'Remove-AzGalleryImageVersion'
+    'Get-AzGalleryImageVersion', 'Remove-AzGalleryImageVersion',
+    'Add-AzVmssVMDataDisk', 'Remove-AzVmssVMDataDisk'
 
 # Variables to export from this module
 # VariablesToExport = @()
