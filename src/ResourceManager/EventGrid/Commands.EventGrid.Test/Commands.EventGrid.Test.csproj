@@ -42,7 +42,6 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.EventGrid">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.3.0.1-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.EventHub">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
