@@ -180,7 +180,9 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The state of the policy.```yaml
+The state of the policy.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
