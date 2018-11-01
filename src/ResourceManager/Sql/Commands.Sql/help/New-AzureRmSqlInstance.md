@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSqlInstance
 
 ## SYNOPSIS
-Creates a SQL Database Managed instance.
+Creates an Azure SQL Database Managed Instance.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ The **New-AzureRmSqlInstance** cmdlet creates an Azure SQL Database Managed inst
 
 ## EXAMPLES
 
-### Example 1: Create a new Azure SQL Database Managed instance
+### Example 1: Create a new instance
 ```
 PS C:\>New-AzureRmSqlInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -SkuName GP_Gen4
 Location                 : westcentralus
@@ -52,9 +52,9 @@ VCores                   : 16
 StorageSizeInGB          : 1024
 ```
 
-This command creates a new Azure SQL Database Managed instance by using Edition and ComputeGeneration parameters.
+This command creates a new instance by using Edition and ComputeGeneration parameters.
 
-### Example 2: Create a new Azure SQL Database Managed instance
+### Example 2: Create a new instance
 ```
 PS C:\>New-AzureRmSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
 Location                 : westcentralus
@@ -73,12 +73,12 @@ VCores                   : 16
 StorageSizeInGB          : 1024
 ```
 
-This command creates a new Azure SQL Database Managed instance by using by using Edition and ComputeGeneration parameters.
+This command creates a new instance by using by using Edition and ComputeGeneration parameters.
 
 ## PARAMETERS
 
 ### -AdministratorCredential
-The SQL authentication credential of the Managed Instance.
+The SQL authentication credential of the instance.
 
 ```yaml
 Type: PSCredential
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation for the Sql Azure Managed Instance.
+The compute generation for the instance.
 
 ```yaml
 Type: String
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Edition
-The edition for the Sql Azure Managed Instance.
+The edition for the instance.
 
 ```yaml
 Type: String
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-Determines which License Type of Sql Azure Managed instance to use
+Determines which License Type of instance to use
 
 ```yaml
 Type: String
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location in which to create the Managed instance
+The location in which to create the instance
 
 ```yaml
 Type: String
@@ -198,12 +198,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Database Managed Instance name.
+Instance name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ManagedInstanceName
+Aliases: InstanceName
 
 Required: True
 Position: 0
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The SKU name for the Sql Azure Managed Instance e.g.
+The SKU name for the instance e.g.
 'GP_Gen4', 'BC_Gen4'.
 
 ```yaml
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageSizeInGB
-Determines how much Storage size to associate with Managed instance
+Determines how much Storage size to associate with instance
 
 ```yaml
 Type: Int32
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-The Subnet Id to use for Managed instance creation
+The Subnet Id to use for instance creation
 
 ```yaml
 Type: String
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Azure Sql Managed Instance
+The tags to associate with the instance
 
 ```yaml
 Type: Hashtable
@@ -289,7 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -VCore
-Determines how much VCore to associate with Managed instance
+Determines how much VCore to associate with instance
 
 ```yaml
 Type: Int32
@@ -335,18 +335,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

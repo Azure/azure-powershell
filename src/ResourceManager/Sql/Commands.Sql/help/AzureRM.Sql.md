@@ -140,8 +140,11 @@ Gets elastic pool recommendations.
 ### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
+### [Get-AzureRmSqlInstance](Get-AzureRmSqlInstance.md)
+Returns information about Azure SQL Managed Database Instance.
+
 ### [Get-AzureRmSqlInstanceDatabase](Get-AzureRmSqlInstanceDatabase.md)
-{{Fill in the Synopsis}}
+Returns information about Azure SQL Managed Instance database.
 
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
@@ -248,8 +251,11 @@ Creates a secondary database for an existing database and starts data replicatio
 ### [New-AzureRmSqlElasticPool](New-AzureRmSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
+### [New-AzureRmSqlInstance](New-AzureRmSqlInstance.md)
+Creates an Azure SQL Database Managed Instance.
+
 ### [New-AzureRmSqlInstanceDatabase](New-AzureRmSqlInstanceDatabase.md)
-{{Fill in the Synopsis}}
+Creates an Azure SQL Managed Instance database.
 
 ### [New-AzureRmSqlServer](New-AzureRmSqlServer.md)
 Creates a SQL Database server.
@@ -311,8 +317,11 @@ Removes the threat detection policy from a database.
 ### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
 Deletes an elastic database pool.
 
+### [Remove-AzureRmSqlInstance](Remove-AzureRmSqlInstance.md)
+Removes an Azure SQL Managed Database Instance.
+
 ### [Remove-AzureRmSqlInstanceDatabase](Remove-AzureRmSqlInstanceDatabase.md)
-{{Fill in the Synopsis}}
+Removes an Azure SQL Managed Instance database.
 
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
@@ -357,7 +366,7 @@ Removes an Azure SQL Database Sync Member.
 Restores a SQL database.
 
 ### [Restore-AzureRmSqlInstanceDatabase](Restore-AzureRmSqlInstanceDatabase.md)
-{{Fill in the Synopsis}}
+Restores an Azure SQL Managed Instance database.
 
 ### [Resume-AzureRmSqlDatabase](Resume-AzureRmSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
@@ -412,6 +421,9 @@ Updates auto execute status of an Azure SQL Elastic Pool Advisor.
 
 ### [Set-AzureRmSqlElasticPoolRecommendedActionState](Set-AzureRmSqlElasticPoolRecommendedActionState.md)
 Updates the state of an Azure SQL Elastic Pool recommended action.
+
+### [Set-AzureRmSqlInstance](Set-AzureRmSqlInstance.md)
+Sets properties for an Azure SQL Database Managed Instance.
 
 ### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
 Modifies properties of a SQL Database server.
@@ -487,6 +499,9 @@ Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
 Updates the vulnerability assessment settings of a database.
+
+### [Update-AzureRmSqlInstance](Update-AzureRmSqlInstance.md)
+Updates an Azure SQL Database Managed Instance.
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

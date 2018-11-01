@@ -8,11 +8,11 @@ schema: 2.0.0
 # Set-AzureRmSqlInstance
 
 ## SYNOPSIS
-Modifies properties of a SQL Database Managed instance. Properties that are not specified are set to their default values.
+Sets properties for an Azure SQL Database Managed Instance.
 
 ## SYNTAX
 
-### SetManagedInstanceFromInputParameters (Default)
+### SetInstanceFromInputParameters (Default)
 ```
 Set-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorPassword <SecureString>]
  [-Edition <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>]
@@ -20,7 +20,7 @@ Set-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administ
  [<CommonParameters>]
 ```
 
-### SetManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+### SetInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Set-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorPassword <SecureString>]
  [-Edition <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>]
@@ -28,7 +28,7 @@ Set-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Administr
  [<CommonParameters>]
 ```
 
-### SetManagedInstanceFromAzureResourceId
+### SetInstanceFromAzureResourceId
 ```
 Set-AzureRmSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>] [-Edition <String>]
  [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
@@ -40,12 +40,10 @@ The **Set-AzureRmSqlInstance** cmdlet modifies properties of an Azure SQL Databa
 
 ## EXAMPLES
 
-## EXAMPLES
-
-### Example 1: Set existing managed instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore
+### Example 1: Set existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore
 ```
-PS C:\>$ManagedInstancePassword = "Newpassword1234"
-PS C:\> $SecureString = ConvertTo-SecureString $ManagedInstancePassword -AsPlainText -Force
+PS C:\>$InstancePassword = "Newpassword1234"
+PS C:\> $SecureString = ConvertTo-SecureString $InstancePassword -AsPlainText -Force
 PS C:\> Set-AzureRmSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
@@ -63,12 +61,12 @@ VCores                   : 16
 StorageSizeInGB          : 1024
 ```
 
-This command sets existing managed instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore
+This command sets existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore
 
 ## PARAMETERS
 
 ### -AdministratorPassword
-The new SQL administrator password for the Managed instance.
+The new SQL administrator password for the instance.
 
 ```yaml
 Type: SecureString
@@ -83,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.
+Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: SwitchParameter
@@ -113,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Edition
-The edition to assign to the Azure SQL Managed Database.
+The edition to assign to the instance.
 
 ```yaml
 Type: String
@@ -147,8 +145,8 @@ The AzureSqlManagedInstanceModel object to remove
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
-Parameter Sets: SetManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
-Aliases: ManagedInstance
+Parameter Sets: SetInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+Aliases: SqlInstance
 
 Required: True
 Position: 0
@@ -158,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-Determines which License Type of Sql Azure Managed Instance to use
+Determines which License Type of instance to use
 
 ```yaml
 Type: String
@@ -173,12 +171,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Database Managed instance name.
+Instance name.
 
 ```yaml
 Type: String
-Parameter Sets: SetManagedInstanceFromInputParameters
-Aliases: ManagedInstanceName
+Parameter Sets: SetInstanceFromInputParameters
+Aliases: InstanceName
 
 Required: True
 Position: 0
@@ -192,7 +190,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: SetManagedInstanceFromInputParameters
+Parameter Sets: SetInstanceFromInputParameters
 Aliases:
 
 Required: True
@@ -203,11 +201,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of Managed instance to remove
+The resource id of instance to remove
 
 ```yaml
 Type: String
-Parameter Sets: SetManagedInstanceFromAzureResourceId
+Parameter Sets: SetInstanceFromAzureResourceId
 Aliases:
 
 Required: True
@@ -218,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageSizeInGB
-Determines how much Storage size to associate with Managed instance
+Determines how much Storage size to associate with instance
 
 ```yaml
 Type: Int32
@@ -233,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Managed instance.
+The tags to associate with the instance.
 
 ```yaml
 Type: Hashtable
@@ -248,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -VCore
-Determines how much VCore to associate with Managed instance
+Determines how much VCore to associate with instance
 
 ```yaml
 Type: Int32
@@ -294,19 +292,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

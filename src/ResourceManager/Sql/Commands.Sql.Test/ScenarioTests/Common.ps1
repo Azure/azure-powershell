@@ -381,6 +381,15 @@ function Get-ManagedDatabaseName
 
 <#
 .SYNOPSIS
+Gets valid vnet name
+#>
+function Get-VNetName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-SqlTestMode {
@@ -644,11 +653,10 @@ function Get-DNSNameBasedOnEnvironment ()
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup)
+function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 {
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
-	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
@@ -659,4 +667,52 @@ function Create-ManagedInstanceForTest ($resourceGroup)
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
 
 	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus")
+{
+	$vNetAddressPrefix = "10.0.0.0/16"
+	$defaultResourceGroupName = "cl_one"
+	$defaultSubnetAddressPrefix = "10.0.0.0/24"
+
+	try {
+		$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		return $getVnet
+	} catch {
+		$virtualNetwork = New-AzureRmVirtualNetwork `
+							-ResourceGroupName $defaultResourceGroupName `
+							-Location $location `
+							-Name $vNetName `
+							-AddressPrefix $vNetAddressPrefix
+ 		$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+								-Name $subnetName `
+								-AddressPrefix $defaultSubnetAddressPrefix `
+								-VirtualNetwork $virtualNetwork
+ 		$virtualNetwork | Set-AzureRmVirtualNetwork
+ 		$routeTableMiManagementService = New-AzureRmRouteTable `
+								-Name 'myRouteTableMiManagementService' `
+								-ResourceGroupName $defaultResourceGroupName `
+								-location $location
+ 		Set-AzureRmVirtualNetworkSubnetConfig `
+								-VirtualNetwork $virtualNetwork `
+								-Name $subnetName `
+								-AddressPrefix $defaultSubnetAddressPrefix `
+								-RouteTable $routeTableMiManagementService | `
+							Set-AzureRmVirtualNetwork
+ 		Get-AzureRmRouteTable `
+								-ResourceGroupName $defaultResourceGroupName `
+								-Name "myRouteTableMiManagementService" `
+								| Add-AzureRmRouteConfig `
+								-Name "ToManagedInstanceManagementService" `
+								-AddressPrefix 0.0.0.0/0 `
+								-NextHopType "Internet" `
+								| Set-AzureRmRouteTable
+
+		$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		return $getVnet
+	}
 }

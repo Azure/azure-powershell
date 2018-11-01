@@ -31,23 +31,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     public class RemoveAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
-            "RemoveMManagedInstanceFromInputParameters";
+            "RemoveInstanceFromInputParameters";
 
         protected const string RemoveByInputObjectParameterSet =
-            "RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "RemoveInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string RemoveByResourceIdParameterSet =
-            "RemoveMManagedInstanceFromAzureResourceId";
+            "RemoveInstanceFromAzureResourceId";
 
         /// <summary>
-        /// Gets or sets the name of the Managed instance to use.
+        /// Gets or sets the name of the instance to use.
         /// </summary>
         [Parameter(
             ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
-            HelpMessage = "SQL Managed instance name.")]
-        [Alias("ManagedInstanceName")]
+            HelpMessage = "The name of the instance.")]
+        [Alias("InstanceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -63,25 +63,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// AzureSqlManagedInstanceModel object to remove
+        /// Instance object to remove
         /// </summary>
         [Parameter(ParameterSetName = RemoveByInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
+            HelpMessage = "The instance object to remove")]
         [ValidateNotNullOrEmpty]
-        [Alias("ManagedInstance")]
+        [Alias("SqlInstance")]
         public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the Managed instance
+        /// Gets or sets the resource id of the instance
         /// </summary>
         [Parameter(ParameterSetName = RemoveByResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Managed instance object to remove")]
+            HelpMessage = "The resource id of instance object to remove")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         }
 
         /// <summary>
-        /// Deletes the Managed instance.
+        /// Deletes the instance.
         /// </summary>
-        /// <param name="entity">The Managed instance being deleted</param>
-        /// <returns>The Managed instance that was deleted</returns>
+        /// <param name="entity">The instance being deleted</param>
+        /// <returns>The instance that was deleted</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> PersistChanges(IEnumerable<Model.AzureSqlManagedInstanceModel> entity)
         {
             ModelAdapter.RemoveManagedInstance(this.ResourceGroupName, this.Name);
@@ -128,10 +128,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
+            if (!Force.IsPresent && !ShouldContinue(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.Name),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.Name),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.Name)))
             {
                 return;
             }

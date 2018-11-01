@@ -835,6 +835,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Azure Sql Database Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set the Azure Sql Database Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning: This command sets the key &apos;{0}&apos; as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
         /// </summary>
         internal static string SetAzureSqlServerTransparentDataEncryptionProtectorWarning {
@@ -984,6 +1002,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SyncMemberNameExists {
             get {
                 return ResourceManager.GetString("SyncMemberNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Azure Sql Database Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("UpdateAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the Azure Sql Database Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string UpdateAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("UpdateAzureSqlInstanceWarning", resourceCulture);
             }
         }
         

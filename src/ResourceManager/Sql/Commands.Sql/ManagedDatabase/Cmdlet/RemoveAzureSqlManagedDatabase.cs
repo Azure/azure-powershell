@@ -37,25 +37,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             "RemoveInstanceDatabaseFromAzureResourceId";
 
         /// <summary>
-        /// Gets or sets the name of the managed database to remove.
+        /// Gets or sets the name of the instance database to remove.
         /// </summary>
         [Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet, 
             Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Instance Database to remove.")]
+            HelpMessage = "The name of the instance database to remove.")]
         [Alias("InstanceDatabaseName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure Sql Managed Instance
+        /// Gets or sets the name of the instance
         /// </summary>
         [Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The Azure Sql Managed Instance name.")]
+            HelpMessage = "The name of the instance.")]
         [ValidateNotNullOrEmpty]
-        public override string ManagedInstanceName { get; set; }
+        public override string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -69,25 +69,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Managed database object to remove
+        /// Instance database object to remove
         /// </summary>
         [Parameter(ParameterSetName = RemoveByInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Instance Database object to remove")]
+            HelpMessage = "The instance database object to remove")]
         [ValidateNotNullOrEmpty]
         [Alias("InstanceDatabase")]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the Managed database to remove
+        /// Gets or sets the resource id of the instance database to remove
         /// </summary>
         [Parameter(ParameterSetName = RemoveByResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Instance Database object to remove")]
+            HelpMessage = "The resource id of instance database object to remove")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected override IEnumerable<AzureSqlManagedDatabaseModel> GetEntity()
         {
             return new List<Model.AzureSqlManagedDatabaseModel>() {
-                ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name)
+                ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name)
             };
         }
 
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to managed instance
+        /// No changes to persist to instance database
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlManagedDatabaseModel> PersistChanges(IEnumerable<AzureSqlManagedDatabaseModel> entity)
         {
-            ModelAdapter.RemoveManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name);
+            ModelAdapter.RemoveManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name);
             return entity;
         }
 
@@ -134,10 +134,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseDescription, this.Name, this.ManagedInstanceName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseWarning, this.Name, this.ManagedInstanceName),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            if (!Force.IsPresent && !ShouldContinue(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseDescription, this.Name, this.InstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseWarning, this.Name, this.InstanceName)))
             {
                 return;
             }
@@ -145,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             if (string.Equals(this.ParameterSetName, RemoveByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
+                InstanceName = InputObject.ManagedInstanceName;
                 Name = InputObject.Name;
             }
             else if (string.Equals(this.ParameterSetName, RemoveByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
@@ -153,7 +152,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
+                InstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
                 Name = resourceInfo.ResourceName;
             }
 

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             "GetInstanceDatabaseFromAzureResourceId";
 
         protected const string GetByInputObjectParameterSet =
-            "GetInstanceDatabaseFromManagedInstanceObject";
+            "GetInstanceDatabaseFromInstanceObject";
 
         /// <summary>
         /// Gets or sets the name of the instance database to use.
@@ -41,28 +41,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Instance Database to retrieve.")]
+            HelpMessage = "The name of the instance database to retrieve.")]
         [Parameter(ParameterSetName = GetByResourceIdParameterSet,
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Instance Database to retrieve.")]
+            HelpMessage = "The name of the instance database to retrieve.")]
         [Parameter(ParameterSetName = GetByInputObjectParameterSet,
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Instance Database to retrieve.")]
+            HelpMessage = "The name of the instance database to retrieve.")]
         [Alias("InstanceDatabaseName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure Sql Managed Instance
+        /// Gets or sets the name of the instance
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The Azure Sql Managed Instance name.")]
+            HelpMessage = "The name of the instance.")]
         [ValidateNotNullOrEmpty]
-        public override string ManagedInstanceName { get; set; }
+        public override string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -76,26 +76,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the Managed instance to get
+        /// Gets or sets the resource id of the instance to get
         /// </summary>
         [Parameter(ParameterSetName = GetByResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Managed Instance object to get")]
+            HelpMessage = "The resource id of instance object to get")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceResourceId { get; set; }
+        [Alias("ParentResourceId")]
+        public string InstanceResourceId { get; set; }
 
         /// <summary>
-        /// AzureSqlManagedInstanceModel object to get
+        /// Instance object to get
         /// </summary>
         [Parameter(ParameterSetName = GetByInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureSqlManagedInstanceModel object to use for getting Instance database")]
+            HelpMessage = "The instance object to use for getting instance database")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel ManagedInstanceObject { get; set; }
+        [Alias("ParentObject")]
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -107,44 +109,44 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
             if (string.Equals(this.ParameterSetName, GetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                var resourceInfo = new ResourceIdentifier(ManagedInstanceResourceId);
+                var resourceInfo = new ResourceIdentifier(InstanceResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ResourceName;
+                InstanceName = resourceInfo.ResourceName;
 
                 if (MyInvocation.BoundParameters.ContainsKey("Name"))
                 {
                     results = new List<AzureSqlManagedDatabaseModel>();
-                    results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name));
+                    results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
                 }
                 else
                 {
-                    results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.ManagedInstanceName);
+                    results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.InstanceName);
                 }
             }
             else if (string.Equals(this.ParameterSetName, GetByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                ResourceGroupName = ManagedInstanceObject.ResourceGroupName;
-                ManagedInstanceName = ManagedInstanceObject.ManagedInstanceName;
+                ResourceGroupName = InstanceObject.ResourceGroupName;
+                InstanceName = InstanceObject.ManagedInstanceName;
 
                 if (MyInvocation.BoundParameters.ContainsKey("Name"))
                 {
                     results = new List<AzureSqlManagedDatabaseModel>();
-                    results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name));
+                    results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
                 }
                 else
                 {
-                    results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.ManagedInstanceName);
+                    results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.InstanceName);
                 }
             }
             else if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 results = new List<AzureSqlManagedDatabaseModel>();
-                results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name));
+                results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
             }
             else
             {
-                results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.ManagedInstanceName);
+                results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.InstanceName);
             }
 
             return results;
