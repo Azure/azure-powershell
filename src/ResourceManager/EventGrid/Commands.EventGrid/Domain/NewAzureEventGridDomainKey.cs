@@ -50,20 +50,20 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string DomainName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.KeyNameHelp)]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = DomainInputObjectParameterSet)]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
