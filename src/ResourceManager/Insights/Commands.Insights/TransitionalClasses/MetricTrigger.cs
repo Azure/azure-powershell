@@ -25,17 +25,47 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// <summary>
         /// Gets or sets the OperatorProperty of the Metric Trigger
         /// </summary>
-        public new ComparisonOperationType OperatorProperty { get; set; }
+        public new ComparisonOperationType OperatorProperty
+        {
+            get
+            {
+                return (ComparisonOperationType)System.Enum.Parse(typeof(ComparisonOperationType), base.OperatorProperty.ToString());
+            }
+            set
+            {
+                base.OperatorProperty = (Monitor.Models.ComparisonOperationType)System.Enum.Parse(typeof(Monitor.Models.ComparisonOperationType), value.ToString());
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Statistic of the Metric Trigger
         /// </summary>
-        public new MetricStatisticType Statistic { get; set; }
+        public new MetricStatisticType Statistic
+        {
+            get
+            {
+                return (MetricStatisticType)System.Enum.Parse(typeof(MetricStatisticType), base.Statistic.ToString());
+            }
+            set
+            {
+                base.Statistic = (Monitor.Models.MetricStatisticType)System.Enum.Parse(typeof(Monitor.Models.MetricStatisticType), value.ToString());
+            }
+        }
 
         /// <summary>
         /// Gets or sets the TimeAggregation of the Metric Trigger
         /// </summary>
-        public new TimeAggregationType TimeAggregation { get; set; }
+        public new TimeAggregationType TimeAggregation
+        {
+            get
+            {
+                return (TimeAggregationType)System.Enum.Parse(typeof(TimeAggregationType), base.TimeAggregation.ToString());
+            }
+            set
+            {
+                base.TimeAggregation = (Monitor.Models.TimeAggregationType)System.Enum.Parse(typeof(Monitor.Models.TimeAggregationType), value.ToString());
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the MetricTrigger class.

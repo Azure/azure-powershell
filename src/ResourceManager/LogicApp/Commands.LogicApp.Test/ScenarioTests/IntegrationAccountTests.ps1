@@ -22,7 +22,7 @@ function Test-CreateIntegrationAccount
 	$integrationAccountName = getAssetname	
 
 	$location = Get-LocationName
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
@@ -38,7 +38,7 @@ function Test-CreateAndGetIntegrationAccount
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 	
 	$integrationAccount = Get-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
@@ -60,7 +60,7 @@ function Test-RemoveIntegrationAccount
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
@@ -83,10 +83,10 @@ function Test-UpdateIntegrationAccount
 	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"  -Force	
+	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"  -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Sku "Standard" -Force	
+	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Sku "Standard" -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
 	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Force
@@ -105,11 +105,11 @@ function Test-GetIntegrationAccountCallbackUrl
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard" 	
-	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
+	Assert-AreEqual $integrationAccountName $integrationAccount.Name
 
 	[datetime]$date = Get-Date
-	$date.AddDays(100)	
+	$date.AddDays(100)
 
 	$callbackUrl = Get-AzureRmIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Notafter $date
 	Assert-NotNull $callbackUrl 
@@ -117,5 +117,5 @@ function Test-GetIntegrationAccountCallbackUrl
 	$callbackUrl1 = Get-AzureRmIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-NotNull $callbackUrl1 
 	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force 	
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
