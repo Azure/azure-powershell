@@ -26,7 +26,7 @@ Remove-AzureRmIotCentralApp [-PassThru] -InputObject <PSIotCentralApp> [-AsJob]
 
 ### InteractiveIotCentralParameterSet
 ```
-Remove-AzureRmIotCentralApp [-PassThru] [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
+Remove-AzureRmIotCentralApp [-PassThru] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Set to receive boolean success output from Cmdlet.
+{{Fill PassThru Description}}
 
 ```yaml
 Type: SwitchParameter
@@ -186,13 +186,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## OUTPUTS
 
 ### System.Boolean
-
 ## NOTES
 
 ## RELATED LINKS

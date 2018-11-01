@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.IotCentral.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -38,59 +40,42 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
             }
         }
 
-        /// <summary>
-        /// The Resource Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string ResourceId { get; private set; }
-
+        public PSIotCentralApp(App iotCentralApp){
+            this.ResourceId = iotCentralApp.Id;
+            this.Name = iotCentralApp.Name;
+            this.Type = iotCentralApp.Type;
+            this.Location = iotCentralApp.Location;
+            this.Tag = iotCentralApp.Tags; 
+            this.Sku = new PSIotCentralAppSkuInfo() { Name = iotCentralApp.Sku.Name };
+            this.ApplicationId = iotCentralApp.ApplicationId;
+            this.DisplayName = iotCentralApp.DisplayName;
+            this.Subdomain = iotCentralApp.Subdomain;
+            this.Template = iotCentralApp.Template;
+        }
+        
         /// <summary>
         /// The Resource name.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [Ps1Xml(Label = "Resource Name", Target = ViewControl.Table)]
         public string Name { get; private set; }
-
-        /// <summary>
-        /// The Resource type.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// The Resource location.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// The Resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tag { get; set; }
-
-        /// <summary>
-        /// Gets or sets a valid instance SKU.
-        /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public PSIotCentralAppSkuInfo Sku { get; set; }
-
-        /// <summary>
-        /// Gets the ID of the application.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.applicationId")]
-        public string ApplicationId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the display name of the application.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.displayName")]
-        public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or sets the subdomain of the application.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.subdomain")]
+        [Ps1Xml(Label = "Subdomain", Target = ViewControl.Table)]
         public string Subdomain { get; set; }
+
+        /// <summary>
+        /// Gets or sets the display name of the application.
+        /// </summary>
+        [Ps1Xml(Label = "Display Name", Target = ViewControl.Table)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The Resource location.
+        /// </summary>
+        [Ps1Xml(Label = "Location", Target = ViewControl.Table)]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the application template, which is a
@@ -98,13 +83,31 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// application. Optional; if not specified, defaults to a blank
         /// blueprint and allows the application to be defined from scratch.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.template")]
+        [Ps1Xml(Label = "Template", Target = ViewControl.Table)]
         public string Template { get; set; }
+
+        /// <summary>
+        /// The Resource tags.
+        /// </summary>
+        [Ps1Xml(Label = "Tags", Target = ViewControl.Table)]
+        public IDictionary<string, string> Tag { get; set; }
+
+        /// <summary>
+        /// Gets or sets a valid instance SKU.
+        /// </summary>
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
+        public PSIotCentralAppSkuInfo Sku { get; set; }
+
+        /// <summary>
+        /// The Resource type.
+        /// </summary>
+        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
+        public string Type { get; private set; }
 
         /// <summary>
         /// The subscription identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "subscriptionid")]
+        [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table)]
         public string SubscriptionId
         {
             get
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// <summary>
         /// The resource group name
         /// </summary>
-        [JsonProperty(PropertyName = "resourcegroup")]
+        [Ps1Xml(Label = "Resource Group Name", Target = ViewControl.Table)]
         public string ResourceGroupName
         {
             get
@@ -125,5 +128,16 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
             }
         }
 
+        /// <summary>
+        /// The Resource Id.
+        /// </summary>
+        [Ps1Xml(Label = "Resource Id", Target = ViewControl.Table)]
+        public string ResourceId { get; private set; }
+
+        /// <summary>
+        /// Gets the ID of the application.
+        /// </summary>
+        [Ps1Xml(Label = "Application Id", Target = ViewControl.Table)]
+        public string ApplicationId { get; private set; }
     }
 }

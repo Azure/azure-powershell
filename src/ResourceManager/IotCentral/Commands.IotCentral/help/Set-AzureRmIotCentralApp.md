@@ -26,8 +26,8 @@ Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -InputObject
 
 ### InteractiveIotCentralParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String>
- [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,15 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Collections.Hashtable
-
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## NOTES
 
 ## RELATED LINKS

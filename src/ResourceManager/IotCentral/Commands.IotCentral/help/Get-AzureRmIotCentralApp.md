@@ -26,8 +26,7 @@ Get-AzureRmIotCentralApp [-ResourceGroupName] <String> [-Name] <String>
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,11 +211,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## NOTES
 
 ## RELATED LINKS
