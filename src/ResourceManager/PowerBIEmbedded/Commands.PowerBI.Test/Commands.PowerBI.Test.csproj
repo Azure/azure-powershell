@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.PowerBIDedicated">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PowerBIDedicated.0.10.0-preview\lib\net452\Microsoft.Azure.Management.PowerBIDedicated.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PowerBIDedicated.0.11.0-preview\lib\net452\Microsoft.Azure.Management.PowerBIDedicated.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

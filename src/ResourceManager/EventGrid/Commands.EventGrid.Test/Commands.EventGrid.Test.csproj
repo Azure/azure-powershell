@@ -40,8 +40,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Azure.Management.EventGrid">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.2.0.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.EventHub">
