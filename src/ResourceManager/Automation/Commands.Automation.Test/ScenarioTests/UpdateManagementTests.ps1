@@ -17,20 +17,16 @@ WaitForProvisioningState
 #>
 function WaitForProvisioningState() {
     param([string] $Name, [string] $ExpectedState)
-    $state = ""
-    $timeoutInSeconds = 120
-    $retries = $timeoutInSeconds / 5
-    while($state -ne $ExpectedState -and $retries -gt 0) {
-        $suc = Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
-                                                                -AutomationAccountName $aa `
-                                                                -Name $Name
-        $state = $suc.ProvisioningState
-        Write-Output "SoftwareUpdateConfiguration Provisioning state: $state"
-        sleep -Seconds 5
-        $retries = $retries - 1
-    } 
 
-    Assert-True {$retries -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
+    $waitTimeInSeconds = 2
+    $retries = 40
+
+    $jobCompleted = Retry-Function {
+        return (Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
+                                                                 -AutomationAccountName $aa `
+                                                                 -Name $Name).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
+
+    Assert-True {$jobCompleted -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
 }
 
 <#
@@ -51,7 +47,7 @@ function Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Windows `
-                                                             -AzureVMResourceIds $azureVMIdsW `
+                                                             -AzureVMResourceId $azureVMIdsW `
                                                              -Duration (New-TimeSpan -Hours 2)
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
@@ -78,7 +74,7 @@ function Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Linux `
-                                                             -AzureVMResourceIds $azureVMIdsL `
+                                                             -AzureVMResourceId $azureVMIdsL `
                                                              -Duration (New-TimeSpan -Hours 2)
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
@@ -105,12 +101,12 @@ function Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithAllOption {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Windows `
-                                                             -AzureVMResourceIds $azureVMIdsW `
-                                                             -NonAzureComputers $nonAzurecomputers `
+                                                             -AzureVMResourceId $azureVMIdsW `
+                                                             -NonAzureComputer $nonAzurecomputers `
                                                              -Duration (New-TimeSpan -Hours 2) `
-                                                             -IncludedUpdateClassifications Security,UpdateRollup `
-                                                             -ExcludedKbNumbers KB01,KB02 `
-                                                             -IncludedKbNumbers KB100
+                                                             -IncludedUpdateClassification Security,UpdateRollup `
+                                                             -ExcludedKbNumber KB01,KB02 `
+                                                             -IncludedKbNumber KB100
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -136,12 +132,12 @@ function Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Linux `
-                                                             -AzureVMResourceIds $azureVMIdsL `
-                                                             -NonAzureComputers $nonAzurecomputers `
+                                                             -AzureVMResourceId $azureVMIdsL `
+                                                             -NonAzureComputer $nonAzurecomputers `
                                                              -Duration (New-TimeSpan -Hours 2) `
-                                                             -IncludedPackageClassifications Security,Critical `
-                                                             -ExcludedPackageNameMasks Mask01,Mask02 `
-                                                             -IncludedPackageNameMasks Mask100
+                                                             -IncludedPackageClassification Security,Critical `
+                                                             -ExcludedPackageNameMask Mask01,Mask02 `
+                                                             -IncludedPackageNameMask Mask100
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -167,11 +163,11 @@ function Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNonAzureOnly {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Linux `
-                                                             -NonAzureComputers $nonAzurecomputers `
+                                                             -NonAzureComputer $nonAzurecomputers `
                                                              -Duration (New-TimeSpan -Hours 2) `
-                                                             -IncludedPackageClassifications Security,Critical `
-                                                             -ExcludedPackageNameMasks Mask01,Mask02 `
-                                                             -IncludedPackageNameMasks Mask100
+                                                             -IncludedPackageClassification Security,Critical `
+                                                             -ExcludedPackageNameMask Mask01,Mask02 `
+                                                             -IncludedPackageNameMask Mask100
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -199,9 +195,9 @@ function Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNoTargets {
                                                              -Schedule $s `
                                                              -Linux `
                                                              -Duration (New-TimeSpan -Hours 2) `
-                                                             -IncludedPackageClassifications Security,Critical `
-                                                             -ExcludedPackageNameMasks Mask01,Mask02 `
-                                                             -IncludedPackageNameMasks Mask100 `
+                                                             -IncludedPackageClassification Security,Critical `
+                                                             -ExcludedPackageNameMask Mask01,Mask02 `
+                                                             -IncludedPackageNameMask Mask100 `
                                                              -PassThru -ErrorAction Stop
     }
 }
@@ -246,17 +242,19 @@ function Test-DeleteSoftwareUpdateConfiguration {
                                                       -AutomationAccountName $aa `
                                                       -Schedule $s `
                                                       -Windows `
-                                                      -AzureVMResourceIds $azureVMIdsW `
-                                                      -Duration (New-TimeSpan -Hours 2)
+                                                      -AzureVMResourceId $azureVMIdsW `
+                                                      -Duration (New-TimeSpan -Hours 2) `
+													  -IncludedUpdateClassification Critical
     WaitForProvisioningState $name "Succeeded"
     Remove-AzureRmAutomationSoftwareUpdateConfiguration   -ResourceGroupName $rg `
                                                           -AutomationAccountName $aa `
                                                           -Name $name
-    sleep -Seconds 5
-    $suc = Get-AzureRmAutomationSoftwareUpdateConfiguration   -ResourceGroupName $rg `
-                                                              -AutomationAccountName $aa `
-                                                              -Name $name
-    Assert-AreEqual $suc $null "Failed to delete software update configuration"
+    Wait-Seconds 5
+	Assert-Throws { 
+		Get-AzureRmAutomationSoftwareUpdateConfiguration   -ResourceGroupName $rg `
+                                                           -AutomationAccountName $aa `
+                                                           -Name $name
+	}
 }
 
 <#
@@ -353,10 +351,10 @@ function Test-CreateLinuxWeeklySoftwareUpdateConfiguration() {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Linux `
-                                                             -AzureVMResourceIds $azureVMIdsL `
+                                                             -AzureVMResourceId $azureVMIdsL `
                                                              -Duration $duration `
-                                                             -IncludedPackageClassifications Other,Security `
-                                                             -ExcludedPackageNameMasks @("Mask-exc-01", "Mask-exc-02")
+                                                             -IncludedPackageClassification Other,Security `
+                                                             -ExcludedPackageNameMask @("Mask-exc-01", "Mask-exc-02")
 
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
@@ -399,10 +397,10 @@ function Test-CreateWindowsMonthlySoftwareUpdateConfiguration() {
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Windows `
-                                                             -AzureVMResourceIds $azureVMIdsW `
+                                                             -AzureVMResourceId $azureVMIdsW `
                                                              -Duration $duration `
-                                                             -IncludedUpdateClassifications Critical,Security `
-                                                             -ExcludedKbNumbers @("KB-01", "KB-02")
+                                                             -IncludedUpdateClassification Critical,Security `
+                                                             -ExcludedKbNumber @("KB-01", "KB-02")
 
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"

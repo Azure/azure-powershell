@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId) : base(jobStream, resourceGroupName, automationAccountName, jobId)
         {
             this.Value = new Hashtable();
+
+            if (jobStream.Value == null)
+            {
+                return;
+            }
+
             foreach (var kvp in jobStream.Value)
             {
                 object paramValue;

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     /// <summary>
     /// Removes a Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationSoftwareUpdateConfiguration", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateConfiguration", SupportsShouldProcess = true,
         DefaultParameterSetName = AutomationCmdletParameterSets.BySucName)]
     [OutputType(typeof(void), typeof(bool))]
     public class RemoveAzureAutomationSoftwareUpdateConfiguration : AzureAutomationBaseCmdlet

@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                             agentRegistrationInfo.PrimaryKey);
 
             var armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
-                
+
             var deployment = new Management.ResourceManager.Models.Deployment
             {
                 Properties = new Management.ResourceManager.Models.DeploymentProperties
@@ -826,8 +826,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
             };
 
-            armClient.Deployments.CreateOrUpdate(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment);               
-            
+            armClient.Deployments.CreateOrUpdate(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment);
+
         }
 
         private string GetDSCDeploymenttemplateParameters(string resourceGroupName,
