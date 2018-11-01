@@ -39,7 +39,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.3.0-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.3.1-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

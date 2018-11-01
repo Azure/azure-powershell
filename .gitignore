@@ -237,9 +237,9 @@ Package
 launchSettings.json
 /src/StackAdmin/AzureRM/AzureRM.psm1
 /src/StackAdmin/AzureStack/AzureStack.psm1
-/tools/AzureRM.Netcore/AzureRM.Netcore.psm1
 /ModuleMappings.json
 /SolutionMappings.json
 /TestMappings.json
 /tools/Modules/tmp
+/tools/Az/Az.psm1
 /src/ResourceManager/datamigrzip.zip

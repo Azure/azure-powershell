@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Profile
         private const string ContextNameParameterSet = "ContextName";
 
 
-        
-        [Parameter(ParameterSetName = UserIdParameterSet, 
+
+        [Parameter(ParameterSetName = UserIdParameterSet,
                     Mandatory = true, HelpMessage = "User name of the form user@contoso.org", Position = 0)]
         [ValidateNotNullOrEmpty]
         [Alias("Id", "UserId")]
@@ -56,24 +56,32 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
-        [Parameter(ParameterSetName = InputObjectParametrSet, 
+        [Parameter(ParameterSetName = InputObjectParametrSet,
                     Mandatory = true, ValueFromPipeline=true, Position = 0, HelpMessage = "Account")]
         [ValidateNotNull]
         public PSAzureRmAccount InputObject { get; set; }
-        
-        [Parameter(ParameterSetName = ContextParameterSet, 
+
+        [Parameter(ParameterSetName = ContextParameterSet,
                     Mandatory = true, HelpMessage = "Context", ValueFromPipeline =true, Position = 0)]
         [ValidateNotNull]
         public PSAzureContext AzureContext { get; set; }
 
-        
-        [Parameter(ParameterSetName = ContextNameParameterSet, 
+
+        [Parameter(ParameterSetName = ContextNameParameterSet,
                     Mandatory = false, HelpMessage = "Name of the context to log out of")]
         [ValidateNotNullOrEmpty]
         public string ContextName { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (DefaultProfile != null && DefaultProfile.DefaultContext == null)
+            {
+                WriteVerbose(string.Format("No accounts were found to disconnect from. Ending call to Disconnect-{0}Account.",
+                    ResourceManager.Common.AzureRMConstants.AzureRMPrefix));
+                WriteObject(null);
+                return;
+            }
+
             IAzureAccount azureAccount = null;
             switch(ParameterSetName)
             {
