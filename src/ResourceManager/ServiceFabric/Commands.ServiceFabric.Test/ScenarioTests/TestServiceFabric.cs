@@ -22,6 +22,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
+    [TestCaseOrderer("Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.PriorityOrderer", "Microsoft.Azure.Commands.ServiceFabric.Test")]
     public class TestServiceFabric : RMTestBase
     {
         public XunitTracingInterceptor _logger;
@@ -39,98 +40,98 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.TestThumbprint = "570BBCC85CBDAB98A442D08630996708F60A356D";
         }
 
-        [Fact]
+        [Fact, TestPriority(1)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricDurability()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-UpdateAzureRmServiceFabricDurability");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricReliability()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-UpdateAzureRmServiceFabricReliability");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmServiceFabricUpgradeType()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmServiceFabricUpgradeType");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmServiceFabricSettings()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmServiceFabricSettings");
         }
 
-        [Fact]
+        [Fact, TestPriority(1)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricSettings()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricSettings");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricClusterCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClusterCertificate");
         }
 
-        [Fact]
+        [Fact, TestPriority(1)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricClusterCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricClusterCertificate");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricClientCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClientCertificate");
         }
 
-        [Fact]
+        [Fact, TestPriority(1)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricClientCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricClientCertificate");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmServiceFabricCluster()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmServiceFabricCluster");
         }
 
-        [Fact]
+        [Fact, TestPriority(1)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricNode");
         }
 
-        [Fact]
+        [Fact, TestPriority(2)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricNode");
         }
 
-        [Fact]
+        [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact]
+        [Fact, TestPriority(3)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()
