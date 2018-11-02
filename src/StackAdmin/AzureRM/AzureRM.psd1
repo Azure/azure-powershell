@@ -51,9 +51,9 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; },
         @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; },
-        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.2'; },
+        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.3'; },
         @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.5.1'; },
         @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.2.0'; },
         @{ModuleName = 'AzureRM.Network'; RequiredVersion = '5.0.1'; },
@@ -118,18 +118,8 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.09 - Version 2.3.0
-            * The release 2.3.0 comes with a list of breaking changes. To upgrade from the 1.2.11 version, we have created a migration guide at https://aka.ms/azspowershellmigration
-            * This release corresponds to the azurestack specific api profile 2018-03-01-hybrid
-            * All the modules are taking greater than or equal to dependency on the AzureRm.Profile module.
-            * Api version suppoerted by  each of the modules are updated. 
-                * Compute - 2017-03-30
-                * Network - 2017-10-01
-                * Storage - 2016-01-01
-                * Resources - 2018-02-01
-                * Keyvault - 2016-10-01
-                * Dns - 2016-04-01
-            * The complete api version map for each of the resource types can be found at https://github.com/Azure/azure-rest-api-specs/blob/master/profile/2018-03-01-hybrid.json'
+            ReleaseNotes = '## 2018.09
+            * Added simple parameter sets in New-AzureRMVM and NewAzureRMVMSS, -ImageName parameter supports specifying user images.'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
