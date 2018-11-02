@@ -51,16 +51,34 @@
     <Compile Include="Cmdlets\GetAzureRmPolicyEvent.cs" />
     <Compile Include="Cmdlets\GetAzureRmPolicyState.cs" />
     <Compile Include="Cmdlets\GetAzureRmPolicyStateSummary.cs" />
+    <Compile Include="Cmdlets\Remediation\StartAzureRmPolicyRemediation.cs" />
+    <Compile Include="Cmdlets\Remediation\StopAzureRmPolicyRemediation.cs" />
+    <Compile Include="Cmdlets\Remediation\RemoveAzureRmPolicyRemediation.cs" />
+    <Compile Include="Cmdlets\Remediation\GetAzureRmPolicyRemediation.cs" />
     <Compile Include="Common\ParameterHelpMessages.cs" />
+    <Compile Include="Common\PaginationHelper.cs" />
+    <Compile Include="Common\RemediationCmdletBase.cs" />
+    <Compile Include="Common\ResourceIdHelper.cs" />
     <Compile Include="Common\ParameterSetNames.cs" />
     <Compile Include="Common\PolicyInsightsCmdletBase.cs" />
     <Compile Include="Models\PolicyAssignmentSummary.cs" />
     <Compile Include="Models\PolicyDefinitionSummary.cs" />
+    <Compile Include="Models\Remediation\PSTypedErrorInfo.cs" />
+    <Compile Include="Models\Remediation\PSRemediationDeployment.cs" />
+    <Compile Include="Models\Remediation\PSRemediationDeplyomentSummary.cs" />
+    <Compile Include="Models\Remediation\PSErrorDefinition.cs" />
+    <Compile Include="Models\Remediation\PSRemediationFilter.cs" />
+    <Compile Include="Models\Remediation\PSRemediation.cs" />
     <Compile Include="Models\PolicyEvent.cs" />
     <Compile Include="Models\PolicyState.cs" />
     <Compile Include="Models\PolicyStateSummary.cs" />
     <Compile Include="Models\SummaryResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.PolicyInsights.psd1">
@@ -74,7 +92,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
@@ -83,11 +103,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.PolicyInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PolicyInsights.1.0.0\lib\net452\Microsoft.Azure.Management.PolicyInsights.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.PolicyInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PolicyInsights.2.0.1\lib\net452\Microsoft.Azure.Management.PolicyInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(
@@ -234,6 +235,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
+                WriteWarning("VirtualMachineScaleSetVM parameter will be deprecated.  Use Add-AzureRmVmssVMDataDisk instead.");
+
                 var storageProfile = this.VirtualMachineScaleSetVM.StorageProfile;
 
                 if (storageProfile == null)

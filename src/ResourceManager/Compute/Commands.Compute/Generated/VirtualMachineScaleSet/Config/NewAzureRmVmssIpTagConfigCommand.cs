@@ -31,7 +31,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpTagConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag))]
+    [OutputType(typeof(VirtualMachineScaleSetIpTag))]
     public partial class NewAzureRmVmssIpTagConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            var vIpTags = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag();
+            var vIpTags = new VirtualMachineScaleSetIpTag();
 
             vIpTags.IpTagType = this.MyInvocation.BoundParameters.ContainsKey("IpTagType") ? this.IpTagType : null;
             vIpTags.Tag = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag : null;

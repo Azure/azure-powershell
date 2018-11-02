@@ -162,26 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Specifies the type of account to create. Current acceptable values for this parameter are:
-- Bing.Autosuggest.v7
-- Bing.CustomSearch
-- Bing.Search.v7
-- Bing.Speech
-- Bing.SpellCheck.v7
-- ComputerVision
-- ContentModerator
-- CustomSpeech
-- CustomVision.Prediction
-- CustomVision.Training
-- Emotion
-- Face
-- LUIS
-- QnAMaker
-- SpeakerRecognition
-- SpeechTranslation
-- TextAnalytics
-- TextTranslation
-- WebLM
+Specifies the type of account to create. Use `Get-AzureRmCognitiveServicesAccountType` cmdlet to get current acceptable values.
 
 ```yaml
 Type: System.String
