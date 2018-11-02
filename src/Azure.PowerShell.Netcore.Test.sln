@@ -101,6 +101,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RecoveryServices.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Security.Test.Netcore", "ResourceManager\Security\Commands.Security.Test\Commands.Security.Test.Netcore.csproj", "{8F2BE5E5-EBD6-4D09-8B22-F4B5DBCA569F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Test.Netcore", "ResourceManager\StorageSync\Commands.StorageSync.Test\Commands.StorageSync.Test.Netcore.csproj", "{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -699,6 +701,18 @@ Global
 		{8F2BE5E5-EBD6-4D09-8B22-F4B5DBCA569F}.Release|x64.Build.0 = Release|Any CPU
 		{8F2BE5E5-EBD6-4D09-8B22-F4B5DBCA569F}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F2BE5E5-EBD6-4D09-8B22-F4B5DBCA569F}.Release|x86.Build.0 = Release|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Debug|x64.Build.0 = Debug|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Debug|x86.Build.0 = Debug|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Release|x64.ActiveCfg = Release|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Release|x64.Build.0 = Release|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{E24BA5EA-9B34-4BE7-997E-5F66F400D6BA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
