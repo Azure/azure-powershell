@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -100,60 +99,13 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
 
-            this.ValidateInputMappingInfo(inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
+            EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
                 Topic topic = this.Client.CreateTopic(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
-            }
-        }
-
-        void ValidateInputMappingInfo(Dictionary<string, string> inputMappingFieldsDictionary, Dictionary<string, string> inputMappingDefaultValuesDictionary)
-        {
-            if (string.Equals(this.InputSchema, EventGridModels.InputSchema.CustomEventSchema, StringComparison.OrdinalIgnoreCase))
-            {
-                if (inputMappingFieldsDictionary == null && inputMappingDefaultValuesDictionary == null)
-                {
-                    throw new Exception($"Either input mapping fields or input mapping default values should be specified if the input mapping schema is customeventschema.");
-                }
-            }
-            else
-            {
-                if (inputMappingFieldsDictionary != null || inputMappingDefaultValuesDictionary != null)
-                {
-                    throw new Exception($"Input mapping fields and input mapping default values cannot be specified if the input mapping schema is not customeventschema.");
-                }
-            }
-
-            if (inputMappingFieldsDictionary != null)
-            {
-                foreach (var entry in inputMappingFieldsDictionary)
-                {
-                    if (!string.Equals(entry.Key, EventGridConstants.InputMappingId, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingTopic, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventTime, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingField");
-                    }
-                }
-            }
-
-            if (inputMappingDefaultValuesDictionary != null)
-            {
-                foreach (var entry in inputMappingDefaultValuesDictionary)
-                {
-                    if (!string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
-                        !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingDefaultValue");
-                    }
-                }
             }
         }
     }

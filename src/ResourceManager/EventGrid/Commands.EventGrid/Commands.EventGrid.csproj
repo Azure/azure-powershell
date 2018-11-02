@@ -36,10 +36,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AzureEventGridCmdletBase.cs" />
+    <Compile Include="Domain\GetAzureEventGridDomain.cs" />
+    <Compile Include="Domain\GetAzureEventGridDomainKeys.cs" />
+    <Compile Include="Domain\GetAzureEventGridDomainTopic.cs" />
+    <Compile Include="Domain\NewAzureEventGridDomain.cs" />
+    <Compile Include="Domain\NewAzureEventGridDomainKey.cs" />
+    <Compile Include="Domain\RemoveAzureEventGridDomain.cs" />
     <Compile Include="EventSubscription\GetAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\NewAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\RemoveAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\UpdateAzureEventGridSubscription.cs" />
+    <Compile Include="Models\PSDomain.cs" />
+    <Compile Include="Models\PSDomainListInstance.cs" />
+    <Compile Include="Models\PSDomainTopic.cs" />
+    <Compile Include="Models\PSDomainTopicListInstance.cs" />
     <Compile Include="Models\PSEventSubscription.cs" />
     <Compile Include="Models\PSEventSubscriptionListInstance.cs" />
     <Compile Include="Models\PSTopic.cs" />
@@ -76,9 +86,9 @@
     <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.2.0.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.3.0.1-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

@@ -471,4 +471,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-

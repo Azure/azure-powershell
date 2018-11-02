@@ -11,6 +11,15 @@ Locale: en-US
 This topic displays help for the Azure Event Grid PowerShell resource manager cmdlets.
 
 ## AzureRM.EventGrid Cmdlets
+### [Get-AzureRmEventGridDomain](Get-AzureRmEventGridDomain.md)
+Gets the details of an Event Grid domain, or gets a list of all Event Grid domains in the current Azure subscription.
+
+### [Get-AzureRmEventGridDomainKey](Get-AzureRmEventGridDomainKey.md)
+Gets the shared access keys used to publish events to an Event Grid domain.
+
+### [Get-AzureRmEventGridDomainTopic](Get-AzureRmEventGridDomainTopic.md)
+Gets the details of an Event Grid domain topic, or gets a list of all Event Grid domain topics under specific Event Grid domain in the current Azure subscription.
+
 ### [Get-AzureRmEventGridSubscription](Get-AzureRmEventGridSubscription.md)
 Gets the details of an event subscription, or gets a list of all event subscriptions in the current Azure subscription.
 
@@ -23,6 +32,12 @@ Gets the shared access keys used to publish events to an Event Grid topic.
 ### [Get-AzureRmEventGridTopicType](Get-AzureRmEventGridTopicType.md)
 Gets the details about the topic types supported by Azure Event Grid.
 
+### [New-AzureRmEventGridDomain](New-AzureRmEventGridDomain.md)
+Creates a new Azure Event Grid Domain.
+
+### [New-AzureRmEventGridDomainKey](New-AzureRmEventGridDomainKey.md)
+Regenerates the shared access key for an Azure Event Grid Domain.
+
 ### [New-AzureRmEventGridSubscription](New-AzureRmEventGridSubscription.md)
 Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
 
@@ -31,6 +46,9 @@ Creates a new Azure Event Grid Topic.
 
 ### [New-AzureRmEventGridTopicKey](New-AzureRmEventGridTopicKey.md)
 Regenerates the shared access key for an Azure Event Grid Topic.
+
+### [Remove-AzureRmEventGridDomain](Remove-AzureRmEventGridDomain.md)
+Removes an Azure Event Grid Domain.
 
 ### [Remove-AzureRmEventGridSubscription](Remove-AzureRmEventGridSubscription.md)
 Removes an Azure Event Grid event subscription.

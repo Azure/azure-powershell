@@ -19,9 +19,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string Subscriptions = "subscriptions";
         public const string ResourceGroups = "resourceGroups";
         public const string TopicsResourceType = "providers/Microsoft.EventGrid/topics";
+        public const string DomainsResourceType = "providers/Microsoft.EventGrid/domains";
 
-        public const string TopicInputObject = "EventGrid Topic object.";
-        public const string EventSubscriptionInputObject = "EventGridSubscription object.";
+        public const string TopicInputObjectHelp = "EventGrid Topic object.";
+        public const string DomainInputObjectHelp = "EventGrid Domain object.";
+        public const string DomainTopicInputObjectHelp = "EventGrid Domain Topic object.";
+        public const string EventSubscriptionInputObjectHelp = "EventGridSubscription object.";
 
         // Help text
         public const string IncludedEventTypesHelp = "Filter that specifies a list of event types to include. If not specified, all event types will be included.";
@@ -33,22 +36,45 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string EndpointHelp = "Event subscription destination endpoint. This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue or hybridconnection. For example, the resource ID for a hybrid connection " +
                                            "takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName].";
         public const string ResourceGroupNameHelp = "The name of the resource group.";
-        public const string TopicNameHelp = "The name of the topic.";
-        public const string TopicTypeNameHelp = "The name of the topic type.";
-        public const string EventSubscriptionNameHelp = "The name of the event subscription.";
+        public const string TopicNameHelp = "EventGrid topic name.";
+        public const string DomainNameHelp = "EventGrid domain name.";
+        public const string DomainTopicNameHelp = "EventGrid domain topic name.";
+        public const string DomainNameForEventSubscriptionHelp = "The name of the Event Grid domain to which the event subscription should be created.";
+        public const string DomainTopicNameForEventSubscriptionHelp = "The name of the domain topic to which the event subscription should be created.";
+        public const string TopicTypeNameHelp = "EventGrid topic type name.";
+        public const string EventSubscriptionNameHelp = "EventGrid event subscription name.";
         public const string TopicLocationHelp = "The location of the topic.";
+        public const string DomainLocationHelp = "The location of the domain.";
         public const string TagsHelp = "Hashtable which represents resource Tags.";
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
+
         public const string TopicNameOfTheEventSubscriptionHelp = "The name of the topic to which the event subscription should be created.";
+        public const string DomainNameOfTheEventSubscriptionHelp = "The name of the domain to which the event subscription should be created.";
+        public const string DomainTopicNameOfTheEventSubscriptionHelp = "The name of the domain topic to which the event subscription should be created.";
+
         public const string InputSchemaHelp = "The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default value is eventgridschema. Note that if customeventschema " +
-            "is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.";
+                                              "is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.";
         public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key = value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key = value format. Allowed key names are: subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
         public const string MaxDeliveryAttemptHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30";
-        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default value is inputeventschema.";
+        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, CustomInputSchema, or cloudeventv01schema. Default value is CustomInputSchema.";
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
+        public const string ExpirationDateHelp = "Determines the expiration DateTime for the event subscription after which event subscription will retire.";
+        public const string AdvancedFilterHelp = "Advanced filter that specifies an array of multiple Hashtable values that are used for the attribute-based filtering. Each Hashtable value has the following keys-value info: Operation, Key and Value or Values. " +
+                                                 "Operator can be one of the following values: NumberIn, NumberNotIn, NumberLessThan, NumberGreaterThan, NumberLessThanOrEquals, NumberGreaterThanOrEquals, BoolEquals, StringIn, StringNotIn, StringBeginsWith, StringEndsWith " +
+                                                 "or StringContains. Key represents the payload property where the advanced filtering policies are applied. Finally, Value or Values represent the value or set of values to be matched. This can be a single value of the corresponding " +
+                                                 "type or an array of values. As an example of the advanced filter parameters: " +
+                                                 "$AdvancedFilters=@($AdvFilter1, $AdvFilter2) where $AdvFilter1=@{operator=\"NumberIn\"; key=\"Data.Key1\"; Values=@(1,2)} and $AdvFilter2=@{operator=\"StringBringsWith\"; key=\"Subject\"; Values=@(\"SubjectPrefix1\",\"SubjectPrefix2\")}";
+
+        public const string KeyNameHelp = "The name of the key that needs to be regenerated";
+        public const string TopicResourceIdHelp = "Resource Identifier representing the Event Grid Topic.";
+        public const string DomainResourceIdHelp = "Resource Identifier representing the Event Grid Domain.";
+        public const string DomainOrDomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain or Grid Domain Topic.";
+
+        public const string EventSubscriptionFullUrlHelp = "Include the full endpoint URL of the event subscription destination.";
+        public const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
         // Event Subscription destination types
         public const string Webhook = "webhook";

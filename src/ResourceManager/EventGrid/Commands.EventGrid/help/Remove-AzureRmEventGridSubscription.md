@@ -24,10 +24,22 @@ Remove-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionNa
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### EventSubscriptionInputObjectSet
+### EventSubscriptionCustomTopicInputObjectParameterSet
 ```
-Remove-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEventGridSubscription [-CustomTopicInputObject] <PSTopic> [-EventSubscriptionName] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventSubscriptionDomainInputObjectParameterSet
+```
+Remove-AzureRmEventGridSubscription [-DomainInputObject] <PSDomain> [-EventSubscriptionName] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventSubscriptionDomainTopicInputObjectParameterSet
+```
+Remove-AzureRmEventGridSubscription [-DomainTopicInputObject] <PSDomainTopic> [-EventSubscriptionName] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicNameParameterSet
@@ -35,6 +47,25 @@ Remove-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-EventSubscription
 Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
  [-TopicName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### DomainNameParameterSet
+```
+Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
+ [-DomainName] <String> [[-DomainTopicName] <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DomainEventSubscriptionParameterSet
+```
+Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DomainTopicEventSubscriptionParameterSet
+```
+Remove-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +110,21 @@ Removes the event subscription \`EventSubscription1\` to an Event Grid Topic.
 
 ## PARAMETERS
 
+### -CustomTopicInputObject
+EventGrid Topic object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -94,45 +140,90 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventSubscriptionName
-Name of the event subscription that needs to be removed.
+### -DomainInputObject
+EventGrid Domain object.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, TopicNameParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InputObject
-EventGrid EventSubscription object.
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameter Sets: EventSubscriptionInputObjectSet
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DomainName
+EventGrid domain name.
+
+```yaml
+Type: System.String
+Parameter Sets: DomainNameParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DomainTopicInputObject
+EventGrid Domain Topic object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
+Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DomainTopicName
+EventGrid domain topic name.
+
+```yaml
+Type: System.String
+Parameter Sets: DomainNameParameterSet
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventSubscriptionName
+Name of the event subscription that needs to be removed.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, TopicNameParameterSet, DomainNameParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +259,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: TopicNameParameterSet
+Parameter Sets: TopicNameParameterSet, DomainNameParameterSet
 Aliases: ResourceGroup
 
 Required: True
@@ -247,7 +338,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameters: InputObject (ByValue)
+Parameters: CustomTopicInputObject (ByValue)
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Parameters: DomainInputObject (ByValue)
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
+Parameters: DomainTopicInputObject (ByValue)
 
 ## OUTPUTS
 

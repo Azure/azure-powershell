@@ -19,7 +19,40 @@
 -->
 ## Current Release
 
+* Updated to use the 2018-09-15-preview API version.
+
+* Added new cmdlets to manage the resources in Azure Event Grid service.
+
+    - New-AzureRmEventGridDomain
+        - Creates a new Azure Event Grid Domain.
+    - Get-AzureRmEventGridDomain
+        - Gets the details of an Event Grid Domain, or gets a list of all Event Grid Domains in the current Azure subscription.
+    - Remove-AzureRmEventGridDomain
+        - Removes an Azure Event Grid Domain.
+    - New-AzureRmEventGridDomainKey
+        - Regenerates the shared access key for an Azure Event Grid Domain.
+    - Get-AzureRmEventGridDomainKey
+        - Gets the shared access keys used to publish events to an Event Grid Domain.
+    - Get-AzureRmEventGridDomainTopic
+        - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure subscription.
+
+* Updated the following cmdlets to support new scenarios in 2018-09-15-preview API version
+    - New-AzureRmEventGridSubscription:
+        - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
+        - Add new mandatory parameters for specifying the new Event Grid Domain name and/or Event Grid Domain Topic name to allow creating new event subscription under these resources.
+        - Add new Parameter sets for domains and domain topics to allow reusing existing parameters (e.g., EndPointType, SubjectBeginsWith, etc).
+        - Add new optional parameters for specifying:
+            - Event subscription expiration date,
+            - Advanced filtering parameters.
+    - Update-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+        - Similar as New-AzureRmEventGridSubscription.
+    - Remove-AzureRmEventGridSubscription
+        - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
+        - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
+
 ## Version 0.4.0-preview
+* Set minimum dependency of module to PowerShell 5.0
+
 * Update the following cmdlets to support new scenario in 2018-05-01-preview API version
 	- New-AzureRmEventGridTopic: Add new optional parameters for specifying:
 		- Input schema.

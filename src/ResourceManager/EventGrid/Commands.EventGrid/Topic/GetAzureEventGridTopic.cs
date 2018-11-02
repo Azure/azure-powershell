@@ -33,13 +33,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -50,16 +49,17 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventGrid Topic Name.",
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Identifier representing the Event Grid Topic.",
+            HelpMessage = EventGridConstants.TopicResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 resourceGroupName = this.ResourceGroupName;
             }
-                
+
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(topicName))
             {
                 // Get details of the Event Grid topic

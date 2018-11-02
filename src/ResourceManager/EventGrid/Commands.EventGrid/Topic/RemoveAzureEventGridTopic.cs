@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventGrid Topic Name.",
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }

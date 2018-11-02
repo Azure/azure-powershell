@@ -25,14 +25,19 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),OutputType(typeof(PSEventSubscription))]
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
+            ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -41,20 +46,24 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
+            ParameterSetName = EventSubscriptionDomainNameParameterSet)]
         [ResourceGroupCompleter]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.ResourceIdNameHelp,
@@ -65,44 +74,83 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = EventGridConstants.TopicTypeNameHelp,
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         public string TopicName { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            HelpMessage = EventGridConstants.DomainNameHelp,
+            ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        public string DomainName { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = EventGridConstants.DomainTopicNameHelp,
+          ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        public string DomainTopicName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicTypeNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicTypeName { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 2,
             HelpMessage = "Location",
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [LocationCompleter("Microsoft.EventGrid/eventSubscriptions")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
-            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic InputObject { get; set; }
+        public PSTopic CustomTopicInputObject { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Include the full endpoint URL of the event subscription destination.",
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.DomainInputObjectHelp,
+            ParameterSetName = EventSubscriptionDomainInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSDomain DomainInputObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.DomainTopicInputObjectHelp,
+            ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSDomainTopic DomainTopicInputObject { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "Include the full endpoint URL of the event subscription destination.",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
+            ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "If specified, include the full endpoint URL of the event subscription destination in the response.",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = EventGridConstants.EventSubscriptionFullUrlInResponseHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         public SwitchParameter IncludeFullEndpointUrl { get; set; }
 
@@ -113,22 +161,38 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
             {
-                // Since an EventSubscription name is specified, we need to retrieve 
+                // Since an EventSubscription name is specified, we need to retrieve
                 // only the particular event subscription corresponding to this name.
-                if (this.InputObject != null)
+                if (this.CustomTopicInputObject != null)
                 {
                     // Retrieve the event subscription for the specified topic
-                    scope = this.InputObject.Id;
+                    scope = this.CustomTopicInputObject.Id;
+                }
+                else if (this.DomainInputObject != null)
+                {
+                    // Retrieve the event subscription for the specified domain
+                    scope = this.DomainInputObject.Id;
+                }
+                else if (this.DomainTopicInputObject != null)
+                {
+                    // Retrieve the event subscription for the specified domain topic
+                    scope = this.DomainTopicInputObject.Id;
                 }
                 else if (string.IsNullOrEmpty(this.ResourceId))
                 {
-                    // ResourceID not specified, retrieve the event subscription for either the 
+                    // ResourceID not specified, retrieve the event subscription for either the
                     // subscription, or resource group, or custom topic depending on which of the parameters are provided.
-                    scope = EventGridUtils.GetScope(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.TopicName);
+
+                    scope = EventGridUtils.GetScope(
+                        this.DefaultContext.Subscription.Id,
+                        this.ResourceGroupName,
+                        this.TopicName,
+                        this.DomainName,
+                        this.DomainTopicName);
                 }
                 else
                 {
-                    // Since both a ResourceId and EventSubscriptionName are specified, we need to retrieve 
+                    // Since both a ResourceId and EventSubscriptionName are specified, we need to retrieve
                     // only this particular event subscription corresponding to this resource ID.
                     scope = this.ResourceId;
                 }
@@ -137,14 +201,24 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
             else
             {
-                // EventSubscription name was not specified, we need to retrieve a list of 
+                // EventSubscription name was not specified, we need to retrieve a list of
                 // event subscriptions based on the provided parameters.
                 IEnumerable<EventSubscription> eventSubscriptionsList = null;
 
-                if (this.InputObject != null)
+                if (this.CustomTopicInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified topic object
-                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.InputObject.Id);
+                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.CustomTopicInputObject.Id);
+                }
+                else if (this.DomainInputObject != null)
+                {
+                    // Retrieve all the event subscriptions based on the ID of the specified domain object
+                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainInputObject.Id);
+                }
+                else if (this.DomainTopicInputObject != null)
+                {
+                    // Retrieve all the event subscriptions based on the ID of the specified domain topic object
+                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainTopicInputObject.Id);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
@@ -152,14 +226,33 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
                 else if (!string.IsNullOrEmpty(this.TopicName))
                 {
-                    // Get all event subscriptions for this topic
                     if (string.IsNullOrEmpty(this.ResourceGroupName))
                     {
                         throw new ArgumentNullException(this.ResourceGroupName,
                             "Resource Group Name should be specified to retrieve event subscriptions for a topic");
                     }
 
+                    // Get all event subscriptions for this topic
                     eventSubscriptionsList = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "topics", this.TopicName);
+                }
+                else if (!string.IsNullOrEmpty(this.DomainName))
+                {
+                    if (string.IsNullOrEmpty(this.ResourceGroupName))
+                    {
+                        throw new ArgumentNullException(this.ResourceGroupName,
+                            "Resource Group Name should be specified to retrieve event subscriptions for a domain or domain topic");
+                    }
+
+                    // Get all event subscriptions for this domain if no domain topic name is specified.
+                    if (string.IsNullOrEmpty(this.DomainTopicName))
+                    {
+                        eventSubscriptionsList = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "domains", this.DomainName);
+                    }
+                    else
+                    {
+                        // Get all event subscriptions for this domain topic under the domain.
+                        eventSubscriptionsList = this.Client.ListByDomainTopic(this.ResourceGroupName, this.DomainName, this.DomainTopicName);
+                    }
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {

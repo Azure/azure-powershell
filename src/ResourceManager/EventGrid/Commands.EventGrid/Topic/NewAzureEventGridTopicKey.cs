@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "Resource group name.")]
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "The name of the topic.")]
+            HelpMessage = EventGridConstants.TopicNameHelp)]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 
@@ -48,34 +48,36 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "The name of the key that needs to be regenerated")]
+            HelpMessage = EventGridConstants.KeyNameHelp)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the key that needs to be regenerated",
+            HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the key that needs to be regenerated",
+            HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Identifier representing the Event Grid Topic.",
+            HelpMessage = EventGridConstants.TopicResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
