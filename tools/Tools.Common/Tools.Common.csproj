@@ -88,7 +88,7 @@
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ApplicationInsights.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Automation.dll.json">
+    <None Include="SerializedCmdlets\Microsoft.WindowsAzure.Commands.Automation.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AzureBackup.dll.json">
@@ -211,7 +211,7 @@
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Reservations.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ResourceManager.Automation.dll.json">
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Automation.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll.json">

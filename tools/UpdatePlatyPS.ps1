@@ -84,7 +84,7 @@ function Update-Help {
                 Write-Host "done..."
             } catch {
                 $Failures += 1
-                Write-Error "Help generation failure, $_"
+                Write-Error "$($_.Exception)"
                 break
             } finally {
                 Pop-Location | Out-Null

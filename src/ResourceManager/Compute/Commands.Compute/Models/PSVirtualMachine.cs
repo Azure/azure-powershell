@@ -100,5 +100,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
+
+        // Gets or sets the AdditionalCapabilities
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
     }
 }

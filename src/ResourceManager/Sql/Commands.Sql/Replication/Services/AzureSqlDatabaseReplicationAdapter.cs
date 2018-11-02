@@ -137,9 +137,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                         model.ElasticPoolName);
 
             // Create copy of the database
-            var resp = ReplicationCommunicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, new Management.Sql.Models.Database
+            var resp = ReplicationCommunicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, new Management.Sql.Models.Database(model.CopyLocation, tags: model.Tags)
             {
-                Location = model.CopyLocation,
                 CreateMode = Management.Sql.Models.CreateMode.Copy,
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
                         model.ResourceGroupName, model.ServerName, model.DatabaseName),

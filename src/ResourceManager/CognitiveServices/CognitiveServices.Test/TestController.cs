@@ -13,15 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.CognitiveServices;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -32,45 +29,30 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
 {
     public class TestController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
         public CognitiveServicesManagementClient CognitiveServicesClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
 
         public string UserDomain { get; private set; }
 
-        public static TestController NewInstance
-        {
-            get
-            {
-                return new TestController();
-            }
-        }
+        public static TestController NewInstance => new TestController();
 
         public TestController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(XunitTracingInterceptor traceInterceptor, params string[] scripts)
         {
-            helper.TracingInterceptor = traceInterceptor;
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            _helper.TracingInterceptor = traceInterceptor;
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup
                 null,
                 callingClassType,
@@ -79,63 +61,52 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (var context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
+                    _helper.RMProfileModule,
                     "AzureRM.Resources.ps1",
-                    helper.GetRMModulePath("AzureRM.CognitiveServices.psd1")
+                    _helper.GetRMModulePath("AzureRM.CognitiveServices.psd1")
                 );
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
@@ -143,40 +114,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
         private void SetupManagementClients(RestTestFramework.MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient(context);
-            SubscriptionClient = GetSubscriptionClient();
             CognitiveServicesClient = GetCognitiveServicesManagementClient(context);
-            GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
 
-            helper.SetupManagementClients(
+            _helper.SetupManagementClients(
                 ResourceManagementClient,
-                SubscriptionClient,
-                CognitiveServicesClient,
-                GalleryClient,
-                AuthorizationManagementClient);
+                CognitiveServicesClient);
         }
 
-        private ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private CognitiveServicesManagementClient GetCognitiveServicesManagementClient(RestTestFramework.MockContext context)
+        private static CognitiveServicesManagementClient GetCognitiveServicesManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<CognitiveServicesManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }

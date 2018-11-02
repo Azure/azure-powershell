@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
+        [ResourceNameCompleter("Microsoft.Network/publicIPPrefixes", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 

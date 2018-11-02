@@ -75,5 +75,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(DataDiskImages, Formatting.Indented); }
         }
+
+        public AutomaticOSUpgradeProperties AutomaticOSUpgradeProperties { get; set; }
     }
 }
