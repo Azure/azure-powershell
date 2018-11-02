@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Current Release
+
+## Version 6.10.0
 * Changed PeeringType to be a mandatory parameter for the following cmdlets:-
     - Get-AzureRmExpressRouteCircuitRouteTable
     - Get-AzureRmExpressRouteCircuitARPTable

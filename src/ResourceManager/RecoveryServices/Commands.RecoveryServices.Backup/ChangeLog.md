@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.5.0
 * Added support for azure file shares in recovery services.
 
 ## Version 4.4.1

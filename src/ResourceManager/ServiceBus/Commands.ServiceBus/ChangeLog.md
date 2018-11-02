@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.13
 * Added MigrationState read-only property to PSServiceBusMigrationConfigurationAttributes which will help to know the Migration state.
 
 ## Version 0.6.12

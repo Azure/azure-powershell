@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 6.2.1
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
+
 ## Version 6.2.0
 * Adding support for Virtual Network Rules
     - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
