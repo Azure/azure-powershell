@@ -23,8 +23,6 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System.IO;
-using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
