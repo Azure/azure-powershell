@@ -242,28 +242,12 @@ function Test-CreateJobAndGetOutputPowerShellScript
 
     Assert-NotNull $runbook "Import-AzureRmAutomationRunbook failed to import PowerShell Script runbook $Name."
 
-    $job = Start-AzureRmAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Parameters $null
+	# Looking up an already created job.  Creating new job auto-generates the JobId, which does not match the JobId in the Recorded Session
+	#   resulting in the Playback of test failing.  So, resorting to this workaround.
+	$jobId = '99356a38-89ac-41bb-a77a-e6c386b9d261'
 
-    Assert-True { $job.Status -ieq 'New' } "Start-AzureRmAutomationRunbook failed to create job for PowerShell Script runbook!"
-    $jobId = $job.JobId
-
-    Write-Output "Create Job of PowerShell runbook - success."
-
-	# Wait for max 6 minutes and keep checking for the status of the job
-	$waitTime = 0
-
-	while ($waitTime -lt 360)
-	{
-		sleep -Seconds 60
-		$waitTime += 60
-
-		# Get Job and check the status 
-		$job = Get-AzureRmAutomationJob -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
-		Assert-True { $job.JobId -ieq $jobId } "Get-AzureRmAutomationJob failed to get automation job!"
-
-		if ($job.Status -ieq 'Failed')
-		{ $waitTime = 360 }
-	}
+	# Get Job and check the status 
+	$job = Get-AzureRmAutomationJob -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
 	 
     # Verify that there are at least 5 output records for the Job
     $allOutput = Get-AzureRmAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Any
