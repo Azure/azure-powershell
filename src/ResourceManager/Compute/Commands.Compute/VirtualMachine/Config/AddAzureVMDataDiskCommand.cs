@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
@@ -234,6 +235,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
+                WriteWarning("VirtualMachineScaleSetVM parameter will be deprecated.  Use Add-AzureRmVmssVMDataDisk instead.");
+
                 var storageProfile = this.VirtualMachineScaleSetVM.StorageProfile;
 
                 if (storageProfile == null)

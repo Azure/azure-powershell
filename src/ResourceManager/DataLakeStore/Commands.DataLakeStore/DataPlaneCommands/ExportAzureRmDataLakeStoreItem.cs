@@ -123,7 +123,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 
-                        int threadCount = Concurrency;
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
                         DataLakeStoreFileSystemClient.BulkCopy(powerShellReadyPath, Account,
                             Path.TransformedPath, CmdletCancellationToken, threadCount, Recurse, Force, Resume, true, this);
                         WriteObject(powerShellReadyPath);

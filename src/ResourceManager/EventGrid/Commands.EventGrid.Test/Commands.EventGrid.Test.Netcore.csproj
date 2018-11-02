@@ -26,7 +26,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="1.2.1-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent = this.MaxBatchInstancePercent;
             }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = this.MaxUnhealthyInstancePercent;
             }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent = this.MaxUnhealthyUpgradedInstancePercent;
             }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches = this.PauseTimeBetweenBatches;
             }
