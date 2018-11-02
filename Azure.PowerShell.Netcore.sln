@@ -148,6 +148,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.SignalR.Netcore", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DevSpaces.Netcore", "src\ResourceManager\DevSpaces\Commands.DevSpaces\Commands.DevSpaces.Netcore.csproj", "{6EBD1E1B-12D1-451D-B284-ED35A91D6C8C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Security.Netcore", "src\ResourceManager\Security\Commands.Security\Commands.Security.Netcore.csproj", "{FA322448-E646-4221-9FEA-3C1C8CC81B99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1033,6 +1035,18 @@ Global
 		{6EBD1E1B-12D1-451D-B284-ED35A91D6C8C}.Release|x64.Build.0 = Release|Any CPU
 		{6EBD1E1B-12D1-451D-B284-ED35A91D6C8C}.Release|x86.ActiveCfg = Release|Any CPU
 		{6EBD1E1B-12D1-451D-B284-ED35A91D6C8C}.Release|x86.Build.0 = Release|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Debug|x64.Build.0 = Debug|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Debug|x86.Build.0 = Debug|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x64.ActiveCfg = Release|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x64.Build.0 = Release|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x86.ActiveCfg = Release|Any CPU
+		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
