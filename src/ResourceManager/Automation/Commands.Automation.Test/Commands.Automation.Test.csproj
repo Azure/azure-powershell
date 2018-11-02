@@ -159,19 +159,15 @@
     <None Include="ScenarioTests\Resources\Write-DebugAndVerboseOutput.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateGitHubSourceControlAndSync.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxWeeklySUC.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsMonthlySUC.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="SessionRecords\Microsoft.Azure.Commands.Automation.Test.AccountTests\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCNonAzureOnly.json">
-    </Content>
+    <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateGitHubSourceControlAndSync.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>    
     <Content Include="SessionRecords\Commands.Automation.Test.SourceControlTests\CreateVsoGitSourceControlAndSync.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
