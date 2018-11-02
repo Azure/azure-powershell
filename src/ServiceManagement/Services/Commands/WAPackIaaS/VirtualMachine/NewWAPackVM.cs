@@ -36,6 +36,16 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
             set;
         }
 
+        [Parameter(Mandatory = false, ParameterSetName = WAPackCmdletParameterSets.CreateLinuxVMFromTemplate, ValueFromPipelineByPropertyName = true, HelpMessage = "VM ComputerName.")]
+        [Parameter(Mandatory = false, ParameterSetName = WAPackCmdletParameterSets.CreateWindowsVMFromTemplate, ValueFromPipelineByPropertyName = true, HelpMessage = "VM ComputerName.")]
+        [Parameter(Mandatory = false, ParameterSetName = WAPackCmdletParameterSets.CreateVMFromOSDisks, ValueFromPipelineByPropertyName = true, HelpMessage = "VM ComputerName.")]
+        [ValidateNotNullOrEmpty]
+        public string ComputerName
+        {
+            get;
+            set;
+        }
+
         [Parameter(Mandatory = true, ParameterSetName = WAPackCmdletParameterSets.CreateLinuxVMFromTemplate, ValueFromPipelineByPropertyName = true, HelpMessage = "VMTemplate to be used in VM creation.")]
         [Parameter(Mandatory = true, ParameterSetName = WAPackCmdletParameterSets.CreateWindowsVMFromTemplate, ValueFromPipelineByPropertyName = true, HelpMessage = "VMTemplate to be used in VM creation.")]
         [ValidateNotNullOrEmpty]
@@ -125,6 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
                 newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
                 {
                     Name = Name,
+                    ComputerName = ComputerName,
                     VMTemplateId = Template.ID,
                     LocalAdminUserName = VMCredential.UserName,
                     LocalAdminPassword = ExtractSecureString(VMCredential.Password),
@@ -137,6 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
                 newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
                 {
                     Name = Name,
+                    ComputerName = ComputerName,
                     VMTemplateId = Template.ID,
                     LocalAdminUserName = VMCredential.UserName,
                     LocalAdminPassword = ExtractSecureString(VMCredential.Password),
@@ -149,6 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
                 newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
                 {
                     Name = Name,
+                    ComputerName = ComputerName,
                     HardwareProfileId = VMSizeProfile.ID,
                     VirtualHardDiskId = OSDisk.ID,
                     NewVirtualNetworkAdapterInput = virtualNetworkAdaptersWithVNet
