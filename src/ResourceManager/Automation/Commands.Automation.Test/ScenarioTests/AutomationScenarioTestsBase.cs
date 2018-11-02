@@ -14,12 +14,14 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.IO;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -43,28 +45,23 @@ namespace Microsoft.Azure.Commands.Automation.Test
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            const string RootNamespace = "ScenarioTests";
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
-
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-
+            HttpMockServer.RecordsDirectory = GetSessionRecordsDirectory();
             using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                var callingClassName = callingClassType?
+                    .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                    .Last();
 
-                var psModuleFile = this.GetType().FullName.Contains(RootNamespace) ?
-                    this.GetType().FullName.Split(new[] { RootNamespace }, StringSplitOptions.RemoveEmptyEntries).Last().Replace(".", "\\") :
-                    $"\\{this.GetType().Name}";
-
-                _helper.SetupModules(AzureModule.AzureResourceManager,
-                    $"{RootNamespace}{psModuleFile}.ps1",
+                var scriptLocation = Path.Combine("ScenarioTests", callingClassName + ".ps1");
+                _helper.SetupModules(
+                    scriptLocation,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
-
                 _helper.RunPowerShellTest(scripts);
             }
         }
@@ -73,6 +70,15 @@ namespace Microsoft.Azure.Commands.Automation.Test
         {
             return context.GetServiceClient<AutomationClient>
                 (Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private string GetSessionRecordsDirectory()
+        {
+            // Note: if you are developing new tests, set the recording directory to a local path.
+            //       this is the location where the json files will be created.
+            // var recordsDirectory = Path.Combine("e:\\", "SessionRecords");
+            var recordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            return recordsDirectory;
         }
     }
 }
