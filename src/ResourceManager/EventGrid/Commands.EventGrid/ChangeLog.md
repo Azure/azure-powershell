@@ -19,10 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.4.1-preview
 * Updated to use the 2018-09-15-preview API version.
-
 * Added new cmdlets to manage the resources in Azure Event Grid service.
-
     - New-AzureRmEventGridDomain
         - Creates a new Azure Event Grid Domain.
     - Get-AzureRmEventGridDomain
@@ -35,7 +34,6 @@
         - Gets the shared access keys used to publish events to an Event Grid Domain.
     - Get-AzureRmEventGridDomainTopic
         - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure subscription.
-
 * Updated the following cmdlets to support new scenarios in 2018-09-15-preview API version
     - New-AzureRmEventGridSubscription:
         - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
