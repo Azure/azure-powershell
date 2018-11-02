@@ -150,6 +150,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DevSpaces.Netcore"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Security.Netcore", "src\ResourceManager\Security\Commands.Security\Commands.Security.Netcore.csproj", "{FA322448-E646-4221-9FEA-3C1C8CC81B99}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Netcore", "src\ResourceManager\StorageSync\Commands.StorageSync\Commands.StorageSync.Netcore.csproj", "{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1047,6 +1049,18 @@ Global
 		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x64.Build.0 = Release|Any CPU
 		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x86.ActiveCfg = Release|Any CPU
 		{FA322448-E646-4221-9FEA-3C1C8CC81B99}.Release|x86.Build.0 = Release|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Debug|x64.Build.0 = Debug|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Debug|x86.Build.0 = Debug|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Release|x64.ActiveCfg = Release|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Release|x64.Build.0 = Release|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Release|x86.ActiveCfg = Release|Any CPU
+		{4C2F89E4-A0E0-4ECB-A5DA-A583EDF1ED62}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
