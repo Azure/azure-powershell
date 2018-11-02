@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.PolicyInsights.dll'
@@ -72,8 +72,13 @@ NestedModules = @('.\Microsoft.Azure.Commands.PolicyInsights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzPolicyEvent', 'Get-AzPolicyState', 
-    'Get-AzPolicyStateSummary'
+CmdletsToExport = 'Get-AzPolicyEvent', 
+    'Get-AzPolicyState', 
+    'Get-AzPolicyStateSummary',
+    'Get-AzPolicyRemediation',
+    'Remove-AzPolicyRemediation',
+    'Start-AzPolicyRemediation',
+    'Stop-AzPolicyRemediation'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -97,7 +102,7 @@ PrivateData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
         Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'Policy', 
-            'PolicyInsights', 'PolicyEvent', 'PolicyState'
+            'PolicyInsights', 'PolicyEvent', 'PolicyState', 'Remediation'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -109,7 +114,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
+        ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
         # Prerelease string of this module
         # Prerelease = ''

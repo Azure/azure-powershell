@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 TargetNamespace = mcResource.TargetNamespace;
                 PostMigrationName = mcResource.PostMigrationName;
                 PendingReplicationOperationsCount = mcResource.PendingReplicationOperationsCount;
+                MigrationState = mcResource.MigrationState;
             }
         }
 
@@ -65,6 +66,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets number of entities pending to be replicated.
         /// </summary>
         public long? PendingReplicationOperationsCount { get; private set; }
+
+        /// <summary>
+        /// Gets state in which Standard to Premium Migration is, possible
+        /// values : Unknown, Reverting, Completing, Initiating, Syncing,
+        /// Active
+        public string MigrationState { get; set; }
 
     }
 }

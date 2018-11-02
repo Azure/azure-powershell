@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// This cmdlet can be used to check if a VM is backed up by any vault in the subscription.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupStatus",DefaultParameterSetName = NameParamSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupStatus", DefaultParameterSetName = NameParamSet)]
     [OutputType(typeof(ResourceBackupStatus))]
     public class GetAzureRmRecoveryServicesBackupStatus : RecoveryServicesBackupCmdletBase
     {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = NameParamSet, Mandatory = true,
             HelpMessage = ParamHelpMsgs.ProtectionCheck.Type)]
-        [ValidateSet("AzureVM")]
+        [ValidateSet("AzureVM", "AzureFiles")]
         public string Type { get; set; }
 
         [Parameter(ParameterSetName = IdParamSet, ValueFromPipelineByPropertyName = true,
