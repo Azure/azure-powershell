@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 throw new PSArgumentException("When specifying the ServiceName parameter the ResourceGroup parameter must also be used");
             }
 
+            foreach (var item in results)
+            {
+                if (DmsConstants.DeprecatingSkuNames.Contains(item.Service.Sku.Size))
+                {
+                    WriteWarning(string.Format(Resources.SKUDeprecationWarningMessage, item.Service.Sku.Size, item.Service.Name));
+                }
+            }
             WriteObject(results, true);
         }
     }

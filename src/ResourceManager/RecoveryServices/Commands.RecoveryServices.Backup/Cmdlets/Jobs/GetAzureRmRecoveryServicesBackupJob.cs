@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of jobs associated with this recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob"),OutputType(typeof(JobBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob"), OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>

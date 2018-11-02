@@ -187,7 +187,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             {
                 if (Expand && MyInvocation.BoundParameters.ContainsKey("ResultType"))
                 {
-                    expandFilter = string.Format("output($filter= ResultType eq '{0}')", ResultType.ToString());
+                    if (ResultType.ToString().Equals(ResultTypeEnum.Command.ToString()))
+                    {
+                        expandFilter = "command";
+                    }
+                    else
+                    {
+                        expandFilter = string.Format("output($filter= ResultType eq '{0}')", ResultType.ToString());
+                    }
                 }
                 else
                 {

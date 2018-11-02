@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ### -Context
 Specifies the storage context.
 To create it, you can use the New-AzureStorageContext cmdlet.
-The cmdlet will fail when you use a storage context created from SAS Token because the cmdlet will query for container permissions which require Storage account key permission.
+The container permissions won't be retrieved when you use a storage context created from SAS Token, because query container permissions requires Storage account key permission.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext

@@ -26,26 +26,25 @@ The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the sp
 ```
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 
-Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
-                                      B-Topic_exampl1
-Type                                : Microsoft.ServiceBus/Topic
-AccessedAt                          : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 3:16:41 AM
+Name                                : SB-Topic_example1
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_example1
+Type                                : Microsoft.ServiceBus/Namespaces/Topics
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 10/11/2018 11:51:24 PM
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
 EnableBatchedOperations             : True
 EnableExpress                       : False
-EnablePartitioning                  : True
-MaxSizeInMegabytes                  : 16384
+EnablePartitioning                  : False
+MaxSizeInMegabytes                  : 81920
 RequiresDuplicateDetection          : False
 SizeInBytes                         : 0
 Status                              : Active
-SubscriptionCount                   : 1
-SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 3:16:43 AM
+SubscriptionCount                   : 0
+SupportOrdering                     : True
+UpdatedAt                           : 10/11/2018 11:51:24 PM
 ```
 
 Returns the description of the specified topic for the given Service Bus namespace.

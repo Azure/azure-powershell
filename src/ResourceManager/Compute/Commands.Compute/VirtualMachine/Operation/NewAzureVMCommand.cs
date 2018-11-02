@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
