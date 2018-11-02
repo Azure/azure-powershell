@@ -95,6 +95,16 @@ function New-ModulePsm1 {
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
+        # Replace Az or AzureRM with correct information
+        if ($IsNetcore)
+        {
+            $template = $template -replace "%AZORAZURERM%", "Az"
+        }
+        else
+        {
+            $template = $template -replace "%AZORAZURERM%", "AzureRM"
+        }
+
         # Add deprecation messages
         if ($ModulePath -like "*Profile*") {
             $WarningMessage = "`"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""

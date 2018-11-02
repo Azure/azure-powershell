@@ -28,7 +28,7 @@ else
     }
 }
 
-if (Get-Module AzureRM.profile)
+if (Get-Module Az.profile)
 {
     Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
     throw "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
