@@ -236,7 +236,7 @@ function Test-CreateJobAndGetOutputPowerShellScript
                         -ResourceGroup $resourceGroupName `
                         -Tags $tags `
                         -LogProgress $true `
-                        -LogVerbose $true `
+                        -LogVerbose $false `
                         -AutomationAccountName $automationAccountName `
                         -Published 
 
