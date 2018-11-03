@@ -80,7 +80,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                EndDate = StartDate.AddYears(1);
+                if (!this.IsParameterBound(c => c.EndDate))
+                {
+                    WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
+                    EndDate = StartDate.AddYears(1);
+                }
+
                 if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
                     ObjectId = ServicePrincipalObject.Id;
