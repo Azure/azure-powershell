@@ -44,7 +44,7 @@ Get the a specific delegated provider.
 ## PARAMETERS
 
 ### -DelegatedProviderId
-{{Fill DelegatedProviderId Description}}
+DelegatedProvider identifier.
 
 ```yaml
 Type: Guid

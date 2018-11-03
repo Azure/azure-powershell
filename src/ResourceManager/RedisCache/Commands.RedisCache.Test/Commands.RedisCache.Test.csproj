@@ -40,12 +40,12 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Insights, Version=0.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.15.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Insights, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.16.0-preview\lib\net452\Microsoft.Azure.Insights.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Redis, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.4.4.0\lib\net452\Microsoft.Azure.Management.Redis.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.4.4.1\lib\net452\Microsoft.Azure.Management.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

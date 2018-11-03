@@ -26,3 +26,5 @@
 -->
 
 # Upcoming Breaking Changes
+
+This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.

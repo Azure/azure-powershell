@@ -127,7 +127,9 @@ function Start-AzsStorageContainerMigration {
                     $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
                 }
 
-                $flattenedParameters = @('Name', 'StorageAccountName', 'DestinationShareUncPath')
+                $PSBoundParameters.Add('ContainerName', $Name)
+
+                $flattenedParameters = @('ContainerName', 'StorageAccountName', 'DestinationShareUncPath')
                 $utilityCmdParams = @{}
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {

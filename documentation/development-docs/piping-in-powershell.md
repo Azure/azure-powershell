@@ -192,10 +192,7 @@ For example, you have a `Remove-AzureRmFoo` cmdlet with the following parameters
 
 ```cs
 [Parameter(ParameterSetName = "ByPropertyName", ValueFromPipelineByPropertyName = true)]
-public string Name { get; set; }
-
-[Parameter(ParameterSetName = "ByPropertyName", ValueFromPipelineByPropertyName = true)]
-public string ResourceGroupName { get; set; }
+public string ResourceId { get; set; }
 ```
 
 If there is a corresponding `Get-AzureRmFoo` cmdlet that returns a `PSFoo` object (that has properties `Name` and `ResourceGroupName`), the following scenario is enabled:
@@ -203,19 +200,19 @@ If there is a corresponding `Get-AzureRmFoo` cmdlet that returns a `PSFoo` objec
 ```powershell
 # --- Piping scenario ---
 # Remove an individual PSFoo object
-Get-AzureRmFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzureRmFoo
+Get-AzureRmResource -ResourceId <resourceId> | Remove-AzureRmFoo
 
 # Remove all PSFoo objects
-Get-AzureRmFoo | Remove-AzureRmFoo
+Get-AzureRmResource -ResourceType Foo | Remove-AzureRmFoo
 
 
 # --- Non-piping scenario ---
 # Remove an individual PSFoo object
-$foo = Get-AzureRmFoo -Name "FooName" -ResourceGroupName "RG"
-Remove-AzureRmFoo -Name $foo.Name -ResourceGroupName $foo.ResourceGroupName
+$foo = Get-AzureRmResource -ResourceId <resourceId>
+Remove-AzureRmFoo -ResourceId <resourceId>
 
 # Remove all PSFoo objects
-Get-AzureRmFoo | ForEach-Object { Remove-AzureRmFoo -Name $_.Name -ResourceGroupName $_.ResourceGroupName }
+Get-AzureRmFoo | ForEach-Object { Remove-AzureRmFoo -ResourceId <resourceId> }
 ```
 
 The `PSFoo` object(s) that is returned by the `Get-AzureRmFoo` call will be piped to the `Remove-AzureRmFoo` cmdlet, and because that cmdlet has parameters that accept their value from the pipeline by property name, PowerShell will check each of these parameters and see if it can find a corresponding property in the `PSFoo` object that it shares a name with, and bind the value.

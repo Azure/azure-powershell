@@ -37,7 +37,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.2.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.2.1-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
