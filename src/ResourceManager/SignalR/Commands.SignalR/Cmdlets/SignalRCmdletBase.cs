@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 return context?.GetProperty(Resources.DefaultResourceGroupKey);
             }
         }
-
         /// <summary>
         /// Use the DefaultResourceGroupName for ResourceGroupName if not specified, and optionally validate it.
         /// </summary>

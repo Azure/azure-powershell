@@ -156,7 +156,7 @@ The final command lists all the blobs associated with the container named Contos
 ### Example 10: Create a context by using the OAuth Authentication
 ```
 C:\PS>Connect-AzureRmAccount
-C:\PS> $Context = New-AzureStorageContext -StorageAccountName "myaccountname"
+C:\PS> $Context = New-AzureStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
 ```
 
 This command creates a context by using the OAuth Authentication.

@@ -37,7 +37,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public string Name { get; set; }
         public string BreakingChangeIssueReportLoggerName { get; set; }
 
+#if !NETSTANDARD
         private AppDomain _appDomain;
+#endif
 
         public BreakingChangeAnalyzer()
         {
@@ -215,7 +217,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                     RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
                                 }
 
+#if !NETSTANDARD
                                 AppDomain.Unload(_appDomain);
+#endif
                             }
                         }
                     }

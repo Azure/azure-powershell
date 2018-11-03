@@ -41,10 +41,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.EventGrid">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.2.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.2.1-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.EventHub">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.3.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
