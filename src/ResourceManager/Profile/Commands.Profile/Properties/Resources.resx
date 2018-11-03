@@ -438,4 +438,7 @@
   <data name="UserTenantDomainNotFound" xml:space="preserve">
     <value>Please ensure that the provided user is found in the provided tenant domain.</value>
   </data>
+  <data name="RemoveModuleError" xml:space="preserve">
+    <value>Modules can only be removed in PowerShell administrative mode.</value>
+  </data>
 </root>
