@@ -69,7 +69,7 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0.1-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.21.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.22.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.StreamAnalytics" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.TrafficManager" Version="2.5.3" PrivateAssets="All" />
