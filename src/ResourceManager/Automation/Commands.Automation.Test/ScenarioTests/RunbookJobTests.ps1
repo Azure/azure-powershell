@@ -235,7 +235,7 @@ function Test-CreateJobAndGetOutputPowerShellScript
                         -Type PowerShell `
                         -ResourceGroup $resourceGroupName `
                         -Tags $tags `
-                        -LogProgress $true `
+                        -LogProgress $false `
                         -LogVerbose $false `
                         -AutomationAccountName $automationAccountName `
                         -Published 
@@ -244,10 +244,12 @@ function Test-CreateJobAndGetOutputPowerShellScript
 
 	# Looking up an already created job.  Creating new job auto-generates the JobId, which does not match the JobId in the Recorded Session
 	#   resulting in the Playback of test failing.  So, resorting to this workaround.
-	$jobId = '99356a38-89ac-41bb-a77a-e6c386b9d261'
+	$jobId = 'f6f1bda7-9352-47e9-9ca3-4f6c0af62966'
 
 	# Get Job and check the status 
 	$job = Get-AzureRmAutomationJob -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
+
+	Assert-True { $job.Status -ieq 'Failed' } "Failed to find the expected (failed) job!"
 	 
     # Verify that there are at least 5 output records for the Job
     $allOutput = Get-AzureRmAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Any
@@ -257,7 +259,7 @@ function Test-CreateJobAndGetOutputPowerShellScript
 
     # Get the output of type Error
     $errOutput = Get-AzureRmAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Error
-	$streamId = $errOutput.StreamRecordId
+	$streamId = $errOutput[0].StreamRecordId
     Assert-True { $errOutput.Type -eq 'Error' } "Get-AzureRmAutomationJobOutput failed to get automation Job Error record!"
 
     Write-Output "Get error output of the job - success."
