@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix for https://github.com/Azure/azure-powershell/issues/7679
+    - Update Get-AzureRmRoleAssignment to use the subscription scope if it is provided when requesting classic administrators.
 
 ## Version 6.7.1
 * Fix for https://github.com/Azure/azure-powershell/issues/7402
