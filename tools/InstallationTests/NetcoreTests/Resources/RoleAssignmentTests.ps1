@@ -18,16 +18,57 @@ Tests retrieval of classic administrators
 #>
 function Test-RaClassicAdmins
 {
-	# Setup
-	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-	$subscription = Get-AzureRmSubscription
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
 
-	# Test
-	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+    # Test
+    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}
 	
-	# Assert
-	Assert-NotNull $classic
-	Assert-True { $classic.Length -ge 1 }
+    # Assert
+    Assert-NotNull $classic
+    Assert-True { $classic.Length -ge 1 }
+}
+
+<#
+.SYNOPSIS
+Tests retrieval of classic administrators with subscription scope
+#>
+function Test-RaClassicAdminsWithScope
+{
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+    $signInName = $(Get-AzureRmContext).Account.Id
+    $adminSubscription = '4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
+    $nonAdminSubscription = '1de8ed49-d13d-4a32-a8cf-2aa8e944c392'
+
+    # Setup
+    Select-AzureRmSubscription -SubscriptionId $nonAdminSubscription
+
+    # Test
+    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$adminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+
+    # Assert
+    Assert-NotNull $classic
+    Assert-True { $classic.Length -ge 1 }
+
+    # Setup
+    Select-AzureRmSubscription -SubscriptionId $adminSubscription
+
+    # Test
+    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$adminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+
+    # Assert
+    Assert-NotNull $classic
+    Assert-True { $classic.Length -ge 1 }
+
+    # Setup
+    Select-AzureRmSubscription -SubscriptionId $adminSubscription
+
+    # Test
+    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$nonAdminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+
+    # Assert
+    Assert-Null $classic
 }
 
 <#
@@ -39,7 +80,7 @@ function Test-RaNegativeScenarios
     # Setup
      Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
-    $subscription = Get-AzureRmSubscription
+    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
 
     # Bad OID returns zero role assignments
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
@@ -75,7 +116,7 @@ function Test-RaByScope
 
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription
+    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -180,7 +221,7 @@ function Test-RaByServicePrincipal
 
     $definitionName = 'Reader'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
-    $subscription = Get-AzureRmSubscription
+    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."

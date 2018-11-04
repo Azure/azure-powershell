@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaClassicAdminsWithScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdminsWithScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaPropertiesValidation() {
             ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
         }
