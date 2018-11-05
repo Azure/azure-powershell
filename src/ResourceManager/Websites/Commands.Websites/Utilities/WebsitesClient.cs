@@ -18,10 +18,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
@@ -271,6 +274,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return doc.ToString();
         }
 
+        public User GetPublishingCredentials(string resourceGroupName, string webSiteName, string slotName = null)
+        {
+            string qualifiedSiteName;
+            return CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
+               WrappedWebsitesClient.WebApps().ListPublishingCredentialsSlot(resourceGroupName, webSiteName, slotName)
+               : WrappedWebsitesClient.WebApps().ListPublishingCredentials(resourceGroupName, webSiteName);
+        }
+
         public string ResetWebAppPublishingCredentials(string resourceGroupName, string webSiteName, string slotName)
         {
             string qualifiedSiteName;
@@ -296,6 +307,86 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var profile = doc.Root == null ? null : doc.Root.Element("publishData") == null ? null : doc.Root.Element("publishData").Elements("publishProfile")
                 .Single(p => p.Attribute("publishMethod").Value == "MSDeploy");
             return profile == null ? null : profile.Attribute("userPWD").Value;
+        }
+
+        public void RunWebAppContainerPSSessionScript(PSCmdlet cmdlet, string resourceGroupName, string webSiteName, string slotName = null, bool newPSSession = false)
+        {
+            Version psCurrentVersion = GetPsVersion(cmdlet);
+            Version psCore = new Version(6, 0);
+
+            if (psCurrentVersion.CompareTo(psCore) < 0)
+            {
+                // Running on PowerShell 5.1. Assume Windows.
+
+                // Validate if WSMAN Basic Authentication is enabled
+                bool isBasicAuthEnabled = ExecuteScriptAndGetVariableAsBool(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -ErrorAction SilentlyContinue).Value", false);
+
+                if (!isBasicAuthEnabled)
+                {
+                    // Ask user to enable basic auth
+                    WriteWarning(Properties.Resources.EnterCotnainerPSSessionBasicAuthWarning);
+                    return;
+                }
+
+                // Validate if we can connect given the existing TrustedHosts
+                string defaultTrustedHostsScriptResult = "<empty or non-existent>";
+                string trustedHostsScriptResult = ExecuteScriptAndGetVariable(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\TrustedHosts -ErrorAction SilentlyContinue).Value", defaultTrustedHostsScriptResult);
+
+                Regex expression = new Regex(@"^\*$|((^\*|^" + (string.IsNullOrWhiteSpace(slotName)? webSiteName : webSiteName + "-" + slotName) + ").azurewebsites.net)");
+
+                if (trustedHostsScriptResult.Split(',').Where(h=>expression.IsMatch(h)).Count() < 1)
+                {
+                    WriteWarning(string.Format(Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsWarning, string.IsNullOrWhiteSpace(trustedHostsScriptResult) ? defaultTrustedHostsScriptResult: trustedHostsScriptResult) + 
+                        Environment.NewLine +
+                        Environment.NewLine +
+                        string.Format(@Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsSuggestion,
+                        string.IsNullOrWhiteSpace(trustedHostsScriptResult) ? string.Empty : trustedHostsScriptResult + ",",
+                        (string.IsNullOrWhiteSpace(slotName) ? webSiteName : webSiteName + "-" + slotName)));
+
+                    return;
+                }
+            }
+
+            Site site = GetWebApp(resourceGroupName, webSiteName, slotName);
+            User user = GetPublishingCredentials(resourceGroupName, webSiteName, slotName);
+            const string webAppContainerPSSessionVarPrefix = "webAppPSSession";
+            string publishingUserName = user.PublishingUserName.Length <= 20 ? user.PublishingUserName : user.PublishingUserName.Substring(0, 20);
+
+            string psSessionScript = string.Format("${3}User = '{0}' \n${3}Password = ConvertTo-SecureString -String '{1}' -AsPlainText -Force \n" +
+                "${3}Credential = New-Object -TypeName PSCredential -ArgumentList ${3}User, ${3}Password\n" +
+                (newPSSession ? "${3}NewPsSession = New-PSSession" : "Enter-PSSession") + " -ConnectionUri https://{2}/WSMAN -Authentication Basic -Credential ${3}Credential \n",
+                publishingUserName, user.PublishingPassword, site.DefaultHostName, webAppContainerPSSessionVarPrefix);
+
+            cmdlet.ExecuteScript<object>(psSessionScript);
+            if (newPSSession)
+            {
+                cmdlet.WriteObject(cmdlet.GetVariableValue(string.Format("{0}NewPsSession", webAppContainerPSSessionVarPrefix)));
+            }
+            cmdlet.ExecuteScript<object>(string.Format("Clear-Variable {0}*", webAppContainerPSSessionVarPrefix)); //Clearing session variable
+        }
+
+        private Version GetPsVersion(PSCmdlet cmdlet)
+        {
+            string psVersionVariable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSVersion", string.Empty);
+            Version psEnvironmentVersion = new Version(5, 1);
+            Version.TryParse(psVersionVariable, out psEnvironmentVersion);
+            return psEnvironmentVersion;
+        }
+
+        private bool ExecuteScriptAndGetVariableAsBool(PSCmdlet cmdlet, string scriptFormatString, bool defaultValue)
+        {
+            string scriptResult = ExecuteScriptAndGetVariable(cmdlet, scriptFormatString, bool.FalseString);
+            bool returnValue = defaultValue;
+            bool.TryParse(scriptResult, out returnValue);
+            return returnValue;
+        }
+
+        private string ExecuteScriptAndGetVariable(PSCmdlet cmdlet,  string scriptFormatString, string defaultValue)
+        {
+            string outputVariable = "outputVariable";
+            cmdlet.ExecuteScript<object>(string.Format(scriptFormatString, outputVariable));
+            var output = cmdlet.GetVariableValue(outputVariable, defaultValue);
+            return output.ToString();
         }
 
         public IEnumerable<ResourceMetric> GetWebAppUsageMetrics(string resourceGroupName, 

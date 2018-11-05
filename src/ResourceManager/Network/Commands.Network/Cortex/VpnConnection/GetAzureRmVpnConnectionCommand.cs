@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             HelpMessage = "The parent resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/vpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
 
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [Parameter(
             Mandatory = false,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/vpnGateways/vpnConnections", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

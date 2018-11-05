@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // CreationData
                 if (this.Snapshot.CreationData == null)
                 {
-                    this.Snapshot.CreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    this.Snapshot.CreationData = new CreationData();
                 }
                 // ImageReference
                 if (this.Snapshot.CreationData.ImageReference == null)
                 {
-                    this.Snapshot.CreationData.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageDiskReference();
+                    this.Snapshot.CreationData.ImageReference = new ImageDiskReference();
                 }
                 this.Snapshot.CreationData.ImageReference.Id = this.Id;
             }
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // CreationData
                 if (this.Snapshot.CreationData == null)
                 {
-                    this.Snapshot.CreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    this.Snapshot.CreationData = new CreationData();
                 }
                 // ImageReference
                 if (this.Snapshot.CreationData.ImageReference == null)
                 {
-                    this.Snapshot.CreationData.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageDiskReference();
+                    this.Snapshot.CreationData.ImageReference = new ImageDiskReference();
                 }
                 this.Snapshot.CreationData.ImageReference.Lun = this.Lun;
             }
