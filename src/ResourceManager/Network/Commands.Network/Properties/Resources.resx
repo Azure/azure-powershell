@@ -264,6 +264,12 @@
   <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
     <value>redirectConfigurations</value>
   </data>
+  <data name="NetworkProfileNameNotSet" xml:space="preserve">
+    <value>NetworkProfileNameNotSet</value>
+  </data>
+  <data name="ContainerNetworkInterfaceConfigurationNameNotSet" xml:space="preserve">
+    <value>ContainerNetworkInterfaceConfigurationNameNotSet</value>
+  </data>
   <data name="HubVnetConnectionNotFound" xml:space="preserve">
     <value>The hub virtual network connection to modify could not be found.</value>
   </data>

@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.AzureBackup.Library;
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Globalization;
 using System.IO;
@@ -24,12 +20,18 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Microsoft.Azure.Commands.AzureBackup.Library;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Command to download an azure backup vault's credentials.
     /// </summary>
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupVaultCredentials"), OutputType(typeof(string))]
     public class GetAzureRMBackupVaultCredentials : AzureBackupVaultCmdletBase
     {

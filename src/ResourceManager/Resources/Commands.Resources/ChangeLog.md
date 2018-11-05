@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 6.7.1
+* Fix for https://github.com/Azure/azure-powershell/issues/7402
+    - Allow listing resources using the `-ResourceId` parameter for `Get-AzureRmResource`
+* Fix for https://github.com/Azure/azure-powershell/issues/7700
+    - Fix issue where `EndDate` parameter was not being honored for AD cmdlets
+
+## Version 6.7.0
+* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to `RoleDefinitionNameParameterSet`.
+
+## Version 6.6.0
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
+
 ## Version 6.5.0
 * Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
     - Add support for OnErrorDeployment with the new parameter.

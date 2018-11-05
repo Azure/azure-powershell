@@ -19,9 +19,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER FarmName
     Farm Id.
 
-.PARAMETER ResourceId
-    The resource id.
-
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
 

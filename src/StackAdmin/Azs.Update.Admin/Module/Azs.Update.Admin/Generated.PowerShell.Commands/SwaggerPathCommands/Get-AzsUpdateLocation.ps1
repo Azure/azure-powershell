@@ -31,7 +31,8 @@ function Get-AzsUpdateLocation {
     param(
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [System.String]
-        $Location,
+        [Alias('Location')]
+        $Name,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
@@ -58,7 +59,11 @@ function Get-AzsUpdateLocation {
 
     Process {
 
-
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-Location\s") {
+                Write-Warning -Message "The parameter alias Location will be deprecated in future release. Please use the parameter Name instead"
+            }
+        }
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient'
@@ -82,18 +87,18 @@ function Get-AzsUpdateLocation {
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
 
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
-            $Location = $ArmResourceIdParameterValues['updateLocation']
+            $Name = $ArmResourceIdParameterValues['updateLocation']
         } else {
             if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-                $Location = (Get-AzureRmLocation).Location
-                $ResourceGroupName = "System.$Location"
+                $Name = (Get-AzureRmLocation).Location
+                $ResourceGroupName = "System.$Name"
             }
         }
 
         $filterInfos = @(
             @{
                 'Type'     = 'powershellWildcard'
-                'Value'    = $Location
+                'Value'    = $Name
                 'Property' = 'Name'
             })
         $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
@@ -124,7 +129,7 @@ function Get-AzsUpdateLocation {
             $TaskResult = $UpdateAdminClient.UpdateLocations.ListWithHttpMessagesAsync($ResourceGroupName)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $UpdateAdminClient.'
-            $TaskResult = $UpdateAdminClient.UpdateLocations.GetWithHttpMessagesAsync($ResourceGroupName, $Location)
+            $TaskResult = $UpdateAdminClient.UpdateLocations.GetWithHttpMessagesAsync($ResourceGroupName, $Name)
         } else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'
             throw 'Module failed to find operation to execute.'

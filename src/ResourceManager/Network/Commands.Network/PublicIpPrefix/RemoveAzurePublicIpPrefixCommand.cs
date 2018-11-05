@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName)]
+        [ResourceNameCompleter("Microsoft.Network/publicIPPrefixes", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
