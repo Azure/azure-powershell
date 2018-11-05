@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
+
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             int maxDepth = 3;
             IConfiguration configuration = MockFactory.ConfigurationWithMaximumDepthOf(maxDepth);
             MaximumTreeDepthValidation validation = new MaximumTreeDepthValidation(configuration);
-            string tooDeepFile = @"C:\first\second\third\fourth";
+            var tooDeepFile = Path.Combine(@"C:\", "first", "second", "third", "fourth");
             IFileInfo file = MockFactory.FileWithPath(tooDeepFile);
 
             // Exercise
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             int maxDepth = 3;
             IConfiguration configuration = MockFactory.ConfigurationWithMaximumDepthOf(maxDepth);
             MaximumTreeDepthValidation validation = new MaximumTreeDepthValidation(configuration);
-            string tooDeepFile = @"\\server\share$\first\second\third\fourth";
+            var tooDeepFile = Path.Combine(@"\\server", "share$", "first", "second", "third", "fourth");
             IFileInfo file = MockFactory.FileWithPath(tooDeepFile);
 
             // Exercise
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             int maxDepth = 4;
             IConfiguration configuration = MockFactory.ConfigurationWithMaximumDepthOf(maxDepth);
             MaximumTreeDepthValidation validation = new MaximumTreeDepthValidation(configuration);
-            string path = @"C:\first\second\third\fourth";
+            var path = Path.Combine(@"C:\", "first", "second", "third", "fourth");
             IFileInfo file = MockFactory.FileWithPath(path);
 
             // Exercise
@@ -83,7 +85,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             int maxDepth = 4;
             IConfiguration configuration = MockFactory.ConfigurationWithMaximumDepthOf(maxDepth);
             MaximumTreeDepthValidation validation = new MaximumTreeDepthValidation(configuration);
-            string path = @"\\server\share$\first\second\third\fourth";
+            var path = Path.Combine(@"\\server", "share$", "first", "second", "third", "fourth");
             IFileInfo file = MockFactory.FileWithPath(path);
 
             // Exercise
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             int maxDepth = 4;
             IConfiguration configuration = MockFactory.ConfigurationWithMaximumDepthOf(maxDepth);
             MaximumTreeDepthValidation validation = new MaximumTreeDepthValidation(configuration);
-            string path = @"C:\first\second\third\fourth";
+            var path = Path.Combine(@"C:\", "first", "second", "third", "fourth");
             IDirectoryInfo directory = MockFactory.DirectoryWithPath(path);
 
             // Exercise
