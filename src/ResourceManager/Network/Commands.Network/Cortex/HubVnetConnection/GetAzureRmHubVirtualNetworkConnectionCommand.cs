@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The parent resource name.")]
-        [ResourceGroupCompleter]
+        [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
         public string ParentResourceName { get; set; }
 
         [Alias("VirtualHub", "ParentVirtualHub")]
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualHubs/hubVirtualNetworkConnections", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

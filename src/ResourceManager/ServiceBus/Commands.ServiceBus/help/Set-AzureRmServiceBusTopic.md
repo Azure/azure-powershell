@@ -25,32 +25,31 @@ The **Set-AzureRmServiceBusTopic** cmdlet updates a description object for a Ser
 
 ### Example 1
 ```
-PS C:\> $topicObj = Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+PS C:\> $topicObj = Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-ExampleStandard -TopicName SB-Topic_exampl1
 
 PS C:\> $topicObj.EnableExpress = $True
 
-PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj
+PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-ExampleStandard -TopicName SB-Topic_exampl1 -TopicObj $topicObj
 
-Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/{subscription id}d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-
-                                      Topic_exampl1
-Type                                : Microsoft.ServiceBus/Topic
-AccessedAt                          : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 3:16:41 AM
+Name                                : SB-Topic_example1
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-ExampleStandard/topics/SB-Topic_example1
+Type                                : Microsoft.ServiceBus/Namespaces/Topics
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 10/12/2018 12:01:28 AM
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
 EnableBatchedOperations             : True
-EnableExpress                       : True
+EnableExpress                       : False
 EnablePartitioning                  : True
-MaxSizeInMegabytes                  : 16384
+MaxSizeInMegabytes                  : 81920
 RequiresDuplicateDetection          : False
 SizeInBytes                         : 0
 Status                              : Active
-SubscriptionCount                   : 1
+SubscriptionCount                   : 0
 SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 7:12:16 PM
+UpdatedAt                           : 10/12/2018 12:01:29 AM
 ```
 
 Updates the specified topic with a new description in the specified namespace. This example updates the **EnableExpress** property to **true**. 

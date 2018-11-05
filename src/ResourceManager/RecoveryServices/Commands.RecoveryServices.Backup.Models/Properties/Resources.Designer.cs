@@ -97,6 +97,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Looks like File Shares similar to specified Azure File Share are not found. Possible causes are
+        ///1. The Azure File Share does not exist
+        ///2. The Azure File Share is already protected with same Vault. Please unprotect the Azure File Shares first and then try to protect it again.
+        ///3. The Azure File Share is already protected with another Vault. Please unprotect the Azure File Share first, unregister the Storage Account from that Vault and protect it again. 
+        ///Please contact Microsoft for further assistance..
+        /// </summary>
+        public static string AzureFileShareNotFound {
+            get {
+                return ResourceManager.GetString("AzureFileShareNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles..
+        /// </summary>
+        public static string AzureFileUnsupportedBackupManagementTypeException {
+            get {
+                return ResourceManager.GetString("AzureFileUnsupportedBackupManagementTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure Sql does not support disable protection with retain data.
         /// </summary>
         public static string AzureSqlRetainDataException {
@@ -345,6 +367,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File share is not discovered.
+        /// </summary>
+        public static string FileShareNotDiscovered {
+            get {
+                return ResourceManager.GetString("FileShareNotDiscovered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Final operation status:.
         /// </summary>
         public static string FinalOperationStatus {
@@ -503,6 +534,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string InvalidDurationTypeException {
             get {
                 return ResourceManager.GetString("InvalidDurationTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure file share name cannot be null or empty.
+        /// </summary>
+        public static string InvalidFileShareName {
+            get {
+                return ResourceManager.GetString("InvalidFileShareName", resourceCulture);
             }
         }
         
@@ -736,6 +776,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ParentContainerFabricId is NULL or Empty. Please enter valid ParentContainerFabricId.
+        /// </summary>
+        public static string ParentContainerFabricIdIsEmptyOrNull {
+            get {
+                return ResourceManager.GetString("ParentContainerFabricIdIsEmptyOrNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A backup policy with the specified name already exists: {0}.
         /// </summary>
         public static string PolicyAlreadyExistException {
@@ -844,6 +893,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register operation failed with ErrorCode: {0}.
+        /// </summary>
+        public static string RegisterFailureErrorCode {
+            get {
+                return ResourceManager.GetString("RegisterFailureErrorCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the protection policy.
         /// </summary>
         public static string RemoveProtectionPolicyMessage {
@@ -876,15 +934,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string RestoreAzureStorageNotFound {
             get {
                 return ResourceManager.GetString("RestoreAzureStorageNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Storage account location should be same as vault location.
-        /// </summary>
-        public static string RestoreDiskIncorrectRegion {
-            get {
-                return ResourceManager.GetString("RestoreDiskIncorrectRegion", resourceCulture);
             }
         }
         
@@ -988,6 +1037,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For Azure File share, Storage account  name can not be empty.
+        /// </summary>
+        public static string StorageAccountNameShouldNotBeEmpty {
+            get {
+                return ResourceManager.GetString("StorageAccountNameShouldNotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tracking operation status URL for completion:.
         /// </summary>
         public static string TrackingOperationStatusURLForCompletion {
@@ -1002,6 +1060,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string TriggerBackupOperation {
             get {
                 return ResourceManager.GetString("TriggerBackupOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger Enquiry operation failed with ErrorCode: {0}.
+        /// </summary>
+        public static string TriggerEnquiryFailureErrorCode {
+            get {
+                return ResourceManager.GetString("TriggerEnquiryFailureErrorCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account location should be same as vault location.
+        /// </summary>
+        public static string TriggerRestoreIncorrectRegion {
+            get {
+                return ResourceManager.GetString("TriggerRestoreIncorrectRegion", resourceCulture);
             }
         }
         
@@ -1031,16 +1107,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("UnExpectedWorkLoadTypeException", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///  Looks up a localized string similar to The backup VM is unmanaged and hence the disks will be restored to the storage account provided.
+        ///   Looks up a localized string similar to The backup VM is unmanaged and hence the disks will be restored to the storage account provided..
         /// </summary>
         public static string UnManagedBackupVmWarning {
             get {
-                return ResourceManager.GetString("UnManagedBackupVmException", resourceCulture);
+                return ResourceManager.GetString("UnManagedBackupVmWarning", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid..
         /// </summary>
@@ -1051,7 +1127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
+        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
         /// </summary>
         public static string UnsupportedContainerException {
             get {

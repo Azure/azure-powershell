@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Commerce.Admin Module
 ## Description
-Preview release of the AzureStack Commerce administrator module which provides a way to view aggregate data usage across your AzureStack stamp. 
+Preview release of the AzureStack Commerce operator module which provides a way to view aggregate data usage across your AzureStack stamp.
 
 ## Azs.Commerce.Admin Cmdlets
 ### [Get-AzsSubscriberUsage](Get-AzsSubscriberUsage.md)

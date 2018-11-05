@@ -51,7 +51,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PowerBIEmbedded.1.0.5-preview\lib\net45\Microsoft.Azure.Management.PowerBIEmbedded.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.PowerBIEmbedded.1.1.1-preview\lib\net452\Microsoft.Azure.Management.PowerBIEmbedded.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
