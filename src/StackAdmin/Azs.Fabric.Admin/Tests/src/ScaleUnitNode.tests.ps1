@@ -235,5 +235,15 @@ InModuleScope Azs.Fabric.Admin {
                 break
             }
         }
+
+        It "TestAddScaleUnitNode" -Skip:$('TestAddScaleUnitNode' -in $global:SkippedTests) {
+            $global:TestName = "TestAddScaleUnitNode"
+
+            $NewNode = New-AzsScaleUnitNodeObject -ComputerName "ASRR1N22R19U29" -BMCIPv4Address "100.83.64.17"
+            {
+            Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "s-cluster" -Location 'east'
+            } | Should not throw
+
+        }
     }
 }
