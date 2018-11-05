@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/new-azurermstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
 # New-AzureRmStorageSyncServerEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to create server endpoint.
 
 ## SYNTAX
 
@@ -38,16 +38,17 @@ New-AzureRmStorageSyncServerEndpoint [-ParentResourceId] <String> -Name <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to create server endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $RegisteredServer = Get-AzureRmStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> New-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" -ServerResourceId $RegisteredServer.ResourceId -ServerLocalPath $ServerLocalPath -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri $CloudSeededDataFileShareUri -TierFilesOlderThanDays $TierFilesOlderThanDays
 ```
 
-{{ Add example description here }}
+This command adds a serverendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 

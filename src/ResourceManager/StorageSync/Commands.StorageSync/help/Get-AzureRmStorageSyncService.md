@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/get-azurermstoragesyncservice
 schema: 2.0.0
 ---
 
 # Get-AzureRmStorageSyncService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to get sync service.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Get-AzureRmStorageSyncService [-ResourceGroupName] <String> [[-Name] <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to get sync service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmStorageSyncService -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
-{{ Add example description here }}
+This command is used to get the storage sync service based on the dependent resource names.
 
 ## PARAMETERS
 

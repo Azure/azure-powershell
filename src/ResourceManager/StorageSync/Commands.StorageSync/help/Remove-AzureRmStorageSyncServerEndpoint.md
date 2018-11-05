@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/{CmdletName}
 schema: 2.0.0
 ---
 
 # Remove-AzureRmStorageSyncServerEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to remove storage sync server endpoint.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzureRmStorageSyncServerEndpoint [-ResourceId] <String> [-Force] [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to remove storage sync server endpoint.
 
 ## EXAMPLES
 

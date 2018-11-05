@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/new-azurermstoragesynccloudendpoint
 schema: 2.0.0
 ---
 
 # New-AzureRmStorageSyncCloudEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to create cloud endpoint.
 
 ## SYNTAX
 
@@ -34,16 +34,16 @@ New-AzureRmStorageSyncCloudEndpoint [-ParentResourceId] <String> -Name <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to create cloud endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId" 
 ```
 
-{{ Add example description here }}
+This command adds a cloudendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 

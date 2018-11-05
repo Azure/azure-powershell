@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/new-azurermstoragesyncservice
 schema: 2.0.0
 ---
 
 # New-AzureRmStorageSyncService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to create storage sync service.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzureRmStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-L
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to create storage sync service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 ```
 
-{{ Add example description here }}
+This command will create a storage sync service.
 
 ## PARAMETERS
 
