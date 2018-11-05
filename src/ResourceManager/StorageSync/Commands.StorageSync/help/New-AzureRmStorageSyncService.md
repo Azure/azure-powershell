@@ -24,7 +24,7 @@ This command will use to create storage sync service.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+PS C:\> New-AzureRmStorageSyncService -ResourceGroupName "myResourceGroup" -Location "myLocation" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command will create a storage sync service.

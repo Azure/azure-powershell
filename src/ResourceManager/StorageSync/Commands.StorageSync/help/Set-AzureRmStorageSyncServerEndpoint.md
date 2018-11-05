@@ -42,7 +42,7 @@ This command will use to set server endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri $CloudSeededDataFileShareUri -TierFilesOlderThanDays $TierFilesOlderThanDays
+PS C:\> Set-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri "myCloudSeededDataFileShareUri" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
 ```
 
 This command set a serverendpoint provided all the name of the dependent resources.

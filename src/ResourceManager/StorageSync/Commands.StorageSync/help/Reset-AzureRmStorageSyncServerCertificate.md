@@ -37,7 +37,7 @@ This command will use to reset storage sync server certificate.
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzureRmStorageSyncServerCertificate -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+PS C:\> Reset-AzureRmStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
 This command will reset the sync server certificate.

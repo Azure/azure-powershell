@@ -37,7 +37,7 @@ This command will use to get cloudendpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRMStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName $syncGroupName -CloudEndpointName $cloudEndpointName
+PS C:\> Get-AzureRMStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "myCloudEndpointName"
 ```
 
 This command gets a cloudendpoint provided all the name of the dependent resources.

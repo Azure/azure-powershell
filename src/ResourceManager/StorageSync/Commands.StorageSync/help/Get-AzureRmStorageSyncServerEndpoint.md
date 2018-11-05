@@ -37,7 +37,7 @@ This command will use to get server endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName $syncGroupName -ServerEndpointName $serverEndpointName 
+PS C:\> Get-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName" 
 ```
 
 This command gets a sync serverendpoint provided all the name of the dependent resources.

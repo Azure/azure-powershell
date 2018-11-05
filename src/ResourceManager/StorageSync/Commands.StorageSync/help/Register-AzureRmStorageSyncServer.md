@@ -37,10 +37,10 @@ This command will use to register sync server.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Register-AzureRmStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
-{{ Add example description here }}
+This command will register the storage sync server.
 
 ## PARAMETERS
 

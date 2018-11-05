@@ -44,7 +44,7 @@ This command will use to unregister storage sync server.
 ### Example 1
 ```powershell
 PS C:\> $RegisteredServer = Get-AzureRmStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
-PS C:\> Unregister-AzureRmStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $RegisteredServer.ServerId 
+PS C:\> Unregister-AzureRmStorageSyncServer -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId $RegisteredServer.ServerId 
 ```
 
 This command will unregister the sync server.

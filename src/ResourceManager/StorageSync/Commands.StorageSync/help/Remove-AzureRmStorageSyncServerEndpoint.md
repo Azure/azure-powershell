@@ -38,10 +38,10 @@ This command will use to remove storage sync server endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmStorageSyncServerEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" 
 ```
 
-{{ Add example description here }}
+This command will remove the server endpoint.
 
 ## PARAMETERS
 

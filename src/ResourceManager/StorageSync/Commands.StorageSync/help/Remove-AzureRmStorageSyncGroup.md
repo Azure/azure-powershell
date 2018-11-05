@@ -37,10 +37,10 @@ This command will use to remove sync group.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
-{{ Add example description here }}
+This command will remove the sync group.
 
 ## PARAMETERS
 

@@ -38,10 +38,10 @@ This command will use to remove cloud endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRMStorageSyncCloudEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" 
 ```
 
-{{ Add example description here }}
+This command will remove the cloudendpoint.
 
 ## PARAMETERS
 
