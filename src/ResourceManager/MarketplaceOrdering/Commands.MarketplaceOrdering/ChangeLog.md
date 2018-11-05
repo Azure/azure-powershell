@@ -12,6 +12,8 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
+    * Overview of change #5
+    - update the examples description for marketplace cmdlets
 
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
