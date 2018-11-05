@@ -80,10 +80,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
-        [Ps1Xml(Label = "Account Name", Target = ViewControl.Table, ScriptBlock = "$_.Context.Account.Name")]
-        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, ScriptBlock = "$_.Context.Subscription.Name")]
-        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table, ScriptBlock = "$_.Context.Tenant.Name")]
-        [Ps1Xml(Label = "Environment Name", Target = ViewControl.Table, ScriptBlock = "$_.Context.Environment.Name")]
+        [Ps1Xml(Label = "Account", Target = ViewControl.Table, ScriptBlock = "$_.Context.Account.ToString()", Position = 0)]
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Context.Subscription.Name", Position = 1)]
+        [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table, ScriptBlock = "$_.Context.Subscription.ToString()", Position = 2)]
+        [Ps1Xml(Label = "CurrentStorageAccount", Target = ViewControl.Table, ScriptBlock = "$_.Context.Subscription.CurrentStorageAccountName", Position = 3)]
+        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Context.Tenant.ToString()", Position = 4)]
+        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, ScriptBlock = "$_.Context.Environment.ToString()", Position = 5)]
         public PSAzureContext Context { get; set; }
 
         public override string ToString()

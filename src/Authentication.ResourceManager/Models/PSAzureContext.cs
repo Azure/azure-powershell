@@ -143,30 +143,31 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The name of the context. The context may be selected by name
         /// </summary>
-        [Ps1Xml(Label = "Context Name", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        [Ps1Xml(Label = "Account id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
+        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 1)]
         public IAzureAccount Account { get; set; }
 
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
-        [Ps1Xml(Label = "Environment Name", Target = ViewControl.Table, ScriptBlock = "$_.Environment.Name")]
+        [Ps1Xml(Label = "Environment", Target = ViewControl.Table)]
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The subscription targeted in Azure.
         /// </summary>
-        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name")]
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 2)]
+        [Ps1Xml(Label = "CurrentStorageAccount", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.CurrentStorageAccountName", Position = 3)]
         public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id")]
+        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.ToString()", Position = 4)]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; }
