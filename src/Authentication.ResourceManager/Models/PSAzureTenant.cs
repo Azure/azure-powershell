@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant id.
         /// </summary>
-        [Ps1Xml(Label = "Id", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 0)]
         public string Id { get; set; }
 
         /// <summary>
         /// The name of the subscription.
         /// </summary>
-        [Ps1Xml(Label = "Directory", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Directory", Target = ViewControl.Table, Position = 1)]
         public string Directory { get; set; }
 
         /// <summary>
