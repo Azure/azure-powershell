@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.5
 * Fixed issue #7267 (Autoscale area)
     - Issues with creating a new autoscale rule not properly setting enumerated parameters (would always set them to the default value).
 

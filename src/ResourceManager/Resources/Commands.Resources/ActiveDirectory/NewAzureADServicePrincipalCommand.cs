@@ -177,7 +177,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             DateTime currentTime = DateTime.UtcNow;
             StartDate = currentTime;
-            EndDate = currentTime.AddYears(1);
         }
 
         public override void ExecuteCmdlet()
@@ -188,6 +187,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     CreateSimpleServicePrincipal();
                     return;
+                }
+
+                if (!this.IsParameterBound(c => c.EndDate))
+                {
+                    WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
+                    EndDate = StartDate.AddYears(1);
                 }
 
                 if (this.IsParameterBound(c => c.ApplicationObject))
@@ -292,7 +297,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             if (!this.IsParameterBound(c => c.EndDate))
             {
                 EndDate = StartDate.AddYears(1);
-                WriteVerbose("No end date provided - using the default value of one year after the start date.");
+                WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
             }
 
             if (!this.IsParameterBound(c => c.DisplayName))
