@@ -110,8 +110,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                     if (Recurse)
                     {
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
+
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
-                            Account, aclSpec, RequestedAclType.RemoveAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
+                            Account, aclSpec, RequestedAclType.RemoveAcl, threadCount, this, ShowProgress, CmdletCancellationToken);
                     }
                     else
                     {
