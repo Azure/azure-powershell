@@ -1,4 +1,68 @@
-﻿## 6.11.0 - October 2018
+﻿## 6.12.0 - November 2018
+#### AzureRM.Profile
+* Update common code to use latest version of ClientRuntime
+* Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
+* Updated TenantId description for Connect-AzureRmAccount
+* Fix error message for failed login when providing tenant domain
+    - https://github.com/Azure/azure-powershell/issues/6936
+* Fix issue with context name clashing for accounts with no subscriptions in tenant
+    - https://github.com/Azure/azure-powershell/issues/7453
+* Fix issue with DataLake endpoints when using MSI
+    - https://github.com/Azure/azure-powershell/issues/7462
+* Fix issue where 'Disconnect-AzureRmAccount' would throw if not connected
+    - https://github.com/Azure/azure-powershell/issues/7167
+
+#### AzureRM.Automation
+* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
+
+#### AzureRM.CognitiveServices
+* Add Get-AzureRmCognitiveServicesAccountSkus operation.
+
+#### AzureRM.Compute
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+
+#### AzureRM.DataLakeStore
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
+
+#### AzureRM.Insights
+* Fixed issue #7267 (Autoscale area)
+    - Issues with creating a new autoscale rule not properly setting enumerated parameters (would always set them to the default value).
+* Fixed issue #7513 [Insights] Set-AzureRMDiagnosticSetting requires explicit specification of categories during creation of setting
+    - Now the cmdlet does not require explicit indication of the categories to enable during creation, i.e. it works as it is documented
+
+#### AzureRM.Network
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
+#### AzureRM.PolicyInsights
+* Added policy remediation cmdlets
+
+#### AzureRM.RecoveryServices.Backup
+* Added support for azure file shares in recovery services.
+
+#### AzureRM.Resources
+* Fix for https://github.com/Azure/azure-powershell/issues/7402
+    - Allow listing resources using the '-ResourceId' parameter for 'Get-AzureRmResource'
+
+#### AzureRM.ServiceBus
+* Added MigrationState read-only property to PSServiceBusMigrationConfigurationAttributes which will help to know the Migration state.
+
+#### AzureRM.ServiceFabric
+* Fix add certificate to Linux Vmss.
+* Fix 'Add-AzureRmServiceFabricClusterCertificate'
+    - Using correct thumbprint from new certificate (Azure/service-fabric-issues#932).
+    - Display exception correctly (Azure/service-fabric-issues#1054).
+* Fix 'Update-AzureRmServiceFabricDurability' to update cluster configuration before starting Vmss CreateOrUpdate operation.
+
+## 6.11.0 - October 2018
 #### AzureRM.Profile
 * Fix issue with Get-AzureRmSubscription in CloudShell
 * Update common code to use latest version of ClientRuntime
