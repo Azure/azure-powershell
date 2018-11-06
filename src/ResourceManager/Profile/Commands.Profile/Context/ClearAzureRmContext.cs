@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;

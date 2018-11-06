@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Types>
   <Type>
-    <Name>Microsoft.Azure.Commands.Profile.Models.Desktop.PSAzureProfile</Name>
+    <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>
@@ -15,7 +15,7 @@
     </Members>
   </Type>
   <Type>
-    <Name>Microsoft.Azure.Commands.Profile.Models.Desktop.PSAzureContext</Name>
+    <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>
@@ -29,7 +29,7 @@
     </Members>
   </Type>
   <Type>
-    <Name>Microsoft.Azure.Commands.Common.Authentication.Desktop.AuthenticationStoreTokenCache</Name>
+    <Name>Microsoft.Azure.Commands.Common.Authentication.AuthenticationStoreTokenCache</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>
@@ -49,7 +49,7 @@
     </Members>
   </Type>
   <Type>
-    <Name>Microsoft.Azure.Commands.Common.Authentication.Desktop.ProtectedFileTokenCache</Name>
+    <Name>Microsoft.Azure.Commands.Common.Authentication.ProtectedFileTokenCache</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>
@@ -69,7 +69,7 @@
     </Members>
   </Type>
   <Type>
-    <Name>Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop.IAzureContextContainer</Name>
+    <Name>Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>

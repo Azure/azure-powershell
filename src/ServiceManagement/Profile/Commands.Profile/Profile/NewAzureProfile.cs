@@ -19,8 +19,8 @@ using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Common.Authentication;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;

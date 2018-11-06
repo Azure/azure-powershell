@@ -17,8 +17,8 @@ using System.Security;
 using System.Text;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
