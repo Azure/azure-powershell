@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.4.0
+* New cmdlet
+	* Get-AzsDrive
+	* Get-AzsVolume
+	* Get-AzsStorageSubSystem
+* Unsupported cmdlet
+	* Get-AzsInfrastructureVolume
+
 ## Version 0.2.0
 * New Module dependencies
 	* AzureRM.Profile

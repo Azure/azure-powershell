@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.4.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -81,14 +81,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsSlbMuxInstance', 'Get-AzsScaleUnit', 'New-AzsIpPool',
     'Start-AzsInfrastructureRoleInstance', 'Get-AzsMacAddressPool',
     'Get-AzsEdgeGatewayPool', 'Restart-AzsInfrastructureRole',
-    'Get-AzsInfrastructureVolume', 'Enable-AzsScaleUnitNode',
+    'Get-AzsVolume', 'Enable-AzsScaleUnitNode',
     'Get-AzsInfrastructureRole', 'Get-AzsIpPool', 'Get-AzsLogicalSubnet',
     'Get-AzsEdgeGateway', 'Get-AzsInfrastructureLocation',
     'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
     'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode',
-    'New-AzsScaleUnitNodeObject'
+    'New-AzsScaleUnitNodeObject', 'Get-AzsDrive',
+    'Get-AzsStorageSubSystem'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -126,7 +127,16 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
+            ReleaseNotes = '
+            ## 2018.11.5
+            * New cmdlet
+	            * Get-AzsDrive
+	            * Get-AzsVolume
+	            * Get-AzsStorageSubSystem
+            * Unsupported cmdlet
+	            * Get-AzsInfrastructureVolume
+            
+            ## 2018.9.10
             * New Module dependencies
                 * AzureRM.Profile
                 * AzureRM.Resources
