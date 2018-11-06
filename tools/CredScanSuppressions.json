@@ -720,6 +720,22 @@
         {
             "file": "\\src\\ServiceManagement\\Automation\\Commands.Automation\\Microsoft.WindowsAzure.Commands.Automation.dll-help.xml",
             "_justification": "Module example help information using fake passwords"
-        }
+        },
+		{
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentBaselineTest.json",
+            "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+		{
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentScanConvertTest.json",
+            "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+		{
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentScanRecordGetListTest.json",
+            "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+		{
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentSettingsTest.json",
+            "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
     ]
 }
