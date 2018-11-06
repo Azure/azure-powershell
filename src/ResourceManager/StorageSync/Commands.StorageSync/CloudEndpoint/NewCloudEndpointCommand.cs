@@ -133,18 +133,21 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     throw new ArgumentException($"Invalid resource ID format: {StorageAccountResourceId}");
                 }
 
-                PSADServicePrincipal servicePrincipal = this.StorageSyncClientWrapper.EnsureServicePrincipal();
-
-                if (servicePrincipal == null)
+                if (!IsRunningInTest)
                 {
-                    throw new PSArgumentException("Invalid Service Principal");
-                }
+                    PSADServicePrincipal servicePrincipal = this.StorageSyncClientWrapper.EnsureServicePrincipal();
 
-                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+                    if (servicePrincipal == null)
+                    {
+                        throw new PSArgumentException("Invalid Service Principal");
+                    }
 
-                if (roleAssignment == null)
-                {
-                    throw new PSArgumentException("Invalid Role Assignment");
+                    RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+
+                    if (roleAssignment == null)
+                    {
+                        throw new PSArgumentException("Invalid Role Assignment");
+                    }
                 }
 
                 var parentResourceIdentifier = default(ResourceIdentifier);

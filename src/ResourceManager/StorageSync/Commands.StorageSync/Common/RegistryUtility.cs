@@ -27,31 +27,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="kind"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static bool TryGetValue<T>(string key, string path, out T value, RegistryValueKind kind, RegistryValueOptions options = RegistryValueOptions.None)
+        public static bool TryGetValue<T>(string key, string path, out T value, RegistryValueKind kind, RegistryValueOptions options = RegistryValueOptions.None, RegistryView registryView = RegistryView.Default)
         {
             var success = true;
             value = default(T);
-
             try
             {
-                using (var registryKey = Registry.LocalMachine.OpenSubKey(path))
+                using (var view = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
                 {
-                    if (registryKey != null)
+                    using (var registryKey = view.OpenSubKey(path))
                     {
-                        object registryValue = registryKey.GetValue(key, null, options);
-
-                        if (registryValue != null)
+                        if (registryKey != null)
                         {
-                            value = (T)Convert.ChangeType(registryValue, typeof(T));
+                            object registryValue = registryKey.GetValue(key, null, options);
+
+                            if (registryValue != null)
+                            {
+                                value = (T)Convert.ChangeType(registryValue, typeof(T));
+                            }
+                            else
+                            {
+                                success = false;
+                            }
                         }
                         else
                         {
                             success = false;
                         }
-                    }
-                    else
-                    {
-                        success = false;
                     }
                 }
             }

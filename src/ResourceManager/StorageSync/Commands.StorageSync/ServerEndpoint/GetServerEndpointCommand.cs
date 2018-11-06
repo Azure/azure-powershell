@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            Position = 0,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = true,
-           ValueFromPipelineByPropertyName = false,
+           ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.ResourceGroupNameParameter)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
              Position = 1,
              ParameterSetName = StorageSyncParameterSets.StringParameterSet,
              Mandatory = true,
-             ValueFromPipelineByPropertyName = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
         [StorageSyncServiceCompleter]
         [ValidateNotNullOrEmpty]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             Position = 2,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public string ParentResourceId { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.ServerEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]

@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveServerEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -87,6 +87,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            HelpMessage = HelpMessages.ServerEndpointForceParameter)]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
@@ -132,6 +135,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     }
                 }
             });
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

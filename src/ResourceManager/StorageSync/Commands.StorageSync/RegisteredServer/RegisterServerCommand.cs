@@ -131,6 +131,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
             using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement(IsRunningInTest)))
             {
+                if(string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
+                {
+                    throw new PSArgumentException("No Afs Agent Installer path found.");
+                }
 
                 return syncServerRegistrationClient.Register(
                     ProductionArmServiceHost.ToUri(),

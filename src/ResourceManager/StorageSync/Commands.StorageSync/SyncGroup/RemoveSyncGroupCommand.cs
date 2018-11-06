@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 {
-    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveSyncGroupCommand : StorageSyncClientCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.SyncGroupForceParameter)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
@@ -138,6 +141,11 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
                     }
                 }
             });
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

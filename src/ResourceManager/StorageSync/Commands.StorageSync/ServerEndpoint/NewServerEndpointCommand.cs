@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudSeededDataParameter)]
-        public SwitchParameter CloudSeedData { get; set; }
+        public SwitchParameter CloudSeededData { get; set; }
 
         [Parameter(
           Mandatory = false,
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
                     ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
-                    StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1),
+                    StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
                     SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
                     Name,
                     createParameters);

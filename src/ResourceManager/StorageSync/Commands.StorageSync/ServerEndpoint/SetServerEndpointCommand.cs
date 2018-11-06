@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudSeededDataParameter)]
-        public SwitchParameter CloudSeedData { get; set; }
+        public SwitchParameter CloudSeededData { get; set; }
 
         [Parameter(
           Mandatory = false,
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     TierFilesOlderThanDays = TierFilesOlderThanDays,
                     // TODO : Update once we update SDK from v4 to v5
-                    //CloudSeedData = CloudSeedData.IsPresent ? "on" : "off"
+                    //CloudSeededData = CloudSeededData.IsPresent ? "on" : "off"
                     //CloudSeededDataFileShareUri = CloudSeededDataFileShareUri
                 };
                 

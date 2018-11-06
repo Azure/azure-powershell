@@ -27,7 +27,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.Reset, StorageSyncNouns.NounAzureRmStorageSyncServerCertificate, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet)]
+    [Cmdlet(VerbsCommon.Reset, StorageSyncNouns.NounAzureRmStorageSyncServerCertificate, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ResetServerCertificateCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceIdAlias)]
         public string ParentResourceId { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -111,6 +113,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 PerformTriggerRolloverInCloud(resourceGroupName, SubscriptionId.Value, parentResourceName);
             });
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
         private void PerformTriggerRolloverInCloud(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
@@ -128,22 +135,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     (certificate, serverId) => TriggerCertificateRollover(certificate, serverId, resourceGroupName,storageSyncServiceName),
                     (inputLogData) => StorageSyncClientWrapper.VerboseLogger(inputLogData));
             }
-
-            //using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement()))
-            //{
-
-            //    return syncServerRegistrationClient.Register(
-            //        ProductionArmServiceHost.ToUri(),
-            //        subscriptionId,
-            //        storageSyncServiceName,
-            //        resourceGroupName,
-            //        ManagementInteropConstants.CertificateProviderName,
-            //        ManagementInteropConstants.CertificateHashAlgorithm,
-            //        ManagementInteropConstants.CertificateKeyLength,
-            //        Path.Combine(this.StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
-            //        StorageSyncClientWrapper.AfsAgentVersion,
-            //        (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData));
-            //}
         }
 
         /// <summary>

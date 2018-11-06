@@ -72,6 +72,9 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
            HelpMessage = HelpMessages.StorageSyncServiceForceParameter)]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
@@ -110,6 +113,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     }
                 }
             });
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

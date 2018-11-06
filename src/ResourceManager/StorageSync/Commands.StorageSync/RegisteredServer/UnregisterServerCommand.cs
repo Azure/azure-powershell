@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Unregister, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet)]
+    [Cmdlet(VerbsLifecycle.Unregister, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class UnregisterServerCommand : StorageSyncClientCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -78,6 +78,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.RegisteredServerForceParameter)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
@@ -139,6 +142,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     }
                 }
             });
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }
