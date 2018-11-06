@@ -745,5 +745,9 @@
             "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentSettingsTest.json",
             "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
         },
+        {
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\auth-cert.pfx",
+            "_justification": "Legitimate test certificate file"
+        },
     ]
 }
