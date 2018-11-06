@@ -154,14 +154,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
-        [Ps1Xml(Label = "Environment", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, Position = 3)]
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The subscription targeted in Azure.
         /// </summary>
         [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 2)]
-        [Ps1Xml(Label = "CurrentStorageAccount", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.CurrentStorageAccountName", Position = 3)]
         public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
