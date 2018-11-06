@@ -22,8 +22,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Linq;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication

@@ -21,8 +21,8 @@ using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 
 namespace Microsoft.WindowsAzure.Commands.Common

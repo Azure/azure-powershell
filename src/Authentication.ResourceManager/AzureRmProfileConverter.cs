@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;

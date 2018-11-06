@@ -19,9 +19,9 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 #if NETSTANDARD
-namespace Microsoft.Azure.Commands.Profile.Models
+namespace Microsoft.Azure.Commands.Profile.Models.Core
 #else
-namespace Microsoft.Azure.Commands.Profile.Models.Desktop
+namespace Microsoft.Azure.Commands.Profile.Models
 #endif
 {
     /// <summary>

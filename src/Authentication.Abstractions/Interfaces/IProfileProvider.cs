@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions

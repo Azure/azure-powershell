@@ -15,8 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 
 

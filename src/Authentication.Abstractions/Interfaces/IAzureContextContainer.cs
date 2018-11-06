@@ -15,10 +15,9 @@
 using System.Collections.Generic;
 
 #if NETSTANDARD
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
-#else
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core
 #endif
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
     /// Storage container for all targeted environments, allowing the user to store named target configurations

@@ -32,9 +32,9 @@ using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks

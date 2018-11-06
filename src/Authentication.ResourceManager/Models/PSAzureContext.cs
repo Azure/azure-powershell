@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
@@ -24,9 +24,9 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 #if NETSTANDARD
-namespace Microsoft.Azure.Commands.Profile.Models
+namespace Microsoft.Azure.Commands.Profile.Models.Core
 #else
-namespace Microsoft.Azure.Commands.Profile.Models.Desktop
+namespace Microsoft.Azure.Commands.Profile.Models
 #endif
 {
     /// <summary>

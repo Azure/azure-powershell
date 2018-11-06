@@ -18,9 +18,9 @@ using System;
 using System.Threading;
 
 #if NETSTANDARD
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication.Core
 #else
-namespace Microsoft.Azure.Commands.Common.Authentication.Desktop
+namespace Microsoft.Azure.Commands.Common.Authentication
 #endif
 {
     [Serializable]

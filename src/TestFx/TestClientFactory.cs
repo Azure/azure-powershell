@@ -25,8 +25,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 
 namespace Microsoft.Azure.Commands.TestFx
