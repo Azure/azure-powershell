@@ -93,7 +93,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             ResourceConfig<AvailabilitySet> availabilitySet,
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
-            IList<string> zones)
+            IList<string> zones,
+            bool ultraSSDEnabled)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -123,7 +124,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),
-                    Zones = zones
+                    Zones = zones,
+                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null
                 });
     }
 }
