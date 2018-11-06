@@ -137,8 +137,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSRunCommandDocumentBase, FROM.RunCommandDocumentBase>();
                 cfg.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
                 cfg.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
-                cfg.CreateMap<FROM.VirtualMachineScaleSetIdentity, TO.PSVirtualMachineScaleSetIdentity>();
-                cfg.CreateMap<TO.PSVirtualMachineScaleSetIdentity, FROM.VirtualMachineScaleSetIdentity>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetIdentity, TO.PSVirtualMachineScaleSetIdentity>()
+                    .ForMember(c => c.UserAssignedIdentities, o => o.Condition(r => (r.UserAssignedIdentities != null)));
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetIdentity, FROM.VirtualMachineScaleSetIdentity>()
+                    .ForMember(c => c.UserAssignedIdentities, o => o.Condition(r => (r.UserAssignedIdentities != null)));
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, FROM.VirtualMachineScaleSet>()
