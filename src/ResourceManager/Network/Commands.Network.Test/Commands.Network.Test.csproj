@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\..\tools\Common.Dependencies.Test.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -80,6 +80,8 @@
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\AvailableEndpointServicesTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteCrossConnectionTests.cs" />
+    <Compile Include="ScenarioTests\ExpressRoutePortsLocationTests.cs" />
+    <Compile Include="ScenarioTests\ExpressRoutePortTests.cs" />
     <Compile Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\LoadBalancerTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\UsageTestsGenerated.cs" />
@@ -150,6 +152,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ExpressRouteCrossConnectionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ExpressRoutePortsLocationTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ExpressRoutePortTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ExpressRouteServiceProviderTests.ps1">
@@ -294,6 +302,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteCircuitPeeringWithRouteFilter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRoutePortsLocationTests\TestExpressRoutePortsLocationRead.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRoutePortTests\TestExpressRoutePortCRUDMinimalParameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestBackendAddressPoolCRUDMinimalParameters.json">
