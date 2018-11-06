@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.7.0
+* Added swtich parameter - EnableKafka in New-AzureRmEventHubNamespace to support Kafka enable namepaces
+
 ## Version 0.6.10
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
