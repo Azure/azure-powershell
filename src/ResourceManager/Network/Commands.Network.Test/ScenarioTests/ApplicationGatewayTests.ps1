@@ -572,7 +572,7 @@ function Test-ApplicationGatewayCRUD3
 	)
 
 	# Setup
-	$location = "westus2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName

@@ -32,8 +32,8 @@ Tests ExpressRouteCircuitCRUD.
 #>
 function Test-ExpressRouteRouteFilters
 {
-	$rgname = "filter"
-    $location = "westus"
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US"
+    $rgname = "filter"
     $filterName = "filter"
     $ruleName = "rule"
 
@@ -93,9 +93,9 @@ function Test-ExpressRouteCircuitStageCRUD
     # Setup
     $rgname = 'movecircuit'
     $circuitName = Get-ResourceName
-    $rglocation = "brazilSouth"
-    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = "brazilSouth"
+    $rglocation = Get-ProviderLocation ResourceManagement "Brazil South"
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
     try 
     {
       # Create the resource group
@@ -145,9 +145,8 @@ function Test-ExpressRouteCircuitCRUD
     $rgname = Get-ResourceGroupName
     $circuitName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $location = "brazilSouth"
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
     try 
     {
       # Create the resource group
@@ -225,10 +224,9 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
     # Setup
     $rgname = Get-ResourceGroupName
     $circuitName = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $location = "brazilSouth"
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
     try 
     {
         # Create the resource group
@@ -325,12 +323,11 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
     # Setup
     $rgname = Get-ResourceGroupName
     $circuitName = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $location = "brazilSouth"
-	$filterName = "filter"
-	$ruleName = "rule"
+  $filterName = "filter"
+  $ruleName = "rule"
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
     try 
     {
         # Create the resource group
@@ -480,11 +477,9 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
     # Setup
     $rgname = Get-ResourceGroupName
     $circuitName = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $location = "brazilSouth"
 	$authorizationName = "testkey"
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
 
     try 
     {
@@ -550,8 +545,7 @@ function Test-ExpressRouteCircuitConnectionCRUD
     $peerCircuitName = Get-ResourceName
     $rgname = Get-ResourceGroupName
     $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $rglocation = Get-ProviderLocation $resourceTypeParent
-    $rglocation = "brazilSouth"
+    $rglocation = Get-ProviderLocation $resourceTypeParent "Brazil South"
     $connectionName = Get-ResourceName
     $addressPrefix = "30.0.0.0/29"
 	

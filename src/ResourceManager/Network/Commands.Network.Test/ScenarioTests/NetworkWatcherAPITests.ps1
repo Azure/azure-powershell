@@ -114,33 +114,37 @@ Get existing Network Watcher.
 #>
 function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
 {
-	# Get Network Watcher
-	$nwlist = Get-AzureRmNetworkWatcher
-	foreach ($i in $nwlist)
-	{
-		if($i.Location -eq "$location") 
-		{
-			$nw=$i
-		}
-	}
+    $nw = $null
+    $testLocation = $location.ToLower() -replace '[^a-z0-9]'
 
-	# Create Network Watcher if no existing nw
-	if (!$nw) 
-	{
-		$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
-	}
+    # Get Network Watcher
+    $nwlist = Get-AzureRmNetworkWatcher
+    foreach ($i in $nwlist)
+    {
+        if($i.Location -eq $testLocation)
+        {
+            $nw = $i
+            break
+        }
+    }
 
-	return $nw
+    # Create Network Watcher if no existing nw
+    if(!$nw)
+    {
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+    }
+
+    return $nw
 }
 
 function Get-CanaryLocation
 {
-    Get-Location "Microsoft.Network" "networkWatchers" "centraluseuap";
+    Get-ProviderLocation "Microsoft.Network/networkWatchers" "Central US EUAP";
 }
 
 function Get-PilotLocation
 {
-    Get-Location "Microsoft.Network" "networkWatchers" "westcentralus";
+    Get-ProviderLocation "Microsoft.Network/networkWatchers" "West Central US";
 }
 
 <#
@@ -152,11 +156,9 @@ function Test-GetTopology
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-    $location = "eastus"
-    $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
 
     try 
     {
@@ -265,12 +267,10 @@ function Test-GetNextHop
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-    $location = "eastus"
-    $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName
     $securityRuleName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
     
     try 
     {
@@ -323,12 +323,10 @@ function Test-VerifyIPFlow
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-    $location = "eastus"
-    $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName
     $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
     
     try 
     {
@@ -560,18 +558,14 @@ function Test-FlowLog
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-	#Since Traffic Analytics is not available in all Azure regions, hardcoded locations are used
-    #Once Traffic Analytics is available in all Azure regions, the below two location variables should be updated to Get-Location
-    $location = "westcentralus"
-	$workspaceLocation = "eastus"
-    $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName
     $domainNameLabel = Get-NrpResourceName
     $nsgName = Get-NrpResourceName
 	$stoname =  Get-NrpResourceName
 	$workspaceName = Get-NrpResourceName
-    
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "West Central US"
+    $workspaceLocation = Get-ProviderLocation ResourceManagement "East US"
+
     try 
     {
         # Create Resource group
@@ -649,14 +643,12 @@ function Test-ConnectivityCheck
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-    $location = "westcentralus"
-    $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName
     $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $pcName1 = Get-NrpResourceName
     $pcName2 = Get-NrpResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "West Central US"
     
     try 
     {
@@ -718,7 +710,7 @@ function Test-ReachabilityReport
     $rgname = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
     
     try 
     {
@@ -761,7 +753,7 @@ function Test-ProvidersList
     $rgname = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
     
     try 
     {
