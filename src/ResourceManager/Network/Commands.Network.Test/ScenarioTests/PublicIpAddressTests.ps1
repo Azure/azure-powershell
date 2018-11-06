@@ -599,9 +599,7 @@ function Test-PublicIpAddressZones
     $rname = Get-ResourceName
     $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
-    # TODO: replace hardcoded location
-    # $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
-    $location = "centralus"; # = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation "Microsoft.Network/publicIpAddresses" "Central US"
 
     try
      {
