@@ -439,6 +439,9 @@
     <value>Please ensure that the provided user is found in the provided tenant domain.</value>
   </data>
   <data name="RemoveModuleError" xml:space="preserve">
-    <value>Modules can only be removed in PowerShell administrative mode.</value>
+    <value>Module deletion failed. Please close all PowerShell sessions to ensure no AzureRM modules are currently loaded, and rerun this cmdlet in Administrator mode.</value>
+  </data>
+  <data name="ShouldRemoveModule" xml:space="preserve">
+    <value>Removing module '{0}' from your machine</value>
   </data>
 </root>

@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
     /// <summary>
     /// Cmdlet to remove AzureRM modules. 
     /// </summary>
-    [Cmdlet("Uninstall", "AzureRm")]
+    [Cmdlet("Uninstall", "AzureRm", SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class UninstallAzureRmCommand : AzureRMCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Return list of Module removed if specified.")]
+        [Parameter(Mandatory = false, HelpMessage = "Return list of Modules removed if specified.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -52,19 +52,23 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
                 var modules = Directory.GetDirectories(path);
                 foreach(var module in modules)
                 {
-                    if (AzureModules.Any(x => x.Equals(module.Split('\\').LastOrDefault(), StringComparison.OrdinalIgnoreCase)))
+                    var moduleName = module.Split('\\').LastOrDefault();
+                    if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
                     {
-                        try
+                        if (ShouldProcess(module, string.Format(Properties.Resources.ShouldRemoveModule, moduleName)))
                         {
-                            Directory.Delete(module, true);
-                            if (PassThru)
+                            try
                             {
-                                WriteObject(module.Split('\\').LastOrDefault());
+                                Directory.Delete(module, true);
+                                if (PassThru)
+                                {
+                                    WriteObject(moduleName);
+                                }
                             }
-                        }
-                        catch (UnauthorizedAccessException accessException)
-                        {
-                            throw new UnauthorizedAccessException(Properties.Resources.RemoveModuleError, accessException);
+                            catch (UnauthorizedAccessException accessException)
+                            {
+                                throw new UnauthorizedAccessException(Properties.Resources.RemoveModuleError, accessException);
+                            }
                         }
                     }
                 }
