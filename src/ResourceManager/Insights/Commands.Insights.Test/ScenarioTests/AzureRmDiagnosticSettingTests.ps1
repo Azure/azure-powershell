@@ -69,7 +69,7 @@ function Test-GetAzureRmDiagnosticSetting
 .SYNOPSIS
 Tests setting diagnostics
 #>
-function Test-SetAzureRmDiagnosticSetting
+function Test-SetAzureRmDiagnosticSettingUpdate
 {
     try 
     {
@@ -86,6 +86,33 @@ function Test-SetAzureRmDiagnosticSetting
 		Assert-AreEqual $true       $actual.Logs[1].Enabled
 		Assert-AreEqual "TestLog2"  $actual.Logs[1].Category
 		Assert-Null $actual.ServiceBusRuleId
+		Assert-AreEqual "service"   $actual.Name
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+<#
+.SYNOPSIS
+Tests setting diagnostics
+#>
+function Test-SetAzureRmDiagnosticSettingCreate
+{
+    try 
+    {
+	    # assumes there is no diagnostic settting called service for the given resource
+	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP -StorageAccountId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2 -Enabled $true
+
+		Assert-AreEqual $actual.StorageAccountId "/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2"
+		Assert-AreEqual 1            $actual.Metrics.Count
+		Assert-AreEqual $true        $actual.Metrics[0].Enabled
+		Assert-AreEqual "AllMetrics" $actual.Metrics[0].Category
+		Assert-AreEqual 1            $actual.Logs.Count
+		Assert-AreEqual $true        $actual.Logs[0].Enabled
+		Assert-AreEqual "AuditEvent" $actual.Logs[0].Category
 		Assert-AreEqual "service"   $actual.Name
     }
     finally

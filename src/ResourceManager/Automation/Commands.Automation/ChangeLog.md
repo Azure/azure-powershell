@@ -28,6 +28,9 @@
 * Added Source Control cmdlets
 * Added Remove-AzureRmAutomationHybridWorkerGroup  cmdlet
 
+## Version 5.1.2
+* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
+
 ## Version 5.1.1
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.2" />
+    <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,11 +13,21 @@ Restores the data and configuration for a Backup item to a recovery point.
 
 ## SYNTAX
 
+### AzureVMParameterSet (Default)
 ```
 Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String>
  [[-TargetResourceGroupName] <String>] [-UseOriginalStorageAccount] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureFileParameterSet
+```
+Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String>
+ -ResolveConflict <RestoreFSResolveConfictOption> [-SourceFilePath <String>] [-SourceFileType <SourceFileType>]
+ [-TargetStorageAccountName <String>] [-TargetFileShareName <String>] [-TargetFolder <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +94,51 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ResolveConflict
+In case the restored item also exists in the destination, use this to indicate whether to overwrite or not.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RestoreFSResolveConfictOption
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceFilePath
+Used for a particular item restore from a file share. The path of the item to be restored within the file share.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceFileType
+Used for a particular item restore from a file share. The path of the item to be restored within the file share.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SourceFileType
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageAccountName
 Specifies the name of the target Storage account in your subscription.
 As a part of the restore process, this cmdlet stores the disks and the configuration information in this Storage account.
@@ -116,16 +171,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetFileShareName
+The File Share to which the file share has to be restored to.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetFolder
+The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetResourceGroupName
 The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AzureVMParameterSet
 Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetStorageAccountName
+The storage account to which the file share has to be restored to.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -136,7 +236,7 @@ Use this switch if the disks from the recovery point are to be restored to their
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AzureVMParameterSet
 Aliases:
 
 Required: False

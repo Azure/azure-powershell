@@ -26,6 +26,13 @@ Enable-AzureRmRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <S
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AzureFileShareEnableProtection
+```
+Enable-AzureRmRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String>
+ -StorageAccountName <String> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ModifyProtection
 ```
 Enable-AzureRmRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase> [-VaultId <String>]
@@ -88,7 +95,7 @@ Specifies the name of the Backup item.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, AzureFileShareEnableProtection
 Aliases:
 
 Required: True
@@ -141,6 +148,21 @@ Aliases:
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountName
+Azure file share storage account name
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileShareEnableProtection
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
