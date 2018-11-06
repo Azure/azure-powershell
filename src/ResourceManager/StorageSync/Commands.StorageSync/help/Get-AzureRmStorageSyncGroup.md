@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/get-azurermstoragesyncgroup
 schema: 2.0.0
 ---
 
 # Get-AzureRmStorageSyncGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to get syncgroup.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzureRmStorageSyncGroup [-ParentResourceId] <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to get syncgroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmStorageSyncGroup New-AzureRmStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
-{{ Add example description here }}
+This command gets a syncgroup provided all the name of the dependent resources.
 
 ## PARAMETERS
 

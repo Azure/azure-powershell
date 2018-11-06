@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/set-azurermstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
 # Set-AzureRmStorageSyncServerEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to set server endpoint.
 
 ## SYNTAX
 
@@ -36,16 +36,16 @@ Set-AzureRmStorageSyncServerEndpoint [-ResourceId] <String> [-CloudTiering] [-Vo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to set server endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri "myCloudSeededDataFileShareUri" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
 ```
 
-{{ Add example description here }}
+This command set a serverendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 

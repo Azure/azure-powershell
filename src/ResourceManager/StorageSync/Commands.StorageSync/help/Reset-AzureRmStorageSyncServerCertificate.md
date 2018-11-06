@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/reset-azurermstoragesyncservercertificate
 schema: 2.0.0
 ---
 
 # Reset-AzureRmStorageSyncServerCertificate
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to reset storage sync server certificate.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Reset-AzureRmStorageSyncServerCertificate [-ParentResourceId] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to reset storage sync server certificate.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Reset-AzureRmStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
-{{ Add example description here }}
+This command will reset the sync server certificate.
 
 ## PARAMETERS
 

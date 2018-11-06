@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/register-azurermstoragesyncserver
 schema: 2.0.0
 ---
 
 # Register-AzureRmStorageSyncServer
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to register sync server.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Register-AzureRmStorageSyncServer [-ParentResourceId] <String> [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to register sync server.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Register-AzureRmStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
-{{ Add example description here }}
+This command will register the storage sync server.
 
 ## PARAMETERS
 

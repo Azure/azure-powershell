@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/remove-azurermstoragesyncservice
 schema: 2.0.0
 ---
 
 # Remove-AzureRmStorageSyncService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to remove the storage sync service.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzureRmStorageSyncService [-ResourceGroupName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to remove the storage sync service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmStorageSyncService -Force -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
-{{ Add example description here }}
+This command will remove the storage sync service.
 
 ## PARAMETERS
 

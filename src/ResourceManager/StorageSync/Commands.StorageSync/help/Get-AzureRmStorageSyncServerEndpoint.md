@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/get-azurermstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
 # Get-AzureRmStorageSyncServerEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to get server endpoint.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzureRmStorageSyncServerEndpoint [-ParentResourceId] <String> [-Name <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to get server endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName" 
 ```
 
-{{ Add example description here }}
+This command gets a sync serverendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 

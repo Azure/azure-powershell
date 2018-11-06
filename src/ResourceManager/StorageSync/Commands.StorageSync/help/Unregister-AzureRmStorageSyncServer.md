@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/unregister-azurermstoragesyncserver
 schema: 2.0.0
 ---
 
 # Unregister-AzureRmStorageSyncServer
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command will use to unregister storage sync server.
 
 ## SYNTAX
 
@@ -37,16 +37,17 @@ Unregister-AzureRmStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncS
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command will use to unregister storage sync server.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $RegisteredServer = Get-AzureRmStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> Unregister-AzureRmStorageSyncServer -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId $RegisteredServer.ServerId 
 ```
 
-{{ Add example description here }}
+This command will unregister the sync server.
 
 ## PARAMETERS
 
