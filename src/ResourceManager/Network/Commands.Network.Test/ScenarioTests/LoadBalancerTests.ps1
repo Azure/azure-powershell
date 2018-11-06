@@ -2375,3 +2375,113 @@ function Test-LoadBalancerZones
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests adding subresources after creating an empty Load balancer 
+#>
+function Test-CreateSubresourcesOnEmptyLoadBalancer
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $lbName = Get-ResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers"
+    # Subresource's names
+    $poolName = Get-ResourceName
+    $ipConfigName = Get-ResourceName
+    $natPoolName = Get-ResourceName
+    $natRuleName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $ruleName = Get-ResourceName
+    # Dependencies' name
+    $subnetName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location
+
+        # Dependencies
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $vnetName -Subnet $subnet -AddressPrefix 10.0.0.0/8
+        $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+        # Create empty load balancer
+        New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location
+
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual $lbName $lb.Name
+        Assert-AreEqual 0 @($lb.FrontendIpConfigurations).Count
+        Assert-AreEqual 0 @($lb.BackendAddressPools).Count
+        Assert-AreEqual 0 @($lb.Probes).Count
+        Assert-AreEqual 0 @($lb.LoadBalancingRules).Count
+        Assert-AreEqual 0 @($lb.InboundNatRules).Count
+        Assert-AreEqual 0 @($lb.InboundNatPools).Count
+        Assert-AreEqual 0 @($lb.OutboundRules).Count
+
+        # Add subresources on empty load balancer
+        $lb = Add-AzureRmLoadBalancerFrontendIpConfig -Name $ipConfigName -LoadBalancer $lb -Subnet $subnet
+        $ipConfig = $lb.FrontendIpConfigurations[0]
+        Assert-NotNull $ipConfig
+
+        $lb = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $poolName -LoadBalancer $lb
+        $lb = Add-AzureRmLoadBalancerProbeConfig -Name $probeName -LoadBalancer $lb -Port 2000 -IntervalInSeconds 60 -ProbeCount 3
+        $lb = Add-AzureRmLoadBalancerRuleConfig -Name $ruleName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -Protocol Tcp -FrontendPort 1024 -BackendPort 2048
+        $lb = Add-AzureRmLoadBalancerInboundNatRuleConfig -Name $natRuleName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -FrontendPort 128 -BackendPort 256
+
+        # Update load balancer
+        $lb = Set-AzureRmLoadBalancer -LoadBalancer $lb
+
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($lb.FrontendIpConfigurations).Count
+        Assert-AreEqual 1 @($lb.BackendAddressPools).Count
+        Assert-AreEqual 1 @($lb.Probes).Count
+        Assert-AreEqual 1 @($lb.LoadBalancingRules).Count
+        Assert-AreEqual 1 @($lb.InboundNatRules).Count
+
+        # Swap NatRule for NatPool
+        $lb = Remove-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $lb -Name $natRuleName
+        $lb = Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $natPoolName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -Protocol Tcp -FrontendPortRangeStart 444 -FrontendPortRangeEnd 445 -BackendPort 8080
+        
+        $lb = Set-AzureRmLoadBalancer -LoadBalancer $lb
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($lb.InboundNatRules).Count
+        Assert-AreEqual 1 @($lb.InboundNatPools).Count
+
+        # Remove all child resources except IpConfig
+        $lb = Remove-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer $lb -Name $poolName
+        $lb = Remove-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name $probeName
+        $lb = Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer $lb -Name $ruleName
+        $lb = Remove-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $lb -Name $natPoolName
+
+        $lb = Set-AzureRmLoadBalancer -LoadBalancer $lb
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($lb.FrontendIpConfigurations).Count
+        Assert-AreEqual 0 @($lb.BackendAddressPools).Count
+        Assert-AreEqual 0 @($lb.Probes).Count
+        Assert-AreEqual 0 @($lb.LoadBalancingRules).Count
+        Assert-AreEqual 0 @($lb.InboundNatRules).Count
+        Assert-AreEqual 0 @($lb.InboundNatPools).Count
+        Assert-AreEqual 0 @($lb.OutboundRules).Count
+
+        # Test error handling for LoadBalancerFrontendIpConfig
+        $lb = Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $lb -Name $ipConfigName
+        # Additional call to test handling of already deleted subresource
+        $lb = Remove-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer $lb -Name $ipConfigName
+        # Removing all frontend IP configs should fail
+        Assert-ThrowsContains { Set-AzureRmLoadBalancer -LoadBalancer $lb } "Deleting all frontendIPConfigs"
+
+        # Delete
+        $deleteLb = $lb | Remove-AzureRmLoadBalancer -PassThru -Force
+        Assert-AreEqual true $deleteLb
+
+        $list = Get-AzureRmLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname }
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

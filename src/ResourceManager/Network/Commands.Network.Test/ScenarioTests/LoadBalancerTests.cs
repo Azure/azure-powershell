@@ -228,5 +228,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerZones");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestCreateSubresourcesOnEmptyLoadBalancer()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CreateSubresourcesOnEmptyLoadBalancer");
+        }
     }
 }
