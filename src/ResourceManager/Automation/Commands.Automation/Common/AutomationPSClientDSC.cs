@@ -37,7 +37,7 @@ using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
 using Job = Microsoft.Azure.Management.Automation.Models.Job;
 using JobSchedule = Microsoft.Azure.Management.Automation.Models.JobSchedule;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -817,11 +817,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
 
-            var deployment = new Management.ResourceManager.Models.Deployment
+            var deployment = new Management.Internal.Resources.Models.Deployment
             {
-                Properties = new Management.ResourceManager.Models.DeploymentProperties
+                Properties = new Management.Internal.Resources.Models.DeploymentProperties
                 {
-                    TemplateLink = new Management.ResourceManager.Models.TemplateLink(Constants.TemplateFile),
+                    TemplateLink = new Management.Internal.Resources.Models.TemplateLink(Constants.TemplateFile),
                     Parameters = parameters
                 }
             };
