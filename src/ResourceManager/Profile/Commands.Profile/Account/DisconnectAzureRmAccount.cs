@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Profile.Models.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using System;
 using System.Management.Automation;

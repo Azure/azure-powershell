@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Profile.Models.Desktop;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System.Management.Automation;
