@@ -221,6 +221,15 @@ Gets a route table summary of an ExpressRoute circuit.
 ### [Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)
 Gets usage statistics of an ExpressRoute circuit.
 
+### [Get-AzureRmExpressRoutePort](Get-AzureRmExpressRoutePort.md)
+Gets an Azure ExpressRoutePort resource.
+
+### [Get-AzureRmExpressRoutePortLinkConfig](Get-AzureRmExpressRoutePortLinkConfig.md)
+Gets an ExpressRoutePort's link configuration.
+
+### [Get-AzureRmExpressRoutePortsLocation](Get-AzureRmExpressRoutePortsLocation.md)
+Gets a list of available locations of ExpressRoutePorts. Gets attributes of a location for a specified location.
+
 ### [Get-AzureRmExpressRouteServiceProvider](Get-AzureRmExpressRouteServiceProvider.md)
 Gets a list ExpressRoute service providers and their attributes.
 
@@ -437,6 +446,9 @@ Creates a new connection draining configuration for back-end HTTP settings.
 ### [New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
+### [New-AzureRmApplicationGatewayFirewallExclusionConfig](New-AzureRmApplicationGatewayFirewallExclusionConfig.md)
+Creates a new exclusion rule list for application gateway waf
+
 ### [New-AzureRmApplicationGatewayFrontendIPConfig](New-AzureRmApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
 
@@ -517,6 +529,9 @@ Creates a Firewall Network Rule.
 
 ### [New-AzureRmFirewallNetworkRuleCollection](New-AzureRmFirewallNetworkRuleCollection.md)
 Creates a Azure Firewall Network Collection of Network rules.
+
+### [New-AzureRmExpressRoutePort](New-AzureRmExpressRoutePort.md)
+Creates an ExpressRoutePort
 
 ### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
 Creates an IPSec Policy.
@@ -735,6 +750,9 @@ Removes an ExpressRoute circuit peering configuration.
 ### [Remove-AzureRmFirewall](Remove-AzureRmFirewall.md)
 Remove a Firewall.
 
+### [Remove-AzureRmExpressRoutePort](Remove-AzureRmExpressRoutePort.md)
+Removes an ExpressRoutePort
+
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
 
@@ -938,6 +956,9 @@ Saves a modified ExpressRoute peering configuration.
 
 ### [Set-AzureRmFirewall](Set-AzureRmFirewall.md)
 Saves a modified Firewall.
+
+### [Set-AzureRmExpressRoutePort](Set-AzureRmExpressRoutePort.md)
+Saves a modified ExpressRoutePort
 
 ### [Set-AzureRmLoadBalancer](Set-AzureRmLoadBalancer.md)
 Sets the goal state for a load balancer.
