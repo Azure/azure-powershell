@@ -48,7 +48,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestUsageCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-UsageCRUDMinimalParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-UsageCRUDMinimalParameters");
         }
     }
 }

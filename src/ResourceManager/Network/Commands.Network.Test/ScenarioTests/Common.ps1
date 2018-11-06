@@ -57,7 +57,7 @@ function Get-NetworkTestMode {
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider, $preferredLocation = "West US")
+function Get-ProviderLocation($provider, $preferredLocation = "West Central US")
 {
     if((Get-NetworkTestMode) -ne 'Playback')
     {

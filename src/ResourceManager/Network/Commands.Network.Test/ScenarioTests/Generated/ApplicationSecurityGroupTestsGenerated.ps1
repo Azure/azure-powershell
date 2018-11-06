@@ -64,6 +64,14 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
         Assert-True { Check-CmdletReturnType "Get-AzureRmApplicationSecurityGroup" $vApplicationSecurityGroup };
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
 
+        # Get all ApplicationSecurityGroups in resource group
+        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname;
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription
+        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup;
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove ApplicationSecurityGroup
         $job = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -111,6 +119,14 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
         Assert-True { Check-CmdletReturnType "Get-AzureRmApplicationSecurityGroup" $vApplicationSecurityGroup };
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
         Assert-AreEqualObjectProperties $Tag $vApplicationSecurityGroup.Tag;
+
+        # Get all ApplicationSecurityGroups in resource group
+        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname;
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription
+        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup;
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ApplicationSecurityGroup
         $job = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
