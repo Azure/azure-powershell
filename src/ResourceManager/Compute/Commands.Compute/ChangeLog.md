@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support for UltraSSD and Gallery Images in the simple param sets for `New-AzVm(ss)` cmdlets.
 
 ## Version 5.8.0
 * Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
