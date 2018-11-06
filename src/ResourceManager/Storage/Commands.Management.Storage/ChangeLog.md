@@ -1,4 +1,4 @@
-<!--
+,<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.2.0
+* Support get the Storage resource usage of a specific location, and add warning message for get global Storage resource usage is obsolete.
+    - Get-AzureRmStorageUsage
 
 ## Version 5.1.0
 * Upgrade to Azure Storage Client Library 9.3.0 

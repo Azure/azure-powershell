@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 1.1.0
+* Added policy remediation cmdlets
+
 ## Version 1.0.4
 * Updated to the latest version of the Azure ClientRuntime.
 

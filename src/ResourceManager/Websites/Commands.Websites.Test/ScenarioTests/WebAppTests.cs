@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableContainerContinuousDeploymentAndGetUrl()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EnableContainerContinuousDeploymentAndGetUrl");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppOnAse()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppOnAse");
@@ -121,6 +128,20 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestRemoveWebApp()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebApp");
+        }
+
+        [Fact(Skip = "Skipping while investigation regarding PowerShell version in Travis continues")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWindowsContainerWebAppCanIssuePSSession()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerCanIssueWebAppPSSession");
+        }
+
+        [Fact(Skip = "Expected to fail during playback because it validates that a PsSession into a real container web app can be established")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWindowsContainerWebAppPSSessionOpened()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSessionOpened");
         }
     }
 }

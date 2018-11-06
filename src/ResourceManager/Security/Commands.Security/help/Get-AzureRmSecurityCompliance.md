@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/get-azurermsecuritycompliance
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityCompliance.md
 schema: 2.0.0
 ---
 
 # Get-AzureRmSecurityCompliance
 
 ## SYNOPSIS
-Get the security compliace of a subscription over time
+Get the security compliance of a subscription over time
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Get-AzureRmSecurityCompliance -ResourceId <String> [-DefaultProfile <IAzureConte
 ```
 
 ## DESCRIPTION
-Gets the security compliace of a subscription based on the current healthy and non secured resources retio on this subscription.
+Gets the security compliance of a subscription based on the current healthy and non secured resources ratio on this subscription.
 The security compliance is calculated every day and the history is saved.
 
 ## EXAMPLES
@@ -124,7 +124,7 @@ AssessmentTimestampUtcDate : 07/08/2018 00:00:00
 AssessmentResult           : {Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment}
 ```
 
-Gets the security compliace of a subscription for the last 14 days
+Gets the security compliance of a subscription for the last 14 days
 
 ### Example 2
 ```powershell
@@ -138,7 +138,7 @@ AssessmentTimestampUtcDate : 20/08/2018 00:00:00
 AssessmentResult           : {Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment}
 ```
 
-Gets the security compliace of a subscription on a specific date
+Gets the security compliance of a subscription on a specific date
 
 ## PARAMETERS
 
