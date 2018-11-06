@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 if (evResource.MaximumThroughputUnits.HasValue)
                     MaximumThroughputUnits = evResource.MaximumThroughputUnits;
 
+                if (evResource.KafkaEnabled.HasValue)
+                   KafkaEnabled = evResource.KafkaEnabled;
+
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
 
             }
@@ -121,6 +124,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// AutoInflateEnabled = true)
         /// </summary>
         public int? MaximumThroughputUnits { get; set; }
+
+        /// <summary>
+        /// Gets or sets value that indicates whether Kafka is enabled for
+        /// eventhub namespace.
+        /// </summary>
+        public bool? KafkaEnabled { get; set; }
 
     }
 }

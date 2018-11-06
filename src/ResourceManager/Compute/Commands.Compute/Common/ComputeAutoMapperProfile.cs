@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // Usage => PSUsage
                 cfg.CreateMap<FROM.Usage, TO.PSUsage>()
-                    .ForMember(c => c.Unit, o => o.MapFrom(r => Microsoft.Azure.Management.Compute.Models.Usage.Unit));
+                    .ForMember(c => c.Unit, o => o.MapFrom(r => FROM.Usage.Unit));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.Usage>, TO.PSUsage>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
