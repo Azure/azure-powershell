@@ -124,5 +124,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressZones");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestPublicIpAddressCRUDIdleTimeout()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-IdleTimeout");
+        }
     }
 }

@@ -688,3 +688,61 @@ function Test-PublicIpAddressCRUD-PublicIPPrefix
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating new publicIpAddress with idle timeout.
+#>
+function Test-PublicIpAddressCRUD-IdleTimeout
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/publicIpAddresses"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation 
+
+        # Create public ip address
+        $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -IdleTimeoutInMinutes 15 -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
+        Assert-AreEqual $expected.Name $actual.Name 
+        Assert-AreEqual $expected.Location $actual.Location
+        Assert-NotNull $expected.ResourceGuid
+        Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-AreEqual $domainNameLabel $expected.DnsSettings.DomainNameLabel
+        Assert-AreEqual 15 $expected.IdleTimeoutInMinutes
+
+        # Set public ip address
+        $actual.IdleTimeoutInMinutes = 30
+        $actual = Set-AzureRmPublicIpAddress -PublicIpAddress $actual
+        $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual 30 $expected.IdleTimeoutInMinutes
+
+        # delete
+        $job = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
+
+        $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual 0 @($list).Count
+
+        $list = Get-AzureRmPublicIpAddress | Where-Object { $_.ResourceGroupName -eq $actual.ResourceGroupName -and $_.Name -eq $actual.Name }
+        Assert-AreEqual 0 @($list).Count
+
+        # test error handling
+        Assert-ThrowsContains { Set-AzureRmPublicIpAddress -PublicIpAddress $actual } "not found";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

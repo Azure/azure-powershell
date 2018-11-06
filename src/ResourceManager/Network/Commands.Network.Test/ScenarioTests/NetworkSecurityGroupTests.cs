@@ -52,5 +52,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkSecurityGroup-MultiValuedRules");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkSecurityRuleArgumentValidation()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkSecurityRule-ArgumentValidation");
+        }
     }
 }
