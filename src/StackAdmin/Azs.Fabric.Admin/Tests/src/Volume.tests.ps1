@@ -25,10 +25,17 @@
 
 .EXAMPLE
     PS C:\> .\Volume.Tests.ps1
-	Describing StoragePools
-	 [+] TestListVolumes 237ms
-	 [+] TestGetVolume 128ms
-	 [+] TestGetAllVolumes 98ms
+    Describing Volumes
+     [+] TestListVolumes 160ms
+     [+] TestGetVolume 81ms
+     [+] TestGetAllVolumes 137ms
+
+.EXAMPLE
+    PS C:\> .\src\Volume.Tests.ps1 -RunRaw $true
+    Describing Volumes
+     [+] TestListVolumes 7.53s
+     [+] TestGetVolume 3.02s
+     [+] TestGetAllVolumes 3.08s
 
 .NOTES
     Author: Jeffrey Robinson
@@ -48,7 +55,7 @@ $global:TestName = ""
 
 InModuleScope Azs.Fabric.Admin {
 
-    Describe "StoragePools" -Tags @('StoragePool', 'Azs.Fabric.Admin') {
+    Describe "Volumes" -Tags @('Volume', 'Azs.Fabric.Admin') {
 
         . $PSScriptRoot\Common.ps1
 
@@ -68,11 +75,15 @@ InModuleScope Azs.Fabric.Admin {
                 $Volume.Name     | Should Not Be $null
                 $Volume.Type     | Should Not Be $null
 
-                # Storage Pool
-                $Volume.FileSystem       | Should Not Be $null
-                $Volume.RemainingSizeGB  | Should Not Be $null
-                $Volume.SizeGB           | Should Not Be $null
-                $Volume.VolumeLabel      | Should Not Be $null
+                # Volume
+                $Volume.TotalCapacityGB      | Should Not Be $null
+                $Volume.RemainingCapacityGB  | Should Not Be $null
+                $Volume.HealthStatus         | Should Not Be $null
+                $Volume.OperationalStatus    | Should Not Be $null
+                $Volume.RepairStatus         | Should Not Be $null
+                $Volume.Description          | Should Not Be $null
+                $Volume.Action               | Should Not Be $null
+                $Volume.VolumeLabel          | Should Not Be $null
             }
 
             function AssertVolumesAreSame {
@@ -95,11 +106,15 @@ InModuleScope Azs.Fabric.Admin {
                     $Found.Name             | Should Be $Expected.Name
                     $Found.Type             | Should Be $Expected.Type
 
-                    # Storage Pool
-                    $Found.FileSystem       | Should Be $Expected.FileSystem
-                    $Found.RemainingSizeGB  | Should Be $Expected.RemainingSizeGB
-                    $Found.SizeGB           | Should Be $Expected.SizeGB
-                    $Found.VolumeLabel      | Should Be $Expected.VolumeLabel
+                    # Volume
+                    $Found.TotalCapacityGB      | Should Be $Expected.TotalCapacityGB
+                    $Found.RemainingCapacityGB  | Should Be $Expected.RemainingCapacityGB
+                    $Found.HealthStatus         | Should Be $Expected.HealthStatus
+                    $Found.OperationalStatus    | Should Be $Expected.OperationalStatus
+                    $Found.RepairStatus         | Should Be $Expected.RepairStatus
+                    $Found.Description          | Should Be $Expected.Description
+                    $Found.Action               | Should Be $Expected.Action
+                    $Found.VolumeLabel          | Should Be $Expected.VolumeLabel
 
                 }
             }
@@ -113,11 +128,11 @@ InModuleScope Azs.Fabric.Admin {
         it "TestListVolumes" -Skip:$('TestListVolumes' -in $global:SkippedTests) {
             $global:TestName = 'TestListVolumes'
 
-            $storageSystems = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location
-            foreach ($storageSystem in $storageSystems) {
-                $StoragePools = Get-AzsStoragePool -ResourceGroupName $global:ResourceGroupName -Location $Location -StorageSystem $storageSystem.Name
-                foreach ($StoragePool in $StoragePools) {
-                    $volumes = Get-AzsInfrastructureVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -StorageSystem $storageSystem.Name -StoragePool $StoragePool.Name
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
                     $volumes | Should Not Be $null
                     foreach ($volume in $volumes) {
                         ValidateVolume $volume
@@ -130,13 +145,13 @@ InModuleScope Azs.Fabric.Admin {
         it "TestGetVolume" -Skip:$('TestGetVolume' -in $global:SkippedTests) {
             $global:TestName = 'TestGetVolume'
 
-            $storageSystems = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location
-            foreach ($storageSystem in $storageSystems) {
-                $StoragePools = Get-AzsStoragePool -ResourceGroupName $global:ResourceGroupName -Location $Location -StorageSystem $storageSystem.Name
-                foreach ($StoragePool in $StoragePools) {
-                    $volumes = Get-AzsInfrastructureVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -StorageSystem $storageSystem.Name -StoragePool $StoragePool.Name
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
                     foreach ($volume in $volumes) {
-                        $retrieved = Get-AzsInfrastructureVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -StoragePool $StoragePool.Name -StorageSystem $storageSystem.Name -Name $volume.Name
+                        $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $volume.Name
                         AssertVolumesAreSame -Expected $volume -Found $retrieved
                         break
                     }
@@ -149,13 +164,13 @@ InModuleScope Azs.Fabric.Admin {
         it "TestGetAllVolumes" -Skip:$('TestGetAllVolumes' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllVolumes'
 
-            $storageSystems = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location
-            foreach ($storageSystem in $storageSystems) {
-                $StoragePools = Get-AzsStoragePool -ResourceGroupName $global:ResourceGroupName -Location $Location -StorageSystem $storageSystem.Name
-                foreach ($StoragePool in $StoragePools) {
-                    $volumes = Get-AzsInfrastructureVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -StorageSystem $storageSystem.Name -StoragePool $StoragePool.Name
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
                     foreach ($volume in $volumes) {
-                        $retrieved = Get-AzsInfrastructureVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -StoragePool $StoragePool.Name -StorageSystem $storageSystem.Name -Name $volume.Name
+                        $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $volume.Name
                         AssertVolumesAreSame -Expected $volume -Found $retrieved
                     }
                 }
