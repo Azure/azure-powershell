@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
             var present = true;
             try
             {
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(this.RouteTable);
             vRouteTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
+
             // Execute the PUT RouteTable call
             this.NetworkClient.NetworkManagementClient.RouteTables.CreateOrUpdate(this.RouteTable.ResourceGroupName, this.RouteTable.Name, vRouteTableModel);
 
