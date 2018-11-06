@@ -32,8 +32,6 @@ namespace Commands.Automation.Test
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateRunbookGraph()
         {
             // Write PS Function and call it here
@@ -43,8 +41,6 @@ namespace Commands.Automation.Test
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestImportRunbookPowerShell()
         {
             RunPowerShellTest(_logger, "Test-ImportRunbookPowerShell -Name TestRunbook-PowerShellScript -RunbookPath ScenarioTests\\Resources\\RB-PowerShellScriptTutorial.ps1");
@@ -53,8 +49,6 @@ namespace Commands.Automation.Test
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestImportAndDeleteRunbookGraphical()
         {
             RunPowerShellTest(_logger, "Test-ImportAndDeleteRunbookGraphical -Name TestRunbook-Grapical -RunbookPath ScenarioTests\\Resources\\RB-GraphTutorial.graphrunbook");
@@ -63,8 +57,6 @@ namespace Commands.Automation.Test
         [Fact(Skip = "Failed output record causes JSON convert exception in Travis run.")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateJobAndGetOutputPowerShellScript()
         {
             RunPowerShellTest(_logger, "Test-CreateJobAndGetOutputPowerShellScript -Name TestRunbook-PSScript-JobAndOutput -RunbookPath ScenarioTests\\Resources\\RB-PowerShellScriptTutorial.ps1");
