@@ -119,6 +119,24 @@ function Get-RandomItemName
 
 <#
 .SYNOPSIS
+Gets valid resource group name
+#>
+function Get-ResourceGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid resource name
+#>
+function Get-ResourceName($prefix)
+{
+    return $prefix + (getAssetName)
+}
+
+<#
+.SYNOPSIS
 Gets valid resource name for compute test
 #>
 function Get-StorageManagementTestResourceName
@@ -192,4 +210,13 @@ function Normalize-Location($location)
     }
 
     return $location
+}
+
+<#
+.SYNOPSIS
+is running live in target environment
+#>
+function IsLive
+{
+    return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
 }

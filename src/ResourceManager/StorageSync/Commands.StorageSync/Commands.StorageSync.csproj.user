@@ -2,10 +2,11 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
+    <StartProgram>c:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
     <StartArguments>-NoExit . ..\..\..\..\..\ResourceManager\StorageSync\Commands.StorageSync\debug.ps1 Debug</StartArguments>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <RemoteDebugMachine>ankushb-vm01.ntdev.corp.microsoft.com</RemoteDebugMachine>
+    <RemoteDebugMachine>
+    </RemoteDebugMachine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <StartAction>Program</StartAction>

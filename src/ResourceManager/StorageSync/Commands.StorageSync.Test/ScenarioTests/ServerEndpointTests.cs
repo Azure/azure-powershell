@@ -38,39 +38,5 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(_logger, "Test-ServerEndpoint");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureServerEndpoint()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureServerEndpoint");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureServerEndpoint()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureServerEndpoint");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureServerEndpoints()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureServerEndpoints");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureServerEndpoint()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureServerEndpoint");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingSetServerEndpoint()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-PipingToSetAzureRmCurrentServerEndpoint");
-        }
     }
 }
