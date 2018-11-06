@@ -56,6 +56,9 @@ Adds a secret to a VMSS.
 ### [Add-AzureRmVmssSshPublicKey](Add-AzureRmVmssSshPublicKey.md)
 Adds SSH public keys to the VMSS.
 
+### [Add-AzureRmVmssVMDataDisk](Add-AzureRmVmssVMDataDisk.md)
+Adds a data disk to a Vmss VM.
+
 ### [Add-AzureRmVmssWinRMListener](Add-AzureRmVmssWinRMListener.md)
 Adds a WinRM listener to the VMSS.
 
@@ -364,6 +367,9 @@ Removes an extension from the VMSS.
 
 ### [Remove-AzureRmVmssNetworkInterfaceConfiguration](Remove-AzureRmVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
+
+### [Remove-AzureRmVmssVMDataDisk](Remove-AzureRmVmssVMDataDisk.md)
+Removes a data disk from a virtual machine scale set VM
 
 ### [Repair-AzureRmVmssServiceFabricUpdateDomain](Repair-AzureRmVmssServiceFabricUpdateDomain.md)
 Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.

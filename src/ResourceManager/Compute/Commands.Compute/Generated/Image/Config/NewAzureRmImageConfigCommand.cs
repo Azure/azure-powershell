@@ -79,16 +79,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // SourceVirtualMachine
-            Microsoft.Azure.Management.Compute.Models.SubResource vSourceVirtualMachine = null;
+            SubResource vSourceVirtualMachine = null;
 
             // StorageProfile
-            Microsoft.Azure.Management.Compute.Models.ImageStorageProfile vStorageProfile = null;
+            ImageStorageProfile vStorageProfile = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SourceVirtualMachineId"))
             {
                 if (vSourceVirtualMachine == null)
                 {
-                    vSourceVirtualMachine = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                    vSourceVirtualMachine = new SubResource();
                 }
                 vSourceVirtualMachine.Id = this.SourceVirtualMachineId;
             }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vStorageProfile == null)
                 {
-                    vStorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    vStorageProfile = new ImageStorageProfile();
                 }
                 vStorageProfile.OsDisk = this.OsDisk;
             }
@@ -106,14 +106,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vStorageProfile == null)
                 {
-                    vStorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    vStorageProfile = new ImageStorageProfile();
                 }
                 vStorageProfile.DataDisks = this.DataDisk;
             }
 
             if (vStorageProfile == null)
             {
-                vStorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                vStorageProfile = new ImageStorageProfile();
             }
             vStorageProfile.ZoneResilient = this.ZoneResilient.IsPresent;
 

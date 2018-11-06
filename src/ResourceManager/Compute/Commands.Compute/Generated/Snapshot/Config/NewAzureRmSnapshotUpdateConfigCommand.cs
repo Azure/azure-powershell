@@ -86,16 +86,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // EncryptionSettings
-            Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
+            EncryptionSettings vEncryptionSettings = null;
 
             // Sku
-            Microsoft.Azure.Management.Compute.Models.SnapshotSku vSku = null;
+            SnapshotSku vSku = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
             }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
             }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vSku == null)
                 {
-                    vSku = new Microsoft.Azure.Management.Compute.Models.SnapshotSku();
+                    vSku = new SnapshotSku();
                 }
                 vSku.Name = this.SkuName;
             }
