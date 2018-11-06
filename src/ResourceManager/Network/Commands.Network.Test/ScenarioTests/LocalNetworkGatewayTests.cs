@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestLocalNetworkGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LocalNetworkGatewayCRUD");
