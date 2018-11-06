@@ -445,7 +445,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-A hash table which represents sku properties. Defaults to Free Sku: Name = A0, Tier = Fre
+A hash table which represents SKU properties. Defaults to the Free SKU with the values: `@{Name = 'A0'; Tier = 'Free'}`. To use the Standard SKU, use the values: `@{Name = 'A1'; Tier = 'Standard'}`.
 
 ```yaml
 Type: System.Collections.Hashtable
