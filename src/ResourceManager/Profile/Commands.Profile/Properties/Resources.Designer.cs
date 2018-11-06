@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modules can only be removed in PowerShell administrative mode..
+        ///   Looks up a localized string similar to Module deletion failed. Please close all PowerShell sessions to ensure no AzureRM modules are currently loaded, and rerun this cmdlet in Administrator mode..
         /// </summary>
         internal static string RemoveModuleError {
             get {
@@ -804,6 +804,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SetPropertyAction {
             get {
                 return ResourceManager.GetString("SetPropertyAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing module &apos;{0}&apos; from your machine.
+        /// </summary>
+        internal static string ShouldRemoveModule {
+            get {
+                return ResourceManager.GetString("ShouldRemoveModule", resourceCulture);
             }
         }
         
