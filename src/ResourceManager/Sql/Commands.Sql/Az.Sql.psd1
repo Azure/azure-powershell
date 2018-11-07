@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.3'
+ModuleVersion = '0.5.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -294,12 +294,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
-   - Add-AzSqlManagedInstanceKeyVaultKey
-   - Get-AzSqlManagedInstanceKeyVaultKey
-   - Remove-AzSqlManagedInstanceKeyVaultKey
-   - Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
-   - Set-AzSqlManagedInstanceTransparentDataEncryptionProtector'
+        ReleaseNotes = '* Add DnsZonePartner Parameter for New-AzureRmSqlManagedInstance cmdlet to support AutoDr for Managed Instance.'
 
         # Prerelease string of this module
         # Prerelease = ''
