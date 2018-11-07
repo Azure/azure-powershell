@@ -34,10 +34,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        // Commenting out the test until a fix will be added by yaiyun
-        // [Fact]
-        // [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // See issue https://github.com/Azure/azure-powershell/issues/6601
+        [Fact(Skip = "Skipping the test until a fix will be added by yaiyun: https://github.com/Azure/azure-powershell/issues/6601")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingUpdatePolicyWithClassicStorage()
         {
             RunPowerShellTest("Test-AuditingUpdatePolicyWithClassicStorage");
