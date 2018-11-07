@@ -423,11 +423,11 @@ For any parameter that takes a resource name, the `ResourceNameCompleter` should
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 ...
 [Parameter(Mandatory = false, HelpMessage = "The parent server name")]
-[ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+[ResourceNameCompleter("Microsoft.Sql/servers", nameof(ResourceGroupName))]
 public string ServerName { get; set; }
 
 [Parameter(Mandatory = false, HelpMessage = "The database name")]
-[ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
+[ResourceNameCompleter("Microsoft.Sql/servers/databases", nameof(ResourceGroupName), nameof(ServerName))]
 public string Name { get; set; }
 ```
 
