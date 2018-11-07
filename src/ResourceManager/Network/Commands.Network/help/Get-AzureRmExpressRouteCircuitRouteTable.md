@@ -90,7 +90,7 @@ Parameter Sets: (All)
 Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

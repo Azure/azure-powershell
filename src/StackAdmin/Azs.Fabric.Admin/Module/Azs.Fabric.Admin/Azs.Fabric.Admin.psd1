@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.4.0'
+    ModuleVersion     = '0.4.0
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -127,8 +127,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '
-            ## 2018.11.5
+
+            ReleaseNotes = '## 2018.11.5
             * New cmdlet
 	            * Get-AzsDrive
 	            * Get-AzsVolume
@@ -136,6 +136,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
             * Unsupported cmdlet
 	            * Get-AzsInfrastructureVolume
             
+            ## 2018.10.28
+                * Bug fixes
+                * Fixed a bug in Add-AzsScaleUnitNode
+                
             ## 2018.9.10
             * New Module dependencies
                 * AzureRM.Profile
@@ -169,8 +173,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
                 * Start-AzsScaleUnitNode
                 * Stop-AzsInfrastructureRoleInstance
                 * Stop-AzsScaleUnitNode
-            * Bug fixes
-                * Handle ErrrorAction correctly now
             '
 
         } # End of PSData hashtable

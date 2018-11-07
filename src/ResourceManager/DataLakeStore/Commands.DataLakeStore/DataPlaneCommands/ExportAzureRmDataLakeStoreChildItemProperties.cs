@@ -85,8 +85,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+            // Currently SDK default thread calculation is not correct, so pass a default thread count
+            int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
+
             DataLakeStoreFileSystemClient.GetFileProperties(Account, Path.TransformedPath, GetAcl, OutputPath,
-                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFile, HideConsistentAcl, MaximumDepth, this, CmdletCancellationToken);
+                GetDiskUsage, !SaveToAdl, threadCount, IncludeFile, HideConsistentAcl, MaximumDepth, this, CmdletCancellationToken);
             if (PassThru)
             {
                 WriteObject(true);

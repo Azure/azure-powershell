@@ -9,7 +9,7 @@
 @{
 
     # Root Module
-    RootModule             = "AzureStack.psm1"
+    # RootModule = ''
 
     # Version number of this module.
     ModuleVersion          = '1.5.1'
@@ -57,7 +57,7 @@
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.0'; },
@@ -129,7 +129,7 @@
                 * New quota properties added for the support of manged disk
                 * Addition of disk migration related cmdlets
                 * Additional properties in the Platform Image and VM extesnion objects
-            * Azs.Fabric.Admin 
+            * Azs.Fabric.Admin
                 * New cmdlet for adding scale unit node
             * Azs.Backup.Admin
                 * Set-AzsBackupShare is an alias now to the cmdlet Set-AzsBackupConfiguration

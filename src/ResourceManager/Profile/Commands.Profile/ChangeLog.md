@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 5.8.0
+* Update common code to use latest version of ClientRuntime
+* Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
+* Updated TenantId description for Connect-AzureRmAccount
+* Fix error message for failed login when providing tenant domain
+    - https://github.com/Azure/azure-powershell/issues/6936
+* Fix issue with context name clashing for accounts with no subscriptions in tenant
+    - https://github.com/Azure/azure-powershell/issues/7453
+* Fix issue with DataLake endpoints when using MSI
+    - https://github.com/Azure/azure-powershell/issues/7462
+* Fix issue where `Disconnect-AzureRmAccount` would throw if not connected
+    - https://github.com/Azure/azure-powershell/issues/7167
+
 ## Version 5.7.0
 * Fix issue with Get-AzureRmSubscription in CloudShell
 * Update common code to use latest version of ClientRuntime
