@@ -117,19 +117,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // Sku
-            Microsoft.Azure.Management.Compute.Models.SnapshotSku vSku = null;
+            SnapshotSku vSku = null;
 
             // CreationData
-            Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;
+            CreationData vCreationData = null;
 
             // EncryptionSettings
-            Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
+            EncryptionSettings vEncryptionSettings = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
             {
                 if (vSku == null)
                 {
-                    vSku = new Microsoft.Azure.Management.Compute.Models.SnapshotSku();
+                    vSku = new SnapshotSku();
                 }
                 vSku.Name = this.SkuName;
             }
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.CreateOption = this.CreateOption;
             }
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.StorageAccountId = this.StorageAccountId;
             }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.ImageReference = this.ImageReference;
             }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.SourceUri = this.SourceUri;
             }
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
             }
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
             }
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }

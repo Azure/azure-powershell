@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true,
            ParameterSetName = SyncDatabaseComponentSet,
            HelpMessage = "The database used to store sync related metadata.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "SyncDatabaseResourceGroupName", "SyncDatabaseServerName")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseName { get; set; }
 
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = false,
            ParameterSetName = SyncDatabaseComponentSet,
            HelpMessage = "The server on which the sync metadata database is hosted.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "SyncDatabaseResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseServerName { get; set; }
 
@@ -79,6 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = false,
            ParameterSetName = SyncDatabaseComponentSet,
            HelpMessage = "The resource group the sync metadata database belongs to.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseResourceGroupName { get; set; }
 

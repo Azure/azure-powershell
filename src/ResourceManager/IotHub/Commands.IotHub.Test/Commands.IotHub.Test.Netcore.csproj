@@ -25,8 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.1" />
   </ItemGroup>
 
 <ItemGroup>

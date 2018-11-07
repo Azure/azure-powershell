@@ -74,8 +74,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.ResourceGraph, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceGraph.0.9.0-preview\lib\net452\Microsoft.Azure.Management.ResourceGraph.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.ResourceGraph, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceGraph.0.10.0-preview\lib\net452\Microsoft.Azure.Management.ResourceGraph.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

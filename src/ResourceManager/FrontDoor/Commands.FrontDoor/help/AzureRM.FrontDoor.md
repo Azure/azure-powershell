@@ -56,6 +56,9 @@ Create RuleGroupOverride Object for WAF policy creation
 ### [Remove-AzureRmFrontDoor](Remove-AzureRmFrontDoor.md)
 Remove Front Door load balancer
 
+### [Remove-AzureRmFrontDoorContent](Remove-AzureRmFrontDoorContent.md)
+Remove contents in Front Door
+
 ### [Remove-AzureRmFrontDoorFireWallPolicy](Remove-AzureRmFrontDoorFireWallPolicy.md)
 Remove WAF policy
 

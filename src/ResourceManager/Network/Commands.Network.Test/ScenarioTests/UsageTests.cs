@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkUsage()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkUsage");
