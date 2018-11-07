@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? isKafkaEnabled)
         {
             EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
@@ -95,6 +95,9 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (maximumThroughputUnits.HasValue)
                 parameter.MaximumThroughputUnits = maximumThroughputUnits;
+
+            if (isKafkaEnabled.HasValue)
+                parameter.KafkaEnabled = isKafkaEnabled;
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);

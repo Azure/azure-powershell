@@ -16,38 +16,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
     internal static class AzureFirewallFqdnTagHelper
     {
-        private static IEnumerable<string> GetAzureFirewallAllowedFqdnTags()
-        {
-            return new List<string>
-            {
-                "WindowsUpdate",
-                "WindowsDiagnostics",
-                "AppServiceEnvironment",
-                "MicrosoftActiveProtectionService",
-                "AzureBackup"
-            };
-        }
-
-        public static List<string> MapUserInputToAllowedFqdnTags(IEnumerable<string> userFqdnTags)
+        public static List<string> MapUserInputToAllowedFqdnTags(IEnumerable<string> userFqdnTags, IAzureFirewallFqdnTagsOperations azureFirewallFqdnTagClient)
         {
             if (userFqdnTags == null)
             {
                 throw new ArgumentNullException("FQDN Tags List to be validated is null.", nameof(userFqdnTags));
             }
 
-            var allowedFqdnTags = GetAzureFirewallAllowedFqdnTags();
+            var allowedFqdnTags = GetAzureFirewallAllowedFqdnTags(azureFirewallFqdnTagClient);
 
             // Accept user input case insensistive
             var userAcceptedFqdnTags = allowedFqdnTags.Aggregate(
                 new Dictionary<string, string>(),
                 (userAcceptedVersions, allowedFqdnTag) =>
                 {
-                    userAcceptedVersions.Add(allowedFqdnTag.ToUpper(), allowedFqdnTag);
+                    userAcceptedVersions.Add(allowedFqdnTag.FqdnTagName.ToUpper(), allowedFqdnTag.FqdnTagName);
 
                     return userAcceptedVersions;
                 });
@@ -58,11 +51,38 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!userAcceptedFqdnTags.ContainsKey(userKey))
                 {
-                    throw new ArgumentException($"FQDN Tag {userFqdnTag} is invalid. Valid values are {string.Join(", ", allowedFqdnTags)}");
+                    throw new ArgumentException($"FQDN Tag {userFqdnTag} is invalid. Valid values are [{string.Join(", ", allowedFqdnTags.Select(tag => tag.FqdnTagName))}]");
                 }
 
                 return userAcceptedFqdnTags[userKey];
             }).ToList();
+        }
+
+        internal static IEnumerable<PSAzureFirewallFqdnTag> GetAzureFirewallAllowedFqdnTags(IAzureFirewallFqdnTagsOperations azureFirewallFqdnTagClient)
+        {
+
+            IPage<AzureFirewallFqdnTag> azureFirewallFqdnTagPage = azureFirewallFqdnTagClient.ListAll();
+
+            // Get all resources by polling on next page link
+            var azureFirewallFqdnTagResponseLIst = ListNextLink<AzureFirewallFqdnTag>.GetAllResourcesByPollingNextLink(azureFirewallFqdnTagPage, azureFirewallFqdnTagClient.ListAllNext);
+
+            var psAzureFirewallFqdnTags = azureFirewallFqdnTagResponseLIst.Select(fqdnTag =>
+            {
+                var psFqdnTag = ToPsAzureFirewallFqdnTag(fqdnTag);
+                psFqdnTag.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(fqdnTag.Id);
+                return psFqdnTag;
+            }).ToList();
+
+            return psAzureFirewallFqdnTags;
+        }
+
+        private static PSAzureFirewallFqdnTag ToPsAzureFirewallFqdnTag(AzureFirewallFqdnTag fqdnTag)
+        {
+            var psAzFwFqdnTag = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallFqdnTag>(fqdnTag);
+
+            psAzFwFqdnTag.Tag = TagsConversionHelper.CreateTagHashtable(fqdnTag.Tags);
+
+            return psAzFwFqdnTag;
         }
     }
 }

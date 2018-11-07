@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.Compute
                         OSDiskImage = response.Body.OsDiskImage,
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
+                        AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
                     };
 
                     WriteObject(image);
