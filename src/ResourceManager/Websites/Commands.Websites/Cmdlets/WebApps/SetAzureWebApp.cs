@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
-        [ResourceNameCompleter("Microsoft.Web/serverfarms", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Web/serverfarms", "ResourceGroupName")]
         public string AppServicePlan { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "Default documents for web app")]

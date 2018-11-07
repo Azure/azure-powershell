@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Commands.WebApps
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Web/sites", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = true, HelpMessage = "The name of the web app slot.")]
-        [ResourceNameCompleter("Microsoft.Web/sites/slots", new string[] { "ResourceGroupName", "Name" })]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "Name")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
