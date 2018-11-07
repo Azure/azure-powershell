@@ -76,7 +76,7 @@ CmdletsToExport = 'Invoke-AzureRmStorageSyncCompatibilityCheck',
                 'New-AzureRmStorageSyncService','Get-AzureRmStorageSyncService','Remove-AzureRmStorageSyncService',
                 'New-AzureRmStorageSyncGroup','Get-AzureRmStorageSyncGroup','Remove-AzureRmStorageSyncGroup',
                 'New-AzureRmStorageSyncCloudEndpoint','Get-AzureRmStorageSyncCloudEndpoint','Remove-AzureRmStorageSyncCloudEndpoint',
-                'New-AzureRmStorageSyncServerEndpoint','Get-AzureRmStorageSyncServerEndpoint','Remove-AzureRmStorageSyncServerEndpoint','Set-AzureRmStorageSyncServerEndpoint',
+                'New-AzureRmStorageSyncServerEndpoint','Get-AzureRmStorageSyncServerEndpoint','Remove-AzureRmStorageSyncServerEndpoint','Set-AzureRmStorageSyncServerEndpoint','Invoke-AzureRmStorageSyncFileRecall',
                 'Register-AzureRmStorageSyncServer','Unregister-AzureRmStorageSyncServer','Get-AzureRmStorageSyncServer','Reset-AzureRmStorageSyncServerCertificate'
 
 

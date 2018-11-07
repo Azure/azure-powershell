@@ -79,7 +79,7 @@ function Test-ServerEndpoint
         $job | Wait-Job
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
-        Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation | Type : ServerEndpoint"
+        Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
         $job = New-AzureRMStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
 
         $job | Wait-Job
@@ -112,13 +112,41 @@ function Test-ServerEndpoint
         Assert-AreEqual $serverLocalPath $serverEndpoint.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
 
-        $job = Set-AzureRMStorageSyncServerEndpoint -InputObject $ServerEndpoint -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
+        Write-Verbose "Patch ServerEndpoint by Name"
+        $job = Set-AzureRMStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName  $syncGroupName -Name $serverEndpointName -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
         $job | Wait-Job
         $serverEndpoint2 = get-job -Id $job.Id | receive-job -Keep
         Write-Verbose "Validating ServerEndpoint Properties"
         Assert-AreEqual $serverEndpointName $serverEndpoint2.ServerEndpointName
         Assert-AreEqual $serverLocalPath $serverEndpoint2.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent2 $serverEndpoint2.VolumeFreeSpacePercent
+
+        Write-Verbose "Patch ServerEndpoint by InputObject"
+        $job = Set-AzureRMStorageSyncServerEndpoint -InputObject $serverEndpoint -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
+        $job | Wait-Job
+        $serverEndpoint2 = get-job -Id $job.Id | receive-job -Keep
+        Write-Verbose "Validating ServerEndpoint Properties"
+        Assert-AreEqual $serverEndpointName $serverEndpoint2.ServerEndpointName
+        Assert-AreEqual $serverLocalPath $serverEndpoint2.ServerLocalPath
+        Assert-AreEqual $volumeFreeSpacePercent2 $serverEndpoint2.VolumeFreeSpacePercent
+
+        Write-Verbose "Patch ServerEndpoint by ResourceId"
+        $job = Set-AzureRMStorageSyncServerEndpoint -ResourceId $serverEndpoint.ResourceId -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
+        $job | Wait-Job
+        $serverEndpoint2 = get-job -Id $job.Id | receive-job -Keep
+        Write-Verbose "Validating ServerEndpoint Properties"
+        Assert-AreEqual $serverEndpointName $serverEndpoint2.ServerEndpointName
+        Assert-AreEqual $serverLocalPath $serverEndpoint2.ServerLocalPath
+        Assert-AreEqual $volumeFreeSpacePercent2 $serverEndpoint2.VolumeFreeSpacePercent
+
+        Write-Verbose "Recall ServerEndpoint by Name"
+        Invoke-AzureRmStorageSyncFileRecall -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName  $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
+
+        Write-Verbose "Recall ServerEndpoint by InputObject"
+        Invoke-AzureRmStorageSyncFileRecall -InputObject $serverEndpoint -AsJob | Wait-Job
+
+        Write-Verbose "Recall ServerEndpoint by ResourceId"
+        Invoke-AzureRmStorageSyncFileRecall -ResourceId $serverEndpoint.ResourceId -AsJob | Wait-Job
 
         Write-Verbose "Removing ServerEndpoint: $serverEndpointName"
         Remove-AzureRMStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job

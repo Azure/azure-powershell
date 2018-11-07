@@ -21,22 +21,22 @@ SmokeTest
 function Test-SyncGroup
 {
     # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
          $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by Name"
@@ -82,22 +82,22 @@ SmokeTest
 function Test-NewSyncGroup
 {
    # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
          Write-Verbose "Validating SyncGroup Properties"
@@ -127,22 +127,22 @@ SmokeTest
 function Test-GetSyncGroup
 {
     # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by Name"
@@ -174,22 +174,22 @@ SmokeTest
 function Test-GetSyncGroups
 {
     # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by Name"
@@ -225,22 +225,22 @@ SmokeTest
 function Test-GetSyncGroupParentObject
 {
     # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by ParentObject"
@@ -272,22 +272,22 @@ SmokeTest
 function Test-GetSyncGroupParentResourceId
 {
     # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by ParentResourceId"
@@ -319,22 +319,22 @@ SmokeTest
 function Test-RemoveSyncGroup
 {
      # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
@@ -361,22 +361,22 @@ SmokeTest
 function Test-RemoveSyncGroupInputObject
 {
      # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
@@ -404,22 +404,22 @@ SmokeTest
 function Test-RemoveSyncGroupResourceId
 {
      # Setup
-    $resourceGroupName = Get-StorageManagementTestResourceName;
+    $resourceGroupName = Get-ResourceGroupName
 
     try
     {
         # Test
-        $storageSyncServiceName = Get-StorageManagementTestResourceName
-        $syncGroupName = Get-StorageManagementTestResourceName
+         $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
         $resourceLocation = Get-ProviderLocation ResourceManagement;
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation"
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
-        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
-        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"

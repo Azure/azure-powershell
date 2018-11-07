@@ -169,6 +169,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public const string CloudSeededDataFileShareUriParameter = "Cloud Seeded Data File Share Uri Parameter";
         public const string TierFilesOlderThanDaysParameter = "Tier Files Older Than Days Parameter";
         public const string VolumeFreeSpacePercentParameter = "Volume Free Space Percent Parameter";
+        public const string PatternParameter = "Pattern of the file name";
+        public const string RecallPathParameter = "Recall path which need to be recalled.";
 
         public const string ResourceGroupNameParameter = "Resource Group Name.";
     }

@@ -235,7 +235,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
             client.TenantID = tenantId;
 
-            var objs = client.ServicePrincipals.List();
             if (AzureRmProfileProvider.Instance != null &&
                 AzureRmProfileProvider.Instance.Profile != null &&
                 AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&

@@ -191,6 +191,7 @@
     <Compile Include="RegisteredServer\UnregisterServerCommand.cs" />
     <Compile Include="ServerCertificate\ResetServerCertificateCommand.cs" />
     <Compile Include="ServerEndpoint\GetServerEndpointCommand.cs" />
+    <Compile Include="ServerEndpoint\InvokeStorageSyncFileRecallCommand.cs" />
     <Compile Include="ServerEndpoint\SetServerEndpointCommand.cs" />
     <Compile Include="ServerEndpoint\NewServerEndpointCommand.cs" />
     <Compile Include="ServerEndpoint\RemoveServerEndpointCommand.cs" />
@@ -244,6 +245,9 @@
     <Compile Include="Validations\ValidationResult.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="help\AzureRm.StorageSync.md" />
     <None Include="help\Invoke-AzureRmStorageSyncCompatibilityCheck.md" />
     <None Include="Microsoft.Azure.Commands.StorageSync.Types.ps1xml">
