@@ -75,12 +75,6 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
             ExecuteClientAction(() =>
             {
-                var servicePrincipal = this.StorageSyncClientWrapper.EnsureServicePrincipal();
-
-                if (servicePrincipal == null)
-                {
-                    throw new PSArgumentException("Invalid Service Principal");
-                }
 
                 CheckNameAvailabilityResult checkNameAvailabilityResult = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.CheckNameAvailability(Location.Replace(" ",string.Empty), Name);
 

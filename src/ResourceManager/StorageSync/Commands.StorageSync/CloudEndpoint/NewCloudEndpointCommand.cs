@@ -30,7 +30,7 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
 
-    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(PSCloudEndpoint))]
+    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCloudEndpoint))]
     public class NewCloudEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -169,14 +169,14 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     StorageAccountTenantId = "\"" + (StorageAccountTenantId ?? StorageSyncClientWrapper.AzureContext.Tenant.Id) + "\""
                 };
 
-                if(string.IsNullOrEmpty(createParameters.StorageAccountTenantId))
+                if (string.IsNullOrEmpty(createParameters.StorageAccountTenantId))
                 {
                     throw new PSArgumentException($"Invalid Argument {nameof(StorageAccountTenantId)}", nameof(StorageAccountTenantId));
                 }
 
                 StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
                     ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
-                    StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName,0),
+                    StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
                     SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
                     Name,
                     createParameters);
