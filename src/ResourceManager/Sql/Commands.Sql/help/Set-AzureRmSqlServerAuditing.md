@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StorageAccountSubscriptionIdSet
 Aliases:
 
