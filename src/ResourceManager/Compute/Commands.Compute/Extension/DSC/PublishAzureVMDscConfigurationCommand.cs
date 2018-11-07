@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             ParameterSetName = UploadArchiveParameterSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group that contains the storage account.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

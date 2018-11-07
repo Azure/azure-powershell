@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

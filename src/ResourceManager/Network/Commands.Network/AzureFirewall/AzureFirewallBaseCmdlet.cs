@@ -31,6 +31,14 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        public IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTagClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.AzureFirewallFqdnTags;
+            }
+        }
+
         protected IVirtualNetworksOperations VirtualNetworkClient
         {
             get

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmServiceEndpointPolicyDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a service endpoint policy definition to a specified policy.
 
 ## SYNTAX
 

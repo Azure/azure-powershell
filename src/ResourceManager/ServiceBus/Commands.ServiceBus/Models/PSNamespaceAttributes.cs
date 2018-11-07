@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 if(evResource.Id != null)
                 Id = evResource.Id;
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
+                Tags = new Dictionary<string, string>(evResource.Tags);
             }
         }
 
@@ -80,7 +81,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Provisioning state of the Namespace.
         /// </summary>
-        public string ProvisioningState { get; set; }        
+        public string ProvisioningState { get; set; }
+
 
         /// <summary>
         /// The time the namespace was created.
@@ -95,7 +97,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Endpoint you can use to perform ServiceBus operations.
         /// </summary>
-        public string ServiceBusEndpoint { get; set; }      
+        public string ServiceBusEndpoint { get; set; }
+
+        public Dictionary<string, string> Tags = new Dictionary<string, string>();
         
     }
 }
