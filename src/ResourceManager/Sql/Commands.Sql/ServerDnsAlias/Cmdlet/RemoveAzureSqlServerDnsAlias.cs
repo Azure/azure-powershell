@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
@@ -48,7 +49,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		[Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
 			Mandatory = true,
 			HelpMessage = "The Azure Sql Server name.")]
-		[ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
 		public override string ServerName { get; set; }
 
 		/// <summary>
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 			Mandatory = true,
 			Position = 0,
 			HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
 		[ValidateNotNullOrEmpty]
 		public override string ResourceGroupName { get; set; }
 
