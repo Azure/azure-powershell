@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public SwitchParameter Force { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Web/sites/slots", new string[] { "ResourceGroupName", "Name" })]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "Name")]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
         public override void ExecuteCmdlet()

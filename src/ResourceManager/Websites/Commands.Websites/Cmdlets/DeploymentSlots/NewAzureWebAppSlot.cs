@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Web/sites", new string[] { "ResourceGroupName" })]
+        [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
