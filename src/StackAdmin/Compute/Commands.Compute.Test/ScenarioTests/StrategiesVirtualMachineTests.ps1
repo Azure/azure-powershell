@@ -24,7 +24,7 @@ function Test-SimpleNewVm
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
@@ -52,7 +52,7 @@ function Test-SimpleNewVmWithAvailabilitySet
     try
     {
 		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$vmname = $rgname
 		[string]$asname = $rgname
@@ -97,7 +97,7 @@ function Test-SimpleNewVmWithDefaultDomainName
     try
     {
 		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string] $vmname = "ps9301"
 
@@ -132,7 +132,7 @@ function Test-SimpleNewVmWithDefaultDomainName2
     try
     {
 		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string] $vmname = "vm"
 
@@ -170,7 +170,7 @@ function Test-SimpleNewVmWithAvailabilitySet2
     try
     {
 		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$vmname = "myVM"
 		[string]$asname = "myAvailabilitySet"
@@ -220,7 +220,7 @@ function Test-SimpleNewVmImageName
     try
     {
 		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower()
 
@@ -253,7 +253,7 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
     try
     {
 		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "xsd3490285".tolower()
 
