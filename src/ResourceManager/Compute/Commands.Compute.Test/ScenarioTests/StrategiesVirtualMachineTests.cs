@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithUltraSSD()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmWithUltraSSD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithAccelNet()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmWithAccelNet");

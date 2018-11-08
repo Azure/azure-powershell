@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             ResourceConfig<AvailabilitySet> availabilitySet,
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
-            IList<string> zones)
+            IList<string> zones,
+            bool ultraSSDEnabled)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
+                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -118,7 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
+                            ManagedDisk = engine.GetReference(disk, ultraSSDEnabled ? StorageAccountTypes.UltraSSDLRS : StorageAccountTypes.PremiumLRS),
                         },
                         DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },
