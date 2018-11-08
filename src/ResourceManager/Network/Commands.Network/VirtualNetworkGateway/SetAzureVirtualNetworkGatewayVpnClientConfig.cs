@@ -23,6 +23,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "P2S VpnClient AddressPool")]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientAddressPool { get; set; }
+        public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
             }
             this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();
-            this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+            this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool?.ToList();
 
             if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
                 (this.RadiusServerAddress == null && this.RadiusServerSecret != null))

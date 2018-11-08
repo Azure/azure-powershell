@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
             localnetGateway.ResourceGroupName = this.ResourceGroupName;
             localnetGateway.Location = this.Location;
             localnetGateway.LocalNetworkAddressSpace = new PSAddressSpace();
-            localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
+            localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix?.ToList();
             localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
 
             if (this.PeerWeight < 0)
