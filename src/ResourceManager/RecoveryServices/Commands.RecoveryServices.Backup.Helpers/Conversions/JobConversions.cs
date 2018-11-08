@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 response = GetPSAzureVmJob(serviceClientJob);
             }
+            else if (serviceClientJob.Properties.GetType() == typeof(AzureStorageJob))
+            {
+                response = GetPSAzureFileShareJob(serviceClientJob);
+            }
 
             return response;
         }
@@ -95,29 +99,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
-            DateTime startTime = DateTime.MinValue;
-            if (vmJob.StartTime.HasValue)
-            {
-                response.StartTime = (DateTime)vmJob.StartTime;
-            }
-            else
-            {
-                throw new ArgumentNullException("Job Start Time is null");
-            }
+            response.StartTime = GetJobStartTime(vmJob.StartTime);
             response.EndTime = vmJob.EndTime;
-            response.Duration =
-                vmJob.Duration.HasValue ? (TimeSpan)vmJob.Duration : default(TimeSpan);
+            response.Duration = GetJobDuration(vmJob.Duration);
             response.Status = vmJob.Status;
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = CmdletModel.EnumUtils.GetEnum<CmdletModel.BackupManagementType>(
-                GetPSBackupManagementType(vmJob.BackupManagementType.ToString()));
+            response.BackupManagementType =
+                CmdletModel.ConversionUtils.GetPsBackupManagementType(vmJob.BackupManagementType);
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)
             {
-                response.ErrorDetails = new List<CmdletModel.AzureVmJobErrorInfo>();
+                response.ErrorDetails = new List<CmdletModel.AzureJobErrorInfo>();
                 foreach (var vmError in vmJob.ErrorDetails)
                 {
                     response.ErrorDetails.Add(GetPSAzureVmErrorInfo(vmError));
@@ -157,21 +152,133 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
+        private static CmdletModel.JobBase GetPSAzureFileShareJob(JobResource serviceClientJob)
+        {
+            CmdletModel.AzureFileShareJob response;
+
+            AzureStorageJob fileShareJob = serviceClientJob.Properties as AzureStorageJob;
+
+            if (fileShareJob.ExtendedInfo != null)
+            {
+                response = new CmdletModel.AzureFileShareJobDetails();
+            }
+            else
+            {
+                response = new CmdletModel.AzureFileShareJob();
+            }
+
+            response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
+            response.StartTime = GetJobStartTime(fileShareJob.StartTime);
+            response.EndTime = fileShareJob.EndTime;
+            response.Duration = GetJobDuration(fileShareJob.Duration);
+            response.Status = fileShareJob.Status;
+            response.WorkloadName = fileShareJob.EntityFriendlyName;
+            response.ActivityId = fileShareJob.ActivityId;
+            response.BackupManagementType =
+                CmdletModel.ConversionUtils.GetPsBackupManagementType(fileShareJob.BackupManagementType);
+            response.Operation = fileShareJob.Operation;
+
+            if (fileShareJob.ErrorDetails != null)
+            {
+                response.ErrorDetails = new List<CmdletModel.AzureJobErrorInfo>();
+                foreach (var fileShareError in fileShareJob.ErrorDetails)
+                {
+                    response.ErrorDetails.Add(GetPSAzureFileShareErrorInfo(fileShareError));
+                }
+            }
+
+            // fill extended info if present
+            if (fileShareJob.ExtendedInfo != null)
+            {
+                CmdletModel.AzureFileShareJobDetails detailedResponse =
+                    response as CmdletModel.AzureFileShareJobDetails;
+
+                detailedResponse.DynamicErrorMessage = fileShareJob.ExtendedInfo.DynamicErrorMessage;
+                if (fileShareJob.ExtendedInfo.PropertyBag != null)
+                {
+                    detailedResponse.Properties = new Dictionary<string, string>();
+                    foreach (var key in fileShareJob.ExtendedInfo.PropertyBag.Keys)
+                    {
+                        detailedResponse.Properties.Add(key, fileShareJob.ExtendedInfo.PropertyBag[key]);
+                    }
+                }
+
+                if (fileShareJob.ExtendedInfo.TasksList != null)
+                {
+                    detailedResponse.SubTasks = new List<CmdletModel.AzureFileShareJobSubTask>();
+                    foreach (var fileShareJobTask in fileShareJob.ExtendedInfo.TasksList)
+                    {
+                        detailedResponse.SubTasks.Add(new CmdletModel.AzureFileShareJobSubTask()
+                        {
+                            Name = fileShareJobTask.TaskId,
+                            Status = fileShareJobTask.Status
+                        });
+                    }
+                }
+            }
+
+            return response;
+        }
+
+        private static CmdletModel.AzureJobErrorInfo GetPSAzureFileShareErrorInfo(AzureStorageErrorInfo fileShareError)
+        {
+            CmdletModel.AzureFileShareJobErrorInfo psErrorInfo = new CmdletModel.AzureFileShareJobErrorInfo();
+            psErrorInfo.ErrorCode = GetJobErrorCode(fileShareError.ErrorCode);
+            psErrorInfo.ErrorMessage = fileShareError.ErrorString;
+            if (fileShareError.Recommendations != null)
+            {
+                psErrorInfo.Recommendations = new List<string>();
+                psErrorInfo.Recommendations.AddRange(fileShareError.Recommendations);
+            }
+
+            return psErrorInfo;
+        }
+
+        private static int GetJobErrorCode(int? errorCode)
+        {
+            return errorCode ?? default(int);
+        }
+
+        private static TimeSpan GetJobDuration(TimeSpan? duration)
+        {
+            return duration.HasValue ? (TimeSpan)duration : default(TimeSpan);
+        }
+
+        private static DateTime GetJobStartTime(DateTime? startTime)
+        {
+            if (startTime.HasValue)
+            {
+                return (DateTime)startTime;
+            }
+            else
+            {
+                throw new ArgumentNullException("Job Start Time is null");
+            }
+        }
+
         /// <summary>
         /// Helper function to convert ps azure vm backup job error info from service response.
         /// </summary>
         private static CmdletModel.AzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
             CmdletModel.AzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureVmJobErrorInfo();
-            psErrorInfo.ErrorCode = serviceClientError.ErrorCode ?? default(int);
+            psErrorInfo.ErrorCode = GetJobErrorCode(serviceClientError.ErrorCode);
             psErrorInfo.ErrorMessage = serviceClientError.ErrorString;
-            if (serviceClientError.Recommendations != null)
-            {
-                psErrorInfo.Recommendations = new List<string>();
-                psErrorInfo.Recommendations.AddRange(serviceClientError.Recommendations);
-            }
+            psErrorInfo.Recommendations = GetJobErrorRecommendations(serviceClientError.Recommendations);
 
             return psErrorInfo;
+        }
+
+        private static List<string> GetJobErrorRecommendations(IList<string> recommendations)
+        {
+            if (recommendations != null)
+            {
+                var psRecommendations = new List<string>();
+                psRecommendations.AddRange(recommendations);
+                return psRecommendations;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -184,41 +291,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         #endregion
-
-        #endregion
-
-        #region Enum translators
-
-
-        /// <summary>
-        /// Helper function to get job type from ps backup management type.
-        /// </summary>
-        public static string GetJobTypeForService(
-            CmdletModel.BackupManagementType mgmtType)
-        {
-            switch (mgmtType)
-            {
-                case CmdletModel.BackupManagementType.AzureVM:
-                    return BackupManagementType.AzureIaasVM.ToString();
-                default:
-                    throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
-            }
-        }
-
-        /// <summary>
-        /// Helper function to get ps backup management type from job type.
-        /// </summary>
-        public static string GetPSBackupManagementType(string jobType)
-        {
-            if (jobType == BackupManagementType.AzureIaasVM.ToString())
-            {
-                return CmdletModel.BackupManagementType.AzureVM.ToString();
-            }
-            else
-            {
-                throw new Exception("Invalid JobType provided: " + jobType);
-            }
-        }
 
         #endregion
     }

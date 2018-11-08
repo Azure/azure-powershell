@@ -417,4 +417,7 @@
   <data name="ApplicationWithDisplayNameDoesntExist" xml:space="preserve">
     <value>Application with display name '{0}' does not exist.</value>
   </data>
+  <data name="DefaultEndDateUsed" xml:space="preserve">
+    <value>No value specified for -EndDate parameter; setting the value to one year after start date.</value>
+  </data>
 </root>
