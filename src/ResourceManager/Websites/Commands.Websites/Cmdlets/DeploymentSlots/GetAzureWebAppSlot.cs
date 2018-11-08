@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "Name")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 

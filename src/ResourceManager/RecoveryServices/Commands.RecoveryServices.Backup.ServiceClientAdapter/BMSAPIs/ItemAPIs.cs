@@ -131,15 +131,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public RestAzureNS.AzureOperationResponse TriggerBackup(
             string containerName,
             string itemName,
-            DateTime? expiryDateTimeUtc,
+            BackupRequestResource triggerBackupRequest,
             string vaultName = null,
             string resourceGroupName = null)
         {
-            BackupRequestResource triggerBackupRequest = new BackupRequestResource();
-            IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
-            iaasVmBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTimeUtc;
-            triggerBackupRequest.Properties = iaasVmBackupRequest;
-
             return BmsAdapter.Client.Backups.TriggerWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),

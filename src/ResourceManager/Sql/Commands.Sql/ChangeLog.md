@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
 
 ## Version 4.11.5
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription
+* Fixed issue where Tags were not being added correctly in New-AzureRmSqlDatabaseCopy 
 
 ## Version 4.11.3
 * Fixed issue with default resource groups not being set.
