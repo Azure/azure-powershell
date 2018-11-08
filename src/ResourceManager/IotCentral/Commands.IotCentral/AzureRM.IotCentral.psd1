@@ -63,7 +63,7 @@ RequiredAssemblies = @('.\Microsoft.Azure.Management.IotCentral.dll')
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = '.\Microsoft.Azure.Commands.IotCentral.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.IotCentral.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.IotCentral.dll')

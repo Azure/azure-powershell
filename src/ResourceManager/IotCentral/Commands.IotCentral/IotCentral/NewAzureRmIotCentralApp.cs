@@ -83,12 +83,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                var inputs = new OperationInputs(this.Name, "IotApps");
-                var availabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(inputs);
-                if (!(availabilityInfo.NameAvailable == true))
-                {
-                    throw new PSArgumentException(availabilityInfo.Message);
-                }
+                this.CheckNameAvailability();
+                this.CheckSubdomainAvailability();
+
                 var iotCentralApp = new App()
                 {
                     DisplayName = this.GetDisplayName(),
@@ -104,6 +101,28 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(createdIotCentralApp), false);
             }
 
+        }
+
+        private void CheckNameAvailability()
+        {
+            var checkNameInputs = new OperationInputs(this.Name, "IoTApps");
+            var nameAvailabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(checkNameInputs);
+            this.CheckAvailability(nameAvailabilityInfo);
+        }
+
+        private void CheckSubdomainAvailability()
+        {
+            var checkSubdomainInputs = new OperationInputs(this.Subdomain, "IoTApps");
+            var subdomainAvailabilityInfo = this.IotCentralClient.Apps.CheckSubdomainAvailability(checkSubdomainInputs);
+            this.CheckAvailability(subdomainAvailabilityInfo);
+        }
+
+        private void CheckAvailability(AppAvailabilityInfo availabilityInfo)
+        {
+            if (!(availabilityInfo.NameAvailable == true))
+            {
+                throw new PSArgumentException(availabilityInfo.Message);
+            }
         }
 
         private IDictionary<string, string> GetTags()
