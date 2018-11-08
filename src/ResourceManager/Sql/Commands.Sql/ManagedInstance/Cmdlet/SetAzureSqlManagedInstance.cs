@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Position = 0,
             HelpMessage = "The name of the instance.")]
         [Alias("InstanceName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

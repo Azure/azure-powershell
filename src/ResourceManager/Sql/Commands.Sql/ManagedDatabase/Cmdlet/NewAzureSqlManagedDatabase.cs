@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             HelpMessage = "The name of the instance database to create.")]
         [Alias("InstanceDatabaseName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the instance.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
 
