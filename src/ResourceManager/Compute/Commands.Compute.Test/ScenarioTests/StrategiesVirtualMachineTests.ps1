@@ -33,6 +33,41 @@ function Test-SimpleNewVm
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
+		Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+
+        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        Assert-NotNull $nic
+        Assert-False { $nic.EnableAcceleratedNetworking }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm with ultraSSD
+#>
+function Test-SimpleNewVmWithUltraSSD
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EnableUltraSSD
+
+        Assert-AreEqual $vmname $x.Name;
+        Assert-Null $x.Identity
+		Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
 
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
