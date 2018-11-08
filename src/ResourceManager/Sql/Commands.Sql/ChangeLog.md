@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
 
 ## Version 4.11.5
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription

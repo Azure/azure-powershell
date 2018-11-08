@@ -135,10 +135,18 @@ namespace Microsoft.Azure.Commands.Network
 
                 // VirtualNetwork Peering
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteAddressSpace,
+                        opt => opt.MapFrom(src => src.RemoteVirtualNetworkAddressSpace)
+                    );
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>();
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteVirtualNetworkAddressSpace,
+                        opt => opt.MapFrom(src => src.RemoteAddressSpace)
+                    );
 
                 // VirtualNetwork
                 // CNM to MNM
@@ -539,6 +547,24 @@ namespace Microsoft.Azure.Commands.Network
                         dest.DestinationAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.DestinationAddressPrefixes) ? src.DestinationAddressPrefixes : (!string.IsNullOrWhiteSpace(src.DestinationAddressPrefix) ? new List<string> { src.DestinationAddressPrefix } : new List<string>());
                     });
 
+                // ExpressRoutePortsLocation
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRoutePortsLocation, MNM.ExpressRoutePortsLocation>();                
+                cfg.CreateMap<CNM.PSExpressRoutePortsLocationBandwidths, MNM.ExpressRoutePortsLocationBandwidths>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRoutePortsLocation, CNM.PSExpressRoutePortsLocation>();
+                cfg.CreateMap<MNM.ExpressRoutePortsLocationBandwidths, CNM.PSExpressRoutePortsLocationBandwidths>();
+
+                // ExpressRoutePort
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRoutePort, MNM.ExpressRoutePort>();
+                cfg.CreateMap<CNM.PSExpressRouteLink, MNM.ExpressRouteLink>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRoutePort, CNM.PSExpressRoutePort>();
+                cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
+
                 // ExpressRouteCircuit
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuit, MNM.ExpressRouteCircuit>();
@@ -703,6 +729,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayConnectionDraining, MNM.ApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallDisabledRuleGroup, MNM.ApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallExclusion, MNM.ApplicationGatewayFirewallExclusion>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAvailableWafRuleSetsResult, MNM.ApplicationGatewayAvailableWafRuleSetsResult>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallRule, MNM.ApplicationGatewayFirewallRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallRuleGroup, MNM.ApplicationGatewayFirewallRuleGroup>();
@@ -710,6 +737,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayAvailableSslOptions, MNM.ApplicationGatewayAvailableSslOptions>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPredefinedPolicy, MNM.ApplicationGatewaySslPredefinedPolicy>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAutoscaleConfiguration, MNM.ApplicationGatewayAutoscaleConfiguration>();
+                cfg.CreateMap<CNM.PSApplicationGatewayCustomError, MNM.ApplicationGatewayCustomError>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
@@ -748,6 +776,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayConnectionDraining, CNM.PSApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallDisabledRuleGroup, CNM.PSApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
+                cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallExclusion>();
                 cfg.CreateMap<MNM.ApplicationGatewayAvailableWafRuleSetsResult, CNM.PSApplicationGatewayAvailableWafRuleSetsResult>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallRule, CNM.PSApplicationGatewayFirewallRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallRuleGroup, CNM.PSApplicationGatewayFirewallRuleGroup>();
@@ -755,6 +784,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayAvailableSslOptions, CNM.PSApplicationGatewayAvailableSslOptions>();
                 cfg.CreateMap<MNM.ApplicationGatewaySslPredefinedPolicy, CNM.PSApplicationGatewaySslPredefinedPolicy>();
                 cfg.CreateMap<MNM.ApplicationGatewayAutoscaleConfiguration, CNM.PSApplicationGatewayAutoscaleConfiguration>();
+                cfg.CreateMap<MNM.ApplicationGatewayCustomError, CNM.PSApplicationGatewayCustomError>();
 
                 // Application Security Groups
                 // CNM to MNM
@@ -849,6 +879,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallNatRCAction, CNM.PSAzureFirewallNatRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
+
+                // Azure Firewall FQDN Tags
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureFirewallFqdnTag, MNM.AzureFirewallFqdnTag>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
 
                 // Interface endpoint
                 // CNM to MNM
