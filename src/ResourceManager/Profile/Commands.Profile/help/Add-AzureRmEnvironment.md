@@ -90,6 +90,7 @@ ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
 
 In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
+```
 
 ## PARAMETERS
 
