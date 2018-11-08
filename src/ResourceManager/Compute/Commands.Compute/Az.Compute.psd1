@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -175,7 +175,14 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
     'Export-AzLogAnalyticThrottledRequests', 
     'Repair-AzVmssServiceFabricUpdateDomain', 
     'New-AzVMDataDisk', 'Update-AzVmssVM',
-    'New-AzVmssIpTagConfig', 'Invoke-AzVmssVMRunCommand'
+    'New-AzVmssIpTagConfig', 'Invoke-AzVmssVMRunCommand',
+    'New-AzGallery', 'Update-AzGallery',
+    'Get-AzGallery', 'Remove-AzGallery',
+    'New-AzGalleryImageDefinition', 'Update-AzGalleryImageDefinition',
+    'Get-AzGalleryImageDefinition', 'Remove-AzGalleryImageDefinition',
+    'New-AzGalleryImageVersion', 'Update-AzGalleryImageVersion',
+    'Get-AzGalleryImageVersion', 'Remove-AzGalleryImageVersion',
+    'Add-AzVmssVMDataDisk', 'Remove-AzVmssVMDataDisk'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -213,7 +220,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
+        ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
         # Prerelease string of this module
         # Prerelease = ''

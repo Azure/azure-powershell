@@ -49,8 +49,14 @@ foreach($RMPath in $resourceManagerPaths)
     foreach ($RMFolder in $resourceManagerFolders)
     {
         $psd1 = Get-ChildItem -Path $RMFolder.FullName -Filter "$($RMFolder.Name).psd1"
+        if ($null -eq $psd1)
+        {
+            Write-Host "Could not find .psd1 file in folder $RMFolder"
+            continue
+        }
+
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
-        
+
         $acceptedDlls = @()
 
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
@@ -64,7 +70,7 @@ foreach($RMPath in $resourceManagerPaths)
         {
             $acceptedDlls += $assembly.Split("\")[-1]
         }
-        
+
         Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
         $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("Assemblies") }
         $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }

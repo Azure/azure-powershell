@@ -33,6 +33,11 @@ function Test-Disk
         $access = 'Read';
 
         # Config create test
+        $diskconfig = New-AzureRmDiskConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
+        Assert-AreEqual "UltraSSD_LRS" $diskconfig.Sku.Name;
+        Assert-AreEqual 500 $diskconfig.DiskIOPSReadWrite;
+        Assert-AreEqual 8 $diskconfig.DiskMBpsReadWrite
+
         $diskconfig = New-AzureRmDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
         # Encryption test
         $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mockkey -SourceVaultId $mocksourcevault;
@@ -83,6 +88,11 @@ function Test-Disk
         Verify-PSOperationStatusResponse $st;
 
         # Config update test
+        $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType UltraSSD_LRS -OsType Windows -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
+        Assert-AreEqual "UltraSSD_LRS" $updateconfig.Sku.Name;
+        Assert-AreEqual 500 $updateconfig.DiskIOPSReadWrite;
+        Assert-AreEqual 8 $updateconfig.DiskMBpsReadWrite
+
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
         $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;

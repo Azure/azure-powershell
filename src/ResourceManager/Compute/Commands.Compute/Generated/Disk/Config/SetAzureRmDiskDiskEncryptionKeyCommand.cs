@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.Disk.EncryptionSettings == null)
                 {
-                    this.Disk.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.Disk.EncryptionSettings = new EncryptionSettings();
                 }
                 // DiskEncryptionKey
                 if (this.Disk.EncryptionSettings.DiskEncryptionKey == null)
                 {
-                    this.Disk.EncryptionSettings.DiskEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference();
+                    this.Disk.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 this.Disk.EncryptionSettings.DiskEncryptionKey.SecretUrl = this.SecretUrl;
             }
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.Disk.EncryptionSettings == null)
                 {
-                    this.Disk.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.Disk.EncryptionSettings = new EncryptionSettings();
                 }
                 // DiskEncryptionKey
                 if (this.Disk.EncryptionSettings.DiskEncryptionKey == null)
                 {
-                    this.Disk.EncryptionSettings.DiskEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference();
+                    this.Disk.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 // SourceVault
                 if (this.Disk.EncryptionSettings.DiskEncryptionKey.SourceVault == null)
                 {
-                    this.Disk.EncryptionSettings.DiskEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                    this.Disk.EncryptionSettings.DiskEncryptionKey.SourceVault = new SourceVault();
                 }
                 this.Disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }

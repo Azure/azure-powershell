@@ -35,9 +35,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.Backup.3.0.0-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.Backup.3.0.1-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureFileShareModels\AzureFileShareContainer.cs" />
+    <Compile Include="AzureFileShareModels\AzureFileSharePolicy.cs" />
+    <Compile Include="AzureFileShareModels\AzureFileShareItem.cs" />
+    <Compile Include="AzureFileShareModels\AzureFileShareRecoveryPoint.cs" />
+    <Compile Include="AzureFileShareModels\AzureFileShareJob.cs" />
+    <Compile Include="AzureModels\AzureContainer.cs" />
+    <Compile Include="AzureModels\AzureItem.cs" />
+    <Compile Include="AzureModels\AzureJob.cs" />
+    <Compile Include="AzureModels\AzurePolicy.cs" />
+    <Compile Include="AzureModels\AzureRecoveryPoint.cs" />
     <Compile Include="AzureSqlModels\AzureSqlContainer.cs" />
     <Compile Include="AzureSqlModels\AzureSqlItem.cs" />
     <Compile Include="AzureSqlModels\AzureSqlPolicy.cs" />
@@ -92,5 +102,6 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
