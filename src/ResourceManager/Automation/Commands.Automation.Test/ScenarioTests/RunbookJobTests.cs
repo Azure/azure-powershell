@@ -17,6 +17,7 @@ namespace Commands.Automation.Test
     using Microsoft.Azure.Commands.Automation.Test;
     using Microsoft.Azure.ServiceManagemenet.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using System.IO;
     using Xunit;
 
     public class RunbookJobTests : AutomationScenarioTestsBase
@@ -31,7 +32,7 @@ namespace Commands.Automation.Test
 
         [Fact]
         [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRunbookGraph()
         {
             // Write PS Function and call it here
@@ -40,26 +41,29 @@ namespace Commands.Automation.Test
 
         [Fact]
         [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportRunbookPowerShell()
         {
-            RunPowerShellTest(_logger, "Test-ImportRunbookPowerShell -Name TestRunbook-PowerShellScript -RunbookPath ScenarioTests\\Resources\\RB-PowerShellScriptTutorial.ps1");
+            string runbookPath = Path.Combine("ScenarioTests", "Resources", "RB-PowerShellScriptTutorial.ps1");
+            RunPowerShellTest(_logger, string.Format("Test-ImportRunbookPowerShell -Name TestRunbook-PowerShellScript -RunbookPath {0}", runbookPath));
         }
 
         [Fact]
         [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportAndDeleteRunbookGraphical()
         {
-            RunPowerShellTest(_logger, "Test-ImportAndDeleteRunbookGraphical -Name TestRunbook-Grapical -RunbookPath ScenarioTests\\Resources\\RB-GraphTutorial.graphrunbook");
+            string runbookPath = Path.Combine("ScenarioTests", "Resources", "RB-GraphTutorial.graphrunbook");
+            RunPowerShellTest(_logger, string.Format("Test-ImportAndDeleteRunbookGraphical -Name TestRunbook-Grapical -RunbookPath {0}", runbookPath));
         }
 
         [Fact(Skip = "Failed output record causes JSON convert exception in Travis run.")]
         [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateJobAndGetOutputPowerShellScript()
         {
-            RunPowerShellTest(_logger, "Test-CreateJobAndGetOutputPowerShellScript -Name TestRunbook-PSScript-JobAndOutput -RunbookPath ScenarioTests\\Resources\\RB-PowerShellScriptTutorial.ps1");
+            string runbookPath = Path.Combine("ScenarioTests", "Resources", "RB-PowerShellScriptTutorial.ps1");
+            RunPowerShellTest(_logger, string.Format("Test-CreateJobAndGetOutputPowerShellScript -Name TestRunbook-PSScript-JobAndOutput -RunbookPath {0}", runbookPath));
         }
     }
 }
