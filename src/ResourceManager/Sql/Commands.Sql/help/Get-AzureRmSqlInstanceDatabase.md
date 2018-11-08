@@ -137,7 +137,9 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceObject
-The instance object to use for getting instance database```yaml
+The instance object to use for getting instance database
+
+```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: GetInstanceDatabaseFromInstanceObject
 Aliases: ParentObject

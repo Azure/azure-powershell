@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             HelpMessage = "The instance database name to restore.")]
         [Alias("InstanceDatabaseName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -99,6 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the instance.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
 
@@ -176,6 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target instance to restore to. If not specified, the target instance is the same as the source instance.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         public string TargetInstanceName { get; set; }
 
         /// <summary>
@@ -190,6 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target resource group to restore to. If not specified, the target resource group is the same as the source resource group.")]
+        [ResourceGroupCompleter]
         public string TargetResourceGroupName { get; set; }
 
         /// <summary>
