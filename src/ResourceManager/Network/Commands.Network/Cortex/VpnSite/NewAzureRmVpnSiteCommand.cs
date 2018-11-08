@@ -60,12 +60,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
+        [ResourceGroupCompleter]
         public string VirtualWanResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualWans", "VirtualWanResourceGroupName")]
         public string VirtualWanName { get; set; }
 
         [Parameter(

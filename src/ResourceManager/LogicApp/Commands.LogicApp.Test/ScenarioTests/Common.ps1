@@ -135,8 +135,8 @@ function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflow
 
 	TestSetup-CreateAppServicePlan $resourceGroupName $AppServicePlan
 
-	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path "Resources" "TestSimpleWorkflowParameter.json"
 	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     return $workflow
 }

@@ -83,6 +83,9 @@ Adds a rule configuration to a load balancer.
 ### [Add-AzureRmNetworkInterfaceIpConfig](Add-AzureRmNetworkInterfaceIpConfig.md)
 Adds a network interface IP configuration to a network interface.
 
+### [Add-AzureRmNetworkInterfaceTapConfig](Add-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
+
 ### [Add-AzureRmNetworkSecurityRuleConfig](Add-AzureRmNetworkSecurityRuleConfig.md)
 Adds a network security rule configuration to a network security group.
 
@@ -221,6 +224,9 @@ Gets usage statistics of an ExpressRoute circuit.
 ### [Get-AzureRmExpressRouteServiceProvider](Get-AzureRmExpressRouteServiceProvider.md)
 Gets a list ExpressRoute service providers and their attributes.
 
+### [Get-AzureRmFirewall](Get-AzureRmFirewall.md)
+Gets a Azure Firewall.
+
 ### [Get-AzureRmLoadBalancer](Get-AzureRmLoadBalancer.md)
 Gets a load balancer.
 
@@ -253,6 +259,12 @@ Gets a network interface.
 
 ### [Get-AzureRmNetworkInterfaceIpConfig](Get-AzureRmNetworkInterfaceIpConfig.md)
 Gets a network interface IP configuration for a network interface.
+
+### [Get-AzureRmNetworkProfile](Get-AzureRmNetworkProfile.md)
+Gets an existing network profile top level resource
+
+### [Get-AzureRmNetworkInterfaceTapConfig](Get-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmNetworkSecurityGroup](Get-AzureRmNetworkSecurityGroup.md)
 Gets a network security group.
@@ -314,17 +326,17 @@ Gets routes from a route table.
 ### [Get-AzureRmRouteTable](Get-AzureRmRouteTable.md)
 Gets route tables.
 
-### [Get-AzureRmVirtualHub](Get-AzureRmVirtualHub.md)
-Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
-
-### [Get-AzureRmVirtualHubVnetConnection](Get-AzureRmVirtualHubVnetConnection.md)
-Gets a Virtual Network Connection in a virtual hub or lists all virtual network connections in a virtual hub.
-
 ### [Get-AzureRmServiceEndpointPolicy](Get-AzureRmServiceEndpointPolicy.md)
 {{Fill in the Synopsis}}
 
 ### [Get-AzureRmServiceEndpointPolicyDefinition](Get-AzureRmServiceEndpointPolicyDefinition.md)
 {{Fill in the Synopsis}}
+
+### [Get-AzureRmVirtualHub](Get-AzureRmVirtualHub.md)
+Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
+
+### [Get-AzureRmVirtualHubVnetConnection](Get-AzureRmVirtualHubVnetConnection.md)
+Gets a Virtual Network Connection in a virtual hub or lists all virtual network connections in a virtual hub.
 
 ### [Get-AzureRmVirtualNetwork](Get-AzureRmVirtualNetwork.md)
 Gets a virtual network in a resource group.
@@ -361,6 +373,9 @@ Gets the virtual network peering.
 
 ### [Get-AzureRmVirtualNetworkSubnetConfig](Get-AzureRmVirtualNetworkSubnetConfig.md)
 Gets a subnet in a virtual network.
+
+### [Get-AzureRmVirtualNetworkTap](Get-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
@@ -470,6 +485,12 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
+### [New-AzureRmContainerNicConfig](New-AzureRmContainerNicConfig.md)
+Creates a new container network interface configuration object.
+
+### [New-AzureRmContainerNicConfigIpConfig](New-AzureRmContainerNicConfigIpConfig.md)
+Creates a container nic configuration ip configuration object.
+
 ### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
 Creates a DDoS protection plan.
 
@@ -481,6 +502,21 @@ Creates an ExpressRoute circuit authorization.
 
 ### [New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
+
+### [New-AzureRmFirewall](New-AzureRmFirewall.md)
+Creates a new Firewall in a resource group.
+
+### [New-AzureRmFirewallApplicationRule](New-AzureRmFirewallApplicationRule.md)
+Creates a Firewall Application Rule.
+
+### [New-AzureRmFirewallApplicationRuleCollection](New-AzureRmFirewallApplicationRuleCollection.md)
+Creates a collection of Firewall application rules.
+
+### [New-AzureRmFirewallNetworkRule](New-AzureRmFirewallNetworkRule.md)
+Creates a Firewall Network Rule.
+
+### [New-AzureRmFirewallNetworkRuleCollection](New-AzureRmFirewallNetworkRuleCollection.md)
+Creates a Azure Firewall Network Collection of Network rules.
 
 ### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
 Creates an IPSec Policy.
@@ -517,6 +553,9 @@ Creates a network interface.
 
 ### [New-AzureRmNetworkInterfaceIpConfig](New-AzureRmNetworkInterfaceIpConfig.md)
 Creates a network interface IP configuration.
+
+### [New-AzureRmNetworkProfile](New-AzureRmNetworkProfile.md)
+Creates a new network profile.
 
 ### [New-AzureRmNetworkSecurityGroup](New-AzureRmNetworkSecurityGroup.md)
 Creates a network security group.
@@ -560,6 +599,12 @@ Creates a route filter rule for a route filter.
 ### [New-AzureRmRouteTable](New-AzureRmRouteTable.md)
 Creates a route table.
 
+### [New-AzureRmServiceEndpointPolicy](New-AzureRmServiceEndpointPolicy.md)
+{{Fill in the Synopsis}}
+
+### [New-AzureRmServiceEndpointPolicyDefinition](New-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
+
 ### [New-AzureRmVirtualHub](New-AzureRmVirtualHub.md)
 Creates an Azure VirtualHub resource.
 
@@ -571,12 +616,6 @@ Creates an Azure Virtual Hub Route Table object.
 
 ### [New-AzureRmVirtualHubVnetConnection](New-AzureRmVirtualHubVnetConnection.md)
 The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection resource that peers a Virtual Network to the Azure Virtual Hub.
-
-### [New-AzureRmServiceEndpointPolicy](New-AzureRmServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
-
-### [New-AzureRmServiceEndpointPolicyDefinition](New-AzureRmServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
 
 ### [New-AzureRmVirtualNetwork](New-AzureRmVirtualNetwork.md)
 Creates a virtual network.
@@ -592,6 +631,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
+
+### [New-AzureRmVirtualNetworkTap](New-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
 
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
 Creates an Azure Virtual WAN.
@@ -690,6 +732,9 @@ Removes an ExpressRoute circuit connection configuration.
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
 
+### [Remove-AzureRmFirewall](Remove-AzureRmFirewall.md)
+Remove a Firewall.
+
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
 
@@ -722,6 +767,12 @@ Removes a network interface.
 
 ### [Remove-AzureRmNetworkInterfaceIpConfig](Remove-AzureRmNetworkInterfaceIpConfig.md)
 Removes a network interface IP configuration from a network interface.
+
+### [Remove-AzureRmNetworkProfile](Remove-AzureRmNetworkProfile.md)
+Removes a network profile.
+
+### [Remove-AzureRmNetworkInterfaceTapConfig](Remove-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmNetworkSecurityGroup](Remove-AzureRmNetworkSecurityGroup.md)
 Removes a network security group.
@@ -756,17 +807,17 @@ Removes a route from a route table.
 ### [Remove-AzureRmRouteTable](Remove-AzureRmRouteTable.md)
 Removes a route table.
 
-### [Remove-AzureRmVirtualHub](Remove-AzureRmVirtualHub.md)
-Removes an Azure VirtualHub resource.
-
-### [Remove-AzureRmVirtualHubVnetConnection](Remove-AzureRmVirtualHubVnetConnection.md)
-The Remove-AzureRmVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Connection which peers a remote VNET to the hub VNET.
-
 ### [Remove-AzureRmServiceEndpointPolicy](Remove-AzureRmServiceEndpointPolicy.md)
 {{Fill in the Synopsis}}
 
 ### [Remove-AzureRmServiceEndpointPolicyDefinition](Remove-AzureRmServiceEndpointPolicyDefinition.md)
 {{Fill in the Synopsis}}
+
+### [Remove-AzureRmVirtualHub](Remove-AzureRmVirtualHub.md)
+Removes an Azure VirtualHub resource.
+
+### [Remove-AzureRmVirtualHubVnetConnection](Remove-AzureRmVirtualHubVnetConnection.md)
+The Remove-AzureRmVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Connection which peers a remote VNET to the hub VNET.
 
 ### [Remove-AzureRmVirtualNetwork](Remove-AzureRmVirtualNetwork.md)
 Removes a virtual network.
@@ -788,6 +839,9 @@ Removes a virtual network peering.
 
 ### [Remove-AzureRmVirtualNetworkSubnetConfig](Remove-AzureRmVirtualNetworkSubnetConfig.md)
 Removes a subnet configuration from a virtual network.
+
+### [Remove-AzureRmVirtualNetworkTap](Remove-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
 Removes an Azure Virtual WAN.
@@ -882,6 +936,9 @@ Modifies an ExpressRoute circuit.
 ### [Set-AzureRmExpressRouteCircuitPeeringConfig](Set-AzureRmExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
 
+### [Set-AzureRmFirewall](Set-AzureRmFirewall.md)
+Saves a modified Firewall.
+
 ### [Set-AzureRmLoadBalancer](Set-AzureRmLoadBalancer.md)
 Sets the goal state for a load balancer.
 
@@ -911,6 +968,12 @@ Sets the goal state for a network interface.
 
 ### [Set-AzureRmNetworkInterfaceIpConfig](Set-AzureRmNetworkInterfaceIpConfig.md)
 Sets the goal state for an Azure network interface IP configuration.
+
+### [Set-AzureRmNetworkProfile](Set-AzureRmNetworkProfile.md)
+Sets the goal state for an existing network profile
+
+### [Set-AzureRmNetworkInterfaceTapConfig](Set-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
 
 ### [Set-AzureRmNetworkSecurityGroup](Set-AzureRmNetworkSecurityGroup.md)
 Sets the goal state for a network security group.
@@ -972,6 +1035,9 @@ Configures a virtual network peering.
 ### [Set-AzureRmVirtualNetworkSubnetConfig](Set-AzureRmVirtualNetworkSubnetConfig.md)
 Configures the goal state for a subnet configuration in a virtual network.
 
+### [Set-AzureRmVirtualNetworkTap](Set-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
+
 ### [Set-AzureRmVpnClientIpsecParameter](Set-AzureRmVpnClientIpsecParameter.md)
 Sets the vpn ipsec parameters for existing virtual network gateway.
 
@@ -1019,3 +1085,4 @@ Update-AzureRmVpnGateway updates a scalable VPN Gateway to the appropriate goal 
 
 ### [Update-AzureRmVpnSite](Update-AzureRmVpnSite.md)
 Updates a VpnSite representing a customer branch to an intended goal state.
+
