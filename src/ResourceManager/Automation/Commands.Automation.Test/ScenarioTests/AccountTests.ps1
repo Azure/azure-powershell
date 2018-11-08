@@ -33,6 +33,14 @@ function CleanupExistingTestAccount
 	}
 }
 
+function CreateResourceGroup
+{
+	$check = Get-AzureRmResourceGroup -Name $existingResourceGroup -Location $location -ErrorAction SilentlyContinue
+	if ($null -eq $check)
+	{
+		New-AzureRmResourceGroup -Name $existingResourceGroup -Location $location -Force
+	}
+}
 <#
 .SYNOPSIS
 Create Test Automation Account
@@ -49,6 +57,7 @@ Tests Runbook with Parameters
 function Test-GetAutomationAccounts
 {
 	# setup
+	CreateResourceGroup
 	CleanupExistingTestAccount
 
 	# get all accounts
@@ -76,6 +85,7 @@ Tests of Start and Stop RunBook
 function Test-AutomationAccountTags
 {
     # setup
+	CreateResourceGroup
 	CleanupExistingTestAccount
 	$newAutomationAccount = CreateTestAccount
 	Assert-AreEqual $newAutomationAccount.Tags.Count 0 "Unexpected Tag Counts"
