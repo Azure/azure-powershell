@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.4.0'
+    ModuleVersion     = '0.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -135,42 +135,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 	            * Get-AzsStorageSubSystem
             * Unsupported cmdlet
 	            * Get-AzsInfrastructureVolume
-            
-            ## 2018.9.10
-            * New Module dependencies
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * New cmdlet
-                * Add-AzsScaleUnitNode
-                * New-AzsScaleUnitNodeObject
-            * Support handling names of nested resources
-                * Add-AzsScaleUnitNode
-                * Disable-AzsScaleUnitNode
-                * Enable-AzsScaleUnitNode
-                * Get-AzsEdgeGateway
-                * Get-AzsEdgeGatewayPool
-                * Get-AzsInfrastructureRole
-                * Get-AzsInfrastructureRoleInstance
-                * Get-AzsInfrastructureShare
-                * Get-AzsInfrastructureVolume
-                * Get-AzsIpPool
-                * Get-AzsLogicalNetwork
-                * Get-AzsLogicalSubnet
-                * Get-AzsMacAddressPool
-                * Get-AzsScaleUnit
-                * Get-AzsScaleUnitNode
-                * Get-AzsSlbMuxInstance
-                * Get-AzsStoragePool
-                * Get-AzsStorageSystem
-                * Repair-AzsScaleUnitNode
-                * Restart-AzsInfrastructureRole
-                * Restart-AzsInfrastructureRoleInstance
-                * Start-AzsInfrastructureRoleInstance
-                * Start-AzsScaleUnitNode
-                * Stop-AzsInfrastructureRoleInstance
-                * Stop-AzsScaleUnitNode
-            * Bug fixes
-                * Handle ErrrorAction correctly now
             '
 
         } # End of PSData hashtable

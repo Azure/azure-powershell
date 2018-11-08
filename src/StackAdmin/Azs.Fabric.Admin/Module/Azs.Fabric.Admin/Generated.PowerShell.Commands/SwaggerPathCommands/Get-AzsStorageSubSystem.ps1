@@ -36,13 +36,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Get-AzsStorageSubSystem
+    PS C:\> Get-AzsStorageSubSystem -ScaleUnit S-Cluster
 
     Get all storage subsystems from a location.
 
 .EXAMPLE
 
-    PS C:\> Get-AzsStorageSubSystem -Name S-Cluster.azurestack.local
+    PS C:\> Get-AzsStorageSubSystem -ScaleUnit S-Cluster -Name S-Cluster.azurestack.local
 
     Get a storage subsystem given a location and name.
 

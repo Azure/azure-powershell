@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns a list of all storage drives at a location.
+    Returns a list of all storage drives for a given cluster.
 
 .DESCRIPTION
-    Returns a list of all storage drives at a location.
+    Returns a list of all storage drives for a given cluster.
 
 .PARAMETER Name
     Name of the storage drive.
@@ -41,13 +41,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     PS C:\> Get-AzsDrive -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local
 
-    Get a list of all storage drives at a given location.
+    Get a list of all storage drives for a given cluster.
 
 .EXAMPLE
 
     PS C:\> Get-AzsDrive -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name a654528c-60bb-18e1-457c-51b7cdb7e14a
 
-    Get a storage drive by name at a given location.
+    Get a storage drive by name for a given cluster.
 
 #>
 function Get-AzsDrive {
