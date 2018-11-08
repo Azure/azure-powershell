@@ -14,28 +14,38 @@
 
 using System;
 using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
-    /// The base class for Azure Sql Database auditing settings Management Cmdlets
+    /// The base class for Azure SQL server auditing settings Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingSettingsCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseBlobAuditingSettingsModel, SqlAuditAdapter>
+    public abstract class SqlServerAuditingSettingsCmdletBase : AzureSqlCmdletBase<ServerBlobAuditingSettingsModel, SqlAuditAdapter>
     {
+        /// <summary>
+        /// Gets or sets the name of the SQL server to use.
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL server name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseBlobAuditingSettingsModel GetEntity()
+        protected override ServerBlobAuditingSettingsModel GetEntity()
         {
-            DatabaseBlobAuditingSettingsModel model;
-            ModelAdapter.GetDatabaseBlobAuditingPolicyV2(ResourceGroupName, ServerName, DatabaseName, out model);
+            ServerBlobAuditingSettingsModel model = new ServerBlobAuditingSettingsModel();
+            ModelAdapter.GetServerBlobAuditingPolicy(ResourceGroupName, ServerName, model);
             return model;
         }
 
@@ -53,20 +63,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseBlobAuditingSettingsModel PersistChanges(DatabaseBlobAuditingSettingsModel model)
+        /// <param name="baseModel">The model object with the data to be sent to the REST endpoints</param>
+        protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel baseModel)
         {
-            if (Array.IndexOf(model.AuditActionGroup, AuditActionGroups.AUDIT_CHANGE_GROUP) > -1)
+            if (Array.IndexOf(baseModel.AuditActionGroup, AuditActionGroups.AUDIT_CHANGE_GROUP) > -1)
             {
                 // AUDIT_CHANGE_GROUP is not supported.
                 WriteWarning(Resources.auditChangeGroupDeprecationMessage);
 
                 // Remove it
-                model.AuditActionGroup = model.AuditActionGroup.Where(v => v != AuditActionGroups.AUDIT_CHANGE_GROUP).ToArray();
+                baseModel.AuditActionGroup = baseModel.AuditActionGroup.Where(v => v != AuditActionGroups.AUDIT_CHANGE_GROUP).ToArray();
             }
 
-            ModelAdapter.SetDatabaseBlobAuditingPolicyV2(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
-           
+            ModelAdapter.SetServerAuditingPolicy(baseModel, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+          
             return null;
         }
     }
