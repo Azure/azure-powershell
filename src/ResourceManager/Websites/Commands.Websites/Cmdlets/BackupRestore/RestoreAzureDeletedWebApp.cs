@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = true, HelpMessage = "The name of the deleted Azure Web App.")]
+        [ResourceNameCompleter("Microsoft.Web/deletedSites", "ResourceGroupName")]
         public string Name { get; set; }
 
         [Parameter(Position = 2, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The deleted Azure Web App slot.")]
