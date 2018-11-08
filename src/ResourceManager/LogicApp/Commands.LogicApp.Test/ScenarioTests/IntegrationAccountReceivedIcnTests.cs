@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountReceivedIcnWithoutAgreementType()
+        public void TestGetIAReceivedIcnWithoutAgreementType()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountReceivedIcn-NoAgreementType");
         }

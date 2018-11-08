@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     using Xunit;
 
     public class GatewayScenarioTests
-    {   
+    {
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
         [Fact]

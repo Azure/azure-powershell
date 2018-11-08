@@ -38,9 +38,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRmDiagnosticSetting()
+        public void TestSetAzureRmDiagnosticSettingCreate()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSettingCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmDiagnosticSettingUpdate()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSettingUpdate");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
