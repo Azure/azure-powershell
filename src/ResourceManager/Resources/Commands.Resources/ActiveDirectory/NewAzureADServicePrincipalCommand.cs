@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -100,6 +101,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The value for the password credential associated with the application. If a " +
             "password is not provided, a random GUID will be generated and used as the password.")]
         [ValidateNotNullOrEmpty]
+#if NETSTANDARD
+        [CmdletParameterBreakingChange("Password", ChangeDescription = "Password parameter will be removed in an upcoming breaking change release.  After this point, the password will always be automatically generated.")]
+#endif
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
@@ -362,7 +366,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                                                       "having AppId '{0}' with '{1}' role over scope '{2}'.", createParameters.ApplicationId, this.Role, this.Scope);
             if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
             {
-                var servicePrincipal = ActiveDirectoryClient.CreateServicePrincipal(createParameters);
+                PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
+                servicePrincipal.Secret = Password;
                 WriteObject(servicePrincipal);
                 if (SkipRoleAssignment())
                 {

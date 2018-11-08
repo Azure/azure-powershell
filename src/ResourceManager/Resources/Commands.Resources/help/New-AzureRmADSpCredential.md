@@ -15,7 +15,7 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADSpCredential -ObjectId <Guid> -Password <SecureString> [-StartDate <DateTime>]
+New-AzureRmADSpCredential -ObjectId <Guid> [-Password <SecureString>] [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzureRmADSpCredential -ServicePrincipalName <String> -CertValue <String> [-S
 
 ### SPNWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalName <String> -Password <SecureString> [-StartDate <DateTime>]
+New-AzureRmADSpCredential -ServicePrincipalName <String> [-Password <SecureString>] [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertVa
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -Password <SecureString>
+New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Password <SecureString>]
  [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -172,7 +172,7 @@ Type: System.Security.SecureString
 Parameter Sets: SpObjectIdWithPasswordParameterSet, SPNWithPasswordParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -184,7 +184,7 @@ Type: System.Security.SecureString
 Parameter Sets: ServicePrincipalObjectWithPasswordParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
