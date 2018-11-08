@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -39,19 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceAddress { get; set; }
+        public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationAddress { get; set; }
+        public string[] DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationPort { get; set; }
+        public string[] DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
             MNM.AzureFirewallNetworkRuleProtocol.ICMP,
             IgnoreCase = false)]
-        public List<string> Protocol { get; set; }
+        public string[] Protocol { get; set; }
         
         public override void Execute()
         {
@@ -72,10 +73,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Description = this.Description,
-                Protocols = this.Protocol,
-                SourceAddresses = this.SourceAddress,
-                DestinationAddresses = this.DestinationAddress,
-                DestinationPorts = this.DestinationPort
+                Protocols = this.Protocol?.ToList(),
+                SourceAddresses = this.SourceAddress?.ToList(),
+                DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationPorts = this.DestinationPort?.ToList()
             };
             WriteObject(networkRule);
         }
