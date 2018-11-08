@@ -19,3 +19,9 @@
 -->
 ## Current Release
 * Preview Release
+* Added Tabular Output Format
+* Added Subdomain Checking in New-AzureRmIotCentralApp
+
+## 2018.11.06 - Version 1.0.0
+* Preview Release
+* Initial Module Prerelease
