@@ -28,9 +28,11 @@ The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespac
 PS C:\> New-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 
 Name               : SB-Example1
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+ResourceGroup      : Default-ServiceBus-WestUS
 Location           : West US
-Sku                : Name : Standard , Capacity : 1 , Tier : Standard
+Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
+Sku                : Name : Premium , Tier : Premium
 ProvisioningState  : Succeeded
 CreatedAt          : 1/20/2017 2:07:33 AM
 UpdatedAt          : 1/20/2017 2:07:56 AM

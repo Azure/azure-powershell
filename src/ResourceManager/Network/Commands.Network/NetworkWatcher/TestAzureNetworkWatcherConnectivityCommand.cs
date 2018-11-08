@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -112,28 +113,54 @@ namespace Microsoft.Azure.Commands.Network
 
             MNM.ConnectivityParameters parameters = new MNM.ConnectivityParameters();
 
+            if (string.IsNullOrEmpty(this.DestinationId) && string.IsNullOrEmpty(this.DestinationAddress))
+            {
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationResourceIdOrAddress);
+            }
+
+            if (!string.IsNullOrEmpty(this.DestinationId) && string.Equals(this.SourceId, this.DestinationId, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.ConnectivityDestinationIsMustNotBeTheSameAsSource, this.SourceId));
+            }
+
             parameters.Source = new MNM.ConnectivitySource();
             parameters.Source.ResourceId = this.SourceId;
-            parameters.Source.Port = this.SourcePort;
 
             parameters.Destination = new MNM.ConnectivityDestination();
             parameters.Destination.ResourceId = this.DestinationId;
             parameters.Destination.Address = this.DestinationAddress;
-            parameters.Destination.Port = this.DestinationPort;
 
-            if (this.ProtocolConfiguration !=null && string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
+            if (this.SourcePort > 0)
             {
-                IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
-                if (this.ProtocolConfiguration.Header != null)
-                {
-                    foreach (DictionaryEntry entry in this.ProtocolConfiguration.Header)
-                    {
-                        headers.Add(new MNM.HTTPHeader((string)entry.Key, (string)entry.Value));
-                    }
-                }
+                parameters.Source.Port = this.SourcePort;
+            }
 
-                MNM.HTTPConfiguration httpConfiguration = new MNM.HTTPConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
-                parameters.ProtocolConfiguration = new MNM.ProtocolConfiguration(httpConfiguration);
+            if (this.DestinationPort > 0)
+            {
+                parameters.Destination.Port = this.DestinationPort;
+            }
+            else if (this.ProtocolConfiguration == null || string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol) || !string.Equals(this.ProtocolConfiguration.Protocol, "Icmp", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationPort);
+            }
+
+            if (this.ProtocolConfiguration != null && !string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol))
+            {
+                parameters.Protocol = this.ProtocolConfiguration.Protocol;
+                if (string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
+                {
+                    IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
+                    if (this.ProtocolConfiguration.Header != null)
+                    {
+                        foreach (DictionaryEntry entry in this.ProtocolConfiguration.Header)
+                        {
+                            headers.Add(new MNM.HTTPHeader((string)entry.Key, (string)entry.Value));
+                        }
+                    }
+
+                    MNM.HTTPConfiguration httpConfiguration = new MNM.HTTPConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
+                    parameters.ProtocolConfiguration = new MNM.ProtocolConfiguration(httpConfiguration);
+                }
             }
 
             MNM.ConnectivityInformation result = new MNM.ConnectivityInformation();
@@ -143,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new ArgumentException(string.Format(Properties.Resources.NoNetworkWatcherInLocation, this.Location));
                 }
 
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);

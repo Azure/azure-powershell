@@ -477,7 +477,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericTypeA
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(string))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(List<string>))]
     public class TestChangeOutputGenericTypeArgument : Cmdlet
     {
         protected override void BeginProcessing()
@@ -755,6 +755,26 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgu
         protected override void BeginProcessing()
         {
             WriteObject("Test-DifferentGenericTypeArgumentSize BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ParameterReplacedByAlias
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ParameterReplacedByAlias")]
+    public class TestDifferentGenericTypeArgumentSize : Cmdlet
+    {
+        [Parameter(Mandatory = true)]
+        [Alias("Parameter")]
+        public string Param { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ParameterReplacedByAlias BeginProcessing()");
             WriteInformation("Info", null);
         }
     }

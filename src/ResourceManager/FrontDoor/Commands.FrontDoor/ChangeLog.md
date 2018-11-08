@@ -19,5 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.1.1
+* Add remove-AzureRmFrontDoorContent for cache purge
+
 ## Version 0.1.0
 * PowerShell integration for Azure Front Door service
