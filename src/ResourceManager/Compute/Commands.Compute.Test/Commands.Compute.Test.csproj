@@ -254,7 +254,12 @@
     <None Include="ScenarioTests\StrategiesVirtualMachineTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVm.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVm.json" >
+	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVmWithUltraSSD.json" >
+	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVmWithSystemAssignedAndUserAssignedIdentity.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
