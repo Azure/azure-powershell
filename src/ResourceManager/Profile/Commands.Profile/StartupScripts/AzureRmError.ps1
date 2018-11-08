@@ -4,7 +4,7 @@ if (!(Test-Path $pathToInstallationChecks))
 {
     if (Get-Module Az.Profile -ListAvailable)
     {
-        Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
+        Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
     }
 
     $hashtable = @{"AzureRmSideBySideCheck"="true"}
@@ -19,7 +19,7 @@ else
     {
         if (Get-Module Az.Profile -ListAvailable)
         {
-            Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
+            Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
         }
 
         $installationchecks.Add("AzureRmSideBySideCheck","true")
@@ -30,6 +30,6 @@ else
 
 if (Get-Module Az.profile)
 {
-    Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
-    throw "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please follow migration guide to ensure Az modules work as expected: <LINK HERE>."
+    Write-Warning "Az.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
+    throw "Az.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
 }
