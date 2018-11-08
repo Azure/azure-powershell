@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 0.4.0
+## Version 0.3.0
 * New cmdlet
 	* Get-AzsDrive
 	* Get-AzsVolume
