@@ -32,7 +32,11 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallMode = this.FirewallMode,
                     RuleSetType = this.RuleSetType,
                     RuleSetVersion = this.RuleSetVersion,
-                    DisabledRuleGroups = this.DisabledRuleGroups
+                    DisabledRuleGroups = this.DisabledRuleGroup,
+                    RequestBodyCheck = this.RequestBodyCheck,
+                    MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
+                    FileUploadLimitInMb = this.FileUploadLimitInMb,
+                    Exclusions = this.Exclusion
                 };
 
                 WriteObject(firewallConfiguration);

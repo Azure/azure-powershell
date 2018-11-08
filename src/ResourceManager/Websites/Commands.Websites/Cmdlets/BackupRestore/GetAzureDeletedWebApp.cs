@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "The name of the web app.")]
+        [ResourceNameCompleter("Microsoft.Web/deletedSites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

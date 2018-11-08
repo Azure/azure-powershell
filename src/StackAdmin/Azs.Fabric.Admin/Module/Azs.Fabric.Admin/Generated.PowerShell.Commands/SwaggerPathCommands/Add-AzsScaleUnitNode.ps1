@@ -82,7 +82,7 @@ function Add-AzsScaleUnitNode
 
     Process {
 
-    $ScaleUnit = Get-ResourceName -ResourceName $ScaleUnit
+    $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
 
 
     $NewServiceClient_params = @{
