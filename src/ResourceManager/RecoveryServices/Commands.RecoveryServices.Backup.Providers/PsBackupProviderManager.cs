@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -108,6 +108,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             containerType));
                     }
                     break;
+                case ContainerType.AzureStorage:
+                    if (backupManagementType == BackupManagementType.AzureStorage ||
+                        backupManagementType == null)
+                    {
+                        providerType = PsBackupProviderTypes.AzureFiles;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(
+                            string.Format(
+                            Resources.BackupManagementTypeRequiredForContainerType,
+                            containerType));
+                    }
+                    break;
                 default:
                     throw new ArgumentException(
                         string.Format(Resources.UnsupportedContainerType,
@@ -137,6 +151,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 case WorkloadType.AzureVM:
                     providerType = PsBackupProviderTypes.IaasVm;
+                    break;
+                case WorkloadType.AzureFiles:
+                    providerType = PsBackupProviderTypes.AzureFiles;
                     break;
                 default:
                     throw new ArgumentException(
@@ -188,6 +205,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     }
                     psProviderType = PsBackupProviderTypes.AzureSql;
                     break;
+                case WorkloadType.AzureFiles:
+                    if (backupManagementType.HasValue &&
+                        backupManagementType != BackupManagementType.AzureStorage)
+                    {
+                        throw new ArgumentException(
+                            string.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType,
+                            workloadType.ToString()));
+                    }
+                    psProviderType = PsBackupProviderTypes.AzureFiles;
+                    break;
                 default:
                     throw new ArgumentException(
                         string.Format(Resources.UnsupportedWorkloadTypeException,
@@ -218,6 +245,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case PsBackupProviderTypes.Dpm:
                     psBackupProvider = new DpmPsBackupProvider();
                     break;
+                case PsBackupProviderTypes.AzureFiles:
+                    psBackupProvider = new AzureFilesPsBackupProvider();
+                    break;
                 default:
                     break;
             }
@@ -234,6 +264,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceType == "AzureVM")
             {
                 return GetProviderInstance(PsBackupProviderTypes.IaasVm);
+            }
+            if (resourceType == "AzureFiles")
+            {
+                return GetProviderInstance(PsBackupProviderTypes.AzureFiles);
             }
             else
             {
