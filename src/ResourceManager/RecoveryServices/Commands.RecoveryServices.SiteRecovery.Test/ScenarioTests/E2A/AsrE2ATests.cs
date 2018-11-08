@@ -28,13 +28,13 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
-            this.vaultSettingsFilePath = System.IO.Path.Combine(
+            this.VaultSettingsFilePath = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\E2A\\E2A.VaultCredentials");
-            this.powershellFile = System.IO.Path.Combine(
+                "ScenarioTests", "E2A", "E2A.VaultCredentials");
+            this.PowershellFile = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\E2A\\AsrE2ATests.ps1");
-            this.initialize();
+                "ScenarioTests", "E2A", "AsrE2ATests.ps1");
+            this.Initialize();
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-FabricTest -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -61,7 +61,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryCreatePolicy -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -75,7 +75,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -89,7 +89,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-MapNetwork -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -103,7 +103,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-TFO -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -117,7 +117,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-PlannedFailover -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
 
@@ -131,7 +131,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-Reprotect -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
+                this.VaultSettingsFilePath +
                 "\"");
         }
     }

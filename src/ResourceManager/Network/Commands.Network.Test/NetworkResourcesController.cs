@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Storage;
@@ -42,6 +43,8 @@ namespace Commands.Network.Test
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
+
+        public ContainerInstanceManagementClient ContainerInstanceManagementClient { get; set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
 
@@ -126,6 +129,7 @@ namespace Commands.Network.Test
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    _helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
 #if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
@@ -164,6 +168,7 @@ namespace Commands.Network.Test
             var resourceManagerResourceManagementClient = GetResourceManagerResourceManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
+            ContainerInstanceManagementClient = GetContainerInstanceManagementClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             RedisManagementClient = GetRedisManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
@@ -173,6 +178,7 @@ namespace Commands.Network.Test
                 resourceManagerResourceManagementClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
+                ContainerInstanceManagementClient,
                 StorageManagementClient,
                 RedisManagementClient,
                 SubscriptionClient,
@@ -207,6 +213,11 @@ namespace Commands.Network.Test
         private static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ContainerInstanceManagementClient GetContainerInstanceManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<ContainerInstanceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 }
 }

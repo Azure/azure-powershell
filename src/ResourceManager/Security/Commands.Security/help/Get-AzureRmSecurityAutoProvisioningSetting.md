@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/get-azurermsecurityautoprovisioningsetting
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityAutoProvisioningSetting.md
 schema: 2.0.0
 ---
 

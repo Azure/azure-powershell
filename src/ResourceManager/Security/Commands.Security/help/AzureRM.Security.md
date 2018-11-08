@@ -1,7 +1,7 @@
 ---
 Module Name: AzureRM.Security
 Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.security
+Download Help Link: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/AzureRM.Security.md
 Help Version: 0.1.0
 Locale: en-US
 ---
@@ -27,7 +27,7 @@ Gets security alerts that were detected by Azure Security Center
 Gets the security automatic provisioning settings
 
 ### [Get-AzureRmSecurityCompliance](Get-AzureRmSecurityCompliance.md)
-Get the security compliace of a subscription over time
+Get the security compliance of a subscription over time
 
 ### [Get-AzureRmSecurityContact](Get-AzureRmSecurityContact.md)
 Gets security contacts that were configured on this subscription

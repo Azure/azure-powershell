@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,42 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new remote PowerShell session. Confirm?.
+        /// </summary>
+        internal static string EnterContainerPSSessionConfirmation {
+            get {
+                return ResourceManager.GetString("EnterContainerPSSessionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add your Container Web App to the trusted hosts. For example: &quot;Set-Item WSMAN:\\LocalHost\\Client\\TrustedHosts -Value &apos;{0}{1}.azurewebsites.net&apos;&quot;.
+        /// </summary>
+        internal static string EnterContainerPSSessionFormatForTrustedHostsSuggestion {
+            get {
+                return ResourceManager.GetString("EnterContainerPSSessionFormatForTrustedHostsSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App. Current settings: {0}.
+        /// </summary>
+        internal static string EnterContainerPSSessionFormatForTrustedHostsWarning {
+            get {
+                return ResourceManager.GetString("EnterContainerPSSessionFormatForTrustedHostsWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WSMAN Basic authentication is not enabled. Run the following command and try again: &quot;Set-Item WSMAN:\LocalHost\Client\Auth\Basic -Value $true&quot;.
+        /// </summary>
+        internal static string EnterCotnainerPSSessionBasicAuthWarning {
+            get {
+                return ResourceManager.GetString("EnterCotnainerPSSessionBasicAuthWarning", resourceCulture);
             }
         }
         
