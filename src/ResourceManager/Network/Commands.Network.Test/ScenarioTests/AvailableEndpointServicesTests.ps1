@@ -20,7 +20,8 @@ function Test-VirtualNetworkAvailableEndpointServicesList
 {
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
-    $location = $location -replace " ",""
+    # TODO: replace with Normalize-Location after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
+    $location = $location.ToLower() -replace '[^a-z0-9]'
     try
     {
         $results = Get-AzureRmVirtualNetworkAvailableEndpointService -Location $location;
