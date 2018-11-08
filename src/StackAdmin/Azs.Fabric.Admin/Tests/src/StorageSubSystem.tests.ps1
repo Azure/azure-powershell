@@ -26,16 +26,18 @@
 .EXAMPLE
     PS C:\> .\src\StorageSubSystem.Tests.ps1
     Describing StorageSubSystems
-     [+] TestListStorageSubSystems 133ms
-     [+] TestGetStorageSubSystem 63ms
-     [+] TestGetAllStorageSubSystems 84ms
+     [+] TestListStorageSubSystems 187ms
+     [+] TestGetStorageSubSystem 98ms
+     [+] TestGetAllStorageSubSystems 79ms
+     [+] TestGetInvaildStorageSubSystem 78ms
 
 .EXAMPLE
     PS C:\> .\src\StorageSubSystem.Tests.ps1 -RunRaw $true
     Describing StorageSubSystems
-     [+] TestListStorageSubSystems 1.83s
-     [+] TestGetStorageSubSystem 1.96s
-     [+] TestGetAllStorageSubSystems 2.09s
+     [+] TestListStorageSubSystems 1.56s
+     [+] TestGetStorageSubSystem 1.98s
+     [+] TestGetAllStorageSubSystems 2.07s
+     [+] TestGetInvaildStorageSubSystem 1.58s
 
 .NOTES
     Author: Yuxing Zhou
@@ -157,6 +159,18 @@ InModuleScope Azs.Fabric.Admin {
                     $retrieved = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -Name $StorageSubSystem.Name
                     AssertStorageSubSystemsAreSame -Expected $StorageSubSystem -Found $retrieved
                 }
+            }
+        }
+
+        it "TestGetInvaildStorageSubSystem" -Skip:$('TestGetInvaildStorageSubSystem' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetInvaildStorageSubSystem'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $invaildStorageSubSystemName = "invaildstoragesubsystemname"
+                $retrieved = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -Name $invaildStorageSubSystemName
+                $retrieved | Should Be $null
+                break
             }
         }
     }

@@ -26,16 +26,18 @@
 .EXAMPLE
     PS C:\> .\Volume.Tests.ps1
     Describing Volumes
-     [+] TestListVolumes 160ms
-     [+] TestGetVolume 81ms
-     [+] TestGetAllVolumes 137ms
+     [+] TestListVolumes 188ms
+     [+] TestGetVolume 157ms
+     [+] TestGetAllVolumes 100ms
+     [+] TestGetInvaildVolume 72ms
 
 .EXAMPLE
     PS C:\> .\src\Volume.Tests.ps1 -RunRaw $true
     Describing Volumes
-     [+] TestListVolumes 7.53s
-     [+] TestGetVolume 3.02s
-     [+] TestGetAllVolumes 3.08s
+     [+] TestListVolumes 10.19s
+     [+] TestGetVolume 3.03s
+     [+] TestGetAllVolumes 2.83s
+     [+] TestGetInvaildVolume 2.44s
 
 .NOTES
     Author: Jeffrey Robinson
@@ -174,6 +176,22 @@ InModuleScope Azs.Fabric.Admin {
                         AssertVolumesAreSame -Expected $volume -Found $retrieved
                     }
                 }
+            }
+        }
+
+        it "TestGetInvaildVolume" -Skip:$('TestGetInvaildVolume' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetInvaildVolume'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $invaildVolumeName = "invaildvolumename"
+                    $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $invaildVolumeName
+                    $retrieved | Should Be $null
+                    break
+                }
+                break
             }
         }
     }
