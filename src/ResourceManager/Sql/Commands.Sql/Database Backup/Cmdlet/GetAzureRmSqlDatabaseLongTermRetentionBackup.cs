@@ -129,6 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = BackupNameSet,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backups are under.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -142,6 +143,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = BackupNameSet,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

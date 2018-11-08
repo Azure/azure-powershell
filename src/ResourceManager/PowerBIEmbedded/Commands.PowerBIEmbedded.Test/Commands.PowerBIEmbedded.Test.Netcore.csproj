@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

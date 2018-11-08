@@ -158,8 +158,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             promptAction)?.FirstOrDefault();
                         if (tenant == null || tenant.Id == null)
                         {
-                            throw new ArgumentNullException(string.Format("Could not find tenant id for provided tenant domain '{0}'. Please ensure that " +
-                                                                          "the provided service principal is found in the provided tenant domain.", tenantId));
+                            string baseMessage = string.Format(ProfileMessages.TenantDomainNotFound, tenantId);
+                            var typeMessageMap = new Dictionary<string, string>
+                            {
+                                { AzureAccount.AccountType.ServicePrincipal, string.Format(ProfileMessages.ServicePrincipalTenantDomainNotFound, account.Id) },
+                                { AzureAccount.AccountType.User, ProfileMessages.UserTenantDomainNotFound },
+                                { AzureAccount.AccountType.ManagedService, ProfileMessages.MSITenantDomainNotFound }
+                            };
+                            string typeMessage = typeMessageMap.ContainsKey(account.Type) ? typeMessageMap[account.Type] : string.Empty;
+                            throw new ArgumentNullException(string.Format("{0} {1}", baseMessage, typeMessage));
                         }
 
                         tenantId = tenant.Id;
