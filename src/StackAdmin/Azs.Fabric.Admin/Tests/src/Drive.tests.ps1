@@ -26,16 +26,18 @@
 .EXAMPLE
     PS C:\> .\Drive.Tests.ps1
     Describing Drives
-     [+] TestListDrives 348ms
-     [+] TestGetDrive 135ms
-     [+] TestGetAllDrives 204ms
+     [+] TestListDrives 331ms
+     [+] TestGetDrive 131ms
+     [+] TestGetAllDrives 215ms
+     [+] TestGetInvaildDrive 90ms
 
 .EXAMPLE
     PS C:\> .\src\Drive.Tests.ps1 -RunRaw $true
     Describing Drives
-     [+] TestListDrives 3.01s
-     [+] TestGetDrive 3.43s
-     [+] TestGetAllDrives 12.1s
+     [+] TestListDrives 2.86s
+     [+] TestGetDrive 2.95s
+     [+] TestGetAllDrives 6.98s
+     [+] TestGetInvaildDrive 2.75s
 
 .NOTES
     Author: Yuxing Zhou
@@ -184,6 +186,22 @@ InModuleScope Azs.Fabric.Admin {
                         AssertDrivesAreSame -Expected $drive -Found $retrieved
                     }
                 }
+            }
+        }
+
+        it "TestGetInvaildDrive" -Skip:$('TestGetInvaildDrive' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetInvaildDrive'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $invaildDriveName = "invailddrivename"
+                    $retrieved = Get-AzsDrive -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $invaildDriveName
+                    $retrieved | Should Be $null
+                    break
+                }
+                break
             }
         }
     }
