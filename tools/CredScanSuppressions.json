@@ -298,6 +298,190 @@
             "_justification": "Legitimate test session record, keys are deleted"
         },
         {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseDisableEnableKeepProperties.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseRetentionKeepProperties.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseStorageKeyRotation.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseUpdatePolicyKeepPreviousStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseUpdatePolicyWithEventTypes.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseUpdatePolicyWithEventTypeShortcuts.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseUpdatePolicyWithRetention.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDatabaseUpdatePolicyWithStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDisableDatabaseAuditing.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingDisableServerAuditing.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerDisableEnableKeepProperties.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerRetentionKeepProperties.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerStorageKeyRotation.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerUpdatePolicyKeepPreviousStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerUpdatePolicyWithEventTypes.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerUpdatePolicyWithEventTypeShortcuts.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerUpdatePolicyWithRetention.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingServerUpdatePolicyWithStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestAuditingUseServerDefault.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestBlobAuditingOnDatabase.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestBlobAuditingOnServer.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestBlobAuditingWithAuditActionGroups.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestDatatabaseAuditingTypeMigration.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\\TestServerAuditingTypeMigration.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDatabaseRetentionKeepProperties.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDatabaseStorageKeyRotation.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDatabaseUpdatePolicyKeepPreviousStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDatabaseUpdatePolicyWithStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDisableDatabaseAuditing.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingDisableServerAuditing.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingOnDatabase.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingOnServer.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingServerRetentionKeepProperties.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingServerStorageKeyRotation.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingServerUpdatePolicyKeepPreviousStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingServerUpdatePolicyWithStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestBlobAuditingWithAuditActionGroups.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestDeprecatedDatabaseAuditingCmdletToBlobAuditingNewCmdlet.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestDeprecatedServerAuditingCmdletToBlobAuditingNewCmdlet.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestExtendedAuditingOnDatabase.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\\TestExtendedAuditingOnServer.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ThreatDetectionTests\\DisablingThreatDetection.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ThreatDetectionTests\\ThreatDetectionDatabaseUpdatePolicy.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ThreatDetectionTests\\ThreatDetectionServerUpdatePolicy.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
             "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\ScenarioTests\\DiagnosticsExtensionTests.ps1",
             "_justification": "Legitimate test session record"
         },
