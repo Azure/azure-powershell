@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>A model object</returns>
         protected override ServerBlobAuditingSettingsModel GetEntity()
         {
-            ServerBlobAuditingSettingsModel model;
-            ModelAdapter.GetServerBlobAuditingPolicyV2(ResourceGroupName, ServerName, out model);
+            ServerBlobAuditingSettingsModel model = new ServerBlobAuditingSettingsModel();
+            ModelAdapter.GetServerBlobAuditingPolicy(ResourceGroupName, ServerName, model);
             return model;
         }
 
