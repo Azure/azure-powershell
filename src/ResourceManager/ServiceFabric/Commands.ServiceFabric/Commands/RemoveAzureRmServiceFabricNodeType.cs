@@ -109,10 +109,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
                     };**/
 
-                    cluster = SendPutRequest(cluster);
+                    var patchRequest = new ClusterUpdateParameters
+                    {
+                        NodeTypes = cluster.NodeTypes
+                    };
+
+                    var psCluster = SendPatchRequest(patchRequest);
+                    WriteObject(psCluster, true);
                 }
-                
-                WriteObject((PSCluster)cluster, true);
+                else
+                {
+                    WriteObject((PSCluster)cluster, true);
+                }
             }
         }
     }

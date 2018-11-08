@@ -37,7 +37,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "570BBCC85CBDAB98A442D08630996708F60A356D";
+            ServiceFabricCmdletBase.TestThumbprint = "3C70633899C7F5194596EB745D1DD106E9F06E79";
+            ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
+            ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "13B2D20A82B3785B6F9F111FA939DB712F41DB96";
+            ServiceFabricCmdletBase.TestAppCert = false;
         }
 
         [Fact, TestPriority(1)]
@@ -77,6 +81,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmServiceFabricClusterCertificateCNNotAllowed()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClusterCertificateCNNotAllowed");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricClusterCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClusterCertificate");
@@ -87,6 +98,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public void TestRemoveAzureRmServiceFabricClusterCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricClusterCertificate");
+        }
+
+        [Fact, TestPriority(2)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzureRmServiceFabricClusterCertificateNotAllowed()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricClusterCertificateNotAllowed");
         }
 
         [Fact, TestPriority(0)]
@@ -110,14 +128,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmServiceFabricCluster");
         }
 
-        [Fact, TestPriority(1)]
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureRmServiceFabricClusterCNCert()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmServiceFabricClusterCNCert");
+        }
+
+        [Fact, TestPriority(2)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricNode");
         }
 
-        [Fact, TestPriority(2)]
+        [Fact, TestPriority(3)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricNode()
         {
@@ -131,12 +156,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact, TestPriority(3)]
+        [Fact, TestPriority(4)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricNodeType");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmServiceFabricApplicationCertificate()
+        {
+            ServiceFabricCmdletBase.TestAppCert = true;
+            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificate");
         }
     }
 }

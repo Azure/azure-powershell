@@ -6,7 +6,7 @@
       "value": "southcentralus"
     },
     "clusterName": {
-      "value": "azurermsfclustertptest"
+      "value": "azurermsfcntest"
     },
     "adminUserName": {
       "value": "username"
@@ -38,8 +38,11 @@
     "certificateStorevalue": {
       "value": "My"
     },
-    "certificateThumbprint": {
-      "value": "GEN-CUSTOM-DOMAIN-SSLCERT-THUMBPRINT"
+    "certificateCommonName": {
+      "value": "GEN-CUSTOM-DOMAIN-SSLCERT-COMMONNAME"
+    },
+    "certificateIssuerThumbprint": {
+      "value": "GEN--SSLCERT-ISSUER-THUMBPRINT"
     },
     "sourceVaultvalue": {
       "value": "GEN-KEYVAULT-RESOURCE-ID"
