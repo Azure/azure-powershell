@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             const int NameI = 8;
 
             var parts = id.Split('/');
-            return parts.Length == 9
+            // The number of parts in a shareg image gallery image resource id can be 11 or 13
+            return (parts.Length == 9 || parts.Length == 11 || parts.Length == 13)
                     && parts[EmptyI] == string.Empty
                     && parts[SubscriptionsI] == Subscriptions
                     && parts[ResourceGroupsI] == ResourceGroups
