@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -117,6 +118,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Gets or sets the name of the environment.
         /// </summary>
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
 
         /// <summary>
@@ -170,6 +172,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Gets or sets the Uri of the Azure Resource Manager (ARM) service.
         /// </summary>
+        [Ps1Xml(Label = "Resource Manager Url", Target = ViewControl.Table, Position = 1)]
         public string ResourceManagerUrl { get; set; }
 
         /// <summary>
@@ -185,6 +188,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Gets or sets the Uri of the Active Directory authentication endpoint.
         /// </summary>
+        [Ps1Xml(Label = "ActiveDirectory Authority", Target = ViewControl.Table, Position = 2)]
         public string ActiveDirectoryAuthority { get; set; }
 
         /// <summary>
