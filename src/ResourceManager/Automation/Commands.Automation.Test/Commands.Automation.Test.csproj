@@ -224,6 +224,15 @@
     <Content Include="SessionRecords\Commands.Automation.Test.UpdateManagementTests\GetAllSUCsForVM.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="SessionRecords\Commands.Automation.Test.RunbookJobTests\TestCreateRunbookGraph.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Automation.Test.RunbookJobTests\TestImportAndDeleteRunbookGraphical.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Automation.Test.RunbookJobTests\TestImportRunbookPowerShell.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
