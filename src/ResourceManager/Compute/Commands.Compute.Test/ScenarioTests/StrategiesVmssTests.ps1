@@ -36,7 +36,55 @@ function Test-SimpleNewVmss
         Assert-AreEqual $vmssname $x.ResourceGroupName;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
+		Assert-False { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
         Assert-AreEqual "Standard_DS1_v2" $x.Sku.Name
+        Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
+        Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+        Assert-False { $x.SinglePlacementGroup }
+        Assert-Null $x.Identity  
+
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $vmssname 
+        Assert-NotNull $lb
+        Assert-AreEqual $lbName $lb.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmssWithUltraSSD
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $lbName = $vmssname + "LoadBalancer"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+		#Use the follwing command to figure out the one to use 
+		#Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -Location "east us 2" -EnableUltraSSD -Zone 3 -VmSize "Standard_D2s_v3"
+
+        Assert-AreEqual $vmssname $x.Name;
+        Assert-AreEqual $vmssname $x.ResourceGroupName;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
+		Assert-True { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-AreEqual "Standard_D2s_v3" $x.Sku.Name
         Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
