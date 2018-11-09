@@ -33,3 +33,5 @@ if (Get-Module AzureRM.profile)
     Write-Warning "AzureRM.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: <Link here>"
     throw "AzureRM.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: <Link here>"
 }
+
+Update-TypeData -AppendPath Microsoft.Azure.Commands.Profile.format.ps1xml
