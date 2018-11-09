@@ -20,8 +20,8 @@ function TestAzureRmRelayNameTests
 {
 	# Setup    
 	$location = "West US"
-	$namespaceName = getAssetName "Relay-Namespace"
-	$namespaceName2 = getAssetName "Relay-Namespace"
+	$namespaceName = getAssetName "Relay-NS"
+	$namespaceName2 = getAssetName "Relay-NS"
 	$resourceGroupName = getAssetName
 	$secondResourceGroup = getAssetName
 	
