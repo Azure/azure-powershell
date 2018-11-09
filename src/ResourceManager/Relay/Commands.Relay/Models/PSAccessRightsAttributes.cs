@@ -8,17 +8,14 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
-
     /// <summary>
-    /// Defines values for PolicyKey.
+    /// Defines values for AccessRights.
     /// </summary>
-    public static class PolicyKeyAttributes
+    public static class PSAccessRightsAttributes
     {
-        public const string PrimaryKey = "PrimaryKey";
-        public const string SecondaryKey = "SecondaryKey";
+        public const string Manage = "Manage";
+        public const string Send = "Send";
+        public const string Listen = "Listen";
     }
 }
 

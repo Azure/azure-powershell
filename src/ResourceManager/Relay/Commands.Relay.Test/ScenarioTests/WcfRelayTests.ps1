@@ -14,54 +14,15 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-	return "RGName-" + (getAssetName)	 
-}
-
-<#
-.SYNOPSIS
-Get valid WcfRelay name
-#>
-function Get-WcfRelayName
-{
-	return "WcfRelay-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid Namespace name
-#>
-function Get-NamespaceName
-{
-	return "Relay-Namespace-" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-	return "Relay-WcfRelay-AuthorizationRule" + (getAssetName)
-	
-}
-
-
-<#
-.SYNOPSIS
 Tests WcfRelay Create List Remove operations.
 #>
 function WcfRelayTests
 {
 	# Setup    
 	$location = "West US"
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName
-	$wcfRelayName = Get-WcfRelayName
+	$resourceGroupName = getAssetName
+	$namespaceName = getAssetName "Relay-Namespace"
+	$wcfRelayName = getAssetName "Relay-WcfRelay"
 
 	# Create Resource Group
 	Write-Debug "Create resource group"    

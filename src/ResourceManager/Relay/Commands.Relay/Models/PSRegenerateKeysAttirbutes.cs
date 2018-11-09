@@ -8,28 +8,24 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
     using Newtonsoft.Json;
-    using System.Linq;
 
     /// <summary>
     /// Parameters supplied to the Regenerate Authorization Rule operation.
     /// </summary>
-    public partial class RegenerateKeysAttirbutes
+    public partial class PSRegenerateKeysAttirbutes
     {
         /// <summary>
         /// Initializes a new instance of the RegenerateKeysParameters class.
         /// </summary>
-        public RegenerateKeysAttirbutes() { }
+        public PSRegenerateKeysAttirbutes() { }
 
         /// <summary>
         /// Initializes a new instance of the RegenerateKeysParameters class.
         /// </summary>
         /// <param name="policyKey">Key that needs to be regenerated. Possible
         /// values include: 'PrimaryKey', 'SecondaryKey'</param>
-        public RegenerateKeysAttirbutes(string policyKey = default(string))
+        public PSRegenerateKeysAttirbutes(string policyKey = default(string))
         {
             PolicyKey = policyKey;
         }
