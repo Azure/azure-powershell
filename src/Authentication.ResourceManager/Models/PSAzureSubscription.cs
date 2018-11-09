@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <inheritdoc />
-        [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
         public string Id { get; set; }
 
         /// <inheritdoc />
-        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
 
         /// <inheritdoc />
-        [Ps1Xml]
+        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 3)]
         public string State { get; set; }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant home for the subscription.
         /// </summary>
-        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, Position = 2)]
         public string TenantId
         {
             get
