@@ -539,7 +539,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
 
                 SetParameter(ref parameters, Constants.CertificateCommonName, firstCert.CertificateCommonName);
-                SetParameter(ref parameters, Constants.CertificateIssuerThumbprint, this.CertificateIssuerThumbprint);
+                string issuerTP = this.CertificateIssuerThumbprint != null ? this.CertificateIssuerThumbprint : String.Empty;
+                SetParameter(ref parameters, Constants.CertificateIssuerThumbprint, issuerTP);
             }
             else
             {
