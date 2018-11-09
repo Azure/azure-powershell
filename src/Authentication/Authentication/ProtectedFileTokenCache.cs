@@ -19,7 +19,11 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 
+#if NETSTANDARD
+namespace Microsoft.Azure.Commands.Common.Authentication.Core
+#else
 namespace Microsoft.Azure.Commands.Common.Authentication
+#endif
 {
     /// <summary>
     /// An implementation of the Adal token cache that stores the cache items

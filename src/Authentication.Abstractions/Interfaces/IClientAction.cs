@@ -14,6 +14,9 @@
 
 using Microsoft.Rest;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {

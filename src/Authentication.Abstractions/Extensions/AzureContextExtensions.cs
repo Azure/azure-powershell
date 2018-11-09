@@ -14,6 +14,9 @@
 
 using System;
 using System.Linq;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
