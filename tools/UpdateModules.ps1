@@ -98,12 +98,12 @@ function New-ModulePsm1 {
         # Replace Az or AzureRM with correct information
         if ($IsNetcore)
         {
-            $template = $template -replace "%AZORAZURERM%", "Az"
+            $template = $template -replace "%AZORAZURERM%", "AzureRM"
             $template = $template -replace "%ISAZMODULE%", "`$true"
         }
         else
         {
-            $template = $template -replace "%AZORAZURERM%", "`AzureRM"
+            $template = $template -replace "%AZORAZURERM%", "`Az"
             $template = $template -replace "%ISAZMODULE%", "`$false"
         }
 
