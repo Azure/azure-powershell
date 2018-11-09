@@ -64,7 +64,9 @@ function Test-SimpleNewVmWithUltraSSD
 
         # Common
 		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "east US 2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3"
+		#Use the follwing command to figure out the one to use 
+		#Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "east US 2" -EnableUltraSSD -Zone 3 -Size "Standard_D2s_v3"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
