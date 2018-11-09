@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.ExpressRouteCircuitSkuTier.Standard,
             MNM.ExpressRouteCircuitSkuTier.Premium,
+            MNM.ExpressRouteCircuitSkuTier.Basic,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
