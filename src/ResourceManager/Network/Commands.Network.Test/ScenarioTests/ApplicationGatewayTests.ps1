@@ -1223,6 +1223,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$urlPathMap2 = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName2 -PathRules $videoPathRule -DefaultRedirectConfiguration $redirectConfig
 		$probe = New-AzureRmApplicationGatewayProbeConfig -Name $probeName -Protocol Http -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -MinServers 1 -PickHostNameFromBackendHttpSettings
 
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
 		$sslCert = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
