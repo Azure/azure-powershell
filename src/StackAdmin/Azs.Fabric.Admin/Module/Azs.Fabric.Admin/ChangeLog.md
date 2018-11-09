@@ -24,7 +24,7 @@
 	* Get-AzsDrive
 	* Get-AzsVolume
 	* Get-AzsStorageSubSystem
-* Unsupported cmdlet
+* Removed cmdlet
 	* Get-AzsInfrastructureVolume
 
 ## Version 0.2.1

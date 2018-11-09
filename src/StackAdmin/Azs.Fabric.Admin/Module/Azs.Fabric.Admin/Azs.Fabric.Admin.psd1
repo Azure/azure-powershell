@@ -17,11 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-<<<<<<< HEAD
     ModuleVersion     = '0.3.0'
-=======
-    ModuleVersion     = '0.4.0
->>>>>>> 61f6b14c4a3bc652e8734be5ef03e253a1dda006
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -131,55 +127,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-
             ReleaseNotes = '## 2018.11.5
             * New cmdlet
 	            * Get-AzsDrive
 	            * Get-AzsVolume
 	            * Get-AzsStorageSubSystem
-            * Unsupported cmdlet
+            * Removed cmdlet
 	            * Get-AzsInfrastructureVolume
-<<<<<<< HEAD
-=======
-            
-            ## 2018.10.28
-                * Bug fixes
-                * Fixed a bug in Add-AzsScaleUnitNode
-                
-            ## 2018.9.10
-            * New Module dependencies
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * New cmdlet
-                * Add-AzsScaleUnitNode
-                * New-AzsScaleUnitNodeObject
-            * Support handling names of nested resources
-                * Add-AzsScaleUnitNode
-                * Disable-AzsScaleUnitNode
-                * Enable-AzsScaleUnitNode
-                * Get-AzsEdgeGateway
-                * Get-AzsEdgeGatewayPool
-                * Get-AzsInfrastructureRole
-                * Get-AzsInfrastructureRoleInstance
-                * Get-AzsInfrastructureShare
-                * Get-AzsInfrastructureVolume
-                * Get-AzsIpPool
-                * Get-AzsLogicalNetwork
-                * Get-AzsLogicalSubnet
-                * Get-AzsMacAddressPool
-                * Get-AzsScaleUnit
-                * Get-AzsScaleUnitNode
-                * Get-AzsSlbMuxInstance
-                * Get-AzsStoragePool
-                * Get-AzsStorageSystem
-                * Repair-AzsScaleUnitNode
-                * Restart-AzsInfrastructureRole
-                * Restart-AzsInfrastructureRoleInstance
-                * Start-AzsInfrastructureRoleInstance
-                * Start-AzsScaleUnitNode
-                * Stop-AzsInfrastructureRoleInstance
-                * Stop-AzsScaleUnitNode
->>>>>>> 61f6b14c4a3bc652e8734be5ef03e253a1dda006
             '
 
         } # End of PSData hashtable
