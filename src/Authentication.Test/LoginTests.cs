@@ -47,6 +47,8 @@ namespace Common.Authentication.Test
         private string _subscriptionName = null;
         private string _userName = null;
         private string _password = null;
+        private string _applicationId = null;
+        private string _certificateThumbprint = null;
 
         public LoginTests()
         {
@@ -65,6 +67,8 @@ namespace Common.Authentication.Test
             _cmdlet.SubscriptionName = _subscriptionName;
             _cmdlet.UserName = _userName;
             _cmdlet.Password = _password;
+            _cmdlet.ApplicationId = _applicationId;
+            _cmdlet.CertificateThumbprint = _certificateThumbprint;
             _cmdlet.CommandRuntime = new MockCommandRuntime();
         }
 
@@ -92,6 +96,18 @@ namespace Common.Authentication.Test
             // _tenantId --> Id of the tenant that the service princinpal is registered to
             // _userName --> Application id of the service principal
             // _password --> Secret of the service principal
+            _account = new AzureAccount() { Type = AzureAccount.AccountType.ServicePrincipal };
+            Login();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void LoginWithCertificate()
+        {
+            // REQUIRED:
+            // _tenantId --> Id of the tenant that the service principal is registered to
+            // _applicationId --> Application id of the service principal
+            // _certificateThumbprint --> Thumbprint of the certificate used to authenticate the service principal
             _account = new AzureAccount() { Type = AzureAccount.AccountType.ServicePrincipal };
             Login();
         }
