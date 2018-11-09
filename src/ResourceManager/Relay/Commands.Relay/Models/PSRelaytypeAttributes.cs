@@ -7,19 +7,14 @@
 // regenerated.
 
 namespace Microsoft.Azure.Commands.Relay.Models
-{
-    using Azure;
-    using Management;
-    using Relay;
-
+{   
     /// <summary>
-    /// Defines values for AccessRights.
+    /// Defines values for Relaytype.
     /// </summary>
-    public static class AccessRightsAttributes
+    public static class PSRelaytypeAttributes
     {
-        public const string Manage = "Manage";
-        public const string Send = "Send";
-        public const string Listen = "Listen";
+        public const string NetTcp = "NetTcp";
+        public const string Http = "Http";
     }
 }
 

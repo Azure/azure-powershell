@@ -14,53 +14,15 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-	return "RGName-" + (getAssetName)	 
-}
-
-<#
-.SYNOPSIS
-Get valid WcfRelay name
-#>
-function Get-HybridConnectionsName
-{
-	return "HybridConnections-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid Namespace name
-#>
-function Get-NamespaceName
-{
-	return "Relay-Namespace-" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-	return "Relay-HybridCon-AuthRule" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
 Tests HybridConnections Create Get List Remove operations.
 #>
 function HybridConnectionsTests
 {
 	# Setup    
 	$location = "West US"
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName
-	$HybridConnectionsName = Get-HybridConnectionsName
+	$resourceGroupName = getAssetName
+	$namespaceName = getAssetName "Relay-Namepsace"
+	$HybridConnectionsName = getAssetName "Relay-HybridConnections"
 
 	# Create Resource Group
 	Write-Debug "Create resource group"    

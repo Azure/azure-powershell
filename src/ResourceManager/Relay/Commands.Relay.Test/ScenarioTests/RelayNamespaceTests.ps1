@@ -14,54 +14,16 @@
 
 <#
 .SYNOPSIS
-Get ResourceGroup name
-#>
-function Get-ResourceGroupName
-{
-  return "RGName-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Relay name
-#>
-function Get-RelayName
-{
-    return "Relay-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Namespace name
-#>
-function Get-NamespaceName
-{
-    return "Relay-Namespace-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-    return "Relay-Namespace-AuthorizationRule" + (getAssetName)
-	
-}
-
-
-<#
-.SYNOPSIS
 Tests Relay Namespace Create List Remove operations.
 #>
 function RelayNamespaceTests 
 {
     # Setup    
     $location = "West US"
-	$namespaceName = Get-NamespaceName
-	$namespaceName2 = Get-NamespaceName
-    $resourceGroupName = Get-ResourceGroupName
-	$secondResourceGroup = Get-ResourceGroupName
+	$namespaceName = getAssetName "Relay-Namespace"
+	$namespaceName2 = getAssetName "Relay-Namespace"
+    $resourceGroupName = getAssetName
+	$secondResourceGroup = getAssetName
  
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
