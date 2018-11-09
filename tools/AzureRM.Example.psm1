@@ -31,7 +31,7 @@ if (Get-Module %AZORAZURERM%.profile)
 
 if (%ISAZMODULE%)
 {
-    if (($PSVersionTable.PSVersion.Major -lt 5) or (($PSVersionTable.PSVersion.Major -eq 5) -and ($PSVersionTable.PSVersion.Minor -lt 1)))
+    if (($PSVersionTable.PSVersion.Major -lt 5) -or (($PSVersionTable.PSVersion.Major -eq 5) -and ($PSVersionTable.PSVersion.Minor -lt 1)))
     {
         throw "PowerShell versions lower than 5.1 are not supported in Az. Please upgrade to PowerShell 5.1 or higher."
     }
