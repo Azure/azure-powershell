@@ -545,6 +545,18 @@
     "Update-AzVmssVM": "Update-AzureRmVmssVM",
     "New-AzVmssIpTagConfig": "New-AzureRmVmssIpTagConfig",
     "Invoke-AzVmssVMRunCommand": "Invoke-AzureRmVmssVMRunCommand",
+    "New-AzGallery": "New-AzureRmGallery",
+    "Update-AzGallery": "Update-AzureRmGallery",
+    "Get-AzGallery": "Get-AzureRmGallery",
+    "Remove-AzGallery": "Remove-AzureRmGallery",
+    "New-AzGalleryImageDefinition": "New-AzureRmGalleryImageDefinition",
+    "Update-AzGalleryImageDefinition": "Update-AzureRmGalleryImageDefinition",
+    "Get-AzGalleryImageDefinition": "Get-AzureRmGalleryImageDefinition",
+    "Remove-AzGalleryImageDefinition": "Remove-AzureRmGalleryImageDefinition",
+    "New-AzGalleryImageVersion": "New-AzureRmGalleryImageVersion",
+    "Update-AzGalleryImageVersion": "Update-AzureRmGalleryImageVersion",
+    "Get-AzGalleryImageVersion": "Get-AzureRmGalleryImageVersion",
+    "Remove-AzGalleryImageVersion": "Remove-AzureRmGalleryImageVersion",
     "Get-AzVmssDiskEncryptionStatus": "Get-AzureRmVmssDiskEncryptionStatus",
     "Get-AzVmssVMDiskEncryptionStatus": "Get-AzureRmVmssVMDiskEncryptionStatus",
     "Repair-AzVmssServiceFabricUD": "Repair-AzureRmVmssServiceFabricUD"
@@ -710,6 +722,10 @@
     "Get-AzDataLakeStoreFirewallRule": "Get-AzureRmDataLakeStoreFirewallRule",
     "Set-AzDataLakeStoreFirewallRule": "Set-AzureRmDataLakeStoreFirewallRule",
     "Add-AzDataLakeStoreFirewallRule": "Add-AzureRmDataLakeStoreFirewallRule",
+    "Get-AzDataLakeStoreVirtualNetworkRule": "Get-AzureRmDataLakeStoreVirtualNetworkRule",
+    "Set-AzDataLakeStoreVirtualNetworkRule": "Set-AzureRmDataLakeStoreVirtualNetworkRule",
+    "Add-AzDataLakeStoreVirtualNetworkRule": "Add-AzureRmDataLakeStoreVirtualNetworkRule",
+    "Remove-AzDataLakeStoreVirtualNetworkRule": "Remove-AzureRmDataLakeStoreVirtualNetworkRule",
     "Add-AzDataLakeStoreItemContent": "Add-AzureRmDataLakeStoreItemContent",
     "Enable-AzDataLakeStoreKeyVault": "Enable-AzureRmDataLakeStoreKeyVault",
     "Export-AzDataLakeStoreItem": "Export-AzureRmDataLakeStoreItem",
@@ -894,7 +910,8 @@
     "Get-AzFrontDoorFireWallPolicy": "Get-AzureRmFrontDoorFireWallPolicy",
     "Set-AzFrontDoorFireWallPolicy": "Set-AzureRmFrontDoorFireWallPolicy",
     "Remove-AzFrontDoorFireWallPolicy": "Remove-AzureRmFrontDoorFireWallPolicy",
-    "New-AzFrontDoorRuleGroupOverrideObject": "New-AzureRmFrontDoorRuleGroupOverrideObject"
+    "New-AzFrontDoorRuleGroupOverrideObject": "New-AzureRmFrontDoorRuleGroupOverrideObject",
+    "Remove-AzFrontDoorContent": "Remove-AzureRmFrontDoorContent"
   },
   "Az.HDInsight": {
     "Get-AzHDInsightJob": "Get-AzureRmHDInsightJob",
@@ -1621,7 +1638,11 @@
   "Az.PolicyInsights": {
     "Get-AzPolicyEvent": "Get-AzureRmPolicyEvent",
     "Get-AzPolicyState": "Get-AzureRmPolicyState",
-    "Get-AzPolicyStateSummary": "Get-AzureRmPolicyStateSummary"
+    "Get-AzPolicyStateSummary": "Get-AzureRmPolicyStateSummary",
+    "Get-AzPolicyRemediation": "Get-AzureRmPolicyRemediation",
+    "Remove-AzPolicyRemediation": "Remove-AzureRmPolicyRemediation",
+    "Start-AzPolicyRemediation": "Start-AzureRmPolicyRemediation",
+    "Stop-AzPolicyRemediation": "Stop-AzureRmPolicyRemediation"
   },
   "Az.PowerBIEmbedded": {
     "Remove-AzPowerBIWorkspaceCollection": "Remove-AzureRmPowerBIWorkspaceCollection",
