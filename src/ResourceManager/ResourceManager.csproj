@@ -205,6 +205,7 @@
     <Compile Include="Version2016_09_01\Utilities\ResourceManagementClientExtensions.cs" />
     <Compile Include="Version2016_09_01\Utilities\ResourcesExtensions.cs" />
     <Compile Include="Version2016_09_01\Utilities\SubscriptionAndTenantHelper.cs" />
+    <Compile Include="Version2018_05_01\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
