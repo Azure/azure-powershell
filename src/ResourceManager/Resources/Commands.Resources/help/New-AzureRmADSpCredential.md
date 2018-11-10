@@ -289,6 +289,8 @@ Parameters: ServicePrincipalObject (ByValue)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
 
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper
+
 ## NOTES
 
 ## RELATED LINKS
