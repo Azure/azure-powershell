@@ -229,16 +229,13 @@ function RelayAuthTests
 		Assert-True { $updatedHybirdConnectionAuthRule1.Rights -Contains "Listen" }
 		Assert-True { $updatedHybirdConnectionAuthRule1.Rights -Contains "Send" }
 		Assert-True { $updatedHybirdConnectionAuthRule1.Rights -Contains "Manage" }
-	
-	
-	
-	
+
 		# Get the List Keys - Namespace
 		Write-Debug "Get WcfRelay authorizationRules connectionStrings"
 		$namespaceListKeys = Get-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
-		Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
-		Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
+		Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($namespaceListKeys.PrimaryKey)}
+		Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($namespaceListKeys.SecondaryKey)}
 	
 		# Regentrate the Keys 
 		$policyKey = "PrimaryKey"
