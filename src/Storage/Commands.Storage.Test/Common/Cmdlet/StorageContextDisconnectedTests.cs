@@ -14,6 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+#endif
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage;

@@ -32,12 +32,13 @@ using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
 using Job = Microsoft.Azure.Management.Automation.Models.Job;
 using JobSchedule = Microsoft.Azure.Management.Automation.Models.JobSchedule;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
-using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -817,17 +818,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
 
-            var deployment = new Management.Internal.Resources.Models.Deployment
+            var deployment = new Management.Internal.ResourceManager.Version2018_05_01.Models.Deployment
             {
-                Properties = new Management.Internal.Resources.Models.DeploymentProperties
+                Properties = new Management.Internal.ResourceManager.Version2018_05_01.Models.DeploymentProperties
                 {
-                    TemplateLink = new Management.Internal.Resources.Models.TemplateLink(Constants.TemplateFile),
+                    TemplateLink = new Management.Internal.ResourceManager.Version2018_05_01.Models.TemplateLink(Constants.TemplateFile),
                     Parameters = parameters
                 }
             };
 
-            armClient.Deployments.CreateOrUpdate(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment);
-
+            Task.Run(() => armClient.Deployments.CreateOrUpdateWithHttpMessagesAsync(azureVmResourceGroup, Guid.NewGuid().ToString(), deployment)).Wait();
         }
 
         private string GetDSCDeploymenttemplateParameters(string resourceGroupName,
