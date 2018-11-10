@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 using System.Collections.Generic;
@@ -46,10 +47,11 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
                 "AzureRM.StreamAnalytics", "AzureRM.Subscription.Preview", "AzureRM.Tags", "AzureRM.TrafficManager", "AzureRM.UsageAggregates",
                 "AzureRM.Websites", "AzureRM.Websites.Experiments"};
 
+            IDataStore dataStore = AzureSession.Instance.DataStore;
             var paths = Environment.GetEnvironmentVariable("PSModulePath").Split(';');
             foreach (var path in paths)
             {
-                var modules = Directory.GetDirectories(path);
+                var modules = dataStore.GetDirectories(path);
                 foreach(var module in modules)
                 {
                     var moduleName = module.Split('\\').LastOrDefault();
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
                         {
                             try
                             {
-                                Directory.Delete(module, true);
+                                dataStore.DeleteDirectory(module);
                                 if (PassThru)
                                 {
                                     WriteObject(moduleName);
