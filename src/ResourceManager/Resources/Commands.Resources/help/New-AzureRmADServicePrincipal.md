@@ -585,6 +585,8 @@ Parameters: ApplicationObject (ByValue)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 

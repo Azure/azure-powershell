@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new service principal.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = "SimpleParameterSet", SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = "SimpleParameterSet", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSADServicePrincipal), typeof(PSADServicePrincipalWrapper))]
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         private const string SimpleParameterSet = "SimpleParameterSet";
