@@ -12,6 +12,20 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$ServerIdLookup = @{}
+$ServerIdLookup["Test-NewRegisteredServerParentObject"] = "cc1acdd7-9ba4-48e8-9a2b-d11d51fdb9a8"
+$ServerIdLookup["Test-NewRegisteredServerParentResourceId"] = "9c9bbf76-6b9e-41ae-ac25-62a5fa0ee87c"
+$ServerIdLookup["Test-RegisteredServer"] = @("6e47b502-766b-4609-977a-f54f3d2a1414","b0116785-567e-43d6-bccd-c875b0dc0e88", "d80a603c-e0ef-40b2-84e3-8ef6216ac2df")
+$ServerIdLookup["Test-RemoveRegisteredServer"] = "411bd5fb-1aee-4604-8c57-22b4b548e7d8"
+$ServerIdLookup["Test-RemoveRegisteredServerInputObject"] = "57f039df-4cce-42c7-9efa-e1229d4a3c7b"
+$ServerIdLookup["Test-RemoveRegisteredServerResourceId"] = "408b1927-a310-492e-9c0a-ef9fcb44c321"
+$ServerIdLookup["Test-GetRegisteredServer"] = "63495a03-9831-4ece-bc24-b6aede400488"
+$ServerIdLookup["Test-GetRegisteredServerParentObject"] = "dd71fe90-f292-4b64-85a8-355843a75149"
+$ServerIdLookup["Test-GetRegisteredServerParentResourceId"] = "0afd78e3-5df8-440d-b33a-632443cee1ce"
+$ServerIdLookup["Test-GetRegisteredServers"] = "ff26f36b-cd82-43f4-a26b-94c86820a552"
+$ServerIdLookup["Test-NewRegisteredServer"] = "4136bfec-4873-48da-93a9-65a8019c7ce7"
+$ServerIdLookup["Test-ServerEndpoint"] = "83cb0baf-db95-4b95-9eea-1a9d88d49c41"
+
 <#
 .SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
@@ -174,16 +188,37 @@ function Get-StorageManagementTestResourceName
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider)
+function Get-StorageSyncLocation($provider)
 {
-    Get-Location "Microsoft.StorageSync" "storageSyncServices" "West Central US"
+    $defaultLocation = "West Central US"
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = $provider.Split("/")[0]
+        if($provider.Contains("/"))
+        {
+            $type = $provider.Substring($namespace.Length + 1)
+            $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+
+            if ($location -eq $null)
+            {
+                return $defaultLocation
+            } else
+            {
+                return $location.Locations[0].ToLower() -replace '\s',''
+            }
+        }
+
+        return $defaultLocation
+    }
+
+    return $defaultLocation
 }
 
 <#
 .SYNOPSIS
 Gets the Canary location for a provider
 #>
-function Get-ProviderLocation_Canary($provider)
+function Get-StorageSyncLocation_Canary($provider)
 {
     "eastus2euap"
 }
@@ -193,7 +228,7 @@ function Get-ProviderLocation_Canary($provider)
 .SYNOPSIS
 Gets the Stage location for a provider
 #>
-function Get-ProviderLocation_Stage($provider)
+function Get-StorageSyncLocation_Stage($provider)
 {
     "eastus2(stage)"
 }

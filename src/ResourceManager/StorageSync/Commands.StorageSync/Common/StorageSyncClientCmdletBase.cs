@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (!isRunningInTest.HasValue)
                 {
-                    string mode = System.Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+                    string mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
                     isRunningInTest = "Playback".Equals(mode, StringComparison.OrdinalIgnoreCase);
                 }
                 return isRunningInTest.Value;

@@ -29,7 +29,7 @@ function Test-CloudEndpoint
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-ResourceName("fs")
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -140,7 +140,7 @@ function Test-NewCloudEndpoint
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -224,7 +224,7 @@ function Test-GetCloudEndpoint
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -316,7 +316,7 @@ function Test-GetCloudEndpoints
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -411,7 +411,7 @@ function Test-GetCloudEndpointParentObject
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -502,7 +502,7 @@ function Test-GetCloudEndpointParentResourceId
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -593,7 +593,7 @@ function Test-RemoveCloudEndpoint
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -680,7 +680,7 @@ function Test-RemoveCloudEndpointInputObject
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
@@ -760,7 +760,7 @@ function Test-RemoveCloudEndpointResourceId
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
-        $resourceLocation = Get-ProviderLocation ResourceManagement
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzureRmTenant).Id
