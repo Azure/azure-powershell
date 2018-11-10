@@ -256,8 +256,8 @@ function RelayAuthTests
 		Write-Debug "Get WcfRelay authorizationRules connectionStrings"
 		$WcfRelayListKeys = Get-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName
 
-		Assert-True {$WcfRelayListKeys.PrimaryConnectionString.Contains($updatedWcfRelayAuthRule1.PrimaryKey)}
-		Assert-True {$WcfRelayListKeys.SecondaryConnectionString.Contains($updatedWcfRelayAuthRule1.SecondaryKey)}
+		Assert-True {$WcfRelayListKeys.PrimaryConnectionString.Contains($WcfRelayListKeys.PrimaryKey)}
+		Assert-True {$WcfRelayListKeys.SecondaryConnectionString.Contains($WcfRelayListKeys.SecondaryKey)}
 	
 		# Regentrate the Keys 
 		$policyKey = "PrimaryKey"
@@ -272,13 +272,12 @@ function RelayAuthTests
 		Assert-True {$WcfRelayRegenerateKeys1.SecondaryKey -ne $WcfRelayListKeys.SecondaryKey}
 		Assert-AreEqual $WcfRelayRegenerateKeys1.SecondaryKey $keyValue
 
-
 		# Get the List Keys - HybirdConnection
 		Write-Debug "Get WcfRelay authorizationRules connectionStrings"
 		$HybirdConnectionListKeys = Get-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName
 
-		Assert-True {$HybirdConnectionListKeys.PrimaryConnectionString.Contains($updatedHybirdConnectionAuthRule1.PrimaryKey)}
-		Assert-True {$HybirdConnectionListKeys.SecondaryConnectionString.Contains($updatedHybirdConnectionAuthRule1.SecondaryKey)}
+		Assert-True {$HybirdConnectionListKeys.PrimaryConnectionString.Contains($HybirdConnectionListKeys.PrimaryKey)}
+		Assert-True {$HybirdConnectionListKeys.SecondaryConnectionString.Contains($HybirdConnectionListKeys.SecondaryKey)}
 	
 		# Regentrate the Keys 
 		$policyKey = "PrimaryKey"
