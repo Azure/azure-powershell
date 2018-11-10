@@ -53,19 +53,22 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             foreach (var kvp in jobStream.Value)
             {
-                object paramValue;
-                try
+                if (kvp.Value != null)
                 {
-                    paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
-                }
-                catch (CmdletInvocationException exception)
-                {
-                    if (!exception.Message.Contains("Invalid JSON primitive"))
-                        throw;
+                    object paramValue;
+                    try
+                    {
+                        paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                    }
+                    catch (CmdletInvocationException exception)
+                    {
+                        if (!exception.Message.Contains("Invalid JSON primitive"))
+                            throw;
 
-                    paramValue = kvp.Value;
+                        paramValue = kvp.Value;
+                    }
+                    this.Value.Add(kvp.Key, paramValue);
                 }
-                this.Value.Add(kvp.Key, paramValue);
             }
         }
 
