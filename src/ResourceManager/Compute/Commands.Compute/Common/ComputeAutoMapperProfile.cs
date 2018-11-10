@@ -191,9 +191,15 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // PSVirtualMachineIdentity <=> VirtualMachineIdentity
                 cfg.CreateMap<FROM.VirtualMachineIdentity, TO.PSVirtualMachineIdentity>()
-                    .ForMember(c => c.UserAssignedIdentities, o => o.Condition(r => (r.UserAssignedIdentities != null)));
+                    .AfterMap((src, dest) =>
+                    {
+                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
+                    });
                 cfg.CreateMap<TO.PSVirtualMachineIdentity, FROM.VirtualMachineIdentity>()
-                    .ForMember(c => c.UserAssignedIdentities, o => o.Condition(r => (r.UserAssignedIdentities != null)));
+                    .AfterMap((src, dest) =>
+                    {
+                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
+                    });
             });
 
             _mapper = config.CreateMapper();
