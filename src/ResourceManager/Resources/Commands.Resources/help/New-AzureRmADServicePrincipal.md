@@ -124,6 +124,7 @@ The cmdlet also implicitly creates an application and sets its properties (if th
 ```
 PS C:\> New-AzureRmADServicePrincipal
 
+Secret                : System.Security.SecureString
 ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
 ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 DisplayName           : azure-powershell-05-22-2018-18-23-43
@@ -138,6 +139,7 @@ The above command creates an AD service principal using default values for param
 ```
 PS C:\> New-AzureRmADServicePrincipal -Role Reader
 
+Secret                : System.Security.SecureString
 ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
 ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 DisplayName           : azure-powershell-05-22-2018-18-23-43
@@ -154,6 +156,7 @@ The above command creates an AD service principal using the default values for p
 ```
 PS C:\> New-AzureRmADServicePrincipal -Scope /subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz/resourceGroups/myResourceGroup
 
+Secret                : System.Security.SecureString
 ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
 ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 DisplayName           : azure-powershell-05-22-2018-18-23-43
@@ -170,6 +173,7 @@ The above command creates an AD service principal using the default values for p
 ```
 PS C:\> New-AzureRmADServicePrincipal -Role Reader -Scope /subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz/resourceGroups/myResourceGroup
 
+Secret                : System.Security.SecureString
 ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
 ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 DisplayName           : azure-powershell-05-22-2018-18-23-43
@@ -195,22 +199,7 @@ Type                  : ServicePrincipal
 
 Creates a new AD service principal for the application with application id '34a28ad2-dec4-4a41-bc3b-d22ddf90000e'. Since no values were provided for `Role` or `Scope`, the created service principal does not have any permissions.
 
-### Example 6 - Create a new AD service principal for no appplication
-
-```
-PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADServicePrincipal -DisplayName SPForNoApp -Password $SecureStringPassword
-
-ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://SPForNoApp}
-ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-DisplayName           : SPForNoApp
-Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-Type                  : ServicePrincipal
-```
-
-Creates a new AD service principal without needing an existing application. This will implicitly create an application since one is not provided. Since no values were provided for `Role` or `Scope`, the created service principal does not have any permissions.
-
-### Example 7 - Create a new AD service principal using piping
+### Example 6 - Create a new AD service principal using piping
 
 ```
 PS C:\> Get-AzureRmADApplication -ObjectId 3ede3c26-b443-4e0b-9efc-b05e68338dc3 | New-AzureRmADServicePrincipal
