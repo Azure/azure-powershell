@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Address Space", Target = ViewControl.Table, ScriptBlock = "$_.AddressSpace.AddressPrefixes")]
         public PSAddressSpace AddressSpace { get; set; }
 
-        public PSBgpSettings BgpSettings { get; set; }
+        public PSBgpSettings BgpProperties { get; set; }
 
         public PSVpnSiteDeviceProperties DeviceProperties { get; set; }
 
