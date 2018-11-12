@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix for modifying policy for a protected file share.
 
 ## Version 4.5.0
 * Added support for azure file shares in recovery services.
