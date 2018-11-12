@@ -792,10 +792,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 CmdletModel.RetentionScheduleFormat.Weekly;
 
             //Initialize day based schedule
-            defaultRetention.MonthlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
 
             //Initialize Week based schedule
-            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
+            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
 
             //Yearly retention policy
             defaultRetention.IsYearlyScheduleEnabled = true;
@@ -807,38 +807,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 CmdletModel.RetentionScheduleFormat.Weekly;
             defaultRetention.YearlySchedule.MonthsOfYear = new List<Month>();
             defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
-            defaultRetention.YearlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
-            defaultRetention.YearlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
             return defaultRetention;
 
         }
 
 
         #region private
-
-        private static CmdletModel.DailyRetentionFormat GetDailyRetentionFormat()
-        {
-            CmdletModel.DailyRetentionFormat dailyRetention =
-                new CmdletModel.DailyRetentionFormat();
-            dailyRetention.DaysOfTheMonth = new List<CmdletModel.Day>();
-            CmdletModel.Day dayBasedRetention = new CmdletModel.Day();
-            dayBasedRetention.IsLast = false;
-            dayBasedRetention.Date = 1;
-            dailyRetention.DaysOfTheMonth.Add(dayBasedRetention);
-            return dailyRetention;
-        }
-
-        private static CmdletModel.WeeklyRetentionFormat GetWeeklyRetentionFormat()
-        {
-            CmdletModel.WeeklyRetentionFormat weeklyRetention =
-                new CmdletModel.WeeklyRetentionFormat();
-            weeklyRetention.DaysOfTheWeek = new List<System.DayOfWeek>();
-            weeklyRetention.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
-
-            weeklyRetention.WeeksOfTheMonth = new List<CmdletModel.WeekOfMonth>();
-            weeklyRetention.WeeksOfTheMonth.Add(CmdletModel.WeekOfMonth.First);
-            return weeklyRetention;
-        }
 
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {

@@ -524,7 +524,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         typeof(CmdletModel.SimpleRetentionPolicy).ToString()));
             }
 
-            // call validation
             policy.Validate();
         }
 

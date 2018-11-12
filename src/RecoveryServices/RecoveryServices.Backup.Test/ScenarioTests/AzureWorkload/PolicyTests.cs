@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit;
+
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    /// <summary>
-    /// Some constants to be used with the tests.
-    /// </summary>
-    public class TestConstants
+    public partial class PolicyTests : RMTestBase
     {
-        public const string Workload = "Workload";
-
-        public const string AzureVM = "AzureVM";
-
-        public const string DPM = "DPM";
-
-        public const string AzureSql = "AzureSql";
-
-        public const string MAB = "MAB";
-
-        public const string AzureFS = "AzureFS";
-
-        public const string AzureVmWorkload = "AzureVmWorkload";
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadPolicy()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadPolicy");
+        }
     }
 }

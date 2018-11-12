@@ -12,25 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Some constants to be used with the tests.
+    /// Azure VM workload specific backup policy class.
     /// </summary>
-    public class TestConstants
+    public class AzureVmWorkloadPolicy : AzureDbPolicy
     {
-        public const string Workload = "Workload";
-
-        public const string AzureVM = "AzureVM";
-
-        public const string DPM = "DPM";
-
-        public const string AzureSql = "AzureSql";
-
-        public const string MAB = "MAB";
-
-        public const string AzureFS = "AzureFS";
-
-        public const string AzureVmWorkload = "AzureVmWorkload";
     }
 }
