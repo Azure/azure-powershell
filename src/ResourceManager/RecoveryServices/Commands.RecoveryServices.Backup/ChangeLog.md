@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fix for modifying policy for a protected file share.
+* Converted policy timezone to uppercase.
 
 ## Version 4.5.0
 * Added support for azure file shares in recovery services.
