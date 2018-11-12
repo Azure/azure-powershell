@@ -127,31 +127,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // OrchestratorProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorProfile vOrchestratorProfile = null;
+            ContainerServiceOrchestratorProfile vOrchestratorProfile = null;
 
             // CustomProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceCustomProfile vCustomProfile = null;
+            ContainerServiceCustomProfile vCustomProfile = null;
 
             // ServicePrincipalProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceServicePrincipalProfile vServicePrincipalProfile = null;
+            ContainerServiceServicePrincipalProfile vServicePrincipalProfile = null;
 
             // MasterProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceMasterProfile vMasterProfile = null;
+            ContainerServiceMasterProfile vMasterProfile = null;
 
             // WindowsProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceWindowsProfile vWindowsProfile = null;
+            ContainerServiceWindowsProfile vWindowsProfile = null;
 
             // LinuxProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceLinuxProfile vLinuxProfile = null;
+            ContainerServiceLinuxProfile vLinuxProfile = null;
 
             // DiagnosticsProfile
-            Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile vDiagnosticsProfile = null;
+            ContainerServiceDiagnosticsProfile vDiagnosticsProfile = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("OrchestratorType"))
             {
                 if (vOrchestratorProfile == null)
                 {
-                    vOrchestratorProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorProfile();
+                    vOrchestratorProfile = new ContainerServiceOrchestratorProfile();
                 }
                 vOrchestratorProfile.OrchestratorType = this.OrchestratorType.Value;
             }
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCustomProfile == null)
                 {
-                    vCustomProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceCustomProfile();
+                    vCustomProfile = new ContainerServiceCustomProfile();
                 }
                 vCustomProfile.Orchestrator = this.CustomProfileOrchestrator;
             }
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vServicePrincipalProfile == null)
                 {
-                    vServicePrincipalProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceServicePrincipalProfile();
+                    vServicePrincipalProfile = new ContainerServiceServicePrincipalProfile();
                 }
                 vServicePrincipalProfile.ClientId = this.ServicePrincipalProfileClientId;
             }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vServicePrincipalProfile == null)
                 {
-                    vServicePrincipalProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceServicePrincipalProfile();
+                    vServicePrincipalProfile = new ContainerServiceServicePrincipalProfile();
                 }
                 vServicePrincipalProfile.Secret = this.ServicePrincipalProfileSecret;
             }
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vMasterProfile == null)
                 {
-                    vMasterProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceMasterProfile();
+                    vMasterProfile = new ContainerServiceMasterProfile();
                 }
                 vMasterProfile.Count = this.MasterCount;
             }
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vMasterProfile == null)
                 {
-                    vMasterProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceMasterProfile();
+                    vMasterProfile = new ContainerServiceMasterProfile();
                 }
                 vMasterProfile.DnsPrefix = this.MasterDnsPrefix;
             }
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vWindowsProfile == null)
                 {
-                    vWindowsProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceWindowsProfile();
+                    vWindowsProfile = new ContainerServiceWindowsProfile();
                 }
                 vWindowsProfile.AdminUsername = this.WindowsProfileAdminUsername;
             }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vWindowsProfile == null)
                 {
-                    vWindowsProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceWindowsProfile();
+                    vWindowsProfile = new ContainerServiceWindowsProfile();
                 }
                 vWindowsProfile.AdminPassword = this.WindowsProfileAdminPassword;
             }
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vLinuxProfile == null)
                 {
-                    vLinuxProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceLinuxProfile();
+                    vLinuxProfile = new ContainerServiceLinuxProfile();
                 }
                 vLinuxProfile.AdminUsername = this.AdminUsername;
             }
@@ -233,19 +233,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vLinuxProfile == null)
                 {
-                    vLinuxProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceLinuxProfile();
+                    vLinuxProfile = new ContainerServiceLinuxProfile();
                 }
                 if (vLinuxProfile.Ssh == null)
                 {
-                    vLinuxProfile.Ssh = new Microsoft.Azure.Management.Compute.Models.ContainerServiceSshConfiguration();
+                    vLinuxProfile.Ssh = new ContainerServiceSshConfiguration();
                 }
                 if (vLinuxProfile.Ssh.PublicKeys == null)
                 {
-                    vLinuxProfile.Ssh.PublicKeys = new List<Microsoft.Azure.Management.Compute.Models.ContainerServiceSshPublicKey>();
+                    vLinuxProfile.Ssh.PublicKeys = new List<ContainerServiceSshPublicKey>();
                 }
                 foreach (var element in this.SshPublicKey)
                 {
-                    var vPublicKeys = new Microsoft.Azure.Management.Compute.Models.ContainerServiceSshPublicKey();
+                    var vPublicKeys = new ContainerServiceSshPublicKey();
                     vPublicKeys.KeyData = element;
                     vLinuxProfile.Ssh.PublicKeys.Add(vPublicKeys);
                 }
@@ -253,11 +253,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (vDiagnosticsProfile == null)
             {
-                vDiagnosticsProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile();
+                vDiagnosticsProfile = new ContainerServiceDiagnosticsProfile();
             }
             if (vDiagnosticsProfile.VmDiagnostics == null)
             {
-                vDiagnosticsProfile.VmDiagnostics = new Microsoft.Azure.Management.Compute.Models.ContainerServiceVMDiagnostics();
+                vDiagnosticsProfile.VmDiagnostics = new ContainerServiceVMDiagnostics();
             }
 
             vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
