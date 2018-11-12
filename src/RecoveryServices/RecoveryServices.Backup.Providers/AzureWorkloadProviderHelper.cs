@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public void RegisterContainer(string storageAccountName,
+        public void RegisterContainer(string containerName,
             ProtectionContainerResource protectionContainerResource,
             string vaultName, string vaultResourceGroupName)
         {
             var registerResponse = ServiceClientAdapter.RegisterContainer(
-                            storageAccountName,
+                            containerName,
                             protectionContainerResource,
                             vaultName,
                             vaultResourceGroupName);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 operationId =>
                     ServiceClientAdapter.GetRegisterContainerOperationResult(
                         operationId,
-                        storageAccountName,
+                        containerName,
                         vaultName: vaultName,
                         resourceGroupName: vaultResourceGroupName));
 

@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RegisteredContainer = "The recovery services backup container.";
             public const string FriendlyName = "The name of the resource being managed by the" +
                 " Azure Backup service (for example: resource name of the VM).";
+            public const string ResourceId = "Azure VM Id";
         }
 
         internal static class Common

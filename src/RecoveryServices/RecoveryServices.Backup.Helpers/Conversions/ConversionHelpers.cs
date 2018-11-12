@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new AzureFileShareContainer(protectionContainer);
                 }
+                else if (protectionContainer.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureVMAppContainerProtectionContainer))
+                {
+                    containerModel = new AzureVmWorkloadContainer(protectionContainer);
+                }
             }
 
             return containerModel;

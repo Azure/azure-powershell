@@ -60,5 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         RPMountScriptDetails ProvisionItemLevelRecoveryAccess();
 
         void RevokeItemLevelRecoveryAccess();
+
+        void RegisterContainer();
     }
 }

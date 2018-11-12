@@ -349,6 +349,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.WorkloadType.AzureVM:
                     serviceClientWorkloadType = ServiceClientModel.WorkloadType.VM.ToString();
                     break;
+                case CmdletModel.WorkloadType.MSSQL:
+                    serviceClientWorkloadType = ServiceClientModel.WorkloadType.SQLDataBase.ToString();
+                    break;
                 default:
                     break;
             }
