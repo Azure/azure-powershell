@@ -1,4 +1,24 @@
-﻿if (!($env:SkipAzInstallationChecks -eq "true"))
+﻿function Write-InstallationCheckToFile
+{
+    Param($installationchecks)
+    if (Get-Module AzureRM.Profile -ListAvailable)
+    {
+        Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
+    }
+
+    $installationchecks.Add("AzSideBySideCheck","true")
+    try
+    {
+        Remove-Item -Path $pathToInstallationChecks
+        New-Item -Path $pathToInstallationChecks -ItemType File -Value ($installationchecks | ConvertTo-Json)
+    }
+    catch
+    { 
+        Write-Verbose "Installation checks failed to write to file." 
+    }
+}
+
+if (!($env:SkipAzInstallationChecks -eq "true"))
 {
     $pathToInstallationChecks = Join-Path (Join-Path $HOME ".Azure") "AzInstallationChecks.json"
     if (!(Test-Path $pathToInstallationChecks))
@@ -28,12 +48,12 @@
         }
         catch
         {
-            Write-InstallationCheckToFile
+            Write-InstallationCheckToFile $installationchecks
         }
 
         if (!$installationchecks.ContainsKey("AzSideBySideCheck"))
         {
-            Write-InstallationCheckToFile
+            Write-InstallationCheckToFile $installationchecks
         }
     }
 }
@@ -45,22 +65,3 @@
 }
 
 Update-TypeData -AppendPath (Join-Path (Get-Item $PSScriptRoot).Parent.FullName Microsoft.Azure.Commands.Profile.types.ps1xml)
-
-function Write-InstallationCheckToFile
-{
-    if (Get-Module AzureRM.Profile -ListAvailable)
-    {
-        Write-Warning "Both Az and AzureRM modules were detected on your machine. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
-    }
-
-    $installationchecks.Add("AzSideBySideCheck","true")
-    try
-    {
-        Remove-Item -Path $pathToInstallationChecks
-        New-Item -Path $pathToInstallationChecks -ItemType File -Value ($installationchecks | ConvertTo-Json)
-    }
-    catch
-    { 
-        Write-Verbose "Installation checks failed to write to file." 
-    }
-}

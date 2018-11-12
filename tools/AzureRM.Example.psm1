@@ -9,6 +9,21 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
+function Test-DotNet
+{
+    try
+    {
+        if (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' | Get-ItemPropertyValue -Name Release | Foreach-Object { $_ -lt 461808 })
+        {
+            throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
+        }
+    }
+    catch
+    {
+        Write-Verbose ".NET Framework version check failed."
+    }
+}
+
 if (%ISAZMODULE%)
 {
     if ($PSVersionTable.PSVersion -lt [Version]'5.1')
@@ -104,20 +119,5 @@ if ($Env:ACC_CLOUD -eq $null)
                     }
                 })
         }
-    }
-}
-
-function Test-DotNet
-{
-    try
-    {
-        if (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' | Get-ItemPropertyValue -Name Release | Foreach-Object { $_ -lt 461808 })
-        {
-            throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
-        }
-    }
-    catch
-    {
-        Write-Verbose ".NET Framework version check failed."
     }
 }
