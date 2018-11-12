@@ -724,6 +724,10 @@
         {
             "file": "src\\ResourceManager\\Automation\\Commands.Automation.Test\\ScenarioTests\\SourceControlTests.ps1",
             "_justification": "Legitimate personal access tokens. After recording the tests, the tokens were revoked"
+        },
+        {
+            "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+            "_justification": "Sample certificate only used in tests"
         }
     ]
 }
