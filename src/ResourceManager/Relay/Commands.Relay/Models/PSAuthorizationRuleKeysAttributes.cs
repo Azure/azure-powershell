@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// Namespace/Relay Connection String
     /// </summary>
-    public partial class AuthorizationRuleKeysAttributes
+    public partial class PSAuthorizationRuleKeysAttributes
     {
         /// <summary>
         /// Initializes a new instance of the AuthorizationRuleKeys class.
         /// </summary>
-        public AuthorizationRuleKeysAttributes() { }
+        public PSAuthorizationRuleKeysAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the AuthorizationRuleKeysAttributes class.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// for signing and validating the SAS token</param>
         /// <param name="keyName">A string that describes the authorization
         /// rule</param>
-        public AuthorizationRuleKeysAttributes(string primaryConnectionString = default(string), string secondaryConnectionString = default(string), string primaryKey = default(string), string secondaryKey = default(string), string keyName = default(string))
+        public PSAuthorizationRuleKeysAttributes(string primaryConnectionString = default(string), string secondaryConnectionString = default(string), string primaryKey = default(string), string secondaryKey = default(string), string keyName = default(string))
         {
             PrimaryConnectionString = primaryConnectionString;
             SecondaryConnectionString = secondaryConnectionString;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// Initializes a new instance of the AuthorizationRuleKeysAttributes class with a Azure.Management.Relay.Models.AuthorizationRuleKeys
         /// </summary>
         /// <param name="authorizationruleskeys"></param>
-        public AuthorizationRuleKeysAttributes(AccessKeys authorizationruleskeys)
+        public PSAuthorizationRuleKeysAttributes(AccessKeys authorizationruleskeys)
         {
             PrimaryConnectionString = authorizationruleskeys.PrimaryConnectionString;
             SecondaryConnectionString = authorizationruleskeys.SecondaryConnectionString;

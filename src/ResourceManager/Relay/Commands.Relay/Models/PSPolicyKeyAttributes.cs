@@ -8,17 +8,13 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
-
     /// <summary>
-    /// Defines values for Relaytype.
+    /// Defines values for PolicyKey.
     /// </summary>
-    public static class RelaytypeAttributes
+    public static class PSPolicyKeyAttributes
     {
-        public const string NetTcp = "NetTcp";
-        public const string Http = "Http";
+        public const string PrimaryKey = "PrimaryKey";
+        public const string SecondaryKey = "SecondaryKey";
     }
 }
 
