@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using System;
@@ -20,7 +23,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
+#if NETSTANDARD
+namespace Microsoft.Azure.Commands.Profile.Models.Core
+#else
 namespace Microsoft.Azure.Commands.Profile.Models
+#endif
 {
     /// <summary>
     /// The context for connecting cmdlets in the current session to Azure.
@@ -143,30 +150,30 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The name of the context. The context may be selected by name
         /// </summary>
-        [Ps1Xml(Label = "Context Name", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        [Ps1Xml(Label = "Account id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
+        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 1)]
         public IAzureAccount Account { get; set; }
 
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
-        [Ps1Xml(Label = "Environment Name", Target = ViewControl.Table, ScriptBlock = "$_.Environment.Name")]
+        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, Position = 3)]
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The subscription targeted in Azure.
         /// </summary>
-        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name")]
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 2)]
         public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id")]
+        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.ToString()", Position = 4)]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; }
