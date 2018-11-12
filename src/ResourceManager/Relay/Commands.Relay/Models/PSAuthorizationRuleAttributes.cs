@@ -8,14 +8,13 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Rest.Serialization;
     using System.Collections.Generic;
     using Azure.Management.Relay.Models;
 
     /// <summary>
     /// Description of a Namespace AuthorizationRules.
     /// </summary>
-    public partial class AuthorizationRuleAttributes
+    public partial class PSAuthorizationRuleAttributes
     {
         /// <summary>
         /// 
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Initializes a new instance of the AuthorizationRule class.
         /// </summary>
-        public AuthorizationRuleAttributes() { Rights = new List<string>(); }
+        public PSAuthorizationRuleAttributes() { Rights = new List<string>(); }
 
         /// <summary>
         /// Initializes a new instance of the AuthorizationRule class.
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         
-        public AuthorizationRuleAttributes(AuthorizationRule authorizationrule)
+        public PSAuthorizationRuleAttributes(AuthorizationRule authorizationrule)
         {
             Id = authorizationrule.Id;
             Name = authorizationrule.Name;

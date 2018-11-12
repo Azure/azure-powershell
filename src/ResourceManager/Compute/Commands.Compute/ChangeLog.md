@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed identity issue for SystemAssigned identity
 * Minor changes for upcoming AzureRM to Az transition
 
 ## Version 5.8.0
