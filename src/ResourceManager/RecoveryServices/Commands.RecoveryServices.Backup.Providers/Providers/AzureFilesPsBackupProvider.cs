@@ -929,11 +929,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureFileShareItem).ToString()));
             }
-
-            if (string.IsNullOrEmpty(((AzureFileShareItem)itemBase).ParentContainerFabricId))
-            {
-                throw new ArgumentException(Resources.ParentContainerFabricIdIsEmptyOrNull);
-            }
         }
     }
 }
