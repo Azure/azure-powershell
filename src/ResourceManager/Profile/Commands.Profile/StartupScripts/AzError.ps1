@@ -44,7 +44,7 @@
     throw "AzureRM.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
 }
 
-Update-TypeData -AppendPath Microsoft.Azure.Commands.Profile.types.ps1xml
+Update-TypeData -AppendPath (Join-Path (Get-Item $PSScriptRoot).Parent.FullName Microsoft.Azure.Commands.Profile.types.ps1xml)
 
 function Write-InstallationCheckToFile
 {
