@@ -8,24 +8,19 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
     using Rest;
     using Newtonsoft.Json;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Definition of Resource
     /// </summary>
-    public partial class TrackedResourceAttributes : ResourceAttributes
+    public partial class PSTrackedResourceAttributes : PSResourceAttributes
     {
         /// <summary>
         /// Initializes a new instance of the TrackedResource class.
         /// </summary>
-        public TrackedResourceAttributes() { }
+        public PSTrackedResourceAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the TrackedResource class.
@@ -35,7 +30,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        public TrackedResourceAttributes(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public PSTrackedResourceAttributes(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id, name, type)
         {
             Location = location;
