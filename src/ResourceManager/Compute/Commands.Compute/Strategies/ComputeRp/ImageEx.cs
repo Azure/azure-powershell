@@ -200,8 +200,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             var versionPresent = (resourceId.IndexOf(VERSION_STRING, StringComparison.InvariantCultureIgnoreCase) >= 0);
             if (string.IsNullOrEmpty(resourceId)) { return null; }
             Regex r = (versionPresent)
-                    ? new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase)
-                    : new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)/" + VERSION_STRING + @"/(?<version>\S+)", RegexOptions.IgnoreCase);
+                    ? new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)/" + VERSION_STRING + @"/(?<version>\S+)", RegexOptions.IgnoreCase)
+                    : new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
             Match m = r.Match(resourceId);
             return m.Success ? m.Groups["instanceId"].Value : null;
         }
