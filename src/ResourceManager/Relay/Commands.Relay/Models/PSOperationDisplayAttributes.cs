@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// The object that represents the operation.
     /// </summary>
-    public partial class OperationDisplayAttributes
+    public partial class PSOperationDisplayAttributes
     {
         /// <summary>
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
-        public OperationDisplayAttributes() { }
+        public PSOperationDisplayAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the OperationDisplay class.
@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// performed: Invoice, etc.</param>
         /// <param name="operation">Operation type: Read, write, delete,
         /// etc.</param>
-        public OperationDisplayAttributes(string provider = default(string), string resource = default(string), string operation = default(string))
+        public PSOperationDisplayAttributes(string provider = default(string), string resource = default(string), string operation = default(string))
         {
             Provider = provider;
             Resource = resource;
             Operation = operation;
         }
 
-        public OperationDisplayAttributes(OperationDisplay operationDisplay)
+        public PSOperationDisplayAttributes(OperationDisplay operationDisplay)
         {
             Provider = operationDisplay.Provider;
             Resource = operationDisplay.Resource;

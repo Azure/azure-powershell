@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// </summary>
         static RelayNamespaceAttirbutesUpdateParameter()
         {
-            Sku = new SkuAttributes();
+            Sku = new PSSkuAttributes();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// The sku of the created namespace
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public static SkuAttributes Sku { get; private set; }
+        public static PSSkuAttributes Sku { get; private set; }
 
     }
 }
