@@ -720,6 +720,10 @@
         {
             "file": "\\src\\ServiceManagement\\Automation\\Commands.Automation\\Microsoft.WindowsAzure.Commands.Automation.dll-help.xml",
             "_justification": "Module example help information using fake passwords"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+            "_justification": "Mocked credential"
         }
     ]
 }
