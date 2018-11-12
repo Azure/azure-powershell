@@ -184,6 +184,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Customer error of an application gateway")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayCustomError> CustomErrorConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -304,6 +308,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Zone != null)
             {
                 applicationGateway.Zones = this.Zone;
+            }
+
+            if (this.CustomErrorConfiguration != null)
+            {
+                applicationGateway.CustomErrorConfigurations = this.CustomErrorConfiguration;
             }
 
             // Normalize the IDs

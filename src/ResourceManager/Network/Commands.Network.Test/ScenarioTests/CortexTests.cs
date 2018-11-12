@@ -30,8 +30,8 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact( Skip = "TODO, #7260: needs to be re-recorded")]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Fact(Skip = "TODO, #7260: needs to be re-recorded")]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestCortexCRUD()
         {
             //// WARNING - Until Ignite, please use only the Jenkins sub c9cbd920-c00c-427c-852b-8aaf38badaeb to record this test case

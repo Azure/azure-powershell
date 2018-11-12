@@ -722,6 +722,34 @@
             "_justification": "Module example help information using fake passwords"
         },
         {
+          "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentBaselineTest.json",
+          "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+        {
+          "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentScanConvertTest.json",
+          "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+        {
+          "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentScanRecordGetListTest.json",
+          "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+        {
+          "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentSettingsTest.json",
+          "_justification": "Legitimate test session record - the resources are bing deleted after the test run in Record mode."
+        },
+        {
+          "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\auth-cert.pfx",
+          "_justification": "Legitimate test certificate file"
+        },
+        {
+          "file": "\\src\\ResourceManager\\Relay\\Commands.Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
+          "_justification": "The Authorization rule is deleted Rule is"
+        },
+        {
+          "file": "src\\ResourceManager\\Relay\\Commands.Relay.Test\\SessionRecords\\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.RelayAuthorizationRulesTests\\RelayAuthorizationRulesTestsCRUD.json",
+          "_justification": "Legitimate test session record"
+        },
+        {
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
             "_justification": "Mocked credential"
         }

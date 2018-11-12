@@ -1011,6 +1011,7 @@ function Test-VirtualMachineScaleSetIdentity
         Assert-AreEqual "SystemAssigned" $result.Identity.Type;
         Assert-NotNull $result.Identity.PrincipalId;
         Assert-NotNull $result.Identity.TenantId;
+        Assert-Null $result.Identity.UserAssignedIdentities;
 
         # Validate Network Profile
         Assert-AreEqual 'test' $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
@@ -1046,10 +1047,20 @@ function Test-VirtualMachineScaleSetIdentity
         Assert-AreEqual "SystemAssigned" $vmssResult.Identity.Type;
         Assert-NotNull $vmssResult.Identity.PrincipalId;
         Assert-NotNull $vmssResult.Identity.TenantId;
+        Assert-Null $vmssResult.Identity.UserAssignedIdentities;
 
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
         $output = $vmssInstanceViewResult | Out-String
+
+        Update-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssResult;
+        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        # Validate VMSS Identity
+        Assert-AreEqual "SystemAssigned" $vmssResult.Identity.Type;
+        Assert-NotNull $vmssResult.Identity.PrincipalId;
+        Assert-NotNull $vmssResult.Identity.TenantId;
+        Assert-Null $vmssResult.Identity.UserAssignedIdentities;
     }
     finally
     {
@@ -1828,8 +1839,18 @@ function Test-VirtualMachineScaleSetVMUpdate
         | New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname0;
         $disk0 = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname0;
 
+        $vmssVM = Add-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVMs[0] -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id;
+        $vmssVM = Add-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Caching 'ReadOnly' -DiskSizeInGB 100 -Lun 0 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id;
+        Assert-AreEqual 2 $vmssVM.StorageProfile.DataDisks.Count;
+
+        $vmssVM = Remove-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Lun 1;
+        Assert-AreEqual 1 $vmssVM.StorageProfile.DataDisks.Count;
+
+        $vmssVM = Remove-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Lun 0;
+        Assert-Null $vmssVM.StorageProfile.DataDisks;
+
         $result = $vmssVMs[0] `
-                  | Add-AzureRmVmDataDisk -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id `
+                  | Add-AzureRmVmssVMDataDisk -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id `
                   | Update-AzureRmVmssVM;
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
