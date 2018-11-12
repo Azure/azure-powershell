@@ -292,6 +292,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Base class for azure workload policy settings.
+    /// </summary>
+    public class SettingsBase : ObjectBase
+    {
+        /// <summary>
+        /// Is compression enabled
+        /// </summary>
+        public bool? IsCompression { get; set; }
+
+        /// <summary>
+        /// Is sql compression enabled
+        /// </summary>
+        public bool? Issqlcompression { get; set; }
+
+        /// <summary>
+        /// TimeZone property
+        /// </summary>
+        public string TimeZone { get; set; }
+    }
+
+    /// <summary>
     /// Base class for backup job.
     /// </summary>
     public class JobBase : ManagementContext

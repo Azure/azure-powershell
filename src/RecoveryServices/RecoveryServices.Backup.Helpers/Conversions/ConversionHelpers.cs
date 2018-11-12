@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             ServiceClientModel.SimpleRetentionPolicy azureSqlRetentionPolicy =
                 (ServiceClientModel.SimpleRetentionPolicy)azureSqlPolicy.RetentionPolicy;
             sqlPolicyModel.RetentionPolicy =
-                PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null);
+                PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null, "AzureSql");
             return policyModel;
         }
 
@@ -236,6 +236,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return policyModel;
         }
 
+        public static PolicyBase GetPolicyModelForAzureVmWorkload(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
+           PolicyBase policyModel)
+        {
+            ServiceClientModel.AzureVmWorkloadProtectionPolicy azureVmWorkloadPolicy =
+                    (ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties;
+
+            foreach (var policy in azureVmWorkloadPolicy.SubProtectionPolicy)
+            {
+                if (string.Compare(policy.PolicyType, "Full") == 0)
+                {
+                    if (policy.SchedulePolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleSchedulePolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown Schedule object received: " +
+                            policy.SchedulePolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                    if (policy.RetentionPolicy.GetType() !=
+                        typeof(ServiceClientModel.LongTermRetentionPolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                            policy.RetentionPolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                }
+                else if (string.Compare(policy.PolicyType, "Differential") == 0)
+                {
+                    if (policy.SchedulePolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleSchedulePolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown Schedule object received: " +
+                            policy.SchedulePolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                    if (policy.RetentionPolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleRetentionPolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                            policy.RetentionPolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                }
+                else if (string.Compare(policy.PolicyType, "Log") == 0)
+                {
+                    if (policy.SchedulePolicy.GetType() !=
+                        typeof(ServiceClientModel.LogSchedulePolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown Schedule object received: " +
+                            policy.SchedulePolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                    if (policy.RetentionPolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleRetentionPolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                            policy.RetentionPolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                }
+            }
+
+            policyModel = new AzureVmWorkloadPolicy();
+            AzureVmWorkloadPolicy azureVmWorkloadPolicyModel = policyModel as AzureVmWorkloadPolicy;
+            azureVmWorkloadPolicyModel.WorkloadType = WorkloadType.MSSQL;
+            azureVmWorkloadPolicyModel.BackupManagementType = BackupManagementType.AzureWorkload;
+            azureVmWorkloadPolicyModel.IsCompression =
+                ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.IsCompression;
+            GetPSSubProtectionPolicy(azureVmWorkloadPolicyModel, serviceClientResponse,
+                ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+
+            return policyModel;
+        }
+
         /// <summary>
         /// Helper function to convert ps backup policy model from service response.
         /// </summary>
@@ -262,6 +341,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 typeof(ServiceClientModel.AzureFileShareProtectionPolicy))
             {
                 policyModel = GetPolicyModelForAzureFileShare(serviceClientResponse, policyModel);
+            }
+            else if (serviceClientResponse.Properties.GetType() ==
+                typeof(ServiceClientModel.AzureVmWorkloadProtectionPolicy))
+            {
+                policyModel = GetPolicyModelForAzureVmWorkload(serviceClientResponse, policyModel);
             }
             else
             {
@@ -430,6 +514,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return itemModels;
+        }
+
+        public static SettingsBase GetPSPolicySetting(ServiceClientModel.Settings policySettings)
+        {
+            SettingsBase settings = new SettingsBase();
+            settings.IsCompression = policySettings.IsCompression;
+            settings.Issqlcompression = policySettings.Issqlcompression;
+            settings.TimeZone = policySettings.TimeZone;
+
+            return settings;
+        }
+
+        public static void GetPSSubProtectionPolicy(AzureVmWorkloadPolicy azureVmWorkloadPolicyModel,
+           ServiceClientModel.ProtectionPolicyResource serviceClientResponse, string timeZone)
+        {
+            foreach (var subProtectionPolicy in
+                ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).SubProtectionPolicy)
+            {
+                if (string.Compare(subProtectionPolicy.PolicyType, "Full") == 0)
+                {
+                    azureVmWorkloadPolicyModel.FullBackupSchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy(
+                        (ServiceClientModel.SimpleSchedulePolicy)subProtectionPolicy.SchedulePolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+
+                    azureVmWorkloadPolicyModel.FullBackupRetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy(
+                        (ServiceClientModel.LongTermRetentionPolicy)subProtectionPolicy.RetentionPolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+                }
+                else if (string.Compare(subProtectionPolicy.PolicyType, "Differential") == 0)
+                {
+                    azureVmWorkloadPolicyModel.DifferentialBackupSchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy(
+                        (ServiceClientModel.SimpleSchedulePolicy)subProtectionPolicy.SchedulePolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+                    azureVmWorkloadPolicyModel.DifferentialBackupRetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy(
+                        (ServiceClientModel.SimpleRetentionPolicy)subProtectionPolicy.RetentionPolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
+                }
+                else if (string.Compare(subProtectionPolicy.PolicyType, "Log") == 0)
+                {
+                    azureVmWorkloadPolicyModel.LogBackupSchedulePolicy = PolicyHelpers.GetPSLogSchedulePolicy((ServiceClientModel.LogSchedulePolicy)
+                    subProtectionPolicy.SchedulePolicy,
+                    ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+                    azureVmWorkloadPolicyModel.LogBackupRetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)
+                    subProtectionPolicy.RetentionPolicy,
+                    ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
+                }
+            }
         }
         #endregion
     }

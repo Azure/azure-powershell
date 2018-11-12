@@ -236,6 +236,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
+        public void ValidateSQLSchedulePolicy(CmdletModel.SchedulePolicyBase policy)
+        {
+            if (policy == null || policy.GetType() != typeof(CmdletModel.SQLSchedulePolicy))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
+                                            typeof(CmdletModel.SQLSchedulePolicy).ToString()));
+            }
+
+            // call validation
+            policy.Validate();
+        }
+
         public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
@@ -244,6 +256,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     string.Format(
                         Resources.InvalidRetentionPolicyException,
                         typeof(CmdletModel.LongTermRetentionPolicy).ToString()));
+            }
+
+            // perform validation
+            policy.Validate();
+        }
+
+        public void ValidateSQLRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
+        {
+            if (policy == null || policy.GetType() != typeof(CmdletModel.SQLRetentionPolicy))
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        Resources.InvalidRetentionPolicyException,
+                        typeof(CmdletModel.SQLRetentionPolicy).ToString()));
             }
 
             // perform validation
@@ -351,6 +377,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName: resourceGroupName);
 
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+        }
+
+        public static CmdletModel.DailyRetentionFormat GetDailyRetentionFormat()
+        {
+            CmdletModel.DailyRetentionFormat dailyRetention =
+                new CmdletModel.DailyRetentionFormat();
+            dailyRetention.DaysOfTheMonth = new List<CmdletModel.Day>();
+            CmdletModel.Day dayBasedRetention = new CmdletModel.Day();
+            dayBasedRetention.IsLast = false;
+            dayBasedRetention.Date = 1;
+            dailyRetention.DaysOfTheMonth.Add(dayBasedRetention);
+            return dailyRetention;
+        }
+
+        public static CmdletModel.WeeklyRetentionFormat GetWeeklyRetentionFormat()
+        {
+            CmdletModel.WeeklyRetentionFormat weeklyRetention =
+                new CmdletModel.WeeklyRetentionFormat();
+            weeklyRetention.DaysOfTheWeek = new List<System.DayOfWeek>();
+            weeklyRetention.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
+
+            weeklyRetention.WeeksOfTheMonth = new List<CmdletModel.WeekOfMonth>();
+            weeklyRetention.WeeksOfTheMonth.Add(CmdletModel.WeekOfMonth.First);
+            return weeklyRetention;
+        }
+
+        public void GetUpdatedSchedulePolicy(CmdletModel.PolicyBase policy, CmdletModel.SQLSchedulePolicy schPolicy)
+        {
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy = schPolicy.FullBackupSchedulePolicy;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).DifferentialBackupSchedulePolicy = schPolicy.DifferentialBackupSchedulePolicy;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).LogBackupSchedulePolicy = schPolicy.LogBackupSchedulePolicy;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).IsLogBackupEnabled = schPolicy.IsLogBackupEnabled;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).IsDifferentialBackupEnabled = schPolicy.IsDifferentialBackupEnabled;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).IsCompression = schPolicy.IsCompression;
+        }
+
+        public void GetUpdatedRetentionPolicy(CmdletModel.PolicyBase policy, CmdletModel.SQLRetentionPolicy retPolicy)
+        {
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy = retPolicy.FullBackupRetentionPolicy;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).DifferentialBackupRetentionPolicy = retPolicy.DifferentialBackupRetentionPolicy;
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).LogBackupRetentionPolicy = retPolicy.LogBackupRetentionPolicy;
         }
     }
 }
