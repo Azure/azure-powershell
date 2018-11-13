@@ -205,20 +205,47 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
-        /// </summary>
-        public static string ContainerNetworkInterfaceConfigurationNameNotSet {
-            get {
-                return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
         public static string ChildResourceAlreadyPresentInResourceGroup {
             get {
                 return ResourceManager.GetString("ChildResourceAlreadyPresentInResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connectivity check destination resource id must not be the same as source: {0}.
+        /// </summary>
+        public static string ConnectivityDestinationIsMustNotBeTheSameAsSource {
+            get {
+                return ResourceManager.GetString("ConnectivityDestinationIsMustNotBeTheSameAsSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connectivity check missing destination port.
+        /// </summary>
+        public static string ConnectivityMissingDestinationPort {
+            get {
+                return ResourceManager.GetString("ConnectivityMissingDestinationPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connectivity check missing destination resource id or address.
+        /// </summary>
+        public static string ConnectivityMissingDestinationResourceIdOrAddress {
+            get {
+                return ResourceManager.GetString("ConnectivityMissingDestinationResourceIdOrAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
+        /// </summary>
+        public static string ContainerNetworkInterfaceConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
             }
         }
         
@@ -354,6 +381,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string NetworkProfileNameNotSet {
             get {
                 return ResourceManager.GetString("NetworkProfileNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no network watcher in location {0}.
+        /// </summary>
+        public static string NoNetworkWatcherInLocation {
+            get {
+                return ResourceManager.GetString("NoNetworkWatcherInLocation", resourceCulture);
             }
         }
         
@@ -644,7 +680,8 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
-
+        
+        /// <summary>
         ///   Looks up a localized string similar to A remote virtual network reference is required to create a HubVirtualNetworkConnection..
         /// </summary>
         public static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {
