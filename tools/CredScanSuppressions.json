@@ -941,5 +941,9 @@
       "file": "src\\ResourceManager\\Relay\\Commands.Relay.Test\\SessionRecords\\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.RelayAuthorizationRulesTests\\RelayAuthorizationRulesTestsCRUD.json",
       "_justification": "Legitimate test session record"
     },
+    {
+       "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+       "_justification": "Mocked credential"
+    },
   ]
 }
