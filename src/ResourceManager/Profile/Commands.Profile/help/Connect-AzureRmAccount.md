@@ -66,10 +66,9 @@ After executing this cmdlet, you can disconnect from an Azure account using Disc
 ### Example 1: Use an interactive login to connect to an Azure account
 ```
 PS C:\> Connect-AzureRmAccount
-Account: azureuser@contoso.com
-Environment: AzureCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects to an Azure account.
@@ -80,10 +79,9 @@ If multi-factor authentication is enabled for your credentials, you must log in 
 ```
 PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzureRmAccount -Credential $Credential
-Account: azureuser@contoso.com
-Environment: AzureChinaCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 The first command gets the user credentials, and then stores them in the $Credential variable.
@@ -95,10 +93,9 @@ You cannot use multi-factor authentication or Microsoft account credentials to r
 ```
 PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
-Account: xxxx-xxxx-xxxx-xxxx
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 The first command gets the user credentials, and then stores them in the $Credential variable.
@@ -108,10 +105,9 @@ The ServicePrincipal switch parameter indicates that the account authenticates a
 ### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
 ```
 PS C:\> Connect-AzureRmAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
-Account: pfuller@contoso.com
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
@@ -119,10 +115,9 @@ This command connects to an Azure account and configured AzureRM PowerShell to r
 ### Example 5: Add an Account Using Managed Service Identity Login
 ```
 PS C:\> Connect-AzureRmAccount -MSI
-Account: MSI@50342
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects using the managed service identity of the host environment (for example, if executed on a 

@@ -73,6 +73,9 @@
     <None Update="Microsoft.Azure.Commands.Profile.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Microsoft.Azure.Commands.Profile.generated.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Microsoft.Azure.Commands.Profile.types.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
