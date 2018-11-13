@@ -24,11 +24,12 @@ function Test-NetworkUsage
     $subnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/Usages"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "West US"
+    # TODO: replace with Normalize-Location after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
+    $location = $location.ToLower() -replace '[^a-z0-9]'
     
     try 
     {
-        $location = $location -replace " ","";
         $usage = Get-AzureRMNetworkUsage -Location $location;
         $vnetCount = ($usage | Where-Object { $_.name.Value -eq "VirtualNetworks" }).currentValue;
         Assert-AreNotEqual 0 $usage.Length "Usage should return non-empty array";

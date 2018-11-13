@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -105,7 +105,8 @@ CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
     'Clear-AzContext', 'Disconnect-AzAccount', 
     'Get-AzContextAutosaveSetting', 'Set-AzDefault', 
     'Get-AzDefault', 'Clear-AzDefault',
-    'Enable-AzureRmAlias', 'Disable-AzureRmAlias'
+    'Enable-AzureRmAlias', 'Disable-AzureRmAlias',
+    'Uninstall-AzureRm'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -143,7 +144,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
+        ReleaseNotes = 'Update release with latest service features and serialization fixes'
 
         # Prerelease string of this module
         # Prerelease = ''

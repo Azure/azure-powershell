@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database to act as primary.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the secondary in.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/elasticPools", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string SecondaryElasticPoolName { get; set; }
 
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the resource group to create secondary in.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
@@ -81,6 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the Azure SQL Server to create secondary in.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "PartnerResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 

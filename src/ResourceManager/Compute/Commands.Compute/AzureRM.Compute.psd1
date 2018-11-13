@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.7.2'
+ModuleVersion = '5.8.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.dll', 
@@ -181,7 +181,8 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'New-AzureRmGalleryImageDefinition', 'Update-AzureRmGalleryImageDefinition',
                'Get-AzureRmGalleryImageDefinition', 'Remove-AzureRmGalleryImageDefinition',
                'New-AzureRmGalleryImageVersion', 'Update-AzureRmGalleryImageVersion',
-               'Get-AzureRmGalleryImageVersion', 'Remove-AzureRmGalleryImageVersion'
+               'Get-AzureRmGalleryImageVersion', 'Remove-AzureRmGalleryImageVersion',
+               'Add-AzureRmVmssVMDataDisk', 'Remove-AzureRmVmssVMDataDisk'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -218,9 +219,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
-* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.
-* Shared Gallery cmdlets'
+        ReleaseNotes = '* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -25,9 +25,9 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = "eastus"
+    $rglocation = Get-ProviderLocation ResourceManagement "East US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = "eastus"
+    $location = Get-ProviderLocation $resourceTypeParent "East US"
     
     try 
      {
@@ -234,7 +234,7 @@ function Test-SetVirtualNetworkGatewayCRUD
     $vnetGatewayConfigName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = "eastus"
+    $location = Get-ProviderLocation $resourceTypeParent "East US"
     
     try 
     {

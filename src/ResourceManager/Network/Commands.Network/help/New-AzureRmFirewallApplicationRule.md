@@ -82,13 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -FqdnTag
-Specifies a list of FQDN Tags for this rule. The available tags are:
-
-- WindowsUpdate
-- WindowsDiagnostics
-- AppServiceEnvironment
-- MicrosoftActiveProtectionService
-- AzureBackup
+Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzureRmFirewallFqdnTag](./Get-AzureRmFirewallFqdnTag.md) cmdlet.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -217,3 +211,5 @@ This cmdlet does not accept any input.
 [New-AzureRmFirewall](./New-AzureRmFirewall.md)
 
 [Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
+
+[Get-AzureRmFirewallFqdnTag](./Get-AzureRmFirewallFqdnTag.md)

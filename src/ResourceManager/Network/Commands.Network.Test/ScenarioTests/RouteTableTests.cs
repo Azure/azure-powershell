@@ -32,7 +32,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestEmptyRouteTable()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-EmptyRouteTable");
@@ -40,7 +40,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteTableCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableCRUD");
@@ -48,7 +48,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteTableSubnetRef()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableSubnetRef");
@@ -56,7 +56,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteTableRouteCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableRouteCRUD");
@@ -64,7 +64,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteHopTypeTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteHopTypeTest");
@@ -72,7 +72,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteWithDisableBgpRoutePropagation()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableWithDisableBgpRoutePropagation");
