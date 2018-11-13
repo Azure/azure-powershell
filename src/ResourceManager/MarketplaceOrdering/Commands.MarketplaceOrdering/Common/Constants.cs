@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Common
 
             public const string AgreementRejectParameterSet = "AgreementRejectParameterSet";
 
-            public const string InputObjectRejectParametrSet = "InputObjectRejectParametrSet";
+            public const string InputObjectRejectParametrSet = "InputObjectRejectParameterSet";
 
-            public const string InputObjectAcceptParametrSet = "InputObjectAcceptParametrSet";
+            public const string InputObjectAcceptParametrSet = "InputObjectAcceptParameterSet";
         }
     }
 }

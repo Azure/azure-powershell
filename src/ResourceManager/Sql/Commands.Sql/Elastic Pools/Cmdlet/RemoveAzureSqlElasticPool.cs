@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Globalization;
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Elastic Pool to remove.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/elasticPools", "ResourceGroupName", "ServerName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
