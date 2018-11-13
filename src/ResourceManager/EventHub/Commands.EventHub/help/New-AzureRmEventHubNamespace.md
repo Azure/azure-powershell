@@ -32,9 +32,7 @@ The New-AzureRmEventHubNamespace cmdlet creates a new namespace of type Event Hu
 
 ## EXAMPLES
 
-### Example 1
-			 
-								   
+### Example 1			 								   
 ```
 PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
 ```
