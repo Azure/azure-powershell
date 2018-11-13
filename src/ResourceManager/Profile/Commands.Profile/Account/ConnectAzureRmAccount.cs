@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
