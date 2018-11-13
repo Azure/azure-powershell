@@ -81,7 +81,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.Azure.Commands.Profile.types.ps1xml'
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @('.\Microsoft.Azure.Commands.Profile.format.ps1xml', '.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml')
