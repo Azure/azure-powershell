@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
             ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
