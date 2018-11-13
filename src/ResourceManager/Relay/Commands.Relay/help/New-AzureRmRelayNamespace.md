@@ -44,7 +44,7 @@ Creates a new Relay namespace within the specified resource group.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Relay Namespace Name
+Relay Namespace Name.
 
 ```yaml
 Type: System.String
@@ -104,8 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+Hashtables which represents resource Tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -129,7 +128,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -145,23 +144,25 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+System.Collections.Hashtable
 
-### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
+### Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes
+
 
 ## NOTES
 

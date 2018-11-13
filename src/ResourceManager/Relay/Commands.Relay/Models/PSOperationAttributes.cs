@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// A Relay REST API operation
     /// </summary>
-    public partial class OperationAttributes
+    public partial class PSOperationAttributes
     {
         /// <summary>
         /// Initializes a new instance of the Operation class.
         /// </summary>
-        public OperationAttributes() { }
+        public PSOperationAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the Operation class.
@@ -27,17 +27,17 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// {provider}/{resource}/{operation}</param>
         /// <param name="display">The object that represents the
         /// operation.</param>
-        public OperationAttributes(string name = default(string), OperationDisplayAttributes display = default(OperationDisplayAttributes))
+        public PSOperationAttributes(string name = default(string), PSOperationDisplayAttributes display = default(PSOperationDisplayAttributes))
         {
             Name = name;
             Display = display;
         }
 
-        public OperationAttributes(Operation operation)
+        public PSOperationAttributes(Operation operation)
         {
             Name = operation.Name;
             if(operation.Display != null)
-            Display = new OperationDisplayAttributes(operation.Display.Operation);
+            Display = new PSOperationDisplayAttributes(operation.Display.Operation);
         }
 
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Gets or sets the object that represents the operation.
         /// </summary>
-        public OperationDisplayAttributes Display { get; set; }
+        public PSOperationDisplayAttributes Display { get; set; }
 
     }
 }
