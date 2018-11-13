@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database to be copied.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database copy in.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/elasticPools", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the resource group of the copy.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string CopyResourceGroupName { get; set; }
 
@@ -81,6 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the Azure SQL Server of the copy.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "CopyResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string CopyServerName { get; set; }
 

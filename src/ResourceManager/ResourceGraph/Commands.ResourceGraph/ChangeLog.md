@@ -19,5 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.1.1-preview
+* Fixed an issue with subscriptions not getting populated in Cloud Shell
+
 ## Version 0.1.0-preview
 * Public preview release of Resource Graph cmdlets

@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // Usage => PSUsage
                 cfg.CreateMap<FROM.Usage, TO.PSUsage>()
-                    .ForMember(c => c.Unit, o => o.MapFrom(r => Microsoft.Azure.Management.Compute.Models.Usage.Unit));
+                    .ForMember(c => c.Unit, o => o.MapFrom(r => FROM.Usage.Unit));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.Usage>, TO.PSUsage>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
@@ -190,8 +190,16 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<TO.PSVmssVMDiskEncryptionStatusContext, TO.PSVmssVMDiskEncryptionStatusContextList>();
 
                 // PSVirtualMachineIdentity <=> VirtualMachineIdentity
-                cfg.CreateMap<FROM.VirtualMachineIdentity, TO.PSVirtualMachineIdentity>();
-                cfg.CreateMap<TO.PSVirtualMachineIdentity, FROM.VirtualMachineIdentity>();
+                cfg.CreateMap<FROM.VirtualMachineIdentity, TO.PSVirtualMachineIdentity>()
+                    .AfterMap((src, dest) =>
+                    {
+                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
+                    });
+                cfg.CreateMap<TO.PSVirtualMachineIdentity, FROM.VirtualMachineIdentity>()
+                    .AfterMap((src, dest) =>
+                    {
+                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
+                    });
             });
 
             _mapper = config.CreateMapper();
