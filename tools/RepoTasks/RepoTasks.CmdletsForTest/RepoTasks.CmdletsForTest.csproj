@@ -58,11 +58,7 @@
       <HintPath>..\..\..\src\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-<<<<<<< HEAD
-      <HintPath>..\..\..\src\packages\Microsoft.Azure.PowerShell.Common.1.0.219-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
-=======
       <HintPath>..\..\..\src\packages\Microsoft.Azure.PowerShell.Common.1.1.8-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
->>>>>>> 90802b5f8726813627217074384aeb246670fa14
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\src\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
