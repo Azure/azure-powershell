@@ -144,7 +144,7 @@ Location          : eastus2euap
 IpAddress         : 2.3.4.5
 VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
-BgpProperties       :
+BgpSettings       :
 Type              : Microsoft.Network/vpnSites
 ProvisioningState : Succeeded
 ```

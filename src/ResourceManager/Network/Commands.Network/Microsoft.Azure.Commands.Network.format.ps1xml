@@ -3697,8 +3697,8 @@
                 <ScriptBlock>$_.AddressSpace.AddressPrefixes</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>BgpProperties</Label>
-                <PropertyName>BgpProperties</PropertyName>
+                <Label>BgpSettings</Label>
+                <PropertyName>BgpSettings</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Type</Label>
