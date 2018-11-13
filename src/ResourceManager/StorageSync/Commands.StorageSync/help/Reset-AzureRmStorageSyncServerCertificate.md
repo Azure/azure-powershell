@@ -14,20 +14,20 @@ This command will use to reset storage sync server certificate.
 
 ### ObjectParameterSet (Default)
 ```
-Reset-AzureRmStorageSyncServerCertificate [-ParentObject] <PSStorageSyncService>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Reset-AzureRmStorageSyncServerCertificate [-ParentObject] <PSStorageSyncService> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StringParameterSet
 ```
 Reset-AzureRmStorageSyncServerCertificate [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
 ```
-Reset-AzureRmStorageSyncServerCertificate [-ParentResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Reset-AzureRmStorageSyncServerCertificate [-ParentResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ This command will reset the sync server certificate.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: PSStorageSyncService
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
 Parameter Sets: ObjectParameterSet
 Aliases: StorageSyncService
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 StorageSyncService Parent Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ParentStringParameterSet
 Aliases: StorageSyncServiceId
 
@@ -89,11 +89,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -108,7 +123,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -119,9 +134,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
