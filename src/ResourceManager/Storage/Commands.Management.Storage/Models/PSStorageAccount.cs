@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableAzureFilesAadIntegrationForSMB = storageAccount.EnableAzureFilesAadIntegration;
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
             this.FailoverInProgress = storageAccount.FailoverInProgress;
+            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -111,9 +112,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? EnableHierarchicalNamespace { get; set; }
 
         public bool? FailoverInProgress { get; set; }
-        
+
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSGeoReplicationStats GeoReplicationStats { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

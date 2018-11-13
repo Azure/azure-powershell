@@ -882,7 +882,7 @@ function Test-GetAzureStorageLocationUsage
 
 <#
 .SYNOPSIS
-Test Invoke-AzureRmStorageAccountFailover and Get-AzureRmStorageAccountLastSyncTime
+Test Invoke-AzureRmStorageAccountFailover
 .DESCRIPTION
 Smoke[Broken]Test
 #>
@@ -910,11 +910,6 @@ function Test-FailoverAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind; 
 		$seconcaryLocation = $sto.SecondaryLocation
 
-		# check Last Sync Time
-		$getLSTResult = Get-AzureRmStorageAccountLastSyncTime -ResourceGroupName $rgname -Name $stoname
-        Assert-NotNull  $getLSTResult.LastSyncTime
-        Assert-NotNull  $getLSTResult.Status
-
 		#Invoke Failover
 		$job = Invoke-AzureRmStorageAccountFailover -ResourceGroupName $rgname -Name $stoname -Force -AsJob
 		$job | Wait-Job
@@ -922,6 +917,46 @@ function Test-FailoverAzureStorageAccount
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation;
         Assert-AreEqual 'StandardLRS' $sto.Sku.Name;
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmStorageAccount with -IncludeGeoReplicationStats
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-GetAzureStorageAccountGeoReplicationStats
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_RAGRS';
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname -IncludeGeoReplicationStats;
+        $stotype = 'StandardRAGRS';
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-NotNull $sto.GeoReplicationStats.Status
+        Assert-NotNull $sto.GeoReplicationStats.LastSyncTime
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
