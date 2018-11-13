@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByRemoteVirtualNetworkObject,
             HelpMessage = "The resource group name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
         public string ParentResourceName { get; set; }
 
         [Alias("VirtualHub", "ParentVirtualHub")]

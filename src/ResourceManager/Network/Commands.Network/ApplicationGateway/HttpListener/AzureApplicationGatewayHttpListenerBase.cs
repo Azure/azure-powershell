@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -80,6 +81,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
+        [Parameter(
+                HelpMessage = "Customer error of an application gateway")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayCustomError> CustomErrorConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -133,10 +139,16 @@ namespace Microsoft.Azure.Commands.Network
                 httpListener.FrontendPort = new PSResourceId();
                 httpListener.FrontendPort.Id = this.FrontendPortId;
             }
+
             if (!string.IsNullOrEmpty(this.SslCertificateId))
             {
                 httpListener.SslCertificate = new PSResourceId();
                 httpListener.SslCertificate.Id = this.SslCertificateId;
+            }
+
+            if (this.CustomErrorConfiguration != null)
+            {
+                httpListener.CustomErrorConfigurations = this.CustomErrorConfiguration;
             }
 
             httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
