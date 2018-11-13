@@ -18,7 +18,7 @@ function Test-DotNet
             throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
         }
     }
-    catch
+    catch [System.Management.Automation.DriveNotFoundException]
     {
         Write-Verbose ".NET Framework version check failed."
     }
@@ -34,24 +34,17 @@ if (%ISAZMODULE%)
     Test-DotNet
 }
 
-try
+if (Test-Path -Path "$PSScriptRoot\StartupScripts")
 {
-    if (Test-Path -Path "$PSScriptRoot\StartupScripts")
-    {
-        Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
-            . $_.FullName
-        }
+    Get-ChildItem "$PSScriptRoot\StartupScripts" -ErrorAction Stop | ForEach-Object {
+        . $_.FullName
     }
-}
-catch
-{
-    throw "Import-Module failed."
 }
 
 if (Get-Module %AZORAZURERM%.profile)
 {
-    Write-Warning "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
-    throw "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: aka.ms/azps-migration-guide"
+    Write-Warning "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide"
+    throw "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide"
 }
 
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
