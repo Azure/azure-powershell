@@ -17,6 +17,7 @@ using System.Security;
 using System.Text;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
