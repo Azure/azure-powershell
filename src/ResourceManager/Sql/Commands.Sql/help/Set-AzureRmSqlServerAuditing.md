@@ -16,17 +16,18 @@ Changes the auditing settings of an Azure SQL server.
 ### DefaultParameterSet (Default)
 ```
 Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
+ [-PredicateExpression <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StorageAccountSubscriptionIdSet
 ```
 Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
  -StorageAccountName <String> [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>]
- [-RetentionInDays <UInt32>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RetentionInDays <UInt32>] [-PredicateExpression <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +55,16 @@ PS C:\>Set-AzureRmSqlServerAuditing -State Disabled -ResourceGroupName "Resource
 ### Example 3: Enable the auditing policy of an Azure SQL server using a storage account from a different subscription
 ```
 PS C:\>Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
+```
+
+### Example 4: Enable the extended auditing policy of an Azure SQL database
+```
+PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'"
+```
+
+### Example 5: Remove the extended auditing policy of an Azure SQL database, and set an auditing policy instead of it.
+```
+PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression ""
 ```
 
 ## PARAMETERS
@@ -105,6 +116,21 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PredicateExpression
+The statement of the Where Clause used to filter audit logs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -265,17 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
-
-### System.Guid
-
-### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel
 
 ## NOTES
 
