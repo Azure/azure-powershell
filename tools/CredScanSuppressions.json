@@ -933,5 +933,9 @@
             "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\auth-cert.pfx",
             "_justification": "Legitimate test certificate file"
         },
+	{
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+            "_justification": "Mocked credential"
+        },
     ]
 }
