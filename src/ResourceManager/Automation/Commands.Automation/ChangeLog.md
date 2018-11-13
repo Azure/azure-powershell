@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
 
 ## Version 6.0.1-preview
 * Fixed the DSC Register Node command
