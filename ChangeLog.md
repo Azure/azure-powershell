@@ -1,4 +1,48 @@
-﻿## 6.12.0 - November 2018
+﻿## 6.13.0 - November 2018
+#### AzureRM.Profile
+* Update common code to use latest version of ClientRuntime
+
+#### AzureRM.ApiManagement
+* Update dependencies for type mapping issue
+
+#### AzureRM.Compute
+* Fixed identity issue for SystemAssigned identity
+* Update dependencies for type mapping issue
+
+#### AzureRM.ContainerInstance
+* Update dependencies for type mapping issue
+
+#### AzureRM.MarketplaceOrdering
+* update the examples description for marketplace cmdlets
+
+#### AzureRM.Network
+* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
+* Added ICMP back to supported AzureFirewall Network Protocols
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
+* Fix issues with memory usage in VirtualNetwork map
+
+#### AzureRM.RecoveryServices.Backup
+* Fix for modifying policy for a protected file share.
+* Converted policy timezone to uppercase.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Corrected example in New-AzureRmRecoveryServicesAsrProtectableItem
+* Update dependencies for type mapping issue
+
+#### AzureRM.Relay
+* Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
+
+#### AzureRM.Sql
+* Enabled Extended Auditing Policy management on a server or a database.
+	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
+	- Cmdlets were modified to use SQL clients instead of Legacy clients.
+	- Set-AzureRmSqlServerAuditing.
+	- Get-AzureRmSqlServerAuditing.
+	- Set-AzureRmSqlDatabaseAuditing.
+	- Get-AzureRmSqlDatabaseAuditing.
+* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
+
+## 6.12.0 - November 2018
 #### AzureRM.Profile
 * Update common code to use latest version of ClientRuntime
 * Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId

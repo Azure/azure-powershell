@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.8.1
 * Update common code to use latest version of ClientRuntime
 
 ## Version 5.8.0

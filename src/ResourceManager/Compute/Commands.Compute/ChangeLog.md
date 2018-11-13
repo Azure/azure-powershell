@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.9.0
 * Fixed identity issue for SystemAssigned identity
 * Update dependencies for type mapping issue
 
