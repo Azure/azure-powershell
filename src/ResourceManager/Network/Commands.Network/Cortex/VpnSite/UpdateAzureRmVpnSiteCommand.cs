@@ -294,27 +294,27 @@ namespace Microsoft.Azure.Commands.Network
             //// Bgp Settings
             if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress))
             {
-                if (vpnSiteToUpdate.BgpProperties == null)
+                if (vpnSiteToUpdate.BgpSettings == null)
                 {
                     //// New BGP settings
-                    vpnSiteToUpdate.BgpProperties = this.ValidateAndCreatePSBgpSettings(this.BgpAsn, this.BgpPeeringWeight, this.BgpPeeringAddress);
+                    vpnSiteToUpdate.BgpSettings = this.ValidateAndCreatePSBgpSettings(this.BgpAsn, this.BgpPeeringWeight, this.BgpPeeringAddress);
                 }
                 else
                 {
                     //// Update BGP settings for the specified values only
                     if (this.BgpAsn > 0)
                     {
-                        vpnSiteToUpdate.BgpProperties.Asn = this.BgpAsn;
+                        vpnSiteToUpdate.BgpSettings.Asn = this.BgpAsn;
                     }
 
                     if (this.BgpPeeringWeight > 0)
                     {
-                        vpnSiteToUpdate.BgpProperties.PeerWeight = Convert.ToInt32(this.BgpPeeringWeight);
+                        vpnSiteToUpdate.BgpSettings.PeerWeight = Convert.ToInt32(this.BgpPeeringWeight);
                     }
 
                     if (!string.IsNullOrWhiteSpace(this.BgpPeeringAddress))
                     {
-                        vpnSiteToUpdate.BgpProperties.BgpPeeringAddress = this.BgpPeeringAddress;
+                        vpnSiteToUpdate.BgpSettings.BgpPeeringAddress = this.BgpPeeringAddress;
                     }
                 }
             }
