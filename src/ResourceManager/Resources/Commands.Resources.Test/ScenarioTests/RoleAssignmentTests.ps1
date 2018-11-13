@@ -35,7 +35,7 @@ Tests retrieval of classic administrators with subscription scope
 #>
 function Test-RaClassicAdminsWithScope
 {
-    $signInName = $(Get-AzureRmContext).Account.Id
+    $signInName = 'test2@rbacCliTest.onmicrosoft.com'
     $adminSubscription = '4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $nonAdminSubscription = '1de8ed49-d13d-4a32-a8cf-2aa8e944c392'
 
