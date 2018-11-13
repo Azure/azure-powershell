@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
 #if NETSTANDARD
-            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal)
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint))
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
