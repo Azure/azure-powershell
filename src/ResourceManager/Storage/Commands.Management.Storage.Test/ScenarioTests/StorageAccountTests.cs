@@ -156,5 +156,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-FailoverAzureStorageAccount");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureStorageAccountGeoReplicationStats()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageAccountGeoReplicationStats");
+        }        
     }
 }

@@ -17,13 +17,24 @@ using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    public class PSLastSyncTime
+    public class PSGeoReplicationStats
     {
-        public PSLastSyncTime(GetLastSyncTimeResult lastSyncTime)
+        //Parse GeoReplicationStats  in SDK to wrapped property PSGeoReplicationStats
+        public static PSGeoReplicationStats ParsePSGeoReplicationStats(GeoReplicationStats geoReplicationStats)
         {
-            this.Status = lastSyncTime.Status;
-            this.LastSyncTime = lastSyncTime.LastSyncTime;
+            if (geoReplicationStats == null)
+            {
+                return null;
+            }
+
+            PSGeoReplicationStats pSGeoReplicationStats = new PSGeoReplicationStats();
+
+            pSGeoReplicationStats.Status = geoReplicationStats.Status;
+            pSGeoReplicationStats.LastSyncTime = geoReplicationStats.LastSyncTime;
+
+            return pSGeoReplicationStats;
         }
+
         public string Status { get; set; }
         public DateTime? LastSyncTime { get; set; }
     }

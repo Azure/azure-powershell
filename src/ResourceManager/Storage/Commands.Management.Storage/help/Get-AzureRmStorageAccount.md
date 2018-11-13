@@ -21,7 +21,7 @@ Get-AzureRmStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzu
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String>
+Get-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeGeoReplicationStats]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,6 +51,18 @@ PS C:\>Get-AzureRmStorageAccount
 
 This command gets all of the Storage accounts in the subscription.
 
+### Example 4:  Get the last sync time of a GRS or RAGRS account
+```
+PS C:\>$account = Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -IncludeGeoReplicationStats
+PS C:\>$account.GeoReplicationStats
+
+Status LastSyncTime
+------ ------------
+Live   11/13/2018 2:44:22 AM
+```
+
+This command gets the last sync time of a GRS or RAGRS account.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -60,6 +72,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeGeoReplicationStats
+Get the GeoReplicationStats of the Storage account, besides the common Storage Account Properties.
+The GeoReplicationStats property is only available on GRS or RAGRS Storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AccountNameParameterSet
+Aliases:
 
 Required: False
 Position: Named
