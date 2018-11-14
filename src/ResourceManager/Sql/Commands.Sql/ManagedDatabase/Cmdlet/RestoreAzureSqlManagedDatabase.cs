@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target instance to restore to. If not specified, the target instance is the same as the source instance.")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         public string TargetInstanceName { get; set; }
 
         /// <summary>
