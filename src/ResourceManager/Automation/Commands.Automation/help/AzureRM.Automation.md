@@ -59,7 +59,7 @@ Gets reports sent from a DSC node to Automation.
 ### [Get-AzureRmAutomationDscOnboardingMetaconfig](Get-AzureRmAutomationDscOnboardingMetaconfig.md)
 Creates meta-configuration .mof files.
 
-### [Get-AzureRMAutomationHybridWorkerGroup](Get-AzureRMAutomationHybridWorkerGroup.md)
+### [Get-AzureRmAutomationHybridWorkerGroup](Get-AzureRmAutomationHybridWorkerGroup.md)
 Gets hybrid runbook worker groups.
 
 ### [Get-AzureRmAutomationJob](Get-AzureRmAutomationJob.md)
@@ -85,6 +85,24 @@ Gets an Automation schedule.
 
 ### [Get-AzureRmAutomationScheduledRunbook](Get-AzureRmAutomationScheduledRunbook.md)
 Gets Automation runbooks and associated schedules.
+
+### [Get-AzureRmAutomationSoftwareUpdateConfiguration](Get-AzureRmAutomationSoftwareUpdateConfiguration.md)
+Gets a list of azure automation software update configurations.
+
+### [Get-AzureRmAutomationSoftwareUpdateMachineRun](Get-AzureRmAutomationSoftwareUpdateMachineRun.md)
+Gets a list of azure automation software update configuration machine runs.
+
+### [Get-AzureRmAutomationSoftwareUpdateRun](Get-AzureRmAutomationSoftwareUpdateRun.md)
+Gets a list of azure automation software update runs.
+
+### [Get-AzureRmAutomationSourceControl](Get-AzureRmAutomationSourceControl.md)
+Gets a list of Azure Automation source controls.
+
+### [Get-AzureRmAutomationSourceControlSyncJob](Get-AzureRmAutomationSourceControlSyncJob.md)
+Gets Azure Automation source control sync jobs.
+
+### [Get-AzureRmAutomationSourceControlSyncJobOutput](Get-AzureRmAutomationSourceControlSyncJobOutput.md)
+Gets the output of an Azure Automation source control sync job.
 
 ### [Get-AzureRmAutomationVariable](Get-AzureRmAutomationVariable.md)
 Gets an Automation variable.
@@ -125,6 +143,12 @@ Creates an Automation runbook.
 ### [New-AzureRmAutomationSchedule](New-AzureRmAutomationSchedule.md)
 Creates an Automation schedule.
 
+### [New-AzureRmAutomationSoftwareUpdateConfiguration](New-AzureRmAutomationSoftwareUpdateConfiguration.md)
+Creates a scheduled azure automation software update configuration.
+
+### [New-AzureRmAutomationSourceControl](New-AzureRmAutomationSourceControl.md)
+Creates an A Automation source control.
+
 ### [New-AzureRmAutomationVariable](New-AzureRmAutomationVariable.md)
 Creates an Automation variable.
 
@@ -161,6 +185,9 @@ Removes DSC configurations from Automation.
 ### [Remove-AzureRmAutomationDscNodeConfiguration](Remove-AzureRmAutomationDscNodeConfiguration.md)
 Removes metadata from DSC node configurations in Automation.
 
+### [Remove-AzureRmAutomationHybridWorkerGroup](Remove-AzureRmAutomationHybridWorkerGroup.md)
+Removes hybrid worker group from Automation.
+
 ### [Remove-AzureRmAutomationModule](Remove-AzureRmAutomationModule.md)
 Removes a module from Automation.
 
@@ -169,6 +196,12 @@ Removes a runbook.
 
 ### [Remove-AzureRmAutomationSchedule](Remove-AzureRmAutomationSchedule.md)
 Deletes an Automation schedule.
+
+### [Remove-AzureRmAutomationSoftwareUpdateConfiguration](Remove-AzureRmAutomationSoftwareUpdateConfiguration.md)
+Removes an azure automation software update configuration.
+
+### [Remove-AzureRmAutomationSourceControl](Remove-AzureRmAutomationSourceControl.md)
+Removes an Azure Automation source control.
 
 ### [Remove-AzureRmAutomationVariable](Remove-AzureRmAutomationVariable.md)
 Removes an Automation variable.
@@ -218,6 +251,9 @@ Deploys a DSC Node configuration in Automation.
 ### [Start-AzureRmAutomationRunbook](Start-AzureRmAutomationRunbook.md)
 Starts a runbook job.
 
+### [Start-AzureRmAutomationSourceControlSyncJob](Start-AzureRmAutomationSourceControlSyncJob.md)
+Starts an Azure Automation source control sync job.
+
 ### [Stop-AzureRmAutomationDscNodeConfigurationDeployment](Stop-AzureRmAutomationDscNodeConfigurationDeployment.md)
 Stops a DSC Node configuration deployment in Automation. It only stops the current deployment job but does not unassign already assigned node configurations.
 
@@ -232,4 +268,7 @@ Removes a DSC node from management by an Automation account.
 
 ### [Unregister-AzureRmAutomationScheduledRunbook](Unregister-AzureRmAutomationScheduledRunbook.md)
 Removes an association between a runbook and a schedule.
+
+### [Update-AzureRmAutomationSourceControl](Update-AzureRmAutomationSourceControl.md)
+Updates an Azure Automation source control.
 

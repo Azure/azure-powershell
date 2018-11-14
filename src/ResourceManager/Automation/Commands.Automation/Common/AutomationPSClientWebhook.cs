@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Net;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using System.Collections;
     using System.Linq;
 
-    public partial class AutomationClient : IAutomationClient
+    public partial class AutomationPSClient : IAutomationPSClient
     {
         public Model.Webhook CreateWebhook(
             string resourceGroupName,
@@ -43,38 +42,29 @@ namespace Microsoft.Azure.Commands.Automation.Common
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var rbAssociationProperty = new RunbookAssociationProperty { Name = runbookName };
-                var createOrUpdateProperties = new WebhookCreateOrUpdateProperties
-                {
+
+                var webhookCreateOrUpdateParameters = new WebhookCreateOrUpdateParameters {
+                    Name = name,
                     IsEnabled = isEnabled,
-                    ExpiryTime = expiryTime,
+                    ExpiryTime = expiryTime.DateTime.ToUniversalTime(),
                     Runbook = rbAssociationProperty,
-                    Uri =
-                                                           this.automationManagementClient
-                                                           .Webhooks.GenerateUri(
-                                                               resourceGroupName,
-                                                               automationAccountName).Uri,
-                   RunOn = runOn
+                    Uri = this.automationManagementClient.Webhook.GenerateUri(resourceGroupName, automationAccountName),
+                    Parameters = (runbookParameters != null) ? this.ProcessRunbookParameters(resourceGroupName, automationAccountName, runbookName, runbookParameters) : null,
+                    RunOn = runOn
                 };
-                if (runbookParameters != null)
-                {
-                    createOrUpdateProperties.Parameters = this.ProcessRunbookParameters(resourceGroupName, automationAccountName, runbookName, runbookParameters);
-                }
 
-                var webhookCreateOrUpdateParameters = new WebhookCreateOrUpdateParameters(
-                    name,
-                    createOrUpdateProperties);
-
-                var webhook =
-                    this.automationManagementClient.Webhooks.CreateOrUpdate(
+            var webhook =
+                    this.automationManagementClient.Webhook.CreateOrUpdate(
                         resourceGroupName,
                         automationAccountName,
-                        webhookCreateOrUpdateParameters).Webhook;
+                        name,
+                        webhookCreateOrUpdateParameters);
 
                 return new Model.Webhook(
                     resourceGroupName,
                     automationAccountName,
                     webhook,
-                    webhookCreateOrUpdateParameters.Properties.Uri);
+                    webhookCreateOrUpdateParameters.Uri);
             }
         }
 
@@ -87,8 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 try
                 {
                     var webhook =
-                        this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name)
-                            .Webhook;
+                        this.automationManagementClient.Webhook.Get(resourceGroupName, automationAccountName, name);
                     if (webhook == null)
                     {
                         throw new ResourceNotFoundException(
@@ -98,9 +87,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                     return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
                 }
-                catch (CloudException cloudException)
+                catch (ErrorResponseException ErrorResponseException)
                 {
-                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                    if (ErrorResponseException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
                         throw new ResourceNotFoundException(
                             typeof(Webhook),
@@ -116,34 +105,37 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            WebhookListResponse response;
+
+            Rest.Azure.IPage<Webhook> response;
+
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 if (string.IsNullOrEmpty(nextLink))
                 {
                     if (runbookName == null)
                     {
-                        response = this.automationManagementClient.Webhooks.List(
+                        response = this.automationManagementClient.Webhook.ListByAutomationAccount(
                             resourceGroupName,
                             automationAccountName,
                             null);
                     }
                     else
                     {
-                        response = this.automationManagementClient.Webhooks.List(
+                        var filter = GetRunbookNameFilterString(runbookName);
+                        response = this.automationManagementClient.Webhook.ListByAutomationAccount(
                             resourceGroupName,
                             automationAccountName,
-                            runbookName);
+                            new ODataQuery<Webhook>(filter));
                     }
                 }
                 else
                 {
-                    response = this.automationManagementClient.Webhooks.ListNext(nextLink);
+                    response = this.automationManagementClient.Webhook.ListByAutomationAccountNext(nextLink);
                 }
 
-                nextLink = response.NextLink;
+                nextLink = response.NextPageLink;
                 return
-                    response.Webhooks.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w))
+                    response.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w))
                         .ToList();
             }
         }
@@ -160,27 +152,30 @@ namespace Microsoft.Azure.Commands.Automation.Common
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var webhookModel =
-                    this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name).Webhook;
-                var webhookPatchProperties = new WebhookPatchProperties();
+                    this.automationManagementClient.Webhook.Get(resourceGroupName, automationAccountName, name);
+                var webhookPatchParameters = new WebhookUpdateParameters
+                {
+                    Name = name
+                };
                 if (webhookModel != null)
                 {
                     if (isEnabled != null)
                     {
-                        webhookPatchProperties.IsEnabled = isEnabled.Value;
+                        webhookPatchParameters.IsEnabled = isEnabled.Value;
                     }
                     if (parameters != null)
                     {
-                        webhookPatchProperties.Parameters =
-                            this.ProcessRunbookParameters(resourceGroupName, automationAccountName, webhookModel.Properties.Runbook.Name, parameters);
+                        webhookPatchParameters.Parameters =
+                            this.ProcessRunbookParameters(resourceGroupName, automationAccountName, webhookModel.Runbook.Name, parameters);
                     }
                 }
-
-                var webhookPatchParameters = new WebhookPatchParameters(name) { Properties = webhookPatchProperties };
+                
                 var webhook =
-                    this.automationManagementClient.Webhooks.Patch(
+                    this.automationManagementClient.Webhook.Update(
                         resourceGroupName,
                         automationAccountName,
-                        webhookPatchParameters).Webhook;
+                        name,
+                        webhookPatchParameters);
 
                 return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
             }
@@ -194,11 +189,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 try
                 {
-                    this.automationManagementClient.Webhooks.Delete(resourceGroupName, automationAccountName, name);
+                    this.automationManagementClient.Webhook.Delete(resourceGroupName, automationAccountName, name);
                 }
-                catch (CloudException cloudException)
+                catch (ErrorResponseException ErrorResponseException)
                 {
-                    if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                    if (ErrorResponseException.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
                         throw new ResourceNotFoundException(
                             typeof(Webhook),
@@ -207,6 +202,24 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     throw;
                 }
             }
+        }
+
+        private string GetRunbookNameFilterString(string runbookName)
+        {
+            string filter = null;
+            List<string> odataFilter = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(runbookName))
+            {
+                odataFilter.Add("properties/runbook/name eq '" + Uri.EscapeDataString(runbookName) + "'");
+            }
+
+            if (odataFilter.Count > 0)
+            {
+                filter = string.Join(" and ", odataFilter);
+            }
+
+            return filter;
         }
     }
 }

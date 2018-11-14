@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Model.UpdateManagement;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    public interface IAutomationClient
+    public interface IAutomationPSClient
     {
         IAzureSubscription Subscription { get; }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId);
 
-        void RegisterDscNode(string resourceGroupName, string automationAccountName, string azureVMName, string nodeconfigurationName, string configurationMode, int configurationModeFrequencyMins, int refreshFrequencyMins, bool rebootFlag, string actionAfterReboot, bool moduleOverwriteFlag, string azureVmResourceGroup, string azureVmLocation);
+        void RegisterDscNode(string resourceGroupName, string automationAccountName, string azureVMName, string nodeconfigurationName, string configurationMode, int configurationModeFrequencyMins, int refreshFrequencyMins, bool rebootFlag, string actionAfterReboot, bool moduleOverwriteFlag, string azureVmResourceGroup, string azureVmLocation, IAzureContext azureContext);
 
         #endregion
 
@@ -231,6 +231,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
         HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
 
         IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void DeleteHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name);
+
         #endregion
 
         #region Credentials
@@ -324,6 +327,124 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #region ConnectionType
 
         void DeleteConnectionType(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
+
+        #region Update Management
+
+        #region Software Update Configuration
+        SoftwareUpdateConfiguration CreateSoftwareUpdateConfiguration(string resourceGroupName, string automationAccountName, SoftwareUpdateConfiguration configuration);
+
+        SoftwareUpdateConfiguration GetSoftwareUpdateConfigurationByName(string resourceGroupName, string automationAccountName, string name);
+
+        IEnumerable<SoftwareUpdateConfiguration> ListSoftwareUpdateConfigurations(string resourceGroupName, string automationAccountName, string azureVirtualMachineId = null);
+
+        void DeleteSoftwareUpdateConfiguration(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
+
+        #region Software Update Configuration Run
+        SoftwareUpdateRun GetSoftwareUpdateRunById(string resourceGroupName, string automationAccountName, Guid Id);
+
+        IEnumerable<SoftwareUpdateRun> ListSoftwareUpdateRuns(
+            string resourceGroupName, 
+            string automationAccountName, 
+            string softwareUpdateConfigurationName = null, 
+            OperatingSystemType? operatingSystem = null,
+            DateTimeOffset? startTime = null, 
+            SoftwareUpdateRunStatus? status = null);
+        #endregion
+
+        #region Software Update Configuration Machine Run
+        SoftwareUpdateMachineRun GetSoftwareUpdateMachineRunById(string resourceGroupName, string automationAccountName, Guid Id);
+
+        IEnumerable<SoftwareUpdateMachineRun> ListSoftwareUpdateMachineRuns(
+            string resourceGroupName,
+            string automationAccountName,
+            Guid? softwareUpdateRunId = null,
+            string targetComputer = null,
+            SoftwareUpdateMachineRunStatus? status = null);
+        #endregion
+
+        #endregion
+
+        #region SourceControl
+        SourceControl GetSourceControl(
+            string resourceGroupName,
+            string automationAccountName,
+            string name);
+
+        IEnumerable<SourceControl> ListSourceControl(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceType,
+            ref string nextLink);
+
+        SourceControl CreateSourceControl(
+            string resourceGroupName,
+            string automationAccountName,
+            string name,
+            string description,
+            SecureString accessToken,
+            string repoUrl,
+            string sourceType,
+            string branch,
+            string folderPath,
+            bool publishRunbook,
+            bool autoSync);
+
+        void DeleteSourceControl(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceControlName);
+
+        SourceControl UpdateSourceControl(
+            string resourceGroupName,
+            string automationAccountName,
+            string name,
+            string description,
+            SecureString accessToken,
+            string branch,
+            string folderPath,
+            bool? publishRunbook,
+            bool? autoSync);
+
+        #endregion
+
+        #region SourceControlSyncJobs
+
+        SourceControlSyncJob StartSourceControlSyncJob(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceControlName,
+            Guid syncJobId);
+
+        SourceControlSyncJobRecord GetSourceControlSyncJob(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceControlName,
+            Guid syncJobId);
+
+        IEnumerable<SourceControlSyncJob> ListSourceControlSyncJobs(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceControlName,
+            ref string nextLink);
+
+        SourceControlSyncJobStreamRecord GetSourceControlSyncJobStreamRecord(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceControlName,
+            Guid jobId,
+            string jobStreamId);
+
+        IEnumerable<SourceControlSyncJobStream> GetSourceControlSyncJobStream(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourceControlName,
+            Guid jobId,
+            string streamType,
+            ref string nextLink);
 
         #endregion
     }
