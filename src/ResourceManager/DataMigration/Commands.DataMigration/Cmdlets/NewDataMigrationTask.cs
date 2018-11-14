@@ -104,6 +104,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public string Name { get; set; }
 
         private ITaskCmdlet taskCmdlet = null;
+
+        // add a flag for expanding the fields of desired within the output. Especially if user provides
+        // -Wait switch, the user expects the results contains the needed output fields, as it 
+        // could save user from writing Get-AzureRmDataMigrationTask commandlet to pull these back.
         private string expandParameterOfTask = "output"; // default: $expand=output
 
         public object GetDynamicParameters()
@@ -174,6 +178,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         taskCmdlet = new MigrateMongoDbTaskCmdlet(this.MyInvocation);
                         expandParameterOfTask = "output($filter=ResultType eq 'Migration' or ResultType eq 'Database')";
                         break;
+                    case TaskTypeEnum.ValidateMongoDbMigration:
+                        taskCmdlet = new ValidateMongoDbMigrationTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output($filter=ResultType eq 'Migration' or ResultType eq 'Database')";
+                        break;
                     default:
                         throw new PSArgumentException();
                 }
@@ -208,9 +216,17 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     ProjectTask response = null;
                     try
                     {
+                        ProjectTaskProperties properties = taskCmdlet.ProcessTaskCmdlet();
+
+                        var utcStartedOn = System.DateTime.UtcNow;
+                        // need swagger of -pr line 64 of tasks.json add.
+                        // uncomment the following line once we get new sdk.
+                        // give all tasks a start time, so that portal can calculate how long it is running.
+                        // properties.ClientData.Add("startedOn", utcStartedOn.ToString("o")); 
+
                         ProjectTask taskInput = new ProjectTask()
                         {
-                            Properties = taskCmdlet.ProcessTaskCmdlet()
+                            Properties = properties
                         };
 
                         response = DataMigrationClient.Tasks.CreateOrUpdate(taskInput, ResourceGroupName, ServiceName, ProjectName, Name);
@@ -220,6 +236,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                             ( response.Properties.State == "Queued" || response.Properties.State == "Running" ) )
                         {
                             System.Threading.Thread.Sleep(5000);
+                            WriteVerbose($"{taskInput.Id} {taskInput.Name} {taskInput.Properties.State} Elapsed: {System.DateTime.UtcNow - utcStartedOn}");
                             response = DataMigrationClient.Tasks.Get(ResourceGroupName, ServiceName, ProjectName, Name, this.expandParameterOfTask);
                         }
                     }

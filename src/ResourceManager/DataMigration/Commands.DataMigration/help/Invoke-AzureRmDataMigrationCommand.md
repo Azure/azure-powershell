@@ -13,27 +13,27 @@ Creates a new command to be executed on an existing DMS task.
 ## SYNTAX
 
 ```
-Invoke-AzureRmDataMigrationCommand -CommandType <String> -ResourceGroupName <String> -ServiceName <String>
- -ProjectName <String> -TaskName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Invoke-AzureRmDataMigrationCommand -CommandType <String> -ResourceGroupName <String> -ServiceName <String> [-ObjectName <ObjectName>]
+ -ProjectName <String> -TaskName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationCommand cmdlet creates a new command task to be run on an existing migration task.
+The Invoke-AzureRmDataMigrationCommand cmdlet creates a new command task to be run on an existing migration task.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $command = New-AzureRmDmsCommand -CommandType Complete -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName -DatabaseName $output.DatabaseName
+PS C:\> $command = Invoke-AzureRmDataMigrationCommand -CommandType Complete -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName -DatabaseName $output.DatabaseName
 ```
 
-The above examples uses the New-AzureRmDmsCommand cmdlet to create a command for an existing service, project, and task
+The above examples uses the Invoke-AzureRmDataMigrationCommand cmdlet to create a command for an existing service, project, and task
 
 ## PARAMETERS
 
 ### -CommandType
-Command Type.
+Command Type, possible values: Complete, Cancel, Restart, Finish
 
 ```yaml
 Type: System.String
@@ -109,6 +109,20 @@ Accept wildcard characters: False
 
 ### -TaskName
 The name of the task the command is run on.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -ObjectName
+The name of the database object the command will run against.
 
 ```yaml
 Type: System.String

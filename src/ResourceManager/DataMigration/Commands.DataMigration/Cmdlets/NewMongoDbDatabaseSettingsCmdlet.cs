@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                )]
         [Alias("Coll")]
         public MongoDbCollectionSettingItem[] Collections { get; set; }
-
+        
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(this.DatabaseName, Resources.createDbInfo))

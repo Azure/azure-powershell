@@ -157,9 +157,23 @@ Task Type.
 Type: Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum
 Parameter Sets: (All)
 Aliases:
-Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, MigrateSqlServerSqlDbMi, ValidateSqlServerSqlDbMi
+Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, MigrateSqlServerSqlDbMi, ValidateSqlServerSqlDbMi, ConnectToTargetMongoDb, ConnectToSourceMongoDb, MigrateMongoDb, ValidateMongoDbMigration
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Wait
+Whether to wait for task to finish. If the flag is set, checks every one seconds till the task finishes and return to user the task properties where output or error can be inspected. 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
