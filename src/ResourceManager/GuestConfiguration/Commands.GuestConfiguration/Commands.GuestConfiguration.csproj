@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\GetAzureRmVMGuestPolicyReport.cs" />
+    <Compile Include="Cmdlets\GetAzureRmVMGuestPolicyStatusHistory.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\ParameterHelpMessages.cs" />
     <Compile Include="Common\ParameterSetNames.cs" />
@@ -68,6 +69,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="help\Get-AzureRmVMGuestPolicyReport.md" />
+    <None Include="help\Get-AzureRmVMGuestPolicyStatusHistory.md" />
     <None Include="Microsoft.Azure.Commands.GuestConfiguration.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

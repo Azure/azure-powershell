@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.5.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; })
+RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.GuestConfiguration.dll', '.\Microsoft.Azure.Management.ResourceManager.dll'
@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.GuestConfiguration.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmVMGuestPolicyReport'
+CmdletsToExport = 'Get-AzureRmVMGuestPolicyReport', 'Get-AzureRmVMGuestPolicyStatusHistory'
 
 # Variables to export from this module
 # VariablesToExport = @()

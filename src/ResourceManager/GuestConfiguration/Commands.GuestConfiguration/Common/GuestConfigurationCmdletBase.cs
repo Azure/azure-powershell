@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         }
 
         // Get all guest configuration policy assignment reports for a VM
-        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReports(string resourceGroupName, string vmName)
+        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReports(string resourceGroupName, string vmName, bool isStatusHistoryCmdlet, bool isShowStatusChangeOnlyPresent = false)
         {
             var gcPolicyAssignmentReportList = new List<GuestConfigurationPolicyAssignmentReport>();
             var gcPolicySetDefinitions = GetAllGuestConfigPolicySetDefinitions();
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
             foreach (var gcPolicySetDefinition in gcPolicySetDefinitions)
             {
-                var gcAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id);
+                var gcAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id, isStatusHistoryCmdlet, isShowStatusChangeOnlyPresent);
                 if (gcAssignmentReports != null || gcAssignmentReports.Count() > 0)
                 {
                     gcPolicyAssignmentReportList.AddRange(gcAssignmentReports);
@@ -238,28 +238,57 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         }
 
         // Get guest configuration policy assignment reports by initiative definition name
-        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeName(string resourceGroupName, string vmName, string initiativeName)
+        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeName(string resourceGroupName, string vmName, string initiativeName, bool isStatusHistoryCmdlet, bool isShowStatusChangeOnlyPresent = false)
         {
             var gcPolicyAssignments = GetAllGuestConfigurationAssignmentsByInitiativeName(resourceGroupName, vmName, initiativeName);
             var gcPolicyAssignmentReportList = new List<GuestConfigurationPolicyAssignmentReport>();
 
-            foreach (var gcPolicyAssignment in gcPolicyAssignments)
+            // Sorty assignments by policy display name
+            Array.Sort(gcPolicyAssignments.ToArray(), (first, second) =>
             {
-                var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
-                var gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
-                gcPolicyAssignmentReportList.Add(new GuestConfigurationPolicyAssignmentReport(gcrpReport, gcPolicyAssignment));  
-            }
+                return string.Compare(first.PolicyDisplayName, second.PolicyDisplayName, true);
+            });
 
-            // sort gcPolicyAssignmentReportList by Policy display name, end time 
-            gcPolicyAssignmentReportList.Sort(new GuestConfigurationPolicyAssignmentReportEndDateComparer());
+            if (!isStatusHistoryCmdlet)
+            {
+                foreach (var gcPolicyAssignment in gcPolicyAssignments)
+                {
+                    var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
+                    var gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                    gcPolicyAssignmentReportList.Add(new GuestConfigurationPolicyAssignmentReport(gcrpReport, gcPolicyAssignment));
+                }
+            }
+            else
+            {
+                foreach (var gcPolicyAssignment in gcPolicyAssignments)
+                {
+                    var gcrpReportss = GuestConfigurationClient.GuestConfigurationAssignmentReports.List(resourceGroupName, gcPolicyAssignment.Configuration.Name, vmName);
+                    var gcrpReportsList = gcrpReportss.Value;
+
+                    if (isShowStatusChangeOnlyPresent)
+                    {
+                        gcrpReportsList = GetReportsWithOnlyStatusChanges(gcrpReportsList);
+                    }
+
+                    if(gcrpReportsList != null)
+                    {
+                        var statusHistoryList = new List<GuestConfigurationPolicyAssignmentReport>();
+                        foreach(var gcrpReport in gcrpReportsList)
+                        {
+                            statusHistoryList.Add(new GuestConfigurationPolicyAssignmentReport(gcrpReport, gcPolicyAssignment));
+                        }
+                        gcPolicyAssignmentReportList.AddRange(statusHistoryList); 
+                    }
+                }
+            }
             return gcPolicyAssignmentReportList;
         }
 
         // Get guest configuration policy assignment reports by initiative definition name
-        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeId(string resourceGroupName, string vmName, string initiativeId)
+        protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReportsByInitiativeId(string resourceGroupName, string vmName, string initiativeId, bool isStatusHistoryCmdlet, bool isShowStatusChangeOnlyPresent = false)
         {
             var initiativeName = GetInitiativeNameFromId(initiativeId);
-            var gcPolicyAssignmentReportList = GetAllGuestConfigurationAssignmentReportsByInitiativeName(resourceGroupName, vmName, initiativeName);
+            var gcPolicyAssignmentReportList = GetAllGuestConfigurationAssignmentReportsByInitiativeName(resourceGroupName, vmName, initiativeName, isStatusHistoryCmdlet, isShowStatusChangeOnlyPresent);
             return gcPolicyAssignmentReportList;
         }
 
@@ -328,6 +357,35 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             return gcPolicySetDefinitions;
         }
 
+        // Get those reports with adjacent compliance status changes
+        private List<GuestConfigurationAssignmentReport> GetReportsWithOnlyStatusChanges(IList<GuestConfigurationAssignmentReport> reports)
+        {
+            var resultList = new List<GuestConfigurationAssignmentReport>();
+            if(reports == null || reports.Count == 0)
+            {
+                return resultList;
+            }
+
+            var index = 0;
+            string mostRecentComplianceStatus = null;
+            foreach (var report in reports)
+            {
+                if (index == 0)
+                {
+                    resultList.Add(report);
+                    mostRecentComplianceStatus = report.Properties.ComplianceStatus;
+                }
+                else if (!string.Equals(mostRecentComplianceStatus, report.Properties.ComplianceStatus, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    resultList.Add(report);
+                    mostRecentComplianceStatus = report.Properties.ComplianceStatus;
+                }
+                index++;
+            }
+            return resultList;
+        }
+
+
         public class GuestConfigurationPolicyAssignmentPolicyDisplayNameComparer : IComparer<GuestConfigurationPolicyAssignment>
         {
             public int Compare(GuestConfigurationPolicyAssignment first, GuestConfigurationPolicyAssignment second)
@@ -335,25 +393,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 if(first != null && !string.IsNullOrEmpty(first.PolicyDisplayName) && second != null && !string.IsNullOrEmpty(second.PolicyDisplayName))
                 {
                     return first.PolicyDisplayName.CompareTo(second.PolicyDisplayName);
-                }
-                return 0;
-            }
-        }
-
-        public class GuestConfigurationPolicyAssignmentReportEndDateComparer : IComparer<GuestConfigurationPolicyAssignmentReport>
-        {
-            public int Compare(GuestConfigurationPolicyAssignmentReport first, GuestConfigurationPolicyAssignmentReport second)
-            {
-                if (first != null && first.EndTime != null && second != null && second.EndTime != null)
-                {
-                    var firstDate = Convert.ToDateTime(first.EndTime);
-                    var secondDate = Convert.ToDateTime(second.EndTime);
-
-                    if (firstDate != null && secondDate != null && firstDate >= secondDate)
-                    {
-                        return -1;
-                    }
-                    return 0;
                 }
                 return 0;
             }
