@@ -42,11 +42,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public override ProjectTaskProperties ProcessTaskCmdlet()
         {
             MigrateSqlServerSqlDbTaskProperties properties = new MigrateSqlServerSqlDbTaskProperties();
-            properties.ClientData = new System.Collections.Generic.Dictionary<string, string>()
-            {
-                {  "startedOn", System.DateTime.UtcNow.ToString("o") }
-            };
-
+ 
             SqlConnectionInfo source = new SqlConnectionInfo();
             SqlConnectionInfo target = new SqlConnectionInfo();
 

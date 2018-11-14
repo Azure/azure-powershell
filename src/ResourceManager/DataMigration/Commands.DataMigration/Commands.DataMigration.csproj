@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\CommandCmdlet.cs" />
+    <Compile Include="Cmdlets\MongoDbObjectCommandCmdlet.cs" />
     <Compile Include="Cmdlets\CompleteCommandCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToSourceMongoDbTaskCmdlet.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Cmdlets\ConnectToTargetSqlSqlDbSyncTaskCmdlet.cs" />
     <Compile Include="Cmdlets\GetUserTableSqlSyncCmdlet.cs" />
     <Compile Include="Cmdlets\ITaskCmdlet.cs" />
+    <Compile Include="Cmdlets\ValidateMongoDbMigrationTaskCmdlet.cs" />
     <Compile Include="Cmdlets\MigrateMongoDbTaskCmdlet.cs" />
     <Compile Include="Cmdlets\MigrateSqlServerSqlDbSyncTaskCmdlet.cs" />
     <Compile Include="Cmdlets\MongoDbConnectionInfoCmdlet.cs" />
@@ -120,6 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="help\Invoke-AzureRmDataMigrationCommand.md" />
+    <None Include="help\New-AzureRmDmsMongoDbDatabaseSetting.md" />
+    <None Include="help\New-AzureRmDmsMongoDbConnectionSetting.md" />
     <None Include="help\New-AzureRmDataMigrationSelectedDBObject.md" />
     <None Include="help\New-AzureRmDataMigrationSyncSelectedDBObject.md" />
     <None Include="MSSharedLibKey.snk" />
@@ -149,8 +153,8 @@
     <None Include="help\Stop-AzureRmDataMigrationTask.md" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.5.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.DataMigration, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.6.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

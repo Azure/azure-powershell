@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
         ValidateSqlServerSqlDbSync,
         ConnectToSourceMongoDb,
         ConnectToTargetMongoDb,
-        MigrateMongoDb
+        MigrateMongoDb,
+        ValidateMongoDbMigration
     }
 }
