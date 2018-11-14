@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
 
 ## Version 6.7.1
 * Fix for https://github.com/Azure/azure-powershell/issues/7402
