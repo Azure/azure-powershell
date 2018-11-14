@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
 Module Name: AzureRM.StorageSync
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/invoke-azurermstoragesyncfilerecall
 schema: 2.0.0
 ---
 
 # Invoke-AzureRmStorageSyncFileRecall
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This cmdlet will invoke the file recall on a given serverendpoint.
 
 ## SYNTAX
 
@@ -32,16 +32,16 @@ Invoke-AzureRmStorageSyncFileRecall [-ResourceId] <String> [-Pattern <String>] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This cmdlet will invoke the file recall on a given serverendpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Invoke-AzureRmStorageSyncFileRecall -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName"
 ```
 
-{{ Add example description here }}
+This cmdlet will invoke the file recall on a given serverendpoint.
 
 ## PARAMETERS
 
