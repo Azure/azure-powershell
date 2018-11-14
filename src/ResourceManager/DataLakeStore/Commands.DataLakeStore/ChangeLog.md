@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 6.2.1
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
+
+## Version 6.2.0
+* Adding support for Virtual Network Rules
+    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
+    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
+    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
+    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.
+
 ## Version 6.1.2
 * Fix debugging when DebugPreference is set from powershell command line
 * Update example for Set-AzureRmDataLakeStoreItemAcl

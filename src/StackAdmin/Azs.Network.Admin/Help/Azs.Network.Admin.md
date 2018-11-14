@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Network.Admin Module
 ## Description
-Preview release of the Network administrator module which allows  
+Preview release of the Network operators module which allows operators to monitor network resources and manage network quotas.
 
 ## Azs.Network.Admin Cmdlets
 ### [Get-AzsLoadBalancer](Get-AzsLoadBalancer.md)

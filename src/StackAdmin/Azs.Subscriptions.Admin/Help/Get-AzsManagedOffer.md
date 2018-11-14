@@ -1,14 +1,14 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzsManagedOffer
 
 ## SYNOPSIS
-Get the list of offers as the administrator.
+Get the list of offers as the operator.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Get the list of offers.
 Get-AzsManagedOffer -Name offer -ResourceGroupName offerrg
 ```
 
-Get the list of offers as the administrator.
+Get the list of offers as the operator.
 
 ## PARAMETERS
 
@@ -52,7 +52,7 @@ Name of an offer.
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -67,7 +67,7 @@ The resource group the resource is located under.
 ```yaml
 Type: String
 Parameter Sets: Get, List
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +97,7 @@ Skip the first N items as specified by the parameter value.
 ```yaml
 Type: Int32
 Parameter Sets: ListAll, List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,7 +113,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: ListAll, List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

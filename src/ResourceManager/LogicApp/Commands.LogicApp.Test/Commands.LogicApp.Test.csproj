@@ -43,7 +43,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.3.0.0\lib\net45\Microsoft.Azure.Management.Logic.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.3.0.1\lib\net452\Microsoft.Azure.Management.Logic.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +183,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountGeneratedIcnTests\TestGetIntegrationAccountGeneratedIcn.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountGeneratedIcnTests\TestGetIntegrationAccountGeneratedIcnWithoutAgreementType.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountGeneratedIcnTests\TestGetIAGeneratedIcnWithoutAgreementType.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountGeneratedIcnTests\TestListIntegrationAccountGeneratedIcn.json">
@@ -225,7 +225,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountReceivedIcnTests\TestGetIntegrationAccountReceivedIcn.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountReceivedIcnTests\TestGetIntegrationAccountReceivedIcnWithoutAgreementType.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountReceivedIcnTests\TestGetIAReceivedIcnWithoutAgreementType.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountReceivedIcnTests\TestRemoveIntegrationAccountReceivedIcn.json">

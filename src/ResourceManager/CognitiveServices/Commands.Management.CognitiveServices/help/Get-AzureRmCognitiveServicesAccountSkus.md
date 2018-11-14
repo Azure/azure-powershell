@@ -13,8 +13,15 @@ Gets the available SKUs for an account.
 
 ## SYNTAX
 
+### GetSkusWithAccount (Default)
 ```
 Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetSkusWithFilter
+```
+Get-AzureRmCognitiveServicesAccountSkus [-Type <String>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -55,12 +62,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Cognitive Services Account Location.
+
+```yaml
+Type: System.String
+Parameter Sets: GetSkusWithFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetSkusWithAccount
 Aliases: CognitiveServicesAccountName, AccountName
 
 Required: True
@@ -75,11 +97,26 @@ Specifies the name of the resource group the account is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetSkusWithAccount
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Type
+Cognitive Services Account Type.
+
+```yaml
+Type: System.String
+Parameter Sets: GetSkusWithFilter
+Aliases: CognitiveServicesAccountType, AccountType, Kind
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

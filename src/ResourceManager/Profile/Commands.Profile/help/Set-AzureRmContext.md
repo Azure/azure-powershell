@@ -62,10 +62,9 @@ The context includes tenant, subscription, and environment information.
 ```
 PS C:\>Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
 
-Account      : PFuller@contoso.com
-Environment  : AzureCloud
-Subscription : xxxx-xxxx-xxxx-xxxx
-Tenant       : yyyy-yyyy-yyyy-yyyy
+Name    Account             SubscriptionName    Environment         TenantId
+----    -------             ----------------    -----------         --------
+Work    test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
 ```
 
 This command sets the context to use the specified subscription.
@@ -164,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name or Id
+The name or id of the subscription that the context should be set to. This parameter has aliases to -SubscriptionName and -SubscriptionId, so, for clarity, either of these can be used instead of -Subscription when specifying name and id, respectively.
 
 ```yaml
 Type: System.String

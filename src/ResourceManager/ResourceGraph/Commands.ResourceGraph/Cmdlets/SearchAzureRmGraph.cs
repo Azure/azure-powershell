@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
     using Microsoft.Azure.Management.ResourceGraph.Models;
@@ -81,16 +80,15 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             get;
             set;
         }
-
+        
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var subscriptions =
-                (this.Subscription ?? this.DefaultContext.Account.GetSubscriptions()).ToList();
-            var first = MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
-            var skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
+            var subscriptions = this.GetSubscriptions().ToList();
+            var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
+            var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
             var results = new List<PSObject>();
             QueryResponse response = null;
@@ -102,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     var requestTop = Math.Min(first - results.Count, RowsPerPage);
                     var requestSkip = skip + results.Count;
                     var requestSkipToken = response?.SkipToken;
-                    WriteVerbose($"Sent top={requestTop} skip={requestSkip} skipToken={requestSkipToken}");
+                    this.WriteVerbose($"Sent top={requestTop} skip={requestSkip} skipToken={requestSkipToken}");
 
                     var requestOptions = new QueryRequestOptions(
                         top: requestTop,
@@ -117,9 +115,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
                     var requestResults = response.Data.ToPsObjects().ToList();
                     results.AddRange(requestResults);
-                    WriteVerbose($"Received results: {requestResults.Count}");
-
-                } while (results.Count < first && response.SkipToken != null);
+                    this.WriteVerbose($"Received results: {requestResults.Count}");
+                }
+                while (results.Count < first && response.SkipToken != null);
             }
             catch (Exception ex)
             {
@@ -147,6 +145,26 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             this.WriteObject(results, true);
+        }
+
+        /// <summary>
+        /// Gets the subscriptions.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<string> GetSubscriptions()
+        {
+            if (this.Subscription != null)
+            {
+                return this.Subscription;
+            }
+
+            var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();
+            if (accountSubscriptions.Length > 0)
+            {
+                return accountSubscriptions;
+            }
+
+            return SubscriptionCache.GetSubscriptions(this.DefaultContext);
         }
     }
 }

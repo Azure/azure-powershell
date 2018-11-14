@@ -25,15 +25,15 @@ function Test-GetAzureLogicAppTrigger
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname	
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 
-	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName		    
-	Assert-NotNull $workflowTrigger	
+	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName
+	Assert-NotNull $workflowTrigger
 
-	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger" 	    
+	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 	Assert-NotNull $workflowTrigger
 }
 
@@ -48,8 +48,8 @@ function Test-GetAzureLogicAppTriggerHistory
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 	
@@ -62,11 +62,11 @@ function Test-GetAzureLogicAppTriggerHistory
 	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 
 	$workflowTriggerHistories = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
-	Assert-NotNull $workflowTriggerHistories	
+	Assert-NotNull $workflowTriggerHistories
 	$firstHistory = $workflowTriggerHistories[0]
 
 	$workflowTriggerHistory = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger" -HistoryName  $firstHistory.Name
-	Assert-NotNull $workflowTriggerHistory	
+	Assert-NotNull $workflowTriggerHistory
 }
 
 <#
@@ -80,8 +80,8 @@ function Test-GetAzureLogicAppTriggerCallbackUrl
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 	
@@ -106,8 +106,8 @@ function Test-StartAzureLogicAppTrigger
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 	
-	$workflowName = getAssetname	
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
+	$workflowName = getAssetname
+	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 	
