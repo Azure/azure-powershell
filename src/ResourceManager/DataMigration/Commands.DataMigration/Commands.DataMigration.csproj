@@ -57,7 +57,7 @@
     <Compile Include="Cmdlets\NewDataMigrationSyncSelectedDB.cs" />
     <Compile Include="Cmdlets\NewFileShare.cs" />
     <Compile Include="Cmdlets\NewMongoDbCollectionSettingCmdlet.cs" />
-    <Compile Include="Cmdlets\NewMongoDbDatabaseSettingsCmdlet.cs" />
+    <Compile Include="Cmdlets\NewMongoDbDatabaseSettingCmdlet.cs" />
     <Compile Include="Cmdlets\ValidateSqlServerSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\GetUserTableSqlCmdlet.cs" />

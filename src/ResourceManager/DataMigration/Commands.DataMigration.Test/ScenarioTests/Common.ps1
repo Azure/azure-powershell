@@ -121,7 +121,8 @@ function Create-ProjectMongoDbMongoDb($rg, $service)
 
 function New-SourceMongoDbConnectionInfo
 {
-	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString "mongodb://azuredmstest.corp.microsoft.com/"
+	$sourceConn = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MONGODB_SOURCE_CONNECTIONSTRING")
+	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString $sourceConn
 	return $connectioninfo
 }
 

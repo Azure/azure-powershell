@@ -1,0 +1,466 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourcegroups/HAITSONGINTTEST?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlZ3JvdXBzL0hBSVRTT05HSU5UVEVTVD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "24aa66a7-fef4-40cb-b311-312784438445"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "ff4b98b3-2274-404a-bab5-43a84772dcb8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ff4b98b3-2274-404a-bab5-43a84772dcb8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221049Z:ff4b98b3-2274-404a-bab5-43a84772dcb8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:48 GMT"
+        ],
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST\",\r\n  \"name\": \"HAITSONGINTTEST\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0hBSVRTT05HSU5UVEVTVC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvSEFJVFNPTkdCVVNJTkVTUz9hcGktdmVyc2lvbj0yMDE4LTA3LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "98e7c178-ed68-4c1f-8276-327ee479ce02"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.6.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2f9a8094-3e15-40fb-a3e3-cbedf3fd49da"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c8cca22-babd-4218-8c25-46bae93c0e62"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221049Z:0c8cca22-babd-4218-8c25-46bae93c0e62"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:48 GMT"
+        ],
+        "ETag": [
+          "\"lIOvr3l5GfQUtAYWQwIRv0DpHCEdYpR5/eo/1haNP7Q=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Content-Length": [
+          "790"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"virtualNicId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.Network/networkInterfaces/NIC-jh2y8gnvr9mcatgg86ytqr57\",\r\n    \"virtualSubnetId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-WUS2-VNET-4825/subnets/Subnet-1\"\r\n  },\r\n  \"etag\": \"lIOvr3l5GfQUtAYWQwIRv0DpHCEdYpR5/eo/1haNP7Q=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS\",\r\n  \"location\": \"westus2\",\r\n  \"name\": \"HAITSONGBUSINESS\",\r\n  \"sku\": {\r\n    \"name\": \"BusinessCritical_4vCores\",\r\n    \"size\": \"4 vCores\",\r\n    \"tier\": \"Business Critical\"\r\n  },\r\n  \"type\": \"Microsoft.DataMigration/services\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0hBSVRTT05HSU5UVEVTVC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvSEFJVFNPTkdCVVNJTkVTUy9wcm9qZWN0cy9EbVByb2plY3QtUHNUZXN0UnVuMTE0Nj9hcGktdmVyc2lvbj0yMDE4LTA3LTE1LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"MongoDb\",\r\n    \"targetPlatform\": \"MongoDb\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"https://adamstorage01.blob.core.windows.net/bson?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-09-08T05:58:02Z&st=2018-09-07T21:58:02Z&spr=https&sig=YvN62VA%2BTFu9T6KWlg3AElbODg5VAkWMw6hhKhsNegs%3D\",\r\n      \"serverName\": \"AzureStorage\",\r\n      \"userName\": \"\",\r\n      \"password\": \"\"\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"mongodb://adamcosmos:U7kh26YeV5syBZByR7YmAjdcECC3u6rsHuCpjyHWHpBR23C1TuXniq6Jz0L2geXj1QDVDLBmpjoycZA8VS5zSg==@adamcosmos.documents.azure.com:10255/?ssl=true\",\r\n      \"serverName\": \"adamcosmos.documents.azure.com\",\r\n      \"port\": 10255,\r\n      \"useSSL\": true,\r\n      \"userName\": \"adamcosmos\",\r\n      \"password\": \"U7kh26YeV5syBZByR7YmAjdcECC3u6rsHuCpjyHWHpBR23C1TuXniq6Jz0L2geXj1QDVDLBmpjoycZA8VS5zSg==\"\r\n    }\r\n  },\r\n  \"location\": \"westus2\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2963d845-a12c-4e82-8fbd-3fdc2af0d80f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.6.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1014"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "539bdb57-9fb5-419d-9b53-1d20e145c08c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "9448c0f5-92ce-4b57-8488-dd2403d710d3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221049Z:9448c0f5-92ce-4b57-8488-dd2403d710d3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:48 GMT"
+        ],
+        "ETag": [
+          "\"N4jCxGhmOFVQoqg36qajbFFaNnbNMMWcyTv7d7tvLHA=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Content-Length": [
+          "1138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"MongoDb\",\r\n    \"targetPlatform\": \"MongoDb\",\r\n    \"creationTime\": \"2018-11-14T14:10:49.5987901-08:00\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"https://adamstorage01.blob.core.windows.net/bson?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-09-08T05:58:02Z&st=2018-09-07T21:58:02Z&spr=https&sig=YvN62VA%2BTFu9T6KWlg3AElbODg5VAkWMw6hhKhsNegs%3D\",\r\n      \"serverName\": \"AzureStorage\",\r\n      \"userName\": \"\"\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"mongodb://adamcosmos:U7kh26YeV5syBZByR7YmAjdcECC3u6rsHuCpjyHWHpBR23C1TuXniq6Jz0L2geXj1QDVDLBmpjoycZA8VS5zSg==@adamcosmos.documents.azure.com:10255/?ssl=true\",\r\n      \"serverName\": \"adamcosmos.documents.azure.com\",\r\n      \"port\": 10255,\r\n      \"useSSL\": true,\r\n      \"userName\": \"adamcosmos\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"etag\": \"N4jCxGhmOFVQoqg36qajbFFaNnbNMMWcyTv7d7tvLHA=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146\",\r\n  \"location\": \"westus2\",\r\n  \"name\": \"DmProject-PsTestRun1146\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146/tasks/DmTask-PsTestRun4024?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0hBSVRTT05HSU5UVEVTVC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvSEFJVFNPTkdCVVNJTkVTUy9wcm9qZWN0cy9EbVByb2plY3QtUHNUZXN0UnVuMTE0Ni90YXNrcy9EbVRhc2stUHNUZXN0UnVuNDAyND9hcGktdmVyc2lvbj0yMDE4LTA3LTE1LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"Connect.MongoDb\",\r\n    \"input\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"https://adamstorage01.blob.core.windows.net/bson?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-09-08T05:58:02Z&st=2018-09-07T21:58:02Z&spr=https&sig=YvN62VA%2BTFu9T6KWlg3AElbODg5VAkWMw6hhKhsNegs%3D\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9448ea39-a916-4c07-a980-737e4f2a9543"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.6.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "349"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "19168ba6-6989-43ef-8dc9-82c6027e7117"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a259b1d-a2ff-4f4b-9d00-9a2994b8ca72"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221050Z:2a259b1d-a2ff-4f4b-9d00-9a2994b8ca72"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:49 GMT"
+        ],
+        "ETag": [
+          "\"dJWQjkZHYMr1NevMYsWKpSs9/YN/8hUKtmmjzzRWoWc=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Content-Length": [
+          "716"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"https://adamstorage01.blob.core.windows.net/bson?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-09-08T05:58:02Z&st=2018-09-07T21:58:02Z&spr=https&sig=YvN62VA%2BTFu9T6KWlg3AElbODg5VAkWMw6hhKhsNegs%3D\"\r\n    },\r\n    \"taskId\": \"cb565b45-4c59-4735-8e5c-d97967d57520\",\r\n    \"taskType\": \"Connect.MongoDb\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"etag\": \"dJWQjkZHYMr1NevMYsWKpSs9/YN/8hUKtmmjzzRWoWc=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146/tasks/DmTask-PsTestRun4024\",\r\n  \"name\": \"DmTask-PsTestRun4024\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146/tasks/DmTask-PsTestRun4024?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0hBSVRTT05HSU5UVEVTVC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvSEFJVFNPTkdCVVNJTkVTUy9wcm9qZWN0cy9EbVByb2plY3QtUHNUZXN0UnVuMTE0Ni90YXNrcy9EbVRhc2stUHNUZXN0UnVuNDAyND8kZXhwYW5kPW91dHB1dCZhcGktdmVyc2lvbj0yMDE4LTA3LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe43aad6-00a2-40e9-9bb8-e831ba3ca074"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.6.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "655ba075-2c1b-4bdd-ad25-34bb53b4e56d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "dd4353fe-ef21-4072-b7d3-539126592fc2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221055Z:dd4353fe-ef21-4072-b7d3-539126592fc2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:55 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Content-Length": [
+          "2554"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"https://adamstorage01.blob.core.windows.net/bson?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-09-08T05:58:02Z&st=2018-09-07T21:58:02Z&spr=https&sig=YvN62VA%2BTFu9T6KWlg3AElbODg5VAkWMw6hhKhsNegs%3D\"\r\n    },\r\n    \"output\": [\r\n      {\r\n        \"databases\": [\r\n          {\r\n            \"collections\": [\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": true,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": false,\r\n                \"qualifiedName\": \"test.capped\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": null,\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 1081222,\r\n                \"documentCount\": -1,\r\n                \"name\": \"capped\"\r\n              },\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": false,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": false,\r\n                \"qualifiedName\": \"test.collation\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": null,\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 35,\r\n                \"documentCount\": -1,\r\n                \"name\": \"collation\"\r\n              },\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": false,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": false,\r\n                \"qualifiedName\": \"test.large\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": null,\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 104859800,\r\n                \"documentCount\": -1,\r\n                \"name\": \"large\"\r\n              },\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": false,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": false,\r\n                \"qualifiedName\": \"test.many\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": null,\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 15881999,\r\n                \"documentCount\": -1,\r\n                \"name\": \"many\"\r\n              },\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": false,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": false,\r\n                \"qualifiedName\": \"test.valid\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": null,\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 83,\r\n                \"documentCount\": -1,\r\n                \"name\": \"valid\"\r\n              },\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": false,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": true,\r\n                \"qualifiedName\": \"test.view\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": \"many\",\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 86,\r\n                \"documentCount\": -1,\r\n                \"name\": \"view\"\r\n              },\r\n              {\r\n                \"databaseName\": \"test\",\r\n                \"isCapped\": false,\r\n                \"isSystemCollection\": false,\r\n                \"isView\": false,\r\n                \"qualifiedName\": \"test.weird\",\r\n                \"rus\": 0,\r\n                \"shardKey\": null,\r\n                \"viewOf\": null,\r\n                \"averageDocumentSize\": -1,\r\n                \"dataSize\": 791,\r\n                \"documentCount\": -1,\r\n                \"name\": \"weird\"\r\n              }\r\n            ],\r\n            \"qualifiedName\": \"test\",\r\n            \"rus\": 0,\r\n            \"supportsSharding\": false,\r\n            \"averageDocumentSize\": -1,\r\n            \"dataSize\": 121824016,\r\n            \"documentCount\": -1,\r\n            \"name\": \"test\"\r\n          }\r\n        ],\r\n        \"hasOplog\": false,\r\n        \"maxBatchBytes\": 0,\r\n        \"maxBatchDocuments\": 0,\r\n        \"supportsSharding\": false,\r\n        \"type\": \"BlobContainer\",\r\n        \"version\": \"0.0.0\"\r\n      }\r\n    ],\r\n    \"taskId\": \"cb565b45-4c59-4735-8e5c-d97967d57520\",\r\n    \"taskType\": \"Connect.MongoDb\",\r\n    \"state\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146/tasks/DmTask-PsTestRun4024\",\r\n  \"name\": \"DmTask-PsTestRun4024\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146/tasks/DmTask-PsTestRun4024?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0hBSVRTT05HSU5UVEVTVC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvSEFJVFNPTkdCVVNJTkVTUy9wcm9qZWN0cy9EbVByb2plY3QtUHNUZXN0UnVuMTE0Ni90YXNrcy9EbVRhc2stUHNUZXN0UnVuNDAyND8kZXhwYW5kPW91dHB1dCZhcGktdmVyc2lvbj0yMDE4LTA3LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b444b224-8886-43c7-8824-0d7bf5420b93"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.6.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4fe237e5-0389-4410-90f6-20b7294a1fe9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "6aff8e22-08a6-428c-8a1b-74bee6218cda"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221055Z:6aff8e22-08a6-428c-8a1b-74bee6218cda"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:55 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/HAITSONGINTTEST/providers/Microsoft.DataMigration/services/HAITSONGBUSINESS/projects/DmProject-PsTestRun1146/tasks/DmTask-PsTestRun4024?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0hBSVRTT05HSU5UVEVTVC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvSEFJVFNPTkdCVVNJTkVTUy9wcm9qZWN0cy9EbVByb2plY3QtUHNUZXN0UnVuMTE0Ni90YXNrcy9EbVRhc2stUHNUZXN0UnVuNDAyND9hcGktdmVyc2lvbj0yMDE4LTA3LTE1LXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1f107dfb-32e6-43bc-b766-a072c74a83cc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.6.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "61b8d1b8-1125-4fcf-b05c-94ea84c06d3b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f238f50b-a4a9-4f0e-b02e-04dbaac0da00"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181114T221055Z:f238f50b-a4a9-4f0e-b02e-04dbaac0da00"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Nov 2018 22:10:55 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "testName": [
+      "DmProject-PsTestRun1146",
+      "DmTask-PsTestRun4024"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f"
+  }
+}

@@ -106,7 +106,9 @@ AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject
                'New-AzureRmDataMigrationSelectedDB', 
                'New-AzureRmDataMigrationSyncSelectedDB', 
                'New-AzureRmDmsSelectedDBObject', 
-               'New-AzureRmDmsSyncSelectedDBObject'
+               'New-AzureRmDmsSyncSelectedDBObject',
+               'New-AzureRmDmsMongoDbDatabaseSetting',
+               'New-AzureRmDmsMongoDbCollectionSetting'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationMongoDbDatabaseSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbDatabaseSettingItem))]
     [Alias("New-AzureRmDmsMongoDbDatabaseSetting")]
-    public class NewMongoDbDatabaseSettingsCmdlet : DataMigrationCmdlet
+    public class NewMongoDbDatabaseSettingCmdlet : DataMigrationCmdlet
     {
         [Parameter(
            Mandatory = true,
