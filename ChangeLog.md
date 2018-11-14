@@ -5,6 +5,13 @@
 #### AzureRM.ApiManagement
 * Update dependencies for type mapping issue
 
+#### AzureRM.Automation
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
+
 #### AzureRM.Compute
 * Fixed identity issue for SystemAssigned identity
 * Update dependencies for type mapping issue
@@ -32,7 +39,24 @@
 #### AzureRM.Relay
 * Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
 
+#### AzureRM.Resources
+* Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
+
+#### AzureRM.ServiceFabric
+* Add deprecation messages for upcoming breaking changes
+
 #### AzureRM.Sql
+* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
+	- Get-AzureRmSqlInstance
+	- New-AzureRmSqlInstance
+	- Set-AzureRmSqlInstance
+	- Remove-AzureRmSqlInstance
+	- Get-AzureRmSqlInstanceDatabase
+	- New-AzureRmSqlInstanceDatabase
+	- Restore-AzureRmSqlInstanceDatabase
+	- Remove-AzureRmSqlInstanceDatabase
 * Enabled Extended Auditing Policy management on a server or a database.
 	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
 	- Cmdlets were modified to use SQL clients instead of Legacy clients.

@@ -57,7 +57,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.1';
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.4'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.1.6'; }, 
                @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.8'; }, 
-               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '5.1.2'; }, 
+               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '5.2.0'; }, 
                @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.11'; }, 
                @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.1.5'; }, 
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.6'; }, 
@@ -94,10 +94,10 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.1';
                @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.11'; }, 
                @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.1.0'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.11'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.7.1'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.7.2'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.13'; }, 
-               @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.13'; }, 
+               @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.14'; }, 
                @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.12.0'; }, 
                @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.2.0'; }, 
@@ -168,6 +168,13 @@ AzureRM.Profile
 AzureRM.ApiManagement
 * Update dependencies for type mapping issue
 
+AzureRM.Automation
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
+
 AzureRM.Compute
 * Fixed identity issue for SystemAssigned identity
 * Update dependencies for type mapping issue
@@ -195,7 +202,24 @@ AzureRM.RecoveryServices.SiteRecovery
 AzureRM.Relay
 * Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
 
+AzureRM.Resources
+* Update help documentation for resource identity related parameters in New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
+
+AzureRM.ServiceFabric
+* Add deprecation messages for upcoming breaking changes
+
 AzureRM.Sql
+* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
+	- Get-AzureRmSqlInstance
+	- New-AzureRmSqlInstance
+	- Set-AzureRmSqlInstance
+	- Remove-AzureRmSqlInstance
+	- Get-AzureRmSqlInstanceDatabase
+	- New-AzureRmSqlInstanceDatabase
+	- Restore-AzureRmSqlInstanceDatabase
+	- Remove-AzureRmSqlInstanceDatabase
 * Enabled Extended Auditing Policy management on a server or a database.
 	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
 	- Cmdlets were modified to use SQL clients instead of Legacy clients.
