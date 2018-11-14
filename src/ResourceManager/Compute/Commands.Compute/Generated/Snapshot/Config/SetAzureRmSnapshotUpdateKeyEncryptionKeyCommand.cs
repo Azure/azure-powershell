@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.SnapshotUpdate.EncryptionSettings == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // KeyEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
             }
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.SnapshotUpdate.EncryptionSettings == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // KeyEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 // SourceVault
                 if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new SourceVault();
                 }
                 this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }

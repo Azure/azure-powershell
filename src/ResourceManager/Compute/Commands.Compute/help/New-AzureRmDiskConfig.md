@@ -14,11 +14,12 @@ Creates a configurable disk object.
 
 ```
 New-AzureRmDiskConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
- [[-Location] <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-CreateOption <String>]
- [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
- [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
- [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Location] <String>] [-Zone <String[]>] [-DiskIOPSReadWrite <Int32>] [-DiskMBpsReadWrite <Int32>]
+ [-Tag <Hashtable>] [-CreateOption <String>] [-StorageAccountId <String>]
+ [-ImageReference <ImageDiskReference>] [-SourceUri <String>] [-SourceResourceId <String>]
+ [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
+ [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +82,36 @@ Specifies the disk encryption key object on a disk.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskIOPSReadWrite
+The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskMBpsReadWrite
+The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Specifies the Sku name of the storage account.
+Specifies the Sku name of the storage account.  Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS.  UltraSSD_LRS can only be used with Empty value for CreateOption parameter.
 
 ```yaml
 Type: System.String

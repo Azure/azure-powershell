@@ -28,8 +28,9 @@ namespace StaticAnalysis.SignatureVerifier
 {
     public class SignatureVerifier : IStaticAnalyzer
     {
+#if !NETSTANDARD
         private AppDomain _appDomain;
-        AnalysisLogger _logger;
+#endif
         string signatureIssueReportLoggerName;
         public SignatureVerifier()
         {
@@ -301,7 +302,9 @@ namespace StaticAnalysis.SignatureVerifier
                                     }
                                 }
 
+#if !NETSTANDARD
                                 AppDomain.Unload(_appDomain);
+#endif
                                 issueLogger.Decorator.Remove("AssemblyFileName");
                             }
                         }

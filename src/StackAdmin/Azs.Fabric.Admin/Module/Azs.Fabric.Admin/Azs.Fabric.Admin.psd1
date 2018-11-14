@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.2.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -56,8 +56,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Fabric.Admin.dll')
@@ -114,7 +114,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Fabric', 'Admin', 'Azure Stack Fabric', 'Infrastructure', 'Scale Unit', 'FRP')
+            Tags         = @('AzureStack', 'Fabric', 'Admin', 'Infrastructure', 'ScaleUnit', 'FRP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
@@ -126,41 +126,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
-            * New Module dependencies
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * New cmdlet
-                * Add-AzsScaleUnitNode
-                * New-AzsScaleUnitNodeObject
-            * Support handling names of nested resources
-                * Add-AzsScaleUnitNode
-                * Disable-AzsScaleUnitNode
-                * Enable-AzsScaleUnitNode
-                * Get-AzsEdgeGateway
-                * Get-AzsEdgeGatewayPool
-                * Get-AzsInfrastructureRole
-                * Get-AzsInfrastructureRoleInstance
-                * Get-AzsInfrastructureShare
-                * Get-AzsInfrastructureVolume
-                * Get-AzsIpPool
-                * Get-AzsLogicalNetwork
-                * Get-AzsLogicalSubnet
-                * Get-AzsMacAddressPool
-                * Get-AzsScaleUnit
-                * Get-AzsScaleUnitNode
-                * Get-AzsSlbMuxInstance
-                * Get-AzsStoragePool
-                * Get-AzsStorageSystem
-                * Repair-AzsScaleUnitNode
-                * Restart-AzsInfrastructureRole
-                * Restart-AzsInfrastructureRoleInstance
-                * Start-AzsInfrastructureRoleInstance
-                * Start-AzsScaleUnitNode
-                * Stop-AzsInfrastructureRoleInstance
-                * Stop-AzsScaleUnitNode
+            ReleaseNotes = '## 2018.10.28
             * Bug fixes
-                * Handle ErrrorAction correctly now
+                * Fixed a bug in Add-AzsScaleUnitNode
             '
 
         } # End of PSData hashtable

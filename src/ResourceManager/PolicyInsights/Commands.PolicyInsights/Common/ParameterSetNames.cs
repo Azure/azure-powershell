@@ -27,5 +27,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string PolicyDefinitionScope = "PolicyDefinitionScope";
         public const string SubscriptionLevelPolicyAssignmentScope = "SubscriptionLevelPolicyAssignmentScope";
         public const string ResourceGroupLevelPolicyAssignmentScope = "ResourceGroupLevelPolicyAssignmentScope";
+        public const string GenericScope = "GenericScope";
+        public const string ByName = "ByName";
+        public const string ByResourceId = "ByResourceId";
+        public const string ByInputObject = "ByInputObject";
     }
 }
