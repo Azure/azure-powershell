@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
 * Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
 
 ## Version 6.7.1
