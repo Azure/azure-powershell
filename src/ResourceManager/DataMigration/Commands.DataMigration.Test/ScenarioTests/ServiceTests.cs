@@ -155,6 +155,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
             DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToSourceMongoDb");
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToTargetCosmosDb()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetCosmosDb");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMigrateMongoDb()

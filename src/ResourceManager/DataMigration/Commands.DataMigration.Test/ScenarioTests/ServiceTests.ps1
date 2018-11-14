@@ -825,17 +825,33 @@ function Test-ConnectToSourceMongoDb
 		$taskName = Get-TaskName
 		$connectionInfo = New-SourceMongoDbConnectionInfo
 
-		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceMongoDb-ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -Wait
 
-		Assert-AreEqual $taskName $task[0].Name
-		Assert-AreEqual 1 $task.Count
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
-		{
-			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
-		}
+		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+
+}
+
+function Test-ConnectToTargetCosmosDb
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectMongoDbMongoDb $rg $service
+		$taskName = Get-TaskName
+		$connectionInfo = New-TargetMongoDbConnectionInfo
+
+		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -Wait
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
@@ -860,15 +876,21 @@ function Test-MigrateMongoDb
 		$taskName = Get-TaskName
 
 		$sourceConnectionInfo = New-SourceMongoDbConnectionInfo
-
-		#Target Connection Details
 		$targetConnectionInfo = New-TargetMongoDbConnectionInfo
 
-		$colarticles = New-AzureRmDmsMongoDbCollectionSetting -Name articles -RU 1000 -CanDelete
-		$colusers = New-AzureRmDmsMongoDbCollectionSetting -Name users -ShardKeyFields '_id,email_1'
-		$dbmean = New-AzureRmDmsMongoDbDatabaseSetting -Name meandemo -collections @($colarticles, $colusers)
+		#----------------------
+		# MIGRATION SETUP
+		#----------------------
+		$testColSettingA = New-AzureRmDataMigrationMongoDbCollectionSetting -Name large -RU 1000 -CanDelete -ShardKeyFields "_id"
+		$testColSettingB = New-AzureRmDataMigrationMongoDbCollectionSetting -Name many -RU 1000 -CanDelete -ShardKeyFields "_id"
+		$testDbSetting = New-AzureRmDataMigrationMongoDbDatabaseSetting -Name test -collections @($testColSettingA, $testColSettingB)
 
-		$migTask = New-AzureRmDmsTask -TaskType MigrateMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -TargetConnection $targetConnectionInfo  -SelectedDatabase  @($dbmean)
+		#----------------------
+		# MIGRATION VALIDATION
+		#----------------------
+		$validationTask = New-AzureRmDmsTask -TaskType ValidateMongoDbMigration -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -TargetConnection $targetConnectionInfo  -SelectedDatabase  @($testDbSetting) -Wait
+		$taskName = Get-TaskName
+		$migTask = New-AzureRmDmsTask -TaskType MigrateMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -TargetConnection $targetConnectionInfo  -SelectedDatabase  @($testDbSetting) -MigrationValidation $validationTask -Replication Disabled
 
 		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
@@ -879,13 +901,14 @@ function Test-MigrateMongoDb
 		{
 			SleepTask 15
 			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+			if($task.ProjectTask.Properties.State -eq "Running") {
+				$res = Invoke-AzureRmDataMigrationCommand  -CommandType cancel -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -ObjectName "test.many"
+				Assert-AreEqual "Accepted" $res.State
+			}
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
-
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
-		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
