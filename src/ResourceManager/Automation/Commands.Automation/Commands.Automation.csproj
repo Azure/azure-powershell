@@ -53,14 +53,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Automation">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.2.0.4\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationHybridWorkerGroup.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationJobOutputRecord.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationSourceControl.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationSourceControlSyncJob.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationSourceControlSyncJobOutput.cs" />
     <Compile Include="Cmdlet\ImportAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscNodeReportContent.cs" />
@@ -88,6 +86,7 @@
     <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationSchedule.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationSourceControl.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationVariable.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationWebhook.cs" />
     <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />
@@ -96,11 +95,13 @@
     <Compile Include="Cmdlet\RemoveAzureAutomationCertificate.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationConnectionType.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationConnection.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationHybridWorkerGroup.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationCredential.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationSchedule.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationSourceControl.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationVariable.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationWebhook.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Cmdlet\ImportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationKey.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationRunbook.cs" />
+    <Compile Include="Cmdlet\StartAzureAutomationSourceControlSyncJob.cs" />
     <Compile Include="Cmdlet\StopAzureAutomationJob.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationDscNodeConfigurationDeployment.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfigurationDeployment.cs" />
@@ -135,14 +137,24 @@
     <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\UnregisterAzureAutomationScheduledRunbook.cs" />
-    <Compile Include="Common\AutomationClient.cs" />
-    <Compile Include="Common\AutomationClientDSC.cs" />
-    <Compile Include="Common\AutomationClientWebhook.cs" />
+    <Compile Include="Cmdlet\UpdateManagement\GetAzureAutomationSoftwareUpdateConfiguration.cs" />
+    <Compile Include="Cmdlet\UpdateManagement\GetAzureAutomationSoftwareUpdateMachineRun.cs" />
+    <Compile Include="Cmdlet\UpdateManagement\GetAzureAutomationSoftwareUpdateRun.cs" />
+    <Compile Include="Cmdlet\UpdateManagement\NewAzureAutomationSoftwareUpdateConfiguration.cs" />
+    <Compile Include="Cmdlet\UpdateManagement\RemoveAzureAutomationSoftwareUpdateConfiguration.cs" />
+    <Compile Include="Cmdlet\UpdateAzureAutomationSourceControl.cs" />
+    <Compile Include="Common\AutomationPSClient.cs" />
+    <Compile Include="Common\AutomationPSClientDSC.cs" />
+    <Compile Include="Common\AutomationPSClientSoftwareUpdateConfiguration.cs" />
+    <Compile Include="Common\AutomationPSClientSourceControl.cs" />
+    <Compile Include="Common\AutomationPSClientWebhook.cs" />
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
+    <Compile Include="Common\AzureAutomationErrorInfo.cs" />
+    <Compile Include="Common\AzureAutomationErrorResponseMessage.cs" />
     <Compile Include="Common\AzureAutomationOperationException.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\DscNodeStatus.cs" />
-    <Compile Include="Common\IAutomationClient.cs" />
+    <Compile Include="Common\IAutomationPSClient.cs" />
     <Compile Include="Common\PowerShellJsonConverter.cs" />
     <Compile Include="Common\RequestSettings.cs" />
     <Compile Include="Common\Requires.cs" />
@@ -150,7 +162,9 @@
     <Compile Include="Common\ResourceCommonException.cs" />
     <Compile Include="Common\ResourceNotFoundException.cs" />
     <Compile Include="Common\RunbookTypeSdkValue.cs" />
+    <Compile Include="Common\SourceControlSyncJobStreamType.cs" />
     <Compile Include="Common\StreamType.cs" />
+    <Compile Include="Common\Utils.cs" />
     <Compile Include="Common\VariableUpdateFields.cs" />
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
@@ -182,6 +196,25 @@
     <Compile Include="Model\Runbook.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\ScheduleFrequency.cs" />
+    <Compile Include="Model\SourceControlSyncJobStream.cs" />
+    <Compile Include="Model\SourceControlSyncJobStreamRecord.cs" />
+    <Compile Include="Model\UpdateManagement\BaseArmProperties.cs" />
+    <Compile Include="Model\UpdateManagement\ComputerType.cs" />
+    <Compile Include="Model\UpdateManagement\ErrorInfo.cs" />
+    <Compile Include="Model\UpdateManagement\LinuxConfiguration.cs" />
+    <Compile Include="Model\UpdateManagement\LinuxPackageClasses.cs" />
+    <Compile Include="Model\UpdateManagement\OperatingSystemType.cs" />
+    <Compile Include="Model\UpdateManagement\SoftwareUpdateMachineRun.cs" />
+    <Compile Include="Model\UpdateManagement\SoftwareUpdateConfiguration.cs" />
+    <Compile Include="Model\UpdateManagement\SoftwareUpdateMachineRunStatus.cs" />
+    <Compile Include="Model\UpdateManagement\SoftwareUpdateRun.cs" />
+    <Compile Include="Model\UpdateManagement\SoftwareUpdateRunStatus.cs" />
+    <Compile Include="Model\UpdateManagement\UpdateConfiguration.cs" />
+    <Compile Include="Model\UpdateManagement\WindowsConfiguration.cs" />
+    <Compile Include="Model\UpdateManagement\WindowsUpdateClasses.cs" />
+    <Compile Include="Model\SourceControl.cs" />
+    <Compile Include="Model\SourceControlSyncJob.cs" />
+    <Compile Include="Model\SourceControlSyncJobRecord.cs" />
     <Compile Include="Model\Variable.cs" />
     <Compile Include="Model\Webhook.cs" />
     <Compile Include="Model\WeeklyScheduleOptions.cs" />
@@ -194,14 +227,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CompilationJobStreamType.cs" />
+    <None Include="Az.Automation.psd1" />
     <None Include="AzureRM.Automation.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="AzureRM.Automation.format.ps1xml" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
     </None>
-    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -216,11 +250,18 @@
       <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.4.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+    <Copy SourceFiles="AzureRM.Automation.format.ps1xml" DestinationFolder="$(OutputPath)" ContinueOnError="false" />
   </Target>
 </Project>
