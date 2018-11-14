@@ -24,9 +24,12 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster),
+    DeprecatedOutputProperties = new String[] { "UpgradeDescription.DeltaHealthPolicy.ApplicationHealthPolicies", "UpgradeDescription.OverrideUserUpgradePolicy", "SerivceTypeHealthPolicies" })]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricReliability", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
     {

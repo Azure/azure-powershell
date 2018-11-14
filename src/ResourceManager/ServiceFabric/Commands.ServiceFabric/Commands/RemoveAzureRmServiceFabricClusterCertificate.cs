@@ -18,9 +18,12 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster),
+    DeprecatedOutputProperties = new String[] { "UpgradeDescription.DeltaHealthPolicy.ApplicationHealthPolicies", "UpgradeDescription.OverrideUserUpgradePolicy", "SerivceTypeHealthPolicies" })]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricClusterCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCmdlet
     {
