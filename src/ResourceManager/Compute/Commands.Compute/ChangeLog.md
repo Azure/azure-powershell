@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Fixed identity issue for SystemAssigned identity
+* Update dependencies for type mapping issue
 
 ## Version 5.8.0
 * Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets

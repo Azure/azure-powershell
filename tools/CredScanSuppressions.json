@@ -980,6 +980,10 @@
 			"file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
             "hash": "SB0xdyGO1L0ed4yxyqzld6xXQfTuM3czfp05Si3bAzw=",
 			"_justification": "Expired test session storage SAS"
-		}
+    },
+    {
+       "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+       "_justification": "Mocked credential"
+    }
   ]
 }
