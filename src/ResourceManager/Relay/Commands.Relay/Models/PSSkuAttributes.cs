@@ -8,26 +8,22 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
     using Newtonsoft.Json;
-    using System.Linq;
 
     /// <summary>
     /// Sku of the Namespace.
     /// </summary>
-    public partial class SkuAttributes
+    public partial class PSSkuAttributes
     {
         /// <summary>
         /// Initializes a new instance of the Sku class.
         /// </summary>
-        public SkuAttributes() { }
+        public PSSkuAttributes() { }
 
         /// <summary>
         /// Static constructor for Sku class.
         /// </summary>
-        static SkuAttributes()
+        static PSSkuAttributes()
         {
             Name = "Standard";
             Tier = "Standard";

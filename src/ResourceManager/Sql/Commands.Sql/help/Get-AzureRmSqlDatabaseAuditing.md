@@ -38,6 +38,7 @@ StorageAccountName           : mystorage
 StorageKeyType               : Primary
 RetentionInDays              : 0
 StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+PredicateExpression			 : statement <> 'select 1'
 ```
 
 ## PARAMETERS
@@ -112,7 +113,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -127,7 +128,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,8 +137,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### System.String
 
 ## OUTPUTS
 
