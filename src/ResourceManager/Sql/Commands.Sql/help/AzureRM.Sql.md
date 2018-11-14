@@ -500,9 +500,6 @@ Executes a failover of an Azure SQL Database Failover Group.
 ### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
 Updates the vulnerability assessment settings of a database.
 
-### [Update-AzureRmSqlInstance](Update-AzureRmSqlInstance.md)
-Updates an Azure SQL Database Managed Instance.
-
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.
 

@@ -36,7 +36,7 @@ Set-AzureRmSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureStr
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Properties that are not specified are set to their default values.
+The **Set-AzureRmSqlInstance** cmdlet modifies properties of an Azure SQL Database Managed instance.
 
 ## EXAMPLES
 

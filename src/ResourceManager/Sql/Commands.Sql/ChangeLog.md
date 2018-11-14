@@ -21,7 +21,6 @@
 * Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
 	- Get-AzureRmSqlInstance
 	- New-AzureRmSqlInstance
-	- Update-AzureRmSqlInstance
 	- Set-AzureRmSqlInstance
 	- Remove-AzureRmSqlInstance
 	- Get-AzureRmSqlInstanceDatabase
