@@ -25,6 +25,15 @@
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
 * Fix issues with memory usage in VirtualNetwork map
 
+## Version 6.10.0
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
 ## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
 * Added ResourceName argument completer to all cmdlets.
@@ -35,7 +44,6 @@
 * Fixed issue with RouteFilter not being set if it was passed to ExpressRouteCircuit Peering as resource
 
 ## Version 6.9.0
-
 * Added NetworkProfile functionality. new cmdlets added
     - Get-AzureRMNetworkProfile
     - New-AzureRMNetworkProfile
