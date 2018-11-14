@@ -67,6 +67,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Relay" Version="2.0.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="0.10.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.22.0-preview" PrivateAssets="All" />

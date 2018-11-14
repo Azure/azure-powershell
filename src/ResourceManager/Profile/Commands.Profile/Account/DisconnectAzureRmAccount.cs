@@ -16,6 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Common;
