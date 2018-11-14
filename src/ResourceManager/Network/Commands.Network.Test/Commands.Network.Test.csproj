@@ -83,7 +83,10 @@
     <Compile Include="ScenarioTests\ExpressRoutePortsLocationTests.cs" />
     <Compile Include="ScenarioTests\ExpressRoutePortTests.cs" />
     <Compile Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\ExpressRouteCircuitTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\LoadBalancerTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\NetworkInterfaceTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\RouteFilterTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\UsageTestsGenerated.cs" />
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
@@ -172,7 +175,16 @@
     <None Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\Generated\ExpressRouteCircuitTestsGenerated.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Generated\LoadBalancerTestsGenerated.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Generated\NetworkInterfaceTestsGenerated.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Generated\RouteFilterTestsGenerated.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Generated\UsageTestsGenerated.ps1">
@@ -212,6 +224,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\UsageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Utils\Import-GeneratedTestUtils.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualNetworkTapTests.ps1">
@@ -305,6 +320,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.DdosProtectionPlanTests\TestDdosProtectionPlanCrudWithVirtualNetwork.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTestsGenerated\TestExpressRouteCircuitAuthorizationCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTestsGenerated\TestExpressRouteCircuitCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTestsGenerated\TestExpressRouteCircuitCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTestsGenerated\TestExpressRouteCircuitPeeringCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTestsGenerated\TestExpressRouteCircuitPeeringCRUDMinimalParameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteBgpServiceCommunitiesGet.json">
@@ -417,6 +447,21 @@
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkCloudExceptionTests\TestNotFound.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTestsGenerated\TestNetworkInterfaceCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTestsGenerated\TestNetworkInterfaceCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTestsGenerated\TestNetworkInterfaceGetEffectiveRouteTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTestsGenerated\TestNetworkInterfaceIpConfigurationCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTestsGenerated\TestNetworkInterfaceIpConfigurationCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestContainerNetworkInterfaceConfigCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -617,6 +662,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpPrefixTests\TestPublicIpPrefixAllocatePublicIpAddress.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteFilterTestsGenerated\TestRouteFilterCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteFilterTestsGenerated\TestRouteFilterCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteFilterTestsGenerated\TestRouteFilterRuleCRUDMinimalParameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTestsGenerated\TestRouteCRUDAllParameters.json">
