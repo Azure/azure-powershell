@@ -105,7 +105,6 @@
     <Compile Include="ManagedInstance\Cmdlet\NewAzureSqlManagedInstance.cs" />
     <Compile Include="ManagedInstance\Cmdlet\RemoveAzureSqlManagedInstance.cs" />
     <Compile Include="ManagedInstance\Cmdlet\SetAzureSqlManagedInstance.cs" />
-    <Compile Include="ManagedInstance\Cmdlet\UpdateAzureSqlManagedInstance.cs" />
     <Compile Include="ManagedInstance\Model\AzureSqlManagedInstanceModel.cs" />
     <Compile Include="ManagedInstance\Services\AzureSqlManagedInstanceAdapter.cs" />
     <Compile Include="ManagedInstance\Services\AzureSqlManagedInstanceCommunicator.cs" />

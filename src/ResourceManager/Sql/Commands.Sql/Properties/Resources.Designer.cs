@@ -1006,24 +1006,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating Azure Sql Database Managed Instance &apos;{0}&apos;..
-        /// </summary>
-        internal static string UpdateAzureSqlInstanceDescription {
-            get {
-                return ResourceManager.GetString("UpdateAzureSqlInstanceDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update the Azure Sql Database Managed Instance &apos;{0}&apos;?.
-        /// </summary>
-        internal static string UpdateAzureSqlInstanceWarning {
-            get {
-                return ResourceManager.GetString("UpdateAzureSqlInstanceWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
         /// </summary>
         internal static string UseServerWithoutStorageAccount {
