@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using Azure.Management.Relay.Models;
@@ -17,12 +16,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// Description of a Namespace resource.
     /// </summary>
-    public partial class RelayNamespaceAttributes : TrackedResourceAttributes
+    public partial class PSRelayNamespaceAttributes : PSTrackedResourceAttributes
     {
         /// <summary>
         /// Initializes a new instance of the RelayNamespace class.
         /// </summary>
-        public RelayNamespaceAttributes()
+        public PSRelayNamespaceAttributes()
         {
         }
 
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// Service Bus operations.</param>
         /// <param name="metricId">Identifier for Azure Insights
         /// metrics</param>
-        public RelayNamespaceAttributes(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string metricId = default(string))
+        public PSRelayNamespaceAttributes(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string metricId = default(string))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
             MetricId = metricId;
         }
 
-        public RelayNamespaceAttributes(RelayNamespace relaynamespace)
+        public PSRelayNamespaceAttributes(RelayNamespace relaynamespace)
         {
             Location = relaynamespace.Location;
             Id = relaynamespace.Id;
@@ -76,9 +75,9 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Static constructor for RelayNamespaceAttributes class.
         /// </summary>
-        static RelayNamespaceAttributes()
+        static PSRelayNamespaceAttributes()
         {
-            Sku = new SkuAttributes();
+            Sku = new PSSkuAttributes();
         }
 
         /// <summary>
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Sku of the Namespace.
         /// </summary>
-        public static SkuAttributes Sku { get; private set; }
+        public static PSSkuAttributes Sku { get; private set; }
         
     }
 }

@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// Description of WcfRelays Resource.
     /// </summary>
     [JsonTransformation]
-    public partial class WcfRelayAttributes : ResourceAttributes
+    public partial class PSWcfRelayAttributes : PSResourceAttributes
     {
         /// <summary>
         /// Initializes a new instance of the WcfRelay class.
         /// </summary>
-        public WcfRelayAttributes() { }
+        public PSWcfRelayAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the WcfRelay class.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// their contact information also user-defined configuration settings
         /// can be stored.</param>        
 
-        public WcfRelayAttributes(WcfRelay wcfRelay)
+        public PSWcfRelayAttributes(WcfRelay wcfRelay)
         {
             Id = wcfRelay.Id;
             Name = wcfRelay.Name;
