@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
             if(gcPolicyAssignment != null)
             {
                 this.PolicyDisplayName = gcPolicyAssignment.PolicyDisplayName;
-                this.LatestReportId = gcPolicyAssignment.LatestReportId;
+                this.LatestReportId = gcrpReport.Id;
                 this.Configuration = gcPolicyAssignment.Configuration;
             }
 
