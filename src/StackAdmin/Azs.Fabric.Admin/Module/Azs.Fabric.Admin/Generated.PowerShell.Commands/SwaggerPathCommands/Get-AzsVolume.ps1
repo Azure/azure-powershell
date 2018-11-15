@@ -51,6 +51,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 #>
 function Get-AzsVolume {
+    [Alias('Get-AzsInfrastructureVolume')]
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
@@ -113,6 +114,10 @@ function Get-AzsVolume {
     }
 
     Process {
+
+        if ($MyInvocation.InvocationName -eq 'Get-AzsInfrastructureVolume') {
+            Write-Warning "Get-AzsInfrastructureVolume has been deprecated, please use Get-AzsVolume"
+        }
 
         $StorageSubSystem = Get-ResourceNameSuffix -ResourceName $StorageSubSystem
         $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit

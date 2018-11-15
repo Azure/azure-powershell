@@ -20,12 +20,12 @@
 ## Current Release
 
 ## Version 0.3.0
-* New cmdlet
+* New cmdlet (The features are supported by Azure Stack 1811+)
 	* Get-AzsDrive
 	* Get-AzsVolume
 	* Get-AzsStorageSubSystem
-* Removed cmdlet
-	* Get-AzsInfrastructureVolume
+* Deprecation
+	* Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
 
 ## Version 0.2.1
 * Bug fixes

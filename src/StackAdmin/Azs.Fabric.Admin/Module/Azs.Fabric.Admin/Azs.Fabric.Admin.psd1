@@ -98,7 +98,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = @()
+    AliasesToExport   = @(
+    'Get-AzsInfrastructureVolume'
+    )
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -128,12 +130,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
             # ReleaseNotes of this module
             ReleaseNotes = '## 2018.11.5
-            * New cmdlet
+            * New cmdlet (The features are supported by Azure Stack 1811+)
 	            * Get-AzsDrive
 	            * Get-AzsVolume
 	            * Get-AzsStorageSubSystem
-            * Removed cmdlet
-	            * Get-AzsInfrastructureVolume
+            * Deprecation
+	            * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
             '
 
         } # End of PSData hashtable
