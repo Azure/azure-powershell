@@ -37,7 +37,7 @@ Get-AzureRmVMGuestPolicyReport [-ReportId] <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-The Get-AzureRmVMGuestPolicyReport cmdlet gets guest configuration policy reports for an initiative of type "Guest Configuration" that is assigned to a VM. An initiative is a policy of definition type "Initiative". This cmdlet gets compliance statuses of the VM, detailed reports and reasons (when you use "-Detailed" switch) for the individual policies in the initiative.
+The Get-AzureRmVMGuestPolicyReport cmdlet gets guest configuration policy reports for an initiative of type "Guest Configuration" that is assigned to a VM. An initiative is a policy of definition type "Initiative". This cmdlet gets compliance statuses of the VM, reports and reasons why it is non-compliant for the individual policies in the initiative.
 
 ## EXAMPLES
 
@@ -45,25 +45,25 @@ The Get-AzureRmVMGuestPolicyReport cmdlet gets guest configuration policy report
 ```powershell
 PS C:\> Get-AzureRmVMGuestPolicyReport -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName"
 ```
-Get all latest detailed guest configuration policy reports for a VM. The report includes compliance status of the VM for each policy in all initiatives of type "Guest Configuration", compliance reasons, start and end time of the compliance check, resource information which was checked for compliance. The results include latest reports, does not include previous reports.
+Get all latest guest configuration policy reports for a VM. The report includes compliance status of the VM for each policy in all initiatives of type "Guest Configuration", compliance reasons, start and end time of the compliance check, resource information which was checked for compliance. The results include latest reports, does not include previous historical reports.
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzureRmVMGuestPolicyReport -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeId "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5af"
 ```
-Get the latest detailed guest configuration policy reports by initiative Id. The report includes compliance status of the VM for each policy in the initiative, compliance reasons, start and end time of the compliance check, resource information which was checked for compliance. The results does not include previous reports generated, it just includes latest report for each policy in the initiative.
+Get the latest guest configuration policy reports by initiative Id. The report includes compliance status of the VM for each policy in the initiative, compliance reasons, start and end time of the compliance check, resource information which was checked for compliance. The results does not include previous reports generated, it just includes latest report for each policy in the initiative.
 
 ### Example 3
 ```powershell
 PS C:\> Get-AzureRmVMGuestPolicyReport -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeName "b5a822e0-ba98-4e54-9278-5d9833aa9b17"
 ```
-Get the latest detailed guest configuration policy reports by initiative name. The report includes compliance status of the VM for each policy in the initiative, compliance reasons, start and end time of the compliance check, resource information which was checked for compliance. The results does not include previous reports generatedl, it just includes latest report for each policy in the initiative.
+Get the latest guest configuration policy reports by initiative name. The report includes compliance status of the VM for each policy in the initiative, compliance reasons, start and end time of the compliance check, resource information which was checked for compliance. The results does not include previous reports generatedl, it just includes latest report for each policy in the initiative.
 
 ### Example 4
 ```powershell
 PS C:\> Get-AzureRmVMGuestPolicyReport -ReportId "/subscriptions/4e6c6ed2-0bf6-41d7-9d21-a452c2cc7920/resourceGroups/MyResourceGroupName/providers/Microsoft.Compute/virtualMachines/MyVMName/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/c271f845-2c0a-4456-a441-e48fc332d0ac"
 ```
-Get detailed guest configuration policy report by report Id. The report Id is the LatestReportId property that can be found in the results of Get-AzureRmVMGuestPolicyReport by initiativeId or Initiative name (please refer other examples)
+Get guest configuration policy report by report Id. The report Id is the LatestReportId property that can be found in the results of Get-AzureRmVMGuestPolicyReport by initiativeId or Initiative name (please refer other examples)
 
 ## PARAMETERS
 
