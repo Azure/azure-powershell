@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.DiscoveredSecuritySolutions
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDiscoveredSecuritySolution", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityDiscoveredSecuritySolution))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiscoveredSecuritySolution", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityDiscoveredSecuritySolution))]
     public class GetDiscoveredSecuritySolutions : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

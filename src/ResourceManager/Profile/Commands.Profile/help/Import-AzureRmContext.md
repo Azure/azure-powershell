@@ -34,12 +34,9 @@ Cmdlets that you run in the current session use this information to authenticate
 ```
 PS C:\> Import-AzureRmContext -AzureContext (Connect-AzureRmAccount)
 
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This example imports a context from a PSAzureProfile that is passed through to the cmdlet.
@@ -48,12 +45,9 @@ This example imports a context from a PSAzureProfile that is passed through to t
 ```
 PS C:\> Import-AzureRmContext -Path C:\test.json
 
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This example selects a context from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmContext.

@@ -22,7 +22,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmJitNetworkAccessPolicy", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecurityJitNetworkAccessPolicy))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "JitNetworkAccessPolicy", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecurityJitNetworkAccessPolicy))]
     public class SetJitNetworkAccessPolicies : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
