@@ -35,10 +35,11 @@ access.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Name     : Contoso Subscription 1
-Id       : xxxx-xxxx-xxxx-xxxx
-TenantId : yyyy-yyyy-yyyy-yyyy
-State    : Enabled
+Name                               Id                      TenantId                        State
+----                               --                      --------                        -----
+Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription2                      xxxx-xxxx-xxxx-xxxx     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription3                      zzzz-zzzz-zzzz-zzzz     bbbb-bbbb-bbbb-bbbb             Enabled
 ```
 
 This command gets all subscriptions in all tenants that are authorized for
@@ -48,15 +49,10 @@ the current account.
 ```
 PS C:\>Get-AzureRmSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
 
-Name     : Contoso Subscription 1
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
-
-Name     : Contoso Subscription 2
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
+Name                               Id                      TenantId                        State
+----                               --                      --------                        -----
+Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription2                      xxxx-xxxx-xxxx-xxxx     aaaa-aaaa-aaaa-aaaa             Enabled
 ```
 
 List all subscriptions in the given tenant that are authorized for the
@@ -66,15 +62,10 @@ current account.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Name     : Contoso Subscription 1
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
-
-Name     : Contoso Subscription 2
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
+Name                               Id                      TenantId                        State
+----                               --                      --------                        -----
+Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription2                      xxxx-xxxx-xxxx-xxxx     aaaa-aaaa-aaaa-aaaa             Enabled
 ```
 
 This command gets all subscriptions in the current tenant that are
@@ -84,12 +75,9 @@ authorized for the current user.
 ```
 PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
 
-Environment           : AzureCloud
-Account               : user@example.com
-TenantId              : yyyy-yyyy-yyyy-yyyy
-SubscriptionId        : xxxx-xxxx-xxxx-xxxx
-SubscriptionName      : Contoso Subscription 1
-CurrentStorageAccount :
+Name                                     Account             SubscriptionName    Environment         TenantId
+----                                     -------             ----------------    -----------         --------
+Subscription1 (xxxx-xxxx-xxxx-xxxx)      azureuser@micros... Subscription1       AzureCloud          yyyy-yyyy-yyyy-yyyy
 ```
 
 This command gets the specified subscription, and then sets the current

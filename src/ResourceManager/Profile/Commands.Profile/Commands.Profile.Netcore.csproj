@@ -67,10 +67,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AzureRmProfileStartup.ps1">
+    <None Update="StartupScripts\AzError.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Microsoft.Azure.Commands.Profile.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Microsoft.Azure.Commands.Profile.generated.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Microsoft.Azure.Commands.Profile.types.ps1xml">
@@ -81,7 +84,6 @@
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

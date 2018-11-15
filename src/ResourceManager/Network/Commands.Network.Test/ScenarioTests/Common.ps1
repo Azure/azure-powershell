@@ -61,6 +61,10 @@ function Get-ProviderLocation($provider, $preferredLocation = "West Central US")
 {
     if((Get-NetworkTestMode) -ne 'Playback')
     {
+        if($env:AZURE_NRP_TEST_LOCATION)
+        {
+            return $env:AZURE_NRP_TEST_LOCATION;
+        }
         if(-not $preferredLocation.Contains(" "))
         {
             # TODO: implement UseCanonical switch after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90

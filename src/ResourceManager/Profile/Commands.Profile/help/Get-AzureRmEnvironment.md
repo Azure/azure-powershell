@@ -25,32 +25,16 @@ The Get-AzureRmEnvironment cmdlet gets endpoints and metadata for an instance of
 ```
 PS C:\> Get-AzureRmEnvironment AzureCloud
 
-Name                                              : AzureCloud
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : https://management.core.windows.net/
-AdTenant                                          :
-GalleryUrl                                        : https://gallery.azure.com/
-ManagementPortalUrl                               : http://go.microsoft.com/fwlink/?LinkId=254433
-ServiceManagementUrl                              : https://management.core.windows.net/
-PublishSettingsFileUrl                            : http://go.microsoft.com/fwlink/?LinkID=301775
-ResourceManagerUrl                                : https://management.azure.com/
-SqlDatabaseDnsSuffix                              : .database.windows.net
-StorageEndpointSuffix                             : core.windows.net
-ActiveDirectoryAuthority                          : https://login.microsoftonline.com/
-GraphUrl                                          : https://graph.windows.net/
-GraphEndpointResourceId                           : https://graph.windows.net/
-TrafficManagerDnsSuffix                           : trafficmanager.net
-AzureKeyVaultDnsSuffix                            : vault.azure.net
-AzureDataLakeStoreFileSystemEndpointSuffix        : azuredatalakestore.net
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix : azuredatalakeanalytics.net
-AzureKeyVaultServiceEndpointResourceId            : https://vault.azure.net
+Name       Resource Manager Url          ActiveDirectory Authority
+----       --------------------          -------------------------
+AzureCloud https://management.azure.com/ https://login.microsoftonline.com/
 ```
 
 This example shows how to get the endpoints and metadata for the AzureCloud (default) environment.
 
 ### Example 2: Getting the AzureChinaCloud environment
 ```
-PS C:\> Get-AzureRmEnvironment AzureChinaCloud
+PS C:\> Get-AzureRmEnvironment AzureChinaCloud | Format-List
 
 Name                                              : AzureChinaCloud
 EnableAdfsAuthentication                          : False
@@ -79,25 +63,9 @@ This example shows how to get the endpoints and metadata for the AzureChinaCloud
 ```
 PS C:\> Get-AzureRmEnvironment AzureUSGovernment
 
-Name                                              : AzureUSGovernment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : https://management.core.usgovcloudapi.net/
-AdTenant                                          :
-GalleryUrl                                        : https://gallery.usgovcloudapi.net/
-ManagementPortalUrl                               : https://manage.windowsazure.us
-ServiceManagementUrl                              : https://management.core.usgovcloudapi.net/
-PublishSettingsFileUrl                            : https://manage.windowsazure.us/publishsettings/index
-ResourceManagerUrl                                : https://management.usgovcloudapi.net/
-SqlDatabaseDnsSuffix                              : .database.usgovcloudapi.net
-StorageEndpointSuffix                             : core.usgovcloudapi.net
-ActiveDirectoryAuthority                          : https://login.microsoftonline.us/
-GraphUrl                                          : https://graph.windows.net/
-GraphEndpointResourceId                           : https://graph.windows.net/
-TrafficManagerDnsSuffix                           : usgovtrafficmanager.net
-AzureKeyVaultDnsSuffix                            : vault.usgovcloudapi.net
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            : https://vault.usgovcloudapi.net
+Name              Resource Manager Url                  ActiveDirectory Authority
+----              --------------------                  -------------------------
+AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/
 ```
 
 This example shows how to get the endpoints and metadata for the AzureUSGovernment environment.
