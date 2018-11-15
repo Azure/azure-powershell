@@ -257,6 +257,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVm.json" >
 	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVmFromSIGImage.json" >
+	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
 	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVmWithUltraSSD.json" >
 	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -270,6 +273,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVmssTests\TestSimpleNewVmss.json">
+	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVmssTests\TestSimpleNewVmssFromSIGImage.json">
 	      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
 	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVmssTests\TestSimpleNewVmssWithUltraSSD.json">
