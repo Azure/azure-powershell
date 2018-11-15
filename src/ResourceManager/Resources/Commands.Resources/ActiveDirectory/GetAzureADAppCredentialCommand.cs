@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]

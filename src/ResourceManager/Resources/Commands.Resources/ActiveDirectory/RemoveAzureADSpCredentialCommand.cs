@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithKeyId, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithKeyId, HelpMessage = "The servicePrincipal name.")]
         [ValidateNotNullOrEmpty]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Force.IsPresent,
                         string.Format(ProjectResources.RemovingSpCredentialWithId, KeyId, ObjectId),
                         ProjectResources.RemoveCredential,
-                        ObjectId.ToString(),
+                        ObjectId,
                         () => ActiveDirectoryClient.RemoveSpCredentialByKeyId(ObjectId, KeyId));
                 }
                 else
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Force.IsPresent,
                         string.Format(ProjectResources.RemovingAllSpCredentials, ObjectId),
                         ProjectResources.RemoveCredential,
-                        ObjectId.ToString(),
+                        ObjectId,
                         () => ActiveDirectoryClient.RemoveAllSpCredentials(ObjectId));
                 }
 

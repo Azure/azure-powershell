@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [ValidateGuidNotEmpty]
         [Alias("Id", "PrincipalId")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "The user SignInName.")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Resources
                 ADObjectFilter = new ADObjectFilterOptions
                 {
                     UPN = SignInName,
-                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Id = ObjectId,
                     SPN = ServicePrincipalName
                 },
                 ResourceIdentifier = new ResourceIdentifier()

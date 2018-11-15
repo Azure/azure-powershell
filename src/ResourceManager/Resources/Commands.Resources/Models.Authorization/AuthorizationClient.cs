@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
-            Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
+            string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)

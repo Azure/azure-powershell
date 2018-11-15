@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 
         private string[] ResolveObjectIds(string[] objectIds, string[] servicePrincipalNames, string[] userPrincipalNames)
         {
-            var uniqueObjectIds = new HashSet<Guid>(objectIds?.Select(id => Guid.Parse(id)) ?? new Guid[0]);
+            var uniqueObjectIds = new HashSet<string>(objectIds ?? new string[0]);
 
             if (servicePrincipalNames != null)
             {
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
                 foreach (string upn in userPrincipalNames)
                 {
                     // TODO: Revert once available: uniqueObjectIds.Add(Guid.Parse(ActiveDirectoryClient.GetObjectIdFromUPN(upn)));
-                    uniqueObjectIds.Add(Guid.Parse(GetObjectIdFromUPN(ActiveDirectoryClient, upn)));
+                    uniqueObjectIds.Add(GetObjectIdFromUPN(ActiveDirectoryClient, upn));
                 }
             }
 

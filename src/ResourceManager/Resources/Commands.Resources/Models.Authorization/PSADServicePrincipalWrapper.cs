@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             if (sp != null)
             {
-                AdfsId = sp.AdfsId;
                 ApplicationId = sp.ApplicationId;
                 DisplayName = sp.DisplayName;
                 Id = sp.Id;
