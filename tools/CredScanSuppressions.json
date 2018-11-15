@@ -1,6 +1,6 @@
 {
-  "tool": "Credential Scanner",
-  "suppressions": [
+    "tool": "Credential Scanner",
+    "suppressions": [
     {
       "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md",
       "_justification": "Documentation with non-live passwords in sample connection strings"
@@ -942,8 +942,16 @@
       "_justification": "Legitimate test session record"
     },
     {
-       "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
-       "_justification": "Mocked credential"
+      "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+      "_justification": "Mocked credential"
     },
+    {
+      "file": "src\\ResourceManager\\Automation\\Commands.Automation.Test\\ScenarioTests\\SourceControlTests.ps1",
+      "_justification": "Legitimate personal access tokens. After recording the tests, the tokens were revoked"
+    },
+    {
+      "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+      "_justification": "Sample certificate only used in tests"
+    }
   ]
 }
