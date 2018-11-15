@@ -56,7 +56,7 @@ The following are naming conventions to keep in mind when coming up with a name 
 
 Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://msdn.microsoft.com/en-us/library/ms714428(v=vs.85).aspx), and the noun is a specific noun describing a resource within your service.
 
-#### Pascal Case
+#### Pascal Case 
 
 From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx):
 
