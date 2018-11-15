@@ -17,8 +17,7 @@ Creates a public IP address.
 New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
  -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>]
  [-IpTag <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]>]
- [-PublicIpPrefix <Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix>]
- [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-PublicIpPrefix <PSPublicIpPrefix>] [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -215,13 +214,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PublicIpPrefix
-Specifies the PSPublicIpPrefix from which to allocate the public IP address.
+### -Name
+Specifies the name of the public IP address that this cmdlet creates.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceName
 
 Required: False
 Position: Named
@@ -230,13 +229,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the public IP address that this cmdlet creates.
+### -PublicIpPrefix
+Specifies the PSPublicIpPrefix from which to allocate the public IP address.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases:
 
 Required: False
 Position: Named
