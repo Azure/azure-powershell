@@ -415,6 +415,22 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 public string ResourceGroupName { get; set; }
 ```
 
+### Resource Name Completer
+
+For any parameter that takes a resource name, the `ResourceNameCompleter` should be applied as an attribute.  This will allow the user to tab through all resource names for the ResourceType in the current subscription.  This completer will filter based upon the current parent resources provided (for instance, if ResourceGroupName is provided, only the resources in that particular resource group will be returned).  For this completer, please provide the ResourceType as the first argument, followed by the parameter name for all parent resources starting at the top level.
+
+```cs
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+...
+[Parameter(Mandatory = false, HelpMessage = "The parent server name")]
+[ResourceNameCompleter("Microsoft.Sql/servers", nameof(ResourceGroupName))]
+public string ServerName { get; set; }
+
+[Parameter(Mandatory = false, HelpMessage = "The database name")]
+[ResourceNameCompleter("Microsoft.Sql/servers/databases", nameof(ResourceGroupName), nameof(ServerName))]
+public string Name { get; set; }
+```
+
 ### Location Completer
 
 For any parameter that takes a location, the `LocationCompleter` should be applied as an attribute.  In order to use the `LocationCompleter`, you must input as an argument all of the Providers/ResourceTypes used by the cmdlet.  The user will then be able to tab through locations that are valid for all of the Providers/ResourceTypes specified.
