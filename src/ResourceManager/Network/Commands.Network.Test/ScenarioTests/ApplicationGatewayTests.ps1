@@ -1153,14 +1153,18 @@ function Test-ApplicationGatewayCRUDSubItems2
 	$gipconfigname = Get-ResourceName
 
 	$frontendPort01Name = Get-ResourceName
+	$frontendPort02Name = Get-ResourceName
 	$fipconfigName = Get-ResourceName
 	$listener01Name = Get-ResourceName
 	$listener02Name = Get-ResourceName
+	$listener03Name = Get-ResourceName
 
 	$poolName = Get-ResourceName
+	$poolName02 = Get-ResourceName
 	$trustedRootCertName = Get-ResourceName
 	$poolSetting01Name = Get-ResourceName
 	$poolSetting02Name = Get-ResourceName
+	$probeName = Get-ResourceName
 
 	$rule01Name = Get-ResourceName
 	$rule02Name = Get-ResourceName
@@ -1169,7 +1173,11 @@ function Test-ApplicationGatewayCRUDSubItems2
 	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
 
 	$urlPathMapName = Get-ResourceName
+	$urlPathMapName2 = Get-ResourceName
 	$PathRuleName = Get-ResourceName
+	$PathRule01Name = Get-ResourceName
+	$redirectName = Get-ResourceName
+	$sslCert01Name = Get-ResourceName
 
 	try
 	{
@@ -1189,12 +1197,12 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
 
 		# Create ip configuration
-		# Re-create AppGw with another SKU to test more
 		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
 
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
-		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
-		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
+		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false
 
 		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
 		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
@@ -1208,11 +1216,20 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$autoscaleConfig = New-AzureRmApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 		Assert-AreEqual $autoscaleConfig.MinCapacity 3
 
-		$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -BackendAddressPool $pool -BackendHttpSettings $poolSetting01
+		$redirectConfig = New-AzureRmApplicationGatewayRedirectConfiguration -Name $redirectName -RedirectType Permanent -TargetListener $listener01 -IncludePath $true -IncludeQueryString $true
+
+		$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RedirectConfiguration $redirectConfig
 		$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
+		$urlPathMap2 = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName2 -PathRules $videoPathRule -DefaultRedirectConfiguration $redirectConfig
+		$probe = New-AzureRmApplicationGatewayProbeConfig -Name $probeName -Protocol Http -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -MinServers 1 -PickHostNameFromBackendHttpSettings
+
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
+		$sslCert = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert
 
 		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$certFilePath2 = $basedir + "/ScenarioTests/Data/TrustedRootCertificate.cer"
@@ -1225,9 +1242,13 @@ function Test-ApplicationGatewayCRUDSubItems2
 		# Add to test Remove
 		Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting02Name -Port 1234 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 42 -HostName test -Path /test -AffinityCookieName test
 		$fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
-		$fp01 = Get-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort01Name 
-		Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -HostName TestHostName
+		$fp02 = Get-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name 
+		$sslCert = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name
+		Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestHostName -RequireServerNameIndication true -SslCertificate $sslCert
 		$listener02 = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
+		$fp02 = Get-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name 
+		$sslCert = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name
+		Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestName -SslCertificate $sslCert
 		$urlPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
 		Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -HttpListener $listener02 -UrlPathMap $urlPathMap
 
@@ -1235,12 +1256,17 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Assert-ThrowsLike { Add-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath } "*already exists*"
 		Assert-ThrowsLike { Add-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01 } "*already exists*"
 
+		# Add unsupported
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName02 -BackendIPAddresses www.microsoft.com -BackendFqdns www.bing.com } "*At most one of*can be specified*"
+
+		Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName02 -BackendFqdns www.bing.com,www.microsoft.com
+
 		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 
 		Assert-NotNull $appgw.HttpListeners[0].CustomErrorConfigurations
 		Assert-NotNull $appgw.TrustedRootCertificates
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 2
-		Assert-AreEqual $appgw.HttpListeners.Count 2
+		Assert-AreEqual $appgw.HttpListeners.Count 3
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 2
 
 		# Get
@@ -1297,7 +1323,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Assert-Null $appgw.TrustedRootCertificates
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
-		Assert-AreEqual $appgw.HttpListeners.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 2
 	}
 	finally
 	{
