@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
+            int pageCount = 0;
+            int maxPageCount = 100;
+
             IEnumerable<Microsoft.Azure.Commands.Automation.Model.Job> jobs = null;
 
             if (this.Id != null && !Guid.Empty.Equals(this.Id))
@@ -86,7 +89,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                     jobs = this.AutomationClient.ListJobsByRunbookName(this.ResourceGroupName, this.AutomationAccountName, this.RunbookName, this.StartTime, this.EndTime, this.Status, ref nextLink);
                     this.WriteObject(jobs, true);
-
+                    pageCount++;
+                    if (pageCount > maxPageCount)
+                    {
+                        break;
+                    }
                 } while (!string.IsNullOrEmpty(nextLink));
             }
             else
@@ -98,7 +105,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                     jobs = this.AutomationClient.ListJobs(this.ResourceGroupName, this.AutomationAccountName, this.StartTime, this.EndTime, this.Status, ref nextLink);
                     this.WriteObject(jobs, true);
-
+                    pageCount++;
+                    if (pageCount > maxPageCount)
+                    {
+                        break;
+                    }
                 } while (!string.IsNullOrEmpty(nextLink));
             }
         }

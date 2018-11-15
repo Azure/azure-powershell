@@ -432,4 +432,10 @@
   <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
     <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
   </data>
+  <data name="SetAzureSqlInstanceDescription" xml:space="preserve">
+    <value>Setting Azure Sql Database Managed Instance '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceWarning" xml:space="preserve">
+    <value>Are you sure you want to set the Azure Sql Database Managed Instance '{0}'?</value>
+  </data>
 </root>
