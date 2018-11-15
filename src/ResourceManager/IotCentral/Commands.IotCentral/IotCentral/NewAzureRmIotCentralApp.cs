@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                this.CheckNameAvailability();
-                this.CheckSubdomainAvailability();
+                this.EnsureNameAvailabilityOrThrow();
+                this.EnsureSubdomainAvailabilityOrThrow();
 
                 var iotCentralApp = new App()
                 {
@@ -103,23 +103,23 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         }
 
-        private void CheckNameAvailability()
+        private void EnsureNameAvailabilityOrThrow()
         {
-            var checkNameInputs = new OperationInputs(this.Name, "IoTApps");
+            var checkNameInputs = new OperationInputs(this.Name, resourceType);
             var nameAvailabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(checkNameInputs);
-            this.CheckAvailability(nameAvailabilityInfo);
+            this.EnsureAvailabilityOrThrow(nameAvailabilityInfo);
         }
 
-        private void CheckSubdomainAvailability()
+        private void EnsureSubdomainAvailabilityOrThrow()
         {
-            var checkSubdomainInputs = new OperationInputs(this.Subdomain, "IoTApps");
+            var checkSubdomainInputs = new OperationInputs(this.Subdomain, resourceType);
             var subdomainAvailabilityInfo = this.IotCentralClient.Apps.CheckSubdomainAvailability(checkSubdomainInputs);
-            this.CheckAvailability(subdomainAvailabilityInfo);
+            this.EnsureAvailabilityOrThrow(subdomainAvailabilityInfo);
         }
 
-        private void CheckAvailability(AppAvailabilityInfo availabilityInfo)
+        private void EnsureAvailabilityOrThrow(AppAvailabilityInfo availabilityInfo)
         {
-            if (!(availabilityInfo.NameAvailable == true))
+            if (availabilityInfo.NameAvailable != true)
             {
                 throw new PSArgumentException(availabilityInfo.Message);
             }
