@@ -22,7 +22,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    [GenericBreakingChange("Parameter 'Location' will change from optional to mandatory in a future release.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageUsage"), OutputType(typeof(PSUsage))]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
