@@ -23,10 +23,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The Tenant Identifier (GUID)
         /// </summary>
         string Id { get; set; }
-
-        /// <summary>
-        /// The dns name of the tenant directory (domain)
-        /// </summary>
-        string Directory { get; set; }
     }
 }

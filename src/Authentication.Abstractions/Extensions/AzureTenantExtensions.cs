@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             if (tenant != null && other != null)
             {
                 tenant.Id = other.Id;
-                tenant.Directory = other.Directory;
                 tenant.CopyPropertiesFrom(other);
             }
         }
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         {
             if (tenant != null && other != null)
             {
-                tenant.Directory = other.Directory?? tenant.Directory;
                 tenant.UpdateProperties(other);
             }
         }
