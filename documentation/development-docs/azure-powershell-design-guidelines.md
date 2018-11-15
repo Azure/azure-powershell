@@ -80,7 +80,7 @@ Similar to parameters (mentioned below), avoid using plural nouns when naming cm
 >
 >_Plural parameter names should be used only in those cases where the value of the parameter is always a multiple-element value. In these cases, the cmdlet should verify that multiple elements are supplied, and the cmdlet should display a warning to the user if multiple elements are not supplied._
 
-#### Set vs. Update
+#### Set vs. Update 
 
 If your cmdlet is performing a **PATCH** operation (_i.e._, a partial replacement on the server), then the cmdlet should use the verb `Update`.
 
