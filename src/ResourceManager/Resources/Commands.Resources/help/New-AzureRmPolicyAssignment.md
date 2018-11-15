@@ -127,7 +127,7 @@ PS C:\> New-AzureRmPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Poli
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet and stores it in the $ResourceGroup variable.
 The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzureRmPolicyDefinition cmdlet and stores it in the $Policy variable.
-The final command assigns the policy in $Policy to the resource gruop. A managed identity is automatically created and assigned to the policy assignment.
+The final command assigns the policy in $Policy to the resource group. A managed identity is automatically created and assigned to the policy assignment.
 
 ## PARAMETERS
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies.
+Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies. Location is required when assigning an identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the policy assignment. This is only required when the policy assignment has a resource identity.
+The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.
 
 ```yaml
 Type: System.String
@@ -445,7 +445,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-A hash table which represents sku properties. Defaults to Free Sku: Name = A0, Tier = Fre
+A hash table which represents SKU properties. Defaults to the Free SKU with the values: `@{Name = 'A0'; Tier = 'Free'}`. To use the Standard SKU, use the values: `@{Name = 'A1'; Tier = 'Standard'}`.
 
 ```yaml
 Type: System.Collections.Hashtable

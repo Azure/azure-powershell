@@ -19,6 +19,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed identity issue for SystemAssigned identity
+* Update dependencies for type mapping issue
+
+## Version 5.8.0
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
 
 ## Version 5.7.2
 * Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.

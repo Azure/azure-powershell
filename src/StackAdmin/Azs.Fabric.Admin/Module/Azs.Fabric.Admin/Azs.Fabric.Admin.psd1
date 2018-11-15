@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.2.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -126,41 +126,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
-            * New Module dependencies
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * New cmdlet
-                * Add-AzsScaleUnitNode
-                * New-AzsScaleUnitNodeObject
-            * Support handling names of nested resources
-                * Add-AzsScaleUnitNode
-                * Disable-AzsScaleUnitNode
-                * Enable-AzsScaleUnitNode
-                * Get-AzsEdgeGateway
-                * Get-AzsEdgeGatewayPool
-                * Get-AzsInfrastructureRole
-                * Get-AzsInfrastructureRoleInstance
-                * Get-AzsInfrastructureShare
-                * Get-AzsInfrastructureVolume
-                * Get-AzsIpPool
-                * Get-AzsLogicalNetwork
-                * Get-AzsLogicalSubnet
-                * Get-AzsMacAddressPool
-                * Get-AzsScaleUnit
-                * Get-AzsScaleUnitNode
-                * Get-AzsSlbMuxInstance
-                * Get-AzsStoragePool
-                * Get-AzsStorageSystem
-                * Repair-AzsScaleUnitNode
-                * Restart-AzsInfrastructureRole
-                * Restart-AzsInfrastructureRoleInstance
-                * Start-AzsInfrastructureRoleInstance
-                * Start-AzsScaleUnitNode
-                * Stop-AzsInfrastructureRoleInstance
-                * Stop-AzsScaleUnitNode
+            ReleaseNotes = '## 2018.10.28
             * Bug fixes
-                * Handle ErrrorAction correctly now
+                * Fixed a bug in Add-AzsScaleUnitNode
             '
 
         } # End of PSData hashtable
