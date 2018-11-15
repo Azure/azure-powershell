@@ -6,7 +6,7 @@
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" >
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.1" >
