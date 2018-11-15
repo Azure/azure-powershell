@@ -8,24 +8,19 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
-    using Rest;
     using Rest.Azure;
     using Newtonsoft.Json;
-    using System.Linq;
     using Azure.Management.Relay.Models;
 
     /// <summary>
     /// The Resource definition
     /// </summary>
-    public partial class ResourceAttributes : IResource
+    public partial class PSResourceAttributes : IResource
     {
         /// <summary>
         /// Initializes a new instance of the Resource class.
         /// </summary>
-        public ResourceAttributes() { }
+        public PSResourceAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the Resource class.
@@ -33,14 +28,14 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public ResourceAttributes(string id = default(string), string name = default(string), string type = default(string))
+        public PSResourceAttributes(string id = default(string), string name = default(string), string type = default(string))
         {
             Id = id;
             Name = name;
             Type = type;
         }
 
-        public ResourceAttributes(Resource resource)
+        public PSResourceAttributes(Resource resource)
         {
             Id = resource.Id;
             Name = resource.Name;

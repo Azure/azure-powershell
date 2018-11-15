@@ -8,19 +8,15 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
-    using System.Runtime;
     using System.Runtime.Serialization;
 
     /// <summary>
     /// Defines values for UnavailableReason.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum UnavailableReasonAttributes
+    public enum PSUnavailableReasonAttributes
     {
         [EnumMember(Value = "None")]
         None,

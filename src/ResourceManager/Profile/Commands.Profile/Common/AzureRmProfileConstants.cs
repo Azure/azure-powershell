@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
     public static class AzureRmProfileConstants
     {
+#if NETSTANDARD
+        public const string ProfileAutoSaveVariable = "AzContextAutoSave";
+#else
         public const string ProfileAutoSaveVariable = "AzureRmContextAutoSave";
+#endif
         public const string AutoSaveDisabled = "Disabled";
     }
 }

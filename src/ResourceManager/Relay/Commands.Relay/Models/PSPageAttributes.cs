@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Commands.Relay.Models
 {
-    using Azure;
-    using Management;
-    using Relay;
-    using Rest;
     using Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
