@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Accounts Location.")]
         [LocationCompleter("Microsoft.Storage/storageAccounts")]
@@ -38,16 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
             base.ExecuteCmdlet();
 
             //Get usage
-            IEnumerable<Usage> usages;
-            if (Location == null)
-            {
-                WriteWarning("Get global storage usage is obsolete, please use get location usage with -Location Parameter instead.");
-                usages = this.StorageClient.Usages.List();
-            }
-            else
-            {
-                usages = this.StorageClient.Usages.ListByLocation(Location);
-            }
+            IEnumerable<Usage> usages = this.StorageClient.Usages.ListByLocation(Location);
 
             //Output usage
             foreach (var usage in usages)
