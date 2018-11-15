@@ -60,6 +60,56 @@ function Test-SimpleNewVmss
 .SYNOPSIS
 Test Simple Paremeter Set for New Vm
 #>
+function Test-SimpleNewVmssFromSIGImage
+{
+    #This test needs to be run form the following subscription in record mode :
+	# 9e223dbe-3399-4e19-88eb-0975f02ac87f
+	#The vm needs to be created in the one of the following regions :
+	# "South Central US", "East US 2" and "Central US"
+	#To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $lbName = $vmssname + "LoadBalancer"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -Location "East US 2" -VmSize "Standard_D2s_v3" -ImageName "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" 
+
+        Assert-AreEqual $vmssname $x.Name;
+        Assert-AreEqual $vmssname $x.ResourceGroupName;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
+		Assert-False { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-AreEqual "Standard_D2s_v3" $x.Sku.Name
+        Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
+		Assert-AreEqual "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" $x.VirtualMachineProfile.StorageProfile.ImageReference.Id
+        Assert-Null $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+        Assert-False { $x.SinglePlacementGroup }
+        Assert-Null $x.Identity  
+
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $vmssname 
+        Assert-NotNull $lb
+        Assert-AreEqual $lbName $lb.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
 function Test-SimpleNewVmssWithUltraSSD
 {
     # Setup
