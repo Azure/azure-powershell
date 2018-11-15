@@ -15,7 +15,7 @@ Gets the ARP table from an ExpressRoute circuit.
 
 ```
 Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+ -PeeringType <String> -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
