@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = RemoveDeletedVaultParameterSet,
             HelpMessage = "Specifies the name of the key vault to remove.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

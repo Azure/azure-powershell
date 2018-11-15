@@ -77,7 +77,7 @@ This example updates the UserMetadata property with new value.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 WcfRelay object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+Type: Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
 Parameter Sets: WcfRelayInputObjectSet
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserMetadata
-Gets or sets usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g.
+Gets or sets usermetadata is a placeholder to store user-defined string data for the WcfRelay endpoint.e.g.
 it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 
 ```yaml
@@ -177,7 +177,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -193,23 +193,25 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
 
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+### Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
+
 
 ## NOTES
 

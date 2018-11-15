@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
-                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString();
+                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                     (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
-                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString();
+                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
@@ -928,11 +928,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureFileShareItem).ToString()));
-            }
-
-            if (string.IsNullOrEmpty(((AzureFileShareItem)itemBase).ParentContainerFabricId))
-            {
-                throw new ArgumentException(Resources.ParentContainerFabricIdIsEmptyOrNull);
             }
         }
     }

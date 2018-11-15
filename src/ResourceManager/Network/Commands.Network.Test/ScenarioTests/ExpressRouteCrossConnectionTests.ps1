@@ -23,8 +23,8 @@ function Test-ExpressRouteCrossConnectionApis
     $circuitName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $location = "brazilSouth"
+    $location = Get-ProviderLocation $resourceTypeParent "Brazil South"
+
     try 
     {
       # Create the resource group
