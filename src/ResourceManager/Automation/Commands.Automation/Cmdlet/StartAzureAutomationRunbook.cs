@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob, Mandatory = false, HelpMessage = "The runbook parameters.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, Mandatory = false, HelpMessage = "The runbook parameters.")]
+        [Alias("JobParameters")]
         public IDictionary Parameters { get; set; }
 
         /// <summary>

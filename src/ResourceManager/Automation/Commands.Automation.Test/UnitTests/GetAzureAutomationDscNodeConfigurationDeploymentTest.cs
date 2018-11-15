@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     public class GetAzureAutomationDscNodeConfigurationDeploymentTest : RMTestBase
     {
-        private readonly Mock<IAutomationClient> mockAutomationClient;
+        private readonly Mock<IAutomationPSClient> mockAutomationClient;
 
         private readonly MockCommandRuntime mockCommandRuntime;
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         public GetAzureAutomationDscNodeConfigurationDeploymentTest()
         {
-            mockAutomationClient = new Mock<IAutomationClient>();
+            mockAutomationClient = new Mock<IAutomationPSClient>();
             mockCommandRuntime = new MockCommandRuntime();
             cmdlet = new GetAzureAutomationDscNodeConfigurationDeployment
             {
