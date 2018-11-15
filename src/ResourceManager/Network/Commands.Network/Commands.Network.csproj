@@ -216,6 +216,11 @@
     <Compile Include="ExpressRoutePort\NewAzureRMExpressRoutePortCommand.cs" />
     <Compile Include="ExpressRoutePort\RemoveAzureRMExpressRoutePortCommand.cs" />
     <Compile Include="ExpressRoutePort\SetAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\AddAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\GetAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\NewAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\RemoveAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\SetAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\Models\PSExpressRouteLink.cs" />
     <Compile Include="Generated\Models\PSExpressRoutePort.cs" />
     <Compile Include="Generated\Models\PSExpressRoutePortsLocation.cs" />
@@ -311,11 +316,6 @@
     <Compile Include="Generated\LoadBalancer\InboundNatRule\NewAzureRmLoadBalancerInboundNatRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\InboundNatRule\RemoveAzureRmLoadBalancerInboundNatRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\InboundNatRule\SetAzureRmLoadBalancerInboundNatRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\AddAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\GetAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\NewAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\RemoveAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\SetAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\NewAzureRMLoadBalancerCommand.cs" />
     <Compile Include="Generated\LoadBalancer\OutboundRule\AddAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\OutboundRule\GetAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
