@@ -113,6 +113,16 @@ namespace Microsoft.Azure.Commands.Network
 
             MNM.ConnectivityParameters parameters = new MNM.ConnectivityParameters();
 
+            if (string.IsNullOrEmpty(this.DestinationId) && string.IsNullOrEmpty(this.DestinationAddress))
+            {
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationResourceIdOrAddress);
+            }
+
+            if (!string.IsNullOrEmpty(this.DestinationId) && string.Equals(this.SourceId, this.DestinationId, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.ConnectivityDestinationIsMustNotBeTheSameAsSource, this.SourceId));
+            }
+
             parameters.Source = new MNM.ConnectivitySource();
             parameters.Source.ResourceId = this.SourceId;
 
@@ -128,6 +138,10 @@ namespace Microsoft.Azure.Commands.Network
             if (this.DestinationPort > 0)
             {
                 parameters.Destination.Port = this.DestinationPort;
+            }
+            else if (this.ProtocolConfiguration == null || string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol) || !string.Equals(this.ProtocolConfiguration.Protocol, "Icmp", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationPort);
             }
 
             if (this.ProtocolConfiguration != null && !string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol))
@@ -156,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new ArgumentException(string.Format(Properties.Resources.NoNetworkWatcherInLocation, this.Location));
                 }
 
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);

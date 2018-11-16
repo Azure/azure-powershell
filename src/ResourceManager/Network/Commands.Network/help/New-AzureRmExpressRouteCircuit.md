@@ -13,10 +13,21 @@ Creates an Azure express route circuit.
 
 ## SYNTAX
 
+### ServiceProvider
 ```
 New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- [-SkuTier <String>] [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String>
- -BandwidthInMbps <Int32>
+ [-SkuTier <String>] [-SkuFamily <String>] [-ServiceProviderName <String>] [-PeeringLocation <String>]
+ [-BandwidthInMbps <Int32>]
+ [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
+ [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExpressRoutePort
+```
+New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SkuTier <String>] [-SkuFamily <String>] [-ExpressRoutePort <PSExpressRoutePort>] [-BandwidthInGbps <Double>]
  [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
  [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
@@ -39,6 +50,20 @@ $parameters = @{
     ServiceProviderName='Equinix'
     PeeringLocation='Silicon Valley'
     BandwidthInMbps=200
+}
+New-AzureRmExpressRouteCircuit @parameters
+```
+
+### Example 2: Create a new ExpressRoute circuit on ExpressRoutePort
+```
+$parameters = @{
+    Name='ExpressRouteCircuit'
+    ResourceGroupName='ExpressRouteResourceGroup'
+    Location='West US'
+    SkuTier='Standard'
+    SkuFamily='MeteredData'
+    ExpressRoutePort=$PSExpressRoutePort
+    BandwidthInGbps=10.0
 }
 New-AzureRmExpressRouteCircuit @parameters
 ```
@@ -91,15 +116,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -BandwidthInGbps
+The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
+
+```yaml
+Type: Double
+Parameter Sets: ExpressRoutePort
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -BandwidthInMbps
 The bandwidth of the circuit. This must be a value that is supported by the service provider.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -118,6 +158,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpressRoutePort
+The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
+
+```yaml
+Type: PSExpressRoutePort
+Parameter Sets: ExpressRoutePort
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -186,10 +241,10 @@ The name of the peering location supported by the service provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -217,10 +272,10 @@ Get-AzureRmExpressRouteServiceProvider cmdlet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
