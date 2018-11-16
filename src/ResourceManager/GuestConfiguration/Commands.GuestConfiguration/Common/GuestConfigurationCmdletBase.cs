@@ -221,9 +221,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                     }                         
                 }
             }
-
-            // sort by policy display name
-            gcPolicyAssignmentsList.Sort(new GuestConfigurationPolicyAssignmentPolicyDisplayNameComparer());
             return gcPolicyAssignmentsList;
         }
 
@@ -243,15 +240,17 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             var gcPolicyAssignments = GetAllGuestConfigurationAssignmentsByInitiativeName(resourceGroupName, vmName, initiativeName);
             var gcPolicyAssignmentReportList = new List<GuestConfigurationPolicyAssignmentReport>();
 
-            // Sorty assignments by policy display name
-            Array.Sort(gcPolicyAssignments.ToArray(), (first, second) =>
+            var gcPolicyAssignmentsArray = gcPolicyAssignments.ToArray();
+
+            // Sort assignments by policy display name
+            Array.Sort(gcPolicyAssignmentsArray, (first, second) =>
             {
                 return string.Compare(first.PolicyDisplayName, second.PolicyDisplayName, true);
             });
 
             if (!isStatusHistoryCmdlet)
             {
-                foreach (var gcPolicyAssignment in gcPolicyAssignments)
+                foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
                 {
                     var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
                     var gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
@@ -260,7 +259,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             }
             else
             {
-                foreach (var gcPolicyAssignment in gcPolicyAssignments)
+                foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
                 {
                     var gcrpReportss = GuestConfigurationClient.GuestConfigurationAssignmentReports.List(resourceGroupName, gcPolicyAssignment.Configuration.Name, vmName);
                     var gcrpReportsList = gcrpReportss.Value;
@@ -383,19 +382,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 index++;
             }
             return resultList;
-        }
-
-
-        public class GuestConfigurationPolicyAssignmentPolicyDisplayNameComparer : IComparer<GuestConfigurationPolicyAssignment>
-        {
-            public int Compare(GuestConfigurationPolicyAssignment first, GuestConfigurationPolicyAssignment second)
-            {
-                if(first != null && !string.IsNullOrEmpty(first.PolicyDisplayName) && second != null && !string.IsNullOrEmpty(second.PolicyDisplayName))
-                {
-                    return first.PolicyDisplayName.CompareTo(second.PolicyDisplayName);
-                }
-                return 0;
-            }
         }
     }
 }
