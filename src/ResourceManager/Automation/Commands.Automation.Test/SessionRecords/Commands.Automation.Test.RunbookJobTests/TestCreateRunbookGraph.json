@@ -1,0 +1,587 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMT9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e891add1-ab6d-441e-b2d8-9a34737d1fad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-automation-accountid": [
+          "d6efba02-92ca-4b55-926d-6f81546fb1c6"
+        ],
+        "x-ms-request-id": [
+          "e891add1-ab6d-441e-b2d8-9a34737d1fad"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b561488-52fc-4eed-b098-b60900ee5bb7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213903Z:1b561488-52fc-4eed-b098-b60900ee5bb7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:03 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "611"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"PSCmdletTestAccount01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://wcus-agentservice-prod-1.azure-automation.net/accounts/d6efba02-92ca-4b55-926d-6f81546fb1c6\",\r\n    \"creationTime\": \"2018-10-31T18:37:23.68-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-01T10:07:37.49-07:00\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMT9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aeb738d3-9cff-44ff-a311-4e24f906030c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ],
+        "x-ms-activity-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-automation-accountid": [
+          "d6efba02-92ca-4b55-926d-6f81546fb1c6"
+        ],
+        "x-ms-request-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "39090a52-0697-4ca0-8ec0-73d33610f44a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213903Z:39090a52-0697-4ca0-8ec0-73d33610f44a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:03 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "611"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"PSCmdletTestAccount01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://wcus-agentservice-prod-1.azure-automation.net/accounts/d6efba02-92ca-4b55-926d-6f81546fb1c6\",\r\n    \"creationTime\": \"2018-10-31T18:37:23.68-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-01T10:07:37.49-07:00\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9SQi1HcmFwaGljYWwtMDE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c9bac516-4e0a-420e-970a-bff54f5e0d39"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ],
+        "x-ms-activity-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "2f6fc053-7c75-42d8-8244-fc63e9ac653c"
+        ],
+        "x-ms-correlation-request-id": [
+          "2f6fc053-7c75-42d8-8244-fc63e9ac653c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213903Z:2f6fc053-7c75-42d8-8244-fc63e9ac653c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:03 GMT"
+        ],
+        "Content-Length": [
+          "205"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01' under resource group 'PSCmdletTest-RG' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9SQi1HcmFwaGljYWwtMDE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a18ba001-b028-43a1-aef4-cbbbb1100eb2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ],
+        "x-ms-activity-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "1319c95d-ec81-427e-bab5-409476672786"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213904Z:1319c95d-ec81-427e-bab5-409476672786"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:04 GMT"
+        ],
+        "ETag": [
+          "\"636773099444000000\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "707"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01\",\r\n  \"name\": \"RB-Graphical-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": \"\\\"636773099444000000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"Test Graph runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"Graph\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-08T13:39:04.4-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-08T13:39:04.4-08:00\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9SQi1HcmFwaGljYWwtMDE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8a6b2ff4-30a3-44ca-9dcc-1962e054ef87"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ],
+        "x-ms-activity-id": [
+          "bf1ca908-2876-4bf4-bc97-97c484767712"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bf1ca908-2876-4bf4-bc97-97c484767712"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "d2ff0cee-e2f8-44fc-af10-2957af09342e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213904Z:d2ff0cee-e2f8-44fc-af10-2957af09342e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:04 GMT"
+        ],
+        "ETag": [
+          "\"636773099444000000\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "707"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01\",\r\n  \"name\": \"RB-Graphical-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": \"\\\"636773099444000000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"Test Graph runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"Graph\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-08T13:39:04.4-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-08T13:39:04.4-08:00\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9SQi1HcmFwaGljYWwtMDE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a4386fc-04bb-4bf2-a95d-68f3e358aab3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "890c70ad-e6a4-4679-a59e-910ebf363dc1"
+        ],
+        "x-ms-correlation-request-id": [
+          "890c70ad-e6a4-4679-a59e-910ebf363dc1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213905Z:890c70ad-e6a4-4679-a59e-910ebf363dc1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:04 GMT"
+        ],
+        "Content-Length": [
+          "205"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01' under resource group 'PSCmdletTest-RG' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9SQi1HcmFwaGljYWwtMDE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"runbookType\": \"Graph\",\r\n    \"draft\": {\r\n      \"creationTime\": \"0001-01-01T00:00:00-08:00\",\r\n      \"lastModifiedTime\": \"0001-01-01T00:00:00-08:00\"\r\n    },\r\n    \"description\": \"Test Graph runbook\"\r\n  },\r\n  \"name\": \"RB-Graphical-01\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "657c6bb3-d896-4bb9-9a8c-a384a94f85d0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ],
+        "x-ms-activity-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "342"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ecd1e764-03c4-4293-af37-32b1c64fbf0a"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "65a40401-e854-47b0-afd3-40d12f7eae76"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213904Z:65a40401-e854-47b0-afd3-40d12f7eae76"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:04 GMT"
+        ],
+        "ETag": [
+          "\"636773099444000000\""
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "707"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01\",\r\n  \"name\": \"RB-Graphical-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": \"\\\"636773099444000000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"Test Graph runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"Graph\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-08T13:39:04.4-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-08T13:39:04.4-08:00\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/RB-Graphical-01?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9SQi1HcmFwaGljYWwtMDE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "465eaa9d-81b0-4ab4-9fb6-37991f5f8235"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+        ],
+        "x-ms-activity-id": [
+          "92a7a10b-eb83-408e-8e70-0b936a68046d"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "92a7a10b-eb83-408e-8e70-0b936a68046d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b216107-7ea8-48d9-bfba-067100113012"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181108T213905Z:8b216107-7ea8-48d9-bfba-067100113012"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 08 Nov 2018 21:39:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}

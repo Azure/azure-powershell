@@ -14,42 +14,6 @@
 
 <#
 .SYNOPSIS
-Get ResourceGroup name
-#>
-function Get-ResourceGroupName
-{
-  return "RGName-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get RelayName name
-#>
-function Get-RelayName
-{
-    return "Relay-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Namespace name
-#>
-function Get-NamespaceName
-{
-    return "Relay-Namespace-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-    return "Relay-Namespace-AuthorizationRule" + (getAssetName)	
-}
-
-<#
-.SYNOPSIS
 Tests Relay Namespace CheckNameAvailability operations.
 #>
 function OperationsListTest

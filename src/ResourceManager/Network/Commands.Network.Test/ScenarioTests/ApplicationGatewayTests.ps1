@@ -89,6 +89,10 @@ function Test-ApplicationGatewayCRUD
 	$authCertName = Get-ResourceName
 	$probe01Name = Get-ResourceName
 	$probe02Name = Get-ResourceName
+	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError502Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+	$customError502Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
 
 	try 
 	{
@@ -160,8 +164,11 @@ function Test-ApplicationGatewayCRUD
 		Remove-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
 		Assert-Null $poolSetting02.connectionDraining
 
+		$ce01_listener = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
+		$ce02_listener = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url01
+
 		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
-		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02
+		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02 -CustomErrorConfiguration $ce01_listener,$ce02_listener
 
 		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 		$rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -BackendHttpSettings $poolSetting02 -HttpListener $listener02 -BackendAddressPool $pool
@@ -172,10 +179,15 @@ function Test-ApplicationGatewayCRUD
 
 		$disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
 		$disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_35_bad_robots"
-		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
+		$exclusion1 = New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
+		$exclusion2 = New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable "RequestArgNames" -Operator "Equals" -Selector "a"
+		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusion $exclusion1,$exclusion2
+
+		$ce01_appgw = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$ce02_appgw = New-AzureRmApplicationGatewayCustomError -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url02
 
 		# Create Application Gateway
-		$job = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig -AsJob
+		$job = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig -AsJob -CustomErrorConfiguration $ce01_appgw,$ce02_appgw
 		$job | Wait-Job
 		$appgw = $job | Receive-Job
 
@@ -271,6 +283,10 @@ function Test-ApplicationGatewayCRUD
 		Assert-AreEqual "OWASP"  $firewallConfig2.RuleSetType
 		Assert-AreEqual "3.0"  $firewallConfig2.RuleSetVersion
 		Assert-AreEqual $null  $firewallConfig2.DisabledRuleGroups
+		Assert-AreEqual $True  $firewallConfig2.RequestBodyCheck
+		Assert-AreEqual 128  $firewallConfig2.MaxRequestBodySizeInKb
+		Assert-AreEqual 100  $firewallConfig2.FileUploadLimitInMb
+		Assert-AreEqual $null  $firewallConfig2.Exclusions
 
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
@@ -300,6 +316,63 @@ function Test-ApplicationGatewayCRUD
 		$pool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $poolName
 		$getgw = Set-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType basic -HttpListener $listener -BackendHttpSettings $poolSetting -BackendAddressPool $pool
 
+		# Get Custom Error from listener and appgw
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		$ce = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url01 $ce.CustomErrorPageUrl
+
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$ce = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url02 $ce.CustomErrorPageUrl
+
+		#Set Custom Error on listener and appgw
+		#(403 error page on listener change from $customError403Url01 to $customError403Url02)
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		Set-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$updatedlistener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $updatedgw -Name $listener02Name
+		$ce = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $updatedlistener -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url02 $ce.CustomErrorPageUrl
+
+		#(403 error page on appgw change from $customError403Url02 to $customError403Url01)
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Set-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$ce = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $updatedgw -StatusCode HttpStatus403
+		Assert-AreEqual $customError403Url01 $ce.CustomErrorPageUrl
+
+		#Remove Custom Error from listener and appgw
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		Remove-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus502
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$updatedlistener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $updatedgw -Name $listener02Name
+		$ceConfigs = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $updatedlistener
+		Assert-AreEqual 1 $ceConfigs.count
+		Assert-AreEqual HttpStatus403 $ceConfigs[0].StatusCode
+
+		Remove-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus502
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$ceConfigs = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $updatedgw
+		Assert-AreEqual 1 $ceConfigs.count
+		Assert-AreEqual HttpStatus403 $ceConfigs[0].StatusCode
+
+		#Add Custom Error on listener and appgw
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener02Name
+		Add-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url01
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$updatedlistener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $updatedgw -Name $listener02Name
+		$ceConfigs = Get-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $updatedlistener
+		Assert-AreEqual 2 $ceConfigs.count
+
+		Add-AzureRmApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url02
+		$updatedgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$ceConfigs = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $updatedgw
+		Assert-AreEqual 2 $ceConfigs.count
+
 		# Modify existing application gateway with new configuration
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
@@ -311,7 +384,7 @@ function Test-ApplicationGatewayCRUD
 		$getgw = $job | Receive-Job
 
 		Assert-AreEqual "Stopped" $getgw.OperationalState
- 
+
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 	}
@@ -499,7 +572,7 @@ function Test-ApplicationGatewayCRUD3
 	)
 
 	# Setup
-	$location = "westus2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -657,6 +730,9 @@ function Compare-WebApplicationFirewallConfiguration($expected, $actual)
 		Assert-AreEqual $expected.FirewallMode $actual.FirewallMode
 		Assert-AreEqual $expected.RuleSetType $actual.RuleSetType
 		Assert-AreEqual $expected.RuleSetVersion $actual.RuleSetVersion
+		Assert-AreEqual $expected.RequestBodyCheck $actual.RequestBodyCheck
+		Assert-AreEqual $expected.MaxRequestBodySizeInKb $actual.MaxRequestBodySizeInKb
+		Assert-AreEqual $expected.FileUploadLimitInMb $actual.FileUploadLimitInMb
 
 		if($expected.DisabledRuleGroups) 
 		{
@@ -670,6 +746,20 @@ function Compare-WebApplicationFirewallConfiguration($expected, $actual)
 		else
 		{
 			Assert-Null $actual.DisabledRuleGroups
+		}
+
+		if($expected.Exclusions) 
+		{
+			Assert-NotNull $actual.Exclusions
+			Assert-AreEqual $expected.Exclusions.Count $actual.Exclusions.Count
+			for($i = 0; $i -lt $expected.Exclusions.Count; $i++) 
+			{
+				Compare-Exclusion $expected.Exclusions[$i] $actual.Exclusions[$i]
+			}
+		}
+		else
+		{
+			Assert-Null $actual.Exclusions
 		}
 	}
 	else
@@ -707,6 +797,25 @@ function Compare-DisabledRuleGroup($expected, $actual)
 
 <#
 .SYNOPSIS
+Compare Exclusion List
+#>
+function Compare-Exclusion($expected, $actual) 
+{
+	if($expected) 
+	{
+		Assert-NotNull $actual
+		Assert-AreEqual $expected.MatchVariable $actual.MatchVariable
+		Assert-AreEqual $expected.SelectorMatchOperator $actual.SelectorMatchOperator
+		Assert-AreEqual $expected.Selector $actual.Selector
+	}
+	else
+	{
+		Assert-Null $actual
+	}
+}
+
+<#
+.SYNOPSIS
 Compare application gateways
 #>
 function Compare-AzureRmApplicationGateway($expected, $actual)
@@ -729,4 +838,470 @@ function Compare-AzureRmApplicationGateway($expected, $actual)
 	Assert-AreEqual $expected.HttpListeners.Count $actual.HttpListeners.Count
 	Assert-AreEqual $expected.RequestRoutingRules.Count $actual.RequestRoutingRules.Count
 	Assert-AreEqual $expected.RedirectConfigurations.Count $actual.RedirectConfigurations.Count
+}
+
+<#
+.SYNOPSIS
+Application gateway v2 tests
+#>
+function Test-ApplicationGatewayCRUDSubItems
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+	$gwSubnetName2 = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+	$gipconfigname2 = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$frontendPort02Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$fipconfigName2 = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolName2 = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+	$authCertName = Get-ResourceName
+
+	$sslCert01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeName = Get-ResourceName
+
+	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+
+	$redirectName = Get-ResourceName
+	$urlPathMapName = Get-ResourceName
+	$PathRuleName = Get-ResourceName
+	$PathRuleName2 = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		$gwSubnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName2 -AddressPrefix 10.0.0.0/24
+		$vnet2 = New-AzureRmvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/8 -Subnet $gwSubnet2
+		$vnet2 = Get-AzureRmvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+		$gwSubnet2 = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName2 -VirtualNetwork $vnet2
+
+		# Create public ip
+		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -sku Basic
+
+		# Create ip configuration
+		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
+
+		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1
+
+		#rule
+		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzureRmApplicationGatewaySku -Name Standard_Medium -Tier Standard -Capacity 2
+
+		$match1 = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "helloworld"
+
+		# Create Application Gateway
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -EnableFIPS
+
+		# Authentication certificate operations
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$certFilePath2 = $basedir + "/ScenarioTests/Data/auth-cert.pfx"
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
+		$sslCert02Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert2.pfx"
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$pw02 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+
+		# Add all possible
+		$appgw = Add-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name $authCertName -CertificateFile $certFilePath
+		$appgw = Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName2 -BackendIPAddresses 10.11.12.13
+		$appgw = Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName2 -SubnetId $gwSubnet.Id -PrivateIpAddress 10.0.0.7
+		$appgw = Add-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
+		$appgw = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
+		$appgw = Add-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name -Port 8080
+		$appgw = Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName -Match $match1 -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$listener01 = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name
+		$appgw = Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirectName -RedirectType Permanent -TargetListener $listener01 -IncludePath $true
+		$poolSetting01 = Get-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting01Name
+		$pool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName
+		$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -BackendAddressPool $pool -BackendHttpSettings $poolSetting01
+		$appgw = Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
+
+		# Call Add on already existing items
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name $authCertName -CertificateFile $certFilePath } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName2 -BackendIPAddresses 10.11.12.13 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName2 -SubnetId $gwSubnet.Id -PrivateIpAddress 10.0.0.7 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name -Port 8080 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName -Match $match1 -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirectName -RedirectType Permanent -TargetListener $listener01 -IncludePath $true } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress } "*already exists*"
+
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual $appgw.AuthenticationCertificates.Count 1
+		Assert-AreEqual $appgw.BackendAddressPools.Count 2
+		Assert-AreEqual $appgw.FrontendIpConfigurations.Count 2
+		Assert-AreEqual $appgw.CustomErrorConfigurations.Count 1
+		Assert-AreEqual $appgw.SslCertificates.Count 1
+		Assert-AreEqual $appgw.FrontendPorts.Count 2
+		Assert-AreEqual $appgw.Probes.Count 1
+		Assert-AreEqual $appgw.RedirectConfigurations.Count 1
+		Assert-AreEqual $appgw.UrlPathMaps.Count 1
+
+		# Get all possible
+		$gipconfig = Get-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $appgw -Name $gipconfigname
+		$authCert = Get-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name $authCertName
+		$aPool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName2
+		$feip = Get-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName2
+		$customError = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus403
+		$sslCert = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name
+		$fPort = Get-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name
+		$probe = Get-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName
+		$rule = Get-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule01Name
+
+		Assert-NotNull $gipconfig
+		Assert-NotNull $authCert
+		Assert-NotNull $aPool
+		Assert-NotNull $feip
+		Assert-NotNull $customError
+		Assert-NotNull $sslCert
+		Assert-NotNull $fPort
+		Assert-NotNull $probe
+		Assert-NotNull $rule
+
+		# List all possible
+		$gipconfigs = Get-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $appgw
+		$authCerts = Get-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw
+		$aPools = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw
+		$feips = Get-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw
+		$customErrors = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw
+		$sslCerts = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw
+		$fPorts = Get-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw
+		$probes = Get-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw
+		$poolSettings = Get-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw
+		$listeners = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw
+		$redirects = Get-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw
+		$rules = Get-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw
+		$maps = Get-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw
+
+		Assert-NotNull $gipconfigs
+		Assert-AreEqual $gipconfigs.Count 1
+		Assert-NotNull $authCerts
+		Assert-AreEqual $authCerts.Count 1
+		Assert-NotNull $aPools
+		Assert-NotNull $aPools.Count 2
+		Assert-NotNull $feips
+		Assert-AreEqual $feips.Count 2
+		Assert-NotNull $customErrors
+		Assert-AreEqual $customErrors.Count 1
+		Assert-NotNull $sslCerts
+		Assert-AreEqual $sslCerts.Count 1
+		Assert-NotNull $fPorts
+		Assert-AreEqual $fPorts.Count 2
+		Assert-NotNull $probes
+		Assert-AreEqual $probes.Count 1
+		Assert-NotNull $rules
+		Assert-AreEqual $rules.Count 1
+		Assert-NotNull $maps
+		Assert-AreEqual $maps.Count 1
+
+		$appgwsRG = Get-AzureRmApplicationGateway -ResourceGroupName $rgname
+		$appgwsAll = Get-AzureRmApplicationGateway
+
+		# Set all possible
+		$appgw = Set-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name $authCertName -CertificateFile $certFilePath2
+		$appgw = Set-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName2 -BackendIPAddresses 10.11.12.14
+		$appgw = Set-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$appgw = Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name -Port 8081
+		$appgw = Set-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName -Match $match1 -Protocol Http -HostName "probeset.com" -Path "/path/path1.htm" -Interval 87 -Timeout 87 -UnhealthyThreshold 7
+		$poolSetting01 = Get-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting01Name
+		$pool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName
+		$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName2 -Paths "/image" -BackendAddressPool $pool -BackendHttpSettings $poolSetting01
+		$appgw = Set-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName -PathRules $imagePathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
+
+		# Set items that doesn't exist
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "fakeName" -CertificateFile $certFilePath2 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name "fakeName" -BackendIPAddresses 10.11.12.14 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus405 -CustomErrorPageUrl $customError403Url02 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name "fakeName" -Port 8081 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name "fakeName" -Match $match1 -Protocol Http -HostName "probeset.com" -Path "/path/path1.htm" -Interval 87 -Timeout 87 -UnhealthyThreshold 7 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name "fakeName" -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name "fakeName" -SubnetId $gwSubnet.Id -PrivateIpAddress 10.0.0.7 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name "fakeName" -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name "fakeName" -RedirectType Permanent -TargetListener $listener01 -IncludePath $true } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name "fakeName" -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name "fakeName" -CertificateFile $sslCert01Path -Password $pw01 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "fakeName" -PathRules $imagePathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $appgw -Name "fakeName" -Subnet $gwSubnet } "*does not exist*"
+
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		# Remove all possible
+		Remove-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName2
+		Remove-AzureRmApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name $authCertName
+		Remove-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName2
+		Remove-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus403
+		Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name
+		Remove-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name
+		Remove-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName
+		Remove-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirectName
+		Remove-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
+		Remove-AzureRMApplicationGatewaySslPolicy -ApplicationGateway $appgw -Force
+
+		Assert-ThrowsLike { Remove-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $appgw -Force } "*doesn't have*"
+		Assert-ThrowsLike { Remove-AzureRMApplicationGatewaySslPolicy -ApplicationGateway $appgw -Force } "*doesn't have*"
+
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		Assert-Null $appgw.AuthenticationCertificates
+		Assert-NotNull $appgw.BackendAddressPools
+		Assert-NotNull $appgw.BackendAddressPools.Count 1
+		Assert-NotNull $appgw.FrontendIpConfigurations
+		Assert-AreEqual $appgw.FrontendIpConfigurations.Count 1
+		Assert-Null $appgw.CustomErrorConfigurations
+		Assert-Null $appgw.SslCertificates
+		Assert-NotNull $appgw.FrontendPorts
+		Assert-AreEqual $appgw.FrontendPorts.Count 1
+		Assert-Null $appgw.Probes
+		Assert-Null $appgw.RedirectConfigurations
+		Assert-Null $appgw.UrlPathMaps
+		Assert-Null $appgw.SslPolicy
+
+		# Switch GatewayIpConfiguration, cannotjust add one more to test Add (Gateway must be created with one IP)
+		# Need to stop gateway for this switching
+		Stop-AzureRmApplicationGateway -ApplicationGateway $appgw;
+		Add-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname2 -Subnet $gwSubnet2 -ApplicationGateway $appgw
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname2 -Subnet $gwSubnet2 -ApplicationGateway $appgw } "*already exists*"
+		Remove-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -ApplicationGateway $appgw
+		Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName2 -SubnetId $gwSubnet2.Id -PrivateIpAddress 10.0.0.7
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+		$ipConfig = Get-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $appgw -Name $gipconfigname2
+		Start-AzureRmApplicationGateway -ApplicationGateway $appgw;
+
+		# Switch subnet in IpConfigs
+		Stop-AzureRmApplicationGateway -ApplicationGateway $appgw;
+		Set-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname2 -Subnet $gwSubnet -ApplicationGateway $appgw
+		Set-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName2 -Subnet $gwSubnet -ApplicationGateway $appgw -PrivateIpAddress 10.0.0.7
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		$result = Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force -PassThru
+
+		Assert-ThrowsLike { Stop-AzureRmApplicationGateway -ApplicationGateway $appgw } "*not found*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGateway -ApplicationGateway $appgw } "*not found*"
+		Assert-ThrowsLike { Start-AzureRmApplicationGateway -ApplicationGateway $appgw } "*not found*"
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway v2 tests
+#>
+function Test-ApplicationGatewayCRUDSubItems2
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+	$gwSubnetName2 = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+	$listener02Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+	$poolSetting02Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+	$rule02Name = Get-ResourceName
+
+	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+
+	$urlPathMapName = Get-ResourceName
+	$PathRuleName = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		$gwSubnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName2 -AddressPrefix 11.0.1.0/24
+		$vnet2 = New-AzureRmvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 11.0.0.0/8 -Subnet $gwSubnet2
+		$vnet2 = Get-AzureRmvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+		$gwSubnet2 = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName2 -VirtualNetwork $vnet2
+
+		# Create public ip
+		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		# Re-create AppGw with another SKU to test more
+		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
+
+		#rule
+		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzureRmApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
+
+		$autoscaleConfig = New-AzureRmApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+		Assert-AreEqual $autoscaleConfig.MinCapacity 3
+
+		$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -BackendAddressPool $pool -BackendHttpSettings $poolSetting01
+		$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
+
+		# Create Application Gateway
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap
+
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$certFilePath2 = $basedir + "/ScenarioTests/Data/TrustedRootCertificate.cer"
+
+		# Add
+		$listener01 = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name
+		Add-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath
+		Add-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
+
+		# Add to test Remove
+		Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting02Name -Port 1234 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 42 -HostName test -Path /test -AffinityCookieName test
+		$fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
+		$fp01 = Get-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort01Name 
+		Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -HostName TestHostName
+		$listener02 = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
+		$urlPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
+		Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -HttpListener $listener02 -UrlPathMap $urlPathMap
+
+		# Add twice
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath } "*already exists*"
+		Assert-ThrowsLike { Add-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01 } "*already exists*"
+
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		Assert-NotNull $appgw.HttpListeners[0].CustomErrorConfigurations
+		Assert-NotNull $appgw.TrustedRootCertificates
+		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 2
+		Assert-AreEqual $appgw.HttpListeners.Count 2
+		Assert-AreEqual $appgw.RequestRoutingRules.Count 2
+
+		# Get
+		$trustedCert = Get-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName
+		Assert-NotNull $trustedCert
+
+		# List
+		$trustedCerts = Get-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw
+		Assert-NotNull $trustedCerts
+		Assert-AreEqual $trustedCerts.Count 1
+
+		# Set
+		$listener01 = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name
+		Set-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $appgw -MinCapacity 2
+		Set-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
+		$disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_35_bad_robots"
+		$exclusion1 = New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
+		$exclusion2 = New-AzureRmApplicationGatewayFirewallExclusionConfig -Variable "RequestArgNames" -Operator "Equals" -Selector "a"
+		Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $appgw -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusion $exclusion1,$exclusion2
+		Set-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath2
+
+		# Set non-exiting
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus408 -CustomErrorPageUrl $customError403Url02 } "*does not exist*"
+		Assert-ThrowsLike { Set-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name "fakeName" -CertificateFile $certFilePath } "*does not exist*"
+
+		# Get Application Gateway backend health with expanded resource
+		$job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
+		$job | Wait-Job
+		$backendHealth = $job | Receive-Job
+		Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
+
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual $appgw.AutoscaleConfiguration.MinCapacity 2
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Enabled $true
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FirewallMode "Prevention"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetType "OWASP"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetVersion "2.2.9"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.DisabledRuleGroups.Count 2
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RequestBodyCheck $true
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb 80
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FileUploadLimitInMb 70
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Exclusions.Count 2
+
+		# Remove
+		Remove-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName
+		Remove-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting02Name
+		Remove-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		Remove-AzureRmApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
+
+		$appgw = Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		Assert-Null $appgw.TrustedRootCertificates
+		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
+		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 1
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
 }

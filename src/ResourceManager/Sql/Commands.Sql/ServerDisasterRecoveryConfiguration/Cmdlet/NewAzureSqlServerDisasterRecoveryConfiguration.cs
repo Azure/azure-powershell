@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the partner resource group name for the Azure SQL Server Disaster Recovery Configuration to create.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
@@ -47,6 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the partner server for the Azure SQL Server Disaster Recovery Configuration to create.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "PartnerResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 
