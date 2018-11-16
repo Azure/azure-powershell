@@ -1047,11 +1047,20 @@ function Test-VirtualMachineScaleSetIdentity
         Assert-AreEqual "SystemAssigned" $vmssResult.Identity.Type;
         Assert-NotNull $vmssResult.Identity.PrincipalId;
         Assert-NotNull $vmssResult.Identity.TenantId;
-        Assert-Null $result.Identity.UserAssignedIdentities;
+        Assert-Null $vmssResult.Identity.UserAssignedIdentities;
 
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
         $output = $vmssInstanceViewResult | Out-String
+
+        Update-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssResult;
+        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        # Validate VMSS Identity
+        Assert-AreEqual "SystemAssigned" $vmssResult.Identity.Type;
+        Assert-NotNull $vmssResult.Identity.PrincipalId;
+        Assert-NotNull $vmssResult.Identity.TenantId;
+        Assert-Null $vmssResult.Identity.UserAssignedIdentities;
     }
     finally
     {
