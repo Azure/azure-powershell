@@ -46,11 +46,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         Error,
 
         /// <summary>
-        /// Indicates Debug Record streams
-        /// </summary>
-        Debug,
-
-        /// <summary>
         /// Indicates Verbose Record streams
         /// </summary>
         Verbose

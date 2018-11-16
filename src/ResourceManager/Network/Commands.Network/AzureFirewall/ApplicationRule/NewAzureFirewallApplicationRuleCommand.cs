@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallApplicationRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallApplicationRule))]
-    public class NewAzureFirewallApplicationRuleCommand : NetworkBaseCmdlet
+    public class NewAzureFirewallApplicationRuleCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             if (FqdnTag != null)
             {
                 this.Protocol = new List<string> { "http", "https" };
-                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag);
+                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallFqdnTagClient);
             }
 
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);

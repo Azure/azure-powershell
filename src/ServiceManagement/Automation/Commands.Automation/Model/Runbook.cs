@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
             this.Location = runbook.Location;
-
+			
             if (runbook.Properties == null) return;
 
             this.CreationTime = runbook.Properties.CreationTime.ToLocalTime();

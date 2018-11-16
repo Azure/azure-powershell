@@ -24,7 +24,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Compliances
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSecurityCompliance", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityCompliance))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityCompliance", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityCompliance))]
     public class GetCompliances : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]

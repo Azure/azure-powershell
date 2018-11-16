@@ -20,6 +20,9 @@
 
 ## Current Release
 
+## Version 0.1.2
+* Updated list of unsupported file name characters.
+
 ## Version 0.1.1
 * Updated to the latest version of the Azure ClientRuntime.
 
