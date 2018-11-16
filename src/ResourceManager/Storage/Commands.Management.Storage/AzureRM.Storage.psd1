@@ -97,8 +97,7 @@ CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
                'Get-AzureRmStorageContainerImmutabilityPolicy', 
                'Remove-AzureRmStorageContainerImmutabilityPolicy', 
                'Lock-AzureRmStorageContainerImmutabilityPolicy',
-               'Invoke-AzureRmStorageAccountFailover',
-               'Get-AzureRmStorageAccountLastSyncTime'
+               'Invoke-AzureRmStorageAccountFailover'
 
 # Variables to export from this module
 # VariablesToExport = @()

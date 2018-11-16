@@ -145,8 +145,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
     'Set-AzStorageAccountManagementPolicy', 
     'Get-AzStorageAccountManagementPolicy', 
     'Remove-AzStorageAccountManagementPolicy',
-    'Invoke-AzStorageAccountFailover',
-    'Get-AzStorageAccountLastSyncTime'
+    'Invoke-AzStorageAccountFailover'
 
 # Variables to export from this module
 # VariablesToExport = @()
