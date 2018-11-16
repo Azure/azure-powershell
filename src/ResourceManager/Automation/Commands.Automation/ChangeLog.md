@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
 * Swagger based Azure Automation cmdlets
 * Added Update Management cmdlets
 * Added Source Control cmdlets
