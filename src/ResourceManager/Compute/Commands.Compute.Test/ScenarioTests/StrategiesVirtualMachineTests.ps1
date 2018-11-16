@@ -33,7 +33,7 @@ function Test-SimpleNewVm
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
-		Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
 
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
@@ -72,7 +72,7 @@ function Test-SimpleNewVmFromSIGImage
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
-		Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
 
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic

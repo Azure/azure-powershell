@@ -288,7 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableUltraSSD
-{{Fill EnableUltraSSD Description}}
+Use UltraSSD disks for the VMs in the scale set.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
