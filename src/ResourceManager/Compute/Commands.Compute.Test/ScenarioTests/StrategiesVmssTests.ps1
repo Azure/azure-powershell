@@ -36,7 +36,7 @@ function Test-SimpleNewVmss
         Assert-AreEqual $vmssname $x.ResourceGroupName;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
-		Assert-False { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-False { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
         Assert-AreEqual "Standard_DS1_v2" $x.Sku.Name
         Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
@@ -85,10 +85,10 @@ function Test-SimpleNewVmssFromSIGImage
         Assert-AreEqual $vmssname $x.ResourceGroupName;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
-		Assert-False { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-False { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
         Assert-AreEqual "Standard_D2s_v3" $x.Sku.Name
         Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
-		Assert-AreEqual "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" $x.VirtualMachineProfile.StorageProfile.ImageReference.Id
+        Assert-AreEqual "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" $x.VirtualMachineProfile.StorageProfile.ImageReference.Id
         Assert-Null $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
@@ -133,7 +133,7 @@ function Test-SimpleNewVmssWithUltraSSD
         Assert-AreEqual $vmssname $x.ResourceGroupName;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
-		Assert-True { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-True { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
         Assert-AreEqual "Standard_D2s_v3" $x.Sku.Name
         Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
