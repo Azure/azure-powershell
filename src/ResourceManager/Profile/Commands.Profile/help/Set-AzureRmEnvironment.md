@@ -52,32 +52,13 @@ PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
 
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
-BatchEndpointResourceId                           :
-AzureOperationalInsightsEndpoint                  :
-AzureOperationalInsightsEndpointResourceId        :
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 
 PS C:\> Set-AzureRmEnvironment -Name TestEnvironment
         -ActiveDirectoryEndpoint NewTestADEndpoint
-        -GraphEndpoint NewTestGraphEndpoint
+        -GraphEndpoint NewTestGraphEndpoint | Format-List
 
 Name                                              : TestEnvironment
 EnableAdfsAuthentication                          : False
