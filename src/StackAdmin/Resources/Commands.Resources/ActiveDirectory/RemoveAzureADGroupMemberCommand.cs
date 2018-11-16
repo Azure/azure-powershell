@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object id of the member(s) to remove.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId, HelpMessage = "The object id of the member(s) to remove.")]
         [ValidateNotNullOrEmpty]
-        public Guid[] MemberObjectId { get; set; }
+        public string[] MemberObjectId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupDisplayName, HelpMessage = "The UPN of the member(s) to remove.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObject, HelpMessage = "The UPN of the member(s) to remove.")]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId, HelpMessage = "The object id of the group to remove the member from.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObjectId, HelpMessage = "The object id of the group to remove the member from.")]
         [ValidateNotNullOrEmpty]
-        public Guid GroupObjectId { get; set; }
+        public string GroupObjectId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupDisplayName, HelpMessage = "The display name of the group to remove the member(s) from.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupDisplayName, HelpMessage = "The display name of the group to remove the member(s) from.")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (this.IsParameterBound(c => c.MemberUserPrincipalName))
                 {
-                    var memberObjectId = new List<Guid>();
+                    var memberObjectId = new List<string>();
                     foreach (var memberUPN in MemberUserPrincipalName)
                     {
                         memberObjectId.Add(ActiveDirectoryClient.GetObjectIdFromUPN(memberUPN));
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 foreach (var memberObjectId in MemberObjectId)
                 {
-                    if (ShouldProcess(target: memberObjectId.ToString(), action: string.Format("Removing user with object id '{0}' from group with object id '{1}'.", memberObjectId, GroupObjectId)))
+                    if (ShouldProcess(target: memberObjectId, action: string.Format("Removing user with object id '{0}' from group with object id '{1}'.", memberObjectId, GroupObjectId)))
                     {
-                        ActiveDirectoryClient.RemoveGroupMember(GroupObjectId.ToString(), memberObjectId.ToString());
+                        ActiveDirectoryClient.RemoveGroupMember(GroupObjectId, memberObjectId);
                     }
                 }
 

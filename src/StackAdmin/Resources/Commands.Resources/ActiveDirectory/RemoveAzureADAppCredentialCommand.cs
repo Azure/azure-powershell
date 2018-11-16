@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithKeyId, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
@@ -77,16 +77,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Force.IsPresent,
                         string.Format(ProjectResources.RemovingAppCredentialWithId, KeyId, ObjectId),
                         ProjectResources.RemoveCredential,
-                        ObjectId.ToString(),
+                        ObjectId,
                         () => ActiveDirectoryClient.RemoveAppCredentialByKeyId(ObjectId, KeyId));
                 }
                 else
                 {
                     ConfirmAction(
                         Force.IsPresent,
-                        string.Format(ProjectResources.RemovingAllAppCredentials, ObjectId.ToString()),
+                        string.Format(ProjectResources.RemovingAllAppCredentials, ObjectId),
                         ProjectResources.RemoveCredential,
-                        ObjectId.ToString(),
+                        ObjectId,
                         () => ActiveDirectoryClient.RemoveAllAppCredentials(ObjectId));
                 }
 

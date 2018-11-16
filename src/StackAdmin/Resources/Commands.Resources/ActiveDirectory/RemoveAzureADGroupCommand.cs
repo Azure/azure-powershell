@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The object id of the group to be removed.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group to be removed.")]
         [ValidateNotNullOrEmpty]
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Force.IsPresent,
                     string.Format(ProjectResources.RemoveGroupConfirmation, ObjectId),
                     ProjectResources.RemovingGroup,
-                    ObjectId.ToString(),
-                    () => ActiveDirectoryClient.RemoveGroup(ObjectId.ToString()));
+                    ObjectId,
+                    () => ActiveDirectoryClient.RemoveGroup(ObjectId));
 
                 if (PassThru.IsPresent)
                 {

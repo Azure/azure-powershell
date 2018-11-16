@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The service principal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("PrincipalId", "Id")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The service principal application id.")]
         [ValidateNotNullOrEmpty]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = InputObject.Id;
                 }
 
-                if (!this.IsParameterBound(c => c.ObjectId) && ObjectId != Guid.Empty)
+                if (!this.IsParameterBound(c => c.ObjectId))
                 {
                     IEnumerable<PSADServicePrincipal> result = null;
                     if (this.IsParameterBound(c => c.ApplicationId) || this.IsParameterBound(c => c.ApplicationObject))
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Force.IsPresent,
                     string.Format(ProjectResources.RemovingServicePrincipal, ObjectId),
                     ProjectResources.RemoveServicePrincipal,
-                    ObjectId.ToString(),
+                    ObjectId,
                     () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId));
 
                 if (PassThru)

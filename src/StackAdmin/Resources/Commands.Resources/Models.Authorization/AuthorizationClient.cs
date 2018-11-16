@@ -164,17 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters)
         {
-            Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
-            string principalIdStr = null;
-
-            if (principalId == Guid.Empty)
-            {
-                principalIdStr = ActiveDirectoryClient.GetAdfsObjectId(parameters.ADObjectFilter);
-            }
-            else
-            {
-                principalIdStr = principalId.ToString();
-            }
+            string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
 
             Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
             string scope = parameters.Scope;
@@ -183,7 +173,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
             var createProperties = new RoleAssignmentProperties
             {
-                PrincipalId = principalIdStr,
+                PrincipalId = principalId,
                 RoleDefinitionId = roleDefinitionId
             };
             var createParameters = new RoleAssignmentCreateParameters(createProperties);
@@ -235,12 +225,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
                 var tempResult = AuthorizationManagementClient.RoleAssignments.List(
                     new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId));
-                if (!string.IsNullOrEmpty(options.Scope)) 
+                if (!string.IsNullOrEmpty(options.Scope))
                 {
                     result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
-                } 
-                else 
+                }
+                else
                 {
                     result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
@@ -300,7 +290,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             if (options.IncludeClassicAdministrators)
             {
-                // Get classic administrator access assignments 
+                // Get classic administrator access assignments
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
                     .List("2015-06-01").ToList();
                 List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
@@ -332,7 +322,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The deleted role assignments</returns>
         public IEnumerable<PSRoleAssignment> RemoveRoleAssignment(FilterRoleAssignmentsOptions options, string subscriptionId)
         {
-            // Match role assignments at exact scope. Ideally, atmost 1 roleAssignment should match the criteria 
+            // Match role assignments at exact scope. Ideally, atmost 1 roleAssignment should match the criteria
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
             // The FilterRoleAssignments takes care of paging internally
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: subscriptionId)
