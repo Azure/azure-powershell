@@ -41,16 +41,19 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountAcccountName;
             this.Name = connection.Name;
 
-            if (connection.Properties == null) return;
+            if (connection == null) return;
 
-            this.Description = connection.Properties.Description;
-            this.CreationTime = connection.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = connection.Properties.LastModifiedTime.ToLocalTime();
-            this.ConnectionTypeName = connection.Properties.ConnectionType.Name;
+            this.Description = connection.Description;
+            this.CreationTime = connection.CreationTime.ToLocalTime();
+            this.LastModifiedTime = connection.LastModifiedTime.ToLocalTime();
+            this.ConnectionTypeName = connection.ConnectionType.Name;
             this.FieldDefinitionValues = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in connection.Properties.FieldDefinitionValues)
+            if (connection.FieldDefinitionValues != null)
             {
-                this.FieldDefinitionValues.Add(kvp.Key, kvp.Value.ToString());
+                foreach (var kvp in connection.FieldDefinitionValues)
+                {
+                    this.FieldDefinitionValues.Add(kvp.Key, kvp.Value.ToString());
+                }
             }
         }
 
