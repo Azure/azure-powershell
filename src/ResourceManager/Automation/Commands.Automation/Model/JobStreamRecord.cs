@@ -45,21 +45,30 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId) : base(jobStream, resourceGroupName, automationAccountName, jobId)
         {
             this.Value = new Hashtable();
-            foreach (var kvp in jobStream.Properties.Value)
-            {
-                object paramValue;
-                try
-                {
-                    paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
-                }
-                catch (CmdletInvocationException exception)
-                {
-                    if (!exception.Message.Contains("Invalid JSON primitive"))
-                        throw;
 
-                    paramValue = kvp.Value;
+            if (jobStream.Value == null)
+            {
+                return;
+            }
+
+            foreach (var kvp in jobStream.Value)
+            {
+                if (kvp.Value != null)
+                {
+                    object paramValue;
+                    try
+                    {
+                        paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                    }
+                    catch (CmdletInvocationException exception)
+                    {
+                        if (!exception.Message.Contains("Invalid JSON primitive"))
+                            throw;
+
+                        paramValue = kvp.Value;
+                    }
+                    this.Value.Add(kvp.Key, paramValue);
                 }
-                this.Value.Add(kvp.Key, paramValue);
             }
         }
 

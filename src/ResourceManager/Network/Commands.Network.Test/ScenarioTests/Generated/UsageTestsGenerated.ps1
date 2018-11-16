@@ -31,8 +31,7 @@ Test creating new Usage using minimal set of parameters
 function Test-UsageCRUDMinimalParameters
 {
     # Setup
-    $rname = Get-ResourceName;
-    $location = "westus";
+    $location = Get-ProviderLocation "Microsoft.Network/usages" "West US";
 
     try
     {
