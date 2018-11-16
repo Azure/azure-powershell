@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.6
 * update the examples description for marketplace cmdlets
 
 ## Version 0.2.5
