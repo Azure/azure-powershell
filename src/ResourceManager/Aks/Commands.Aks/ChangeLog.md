@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update dependencies for type mapping issue
 
 ## Version 0.0.6
 * Update version of YamlDotNet.Signed used

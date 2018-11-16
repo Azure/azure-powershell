@@ -97,8 +97,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             if (AuditType == AuditType.Blob)
             {
-                DatabaseBlobAuditingPolicyModel blobModel;
-                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, out blobModel);
+                DatabaseBlobAuditingPolicyModel blobModel = new DatabaseBlobAuditingPolicyModel
+                {
+                    AuditType = AuditType.Blob
+                };
+                ModelAdapter.GetDatabaseBlobAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, blobModel);
                 return blobModel;
             }
 
