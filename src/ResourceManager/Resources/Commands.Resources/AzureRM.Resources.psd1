@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.7.1'
+ModuleVersion = '6.7.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll', 
@@ -171,10 +171,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix for https://github.com/Azure/azure-powershell/issues/7402
-    - Allow listing resources using the ''-ResourceId'' parameter for ''Get-AzureRmResource''
-    * Fix for https://github.com/Azure/azure-powershell/issues/7700
-    - Fix issue where `EndDate` parameter was not being honored for AD cmdlets'
+        ReleaseNotes = '* Update help documentation for resource identity related parameters in New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703'
 
         # Prerelease string of this module
         # Prerelease = ''

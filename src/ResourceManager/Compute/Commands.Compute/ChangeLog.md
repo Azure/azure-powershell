@@ -20,6 +20,8 @@
 -->
 ## Current Release
 * Add support for UltraSSD and Gallery Images in the simple param sets for `New-AzVm(ss)` cmdlets.
+
+## Version 5.9.0
 * Fixed identity issue for SystemAssigned identity
 * Update dependencies for type mapping issue
 
