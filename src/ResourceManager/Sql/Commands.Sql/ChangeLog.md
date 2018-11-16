@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
+	- Get-AzureRmSqlInstance
+	- New-AzureRmSqlInstance
+	- Set-AzureRmSqlInstance
+	- Remove-AzureRmSqlInstance
+	- Get-AzureRmSqlInstanceDatabase
+	- New-AzureRmSqlInstanceDatabase
+	- Restore-AzureRmSqlInstanceDatabase
+	- Remove-AzureRmSqlInstanceDatabase
+
 * Enabled Extended Auditing Policy management on a server or a database.
 	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
 	- Cmdlets were modified to use SQL clients instead of Legacy clients.
