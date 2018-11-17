@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.11
 * Corrected example in New-AzureRmRecoveryServicesAsrProtectableItem
+* Update dependencies for type mapping issue
 
 ## Version 0.2.10
 * Support for managed Managed disk

@@ -78,7 +78,7 @@ Creates a new WcfRelay \`TestWCFRelay\` in the specified Relay namespace \`TestN
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 WcfRelay object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+Type: Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
 Parameter Sets: WcfRelayInputObjectSet
 Aliases:
 
@@ -225,7 +225,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -241,25 +241,26 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
+System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-
-### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+### Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
+
 
 ## NOTES
 
