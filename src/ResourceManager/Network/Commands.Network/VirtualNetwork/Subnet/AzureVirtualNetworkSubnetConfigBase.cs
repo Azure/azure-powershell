@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -28,9 +29,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The address prefix of the subnet")]
+            HelpMessage = "The address prefixes of the subnet")]
         [ValidateNotNullOrEmpty]
-        public string AddressPrefix { get; set; }
+        public List<string> AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -64,6 +65,29 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Value")]
+        [PSArgumentCompleter(
+            "Microsoft.Storage",
+            "Microsoft.Sql",
+            "Microsoft.AzureActiveDirectory",
+            "Microsoft.AzureCosmosDB",
+            "Microsoft.Web",
+            "Microsoft.NetworkServiceEndpointTest",
+            "Microsoft.KeyVault",
+            "Microsoft.EventHub",
+            "Microsoft.ServiceBus"
+        )]
         public List<string> ServiceEndpoint { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Service Endpoint Policies")]
+        public List<PSServiceEndpointPolicy> ServiceEndpointPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Delegations")]
+        public List<PSDelegation> Delegation { get; set; }
     }
 }

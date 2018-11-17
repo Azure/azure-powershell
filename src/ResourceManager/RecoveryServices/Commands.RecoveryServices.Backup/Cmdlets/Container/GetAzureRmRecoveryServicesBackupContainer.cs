@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"),
-        OutputType(typeof(ContainerBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer"),OutputType(typeof(ContainerBase))]
     public class GetAzureRmRecoveryServicesBackupContainer : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, Position = 2,
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("AzureVM", "MARS", "AzureSQL")]
+        [ValidateSet("AzureVM", "MARS", "AzureSQL", "AzureStorage")]
         public string BackupManagementType { get; set; }
 
         /// <summary>

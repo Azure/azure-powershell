@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
@@ -27,9 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Adds a given certificate contact to Key Vault for certificate management
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificateContact,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = InteractiveParameterSet)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateContact",SupportsShouldProcess = true,DefaultParameterSetName = InteractiveParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class AddAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
@@ -48,6 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = InteractiveParameterSet,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

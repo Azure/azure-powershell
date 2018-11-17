@@ -108,21 +108,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -8846,100 +8831,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-        "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Location": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "properties",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sku",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",

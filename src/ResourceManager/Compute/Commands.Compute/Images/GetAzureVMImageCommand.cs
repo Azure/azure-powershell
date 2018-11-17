@@ -22,8 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineImage)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImage")]
     [OutputType(typeof(PSVirtualMachineImage),
         ParameterSetName = new[] { ListVMImageParamSetName })]
     [OutputType(typeof(PSVirtualMachineImageDetail),
@@ -137,6 +136,7 @@ namespace Microsoft.Azure.Commands.Compute
                         OSDiskImage = response.Body.OsDiskImage,
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
+                        AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
                     };
 
                     WriteObject(image);

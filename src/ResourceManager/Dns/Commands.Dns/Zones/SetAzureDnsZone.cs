@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = FieldsIdsParameterSetName), OutputType(typeof(DnsZone))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = FieldsIdsParameterSetName), OutputType(typeof(DnsZone))]
     public class SetAzureDnsZone : DnsBaseCmdlet
     {
         private const string FieldsIdsParameterSetName = "Fields";

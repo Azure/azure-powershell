@@ -1,4 +1,656 @@
-﻿## 6.4.0 - July 2018
+﻿## 6.13.0 - November 2018
+#### AzureRM.Profile
+* Update common code to use latest version of ClientRuntime
+
+#### AzureRM.ApiManagement
+* Update dependencies for type mapping issue
+
+#### AzureRM.Automation
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
+
+#### AzureRM.Compute
+* Fixed identity issue for SystemAssigned identity
+* Update dependencies for type mapping issue
+
+#### AzureRM.ContainerInstance
+* Update dependencies for type mapping issue
+
+#### AzureRM.MarketplaceOrdering
+* update the examples description for marketplace cmdlets
+
+#### AzureRM.Network
+* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
+* Added ICMP back to supported AzureFirewall Network Protocols
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
+* Fix issues with memory usage in VirtualNetwork map
+
+#### AzureRM.RecoveryServices.Backup
+* Fix for modifying policy for a protected file share.
+* Converted policy timezone to uppercase.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Corrected example in New-AzureRmRecoveryServicesAsrProtectableItem
+* Update dependencies for type mapping issue
+
+#### AzureRM.Relay
+* Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
+
+#### AzureRM.Resources
+* Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
+
+#### AzureRM.ServiceFabric
+* Add deprecation messages for upcoming breaking changes
+
+#### AzureRM.Sql
+* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
+	- Get-AzureRmSqlInstance
+	- New-AzureRmSqlInstance
+	- Set-AzureRmSqlInstance
+	- Remove-AzureRmSqlInstance
+	- Get-AzureRmSqlInstanceDatabase
+	- New-AzureRmSqlInstanceDatabase
+	- Restore-AzureRmSqlInstanceDatabase
+	- Remove-AzureRmSqlInstanceDatabase
+* Enabled Extended Auditing Policy management on a server or a database.
+	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
+	- Cmdlets were modified to use SQL clients instead of Legacy clients.
+	- Set-AzureRmSqlServerAuditing.
+	- Get-AzureRmSqlServerAuditing.
+	- Set-AzureRmSqlDatabaseAuditing.
+	- Get-AzureRmSqlDatabaseAuditing.
+* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
+
+## 6.12.0 - November 2018
+#### AzureRM.Profile
+* Update common code to use latest version of ClientRuntime
+* Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
+* Updated TenantId description for Connect-AzureRmAccount
+* Fix error message for failed login when providing tenant domain
+    - https://github.com/Azure/azure-powershell/issues/6936
+* Fix issue with context name clashing for accounts with no subscriptions in tenant
+    - https://github.com/Azure/azure-powershell/issues/7453
+* Fix issue with DataLake endpoints when using MSI
+    - https://github.com/Azure/azure-powershell/issues/7462
+* Fix issue where 'Disconnect-AzureRmAccount' would throw if not connected
+    - https://github.com/Azure/azure-powershell/issues/7167
+
+#### AzureRM.Automation
+* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
+
+#### AzureRM.CognitiveServices
+* Add Get-AzureRmCognitiveServicesAccountSkus operation.
+
+#### AzureRM.Compute
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+
+#### AzureRM.DataLakeStore
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
+
+#### AzureRM.Insights
+* Fixed issue #7267 (Autoscale area)
+    - Issues with creating a new autoscale rule not properly setting enumerated parameters (would always set them to the default value).
+* Fixed issue #7513 [Insights] Set-AzureRMDiagnosticSetting requires explicit specification of categories during creation of setting
+    - Now the cmdlet does not require explicit indication of the categories to enable during creation, i.e. it works as it is documented
+
+#### AzureRM.Network
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
+#### AzureRM.PolicyInsights
+* Added policy remediation cmdlets
+
+#### AzureRM.RecoveryServices.Backup
+* Added support for azure file shares in recovery services.
+
+#### AzureRM.Resources
+* Fix for https://github.com/Azure/azure-powershell/issues/7402
+    - Allow listing resources using the '-ResourceId' parameter for 'Get-AzureRmResource'
+
+#### AzureRM.ServiceBus
+* Added MigrationState read-only property to PSServiceBusMigrationConfigurationAttributes which will help to know the Migration state.
+
+#### AzureRM.ServiceFabric
+* Fix add certificate to Linux Vmss.
+* Fix 'Add-AzureRmServiceFabricClusterCertificate'
+    - Using correct thumbprint from new certificate (Azure/service-fabric-issues#932).
+    - Display exception correctly (Azure/service-fabric-issues#1054).
+* Fix 'Update-AzureRmServiceFabricDurability' to update cluster configuration before starting Vmss CreateOrUpdate operation.
+
+## 6.11.0 - October 2018
+#### AzureRM.Profile
+* Fix issue with Get-AzureRmSubscription in CloudShell
+* Update common code to use latest version of ClientRuntime
+
+#### AzureRM.Backup
+* Deprecated Azure Backup cmdlets.
+
+#### AzureRM.Compute
+* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for 'New-AzureRmVm'
+* Added ResourceName argument completer to all cmdlets.
+
+#### AzureRM.DataLakeStore
+* Adding support for Virtual Network Rules
+    - Get-AzureRmDataLakeStoreVirtualNetworkRule: Gets or Lists Azure Data Lake Store virtual network rule.
+    - Add-AzureRmDataLakeStoreVirtualNetworkRule: Adds a virtual network rule to the specified Data Lake Store account.
+    - Set-AzureRmDataLakeStoreVirtualNetworkRule: Modifies the specified virtual network rule in the specified Data Lake Store account.
+    - Remove-AzureRmDataLakeStoreVirtualNetworkRule: Deletes an Azure Data Lake Store virtual network rule.
+
+#### AzureRM.Network
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
+* Added ResourceName argument completer to all cmdlets.
+
+#### AzureRM.Resources
+* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to 'RoleDefinitionNameParameterSet'.
+
+## 6.10.0 - October 2018
+#### Azure.Storage
+* Fix Copy Blob/File won't copy metadata when destination has metadata issue
+    - Start-AzureStorageBlobCopy
+    - Start-AzureStorageFileCopy
+
+#### AzureRM.CognitiveServices
+* Support Get-AzureRmCognitiveServicesAccountSkus without an existing account.
+
+#### AzureRM.Compute
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
+* Added an example of the 'SimpleParameterSet' to New-AzureRmVmss cmdlet help.
+* Fixed a typo in the Azure Disk Encryption progress message
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 2.3.0.
+
+#### AzureRM.Network
+* Added NetworkProfile functionality. new cmdlets added
+    - Get-AzureRMNetworkProfile
+    - New-AzureRMNetworkProfile
+    - Remove-AzureRMNetworkProfile
+    - Set-AzureRMNetworkProfile
+    - New-AzureRMContainerNicConfig
+    - New-AzureRmContainerNicConfigIpConfig
+* Added service association link on Subnet Model
+* Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
+* Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
+
+#### AzureRM.RedisCache
+* Allow any string as Size parameter going forward. Add P5 in PSArgumentCompleter popup
+
+#### AzureRM.Resources
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
+
+#### AzureRM.Sql
+* Fixed issue where some backup cmdlets would not recognize the current azure subscription
+
+#### AzureRM.Storage
+* Support get the Storage resource usage of a specific location, and add warning message for get global Storage resource usage is obsolete.
+    - Get-AzureRmStorageUsage
+
+#### AzureRM.Websites
+* New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUrl - Gets the Container Continuous Deployment Webhook URL
+* New Cmdlets New-AzureRMWebAppContainerPSSession and Enter-WebAppContainerPSSession  - Initiates a PowerShell remote session into a windows container app
+
+## 6.9.0 - September 2018
+#### General
+* AzureRM.SignalR was added to the AzureRM rollup module
+
+#### AzureRM.Profile
+* Minor changes to the storage common code
+* Updated help files to include full parameter types.
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set
+
+#### Azure.Storage
+* Support create Storage Context with OAuth.
+	- New-AzureStorageContext
+
+#### AzureRM.Cdn
+* Added Standard_Microsoft in Cdn pricing sku.
+
+#### AzureRM.Compute
+* Move dependencies on Keyvault and Storage to the common dependencies
+* Add support for more virutal machine sizes to AEM cmdlets
+* Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
+* Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
+* Add Invoke-AzureRmVmssVMRunCommand cmdlet
+
+#### AzureRM.Dns
+* Added support for alias record during dns record creation
+
+#### AzureRM.Insights
+* Fixed issues #6833 and #7102 (Diagnostic Settings area)
+    - Issues with the default name, i.e. 'service', during creation and listing/getting of diagnostic settings
+    - Issues creating diagnostic settings with categories
+* Added deprecation message for metrics time grains parameters
+    - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
+
+#### AzureRM.Network
+* Changes to LoadBalancer cmdlets
+  - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
+  - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
+  - LoadBalancerRuleConfig: added parameter EnableTcpReset
+  - LoadBalancerProbeConfig: added support for value "Https" for parameter Protocol
+* Added new commands for new LoadBalancer's subresource OutboundRule
+  - Add-AzureRmLoadBalancerOutboundRuleConfig
+  - Get-AzureRmLoadBalancerOutboundRuleConfig
+  - New-AzureRmLoadBalancerOutboundRuleConfig
+  - Set-AzureRmLoadBalancerOutboundRuleConfig
+  - Remove-AzureRmLoadBalancerOutboundRuleConfig
+* Added new HostedWorkloads property for PSNetworkInterface
+* Added new cmdlets for feature: Azure Firewall via ARM
+  - Added Get-AzureRmFirewall
+  - Added Set-AzureRmFirewall
+  - Added New-AzureRmFirewall
+  - Added Remove-AzureRmFirewall
+  - Added New-AzureRmFirewallApplicationRuleCollection
+  - Added New-AzureRmFirewallApplicationRule
+  - Added New-AzureRmFirewallNatRuleCollection
+  - Added New-AzureRmFirewallNatRule
+  - Added New-AzureRmFirewallNetworkRuleCollection
+  - Added New-AzureRmFirewallNetworkRule
+* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+  - New Cmdlets added:
+      - Add-AzureRmApplicationGatewayTrustedRootCertificate
+      - Get-AzureRmApplicationGatewayTrustedRootCertificate
+      - New-AzureRmApplicationGatewayTrustedRootCertificate
+      - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+      - Set-AzureRmApplicationGatewayTrustedRootCertificate
+      - Get-AzureRmApplicationGatewayAutoscaleConfiguration
+      - New-AzureRmApplicationGatewayAutoscaleConfiguration
+      - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
+      - Set-AzureRmApplicationGatewayAutoscaleConfiguration
+  - Cmdlets updated with optonal parameter -TrustedRootCertificate
+      - New-AzureRmApplicationGateway
+      - Set-AzureRmApplicationGateway
+      - New-AzureRmApplicationGatewayBackendHttpSetting
+      - Set-AzureRmApplicationGatewayBackendHttpSetting
+  - Cmdlets updated with optonal parameter -AutoscaleConfiguration
+      - New-AzureRmApplicationGateway
+      - Set-AzureRmApplicationGateway
+* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
+* Added support for multiple address prefixes in a subnet. Updated cmdlets:
+  - New-AzureRmVirtualNetworkSubnetConfig
+  - Set-AzureRmVirtualNetworkSubnetConfig
+  - Add-AzureRmVirtualNetworkSubnetConfig
+  - Get-AzureRmVirtualNetworkSubnetConfig
+  - Add-AzureRmApplicationGatewayAuthenticationCertificate
+  - Add-AzureRmApplicationGatewayFrontendIPConfig
+  - New-AzureRmApplicationGatewayFrontendIPConfig
+  - Set-AzureRmApplicationGatewayFrontendIPConfig
+  - Add-AzureRmApplicationGatewayIPConfiguration
+  - New-AzureRmApplicationGatewayIPConfiguration
+  - Set-AzureRmApplicationGatewayIPConfiguration
+  - Add-AzureRmNetworkInterfaceIpConfig
+  - New-AzureRmNetworkInterfaceIpConfig  - Set-AzureRmNetworkInterfaceIpConfig
+  - New-AzureRmVirtualNetworkGatewayIpConfig
+  - Add-AzureRmVirtualNetworkGatewayIpConfig
+  - Set-AzureRmLoadBalancerFrontendIpConfig
+  - Add-AzureRmLoadBalancerFrontendIpConfig
+  - New-AzureRmLoadBalancerFrontendIpConfig
+  - New-AzureRmNetworkInterface
+* Adding cmdlets for subnet delegation.
+  - New-AzureRmDelegation: Creates a new delegation, which can be added to a subnet
+  - Remove-AzureRmDelegation: Takes in a subnet and removes the provided delegation name from that subnet
+  - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
+  - Get-AzureRmDelegation
+  - Get-AzureRmAvailableServiceDelegations
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Support for managed Managed disk
+
+#### AzureRM.RedisCache
+* Updated Insights dependency.
+
+#### AzureRM.Resources
+* Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
+    - Add support for OnErrorDeployment with the new parameter.
+* Support managed identity on policy assignments.
+* Parameters with default values are no longer requred when assigning a policy with 'New-AzureRmPolicyAssignment'
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
+
+#### AzureRM.ServiceBus
+* Fixed issue #7161
+
+#### AzureRM.SignalR
+* Update SKU names to Free_F1 and Standard_S1
+* Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
+
+#### AzureRM.Storage
+* Support Immutability Policy in AzureRm.Storage
+    - Remove-AzureRmStorageAccountNetworkRule
+    - Get-AzureRmStorageContainer
+    - Update-AzureRmStorageContainer
+    - New-AzureRmStorageContainer
+    - Remove-AzureRmStorageContainer
+    - Add-AzureRmStorageContainerLegalHold
+    - Remove-AzureRmStorageContainerLegalHold
+    - Set-AzureRmStorageContainerImmutabilityPolicy
+    - Get-AzureRmStorageContainerImmutabilityPolicy
+    - Remove-AzureRmStorageContainerImmutabilityPolicy
+    - Lock-AzureRmStorageContainerImmutabilityPolicy
+
+#### AzureRM.Websites
+* Added two new cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
+* New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
+
+## 6.8.1 - August 2018
+#### General
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+#### AzureRM.ApiManagement
+* Fixed issue with default resource groups not being set.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
+    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to
+	4.0.4-preview nuget
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
+    - Fixed the Odata filter for Search by Name on Product
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
+    - Fixed the Odata filter for Search by Name on Api
+* Added support for AzureMonitor logger
+
+
+#### AzureRM.Compute
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+
+#### AzureRM.Network
+* Changed default cmdlet output presentation to table view
+
+#### AzureRM.PowerBIEmbedded
+* Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
+
+
+#### AzureRM.Resources
+* Fixed issue with creating managed applications from the MarketPlace.
+
+#### AzureRM.ServiceBus
+* Fixed issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+
+#### AzureRM.TrafficManager
+* Added Support for the MultiValue routing method
+    - New parameter 'MaxReturn' for MultiValue routing
+* Added Support for the Subnet routing method
+    - Support for IP address ranges (subnets) in endpoints
+* Added Support for Custom Headers in profiles
+* Added Support for Expected status code ranges in profiles
+* Added Support for Custom Headers in endpoints
+
+## 6.8.0 - August 2018
+#### General
+* Fixed issue with default resource groups not being set.
+
+#### AzureRM.Profile
+* Added expiration property to tokens returned during Connect-AzureRmAccount
+
+#### AzureRM.Compute
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+
+#### AzureRM.IotHub
+* Fix examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
+
+#### AzureRM.Network
+* Changed default models representation to table-view
+
+#### AzureRM.PowerBIEmbedded
+* Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
+
+#### AzureRM.Resources
+* Fixed issue with creating managed application from the MarketPlace.
+
+#### AzureRM.ServiceBus
+* Fix for issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+
+#### AzureRM.TrafficManager
+* Support for the MultiValue routing method
+    - New parameter 'MaxReturn' for MultiValue routing
+* Support for the Subnet routing method
+    - Support for IP address ranges (subnets) in endpoints
+* Support for Custom Headers in profiles
+* Support for Expected status code ranges in profiles
+* Support for Custom Headers in endpoints
+
+#### AzureRM.Websites
+* Fixed issue with default resource group being set incorrectly.
+
+## 6.7.0 - August 2018
+#### General
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Profile
+* Add user id to default context name to avoid context clashing
+    - https://github.com/Azure/azure-powershell/issues/6489
+* Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Enable tenant domain to be passed to '-TenantId' parameter for 'Connect-AzureRmAccount'
+    - https://github.com/Azure/azure-powershell/issues/3974
+    - https://github.com/Azure/azure-powershell/issues/6709
+
+#### Azure.Storage
+* Remove the 5TB limitation for Azure File Share quota
+- Set-AzureStorageShareQuota
+
+#### AzureRM.Compute
+* Add EvictionPolicy parameter to New-AzureRmVmssConfig
+* Use default location in the DiskFileParameterSet of New-AzureRmVm if no Location is specified.
+* Fix parameter description in Save-AzureRmVMImage
+* Fix Get-AzureRmVMDiskEncryptionStatus cmdlet for certain singlepass related scenarios
+
+#### AzureRM.DataLakeStore
+* Fix debugging when DebugPreference is set from powershell command line
+* Update example for Set-AzureRmDataLakeStoreItemAcl
+* Update example for Set-AzureRmDataLakeStoreItemAclEntry
+
+#### AzureRM.Network
+* Added example for Set-AzureRmLocalNetworkGateway
+* Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+* Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
+* Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnection
+* Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
+* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exitc
+
+#### AzureRM.RecoveryServices.Backup
+* Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
+* Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+* Added TargetResourceGroupName parameter to Restore-AzureRmRecoveryServicesBackupItem. The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
+
+#### AzureRM.Resources
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Fix issue where error is thrown when passing a context to Set-AzureRmResource
+    - https://github.com/Azure/azure-powershell/issues/5705
+* Fix example in New-AzureRmResourceGroupDeployment
+
+## 6.6.0 - July 2018
+#### General
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Profile
+* Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
+* Added ps1xml types to Common.Storage
+
+#### Azure.Storage
+* Support get Storage Context from DefaulfProfile
+* Add Ps1XmlAttribute to cmdlets output types properties.
+
+#### AzureRM.ApiManagement
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6370
+    - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6515
+    - Fixed bug in File.Save to not overload with Encoding Type
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6560
+    - Upgraded to 4.0.3 Nuget version which fixes the pattern exception on apiId
+
+#### AzureRM.Compute
+* Fix issue with creating a vm using DiskFileParameterSet in New-AzureRmVm failing because of PremiumLRS storage account type renaming.
+* Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
+* Update SimpleParameterSet of 'New-AzureRmVm' to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
+* Add example for 'New-AzureRmVM'
+* Update description for Set-AzureRmVMOSDisk
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix.
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 1.1.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter -LinkedDataFactoryName to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+
+#### AzureRM.DataLakeStore
+* Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
+
+#### AzureRM.EventHub
+* Updated piping for InputObject and ResourceId in remove cmdlets
+
+#### AzureRM.Insights
+* Fixed formatting of OutputType in help files
+* Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
+
+#### AzureRM.KeyVault
+* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
+
+#### AzureRM.Resources
+* Fix issue when providing both tag name and value for 'Get-AzureRmResource'
+    - https://github.com/Azure/azure-powershell/issues/6765
+* Fix piping scenario with 'Set-AzureRmResource'
+
+#### AzureRM.ServiceBus
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
+
+#### AzureRM.Sql
+* Adding Server Advanced Threat Protection support with the following cmdlets:
+	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+* Adding Vulnerability Assessment support with the following cmdlets:
+	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
+	- Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline
+	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
+* Fixed example in Remove-AzureRmSqlServerFirewallRule
+* Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
+
+#### AzureRM.Storage
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Tags
+* Remove incorrect statement from Tag cmdlet help
+    - https://github.com/Azure/azure-powershell/issues/3878
+
+## 6.5.0 - July 2018
+#### AzureRM.Profile
+* Updated help for 'Get-AzureRmContextAutosaveSetting'
+
+#### Azure.Storage
+* Support Upload Blob or File with write only Sas token
+- Set-AzureStorageBlobContent
+- Set-AzureStorageFileContent
+
+#### AzureRM.AnalysisServices
+* Add required property ResourceGroupName to AS.
+
+#### AzureRM.Automation
+* Update help and add example for 'New-AzureRMAutomationSchedule'
+
+#### AzureRM.Compute
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
+* Add example for 'Add-AzureRmVmssExtension'
+* Add examples for 'Remove-AzureRmVmssExtension'
+* Update help for 'Set-AzureRmVMAccessExtension'
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter 'SinglePlacementGroup' that enables the user to create the VMSS in a single placement group.
+
+#### AzureRM.EventHub
+* Added a readonly property 'PendingReplicationOperationsCount' to PSEventHubDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
+
+#### AzureRM.KeyVault
+* Update error message for Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.LogicApp
+* Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
+
+#### AzureRM.Network
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+* Regenerated RouteTable cmdlets with the latest generator version
+
+#### AzureRM.Relay
+* Updated markdown files, fix for the parameter name issue in example
+
+#### AzureRM.Resources
+* Update Roleassignment and roledefinition cmdlets:
+    - Remove extra roledefinition calls done as part of paging.
+* Fix Get-AzureRmRoleAssignment cmdlet
+    - Fix -ExpandPrincipalGroups command parameter functionality
+* Fix issue with 'Get-AzureRmResource' where '-ResourceType' parameter was case sensitive
+
+#### AzureRM.ServiceBus
+* Added top and skip parameter to list cmdlets
+* Added Standard to Premium NameSpace migration cmdlets :
+	- Start-AzureRmServiceBusMigration
+	- Get-AzureRmServiceBusMigration
+	- Complete-AzureRmServiceBusMigration
+	- Stop-AzureRmServiceBusMigration
+	- Remove-AzureRmServiceBusMigration
+* Added a readonly property 'PendingReplicationOperationsCount' to PSServiceBusDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
+
+#### AzureRM.ServiceFabric
+* Update example for 'New-AzureRmServiceFabricCluster'
+
+#### AzureRM.Sql
+* Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance
+	- Add-AzureRmSqlServerTransparentDataEncryptionCertificate
+	- Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+
+#### AzureRM.Websites
+* `Set-AzureRmWebApp -AssignIdentity` and  `Set-AzureRmWebAppSlot -AssignIdentity` when set to false will now remove the Identity property from the site object.Removing preview tag as well.
+* `Get-AzureRmWebAppMetrics`,`Get-AzureRmAppServicePlanMetrics` example updated
+* `Set-AzureRmWebApp -PhpVersion` supports off as a valid php version
+
+## 6.4.0 - July 2018
 #### General
 * Fixed formatting of OutputType in help files for most modules
 
@@ -1371,7 +2023,7 @@ NOTE: The following cmdlets will be deprecated in future release
         - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings
         - Updated Set-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
         - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
-        - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
+        - Updated New-AzureRmNetworkSecurityGroupÂ : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
         - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Added parameter TagMap
         - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Updated returned PSEffectiveSecurityRule object with SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings.
     * Added support for DDoS protection for virtual networks
@@ -1655,8 +2307,8 @@ NOTE: The following cmdlets will be deprecated in future release
       - Both Cmdlets now have an -EmailAddress parameter that can be used instead of the -UserPrincipalName parameter when querying for email address is appropriate.  If there are more than one matching email addresses in the directory then the Cmdlet will fail.
 * Network
     * New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
-        - SALifeTimeSeconds defaults to 27000 seconds
-        - SADataSizeKilobytes defaults to 102400000 KB
+     Â  Â - SALifeTimeSeconds defaults to 27000 seconds
+     Â  Â - SADataSizeKilobytes defaults to 102400000 KB
     * Added support for custom cipher suite configuration using ssl policy and listing all ssl options api in Application Gateway
         - Added optional parameter -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
             - Add-AzureRmApplicationGatewaySslPolicy
@@ -2093,7 +2745,7 @@ NOTE: The following cmdlets will be deprecated in future release
         - ProvisioningState and State are same in service side at this moment, the service side would differenciate ProvisioningState and State in future
 * CognitiveServices
     * Integrate with Cognitive Services Management SDK 0.2.1 to support more Cognitive Services API Types and SKUs.
-    * Remove the validation against “Type” and “SkuName” of Cognitive Services Account, this will allow the script to support new APIs/SKUs without changes.
+    * Remove the validation against â€œTypeâ€ and â€œSkuNameâ€ of Cognitive Services Account, this will allow the script to support new APIs/SKUs without changes.
 * Compute
     * Updated Set-AzureRmVMDscExtension cmdlet WmfVersion parameter to support "5.1"
     * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
@@ -2541,10 +3193,10 @@ NOTE: The following cmdlets will be deprecated in future release
 ## 2016.11.14 - Version 3.2.0
 * Network
 	* Get-AzureRmVirtualNetworkGatewayConnection
-	    - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
+	Â Â Â Â - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
 	* Reset-AzureRmVirtualNetworkGateway
-	    - Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
-	    - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
+	Â Â Â Â - Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
+	Â Â Â Â - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
 
 ## 2016.11.02 - Version 3.1.0
 * ApiManagement
@@ -2958,16 +3610,16 @@ NOTE: The following cmdlets will be deprecated in future release
 
 
 ##2016.07.11 version 1.6.0
-* **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:
-  * Correct implementation of –WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes
+* **Behavioral change for -Force, â€“Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: â€˜-Confirm:$falseâ€™ in their PowerShell scripts.** This changes are addressing following issues:
+  * Correct implementation of â€“WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes
   * Control over prompting using a session-wide $ConfirmPreference, so that the user is prompted based on the impact of a prospective change (as reported in the ConfirmImpact setting in the cmdlet)
-  * Cmdlet-specific control over confirmation prompts using the –Confirm parameter
-  * Consistent use of ShouldContinue and the –Force parameter across cmdlets, for only those actions that would require prompting from the user due to the special nature of the changes (for example, deleting hidden files)
+  * Cmdlet-specific control over confirmation prompts using the â€“Confirm parameter
+  * Consistent use of ShouldContinue and the â€“Force parameter across cmdlets, for only those actions that would require prompting from the user due to the special nature of the changes (for example, deleting hidden files)
   * Consistency with other PowerShell cmdlets, so that PowerShell scripting knowledge from other cmdlets is immediately applicable to the Azure PowerShell cmdlets.
 
 **Notice that now to *automatically skip all Prompts in all Circumstances* Azure PowerShell cmdlets require the user to supply two parameters:**
 ```
-My-CmdletWithConfirmation –Confirm:$false -Force
+My-CmdletWithConfirmation â€“Confirm:$false -Force
 ```
 * Azure Compute
   * Set-AzureRmVMADDomainExtension
@@ -3707,10 +4359,10 @@ My-CmdletWithConfirmation –Confirm:$false -Force
 
 ## 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
-    * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.
+    * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use â€“Name parameter in New-AzureVMConfig cmdlet.
     * Save-AzureVMImgage has new paramter -Path to save the JSON template returned from the server.
     * Add-AzureVMNetworkInterface has new paramter -NetworkInterface which accepts a list of NIC object returned by Get-AzureNetworkInterface cmdlet.
-    * Deprecated “-Name” parameter in Set-AzureVMSourceImage. The guidance is to use the Pub, Offer, SKU, Version method to specify the VM Images for the VM.
+    * Deprecated â€œ-Nameâ€ parameter in Set-AzureVMSourceImage. The guidance is to use the Pub, Offer, SKU, Version method to specify the VM Images for the VM.
     * Fixed the formatting of the output of VM Image cmdlets.
     * Fixed issues in New/Set-AzureDeployment & other service extension related cmdlets.
 * Azure Batch cmdlets
@@ -4076,7 +4728,7 @@ My-CmdletWithConfirmation –Confirm:$false -Force
       * Update-AzureSiteRecoveryProtectionEntity
   * Changed cmdlets:
     * Get-AzureSiteRecoveryJob
-    * Set-AzureSiteRecoveryProtectionEntity – protection profile is introduced
+    * Set-AzureSiteRecoveryProtectionEntity â€“ protection profile is introduced
     * Start-AzureSiteRecoveryCommitFailoverJob
     * Start-AzureSiteRecoveryPlannedFailoverJob
     * Start-AzureSiteRecoveryTestFailoverJob
@@ -4256,7 +4908,7 @@ My-CmdletWithConfirmation –Confirm:$false -Force
     * Remove-AzureSqlDatabaseAuditing
     * Remove-AzureSqlDatabaseServerAuditing
     * Use-AzureSqlDatabaseServerAuditingPolicy
-  * Allow users to define which storage account key (Primary or Secondary) to use when defining audit policy, using the “StorageKeyType” parameter.
+  * Allow users to define which storage account key (Primary or Secondary) to use when defining audit policy, using the â€œStorageKeyTypeâ€ parameter.
 
 ## 2014.10.27 Version 0.8.10
 * Azure Data Factory cmdlets in AzureResourceManager mode
@@ -4321,9 +4973,9 @@ My-CmdletWithConfirmation –Confirm:$false -Force
     * Added Add PublicConfigKey and PrivateConfigKey parameters to SetAzureVMExtension
 * Azure Website
     * Set-AzureWebsite exposes new parameters and Get-AzureWebsite returns them
-        * SlotStickyConnectionStringNames – connection string names not to be moved during swap operation
-        * SlotStickyAppSettingNames – application settings names not to be moved during swap operation
-        * AutoSwapSlotName – slot name to swap automatically with after successful deployment
+        * SlotStickyConnectionStringNames â€“ connection string names not to be moved during swap operation
+        * SlotStickyAppSettingNames â€“ application settings names not to be moved during swap operation
+        * AutoSwapSlotName â€“ slot name to swap automatically with after successful deployment
 * Recovery Services
     * Import & view vault settings
         * Import-AzureSiteRecoveryVaultSettingsFile
@@ -4915,12 +5567,12 @@ Virtual Network cmdlets
 
 ## 2013.04.16 Version 0.6.13
 * Completely fixed issues with first website creation on a new account. Now you can use PowerShell with a new account directly without the need to go to the Azure portal.
-* BREAKING CHANGE: New-AzureVM and New-AzureQuickVM now require an –AdminUserName parameter when creating Windows based VMs.
+* BREAKING CHANGE: New-AzureVM and New-AzureQuickVM now require an â€“AdminUserName parameter when creating Windows based VMs.
 * Added support for virtual machine high memory SKUs (A6 and A7).
-* Remote PowerShell is now enabled by default on Windows based VMs using https. To disable: specify the –DisableWinRMHttps parameter on New-AzureQuickVM or Add-AzureProvisioningConfig. To enable using http: specify –EnableWinRMHttp parameter (Note: http is intended for VM to VM communication and a public endpoint is not created by default).
+* Remote PowerShell is now enabled by default on Windows based VMs using https. To disable: specify the â€“DisableWinRMHttps parameter on New-AzureQuickVM or Add-AzureProvisioningConfig. To enable using http: specify â€“EnableWinRMHttp parameter (Note: http is intended for VM to VM communication and a public endpoint is not created by default).
 * Added Get-AzureWinRMUri new cmdlet to get the connection string URI for Windows Remote Management.
 * Added Set-AzureAvailabilitySet new cmdlet to group similar virtual machines into an availability set after deployment.
-* New-AzureVM and New-AzureQuickVM now support a parameter named –X509Certificates. When a certificate is added to this array it is automatically uploaded and deployed to the virtual machine.
+* New-AzureVM and New-AzureQuickVM now support a parameter named â€“X509Certificates. When a certificate is added to this array it is automatically uploaded and deployed to the virtual machine.
 * Improved *-AzureEndpoint cmdlets:
   * Allows a simple endpoint to be created.
   * Allows a load balanced endpoint to be created.

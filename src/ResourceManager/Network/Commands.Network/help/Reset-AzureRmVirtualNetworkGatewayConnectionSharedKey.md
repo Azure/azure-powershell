@@ -9,6 +9,7 @@ schema: 2.0.0
 # Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
 
 ## SYNOPSIS
+Resets the shared key of the virtual network gateway connection.
 
 ## SYNTAX
 
@@ -19,8 +20,19 @@ Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
+Resets the shared key of the virtual network gateway connection.
 
 ## EXAMPLES
+
+### Example 1:
+```
+Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName myRG -Name myConnection -KeyLength 32
+
+Confirm
+Are you sure you want to overwrite resource 'myConnection'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+h0FmZA3BzXHqRE00J0wie0Mti0cCZwJm
+```
 
 ## PARAMETERS
 
@@ -28,7 +40,7 @@ Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <String> -ResourceGr
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -41,7 +53,7 @@ Accept wildcard characters: False
 
 ### -Force
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +66,7 @@ Accept wildcard characters: False
 
 ### -KeyLength
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +79,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -80,7 +92,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +107,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -111,7 +123,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -127,8 +139,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.UInt32
 
 ## OUTPUTS
 

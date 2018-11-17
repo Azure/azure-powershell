@@ -10,7 +10,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Power on an infrastructure role instance.
 
-.PARAMETER InfraRoleInstance
+.PARAMETER Name
     Name of an infrastructure role instance.
 
 .PARAMETER ResourceGroupName
@@ -80,8 +80,6 @@ function Start-AzsInfrastructureRoleInstance {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}'
@@ -93,6 +91,8 @@ function Start-AzsInfrastructureRoleInstance {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $Location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['infraRoleInstance']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Start infrastructure role instance")) {

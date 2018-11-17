@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 2DC97415-D59A-428E-8FFE-56B17B320DAF
@@ -22,20 +22,14 @@ New-AzureRmAutomationModule [-Name] <String> [-ContentLinkUri] <Uri> [-ResourceG
 The **New-AzureRmAutomationModule** cmdlet imports a module into Azure Automation.
 This command accepts a compressed file that has a .zip file name extension.
 The file contains a folder that includes a file that is one of the following types: 
-
 - wps_2 module, which has a .psm1 or .dll file name extension 
 - wps_2 module manifest, which has a .psd1 file name extension
-
 The name of the .zip file, the name of the folder, and the name of the file in the folder must be the same.
-
 Specify the .zip file as a URL that the Automation service can access.
-
 If you import a wps_2 module into Automation by using this cmdlet or the Set-AzureRmAutomationModule cmdlet, the operation is asynchronous.
 The command finishes whether the import succeeds or fails.
 To check whether it succeeded, run the following command:
-
 `PS C:\\\> $ModuleInstance = Get-AzureRmAutomationModule -Name `ModuleName
-
 Check the **ProvisioningState** property for a value of Succeeded.
 
 ## EXAMPLES
@@ -54,9 +48,9 @@ The module is stored in an Azure blob in a storage account named contosostorage 
 Specifies the name of the Automation account for which this cmdlet imports a module.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,7 +63,7 @@ Accept wildcard characters: False
 The url to a module zip package
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases: ContentLink
 
@@ -84,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,9 +93,9 @@ Accept wildcard characters: False
 Specifies the name of the module that this cmdlet imports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -114,9 +108,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet imports a module.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -130,8 +124,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Uri
 
 ## OUTPUTS
 

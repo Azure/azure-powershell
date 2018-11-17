@@ -17,10 +17,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.IntegrationRuntimeKey,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),
-        OutputType(typeof(PSIntegrationRuntimeKeys))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeKey",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSIntegrationRuntimeKeys))]
     public class GetAzureDataFactoryIntegrationRuntimeKeyCommand : IntegrationRuntimeCmdlet
     {
         public override void ExecuteCmdlet()

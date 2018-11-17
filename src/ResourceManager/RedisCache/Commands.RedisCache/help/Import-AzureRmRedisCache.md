@@ -36,7 +36,7 @@ This command imports data from the blob that is specified by the SAS URL into Az
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -49,15 +49,12 @@ Accept wildcard characters: False
 
 ### -Files
 Specifies the SAS URLs of blobs whose content this cmdlet imports into the cache. You can generate the SAS URLs using the following PowerShell commands:
-
 $storageAccountContext = New-AzureStorageContext -StorageAccountName "storageName" -StorageAccountKey "key"
-
 $sasKeyForBlob = New-AzureStorageBlobSASToken -Container "containerName" -blob "blobName" -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Context $storageAccountContext -FullUri
-
 Import-AzureRmRedisCache -ResourceGroupName "ResourceGroupName" -Name "cacheName" -Files ($sasKeyForBlob) -Force
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +69,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +85,7 @@ Specifies the format of the blob.
 Currently rdb is the only supported format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +100,7 @@ Accept wildcard characters: False
 Specifies the name of a cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +116,7 @@ Indicates that this cmdlet returns a Boolean that indicates whether the operatio
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +131,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -165,7 +162,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -181,12 +178,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
+
+### System.String[]
 
 ## OUTPUTS
 
-### None
+### System.Boolean
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website

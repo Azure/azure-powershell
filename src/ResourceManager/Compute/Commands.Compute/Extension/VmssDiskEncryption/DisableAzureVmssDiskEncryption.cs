@@ -18,16 +18,20 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsLifecycle.Disable,
-        ProfileNouns.AzureVmssDiskEncryption,
-        SupportsShouldProcess = true)]
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSUpgradePolicy),
+        DeprecatedOutputProperties = new string[] { "AutomaticOSUpgrade", "AutoOSUpgradePolicy" })]
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetIdentity),
+        DeprecatedOutputProperties = new string[] { "IdentityIds" })]
+#endif
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryption",SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public class RemoveAzureVmssDiskEncryptionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
@@ -36,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMScaleSetName { get; set; }
 
@@ -54,6 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
 

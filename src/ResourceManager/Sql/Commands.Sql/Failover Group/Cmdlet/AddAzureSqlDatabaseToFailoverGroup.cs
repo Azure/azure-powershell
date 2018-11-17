@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to add Azure Sql Databases into a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlDatabaseToFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseToFailoverGroup",ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Network
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections;
 
-    [Cmdlet(VerbsCommon.Move, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true),
-        OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit", SupportsShouldProcess = true),OutputType(typeof(PSExpressRouteCircuit))]
     public class MoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -33,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -110,7 +110,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-
-
-
-

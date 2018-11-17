@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmSqlDatabase",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
     public class RestoreAzureRmSqlDatabase
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
@@ -142,6 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Server to restore the database to.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -150,6 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
                     HelpMessage = "The name of the target database to restore to.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         public string TargetDatabaseName { get; set; }
 
         /// <summary>
@@ -225,6 +226,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ParameterSetName = FromLongTermRetentionBackupSetName,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the elastic pool into which the database should be restored.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/elasticPools", "ResourceGroupName", "ServerName")]
         public string ElasticPoolName { get; set; }
 
         /// <summary>

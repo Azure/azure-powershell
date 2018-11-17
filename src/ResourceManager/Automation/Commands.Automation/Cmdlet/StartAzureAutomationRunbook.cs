@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Starts an Azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
     [OutputType(typeof(Job), ParameterSetName = new[] { AutomationCmdletParameterSets.ByAsynchronousReturnJob })]
     [OutputType(typeof(PSObject), ParameterSetName = new[] { AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
     public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob, Mandatory = false, HelpMessage = "The runbook parameters.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, Mandatory = false, HelpMessage = "The runbook parameters.")]
+        [Alias("JobParameters")]
         public IDictionary Parameters { get; set; }
 
         /// <summary>

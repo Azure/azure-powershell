@@ -22,5 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         internal const string ForSite = "ForSite";
 
         internal const string ForBackupVaultType = "ForBackupVaultType";
+
+        internal const string ForSiteWithCertificate = "ForSiteWithCertificate";
+        internal const string ByDefaultWithCertificate = "ByDefaultWithCertificate";
+        internal const string ForBackupVaultTypeWithCertificate = "ForBackupVaultTypeWithCertificate";
+
     }
 }

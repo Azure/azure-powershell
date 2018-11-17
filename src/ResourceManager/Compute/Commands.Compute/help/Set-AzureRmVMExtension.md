@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 064196C3-ABF3-4F3A-A4AB-EB0D27098C70
@@ -44,7 +44,6 @@ PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "W
 The first two commands use standard Windows PowerShell syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables.
 For more information, type `Get-Help about_Hash_Tables`.
 The second command includes two values previously created and stored in variables.
-
 The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $Settings and $ProtectedSettings.
 The command specifies other required information that includes the publisher and the extension type.
 
@@ -56,7 +55,6 @@ PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "W
 ```
 
 The first two commands create strings that contain settings, and then stores them in the $SettingsString and $ProtectedSettingsString variables.
-
 The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $SettingsString and $ProtectedSettingsString.
 The command specifies other required information that includes the publisher and the extension type.
 
@@ -66,7 +64,7 @@ The command specifies other required information that includes the publisher and
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,7 +95,7 @@ Indicates that this cmdlet prevents the Azure guest agent from automatically upd
 By default, this cmdlet enables the guest agent to update the extensions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +110,7 @@ Accept wildcard characters: False
 Specifies the extension type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Type
 
@@ -126,11 +124,10 @@ Accept wildcard characters: False
 ### -ForceRerun
 Indicates that this cmdlet forces a rerun of the same extension configuration on the virtual machine without uninstalling and reinstalling the extension.
 The value can be any string different from the current value.
-
 If forceUpdateTag is not changed, updates to public or protected settings are still applied by the handler.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +142,7 @@ Accept wildcard characters: False
 Specifies the location of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +157,7 @@ Accept wildcard characters: False
 Specifies the name of an extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -176,7 +173,7 @@ Specifies private configuration for the extension, as a hash table.
 This cmdlet encrypts the private configuration.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: Settings
 Aliases:
 
@@ -192,7 +189,7 @@ Specifies private configuration for the extension, as a string.
 This cmdlet encrypts the private configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SettingString
 Aliases:
 
@@ -208,7 +205,7 @@ Specifies the name of the extension publisher.
 The publisher provides a name when the publisher registers an extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +220,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +236,7 @@ Specifies public configuration for the extension, as a hash table.
 This cmdlet does not encrypt public configuration.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: Settings
 Aliases:
 
@@ -255,7 +252,7 @@ Specifies public configuration for the extension, as a string.
 This cmdlet does not encrypt public configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SettingString
 Aliases:
 
@@ -270,7 +267,7 @@ Accept wildcard characters: False
 Specifies the version of the extension to use for this virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -286,7 +283,7 @@ Specifies the name of a virtual machine.
 This cmdlet modifies extensions for the virtual machine that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -301,7 +298,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -314,11 +311,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -334,8 +330,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

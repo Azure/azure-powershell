@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete the Standard to Premium migration.
+        /// </summary>
+        internal static string CompleteMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("CompleteMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create New Namespace:{0} for ResourceGroup:{1}.
         /// </summary>
         internal static string CreateNamesapce {
@@ -205,6 +214,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete the Migration Configuration.
+        /// </summary>
+        internal static string RemoveMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Namespace:{0} ofthe ResourceGroup:{1}.
         /// </summary>
         internal static string RemoveNamespace {
@@ -300,6 +318,24 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         internal static string RemovingTopicAuthorizationRule {
             get {
                 return ResourceManager.GetString("RemovingTopicAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get the Migration configuration .
+        /// </summary>
+        internal static string RevertMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("RevertMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Standard to Premium Migration.
+        /// </summary>
+        internal static string StartMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("StartMigrationConfiguration", resourceCulture);
             }
         }
         

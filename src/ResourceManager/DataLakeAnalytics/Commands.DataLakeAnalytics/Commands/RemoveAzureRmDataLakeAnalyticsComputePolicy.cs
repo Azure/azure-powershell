@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlAnalyticsComputePolicy")]
     public class RemoveAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {

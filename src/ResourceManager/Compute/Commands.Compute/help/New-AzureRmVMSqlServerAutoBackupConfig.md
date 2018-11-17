@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 0AC17275-17A9-47DE-BF04-C1A51DF057DC
@@ -61,7 +61,6 @@ RetentionPeriodInDays : 10
 
 The first command creates a storage context, and then stores it in the $StorageContext variable.
 For more information, see New-AzureStorageContext.
-
 The second command creates an automatic backup configuration object by specifying the storage context in $StorageContext.
 Automatic backup is enabled and automatic backups are kept for 10 days.
 
@@ -85,7 +84,7 @@ To create a secure string, use the ConvertTo-SecureString cmdlet.
 Backup schedule type, manual or automated
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Manual, Automated
@@ -101,7 +100,7 @@ Accept wildcard characters: False
 Backup system databases
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +115,7 @@ Accept wildcard characters: False
 Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -148,7 +147,7 @@ If you specify this parameter, automated backup sets a backup schedule for all c
 This updates your Managed Backup settings to follow this schedule.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +162,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables encryption.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +177,7 @@ Accept wildcard characters: False
 Sql Server Full Backup frequency, daily or weekly
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Daily, Weekly
@@ -194,7 +193,7 @@ Accept wildcard characters: False
 Hour of the day (0-23) when the Sql Server Full Backup should start
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +208,7 @@ Accept wildcard characters: False
 Sql Server Full Backup window in hours
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +223,7 @@ Accept wildcard characters: False
 Sql Server Log Backup frequency, once every 1-60 minutes
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +238,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +253,7 @@ Accept wildcard characters: False
 Specifies the number of days to retain a backup.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -271,7 +270,7 @@ To obtain an **AzureStorageContext** object, use the New-AzureStorageContext cmd
 The default is the storage account that is associated with the SQL Server virtual machine.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: StorageContextSqlServerAutoBackup
 Aliases:
 
@@ -286,7 +285,7 @@ Accept wildcard characters: False
 Specifies the storage key of the blob storage account.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -301,7 +300,7 @@ Accept wildcard characters: False
 Specifies the Uniform Resource Identifier (URI) of the blob storage account.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -317,8 +316,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
+
+### System.Int32
+
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### System.Uri
+
+### System.Security.SecureString
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

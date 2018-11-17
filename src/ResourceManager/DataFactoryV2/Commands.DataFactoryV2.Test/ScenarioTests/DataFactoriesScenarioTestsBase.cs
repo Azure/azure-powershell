@@ -16,21 +16,26 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactory;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Rest.Azure.Authentication;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
+        private const string TenantIdKey = "TenantId";
+
         private EnvironmentSetupHelper helper;
 
         protected DataFactoriesScenarioTestsBase()
@@ -42,24 +47,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             var resourceManagementClient = GetResourceManagementClient(context);
             var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
-            var subscriptionsClient = GetSubscriptionClient();
-            var galleryClient = GetGalleryClient();
-            var authorizationManagementClient = GetAuthorizationManagementClient();
+            var subscriptionsClient = GetSubscriptionClient(context);
+            var authorizationManagementClient = GetAuthorizationManagementClient(context);
+            var graphClient = GetGraphClient(context);
 
             helper.SetupManagementClients(dataPipelineManagementClient,
                 resourceManagementClient,
                 subscriptionsClient,
-                galleryClient,
+                graphClient,
                 authorizationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -69,6 +76,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                UpdateDefaultContextForPlayback();
+
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
@@ -91,19 +100,64 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected SubscriptionClient GetSubscriptionClient()
+        protected Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(new LegacyTest.CSMTestEnvironmentFactory());
+            return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected GalleryClient GetGalleryClient()
+        protected AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(new LegacyTest.CSMTestEnvironmentFactory());
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected AuthorizationManagementClient GetAuthorizationManagementClient()
+        private GraphRbacManagementClient GetGraphClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
+            var environment = TestEnvironmentFactory.GetTestEnvironment();
+            string tenantId = environment.Tenant;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
+
+                string password;
+                string spnClientId;
+                string spnSecret;
+                var connStr = environment.ConnectionString;
+                connStr.KeyValuePairs.TryGetValue(ConnectionStringKeys.PasswordKey, out password);
+                connStr.KeyValuePairs.TryGetValue(ConnectionStringKeys.ServicePrincipalKey, out spnClientId);
+                connStr.KeyValuePairs.TryGetValue(ConnectionStringKeys.ServicePrincipalSecretKey, out spnSecret);
+
+                var graphAadServiceSettings = new ActiveDirectoryServiceSettings()
+                {
+                    AuthenticationEndpoint = new Uri(environment.Endpoints.AADAuthUri + environment.Tenant),
+                    TokenAudience = environment.Endpoints.GraphTokenAudienceUri
+                };
+
+                var accessToken = ApplicationTokenProvider
+                    .LoginSilentAsync(environment.Tenant, spnClientId, spnSecret, graphAadServiceSettings)
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+                environment.TokenInfo[TokenAudience.Graph] = accessToken as TokenCredentials;
+            }
+
+            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            client.TenantID = tenantId;
+
+            return client;
+        }
+
+        private void UpdateDefaultContextForPlayback()
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback
+                && HttpMockServer.Variables.ContainsKey(TenantIdKey))
+            {
+                if (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Tenant != null)
+                {
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = HttpMockServer.Variables[TenantIdKey];
+                }
+            }
         }
     }
 }
+

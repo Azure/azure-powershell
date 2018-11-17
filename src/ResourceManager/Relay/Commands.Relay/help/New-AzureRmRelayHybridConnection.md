@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/new-azurermrelayhybridconnection
 schema: 2.0.0
 ---
@@ -73,10 +73,10 @@ Creates a new HybirdConnection \`TestHybirdConnection1\` in the specified Relay 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,9 +91,9 @@ Accept wildcard characters: False
 HybridConnections object.
 
 ```yaml
-Type: HybridConnectionAttibutes
+Type: Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
 Parameter Sets: HybridConnectionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,9 +106,9 @@ Accept wildcard characters: False
 HybridConnections Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -121,9 +121,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 true if client authorization is needed for this HybridConnections; otherwise, false
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: HybridConnectionPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,9 +151,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -167,9 +167,9 @@ Gets or sets usermetadata is a placeholder to store user-defined string data for
 it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: HybridConnectionPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -182,13 +182,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -198,45 +198,33 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
+### System.String
+Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### -NamespaceName
-System.String
-
-### -HybridConnectionsName
-System.String
-
-### -InputObject
-Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-
-### -RequiresClientAuthorization
-System.Boolean
-
-### -UserMetadata
-System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+
 
 ## NOTES
 
 ## RELATED LINKS
-

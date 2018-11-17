@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 5871C962-27D7-4EC8-927E-D4CAE5F23C58
@@ -53,9 +53,9 @@ This command gets the log output from the cluster named your-hadoop-001.
 Specifies the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -68,9 +68,9 @@ Accept wildcard characters: False
 Specifies the default container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Specifies the default Storage account key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -113,9 +113,9 @@ Accept wildcard characters: False
 Specifies the default Storage account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -127,14 +127,13 @@ Accept wildcard characters: False
 ### -DisplayOutputType
 Specifies the job output type being requested.
 The acceptable values for this parameter are:
-
 - StandardOutput
 - StandardError
 
 ```yaml
-Type: JobDisplayOutputType
+Type: Microsoft.Azure.Commands.HDInsight.Models.Job.JobDisplayOutputType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: StandardOutput, StandardError
 
 Required: False
@@ -148,7 +147,7 @@ Accept wildcard characters: False
 Specifies the cluster login (HTTP) credentials for the cluster.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases: ClusterCredential
 
@@ -163,9 +162,9 @@ Accept wildcard characters: False
 Specifies the job ID of the job whose output will be fetched.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -178,9 +177,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -195,7 +194,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

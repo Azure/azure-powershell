@@ -38,9 +38,9 @@ Creates a server named testserver in the Azure region West-US and in resource gr
 A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -53,9 +53,9 @@ Accept wildcard characters: False
 The blob container Uri for backup the Analysis Services server
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -68,9 +68,9 @@ Accept wildcard characters: False
 Default connection mode of an Analysis service server
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: All, Readonly
 
 Required: False
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 Firewall config of an Analysis server
 
 ```yaml
-Type: PsAzureAnalysisServicesFirewallConfig
+Type: Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 Gateway resource Id for assocaite to an Analysis server
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 The Azure region where the Analysis Services server is hosted
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Name of the Analysis Services server
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 Read only replica count of an Analysis service server
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,9 +174,9 @@ Accept wildcard characters: False
 Name of the Azure resource group to which the server belongs
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -190,9 +190,9 @@ The name of the Sku for the server.
 The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2' for the Basic tier and 'D1' for Development tier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -205,9 +205,9 @@ Accept wildcard characters: False
 Key-value pairs in the form of a hash table set as tags on the server.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 Prompts user to confirm whether to perform the operation
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 Describes the actions the current operation will perform without actually performing them
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -251,8 +251,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Int32
+
+### Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig
 
 ## OUTPUTS
 

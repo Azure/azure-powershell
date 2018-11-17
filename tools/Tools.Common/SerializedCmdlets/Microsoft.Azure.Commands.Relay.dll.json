@@ -13,8 +13,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -173,7 +173,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -259,7 +259,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -374,7 +374,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -513,7 +513,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -652,7 +652,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -698,8 +698,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "SecondaryConnectionString": "System.String",
@@ -885,7 +885,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -971,7 +971,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1086,7 +1086,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1225,7 +1225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1364,7 +1364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1410,8 +1410,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -1592,7 +1592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1706,7 +1706,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1849,7 +1849,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2016,7 +2016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2183,7 +2183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2229,8 +2229,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "SecondaryConnectionString": "System.String",
@@ -2429,6 +2429,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "KeyValue",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRmContext",
@@ -2437,7 +2455,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2542,6 +2560,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "KeyValue",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -2550,7 +2592,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2684,6 +2726,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "KeyValue",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -2692,7 +2758,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2850,6 +2916,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "KeyValue",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -2858,7 +2948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3016,6 +3106,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "KeyValue",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -3024,7 +3138,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3219,7 +3333,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3353,7 +3467,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3516,7 +3630,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3703,7 +3817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3890,7 +4004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3936,8 +4050,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -4092,8 +4206,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -4179,7 +4293,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4265,7 +4379,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4328,8 +4442,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -4475,7 +4589,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4562,8 +4676,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -4709,7 +4823,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4796,8 +4910,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -4943,7 +5057,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4982,8 +5096,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -5105,7 +5219,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5220,7 +5334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5266,8 +5380,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -5397,7 +5511,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5507,7 +5621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5553,8 +5667,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -5680,8 +5794,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -5835,7 +5949,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5945,7 +6059,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5984,8 +6098,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -6138,7 +6252,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6356,7 +6470,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6479,7 +6593,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6589,7 +6703,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6635,8 +6749,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -6762,8 +6876,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -6856,7 +6970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6966,7 +7080,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7005,8 +7119,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -7159,7 +7273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7298,7 +7412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7344,8 +7458,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7506,8 +7620,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7655,7 +7769,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7765,7 +7879,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7804,8 +7918,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7993,7 +8107,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8158,7 +8272,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8204,8 +8318,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -8370,7 +8484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8480,7 +8594,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8603,7 +8717,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8713,7 +8827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8759,8 +8873,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -8921,8 +9035,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -9050,7 +9164,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9160,7 +9274,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9199,8 +9313,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-                  "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -9388,7 +9502,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9527,7 +9641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9573,10 +9687,10 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Reason": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes]",
+              "Reason": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes]",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
               "Message": "System.String"
             },
@@ -9678,7 +9792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9740,7 +9854,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9786,10 +9900,10 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -9951,7 +10065,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -10037,7 +10151,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -10083,10 +10197,10 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -10284,7 +10398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -10418,7 +10532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -10523,7 +10637,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -10609,7 +10723,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -10655,10 +10769,10 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -10835,9 +10949,9 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
             },
             "ElementType": null,
@@ -10911,7 +11025,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -11018,9 +11132,9 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+                    "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
                   },
                   "ElementType": null,
@@ -11100,7 +11214,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -11146,10 +11260,10 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-            "Name": "Microsoft.Azure.Commands.Relay.Models.OperationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.OperationAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSOperationAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSOperationAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Display": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes",
+              "Display": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes",
               "Name": "System.String"
             },
             "ElementType": null,
@@ -11228,7 +11342,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -11266,7 +11380,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -11466,7 +11580,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
         "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -11483,7 +11597,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TenantMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Id": "System.String",
@@ -11511,7 +11625,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
@@ -11544,7 +11658,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "Name": "System.String",
@@ -11558,7 +11672,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "Directory": "System.String"
@@ -11571,7 +11685,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CacheData": "System.Byte[]"
       },
@@ -11609,7 +11723,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11621,7 +11735,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11633,7 +11747,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11688,22 +11802,22 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes]": {
+    "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes]": {
       "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes"
+        "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes"
       ],
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes": {
+    "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes": {
       "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-      "Name": "Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11805,10 +11919,10 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.Relay.Models.SkuAttributes": {
+    "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes": {
       "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-      "Name": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -11850,10 +11964,10 @@
         }
       ]
     },
-    "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes": {
+    "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes": {
       "Namespace": "Microsoft.Azure.Commands.Relay.Models",
-      "Name": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.5.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes, Microsoft.Azure.Commands.Relay, Version=0.3.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Provider": "System.String",
         "Resource": "System.String",

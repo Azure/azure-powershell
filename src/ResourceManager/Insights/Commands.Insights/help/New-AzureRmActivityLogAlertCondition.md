@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 5E854358-CA9D-4336-BA6A-BF7B1FADAB50
@@ -29,7 +29,6 @@ PS C:\>$condition = New-AzureRmActivityLogAlertCondition -Field "Requests" -Equa
 ```
 
 This command creates a new activity log alert condition object in memory.
-
 **NOTE**: when this cmdlet is used with Set-AzureRmActivityLogAlert at least one of these objects, passed as parameters, must have its Field equal to "Category". Otherwise, the backend responds with a 400 (BadRequest.)
 
 ## PARAMETERS
@@ -38,7 +37,7 @@ This command creates a new activity log alert condition object in memory.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -53,9 +52,9 @@ Accept wildcard characters: False
 Specifies the equals property for the leaf condition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,9 +67,9 @@ Accept wildcard characters: False
 Specifies the field for the condition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,8 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

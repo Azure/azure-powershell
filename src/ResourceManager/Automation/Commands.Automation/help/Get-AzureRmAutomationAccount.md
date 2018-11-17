@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B32A8423-A7AA-418E-A95D-6C18566741AB
@@ -27,7 +27,6 @@ Get-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String>
 
 ## DESCRIPTION
 The **Get-AzureRmAutomationAccount** cmdlet gets Azure Automation accounts in a resource group.
-
 For more information about Automation accounts, see the New-AzureRmAutomationAccount cmdlet.
 
 ## EXAMPLES
@@ -52,7 +51,7 @@ This command gets the Automation account named ContosoAutomationAccount in the r
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 Specifies the name of the Automation account that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAutomationAccountName
 Aliases: AutomationAccountName
 
@@ -82,9 +81,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet gets Automation accounts.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -94,9 +93,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAutomationAccountName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -110,8 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

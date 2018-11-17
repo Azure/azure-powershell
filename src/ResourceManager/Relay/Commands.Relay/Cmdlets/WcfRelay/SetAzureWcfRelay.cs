@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// <summary>
     /// 'Set-AzureRmWcfRelay' Cmdlet updates the specified WcfRelay
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayWcfRelayVerb, SupportsShouldProcess = true), OutputType(typeof(WcfRelayAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WcfRelay", SupportsShouldProcess = true), OutputType(typeof(PSWcfRelayAttributes))]
     public class SetAzureWcfRelay : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "WcfRelay object.")]
         [ValidateNotNullOrEmpty]
-        public WcfRelayAttributes InputObject { get; set; }
+        public PSWcfRelayAttributes InputObject { get; set; }
         
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
         
         public override void ExecuteCmdlet()
         {
-            WcfRelayAttributes wcfRelay = new WcfRelayAttributes();
+            PSWcfRelayAttributes wcfRelay = new PSWcfRelayAttributes();
             
             if (InputObject != null)
             {

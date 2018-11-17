@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application Credential.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
     public class NewAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue, HelpMessage = "The application object id.")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!this.IsParameterBound(c => c.EndDate))
                 {
-                    WriteVerbose("No value specified for -EndDate parameter; setting the value to one year after start date.");
+                    WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);
                 }
 

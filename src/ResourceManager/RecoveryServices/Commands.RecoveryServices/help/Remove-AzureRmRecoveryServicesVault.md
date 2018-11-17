@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
 Module Name: AzureRM.RecoveryServices
 ms.assetid: 466F6B7C-BA7E-4DFD-8504-5A196A335231
@@ -38,7 +38,7 @@ Specifies an Azure Site Recovery vault object.
 ```yaml
 Type: ARSVault
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,8 +97,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ARSVault
-Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 

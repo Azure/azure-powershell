@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Get the log profiles.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile", SupportsShouldProcess = true), OutputType(typeof(PSLogProfile))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogProfile", SupportsShouldProcess = true), OutputType(typeof(PSLogProfile))]
     public class AddAzureRmLogProfileCommand : ManagementCmdletBase
     {
         private static readonly List<string> ValidCategories = new List<string> { "Delete", "Write", "Action" };

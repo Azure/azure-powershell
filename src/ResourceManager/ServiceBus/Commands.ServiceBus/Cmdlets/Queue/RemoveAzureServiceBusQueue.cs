@@ -14,36 +14,77 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServiceBus.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusQueue' Cmdlet removes the specified Queue
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusQueueVerb, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue", DefaultParameterSetName = QueuePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ParameterSetName = QueuePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = QueuePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
+        [Parameter(Mandatory = true, ParameterSetName = QueuePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
         [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = QueueInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Queue Object")]
+        [ValidateNotNullOrEmpty]
+        public PSQueueAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = QueueResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Service Bus Queue Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+        
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(QueueInputObjectParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+            }
+            else if (ParameterSetName.Equals(QueueResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+            }
+
             // delete a Queue 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveQueue, Name, Namespace)))
             {
-                WriteObject(Client.DeleteQueue(ResourceGroupName, Namespace, Name));
+                try
+                {
+                    var result = Client.DeleteQueue(ResourceGroupName, Namespace, Name);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(result);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

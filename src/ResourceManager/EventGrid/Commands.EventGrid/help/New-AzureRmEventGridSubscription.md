@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/new-azurermeventgridsubscription
@@ -103,7 +103,7 @@ Creates a new event subscription \`EventSubscription1\` to an EventHub namespace
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,9 +119,9 @@ Event subscription destination endpoint.
 This can be a webhook URL or the Azure resource ID of an EventHub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -131,9 +131,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -147,9 +147,9 @@ Endpoint Type.
 This can be webhook or eventhub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 Accepted values: webhook, eventhub
 
 Required: False
@@ -160,9 +160,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 Accepted values: webhook, eventhub
 
 Required: False
@@ -176,9 +176,9 @@ Accept wildcard characters: False
 The name of the event subscription
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -188,9 +188,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -203,9 +203,9 @@ Accept wildcard characters: False
 Filter that specifies a list of event types to include.If not specified, all event types will be included.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -215,9 +215,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -230,9 +230,9 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -245,9 +245,9 @@ Accept wildcard characters: False
 Labels for the event subscription
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -257,9 +257,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -272,7 +272,7 @@ Accept wildcard characters: False
 The resource group of the topic.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CustomTopicEventSubscriptionParameterSet
 Aliases: ResourceGroup
 
@@ -299,9 +299,9 @@ Accept wildcard characters: False
 The identifier of the resource to which the event subscription should be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -315,9 +315,9 @@ Filter that specifies that only events matching the specified subject prefix wil
 If not specified, events with all subject prefixes will be included.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -327,9 +327,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -343,9 +343,9 @@ Filter that specifies that the subject field should be compared in a case sensit
 If not specified, subject will be compared in a case insensitive manner.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -359,9 +359,9 @@ Filter that specifies that only events matching the specified subject suffix wil
 If not specified, events with all subject suffixes will be included.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -371,9 +371,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -386,9 +386,9 @@ Accept wildcard characters: False
 The name of the topic to which the event subscription should be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CustomTopicEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -401,7 +401,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -417,7 +417,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -434,9 +434,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-System.Management.Automation.SwitchParameter
-System.String[]
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameters: InputObject (ByValue)
+
+### System.String[]
 
 ## OUTPUTS
 
@@ -445,4 +447,3 @@ System.String[]
 ## NOTES
 
 ## RELATED LINKS
-

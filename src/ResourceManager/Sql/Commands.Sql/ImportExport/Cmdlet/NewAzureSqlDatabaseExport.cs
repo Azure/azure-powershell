@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
 using System.Management.Automation;
 
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the StartAzureSqlDatabaseExport cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseExport", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
     public class NewAzureSqlDatabaseExport : ImportExportCmdletBase
     {
         /// <summary>
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "SQL Database name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

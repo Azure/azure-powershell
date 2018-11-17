@@ -16,8 +16,8 @@ Modifies a Redis Cache.
 ```
 Set-AzureRmRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [-Sku <String>]
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
-  [-ShardCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] 
-  [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ShardCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ This command updates the maxmemory-policy for the Redis Cache named MyCache.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,7 +73,7 @@ Indicates whether the non-SSL port is enabled.
 The default value is $False (the non-SSL port is disabled).
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the name of the Redis Cache to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,6 @@ Accept wildcard characters: False
 ### -RedisConfiguration
 Specifies Redis configuration settings.
 The acceptable values for this parameter are:
-
 - rdb-backup-enabled.
 Specifies that Redis data persistence is enabled.
 Premium tier only.
@@ -140,11 +139,10 @@ Standard and Premium tiers.
 Configures the number of databases.
 This property can be configured only at cache creation.
 Standard and Premium tiers.
-
 For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://go.microsoft.com/fwlink/?LinkId=800051 (http://go.microsoft.com/fwlink/?LinkId=800051).
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +157,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Redis Cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +172,7 @@ Accept wildcard characters: False
 Specifies the number of shards to create on a Premium cluster cache.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +186,6 @@ Accept wildcard characters: False
 ### -Size
 Specifies the size of the Redis Cache.
 Valid values are: 
-
 - P1
 - P2
 - P3
@@ -207,11 +204,10 @@ Valid values are:
 - 13GB
 - 26GB
 - 53GB
-
 The default value is 1GB or C1.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB
@@ -226,15 +222,13 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the SKU of the Redis Cache to create.
 Valid values are: 
-
 - Basic
 - Standard
 - Premium
-
 The default value is Standard.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard, Premium
@@ -250,7 +244,7 @@ Accept wildcard characters: False
 A hash table which represents tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +259,7 @@ Accept wildcard characters: False
 This parameter has been deprecated.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -280,7 +274,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -295,7 +289,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -311,13 +305,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys
-Returns all attributes of a Redis Cache, including primary and secondary access keys.
 
 ## NOTES
 

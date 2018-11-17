@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
@@ -22,8 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Removes the certificate operation for the selected certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateOperation,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOperation",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class RemoveAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 0,
                    ParameterSetName = DefaultParameterSet,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

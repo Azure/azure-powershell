@@ -15,6 +15,10 @@
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 using System.Linq;
@@ -22,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
     public class RemoveAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {

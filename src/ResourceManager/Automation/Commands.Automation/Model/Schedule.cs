@@ -47,18 +47,19 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
             this.Name = schedule.Name;
-            this.Description = schedule.Properties.Description;
-            this.StartTime = AdjustOffset(schedule.Properties.StartTime, schedule.Properties.StartTimeOffsetMinutes);
-            this.ExpiryTime = AdjustOffset(schedule.Properties.ExpiryTime, schedule.Properties.ExpiryTimeOffsetMinutes);
-            this.CreationTime = schedule.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = schedule.Properties.LastModifiedTime.ToLocalTime();
-            this.IsEnabled = schedule.Properties.IsEnabled;
-            this.NextRun = AdjustOffset(schedule.Properties.NextRun, schedule.Properties.NextRunOffsetMinutes);
-            this.Interval = schedule.Properties.Interval ?? this.Interval;
-            this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
+            this.Description = schedule.Description;
+            this.StartTime = AdjustOffset(schedule.StartTime, schedule.StartTimeOffsetMinutes);
+            var expiryTime = AdjustOffset(schedule.ExpiryTime, schedule.ExpiryTimeOffsetMinutes);
+            this.ExpiryTime = expiryTime.HasValue ? expiryTime.Value : DateTimeOffset.MaxValue;
+            this.CreationTime = schedule.CreationTime.ToLocalTime();
+            this.LastModifiedTime = schedule.LastModifiedTime.ToLocalTime();
+            this.IsEnabled = schedule.IsEnabled ?? false;
+            this.NextRun = AdjustOffset(schedule.NextRun, schedule.NextRunOffsetMinutes);
+            this.Interval = (byte?)schedule.Interval ?? this.Interval;
+            this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Frequency, true);
             this.WeeklyScheduleOptions = this.CreateWeeklyScheduleOptions(schedule);
             this.MonthlyScheduleOptions = this.CreateMonthlyScheduleOptions(schedule);
-            this.TimeZone = schedule.Properties.TimeZone;
+            this.TimeZone = schedule.TimeZone;
         }
 
         #region Public Properties
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        private bool IsNullOrEmptyList<T>(IList<T> list)
+        private static bool IsNullOrEmptyList<T>(IList<T> list)
         {
             return list == null || list.Count == 0;
         }
@@ -176,9 +177,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        private bool IsMonthlyOccurrenceNull(Azure.Management.Automation.Models.AdvancedSchedule advancedSchedule)
+        private static bool IsMonthlyOccurrenceNull(Azure.Management.Automation.Models.AdvancedSchedule advancedSchedule)
         {
-            return advancedSchedule == null || this.IsNullOrEmptyList(advancedSchedule.MonthlyOccurrences);
+            return advancedSchedule == null || IsNullOrEmptyList(advancedSchedule.MonthlyOccurrences);
         }
 
         /// <summary>
@@ -226,11 +227,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </returns>
         private WeeklyScheduleOptions CreateWeeklyScheduleOptions(Microsoft.Azure.Management.Automation.Models.Schedule schedule)
         {
-            return schedule.Properties.AdvancedSchedule == null
+            return CreateWeeklyScheduleOptions(schedule.AdvancedSchedule);
+        }
+
+        private static WeeklyScheduleOptions CreateWeeklyScheduleOptions(Microsoft.Azure.Management.Automation.Models.AdvancedSchedule advSchedule)
+        {
+            return advSchedule == null
                 ? null
                 : new WeeklyScheduleOptions()
                 {
-                    DaysOfWeek = schedule.Properties.AdvancedSchedule.WeekDays
+                    DaysOfWeek = advSchedule.WeekDays
                 };
         }
 
@@ -244,20 +250,26 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The <see cref="MonthlyScheduleOptions"/>.
         /// </returns>
         private MonthlyScheduleOptions CreateMonthlyScheduleOptions(
-            Microsoft.Azure.Management.Automation.Models.Schedule schedule)
+        Microsoft.Azure.Management.Automation.Models.Schedule schedule)
         {
-            return schedule.Properties.AdvancedSchedule == null
-                || (schedule.Properties.AdvancedSchedule.MonthDays == null && schedule.Properties.AdvancedSchedule.MonthlyOccurrences == null)
+            return CreateMonthlyScheduleOptions(schedule.AdvancedSchedule);
+        }
+
+        private static MonthlyScheduleOptions CreateMonthlyScheduleOptions(
+            Microsoft.Azure.Management.Automation.Models.AdvancedSchedule advSchedule)
+        {
+            return advSchedule == null
+                || (advSchedule.MonthDays == null && advSchedule.MonthlyOccurrences == null)
                 ? null
                 : new MonthlyScheduleOptions()
                 {
-                    DaysOfMonth = this.GetDaysOfMonth(schedule.Properties.AdvancedSchedule.MonthDays),
-                    DayOfWeek = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
+                    DaysOfMonth = GetDaysOfMonth(advSchedule.MonthDays),
+                    DayOfWeek = IsMonthlyOccurrenceNull(advSchedule)
                         ? null
                         : new DayOfWeek()
                         {
-                            Day = schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day,
-                            Occurrence = this.GetDayOfWeekOccurrence(schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence)
+                            Day = advSchedule.MonthlyOccurrences.First().Day,
+                            Occurrence = GetDayOfWeekOccurrence(advSchedule.MonthlyOccurrences.First().Occurrence)
                         }
                 };
         }
@@ -271,7 +283,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        private string GetDayOfWeekOccurrence(int? dayOfWeekOccurrence)
+        private static string GetDayOfWeekOccurrence(int? dayOfWeekOccurrence)
         {
             return dayOfWeekOccurrence.HasValue
                 ? Enum.GetName(typeof(DayOfWeekOccurrence), dayOfWeekOccurrence)
@@ -287,7 +299,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <returns>
         /// The <see cref="IList"/>.
         /// </returns>
-        private IList<DaysOfMonth> GetDaysOfMonth(IList<int> daysOfMonth)
+        private static IList<DaysOfMonth> GetDaysOfMonth(IList<int> daysOfMonth)
         {
             return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
         }

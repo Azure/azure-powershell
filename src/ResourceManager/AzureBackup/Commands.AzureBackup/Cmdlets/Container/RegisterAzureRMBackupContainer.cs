@@ -12,21 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.BackupServices.Models;
-using System;
-using System.Linq;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmBackupContainer"), OutputType(typeof(AzureRMBackupJob))]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
+    [Cmdlet("Register", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupContainer"), OutputType(typeof(AzureRMBackupJob))]
     public class RegisterAzureRMBackupContainer : AzureBackupVaultCmdletBase
     {
         internal const string V1VMParameterSet = "V1VM";

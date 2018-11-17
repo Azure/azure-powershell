@@ -46,7 +46,7 @@ PS C:\> Import-AzureRmAksCredential -ResourceGroupName group -Name myCluster
 Get the 'clusterAdmin' kubectl config instead of the default 'clusterUser'.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ Use '-' to print YAML to stdout instead.
 Default: %Home%/.kube/config.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Import Kubernetes config even if it is the default
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Id of a managed Kubernetes cluster
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 A PSKubernetesCluster object, normally passed through the pipeline.
 
 ```yaml
-Type: PSKubernetesCluster
+Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Name of your managed Kubernetes cluster
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupNameParameterSet
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Returns true if import is successful
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupNameParameterSet
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +199,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -216,7 +216,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

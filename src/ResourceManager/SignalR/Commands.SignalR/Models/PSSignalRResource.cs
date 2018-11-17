@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public PSResourceSku Sku { get; }
 
+        public string Version { get; }
+
         public PSSignalRResource(SignalRResource signalRResource)
             : base(signalRResource)
         {
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             PublicPort = signalRResource.PublicPort;
             ServerPort = signalRResource.ServerPort;
             Sku = new PSResourceSku(signalRResource.Sku);
+            Version = signalRResource.Version;
         }
     }
 }

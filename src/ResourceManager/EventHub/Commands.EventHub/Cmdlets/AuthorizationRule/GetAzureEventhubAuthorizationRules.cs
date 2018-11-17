@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Eventhub;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class GetAzureEventHubAuthorizationRule : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -56,50 +56,57 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         public override void ExecuteCmdlet()
         {
-            //Get Namespace Authorization Rule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a Namespace AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRule(ResourceGroupName, Namespace, Name);                    
-                    WriteObject(authRule);
-                }
-                else
-                {
-                    // Get all Namespace AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);                                     
-                    WriteObject(authRuleList, true);
-                }
+            try
+            {
+                //Get Namespace Authorization Rule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        // Get a Namespace AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRule(ResourceGroupName, Namespace, Name);
+                        WriteObject(authRule);
+                    }
+                    else
+                    {
+                        // Get all Namespace AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
+                        WriteObject(authRuleList, true);
+                    }
 
-            // Get Eventhub authorizationRule
-            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a Eventhub AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub, Name);
-                    WriteObject(authRule);
-                }
-                else
-                {
-                    // Get all Eventhub AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub);
-                    WriteObject(authRuleList, true);
-                }
+                // Get Eventhub authorizationRule
+                if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        // Get a Eventhub AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub, Name);
+                        WriteObject(authRule);
+                    }
+                    else
+                    {
+                        // Get all Eventhub AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub);
+                        WriteObject(authRuleList, true);
+                    }
 
-            // Get Alias authorizationRule
-            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
-                if (!string.IsNullOrEmpty(Name))
-                {
-                    // Get a Alias AuthorizationRule
-                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
-                    WriteObject(authRule);
-                }
-                else
-                {
-                    // Get all Alias AuthorizationRules
-                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
-                    WriteObject(authRuleList, true);
-                }
+                // Get Alias authorizationRule
+                if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        // Get a Alias AuthorizationRule
+                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
+                        WriteObject(authRule);
+                    }
+                    else
+                    {
+                        // Get all Alias AuthorizationRules
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
+                        WriteObject(authRuleList, true);
+                    }
+            }
+            catch (Management.EventHub.Models.ErrorResponseException ex)
+            {
+                WriteError(EventHubsClient.WriteErrorforBadrequest(ex));
+            }
 
         }
     }

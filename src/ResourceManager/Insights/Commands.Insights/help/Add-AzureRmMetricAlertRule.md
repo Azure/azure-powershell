@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: A90564B5-57D7-48EB-976D-38C03D930289
@@ -17,8 +17,8 @@ Adds or updates a metric-based alert rule.
 Add-AzureRmMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Threshold <Double>
  -TargetResourceId <String> -MetricName <String> -TimeAggregationOperator <TimeAggregationOperator>
  -Location <String> [-Description <String>] [-DisableRule] -ResourceGroupName <String> -Name <String>
- [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,9 +96,9 @@ Accept wildcard characters: False
 Specifies a description of the rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,9 +112,9 @@ Disables the rule.
 If you do not specify this parameter, the rule is enabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 Specifies the location where the rule is defined.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -143,9 +143,9 @@ Specifies the name of the metric the rule is monitoring.
 Specify this parameter only for metric-based rules.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -158,9 +158,9 @@ Accept wildcard characters: False
 Specifies the name of the rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -172,16 +172,15 @@ Accept wildcard characters: False
 ### -Operator
 Specifies the relational operator for the condition of the rule.
 The acceptable values for this parameter are:
-
 - GreaterThan
 - GreaterThanOrEqual
 -  LessThan
 - LessThanOrEqual
 
 ```yaml
-Type: ConditionOperator
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual
 
 Required: True
@@ -195,7 +194,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -210,9 +209,9 @@ Accept wildcard characters: False
 Specifies the ID of the resource the rule is monitoring. NOTE: This property cannot be updated for an existing alert rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -225,9 +224,9 @@ Accept wildcard characters: False
 Specifies the threshold of the rule.
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -240,9 +239,9 @@ Accept wildcard characters: False
 Specifies the aggregation operator to apply to the time window when the rule is being evaluated.
 
 ```yaml
-Type: TimeAggregationOperator
+Type: System.Nullable`1[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Average, Minimum, Maximum, Total, Last
 
 Required: True
@@ -256,9 +255,9 @@ Accept wildcard characters: False
 Specifies the time window size for the rule to compute its data.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -267,13 +266,54 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.TimeSpan
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator
+
+### System.Double
+
+### System.String
+
+### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Management.Automation.SwitchParameter
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

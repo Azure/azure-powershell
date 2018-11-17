@@ -35,7 +35,6 @@ The **Restore-AzureKeyVaultCertificate** cmdlet creates a certificate in the spe
 This certificate is a replica of the backed-up certificate in the input file and has the same name as the original certificate.
 If the key vault already contains a certificate by the same name, this cmdlet fails instead of overwriting the original certificate.
 If the backup contains multiple versions of a certificate, all versions are restored.
-
 The key vault that you restore the certificate into can be different from the key vault that you backed up the certificate from.
 However, the key vault must use the same subscription and be in an Azure region in the same geography (for example, North America).
 See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-center/) for the mapping of Azure regions to geographies.
@@ -88,7 +87,7 @@ This command restores a certificate, including all of its versions, from the bac
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,7 +103,7 @@ Input file.
 The input file containing the backed-up blob
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -134,7 +133,7 @@ Accept wildcard characters: False
 KeyVault Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -150,7 +149,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -165,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,6 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

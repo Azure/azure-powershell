@@ -133,7 +133,7 @@ function Set-AzsOffer {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewOffer = $null
 

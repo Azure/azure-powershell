@@ -23,18 +23,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ProtectionCheckTests : RMTestBase
     {
-        public ProtectionCheckTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ProtectionCheckTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMProtectionCheck()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMProtectionCheck");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMProtectionCheck");
         }
     }
 }

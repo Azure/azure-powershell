@@ -22,11 +22,11 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
-    [Cmdlet(
-        VerbsCommon.Set, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMChefExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -213,6 +214,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         public string Name
         {
             get
@@ -256,6 +258,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
                     bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
                     bool IsChefDaemonIntervalEmpty = string.IsNullOrEmpty(this.ChefDaemonInterval);
+                    bool IsBootstrapVersionEmpty = string.IsNullOrEmpty(this.BootstrapVersion);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
                     bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
 
@@ -307,7 +310,10 @@ validation_client_name 	'{1}'
                     }
 
                     var hashTable = new Hashtable();
-                    hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                    if (!IsBootstrapVersionEmpty)
+                    {
+                        hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                    }
                     hashTable.Add(ClientRbTemplate, ClientConfig);
 
                     if (!IsRunListEmpty)
@@ -317,12 +323,14 @@ validation_client_name 	'{1}'
 
                     if (!IsBootstrapOptionsEmpty)
                     {
-                        hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                        JObject bootstrap_option_json = JObject.Parse(this.BootstrapOptions);
+                        hashTable.Add(BootStrapOptionsTemplate, bootstrap_option_json);
                     }
 
                     if (!IsJsonAttributeEmpty)
                     {
-                        hashTable.Add(JsonAttributeTemplate, JsonAttribute);
+                        JObject json_attribute_json = JObject.Parse(this.JsonAttribute);
+                        hashTable.Add(JsonAttributeTemplate, json_attribute_json);
                     }
 
                     if (!IsChefDaemonIntervalEmpty)
@@ -334,6 +342,7 @@ validation_client_name 	'{1}'
                     {
                         hashTable.Add(DaemonTemplate, this.Daemon);
                     }
+
 
                     this.publicConfiguration = hashTable;
                 }

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using System.Collections;
@@ -25,9 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServer",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(Model.AzureSqlServerModel))]
     public class SetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -37,6 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "SQL Database server name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }

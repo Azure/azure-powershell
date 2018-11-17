@@ -14,13 +14,14 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.WebApps.Properties;
+using Microsoft.Azure.Commands.WebApps.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you delete an existing Web app Ssl binding
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmWebAppSSLBinding", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSSLBinding", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The name of the host name.")]
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name,
                 () =>
                 {
-                    var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
+                    var webapp = new PSSite(WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot));
                     var hostNameSslStates = CmdletHelpers.GetHostNameSslStatesFromSiteResponse(webapp, Name).ToList();
                     if (hostNameSslStates.Count > 0)
                     {

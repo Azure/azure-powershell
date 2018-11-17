@@ -16,7 +16,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceGroupName
     Resource group name.
 
-.PARAMETER ShareName
+.PARAMETER Name
     Share name.
 
 .PARAMETER FarmName
@@ -27,7 +27,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-	PS C:\> Get-AzsStorageShareMetricDefinition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -ShareName "||SU1FileServer.azurestack.local|SU1_ObjStore"
+	PS C:\> Get-AzsStorageShareMetricDefinition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -Name "||SU1FileServer.azurestack.local|SU1_ObjStore"
 
     Get the list of metric definitions for a storage share.
 #>
@@ -42,8 +42,9 @@ function Get-AzsStorageShareMetricDefinition {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
+        [Alias('ShareName')]
         [System.String]
-        $ShareName,
+        $Name,
 
         [Parameter(Mandatory = $false)]
         [ValidateLength(1, 90)]
@@ -72,7 +73,13 @@ function Get-AzsStorageShareMetricDefinition {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-ShareName\s") {
+                Write-Warning -Message "The parameter alias ShareName will be deprecated in future release. Please use the parameter Name instead"
+            }
+        }
+
+        $Name = Get-ResourceNameSuffix -ResourceName $Name
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
@@ -93,7 +100,7 @@ function Get-AzsStorageShareMetricDefinition {
         }
 
         Write-Verbose -Message 'Performing operation ListMetricDefinitionsWithHttpMessagesAsync on $StorageAdminClient.'
-        $TaskResult = $StorageAdminClient.Shares.ListMetricDefinitionsWithHttpMessagesAsync($ResourceGroupName, $FarmName, $ShareName)
+        $TaskResult = $StorageAdminClient.Shares.ListMetricDefinitionsWithHttpMessagesAsync($ResourceGroupName, $FarmName, $Name)
 
         if ($TaskResult) {
             $GetTaskResult_params = @{
@@ -118,10 +125,10 @@ function Get-AzsStorageShareMetricDefinition {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
-                $PageResult.Result = $null
-                Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-                $TaskResult = $StorageAdminClient.Shares.ListMetricDefinitionsNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+                Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
+                $TaskResult = $StorageAdminClient.Shares.ListMetricDefinitionsNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
+                $PageResult.Page = $null
                 $GetTaskResult_params['TaskResult'] = $TaskResult
                 $GetTaskResult_params['PageResult'] = $PageResult
                 Get-TaskResult @GetTaskResult_params

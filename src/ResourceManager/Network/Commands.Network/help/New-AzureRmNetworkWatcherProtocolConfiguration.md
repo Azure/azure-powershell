@@ -13,7 +13,7 @@ Creates a new protocol configuration object.
 ## SYNTAX
 
 ```
-New-AzureRmNetworkWatcherProtocolConfiguration [-Protocol <String>] [-Method <String>] [-Header <IDictionary>]
+New-AzureRmNetworkWatcherProtocolConfiguration -Protocol <String> [-Method <String>] [-Header <IDictionary>]
  [-ValidStatusCode <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ This object is used to restrict the protocol confiuration during a connecitivity
 
 ## EXAMPLES
 
-### ---------------  Example 1: Test Network Watcher Connectivity from a VM to a website with protocol configuration ---------------
+### Example 1: Test Network Watcher Connectivity from a VM to a website with protocol configuration
 ```
 $config = New-AzureRmNetworkWatcherProtocolConfiguration -Protocol Http -Method Get -Headers @{"accept"="application/json"} -ValidStatusCodes @(200,202,204)
 
@@ -66,7 +66,7 @@ In this example we test connectivity from a VM in Azure to www.bing.com.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,14 +81,14 @@ Accept wildcard characters: False
 list of HTTP headers
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,14 +96,14 @@ Accept wildcard characters: False
 HTTP method
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,14 +111,14 @@ Accept wildcard characters: False
 Procotol type
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -126,27 +126,23 @@ Accept wildcard characters: False
 valid status codes
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-System.Collections.IDictionary
-System.Int32[]
-
+### None
 
 ## OUTPUTS
 

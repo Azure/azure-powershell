@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementPolicy, SupportsShouldProcess = true, 
-        DefaultParameterSetName = TenantLevel)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementPolicy", SupportsShouldProcess = true, DefaultParameterSetName = TenantLevel)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     /// <summary>
@@ -23,6 +24,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class IntegrationAccountPartnerTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public IntegrationAccountPartnerTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
 
         /// <summary>
         /// Test New-AzureRmIntegrationAccountPartner command to create a new integration account partner.
@@ -31,7 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateIntegrationAccountPartner()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountPartner");
         }
 
         /// <summary>
@@ -41,7 +49,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountPartner()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountPartner");
         }
 
         /// <summary>
@@ -51,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveIntegrationAccountPartner()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountPartner");
         }        
 
         /// <summary>
@@ -61,7 +69,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateIntegrationAccountPartner()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountPartner");
         }
 
         /// <summary>
@@ -71,7 +79,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListIntegrationAccountPartner()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountPartner");
         }
     }
 }

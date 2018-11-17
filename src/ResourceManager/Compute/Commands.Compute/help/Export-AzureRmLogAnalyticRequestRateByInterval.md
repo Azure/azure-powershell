@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval
@@ -20,9 +20,10 @@ Export-AzureRmLogAnalyticRequestRateByInterval [-FromTime] <DateTime> [-GroupByO
 ```
 
 ## DESCRIPTION
-This exports aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled displayed in time intervals.
-The logs can be further grouped by three parameters: GroupByOperationName, GroupByThrottlePolicy, or GroupByResourceName.
-Note that this cmdlet collects only CRP logs.
+Exports statistical data about the subscription's calls to the Microsoft.Compute API by Success, Failure, or Throttled status, in predefined time intervals. The logs can be further grouped by three parameters: GroupByOperationName, GroupByThrottlePolicy, or GroupByResourceName.
+Note that this cmdlet collects only Compute Resource Provider logs; moreover, data about the Disk and Snapshot resource types is not yet available.
+
+For an overview of the Compute Resource Provider's API throttling, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-request-limits. 
 
 ## EXAMPLES
 
@@ -39,7 +40,7 @@ This command stores the aggregated numbers of Microsoft.Compute API calls separa
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +55,7 @@ Accept wildcard characters: False
 SAS Uri of the logging blob container to which LogAnalytics Api writes output logs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 From time of the query
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 Group query result by Operation Name.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 Group query result by Resource Name.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +130,7 @@ Accept wildcard characters: False
 Group query result by Throttle Policy applied.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 Interval value in minutes used to create LogAnalytics call rate logs.
 
 ```yaml
-Type: IntervalInMins
+Type: Microsoft.Azure.Management.Compute.Models.IntervalInMins
 Parameter Sets: (All)
 Aliases:
 Accepted values: ThreeMins, FiveMins, ThirtyMins, SixtyMins
@@ -160,7 +161,7 @@ Accept wildcard characters: False
 The location upon which log analytic is queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +176,7 @@ Accept wildcard characters: False
 To time of the query
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +191,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -206,7 +207,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

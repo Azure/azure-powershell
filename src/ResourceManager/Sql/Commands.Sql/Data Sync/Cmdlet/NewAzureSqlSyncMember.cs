@@ -21,15 +21,14 @@ using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new sync member
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncMember", SupportsShouldProcess = true,
-        DefaultParameterSetName = AzureSqlSet,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncMember", SupportsShouldProcess = true,DefaultParameterSetName = AzureSqlSet,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
     public class NewAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
     {
         /// <summary>
@@ -70,6 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = AzureSqlSet,
             HelpMessage = "The Azure SQL Server Name of the member database.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         public string MemberServerName { get; set; }
 
         /// <summary>
@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = AzureSqlSet,
             HelpMessage = "The Azure SQL Database name of the member database.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "MemberServerName")]
         public string MemberDatabaseName { get; set; }
 
         /// <summary>
@@ -94,6 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = OnPremisesSyncAgentComponentSet,
             HelpMessage = "The name of the resource group where the sync agent is under.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string SyncAgentResourceGroupName { get; set; }
 
@@ -103,6 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = OnPremisesSyncAgentComponentSet,
             HelpMessage = "The name of the Azure SQL Server where the sync agent is under.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "SyncAgentResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentServerName { get; set; }
 

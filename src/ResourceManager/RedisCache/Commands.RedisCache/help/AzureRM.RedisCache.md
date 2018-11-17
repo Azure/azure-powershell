@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.RedisCache
 Module Guid: 820628d7-6938-488a-8760-43373a5ffce6
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache

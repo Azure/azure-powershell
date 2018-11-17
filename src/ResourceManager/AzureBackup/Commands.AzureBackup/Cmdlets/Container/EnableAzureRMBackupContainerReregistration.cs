@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Enables reregistration of a machine container
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmBackupContainerReregistration")]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupContainerReregistration"), OutputType(typeof(void))]
     public class EnableAzureRMBackupContainerReregistration : AzureBackupContainerCmdletBase
     {
         public override void ExecuteCmdlet()

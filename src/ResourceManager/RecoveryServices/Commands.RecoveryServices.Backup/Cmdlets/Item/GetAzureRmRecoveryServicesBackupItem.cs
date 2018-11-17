@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem",
-        DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem",DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
+        internal const string GetItemsForPolicyParamSet = "GetItemsForPolicy";
 
         /// <summary>
         /// When this option is specified, only those items which belong to this container will be returned.
@@ -53,9 +53,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public BackupManagementType BackupManagementType { get; set; }
 
         /// <summary>
+        /// The command returns the list of backup Items protected by the given policy id.
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Item.ProtectionPolicy,
+            ParameterSetName = GetItemsForPolicyParamSet)]
+        [ValidateNotNullOrEmpty]
+        public PolicyBase Policy { get; set; }
+
+        /// <summary>
         /// Friendly name of the item to be returned.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsgs.Item.ItemName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -76,7 +84,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Workload type of the item to be returned.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
+            ParameterSetName = GetItemsForVaultParamSet)]
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
+            ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
@@ -97,7 +108,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { VaultParams.ResourceGroupName, resourceGroupName },
                         { ItemParams.Container, Container },
                         { ItemParams.BackupManagementType, BackupManagementType },
-                        { ItemParams.AzureVMName, Name },
+                        { ItemParams.ItemName, Name },
+                        { PolicyParams.ProtectionPolicy, Policy },
                         { ItemParams.ProtectionStatus, ProtectionStatus },
                         { ItemParams.ProtectionState, ProtectionState },
                         { ItemParams.WorkloadType, WorkloadType },
@@ -110,12 +122,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     psBackupProvider =
                         providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 }
-                else
+                else if (this.ParameterSetName == GetItemsForContainerParamSet)
                 {
                     psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
                     (Container as ManagementContext).BackupManagementType);
                 }
-
+                else
+                {
+                    psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType);
+                }
                 var itemModels = psBackupProvider.ListProtectedItems();
 
                 WriteObject(itemModels, enumerateCollection: true);

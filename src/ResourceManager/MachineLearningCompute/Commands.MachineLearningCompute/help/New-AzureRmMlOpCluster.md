@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/new-azurermmlopcluster
@@ -54,9 +54,9 @@ Creates a new operationalization cluster locally. This creates an azure containe
 The number of agent nodes in the ACS cluster.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,9 +69,9 @@ Accept wildcard characters: False
 The number of agent nodes in the ACS cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 The URI to the azure container registry to use instead of creating one.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 The ACS cluster's orchestrator service principal id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 The operationalization cluster type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 The number of master nodes in the ACS cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 Additional properties for the global service configuration.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,9 +174,9 @@ Accept wildcard characters: False
 The configuration ETag for updates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 The operationalization cluster properties.
 
 ```yaml
-Type: PSOperationalizationCluster
+Type: Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 Parameter Sets: CreateWithInputObject
 Aliases: Cluster
 
@@ -204,9 +204,9 @@ Accept wildcard characters: False
 The operationalization cluster's location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -219,9 +219,9 @@ Accept wildcard characters: False
 The number of master nodes in the ACS cluster.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -234,9 +234,9 @@ Accept wildcard characters: False
 The name of the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -249,9 +249,9 @@ Accept wildcard characters: False
 The ACS cluster's orchestrator type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -264,9 +264,9 @@ Accept wildcard characters: False
 The name of the resource group for the operationalization cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -279,9 +279,9 @@ Accept wildcard characters: False
 The ACS cluster's orchestrator service principal secret.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -294,9 +294,9 @@ Accept wildcard characters: False
 The SSL certificate data in PEM format encoded as base64 string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -309,9 +309,9 @@ Accept wildcard characters: False
 The CName for the SSL certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -324,9 +324,9 @@ Accept wildcard characters: False
 The SSL key data in PEM format encoded as base64 string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -340,9 +340,9 @@ SSL status.
 Possible values are 'Enabled' and 'Disabled'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -355,9 +355,9 @@ Accept wildcard characters: False
 The URI to the storage account to use instead of creating one.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateWithParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -370,7 +370,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -386,7 +386,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -411,4 +411,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

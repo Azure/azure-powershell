@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: F271BCB1-6D43-48E5-BB51-00288F57BFFB
@@ -22,7 +22,6 @@ Get-AzureRmLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunNa
 The **Get-AzureRmLogicAppRunHistory** cmdlet gets the run history of a logic app.
 This cmdlet returns a collection of **WorkflowRun** objects.
 Specify the logic app and resource group.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -81,7 +80,7 @@ This command gets a specific logic app run for the logic app named LogicApp03.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +95,7 @@ Accept wildcard characters: False
 Specifies the name of the logic app for which this cmdlet gets run history.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -111,9 +110,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains the logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,9 +126,9 @@ Specifies the run name of a logic app.
 This cmdlet gets the workflow run that this cmdlet specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -143,8 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

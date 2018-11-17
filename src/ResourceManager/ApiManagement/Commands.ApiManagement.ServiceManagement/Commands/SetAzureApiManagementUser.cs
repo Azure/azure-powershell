@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Security;
     using WindowsAzure.Commands.Common;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementUser)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementUser")]
     [OutputType(typeof(PsApiManagementUser))]
     public class SetAzureApiManagementUser : AzureApiManagementCmdletBase
     {

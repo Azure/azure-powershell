@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
 Module Name: AzureRM.ContainerRegistry
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistry
@@ -95,53 +95,11 @@ This command gets all the container registries in the subscription.
 
 ## PARAMETERS
 
-### -Name
-Container Registry Name.
-
-```yaml
-Type: String
-Parameter Sets: RegistryNameParameterSet
-Aliases: ContainerRegistryName, RegistryName, ResourceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name.
-
-```yaml
-Type: String
-Parameter Sets: ListRegistriesParameterSet
-Aliases: 
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: RegistryNameParameterSet
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,9 +114,9 @@ Accept wildcard characters: False
 Show more details about the container registry.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,11 +125,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Container Registry Name.
+
+```yaml
+Type: System.String
+Parameter Sets: RegistryNameParameterSet
+Aliases: ContainerRegistryName, RegistryName, ResourceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name.
+
+```yaml
+Type: System.String
+Parameter Sets: ListRegistriesParameterSet
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: RegistryNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The container registry resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases: Id
 
@@ -187,8 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

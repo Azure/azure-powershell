@@ -30,7 +30,6 @@ PS C:\> Remove-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.
-
 The second command removes the request routing rule named Rule02 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
@@ -39,7 +38,7 @@ The second command removes the request routing rule named Rule02 from the applic
 Specifies the application gateway from which to remove a request routing rule.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 Specifies the name of the request routing rule for which this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

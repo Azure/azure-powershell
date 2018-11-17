@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections;
 using System.Management.Automation;
@@ -22,10 +23,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Update attribute of a key vault key.
     /// </summary>
-    [Alias("Set-AzureKeyVaultKey", "Set-AzureKeyVaultKeyAttribute")]
-    [Cmdlet(VerbsData.Update, "AzureKeyVaultKey",
-        SupportsShouldProcess = true, 
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", "Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyAttribute")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -45,6 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

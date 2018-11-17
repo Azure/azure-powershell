@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmNetworkWatcherPacketCapture", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource")]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherPacketCapture", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(bool))]
     public class StopAzureNetworkWatcherPacketCaptureCommand : PacketCaptureBaseCmdlet
     {
         [Parameter(
@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The packet capture name.")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers/packetCaptures", "ResourceGroupName", "NetworkWatcherName")]
         [ValidateNotNullOrEmpty]
         public string PacketCaptureName { get; set; }
 

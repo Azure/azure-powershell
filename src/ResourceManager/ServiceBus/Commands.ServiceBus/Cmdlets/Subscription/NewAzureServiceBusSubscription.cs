@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <summary>
     /// 'New-AzureRmServiceBusSubscription' Cmdlet creates a new Subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
     public class NewAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -126,7 +126,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateSubscription, Name, Topic,Namespace)))
             {
-                WriteObject(Client.CreateUpdateSubscription(ResourceGroupName, Namespace, Topic, Name, subAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateSubscription(ResourceGroupName, Namespace, Topic, Name, subAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

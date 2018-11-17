@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Commands.Insights.TransitionalClasses;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
@@ -23,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebtestAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
     public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
@@ -58,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric namespace for rule")]
         public string MetricNamespace { get; set; }
 
-        private RuleCondition CreateRuleCondition()
+        private LocationThresholdRuleCondition CreateRuleCondition()
         {
             WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating location threshold rule condition (webtest rule)"));
             var dataSource = new RuleMetricDataSource
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 ResourceUri = this.TargetResourceUri
             };
 
-            return new LocationThresholdRuleCondition()
+            return new LocationThresholdRuleCondition
             {
                 DataSource = dataSource,
                 FailedLocationCount = this.FailedLocationCount,
@@ -77,14 +79,14 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override AlertRuleResource CreateSdkCallParameters()
         {
-            RuleCondition condition = this.CreateRuleCondition();
+            LocationThresholdRuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
-            return new AlertRuleResource()
+            return new AlertRuleResource
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("webtest alert rule"),
                 Condition = condition,
-                Actions = this.Action,
+                Actions = this.Action?.Select(TransitionHelpers.ToMirrorNamespace).ToList(),
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,

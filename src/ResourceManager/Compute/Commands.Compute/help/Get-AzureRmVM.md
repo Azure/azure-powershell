@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
@@ -28,6 +28,11 @@ Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [-DefaultProfile <IAzureCo
 ```
 Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ListLocationVirtualMachinesParamSet
+```
+Get-AzureRmVM -Location <String> [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
@@ -73,13 +78,20 @@ PS C:\> Get-AzureRmVM
 
 This command gets all the virtual machines in your subscription.
 
+### Example 5: Get all virtual machines in the location.
+```
+PS C:\> Get-AzureRmVM -Location "westus"
+```
+
+This command gets all the virtual machines in West US region.
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,14 +104,12 @@ Accept wildcard characters: False
 
 ### -DisplayHint
 Determines how the virtual machine object is displayed.
-
 Valid values are:
-
 -- Compact: displays only top level properties
-
 -- Expand: displays all properties in all levels
+
 ```yaml
-Type: DisplayHintType
+Type: Microsoft.Azure.Commands.Compute.Models.DisplayHintType
 Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases:
 Accepted values: Compact, Expand
@@ -111,11 +121,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Location
+Specifies a location for the virtual machines to list.
+
+```yaml
+Type: System.String
+Parameter Sets: ListLocationVirtualMachinesParamSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the virtual machine to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: ResourceName, VMName
 
@@ -130,7 +155,7 @@ Accept wildcard characters: False
 Specifies the next link.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: ListNextLinkVirtualMachinesParamSet
 Aliases:
 
@@ -145,7 +170,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInResourceGroupParamSet
 Aliases:
 
@@ -160,7 +185,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -176,8 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Uri
+
+### Microsoft.Azure.Commands.Compute.Models.DisplayHintType
 
 ## OUTPUTS
 

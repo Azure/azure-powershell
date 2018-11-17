@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Security;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             this.recoveryServicesClient =
-            AzureSession.Instance.ClientFactory.CreateArmClient<RecoveryServicesClient>(
+            AzureSession.ClientFactory.CreateArmClient<RecoveryServicesClient>(
                 defaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
-            resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            resourceManagementClient = AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         private static bool IgnoreCertificateErrorHandler

@@ -73,7 +73,6 @@ Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
 
 By changing this property to $True, your peer's VNet gateway can be used.
 However, the peer VNet must have a gateway configured and **AllowGatewayTransit** must have a value of $True.
-
 This property cannot be used if a gateway has already been configured.
 
 ## PARAMETERS
@@ -82,7 +81,7 @@ This property cannot be used if a gateway has already been configured.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 Specifies the virtual network peering.
 
 ```yaml
-Type: PSVirtualNetworkPeering
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
 Parameter Sets: (All)
 Aliases:
 
@@ -128,8 +127,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetworkPeering
-Parameter 'VirtualNetworkPeering' accepts value of type 'PSVirtualNetworkPeering' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
+Parameters: VirtualNetworkPeering (ByValue)
 
 ## OUTPUTS
 

@@ -14,12 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Models;
     using System;
+    using System.Globalization;
+    using System.IO;
     using System.Management.Automation;
     using Management.ApiManagement.Models;
+    using Models;
+    using Properties;
 
-    [Cmdlet(VerbsData.Import, Constants.ApiManagementApi, DefaultParameterSetName = FromLocalFile)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApi", DefaultParameterSetName = FromLocalFile)]
     [OutputType(typeof(PsApiManagementApi))]
     public class ImportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -109,15 +112,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             else
             {
                 apiId = Guid.NewGuid().ToString("N");
-            }
+            }            
 
             if (ParameterSetName.Equals(FromLocalFile))
             {
+                FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.SpecificationPath));
+                if (!localFile.Exists)
+                {
+                    throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.SpecificationPath));
+                }
+
                 Client.ApiImportFromFile(
                     Context,
                     apiId,
                     SpecificationFormat,
-                    SpecificationPath,
+                    localFile.FullName,
                     Path,
                     WsdlServiceName, 
                     WsdlEndpointName,

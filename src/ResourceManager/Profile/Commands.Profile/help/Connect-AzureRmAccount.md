@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount
@@ -56,88 +56,99 @@ Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId 
 
 ## DESCRIPTION
 The Connect-AzureRmAccount cmdlet connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
-
 You can use this authenticated account only with Azure Resource Manager cmdlets.
-
 To add an authenticated account for use with Service Management cmdlets, use the Add-AzureAccount or the Import-AzurePublishSettingsFile cmdlet.
-
 If no context is found for the current user, this command will populate the user's context list with a context for each of their (first 25) subscriptions. The list of contexts created for the user can be found by running "Get-AzureRmContext -ListAvailable". To skip this context population, you can run this command with the "-SkipContextPopulation" switch parameter.
-
 After executing this cmdlet, you can disconnect from an Azure account using Disconnect-AzureRmAccount.
 
 ## EXAMPLES
 
 ### Example 1: Use an interactive login to connect to an Azure account
-```
+```powershell
 PS C:\> Connect-AzureRmAccount
-Account: azureuser@contoso.com
-Environment: AzureCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
-Tenant: xxxx-xxxx-xxxx-xxxx
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects to an Azure account.
-
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
-
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
 ### Example 2: Connect to an Azure account using organizational ID credentials
-```
+```powershell
 PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzureRmAccount -Credential $Credential
-Account: azureuser@contoso.com
-Environment: AzureChinaCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
-Tenant: xxxx-xxxx-xxxx-xxxx
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-The first command gets the user credentials, and then stores them in the $Credential variable.
-
+The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
 The second command connects to an Azure account using the credentials stored in $Credential.
-
 This account authenticates with Azure Resource Manager using organizational ID credentials.
-
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
 
 ### Example 3: Connect to an Azure service principal account
-```
+```powershell
 PS C:\> $Credential = Get-Credential
+
 PS C:\> Connect-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
-Account: xxxx-xxxx-xxxx-xxxx
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-The first command gets the user credentials, and then stores them in the $Credential variable.
-
+The first command gets the service principal credentials (application id and service principal secret), and then stores them in the $Credential variable.
 The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
-
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
 ### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
-```
+```powershell
 PS C:\> Connect-AzureRmAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
-Account: pfuller@contoso.com
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
 
 ### Example 5: Add an Account Using Managed Service Identity Login
-```
+```powershell
 PS C:\> Connect-AzureRmAccount -MSI
-Account: MSI@50342
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-This command connects using the managed service identity of the host environment (for example, if executed on a 
+This command connects using the managed service identity of the host environment (for example, if executed on a
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
+
+### Example 6: Add an account using certificates
+```powershell
+# For more information on creating a self-signed certificate
+# and giving it proper permissions, please see the following:
+# https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-authenticate-service-principal-powershell
+PS C:\> $Thumbprint = "0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV"
+PS C:\> $TenantId = "4cd76576-b611-43d0-8f2b-adcb139531bf"
+PS C:\> $ApplicationId = "3794a65a-e4e4-493d-ac1d-f04308d712dd"
+PS C:\> Connect-AzureRmAccount -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId -ServicePrincipal
+
+Account             SubscriptionName TenantId            Environment
+-------             ---------------- --------            -----------
+xxxx-xxxx-xxxx-xxxx Subscription1    xxxx-xxxx-xxxx-xxxx AzureCloud
+
+Account          : 3794a65a-e4e4-493d-ac1d-f04308d712dd
+SubscriptionName : MyTestSubscription
+SubscriptionId   : 85f0f653-1f86-4d2c-a9f1-042efc00085c
+TenantId         : 4cd76576-b611-43d0-8f2b-adcb139531bf
+Environment      : AzureCloud
+```
+
+This command connects to an Azure account using certificate-based service principal authentication. Theservice principal used for authentication should have been created with the given certificate.
 
 ## PARAMETERS
 
@@ -145,7 +156,7 @@ VirtualMachine with an assigned Managed Service Identity, this will allow the co
 Specifies an access token.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
@@ -160,7 +171,7 @@ Accept wildcard characters: False
 Account Id for access token
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
@@ -172,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagedServiceLogin
 Aliases:
 
@@ -187,7 +198,7 @@ Accept wildcard characters: False
 SPN
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases:
 
@@ -202,7 +213,7 @@ Accept wildcard characters: False
 Certificate Hash (Thumbprint)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases:
 
@@ -217,7 +228,7 @@ Accept wildcard characters: False
 Name of the default context from this login.  You will be able to select this context by this name after login.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -231,11 +242,10 @@ Accept wildcard characters: False
 ### -Credential
 Specifies a PSCredential object.
 For more information about the PSCredential object, type Get-Help Get-Credential.
-
 The PSCredential object provides the user ID and password for organizational ID credentials, or the application ID and secret for service principal credentials.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: UserWithSubscriptionId
 Aliases:
 
@@ -247,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: ServicePrincipalWithSubscriptionId
 Aliases:
 
@@ -262,7 +272,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -277,7 +287,7 @@ Accept wildcard characters: False
 Environment containing the account to log into
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: EnvironmentName
 
@@ -292,7 +302,7 @@ Accept wildcard characters: False
 Overwrite the existing context with the same name, if any.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -307,7 +317,7 @@ Accept wildcard characters: False
 AccessToken for Graph Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
@@ -322,7 +332,7 @@ Accept wildcard characters: False
 Login using managed service identity in the current environment.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ManagedServiceLogin
 Aliases: MSI, ManagedService
 
@@ -337,7 +347,7 @@ Accept wildcard characters: False
 AccessToken for KeyVault Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
@@ -352,7 +362,7 @@ Accept wildcard characters: False
 Host name for managed service login
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagedServiceLogin
 Aliases:
 
@@ -367,7 +377,7 @@ Accept wildcard characters: False
 Port number for managed service login
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: ManagedServiceLogin
 Aliases:
 
@@ -382,7 +392,7 @@ Accept wildcard characters: False
 Secret, used for some kinds of managed service login.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: ManagedServiceLogin
 Aliases:
 
@@ -397,7 +407,7 @@ Accept wildcard characters: False
 Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
-Type: ContextModificationScope
+Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: Process, CurrentUser
@@ -413,8 +423,20 @@ Accept wildcard characters: False
 Indicates that this account authenticates by providing service principal credentials.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServicePrincipalWithSubscriptionId
 Aliases:
 
 Required: True
@@ -428,7 +450,7 @@ Accept wildcard characters: False
 Skips context population if no contexts are found.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -443,7 +465,7 @@ Accept wildcard characters: False
 Skip validation for access token
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
@@ -458,7 +480,7 @@ Accept wildcard characters: False
 Subscription Name or ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SubscriptionName, SubscriptionId
 
@@ -470,10 +492,10 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-Optional tenant name or ID
+Optional domain name or tenant ID. Domain name will not work in all sign-in situations. For Cloud Solution Provider (CSP) sign-in, tenant ID is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId, ManagedServiceLogin
 Aliases: Domain
 
@@ -485,7 +507,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
 Aliases: Domain
 
@@ -500,7 +522,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -515,7 +537,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -531,16 +553,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'SubscriptionId' accepts value of type 'String' from the pipeline
-
-### String
-Parameter 'SubscriptionName' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: Subscription (ByValue)
 
 ## OUTPUTS
 
-### PSAzureProfile
-Credentials, subscription, account, and tenant information for the logged in user.
+### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
 
 ## NOTES
 

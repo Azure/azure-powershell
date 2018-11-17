@@ -15,18 +15,18 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachineConfig,
-        DefaultParameterSetName = "DefaultParameterSet"),
-    OutputType(
-        typeof(PSVirtualMachine))]
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
+#endif
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig",DefaultParameterSetName = "DefaultParameterSet"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("ResourceName", "Name")]
@@ -91,6 +91,11 @@ namespace Microsoft.Azure.Commands.Compute
 		[Alias("Tag")]
 		public Hashtable Tags { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -106,23 +111,40 @@ namespace Microsoft.Azure.Commands.Compute
                     Id = this.AvailabilitySetId
                 },
                 LicenseType = this.LicenseType,
-                Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
+                Identity = this.AssignIdentity.IsPresent ? new PSVirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
             };
 
-            if (this.IdentityType != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
             {
-                vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
-                if (this.IdentityId != null)
+                vm.Identity = new PSVirtualMachineIdentity(null, null, this.IdentityType);
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+            {
+                if (vm.Identity == null)
                 {
-                    vm.Identity.IdentityIds = this.IdentityId;
+                    vm.Identity = new PSVirtualMachineIdentity();
+                }
+
+                vm.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var id in this.IdentityId)
+                {
+                    vm.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
                 }
             }
+
             if (!string.IsNullOrEmpty(this.VMSize))
             {
                 vm.HardwareProfile = new HardwareProfile();
                 vm.HardwareProfile.VmSize = this.VMSize;
+            }
+
+            if (this.EnableUltraSSD.IsPresent)
+            {
+                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
             }
 
             WriteObject(vm);

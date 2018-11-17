@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
@@ -56,7 +56,7 @@ This command marks the virtual machine named VirtualMachine07 as generalized.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet marks a virtual machine as generalized.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GeneralizeResourceGroupNameParameterSetName, GeneralizeIdParameterSetName
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Specifies the Resource ID of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine on which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -129,11 +129,10 @@ Accept wildcard characters: False
 
 ### -Redeploy
 Indicates that this cmdlet manually redeploys the virtual machine to a different Azure host to fix any problems.
-
 If you redeploy a virtual machine, it restarts, which results in the loss of ephemeral drive data.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSetName
 Aliases:
 
@@ -148,7 +147,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName
 Aliases:
 
@@ -164,8 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

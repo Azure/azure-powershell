@@ -63,7 +63,7 @@ This command gets all network interfaces in the resource group named ResourceGro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Specifies the name of the network interface that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandStandAloneNic, NoExpandScaleSetNic
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group from which this cmdlet gets network interfaces.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandStandAloneNic
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneNic, NoExpandScaleSetNic, ExpandScaleSetNic
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Specifies the virtual machine index of the virtual machine scale set from which this cmdlet gets network interfaces.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetNic
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetNic
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine scale set from which this cmdlet gets network interfaces.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetNic
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetNic
 Aliases:
 
@@ -200,8 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

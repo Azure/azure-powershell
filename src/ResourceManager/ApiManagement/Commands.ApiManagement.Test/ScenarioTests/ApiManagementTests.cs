@@ -1,11 +1,11 @@
-﻿//  
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
-// 
+//
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
 //    http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,7 +29,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
+    using ApiManagementClient = Azure.Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase
     {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         {
             RunPowerShellTest("Test-UpdateApiManagementDeployment");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementHostnames()
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         }
 
         private void RunPowerShellTest(params string[] scripts)
-        {           
+        {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
@@ -150,7 +150,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
+#if NETSTANDARD
+                    _helper.RMStorageModule,
+#else
                     _helper.RMStorageDataPlaneModule,
+#endif
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
@@ -40,7 +40,6 @@ Remove-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Ke
 ## DESCRIPTION
 The Remove-AzureRmADSpCredential cmdlet can be used to remove a credential key from a service principal in the case of a compromise or as part of credential key rollover expiration.
 The service principal is identified by supplying either the object ID or service principal name (SPN).
-
 The credential to be removed is identified by its key ID if an individual credential is to be removed or with an 'All' switch to delete all credentials associated with the service principal.
 
 ## EXAMPLES
@@ -75,7 +74,7 @@ Gets the service principal with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82'
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,7 +89,7 @@ Accept wildcard characters: False
 The display name of the service principal.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameWithKeyIdParameterSet
 Aliases:
 
@@ -105,7 +104,7 @@ Accept wildcard characters: False
 Switch to delete credential without a confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +120,7 @@ Specifies the credential key to be removed.
 The key Ids for a service principal can be obtained using the Get-AzureRmADSpCredential cmdlet.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdWithKeyIdParameterSet, SPNWithKeyIdParameterSet, ServicePrincipalObjectParameterSet
 Aliases:
 
@@ -136,7 +135,7 @@ Accept wildcard characters: False
 The object id of the service principal to remove the credentials from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdWithKeyIdParameterSet
 Aliases:
 
@@ -151,7 +150,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +165,7 @@ Accept wildcard characters: False
 The name (SPN) of the service principal to remove the credentials from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SPNWithKeyIdParameterSet
 Aliases:
 
@@ -181,7 +180,7 @@ Accept wildcard characters: False
 The service principal object to remove the credentials from.
 
 ```yaml
-Type: PSADServicePrincipal
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: ServicePrincipalObjectParameterSet
 Aliases:
 
@@ -196,7 +195,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -212,7 +211,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -228,9 +227,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### System.Guid
 
-This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to remove credentials from the provided service principal.
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: ServicePrincipalObject (ByValue)
 
 ## OUTPUTS
 

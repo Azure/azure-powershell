@@ -1,0 +1,3 @@
+"Assembly","HelpFile","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.AzureStack.Commands.dll","Microsoft.AzureStack.Commands.dll-help.xml","Microsoft.AzureStack.Commands.GetManagedOffer","1","6050","Help missing for cmdlet Get-AzsManagedOffer implemented by class Microsoft.AzureStack.Commands.GetManagedOffer","Add Help record for cmdlet Get-AzsManagedOffer to help file."
+"Microsoft.AzureStack.Commands.dll","Microsoft.AzureStack.Commands.dll-help.xml","Microsoft.AzureStack.Commands.SetSubscription","1","6050","Help missing for cmdlet Set-AzsSubscription implemented by class Microsoft.AzureStack.Commands.SetSubscription","Add Help record for cmdlet Set-AzsSubscription to help file."

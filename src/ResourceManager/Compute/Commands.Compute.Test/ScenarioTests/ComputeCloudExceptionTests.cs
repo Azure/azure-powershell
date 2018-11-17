@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -20,9 +21,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class ComputeCloudExceptionTests
     {
+        XunitTracingInterceptor _logger;
+
         public ComputeCloudExceptionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             Assert.True(cx4.InnerException is Rest.Azure.CloudException);
             Assert.True(!string.IsNullOrEmpty(cx4.InnerException.Message));
 
-            ComputeTestController.NewInstance.RunPsTest("Run-ComputeCloudExceptionTests");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Run-ComputeCloudExceptionTests");
         }
     }
 }

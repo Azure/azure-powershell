@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -30,11 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineCustomScriptExtension,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMCustomScriptExtension",SupportsShouldProcess = true,DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMCustomScriptExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {

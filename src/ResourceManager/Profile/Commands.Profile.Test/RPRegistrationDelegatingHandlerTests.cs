@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void InvokeRegistrationForUnregisteredResourceProviders()
         {
             // Setup
-            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>() { CallBase = true };
             Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             mockProvidersOperations.Setup(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>())).Returns(
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotInvokeRegistrationForRegisteredResourceProviders()
         {
             // Setup
-            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>() { CallBase = true };
             Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotInvokeRegistrationForUnrelatedStatusCode()
         {
             // Setup
-            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>() { CallBase = true };
             Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotInvokeRegistrationForIncompatibleUri()
         {
             // Setup
-            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>() { CallBase = true };
             Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, incompatibleUri);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotHangForLongRegistrationCalls()
         {
             // Setup
-            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>() { CallBase = true };
             Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             mockProvidersOperations.Setup(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>())).Returns(
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotThrowForFailedRegistrationCall()
         {
             // Setup
-            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>() { CallBase = true };
             Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             mockProvidersOperations.Setup(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 929F4593-2A71-49B9-87F8-F24FA9F6E314
@@ -30,7 +30,6 @@ Test-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <Strin
 ## DESCRIPTION
 The **Test-AzureRmLogicApp** cmdlet validates a logic app definition in a resource group.
 Specify the logic app name, resource group name, location, state, integration account ID, or parameters.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -60,7 +59,7 @@ The command specifies definition and parameter objects.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,9 +74,9 @@ Accept wildcard characters: False
 Specifies the definition of a logic app as an object or a string in JavaScript Object Notation (JSON) format.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: LogicAppWithDefinitionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,9 +89,9 @@ Accept wildcard characters: False
 Specifies the definition of your logic app as the path of a definition file in JSON format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogicAppWithDefinitionFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,9 +104,9 @@ Accept wildcard characters: False
 Specifies an integration account ID for the logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,9 +121,9 @@ Enter an Azure data center location, such as West US or Southeast Asia.
 You can place a logic app in any location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -137,7 +136,7 @@ Accept wildcard characters: False
 Specifies the name of the logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -152,9 +151,9 @@ Accept wildcard characters: False
 Specifies the path of a JSON formatted parameter file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,9 +167,9 @@ Specifies a parameters collection object of the logic app.
 Specify a hash table, Dictionary\<string\>, or Dictionary\<string, WorkflowParameter\>.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,9 +182,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -199,9 +198,9 @@ Specifies a state of the logic app.
 The acceptable values for this parameter are: Enabled and Disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -216,12 +215,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

@@ -17,11 +17,12 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet("Save", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImage", DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute
                 result.EndTime = DateTime.Now;
                 if (!string.IsNullOrWhiteSpace(this.Path))
                 {
-                    File.WriteAllText(this.Path, op.Body.Resources[0].ToString());
+                    File.WriteAllText(ResolveUserPath(this.Path), op.Body.Resources[0].ToString());
                 }
                 WriteObject(result);
             });

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 1D07222C-17D1-421C-8C9B-37043CBCF517
@@ -50,9 +50,9 @@ Specifies a **PSDataFactory** object.
 This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -66,9 +66,9 @@ Specifies the name of a data factory.
 This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -81,9 +81,9 @@ Accept wildcard characters: False
 Specifies the name of the dataset for which this cmdlet modifies slices.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,20 +111,17 @@ Accept wildcard characters: False
 Specifies the end of a time period as a **DateTime** object.
 This time is the end of a data slice.
 For more information about **DateTime** objects, type `Get-Help Get-Date`.
-
 *EndDateTime* must be specified in the ISO8601 format as in the following examples: 
-
 2015-01-01Z 
 2015-01-01T00:00:00Z 
 2015-01-01T00:00:00.000Z (UTC) 
 2015-01-01T00:00:00-08:00 (Pacific Standard Time)
-
 The default time zone designator is UTC.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -138,9 +135,9 @@ Specifies the name of an Azure resource group.
 This cmdlet modifies the status of slices that belong to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -154,9 +151,9 @@ Specifies the start of a time period as a **DateTime** object.
 This time is the beginning of a data slice.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -168,7 +165,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies a status to assign to the data slice.
 The acceptable values for this parameter are:
-
 - Waiting.
 Data slice is waiting for validation against validation policies before being processed. 
 - Ready.
@@ -181,9 +177,9 @@ Data processing failed.
 Skipped processing the data slice.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Failed, InProgress, Ready, Skipped, Waiting
 
 Required: True
@@ -196,16 +192,15 @@ Accept wildcard characters: False
 ### -UpdateType
 Specifies the type of update to the slice.
 The acceptable values for this parameter are:
-
 - Individual.
 Sets the status of each slice for the dataset in the specified time range. 
 - UpstreamInPipeline.
 Sets the status of each slice for the dataset and all the dependent datasets, which are used as input datasets for activities in the pipeline.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Individual, UpstreamInPipeline
 
 Required: False
@@ -220,8 +215,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+
+### System.String
 
 ## OUTPUTS
 

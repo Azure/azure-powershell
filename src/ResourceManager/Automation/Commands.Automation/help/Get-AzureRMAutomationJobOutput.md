@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B39C4D6B-392A-4C8D-A6FB-886DA1A2BA58
@@ -37,9 +37,9 @@ This command gets all of the output of the job that has the specified ID.
 Specifies the name of an Automation account for which this cmdlet gets job output.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Specifies the ID of a job for which this cmdlet gets output.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases: JobId
 
@@ -82,9 +82,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet gets job output.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -99,9 +99,9 @@ You can specify a string that can be converted to a valid **DateTimeOffset**.
 The cmdlet retrieves output created after this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,7 +113,6 @@ Accept wildcard characters: False
 ### -Stream
 Specifies the type of output.
 Valid values are: 
-
 - Any
 - Debug
 - Error
@@ -123,9 +122,9 @@ Valid values are:
 - Warning
 
 ```yaml
-Type: StreamType
+Type: Microsoft.Azure.Commands.Automation.Common.StreamType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Any, Progress, Output, Warning, Error, Debug, Verbose
 
 Required: False
@@ -140,8 +139,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### Microsoft.Azure.Commands.Automation.Common.StreamType
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
 
 ## OUTPUTS
 

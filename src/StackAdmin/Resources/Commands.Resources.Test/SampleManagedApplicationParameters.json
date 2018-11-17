@@ -1,0 +1,11 @@
+{
+  "adminUsername": {
+    "value": "xDeploymentTestHost2s8168"
+  },
+  "adminPassword": {
+    "value": "Test12346!sdsfg"
+  },
+  "dnsLabelPrefix": {
+    "value": "testsdk27da341s"
+  }
+}

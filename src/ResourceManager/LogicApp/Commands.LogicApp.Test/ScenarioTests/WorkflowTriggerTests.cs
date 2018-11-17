@@ -26,9 +26,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class WorkflowTriggerTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public WorkflowTriggerTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogicAppTrigger()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTrigger");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppTrigger");
         }
 
         /// <summary>
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogicAppTriggerHistory()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerHistory");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppTriggerHistory");
         }
 
         /// <summary>
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogicAppTriggerCallbackUrl()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerCallbackUrl");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppTriggerCallbackUrl");
         }
 
         /// <summary>
@@ -68,7 +71,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartAzureLogicAppTrigger()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-StartAzureLogicAppTrigger");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StartAzureLogicAppTrigger");
         }
     }
 }

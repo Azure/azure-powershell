@@ -19,13 +19,18 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSet : VirtualMachineScaleSet
+    public partial class PSVirtualMachineScaleSet
     {
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
+
+        public PSVirtualMachineScaleSetIdentity Identity { get; set; }
+
+        public PSVirtualMachineScaleSet() { }
     }
 }

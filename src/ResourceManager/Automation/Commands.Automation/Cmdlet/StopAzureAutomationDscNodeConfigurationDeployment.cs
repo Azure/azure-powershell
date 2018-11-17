@@ -29,8 +29,7 @@ using DayOfWeek = Microsoft.Azure.Commands.Automation.Model.DayOfWeek;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmAutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, 
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByJobId), OutputType(typeof(bool))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByJobId), OutputType(typeof(bool))]
     public class StopAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
     {
         /// <summary>

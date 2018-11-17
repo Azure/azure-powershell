@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: B7A675D3-EF79-4EE2-9330-D4C690739006
@@ -63,7 +63,7 @@ You can resize this virtual machine to the sizes that this command gets.
 Specifies the name of the Availability Set for which this cmdlet gets the available virtual machine sizes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListAvailableSizesForAvailabilitySet
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Specifies the location for which this cmdlet gets the available virtual machine sizes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListVirtualMachineSizeParamSet
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListAvailableSizesForAvailabilitySet, ListAvailableSizesForVirtualMachine
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine that this cmdlet gets the available virtual machine sizes for resizing.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListAvailableSizesForVirtualMachine
 Aliases:
 
@@ -139,8 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

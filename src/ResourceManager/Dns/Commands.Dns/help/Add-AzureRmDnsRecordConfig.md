@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: CD119EBE-E1A4-4E9D-B3BA-FDAF89BF0DDB
@@ -70,10 +70,8 @@ Add-AzureRmDnsRecordConfig -RecordSet <DnsRecordSet> -CaaFlags <Byte> -CaaTag <S
 ## DESCRIPTION
 The **Add-AzureRmDnsRecordConfig** cmdlet adds a Domain Name System (DNS) record to a **RecordSet** object.
 The **RecordSet** object is an offline object, and changes to it do not change the DNS responses until after you run the Set-AzureRmDnsRecordSet cmdlet to persist the change to the Microsoft Azure DNS service.
-
 SOA records are created when a DNS zone is created, and are removed when the DNS zone is deleted.
 You cannot add or remove SOA records, but you can edit them.
-
 You can pass the **RecordSet** object to this cmdlet as a parameter or by using the pipeline operator.
 
 ## EXAMPLES
@@ -190,9 +188,9 @@ This example adds a TXT record to an existing record set.
 The flags for the CAA record to add. Must be a number between 0 and 255.
 
 ```yaml
-Type: Byte
+Type: System.Byte
 Parameter Sets: Caa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -205,9 +203,9 @@ Accept wildcard characters: False
 The tag field of the CAA record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Caa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -220,9 +218,9 @@ Accept wildcard characters: False
 The value field for the CAA record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Caa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -235,9 +233,9 @@ Accept wildcard characters: False
 Specifies the domain name for a canonical name (CNAME) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CNAME
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -250,7 +248,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -265,9 +263,9 @@ Accept wildcard characters: False
 Specifies the mail exchange server name for a mail exchange (MX) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MX
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -280,9 +278,9 @@ Accept wildcard characters: False
 Specifies an IPv4 address for an A record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: A
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -295,9 +293,9 @@ Accept wildcard characters: False
 Specifies an IPv6 address for an AAAA record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AAAA
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -310,9 +308,9 @@ Accept wildcard characters: False
 Specifies the name server name for a name server (NS) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NS
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -325,9 +323,9 @@ Accept wildcard characters: False
 Specifies the port for a service (SRV) record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: SRV
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -340,9 +338,9 @@ Accept wildcard characters: False
 Specifies the preference for an MX record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: MX
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -355,9 +353,9 @@ Accept wildcard characters: False
 Specifies the priority for an SRV record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: SRV
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -370,9 +368,9 @@ Accept wildcard characters: False
 Specifies the target domain name of a pointer resource (PTR) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PTR
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -385,9 +383,9 @@ Accept wildcard characters: False
 Specifies the **RecordSet** object to edit.
 
 ```yaml
-Type: DnsRecordSet
+Type: Microsoft.Azure.Commands.Dns.DnsRecordSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -400,9 +398,9 @@ Accept wildcard characters: False
 Specifies the target for an SRV record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SRV
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -415,9 +413,9 @@ Accept wildcard characters: False
 Specifies the value for a TXT record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TXT
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -430,9 +428,9 @@ Accept wildcard characters: False
 Specifies the weight for an SRV record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: SRV
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -447,14 +445,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-You can pipe a **RecordSet** object to this cmdlet.
-This is an offline representation of the **RecordSet**, and changes to it do not change DNS responses until after you run the Set-AzureRmDnsRecordSet cmdlet.
+Parameters: RecordSet (ByValue)
+
+### System.String
+
+### System.UInt16
+
+### System.Byte
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-This cmdlet returns the modified **RecordSet** object.
-In addition, the object passed in is modified directly.
 
 ## NOTES
 

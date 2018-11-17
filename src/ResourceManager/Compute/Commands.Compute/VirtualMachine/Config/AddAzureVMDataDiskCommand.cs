@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
@@ -22,12 +23,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.DataDisk,
-        DefaultParameterSetName = VmNormalDiskParameterSet),
-    OutputType(
-        typeof(CM.PSVirtualMachine), typeof (PSVirtualMachineScaleSetVM))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDataDisk",DefaultParameterSetName = VmNormalDiskParameterSet),OutputType(typeof(CM.PSVirtualMachine), typeof (PSVirtualMachineScaleSetVM))]
     public class AddAzureVMDataDiskCommand : ComputeClientBaseCmdlet
     {
         protected const string VmNormalDiskParameterSet = "VmNormalDiskParameterSetName";
@@ -150,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(
@@ -229,13 +225,7 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun.GetValueOrDefault(),
                     CreateOption = this.CreateOption,
-                    ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
-                                  ? null
-                                  : new ManagedDiskParameters
-                                  {
-                                      Id = this.ManagedDiskId,
-                                      StorageAccountType = this.StorageAccountType
-                                  },
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 });
 
@@ -245,6 +235,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
+                WriteWarning("VirtualMachineScaleSetVM parameter will be deprecated.  Use Add-AzureRmVmssVMDataDisk instead.");
+
                 var storageProfile = this.VirtualMachineScaleSetVM.StorageProfile;
 
                 if (storageProfile == null)
@@ -263,11 +255,7 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun.GetValueOrDefault(),
                     CreateOption = this.CreateOption,
-                    ManagedDisk = new ManagedDiskParameters
-                                  {
-                                      Id = this.ManagedDiskId,
-                                      StorageAccountType = this.StorageAccountType
-                                  },
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 });
 

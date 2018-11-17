@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+#endif
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
@@ -51,6 +55,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         [Parameter(HelpMessage = "The client side maximum execution time for each request in seconds.")]
         public virtual int? ClientTimeoutPerRequest { get; set; }
+
+        /// <summary>
+        /// Gets or sets the global profile for ARM cmdlets.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [Alias("AzureRmContext", "AzureCredential")]
+        public IAzureContextContainer DefaultProfile
+        {
+            get
+            {
+                return _profile;
+            }
+            set
+            {
+                _profile = value;
+            }
+        }
+
+        private IAzureContextContainer _profile;
 
         /// <summary>
         /// Amount of concurrent async tasks to run per available core.
@@ -250,7 +273,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string storageAccount;
                 try
                 {
-                    if (TryGetStorageAccount(RMProfile, out storageAccount)
+                    if (TryGetStorageAccount(DefaultProfile, out storageAccount)
+                        || TryGetStorageAccount(RMProfile, out storageAccount)
                         || TryGetStorageAccount(SMProfile, out storageAccount)
                         || TryGetStorageAccountFromEnvironmentVariable(out storageAccount))
                     {

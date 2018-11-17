@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM.Storage
 ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
@@ -45,7 +45,7 @@ PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "mys
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Specifies the name of the Storage account for which this cmdlet gets keys.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountName, AccountName
 
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -91,8 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

@@ -14,25 +14,24 @@ Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName <String> -ResourceGroupName <String> [-Force]
+Remove-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmVpnClientIpsecParameter -InputObject <PSVirtualNetworkGateway> [-Force]
+Remove-AzureRmVpnClientIpsecParameter -InputObject <PSVirtualNetworkGateway>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmVpnClientIpsecParameter -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmVpnClientIpsecParameter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-
 The **Remove-AzureRmVpnClientIpsecParameter** cmdlet removes the vpn custom ipsec parameters set on your Virtual Network Gateway, which in turn sets default vpn ipsec policy on VPN gateway based on VirtualNetworkGateway Name and Resource Group Name passed.
 
 ## EXAMPLES
@@ -43,7 +42,6 @@ PS C:\> $delete = Remove-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayNa
 ```
 
 Deletes the vpn custom ipsec parameters set on your Virtual Network Gateway with the name "myGateway" within the resource group "myRG". This command returns bool object showing if removal was successful or failed.
-
 Note: This will result in setting default vpn ipsec policy on your Virtual Network Gateway.
 
 ## PARAMETERS
@@ -52,24 +50,9 @@ Note: This will result in setting default vpn ipsec policy on your Virtual Netwo
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Don't ask for confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +65,7 @@ Accept wildcard characters: False
 The virtual network gateaway object
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: ByFactoryObject
 Aliases:
 
@@ -97,14 +80,14 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -112,7 +95,7 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -127,14 +110,14 @@ Accept wildcard characters: False
 The virtual network gateway name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -142,7 +125,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -158,7 +141,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -174,12 +157,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: InputObject (ByValue)
+
 ### System.String
-Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

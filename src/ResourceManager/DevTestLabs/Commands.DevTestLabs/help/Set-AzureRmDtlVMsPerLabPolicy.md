@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
 Module Name: AzureRM.DevTestLabs
 ms.assetid: D2A7ECF6-E2B1-4BD5-BEA6-C9EC0C7377BA
@@ -37,7 +37,7 @@ The cmdlet uses the specified resource group and name of the lab to set the poli
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -52,9 +52,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables the policy of the lab.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Disable
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -67,9 +67,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables the policy of the lab.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Enable
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -82,9 +82,9 @@ Accept wildcard characters: False
 Specifies the name of the lab for which this cmdlet sets the virtual machines per lab policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -97,9 +97,9 @@ Accept wildcard characters: False
 Specifies the maximum number of virtual machines that can be created in the lab.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -112,9 +112,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the lab belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -143,7 +143,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -159,13 +159,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy
-This cmdlet returns the policy that specifies the maximum number of virtual machines that can be created in the lab.
 
 ## NOTES
 

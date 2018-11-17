@@ -25,13 +25,47 @@ The **Set-AzureRmVirtualNetworkGatewayConnection** cmdlet configures a virtual n
 
 ## EXAMPLES
 
+### Example 1:
+```
+$conn = Get-AzureRmVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
+Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn
+
+Confirm
+Are you sure you want to overwrite resource '1'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+
+
+Name                    : 1
+ResourceGroupName       : myRG
+Location                : westus
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Mi
+                          crosoft.Network/connections/1
+Etag                    : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid            : 00000000-0000-0000-0000-000000000000
+ProvisioningState       : Succeeded
+Tags                    :
+AuthorizationKey        :
+VirtualNetworkGateway1  : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/M
+                          icrosoft.Network/virtualNetworkGateways/myGateway"
+VirtualNetworkGateway2  : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/S2SVnetConn/providers/Mic
+                          rosoft.Network/virtualNetworkGateways/S2SConnGW"
+LocalNetworkGateway2    :
+Peer                    :
+RoutingWeight           : 0
+SharedKey               :
+ConnectionStatus        : Connected
+EgressBytesTransferred  : 91334484
+IngressBytesTransferred : 100386089
+TunnelConnectionStatus  : []
+```
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -46,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,7 +95,7 @@ Accept wildcard characters: False
 Whether to use a BGP session over a S2S VPN tunnel
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +110,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +140,7 @@ Accept wildcard characters: False
 Whether to use policy-based traffic selectors for a S2S connection
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +155,7 @@ Accept wildcard characters: False
 Specifies the PSVirtualNetworkGatewayConnection object that this cmdlet uses to modify the virtual network gateway connection.
 
 ```yaml
-Type: PSVirtualNetworkGatewayConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +170,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -152,7 +186,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -168,8 +202,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetworkGatewayConnection
-Parameter 'VirtualNetworkGatewayConnection' accepts value of type 'PSVirtualNetworkGatewayConnection' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
+Parameters: VirtualNetworkGatewayConnection (ByValue)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

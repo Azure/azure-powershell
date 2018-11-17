@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.1.1'
+    ModuleVersion     = '0.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Author            = 'Microsoft'
 
     # Company or vendor of this module
-    CompanyName       = 'Unknown'
+    CompanyName       = 'Microsoft'
 
     # Copyright statement for this module
     Copyright         = '(c) 2018 Microsoft. All rights reserved.'
@@ -38,7 +38,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Description       = 'Fabric Admin Client'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -56,11 +56,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
-                             @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.4.1'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
-    # RequiredAssemblies = @()
+    RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Fabric.Admin.dll')
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
@@ -81,13 +81,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsSlbMuxInstance', 'Get-AzsScaleUnit', 'New-AzsIpPool',
     'Start-AzsInfrastructureRoleInstance', 'Get-AzsMacAddressPool',
     'Get-AzsEdgeGatewayPool', 'Restart-AzsInfrastructureRole',
-    'Get-AzsInfrastructureVolume', 'Enable-AzsScaleUnitNode',
+    'Get-AzsVolume', 'Enable-AzsScaleUnitNode',
     'Get-AzsInfrastructureRole', 'Get-AzsIpPool', 'Get-AzsLogicalSubnet',
     'Get-AzsEdgeGateway', 'Get-AzsInfrastructureLocation',
     'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
-    'Stop-AzsScaleUnitNode'
+    'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode',
+    'New-AzsScaleUnitNodeObject', 'Get-AzsDrive',
+    'Get-AzsStorageSubSystem'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -96,7 +98,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = @()
+    AliasesToExport   = @(
+    'Get-AzsInfrastructureVolume'
+    )
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -113,19 +117,26 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags         = @('AzureStack', 'Fabric', 'Admin', 'Infrastructure', 'ScaleUnit', 'FRP')
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri   = 'https://aka.ms/azps-license'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri   = 'https://github.com/Azure/azure-powershell'
 
             # A URL to an icon representing this module.
             # IconUri = ''
 
             # ReleaseNotes of this module
-            # ReleaseNotes = ''
+            ReleaseNotes = '## 2018.11.5
+            * New cmdlet (The features are supported by Azure Stack 1811+)
+	            * Get-AzsDrive
+	            * Get-AzsVolume
+	            * Get-AzsStorageSubSystem
+            * Deprecation
+	            * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
+            '
 
         } # End of PSData hashtable
 

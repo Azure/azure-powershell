@@ -40,7 +40,7 @@ function Get-AzsNetworkAdminOverview {
     }
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'

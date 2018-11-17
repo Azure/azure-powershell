@@ -42,10 +42,55 @@ The **New-AzureRmPolicySetDefinition** cmdlet creates a policy set definition.
 
 ### Example 1: Create a policy set definition by using a policy set file
 ```
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "parameters": {
+         "tagName": {
+            "value": "Business Unit"
+         },
+         "tagValue": {
+            "value": "Finance"
+         }
+      }
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+   }
+]
+```
+
+```
 PS C:\> New-AzureRmPolicySetDefinition -Name 'VMPolicyDefinition' -PolicyDefinition C:\VMPolicySet.json
 ```
 
-This command creates a policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json.
+This command creates a policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+
+### Example 2: Create a parameterized policy set definition
+```
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "parameters": {
+         "tagName": {
+            "value": "Business Unit"
+         },
+         "tagValue": {
+            "value": "[parameters('buTagValue')]"
+         }
+      }
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+   }
+]
+```
+
+```
+PS C:\> New-AzureRmPolicySetDefinition -Name 'VMPolicyDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+```
+
+This command creates a parameterized policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
@@ -54,7 +99,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +114,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,7 +129,7 @@ Accept wildcard characters: False
 The description for policy set definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +144,7 @@ Accept wildcard characters: False
 The display name for policy set definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +159,7 @@ Accept wildcard characters: False
 The name of the management group of the new policy set definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
@@ -129,7 +174,7 @@ Accept wildcard characters: False
 The metadata for policy set definition. This can either be a path to a file name containing the metadata, or the metadata as string
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +189,7 @@ Accept wildcard characters: False
 The policy set definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +205,7 @@ The parameters declaration for policy set definition.
 This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +220,7 @@ Accept wildcard characters: False
 The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +235,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +250,7 @@ Accept wildcard characters: False
 The subscription ID of the new policy set definition.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
@@ -220,7 +265,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -235,7 +280,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -252,6 +297,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

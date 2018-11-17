@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
@@ -71,7 +71,7 @@ Gets the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The display name of the service principal
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The object id of the service principal to retrieve credentials from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The name (SPN) of the service principal to retrieve credentials from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SPNParameterSet
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The service principal object to retrieve the credentials from.
 
 ```yaml
-Type: PSADServicePrincipal
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: SPNObjectParameterSet
 Aliases:
 
@@ -147,9 +147,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### System.Guid
 
-This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to get the credentials for the provided service principal.
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: ServicePrincipalObject (ByValue)
 
 ## OUTPUTS
 

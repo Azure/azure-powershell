@@ -33,12 +33,13 @@ namespace Microsoft.Azure.Commands.WebApps
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The web app object", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public Site WebApp { get; set; }
+        public PSSite WebApp { get; set; }
 
         public override void ExecuteCmdlet()
         {

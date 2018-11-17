@@ -48,7 +48,7 @@ True
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The key type, either Primary or Secondary.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Primary, Secondary
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Returns true if the regeneration was completed successfully.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 The SignalR service resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -170,7 +170,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -187,11 +187,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameters: ResourceId (ByValue)
+
+### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys
+### System.Boolean
 
 ## NOTES
 

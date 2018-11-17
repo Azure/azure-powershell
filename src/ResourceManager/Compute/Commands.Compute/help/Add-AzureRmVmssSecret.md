@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 656BE930-E778-40B0-8A75-BFE52DE386CE
@@ -47,7 +47,7 @@ The fourth command adds a secret to the VMSS using the vault secret using the ke
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +64,7 @@ This value also acts as the key for adding multiple certificates.
 This means that you can use the same value for the *SourceVaultId* parameter when you add multiple certificates from the same Key Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ Specifies the Vault **Certificate** object that contains the certificate URL and
 You can use the [New-AzureRmVmssVaultCertificateConfig](./New-AzureRmVmssVaultCertificateConfig.md) cmdlet to create this object.
 
 ```yaml
-Type: VaultCertificate[]
+Type: Microsoft.Azure.Management.Compute.Models.VaultCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Specifies the VMSS object.
 You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create this object.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -142,13 +142,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+
+### System.String
+
+### Microsoft.Azure.Management.Compute.Models.VaultCertificate[]
 
 ## OUTPUTS
 
-### None
-This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

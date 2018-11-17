@@ -36,9 +36,9 @@ This command imports a certificate for a proxy custom hostname.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,14 +51,12 @@ Accept wildcard characters: False
 
 ### -HostnameType
 Specifies the host name type that this cmdlet loads the certificate for.
-
 Valid values are: 
-
 - Proxy
 - Portal
 
 ```yaml
-Type: PsApiManagementHostnameType
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Proxy, Portal, Management, Scm
@@ -74,7 +72,7 @@ Accept wildcard characters: False
 Specifies the name of the API Management deployment that this cmdlet imports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +88,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +103,7 @@ Accept wildcard characters: False
 Specifies the password for the .pfx certificate file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +118,7 @@ Accept wildcard characters: False
 Specifies the path to a .pfx certificate file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +133,7 @@ Accept wildcard characters: False
 Specifies the name of the of resource group under which the API Management deployment exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,8 +149,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
 
 ## OUTPUTS
 

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = GeneralizeResourceGroupNameParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = GeneralizeResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SetAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = RedeployResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
           HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

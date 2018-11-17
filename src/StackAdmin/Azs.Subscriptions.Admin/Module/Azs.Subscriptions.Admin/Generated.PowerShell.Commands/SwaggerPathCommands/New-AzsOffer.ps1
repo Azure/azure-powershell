@@ -32,7 +32,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     External reference identifier.
 
 .PARAMETER State
-    Offer accessibility state.
+    Offer accessibility state. Default value is Private. This parameter will be deprecated in a future release
 
 .PARAMETER Location
     Location of the resource.
@@ -83,7 +83,6 @@ function New-AzsOffer {
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false)]
-        [ValidateSet('Private', 'Decommissioned')]
         [System.String]
         $State = 'Private',
 
@@ -118,7 +117,9 @@ function New-AzsOffer {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+        if ($PSBoundParameters.ContainsKey('State')) {
+            Write-Warning -Message "The parameter State will be deprecated in a future release. The State will default to the value of Private"
+        }
 
         # Add here, use defaults above for help.
         if (-not $PSBoundParameters.ContainsKey('State')) {
@@ -139,15 +140,9 @@ function New-AzsOffer {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsManagedOffer -Name $Name -Location $Location -ResourceGroupName $ResourceGroupName
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "An offer with name $Name under the resource group $ResourceGroupName at location $Location already exists."
-                }
+            if ($null -ne (Get-AzsManagedOffer -Name $Name -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue)) {
+                Write-Error "An offer with name $Name under the resource group $ResourceGroupName at location $Location already exists."
+                return
             }
 
             $flattenedParameters = @('MaxSubscriptionsPerAccount', 'BasePlanIds', 'DisplayName', 'Name', 'Description', 'ExternalReferenceId', 'State', 'Location', 'SubscriptionCount', 'AddonPlanDefinition')

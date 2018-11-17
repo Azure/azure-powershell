@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 4DCF54BA-CFFA-4555-8CA3-66B98F704EFB
@@ -55,9 +55,9 @@ Specifies a **PSDataFactory** object.
 This cmdlet creates a gateway for the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -71,9 +71,9 @@ Specifies the name of a data factory.
 This cmdlet creates a gateway for the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 Specifies a description for the gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -116,9 +116,9 @@ Accept wildcard characters: False
 Specifies the name of the gateway to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -132,9 +132,9 @@ Specifies the name of an Azure resource group.
 This cmdlet creates a gateway that belongs to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -148,8 +148,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+
+### System.String
 
 ## OUTPUTS
 

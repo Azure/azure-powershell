@@ -55,9 +55,9 @@ This command stops the pipeline run with id b9730a13-aa12-4926-a8b3-8e3a974ab0bd
 The data factory object.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 The data factory name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 The Run ID of the pipeline.
 
 ```yaml
-Type: PSPipelineRun
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,9 +115,9 @@ Accept wildcard characters: False
 If specified the cmdlet write true in case operation succeeds.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,9 +130,9 @@ Accept wildcard characters: False
 The Run ID of the pipeline.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName, ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -145,9 +145,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +176,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -193,8 +193,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
-System.String
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
+Parameters: InputObject (ByValue)
+
+### System.String
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
+Parameters: DataFactory (ByValue)
 
 ## OUTPUTS
 
@@ -203,4 +207,3 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 ## NOTES
 
 ## RELATED LINKS
-

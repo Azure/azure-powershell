@@ -14,41 +14,88 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.EventHub.Models;
+
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
     /// <summary>
     /// 'Remove-AzureRmEventHubConsumerGroup' deletes the specifed Consumer Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ConsumerGroupVerb, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup", DefaultParameterSetName = ConsumergroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRmEventHubConsumerGroupp : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = ConsumergroupPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = ConsumergroupPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
+        [Parameter(Mandatory = true, ParameterSetName = ConsumergroupPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "ConsumerGroup Name")]
+        [Parameter(Mandatory = true, ParameterSetName = ConsumergroupPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "ConsumerGroup Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ConsumergroupInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "ConsumerGroup Object")]
+        [ValidateNotNullOrEmpty]
+        public PSConsumerGroupAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ConsumergroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ConsumerGroup Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
+
+            if (ParameterSetName.Equals(ConsumergroupInputObjectParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                EventHub = identifier.ParentResource1;
+                Name = identifier.ResourceName;
+            }
+            else if (ParameterSetName.Equals(ConsumergroupResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                EventHub = identifier.ParentResource1;
+                Name = identifier.ResourceName;
+            }
+
             // delete a ConsumerGroup 
-            if (ShouldProcess(target:Name, action: string.Format(Resources.RemoveConsumerGroup, Name, EventHub)))
-               {
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveConsumerGroup, Name, EventHub)))
+            {
+                try
+                {
                     Client.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
-               }
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
+            }
         }
     }
 }

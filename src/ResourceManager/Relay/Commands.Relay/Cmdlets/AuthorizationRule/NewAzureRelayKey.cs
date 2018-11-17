@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// <summary>
     /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given WcfRelay Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, RelayKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleKeysAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAuthorizationRuleKeysAttributes))]
     public class NewAzureRmRelayKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             IgnoreCase = true)]      
         public string RegenerateKey { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "A base64-encoded 256-bit key for signing and validating the SAS token.")]
+        public string KeyValue { get; set; }
+
         public override void ExecuteCmdlet()
         {         
             
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                 {
-                    WriteObject(Client.NamespaceRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey));
+                    WriteObject(Client.NamespaceRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
                 }
             }
 
@@ -87,7 +90,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyWcfRelay, Name, WcfRelay)))
                 {
-                    WriteObject(Client.WcfRelayRegenerateKeys(ResourceGroupName, Namespace, WcfRelay, Name, RegenerateKey));
+                    WriteObject(Client.WcfRelayRegenerateKeys(ResourceGroupName, Namespace, WcfRelay, Name, RegenerateKey, KeyValue));
                 }
             }
 
@@ -96,7 +99,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyHybirdconnection, Name, HybridConnection)))
                 {
-                    WriteObject(Client.HybridConnectionsRegenerateKeys(ResourceGroupName, Namespace, HybridConnection, Name, RegenerateKey));
+                    WriteObject(Client.HybridConnectionsRegenerateKeys(ResourceGroupName, Namespace, HybridConnection, Name, RegenerateKey, KeyValue));
                 }
             }
         }

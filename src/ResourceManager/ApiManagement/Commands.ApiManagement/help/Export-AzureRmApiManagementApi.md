@@ -46,7 +46,7 @@ This command exports an API to a WADL file.
 Specifies the ID of the API to export.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Identifier of API Revision. This parameter is optional. If not specified, the export will be done for the currently active api revision.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Indicates that this operation overwrites the file of the same name if it already exists.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ExportToFile
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Indicates that this operation returns $True if the API is exported successfully, or $False otherwise.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ExportToFile
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Specifies the file path to which to save the exported API.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExportToFile
 Aliases:
 
@@ -152,7 +152,7 @@ Specifies the API format.
 psdx_paramvalues Wadl and Swagger.
 
 ```yaml
-Type: PsApiManagementApiFormat
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: Wadl, Swagger, Wsdl
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -184,7 +184,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -200,12 +200,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### String
+### System.String
 This cmdlet returns the exported API content as a string.
 
 ## NOTES

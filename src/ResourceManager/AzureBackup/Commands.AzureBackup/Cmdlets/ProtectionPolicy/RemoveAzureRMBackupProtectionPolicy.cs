@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Remove a protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmBackupProtectionPolicy", SupportsShouldProcess = true)]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupProtectionPolicy", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
@@ -58,4 +60,3 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
-

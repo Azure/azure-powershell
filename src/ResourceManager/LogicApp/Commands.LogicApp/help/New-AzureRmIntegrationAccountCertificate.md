@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: BB1B49CD-B42F-4222-B0BA-0AA4CE3C95E0
@@ -39,7 +39,6 @@ The **New-AzureRmIntegrationAccountCertificate** cmdlet creates an integration a
 This cmdlet returns an object that represents the integration account certificate.
 Specify the integration account name, resource group name, certificate name, key name, key version, and key vault ID.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -72,9 +71,9 @@ This command creates the integration account certificate in the specified resour
 Specifies a name for the integration account certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,9 +101,9 @@ Accept wildcard characters: False
 Specifies the name of the certificate key in the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PrivateKey, Both
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -114,9 +113,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PublicKey
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,9 +128,9 @@ Accept wildcard characters: False
 Specifies a key vault ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PrivateKey, Both
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,9 +140,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PublicKey
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,9 +155,9 @@ Accept wildcard characters: False
 Specifies the version of the certificate key in the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PrivateKey, Both
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -168,9 +167,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PublicKey
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,9 +182,9 @@ Accept wildcard characters: False
 Specifies a metadata object for the certificate.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,7 +197,7 @@ Accept wildcard characters: False
 Specifies the name of an integration account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: IntegrationAccountName, ResourceName
 
@@ -213,9 +212,9 @@ Accept wildcard characters: False
 Specifies the path of a public certificate (.cer) file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PrivateKey
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,9 +224,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PublicKey, Both
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -240,9 +239,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -255,7 +254,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -271,7 +270,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -287,8 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

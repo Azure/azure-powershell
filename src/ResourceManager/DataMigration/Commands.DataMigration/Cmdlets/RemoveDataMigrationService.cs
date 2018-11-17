@@ -19,9 +19,9 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    [Alias("Remove-AzureRmDms")]
+    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Dms")]
     public class RemoveDataMigrationService : DataMigrationCmdlet
     {
         [Parameter(

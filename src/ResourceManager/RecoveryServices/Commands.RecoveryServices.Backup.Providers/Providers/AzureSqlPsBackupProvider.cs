@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -348,16 +348,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             ContainerBase container = (ContainerBase)ProviderData[ItemParams.Container];
-            string name = (string)ProviderData[ItemParams.AzureVMName];
+            string name = (string)ProviderData[ItemParams.ItemName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)ProviderData[ItemParams.ProtectionStatus];
             ItemProtectionState status =
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
-            ODataQuery<ProtectedItemQueryObject> queryParams =
+            ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
                 new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureSql &&
+                         q.ItemType == DataSourceType.AzureSqlDb &&
+                         q.PolicyName == policy.Name) :
+                         new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureSql &&
                          q.ItemType == DataSourceType.AzureSqlDb);

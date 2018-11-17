@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
 Module Name: AzureRM.ApplicationInsights
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightsdailycap
@@ -56,9 +56,9 @@ Set the daily data volumen cap to 400GB per day and stop send notification when 
 Application Insights Component Object.
 
 ```yaml
-Type: PSApplicationInsightsComponent
+Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
 Parameter Sets: ComponentObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -67,28 +67,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DailyCapGB
 Daily Cap.
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,9 +101,9 @@ Accept wildcard characters: False
 Stop send notification when hit cap.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,7 +116,7 @@ Accept wildcard characters: False
 Application Insights Component Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
@@ -146,9 +131,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -161,9 +146,9 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -172,11 +157,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,15 +192,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
+Parameters: ApplicationInsightsComponent (ByValue)
+
 ### System.String
-System.Double
-System.Boolean
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingTier
+### Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: BC8C0D59-662F-47D2-8619-9F69D78B171D
@@ -173,7 +173,7 @@ This command gets advisor named CreateIndex from the server named wi-runner-aust
 Specifies the name of the Advisor that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool for which this cmdlet requests the Advisor.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 Indicates that the cmdlet includes the recommended actions of the Advisor in the response.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the server that contains this elastic pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Specifies the name of the server the elastic pool is in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -264,8 +264,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

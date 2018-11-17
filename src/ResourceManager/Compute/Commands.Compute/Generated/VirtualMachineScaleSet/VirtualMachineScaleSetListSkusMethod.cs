@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -30,85 +31,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineScaleSetListSkusDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineScaleSetListSkusMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineScaleSetsClient.ListSkus(resourceGroupName, vmScaleSetName);
-            var resultList = result.ToList();
-            var nextPageLink = result.NextPageLink;
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var pageResult = VirtualMachineScaleSetsClient.ListSkusNext(nextPageLink);
-                foreach (var pageItem in pageResult)
-                {
-                    resultList.Add(pageItem);
-                }
-                nextPageLink = pageResult.NextPageLink;
-            }
-            WriteObject(resultList, true);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineScaleSetListSkusParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName" },
-                 new object[] { resourceGroupName, vmScaleSetName });
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Get, "AzureRmVmssSku", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssSku", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSetSku))]
     public partial class GetAzureRmVmssSku : ComputeAutomationBaseCmdlet
     {
@@ -146,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -154,6 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
     }

@@ -12,15 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricSetting, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSCluster),
+    DeprecatedOutputProperties = new String[] { "UpgradeDescription.DeltaHealthPolicy.ApplicationHealthPolicies", "UpgradeDescription.OverrideUserUpgradePolicy", "SerivceTypeHealthPolicies" })]
+#endif
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricSetting", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricSetting : ServiceFabricSettingsCmdletBase
     {
         public override string Value { get; set; }

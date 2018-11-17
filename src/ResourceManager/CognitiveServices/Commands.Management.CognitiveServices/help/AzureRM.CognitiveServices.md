@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.CognitiveServices
 Module Guid: 66c566b4-950c-4a2b-9f3b-199d92f0df1a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices
@@ -19,6 +19,12 @@ Gets the API keys for an account.
 
 ### [Get-AzureRmCognitiveServicesAccountSkus](Get-AzureRmCognitiveServicesAccountSkus.md)
 Gets the available SKUs for an account.
+
+### [Get-AzureRmCognitiveServicesAccountType](Get-AzureRmCognitiveServicesAccountType.md)
+Gets the available Cognitive Services Account Types.
+
+### [Get-AzureRmCognitiveServicesAccountUsage](Get-AzureRmCognitiveServicesAccountUsage.md)
+Get current usages for a Cognitive Services account.
 
 ### [New-AzureRmCognitiveServicesAccount](New-AzureRmCognitiveServicesAccount.md)
 Creates a Cognitive Services account.

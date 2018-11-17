@@ -38,7 +38,6 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVi
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
-
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
 ## PARAMETERS
@@ -47,7 +46,7 @@ Note: The Azure Network Watcher extension must be installed on the target virtua
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +65,7 @@ Example inputs:
 "127.0.0.1;127.0.0.5;" for multiple entries.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +84,7 @@ Example inputs:
 "127.0.0.1;127.0.0.5;" for multiple entries.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +99,7 @@ Accept wildcard characters: False
 Specifies the Procotol to filter on. Acceptable values "TCP","UDP","Any"
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +118,7 @@ Example inputs:
 "127.0.0.1;127.0.0.5;" for multiple entries.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +138,7 @@ Example inputs:
 "80;443;" for multiple entries.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,6 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Protocol (ByValue)
 
 ## OUTPUTS
 

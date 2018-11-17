@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 23ED4D24-66BD-46E9-BB57-6E0DA679B733
@@ -37,7 +37,7 @@ This command enables the specified Intelligence Pack.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +50,9 @@ Accept wildcard characters: False
 
 ### -Enabled
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 Specifies the Intelligence Pack name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -80,9 +80,9 @@ Accept wildcard characters: False
 Specifies the resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Specifies the name of the workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -111,10 +111,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Boolean
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack
 
 ## NOTES
 

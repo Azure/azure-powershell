@@ -21,14 +21,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
     /// <summary>
     /// Cmdlet to generate a sync agent registration key for a specific sync agent
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncAgentKey", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentKeyModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncAgentKey", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentKeyModel))]
     public class NewAzureSqlSyncAgentKey : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentKeyModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the sync agent is in.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

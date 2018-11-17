@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebusqueue
@@ -14,7 +14,7 @@ Updates the description of a Service Bus queue in the specified Service Bus name
 
 ```
 Set-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-InputObject] <QueueAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InputObject] <PSQueueAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,32 +25,36 @@ The **Set-AzureRmServiceBusQueue** cmdlet updates the description for the Servic
 
 ### Example 1
 ```
-PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
+PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 
 PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
 PS C:\> $QueueObj.SupportOrdering = $True
 
-PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
+PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -QueueObj $QueueObj
 
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/SB-Queue_exampl1
 Name                                : SB-Queue_exampl1
-LockDuration                        : 
+LockDuration                        : PT1M
 AccessedAt                          : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:34 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-DeadLetteringOnMessageExpiration    : False
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 1/1/0001 12:00:00 AM
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
+DeadLetteringOnMessageExpiration    : True
 EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
+EnablePartitioning                  : False
+MaxDeliveryCount                    : 10
+MaxSizeInMegabytes                  : 81920
+MessageCount                        : 0
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 RequiresDuplicateDetection          : False
 RequiresSession                     : False
-SizeInBytes                         : 
+SizeInBytes                         : 0
 Status                              : Active
-UpdatedAt                           : 1/20/2017 6:16:18 PM
+UpdatedAt                           : 1/1/0001 12:00:00 AM
+ForwardTo                           :
+ForwardDeadLetteredMessagesTo       :
+EnableBatchedOperations             : False
 ```
 
 Updates the specified queue with a new description in the specified namespace. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **SupportOrdering** to **true**.
@@ -61,7 +65,7 @@ Updates the specified queue with a new description in the specified namespace. T
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +80,7 @@ Accept wildcard characters: False
 ServiceBus definition.
 
 ```yaml
-Type: PSQueueAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 Parameter Sets: (All)
 Aliases: QueueObj
 
@@ -91,7 +95,7 @@ Accept wildcard characters: False
 Queue Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: QueueName
 
@@ -106,7 +110,7 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -121,7 +125,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -136,7 +140,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -152,7 +156,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -168,17 +172,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
 
-### -NamespaceName
- System.String
-
-### -QueueName
- System.String
-
-### -QueueObj
- Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## OUTPUTS
 
@@ -187,4 +183,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

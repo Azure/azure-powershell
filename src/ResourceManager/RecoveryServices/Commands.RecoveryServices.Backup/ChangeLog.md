@@ -19,6 +19,26 @@
 -->
 ## Current Release
 
+## Version 4.5.1
+* Fix for modifying policy for a protected file share.
+* Converted policy timezone to uppercase.
+
+## Version 4.5.0
+* Added support for azure file shares in recovery services.
+
+## Version 4.4.1
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 4.4.0
+* Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
+* Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+* Updated to the latest version of the Azure ClientRuntime.
+* Added TargetResourceGroupName parameter to Restore-AzureRmRecoveryServicesBackupItem. The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
+
+## Version 4.3.1
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 4.3.0
 * Fixed formatting of OutputType in help files
 * Added Get-AzureRmRecoveryServicesBackupStatus cmdlet. This cmdlet takes a VM ID and checks if the VM is protected by some vault in the subscription. If there exists such a vault, the cmdlet outputs the vault details.

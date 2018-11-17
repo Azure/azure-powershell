@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFailoverGroup",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup",SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class RemoveAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

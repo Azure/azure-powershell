@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// <summary>
     /// 'Set-AzureRmRelayAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAuthorizationRuleAttributes))]
     public class SetAzureRelayAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         [Parameter(ParameterSetName = WcfRelayAuthoRuleParameterSet)]
         [Parameter(ParameterSetName = HybridConnectionAuthoRuleParameterSet)]
         [ValidateNotNullOrEmpty]
-        public AuthorizationRuleAttributes InputObject { get; set; }
+        public PSAuthorizationRuleAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 4,
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
 
         public override void ExecuteCmdlet()
         {
-            AuthorizationRuleAttributes sasRule = new AuthorizationRuleAttributes();
+            PSAuthorizationRuleAttributes sasRule = new PSAuthorizationRuleAttributes();
 
             if (InputObject != null)
             {

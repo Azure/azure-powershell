@@ -44,13 +44,11 @@ This command creates a logger named ContosoSdkEventHub by using the specified co
 
 ### -ConnectionString
 Specifies an Azure Event Hubs connection string that starts with the following: 
-
 `Endpoint=endpoint and key from Azure classic portal`
-
 The Key with Send Rights in the connection string must be configured.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventHubLoggerSet
 Aliases:
 
@@ -65,7 +63,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -78,9 +76,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,7 +93,7 @@ Accept wildcard characters: False
 Specifies a description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +108,7 @@ Accept wildcard characters: False
 Instrumentation Key of the application Insights. This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationInsightsLoggerSet
 Aliases:
 
@@ -127,7 +125,7 @@ The default value is $True.
 When records are buffered, they are sent to Event Hubs every 15 seconds, or whenever the buffer receives 256 KB of messages.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: EventHubLoggerSet
 Aliases:
 
@@ -143,7 +141,7 @@ Specifies an ID for the logger.
 If you do not specify an ID, this cmdlet generates one.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +156,7 @@ Accept wildcard characters: False
 Specifies the entity name of an event hub from Azure classic portal.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventHubLoggerSet
 Aliases:
 
@@ -174,8 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

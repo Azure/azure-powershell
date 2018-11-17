@@ -22,8 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = BaseCatalogParameterSetName),
-     OutputType(typeof(PSDataLakeAnalyticsAcl))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = BaseCatalogParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAcl))]
     [Alias("Get-AdlCatalogItemAclEntry")]
     public class GetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {

@@ -15,13 +15,14 @@ Enables custom HTTPS.
 ### ByFieldsParameterSet (Default)
 ```
 Enable-AzureRmCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Enable-AzureRmCdnCustomDomain -InputObject <PSCustomDomain> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,26 +40,11 @@ Enable https delivery of the custom domain.
 
 ## PARAMETERS
 
-### -CdnCustomDomain
-The custom domain object.
-
-```yaml
-Type: PSCustomDomain
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CustomDomainName
 Azure CDN custom domain display name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -73,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +74,7 @@ Accept wildcard characters: False
 Azure CDN endpoint name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -99,18 +85,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The custom domain object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Return object (if specified).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 Azure CDN profile name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -133,11 +134,41 @@ Accept wildcard characters: False
 The resource group of the Azure CDN profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
-System.Management.Automation.SwitchParameter
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

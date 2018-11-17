@@ -20,10 +20,8 @@ Get-AzureRmRecoveryServicesBackupManagementServer [[-Name] <String>] [-VaultId <
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupManagementServer** cmdlet gets a list of Backup management servers that are registered in a vault.
-
 There are two types of Backup management servers: System Center Data Protection Manager (SCDPM) and Azure Backup management servers.
 Backup management servers are installed separately to manage Backup orchestration.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -41,7 +39,7 @@ This command gets all Backup management servers registered with the vault.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +54,9 @@ Accept wildcard characters: False
 Specifies the name of the Backup management server to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -71,9 +69,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -87,8 +85,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

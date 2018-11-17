@@ -50,10 +50,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreBackupItemParams
     {
         RecoveryPoint,
-        StorageAccountId,
-        StorageAccountLocation,
-        StorageAccountType,
+        StorageAccountName,
+        StorageAccountResourceGroupName
+    }
+
+    public enum RestoreVMBackupItemParams
+    {
+        TargetResourceGroupName,
         OsaOption
+    }
+
+    public enum RestoreFSBackupItemParams
+    {
+        ResolveConflict,
+        SourceFilePath,
+        SourceFileType,
+        TargetStorageAccountName,
+        TargetFileShareName,
+        TargetFolder
     }
 
     public enum PolicyParams
@@ -70,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public enum ItemParams
     {
-        AzureVMName,
+        ItemName,
         AzureVMCloudServiceName,
         AzureVMResourceGroupName,
         WorkloadType,
@@ -83,6 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         DeleteBackupData,
         BackupManagementType,
         ExpiryDateTimeUTC,
+        StorageAccountName,
     }
 
     public enum ProtectionCheckParams

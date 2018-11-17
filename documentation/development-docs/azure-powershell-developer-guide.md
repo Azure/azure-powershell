@@ -50,12 +50,18 @@ The Azure PowerShell Developer Guide was created to help with the development an
 
 The following prerequisites should be completed before contributing to the Azure PowerShell repository:
 
-- Install [Visual Studio 2015](https://www.visualstudio.com/downloads/)
+- Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md#installing-platyps)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
+    
+**Note** The PowerShell Build requires the 64-bit version of MSBuild that ships with visual studio, so ensure that this version is the first version in your cmd path.  64-bit MSBuild could be installed in a couple of places on your machine:
+- ```%programfiles%\MSBuild\14.0\bin```
+- ```%programfiles(x86)%\MSBuild\14.0\bin\amd64```
+
+The MSBuild version in ```%windir%\Microsoft.Net\Framework\v4.0.30319``` **cannot** be used with the build.
     
 # Environment Setup
 
@@ -356,7 +362,7 @@ Create these environment variables for the AD scenario tests:
 ### Recording/Running Tests 
 
 - Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
-- [Run the test](#running-tests) and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
+- Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy this `SessionRecords` folder and place it inside the test project
     - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"
     -  Make sure that all of these JSON files appear in your `Commands.SERVICE.Test.csproj` file
@@ -407,6 +413,22 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 [Parameter(Mandatory = false, HelpMessage = "The resource group name")]
 [ResourceGroupCompleter]
 public string ResourceGroupName { get; set; }
+```
+
+### Resource Name Completer
+
+For any parameter that takes a resource name, the `ResourceNameCompleter` should be applied as an attribute.  This will allow the user to tab through all resource names for the ResourceType in the current subscription.  This completer will filter based upon the current parent resources provided (for instance, if ResourceGroupName is provided, only the resources in that particular resource group will be returned).  For this completer, please provide the ResourceType as the first argument, followed by the parameter name for all parent resources starting at the top level.
+
+```cs
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+...
+[Parameter(Mandatory = false, HelpMessage = "The parent server name")]
+[ResourceNameCompleter("Microsoft.Sql/servers", nameof(ResourceGroupName))]
+public string ServerName { get; set; }
+
+[Parameter(Mandatory = false, HelpMessage = "The database name")]
+[ResourceNameCompleter("Microsoft.Sql/servers/databases", nameof(ResourceGroupName), nameof(ServerName))]
+public string Name { get; set; }
 ```
 
 ### Location Completer

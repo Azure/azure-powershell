@@ -14,7 +14,7 @@ Gets an inbound NAT rule configuration for a load balancer.
 ## SYNTAX
 
 ```
-Get-AzureRmLoadBalancerInboundNatRuleConfig [-Name <String>] -LoadBalancer <PSLoadBalancer>
+Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,6 @@ PS C:\> Get-AzureRmLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule1" -L
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and stores it in the variable $slb.
-
 The second command gets the associated NAT rule named MyInboundNatRule1 from the load balancer in $slb.
 
 ## PARAMETERS
@@ -39,7 +38,7 @@ The second command gets the associated NAT rule named MyInboundNatRule1 from the
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,14 +53,14 @@ Accept wildcard characters: False
 Specifies the load balancer that is associated with the inbound NAT rule configuration to get.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 Specifies the name of the inbound NAT rule configuration to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 

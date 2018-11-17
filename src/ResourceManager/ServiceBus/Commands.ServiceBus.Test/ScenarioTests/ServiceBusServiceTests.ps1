@@ -12,6 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+		
 <#
 .SYNOPSIS
 Tests EventHub Namespace Create List Remove operations.

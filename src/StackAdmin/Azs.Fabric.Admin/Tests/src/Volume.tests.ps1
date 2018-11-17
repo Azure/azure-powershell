@@ -25,10 +25,19 @@
 
 .EXAMPLE
     PS C:\> .\Volume.Tests.ps1
-	Describing StoragePools
-	 [+] TestListVolumes 237ms
-	 [+] TestGetVolume 128ms
-	 [+] TestGetAllVolumes 98ms
+    Describing Volumes
+     [+] TestListVolumes 188ms
+     [+] TestGetVolume 157ms
+     [+] TestGetAllVolumes 100ms
+     [+] TestGetInvaildVolume 72ms
+
+.EXAMPLE
+    PS C:\> .\src\Volume.Tests.ps1 -RunRaw $true
+    Describing Volumes
+     [+] TestListVolumes 10.19s
+     [+] TestGetVolume 3.03s
+     [+] TestGetAllVolumes 2.83s
+     [+] TestGetInvaildVolume 2.44s
 
 .NOTES
     Author: Jeffrey Robinson
@@ -36,125 +45,154 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "StoragePools" -Tags @('StoragePool', 'Azs.Fabric.Admin') {
+    Describe "Volumes" -Tags @('Volume', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateVolume {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Volume
-				)
+            function ValidateVolume {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Volume
+                )
 
-				$Volume          | Should Not Be $null
+                $Volume          | Should Not Be $null
 
-				# Resource
-				$Volume.Id       | Should Not Be $null
-				$Volume.Location | Should Not Be $null
-				$Volume.Name     | Should Not Be $null
-				$Volume.Type     | Should Not Be $null
+                # Resource
+                $Volume.Id       | Should Not Be $null
+                $Volume.Location | Should Not Be $null
+                $Volume.Name     | Should Not Be $null
+                $Volume.Type     | Should Not Be $null
 
-				# Storage Pool
-				$Volume.FileSystem       | Should Not Be $null
-				$Volume.RemainingSizeGB  | Should Not Be $null
-				$Volume.SizeGB           | Should Not Be $null
-				$Volume.VolumeLabel      | Should Not Be $null
-			}
+                # Volume
+                $Volume.TotalCapacityGB      | Should Not Be $null
+                $Volume.RemainingCapacityGB  | Should Not Be $null
+                $Volume.HealthStatus         | Should Not Be $null
+                $Volume.OperationalStatus    | Should Not Be $null
+                $Volume.RepairStatus         | Should Not Be $null
+                $Volume.Description          | Should Not Be $null
+                $Volume.Action               | Should Not Be $null
+                $Volume.VolumeLabel          | Should Not Be $null
+            }
 
-			function AssertVolumesAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertVolumesAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Storage Pool
-					$Found.FileSystem       | Should Be $Expected.FileSystem
-					$Found.RemainingSizeGB  | Should Be $Expected.RemainingSizeGB
-					$Found.SizeGB           | Should Be $Expected.SizeGB
-					$Found.VolumeLabel      | Should Be $Expected.VolumeLabel
+                    # Volume
+                    $Found.TotalCapacityGB      | Should Be $Expected.TotalCapacityGB
+                    $Found.RemainingCapacityGB  | Should Be $Expected.RemainingCapacityGB
+                    $Found.HealthStatus         | Should Be $Expected.HealthStatus
+                    $Found.OperationalStatus    | Should Be $Expected.OperationalStatus
+                    $Found.RepairStatus         | Should Be $Expected.RepairStatus
+                    $Found.Description          | Should Be $Expected.Description
+                    $Found.Action               | Should Be $Expected.Action
+                    $Found.VolumeLabel          | Should Be $Expected.VolumeLabel
 
-				}
-			}
-		}
+                }
+            }
+        }
 
-
-		It "TestListVolumes" {
-			$global:TestName = 'TestListVolumes'
-
-			$storageSystems = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($storageSystem in $storageSystems) {
-				$StoragePools = Get-AzsStoragePool -ResourceGroupName $ResourceGroup -Location $Location -StorageSystem $storageSystem.Name
-				foreach($StoragePool in $StoragePools) {
-					$volumes = Get-AzsInfrastructureVolume -ResourceGroupName $ResourceGroup -Location $Location -StorageSystem $storageSystem.Name -StoragePool $StoragePool.Name
-					$volumes | Should Not Be $null
-					foreach($volume in $volumes) {
-						ValidateVolume $volume
-					}
-				}
-			}
-	    }
+        AfterEach {
+            $global:Client = $null
+        }
 
 
-		It "TestGetVolume" {
+        it "TestListVolumes" -Skip:$('TestListVolumes' -in $global:SkippedTests) {
+            $global:TestName = 'TestListVolumes'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
+                    $volumes | Should Not Be $null
+                    foreach ($volume in $volumes) {
+                        ValidateVolume $volume
+                    }
+                }
+            }
+        }
+
+
+        it "TestGetVolume" -Skip:$('TestGetVolume' -in $global:SkippedTests) {
             $global:TestName = 'TestGetVolume'
 
-			$storageSystems = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($storageSystem in $storageSystems) {
-				$StoragePools = Get-AzsStoragePool -ResourceGroupName $ResourceGroup -Location $Location -StorageSystem $storageSystem.Name
-				foreach($StoragePool in $StoragePools) {
-					$volumes = Get-AzsInfrastructureVolume -ResourceGroupName $ResourceGroup -Location $Location -StorageSystem $storageSystem.Name -StoragePool $StoragePool.Name
-					foreach($volume in $volumes) {
-						$retrieved = Get-AzsInfrastructureVolume -ResourceGroupName $ResourceGroup -Location $Location -StoragePool $StoragePool.Name -StorageSystem $storageSystem.Name -Name $volume.Name
-						AssertVolumesAreSame -Expected $volume -Found $retrieved
-						break
-					}
-					break
-				}
-				break
-			}
-		}
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
+                    foreach ($volume in $volumes) {
+                        $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $volume.Name
+                        AssertVolumesAreSame -Expected $volume -Found $retrieved
+                        break
+                    }
+                    break
+                }
+                break
+            }
+        }
 
-		It "TestGetAllVolumes" {
-			$global:TestName = 'TestGetAllVolumes'
+        it "TestGetAllVolumes" -Skip:$('TestGetAllVolumes' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllVolumes'
 
-			$storageSystems = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($storageSystem in $storageSystems) {
-				$StoragePools = Get-AzsStoragePool -ResourceGroupName $ResourceGroup -Location $Location -StorageSystem $storageSystem.Name
-				foreach($StoragePool in $StoragePools) {
-					$volumes = Get-AzsInfrastructureVolume -ResourceGroupName $ResourceGroup -Location $Location -StorageSystem $storageSystem.Name -StoragePool $StoragePool.Name
-					foreach($volume in $volumes) {
-						$retrieved = Get-AzsInfrastructureVolume -ResourceGroupName $ResourceGroup -Location $Location -StoragePool $StoragePool.Name -StorageSystem $storageSystem.Name -Name $volume.Name
-						AssertVolumesAreSame -Expected $volume -Found $retrieved
-					}
-				}
-			}
-		}
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
+                    foreach ($volume in $volumes) {
+                        $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $volume.Name
+                        AssertVolumesAreSame -Expected $volume -Found $retrieved
+                    }
+                }
+            }
+        }
+
+        it "TestGetInvaildVolume" -Skip:$('TestGetInvaildVolume' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetInvaildVolume'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $invaildVolumeName = "invaildvolumename"
+                    $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $invaildVolumeName
+                    $retrieved | Should Be $null
+                    break
+                }
+                break
+            }
+        }
     }
 }

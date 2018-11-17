@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
     [OutputType(typeof(CertificateInfo))]
     public class NewAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {

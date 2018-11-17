@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
@@ -33,9 +33,7 @@ The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Ro
 Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
 The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
 NotActions, DataActions, NotDataActions are optional.
-
 Following is a sample updated role definition json for Set-AzureRmRoleDefinition
-
 {
         "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
         "Name": "Updated Role",
@@ -84,7 +82,7 @@ PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,7 +99,7 @@ Only include the properties that are to be updated in the JSON.
 Id property is Required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
 Aliases:
 
@@ -116,7 +114,7 @@ Accept wildcard characters: False
 Role definition object to be updated
 
 ```yaml
-Type: PSRoleDefinition
+Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
 Aliases:
 
@@ -132,8 +130,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRoleDefinition
-Parameter 'Role' accepts value of type 'PSRoleDefinition' from the pipeline
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+Parameters: Role (ByValue)
 
 ## OUTPUTS
 

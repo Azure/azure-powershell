@@ -20,14 +20,14 @@ using Microsoft.Azure.Management.Sql.Models;
 using Hyak.Common;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncGroup", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncGroup", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class NewAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
            HelpMessage = "The database used to store sync related metadata.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "SyncDatabaseResourceGroupName", "SyncDatabaseServerName")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseName { get; set; }
 
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
            HelpMessage = "The server on which the sync metadata database is hosted.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "SyncDatabaseResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseServerName { get; set; }
 
@@ -61,6 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
            HelpMessage = "The resource group the sync metadata database belongs to.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseResourceGroupName { get; set; }
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 922BEA08-6619-4D4C-86EC-58279C9E1D93
@@ -37,10 +37,8 @@ This operation will delete all data in the backup vault that is associated with 
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the Get-AzureRmBackupContainer cmdlet.
 The command stores that object in the $Container variable.
-
 The final command unregisters the specified Windows Server from the Azure Backup vault.
 
 ### Example 2: Unregister a Windows Server without confirmation
@@ -59,9 +57,9 @@ Specifies the Windows Server or Azure virtual machine that this cmdlet unregiste
 To obtain an **AzureRmBackupContainer**, use the Get-AzureRmBackupContainer cmdlet.
 
 ```yaml
-Type: AzureRMBackupContainer
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -74,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,9 +88,9 @@ Forces the command to run without asking for user confirmation.
 This parameter is relevant only for **AzureBackupContainer** objects of type Windows.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -105,7 +103,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -121,7 +119,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -137,12 +135,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
+Parameters: Container (ByValue)
 
 ## OUTPUTS
 
-### AzureBackupJob
-This cmdlet returns $Null if the container type is Windows Server.
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 * None

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,22 +19,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using SdkExtensions;
+    using SdkModels;
     using System.Collections;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
+        /// <summary>
+        /// The object representation of the resource to update.
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = "ByInputObject", ValueFromPipeline = true, HelpMessage = "The object representation of the resource to update.")]
+        [ValidateNotNull]
+        public PSResource InputObject { get; set; }
+
         /// <summary>
         /// Gets or sets the kind.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource kind.")]
-        [ValidateNotNullOrEmpty]
         public string Kind { get; set; }
 
         /// <summary>
@@ -42,7 +51,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Alias("PropertyObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource properties.")]
-        [ValidateNotNullOrEmpty]
         public PSObject Properties { get; set; }
 
         /// <summary>
@@ -50,15 +58,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Alias("PlanObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource plan properties.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Plan { get; set; }
 
-        /// <summary>  
-        /// Gets or sets the Sku object.  
-        /// </summary>  
+        /// <summary>
+        /// Gets or sets the Sku object.
+        /// </summary>
         [Alias("SkuObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Sku { get; set; }
 
 
@@ -84,6 +90,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                ResourceId = InputObject.ResourceId;
+                Kind = this.IsParameterBound(c => c.Kind) ? Kind : InputObject.Kind;
+                Properties = this.IsParameterBound(c => c.Properties) ? Properties : InputObject.Properties;
+                Plan = this.IsParameterBound(c => c.Plan) ? Plan : InputObject.Plan.ToHashtable();
+                Sku = this.IsParameterBound(c => c.Sku) ? Sku : InputObject.Sku.ToHashtable();
+                Tag = this.IsParameterBound(c => c.Tag) ? Tag : InputObject.Tags.ToHashtable();
+            }
 
             var resourceId = this.GetResourceId();
             this.ConfirmAction(

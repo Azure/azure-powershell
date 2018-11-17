@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMExpressRouteCrossConnectionRouteTableSummary"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCrossConnectionRouteTableSummary"), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class GetAzureRMExpressRouteCrossConnectionRouteTableSummaryCommand : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The Name of Express Route Cross Connection",
              ParameterSetName = "SpecifyByParameterValues")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCrossConnections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string CrossConnectionName { get; set; }
 
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The PeeringType")]
         [ValidateSet(
            MNM.ExpressRoutePeeringType.AzurePrivatePeering,

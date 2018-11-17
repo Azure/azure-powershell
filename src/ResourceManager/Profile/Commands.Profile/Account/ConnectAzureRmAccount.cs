@@ -14,8 +14,16 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -31,8 +39,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet(VerbsCommunications.Connect, "AzureRmAccount", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
-    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount")]
+    [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
@@ -50,12 +58,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
-        
+
 #if !NETSTANDARD
-        [Parameter(ParameterSetName = UserParameterSet, 
+        [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
 #endif
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
@@ -70,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
-                    Mandatory = true)]
+                    Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,
@@ -83,9 +91,9 @@ namespace Microsoft.Azure.Commands.Profile
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Alias("Domain")]
+        [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
-        public string TenantId { get; set; }
+        public string Tenant { get; set; }
 
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "AccessToken for Azure Resource Manager")]
@@ -264,10 +272,23 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetThumbprint(CertificateThumbprint);
             }
 
-            if (!string.IsNullOrEmpty(TenantId))
+            if (!string.IsNullOrEmpty(Tenant))
             {
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
+                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
             }
+
+#if NETSTANDARD
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint))
+            {
+                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                {
+                    var file = AzureSession.Instance.ARMProfileFile;
+                    var directory = AzureSession.Instance.ARMProfileDirectory;
+                    WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
+                }
+            }
+#endif
 
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {
@@ -281,7 +302,7 @@ namespace Microsoft.Azure.Commands.Profile
                    WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,
                         _environment,
-                        TenantId,
+                        Tenant,
                         subscriptionId,
                         subscriptionName,
                         password,
@@ -344,6 +365,13 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
+                IServicePrincipalKeyStore keyStore =
+#if NETSTANDARD
+                    new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
+#else
+                    new AzureRmServicePrincipalKeyStore();
+#endif
+                AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

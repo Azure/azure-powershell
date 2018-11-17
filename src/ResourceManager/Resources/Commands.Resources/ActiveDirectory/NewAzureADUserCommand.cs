@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD user.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
     public class NewAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for the user.")]

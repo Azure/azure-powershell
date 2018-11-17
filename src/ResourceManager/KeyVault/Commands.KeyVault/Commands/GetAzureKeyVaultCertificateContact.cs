@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
@@ -23,8 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Get-AzureKeyVaultCertificateContact gets the list of contacts for certificate objects in key vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,        
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateContact",        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class GetAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

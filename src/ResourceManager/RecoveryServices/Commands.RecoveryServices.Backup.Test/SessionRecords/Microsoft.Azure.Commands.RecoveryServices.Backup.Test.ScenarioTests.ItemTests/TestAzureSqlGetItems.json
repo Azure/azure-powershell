@@ -185,8 +185,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectedItems?$filter=backupManagementType%20eq%20'AzureSql'%20and%20itemType%20eq%20'AzureSqlDb'&api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0ZWRJdGVtcz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCdBenVyZVNxbERiJyZhcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectedItems?$filter=backupManagementType%20eq%20'AzureSql'%20and%20itemType%20eq%20'AzureSqlDb'&api-version=2017-07-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0ZWRJdGVtcz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCdBenVyZVNxbERiJyZhcGktdmVyc2lvbj0yMDE3LTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -249,8 +249,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectedItems?$filter=backupManagementType%20eq%20'AzureSql'%20and%20itemType%20eq%20'AzureSqlDb'&api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0ZWRJdGVtcz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCdBenVyZVNxbERiJyZhcGktdmVyc2lvbj0yMDE2LTEyLTAx",
+      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectedItems?$filter=backupManagementType%20eq%20'AzureSql'%20and%20itemType%20eq%20'AzureSqlDb'&api-version=2017-07-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0ZWRJdGVtcz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCdBenVyZVNxbERiJyZhcGktdmVyc2lvbj0yMDE3LTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

@@ -89,7 +89,7 @@ Specifies the **PsApiManagement** instance to get deployment configuration from.
 Use this parameter if the instance already has all the required changes.
 
 ```yaml
-Type: PsApiManagement
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
 Parameter Sets: UpdateFromPsApiManagementInstance
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the SKU capacity of the master Azure API Management deployment region.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -117,9 +117,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,12 +132,11 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location of the master API Management deployment region.
-
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -152,7 +151,7 @@ Accept wildcard characters: False
 Specifies the name of API Management that this cmdlet updates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -168,7 +167,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +182,7 @@ Accept wildcard characters: False
 Specifies the name of resource group under which API Management exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -196,15 +195,13 @@ Accept wildcard characters: False
 
 ### -Sku
 Specifies the tier of the master Azure API Management deployment region.
-
 The acceptable values for this parameter are:
-
 - Developer
 - Standard
 - Premium
 
 ```yaml
-Type: PsApiManagementSku
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
 Parameter Sets: UpdateSpecificService
 Aliases:
 Accepted values: Developer, Standard, Premium, Basic
@@ -220,7 +217,7 @@ Accept wildcard characters: False
 Specifies the Virtual Network configuration of the master Azure API Management deployment region.
 
 ```yaml
-Type: PsApiManagementVirtualNetwork
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -234,7 +231,6 @@ Accept wildcard characters: False
 ### -VpnType
 Specifies the virtual network Type of the API Management deployment.
 The acceptable values for this parameter are:
-
 - None.
 The API Management deployment is not part of any Virtual Network.
 This is the default value. 
@@ -244,7 +240,7 @@ The API Management deployment has an external facing virtual address.
 The API Management deployment has an intranet facing virtual address.
 
 ```yaml
-Type: PsApiManagementVpnType
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
 Parameter Sets: UpdateSpecificService
 Aliases:
 Accepted values: None, External, Internal
@@ -261,8 +257,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
+
+### System.Int32
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
+
+### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=6.1.2.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

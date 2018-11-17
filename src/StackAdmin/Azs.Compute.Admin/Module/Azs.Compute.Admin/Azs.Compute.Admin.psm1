@@ -7,16 +7,8 @@ Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 
 Write-Warning "Preview version of the module Azs.Compute.Admin loaded. Future release of this module may have breaking changes."
 
-# If the user supplied -Prefix to Import-Module, that applies to the nested module as well
-# Force import the nested module again without -Prefix
-if (-not (Get-Command Get-OperatingSystemInfo -Module PSSwaggerUtility -ErrorAction Ignore)) {
-    # Simply doing "Import-Module PSSwaggerUtility" doesn't work for local case
-	if (Test-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility)) {
-		Import-Module (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility) -Force
-	} else {
-		Import-Module PSSwaggerUtility -Force
-	}
-}
+# We always import embedded version.
+Import-Module (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility) -Force
 
 if ((Get-OperatingSystemInfo).IsCore) {
     $clr = 'coreclr'
@@ -32,10 +24,17 @@ if (Test-Path -Path $ClrPath -PathType Container) {
     Get-ChildItem -Path $allDllsPath -File | ForEach-Object { Add-Type -Path $_.FullName -ErrorAction SilentlyContinue }
 }
 
+# Load all CustomObjects
+
 . (Join-Path -Path $PSScriptRoot -ChildPath 'New-ServiceClient.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-TaskResult.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ApplicableFilters.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Test-FilteredResult.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ArmResourceIdParameterValue.ps1')
+. (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ResourceNameSuffix.ps1')
+
+# Scripts
 $allPs1FilesPath = Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands' | Join-Path -ChildPath '*.ps1'
 Get-ChildItem -Path $allPs1FilesPath -Recurse -File | ForEach-Object { . $_.FullName}
+
+

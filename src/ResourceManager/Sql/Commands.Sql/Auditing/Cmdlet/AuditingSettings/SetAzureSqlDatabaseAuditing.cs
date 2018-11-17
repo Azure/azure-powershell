@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing settings properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
     public class SetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
@@ -84,6 +84,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public uint? RetentionInDays { get; internal set; }
 
         /// <summary>
+        /// Gets or sets the predicate expression.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
+        [ValidateNotNull]
+        public string PredicateExpression { get; internal set; }
+
+        /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
         /// </summary>
         /// <returns>True if the model object should be written out, False otherwise</returns>
@@ -133,6 +140,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             else if (StorageAccountName != null)
             {
                 model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
+            }
+
+            if (PredicateExpression != null)
+            {
+                model.PredicateExpression = PredicateExpression;
             }
 
             return model;

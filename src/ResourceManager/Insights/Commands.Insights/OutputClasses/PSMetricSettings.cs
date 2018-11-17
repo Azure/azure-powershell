@@ -12,26 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Text;
-using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Xml;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wrapps around the MetricSettings
     /// </summary>
-    public class PSMetricSettings : MetricSettings
+    public class PSMetricSettings : Management.Monitor.Management.Models.MetricSettings
     {
         /// <summary>
         /// Initializes a new instance of the PSMetricSettings class.
         /// </summary>
-        public PSMetricSettings(MetricSettings metricSettings)
+        public PSMetricSettings(MetricSettings metricSettings) : base(metricSettings)
         {
-            this.Enabled = metricSettings.Enabled;
-            this.TimeGrain = metricSettings.TimeGrain;
-            this.RetentionPolicy = metricSettings.RetentionPolicy;
         }
 
         /// <summary>
@@ -42,6 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
+            output.AppendLine("Category        : " + Category);
             output.AppendLine("Enabled         : " + Enabled);
             output.AppendLine("TimeGrain       : " + XmlConvert.ToString(TimeGrain));
             output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));

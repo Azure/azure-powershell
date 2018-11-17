@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -20,8 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Gets the status of the certificate operation
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateOperation,
-        DefaultParameterSetName = ByNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOperation",DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class GetAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ByNameParameterSet,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

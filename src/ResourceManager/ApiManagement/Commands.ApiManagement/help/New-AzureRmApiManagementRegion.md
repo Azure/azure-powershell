@@ -56,7 +56,7 @@ Sku capacity of the Azure API Management service additional region.
 Default value is 1.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -69,9 +69,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Virtual Network Configuration of Azure API Management deployment region.
 Default value is $null.
 
 ```yaml
-Type: PsApiManagementVirtualNetwork
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 
@@ -120,8 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
 
 ## OUTPUTS
 

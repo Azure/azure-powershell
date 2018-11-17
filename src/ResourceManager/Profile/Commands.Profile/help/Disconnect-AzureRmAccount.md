@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/remove-azurermaccount
@@ -44,7 +44,6 @@ Disconnect-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModif
 
 ## DESCRIPTION
 The Disconnect-AzureRmAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
-
 After executing this cmdlet, you will need to login again using Connect-AzureRmAccount.
 
 ## EXAMPLES
@@ -76,7 +75,7 @@ Logs out the 'user1@contoso.org' user - all credentials and all contexts associa
 ServicePrincipal id (globally unique id)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipal
 Aliases: SPN, ServicePrincipal
 
@@ -91,9 +90,9 @@ Accept wildcard characters: False
 Context
 
 ```yaml
-Type: PSAzureContext
+Type: Microsoft.Azure.Commands.Profile.Models.PSAzureContext
 Parameter Sets: ContextObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -106,9 +105,9 @@ Accept wildcard characters: False
 Name of the context to log out of
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContextName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -136,9 +135,9 @@ Accept wildcard characters: False
 The account object to remove
 
 ```yaml
-Type: PSAzureRmAccount
+Type: Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -151,9 +150,9 @@ Accept wildcard characters: False
 Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
-Type: ContextModificationScope
+Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -167,9 +166,9 @@ Accept wildcard characters: False
 Tenant id (globally unique id)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServicePrincipal
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -182,7 +181,7 @@ Accept wildcard characters: False
 User name of the form 'user@contoso.org'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UserId
 Aliases: Id, UserId
 
@@ -197,7 +196,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -213,7 +212,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not executed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -230,8 +229,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount
+Parameters: InputObject (ByValue)
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Parameters: AzureContext (ByValue)
 
 ## OUTPUTS
 

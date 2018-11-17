@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -21,13 +22,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ContainerTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public ContainerTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlGetContainers()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetContainers");
+                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetContainers");
         }
 
         [Fact]
@@ -36,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlUnregisterContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.AzureSql, "Test-AzureSqlUnregisterContainer");
+                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlUnregisterContainer");
         }
     }
 }

@@ -26,6 +26,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 {
@@ -54,16 +55,18 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
             }
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = Microsoft.Azure.Test.TestUtilities.GetCallingClass(2);
             var mockName = Microsoft.Azure.Test.TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -106,7 +109,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.DataMigration.psd1"),
                     "AzureRM.Resources.ps1"
                     );

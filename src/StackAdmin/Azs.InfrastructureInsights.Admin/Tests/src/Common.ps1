@@ -12,21 +12,23 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$global:SkippedTests = @()
+
 $global:ResourceGroupName = "System.local"
 $global:Location = "local"
-$global:TestName = ""
 
-function Extract-Name {
-    param(
-        $Name
-    )
-    $Name = $Name.Split('/')
-    return $Name[-1]
+$global:Client = $null
+
+if (-not $global:RunRaw) {
+    $scriptBlock = {
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'InfrastructureInsightsAdminClient' -TestName $global:TestName
+        }
+        $global:Client
+    }
+    Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
 
-if (-not $RunRaw) {
-    $scriptBlock = {
-        Get-MockClient -ClassName 'InfrastructureInsightsAdminClient' -TestName $global:TestName
-    }
-    Mock New-ServiceClient $scriptBlock -ModuleName "Azs.InfrastructureInsights.Admin"
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }

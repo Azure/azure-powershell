@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusqueue
@@ -30,29 +30,34 @@ The **New-AzureRmServiceBusQueue** cmdlet creates a Service Bus queue in the spe
 
 ### Example 1
 ```
-PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -EnablePartitioning $True
+PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -EnablePartitioning $True
 
-Name                                : SB-Queue_exampl1
-LockDuration                        : 
-AccessedAt                          : 
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:36 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/SB-Queue_example1
+Name                                : SB-Queue_example1
+LockDuration                        : PT1M
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 10/11/2018 12:37:11 AM
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
 DeadLetteringOnMessageExpiration    : False
 EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
-CountDetails                        : 
+EnablePartitioning                  : False
+MaxDeliveryCount                    : 10
+MaxSizeInMegabytes                  : 81920
+MessageCount                        : 0
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 RequiresDuplicateDetection          : False
 RequiresSession                     : False
-SizeInBytes                         : 
+SizeInBytes                         : 0
 Status                              : Active
-UpdatedAt                           : 1/20/2017 2:51:37 AM
+UpdatedAt                           : 10/11/2018 12:37:12 AM
+ForwardTo                           :
+ForwardDeadLetteredMessagesTo       :
+EnableBatchedOperations             : False
 ```
-Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus namespace `SB-Example1`.
+
+Creates a new Service Bus queue `SB-Queue_example1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
 
@@ -60,7 +65,7 @@ Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus 
 Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval, after which the queue is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,26 +76,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DeadLetteringOnMessageExpiration
 Dead Lettering On Message Expiration
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 Accepted values: TRUE, FALSE
@@ -109,7 +99,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 For Standard = Timespan.Max and Basic = 14 dyas
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +114,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,7 +129,7 @@ Accept wildcard characters: False
 Specifies the duplicate detection history time window, a [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) valuethat defines the duration of the duplicate detection history. The default value is 10 minutes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +144,7 @@ Accept wildcard characters: False
 Enable Batched Operations - value that indicates whether server-side batched operations are enabled
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +160,7 @@ EnableExpress - a value that indicates whether Express Entities are enabled.
 An express queue holds a message in memory temporarily before writing it to persistent storage.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 Accepted values: TRUE, FALSE
@@ -186,7 +176,7 @@ Accept wildcard characters: False
 EnablePartitioning
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 Accepted values: TRUE, FALSE
@@ -202,7 +192,7 @@ Accept wildcard characters: False
 Queue/Topic name to forward the Dead Letter message
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +207,7 @@ Accept wildcard characters: False
 Queue/Topic name to forward the messages
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -232,7 +222,7 @@ Accept wildcard characters: False
 Lock Duration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +238,7 @@ MaxDeliveryCount - the maximum delivery count.
 A message is automatically deadlettered after this number of deliveries.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +253,7 @@ Accept wildcard characters: False
 MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +268,7 @@ Accept wildcard characters: False
 MessageCount - the number of messages in the queue
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -293,7 +283,7 @@ Accept wildcard characters: False
 Queue Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: QueueName
 
@@ -308,7 +298,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -323,7 +313,7 @@ Accept wildcard characters: False
 RequiresDuplicateDetection - a value that indicates whether the queue supports the concept of session
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 Accepted values: TRUE, FALSE
@@ -339,7 +329,7 @@ Accept wildcard characters: False
 RequiresSession - the value indicating if this queue requires duplicate detection
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 Accepted values: TRUE, FALSE
@@ -355,7 +345,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -370,7 +360,7 @@ Accept wildcard characters: False
 SizeInBytes - the size of the queue in bytes
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -381,12 +371,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -398,28 +403,21 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
 
-### -NamespaceName
- System.String
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### -QueueName
- System.String
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### -EnablePartitioning
- System.Boolean?
-
+### System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
-
 
 ## NOTES
 

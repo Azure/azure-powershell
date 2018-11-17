@@ -47,7 +47,6 @@ The **New-AzureRmVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input.
 Use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
 Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
-
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 
 ## EXAMPLES
@@ -128,11 +127,42 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM 
 ```
 
 This example takes an existing sys-prepped, generalized custom operating system image and attaches a data disk to it, provisions a new network, deploys the VHD, and runs it.
-
 This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
-
 This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
+
+### Example 3: Create a VM from a marketplace image without a Public IP
+```
+$VMLocalAdminUser = "LocalAdminUser"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$LocationName = "westus"
+$ResourceGroupName = "MyResourceGroup"
+$ComputerName = "MyVM"
+$VMName = "MyVM"
+$VMSize = "Standard_DS3"
+
+$NetworkName = "MyNet"
+$NICName = "MyNIC"
+$SubnetName = "MySubnet"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+
+$SingleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+$Vnet = New-AzureRmVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+$NIC = New-AzureRmNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id
+
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+
+New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
+```
+
+This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
+This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
 
 ## PARAMETERS
 
@@ -140,7 +170,7 @@ You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
 The address prefix for the virtual network which will be created for the VM.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -155,7 +185,7 @@ Accept wildcard characters: False
 The IP allocation method for the public IP which will be created for the VM.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 Accepted values: Static, Dynamic
@@ -171,7 +201,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +216,7 @@ Accept wildcard characters: False
 Specifies a name for the availability set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -201,7 +231,7 @@ Accept wildcard characters: False
 The administrator credentials for the VM.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -216,7 +246,7 @@ Accept wildcard characters: False
 Specifies the sizes of data disks in GB.
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -231,7 +261,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -246,7 +276,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet does not install the **BG Info** extension on the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -261,7 +291,7 @@ Accept wildcard characters: False
 The local path to the virtual hard disk file to be uploaded to the cloud and for creating the VM, and it must have '.vhd' as its suffix.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DiskFileParameterSet
 Aliases:
 
@@ -276,7 +306,7 @@ Accept wildcard characters: False
 The subdomain label for the fully-qualified domain name (FQDN) of the VM.  This will take the form `{domainNameLabel}.{location}.cloudapp.azure.com`.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -291,7 +321,7 @@ Accept wildcard characters: False
 The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases: ImageName
 
@@ -306,15 +336,13 @@ Accept wildcard characters: False
 Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises.
 This value is used only for images that contain the Windows Server operating system.
 The acceptable values for this parameter are:
-
 - Windows_Client
 - Windows_Server
-
 This value cannot be updated.
 If you specify this parameter for an update, the value must match the initial value for the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -329,7 +357,7 @@ Accept wildcard characters: False
 Indicates whether the disk file is for Linux VM, if specified; or Windows, if not specified by default.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DiskFileParameterSet
 Aliases:
 
@@ -344,7 +372,7 @@ Accept wildcard characters: False
 Specifies a location for the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -356,7 +384,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -371,7 +399,7 @@ Accept wildcard characters: False
 The name of the VM resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -386,7 +414,7 @@ Accept wildcard characters: False
 A list of ports to open on the network security group (NSG) for the created VM.  The default value depends on the type of image chosen (i.e., Windows: 3389, 5985 and Linux: 22).
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -401,7 +429,7 @@ Accept wildcard characters: False
 The name of a new (or existing) public IP address for the created VM to use.  If not specified, a name will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -416,7 +444,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -428,7 +456,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -443,7 +471,7 @@ Accept wildcard characters: False
 The name of a new (or existing) network security group (NSG) for the created VM to use.  If not specified, a name will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -458,7 +486,7 @@ Accept wildcard characters: False
 The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -473,7 +501,7 @@ Accept wildcard characters: False
 The address prefix for the subnet which will be created for the VM.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -488,7 +516,7 @@ Accept wildcard characters: False
 The name of a new (or existing) subnet for the created VM to use.  If not specified, a name will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -503,7 +531,7 @@ Accept wildcard characters: False
 If the parameter is present then the VM is assingned a managed system identity that is auto generated.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -520,7 +548,7 @@ Adding tags to resources enables you to group resources together across resource
 Each resource or resource group can have a maximum of 15 tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -535,7 +563,7 @@ Accept wildcard characters: False
 The name of a managed service identity that should be assigned to the VM.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -550,7 +578,7 @@ Accept wildcard characters: False
 The name of a new (or existing) virtual network for the created VM to use.  If not specified, a name will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
@@ -567,7 +595,7 @@ To obtain a virtual machine object, use the New-AzureRmVMConfig cmdlet.
 Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, and Add-AzureRmVMNetworkInterface.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: DefaultParameterSet
 Aliases: VMProfile
 
@@ -582,7 +610,7 @@ Accept wildcard characters: False
 Specifies the zone list of the virtual machine.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -594,7 +622,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -609,7 +637,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -622,11 +650,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -642,12 +669,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.String[]
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 

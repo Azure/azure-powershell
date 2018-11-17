@@ -49,7 +49,7 @@ The **Set-AzureRmVmssVM** cmdlet modifies the state of a Virtual Machine Scale S
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Specifies the ID of the VMSS instance for which this cmdlet modifies state.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet performs maintenance on a virtual machine in the VMSS.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PerformMaintenanceMethodParameter
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet redeploys a virtual machine in the VMSS.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RedeployMethodParameter
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet reimages the VMSS instance.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Indicates that the cmdlet reimages all the disks in the VMSS instance.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: FriendMethod
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the VMSS instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Specifies the name of the VMSS instance that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -215,8 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

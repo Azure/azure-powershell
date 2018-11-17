@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 8546C3FE-5396-4027-BF33-F98F6C018A67
@@ -47,9 +47,9 @@ Specifies a **PSDataFactory** object.
 This cmdlet creates a gateway key for the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -63,9 +63,9 @@ Specifies the name of a data factory.
 This cmdlet creates a gateway key for the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,9 +94,9 @@ Specifies the name of the gateway.
 This cmdlet creates a key for the gateway that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -110,9 +110,9 @@ Specifies the name of an Azure resource group.
 This cmdlet creates a key for a gateway that belongs to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -126,12 +126,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryGatewayKey
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayKey
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

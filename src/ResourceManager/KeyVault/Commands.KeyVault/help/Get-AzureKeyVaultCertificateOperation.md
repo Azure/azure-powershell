@@ -62,7 +62,7 @@ This command gets the status of the certificate operation for TestCert01 on the 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 Certificate Object.
 
 ```yaml
-Type: PSKeyVaultCertificateIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Specifies the name of a certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: CertificateName
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -124,6 +124,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

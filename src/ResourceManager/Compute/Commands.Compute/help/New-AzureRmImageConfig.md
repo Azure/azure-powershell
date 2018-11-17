@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermimageconfig
@@ -36,14 +36,11 @@ PS C:\> New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -ResourceG
 ```
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
-
 The next three commands assign paths of os disk and two data disks to the $osDiskVhdUri,
 $dataDiskVhdUri1, and $dataDiskVhdUri2 variables. This approach is only for readability of the
 following commands.
-
 The next three commands each adds an os disk and two data disks to the image stored in $imageConfig.
 The URI of each disk is stored in $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2.
-
 The final command creates an image named 'ImageName01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
@@ -52,7 +49,7 @@ The final command creates an image named 'ImageName01' in resource group 'Resour
 Specifies the data disk object.
 
 ```yaml
-Type: ImageDataDisk[]
+Type: Microsoft.Azure.Management.Compute.Models.ImageDataDisk[]
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,7 +79,7 @@ Accept wildcard characters: False
 Specifies a location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +94,7 @@ Accept wildcard characters: False
 Specifies the operating system Disk.
 
 ```yaml
-Type: ImageOSDisk
+Type: Microsoft.Azure.Management.Compute.Models.ImageOSDisk
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +109,7 @@ Accept wildcard characters: False
 Specifies the source virtual machine ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,11 +122,10 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +140,7 @@ Accept wildcard characters: False
 Enable zone resilient
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -174,7 +170,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -190,8 +186,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
+
+### Microsoft.Azure.Management.Compute.Models.ImageOSDisk
+
+### Microsoft.Azure.Management.Compute.Models.ImageDataDisk[]
 
 ## OUTPUTS
 

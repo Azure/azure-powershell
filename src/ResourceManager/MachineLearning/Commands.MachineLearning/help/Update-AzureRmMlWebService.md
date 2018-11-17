@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/update-azurermmlwebservice
@@ -35,14 +35,14 @@ Pass only the properties that you want modified.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Selective update arguments  --------------------------
+### Example 1: Selective update arguments
 ```
 Update-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Description "new update to description" -Keys @{Primary='changed primary key'} -Diagnostics @{Level='All'}
 ```
 
 Here, we change the description, primary access key and enable the diagnostics collection for all traces during runtime for the web service.
 
-### --------------------------  Example 2: Update based on a web service instance  --------------------------
+### Example 2: Update based on a web service instance
 ```
 $updates = @{ Properties = @{ Title="New Title"; RealtimeConfiguration = @{ MaxConcurrentCalls=25 }}}
 
@@ -57,9 +57,9 @@ The example first creates a web service definition, that only contains the field
 The set of assets (e.g. modules, datasets) that make up the web service.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,9 +88,9 @@ The new value for the web service's description.
 This is visible in the service's Swagger API schema.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 The settings that control the diagnostics traces collection for the web service.
 
 ```yaml
-Type: DiagnosticsConfiguration
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,9 +133,9 @@ Accept wildcard characters: False
 The definition for the web service's input(s), provided as a Swagger schema construct.
 
 ```yaml
-Type: ServiceInputOutputSpecification
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +149,9 @@ Specifies that this web serviceis readonly.
 Once set, the web service can longer be updated, including changing the value of this property, and can only be deleted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -164,9 +164,9 @@ Accept wildcard characters: False
 Updates one or both of the access keys used to authenticate calls to the service's runtime APIs.
 
 ```yaml
-Type: WebServiceKeys
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,9 +179,9 @@ Accept wildcard characters: False
 The name of the web service resource to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -194,9 +194,9 @@ Accept wildcard characters: False
 The definition for the web service's output(s), provided as a Swagger schema construct.
 
 ```yaml
-Type: ServiceInputOutputSpecification
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -209,9 +209,9 @@ Accept wildcard characters: False
 The definition of the graph package that defines this web service.
 
 ```yaml
-Type: GraphPackage
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,9 +225,9 @@ The set of global parameters values defined for the web service, given as a glob
 If no default value is specified, the parameter is considered to be required.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -240,9 +240,9 @@ Accept wildcard characters: False
 Updates for the configuration of the service's realtime endpoint.
 
 ```yaml
-Type: RealtimeConfiguration
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -255,9 +255,9 @@ Accept wildcard characters: False
 The resource group that contains the web service to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -271,9 +271,9 @@ A set of updates to apply to the web service provided as a web service definitio
 Only non-static fields are modified.
 
 ```yaml
-Type: WebService
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 Parameter Sets: UpdateFromObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -286,9 +286,9 @@ Accept wildcard characters: False
 Rotates the access key for the storage account associated with the web service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -302,9 +302,9 @@ The new value for the web service's title.
 This is visible in the service's Swagger API schema.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateFromParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -317,7 +317,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -333,7 +333,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -349,18 +349,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### WebService
-Parameter 'ServiceUpdates' accepts value of type 'WebService' from the pipeline
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
+Parameters: ServiceUpdates (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
-A summary description of the Azure Machine Learning web service.
-Similar to the description returned by calling the Get-AzureRmMlWebService cmdlet on an existing web service.
-This description does not contain sensitive properties such as storage account's credentials and the service's access keys.
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

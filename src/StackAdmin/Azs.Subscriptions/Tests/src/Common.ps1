@@ -12,12 +12,21 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$global:TestName = ""
+$global:SkippedTests = @()
 
-if(-not $RunRaw) {
-		# Load the script block
-		$scriptBlock = { 
-			Get-MockClient -ClassName 'SubscriptionsClient' -TestName $global:TestName
-		}
-		Mock New-ServiceClient $scriptBlock -ModuleName "Azs.Subscriptions"
+$global:Client = $null
+
+if (-not $global:RunRaw) {
+    # Load the script block
+    $scriptBlock = {
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'SubscriptionsClient' -TestName $global:TestName
+        }
+        $global:Client
+    }
+    Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
+}
+
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }

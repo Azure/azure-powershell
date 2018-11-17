@@ -16,6 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -609,6 +613,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlet = new ClearAzureRmContext();
             var profile = CreateMultipleContextProfile();
             var defaultContext = profile.DefaultContext;
+            var cacheType = profile.DefaultContext.TokenCache.GetType();
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
             cmdlet.Scope = ContextModificationScope.Process;
@@ -624,6 +629,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
+            Assert.NotNull(profile.DefaultContext.TokenCache);
+            Assert.Equal(AzureSession.Instance.TokenCache.GetType(), profile.DefaultContext.TokenCache.GetType());
         }
 
         [Fact]

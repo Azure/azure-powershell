@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
@@ -19,11 +19,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineDscExtension,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -34,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group that contains the virtual machine.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -43,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine where dsc extension handler would be installed.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -507,4 +504,3 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
-

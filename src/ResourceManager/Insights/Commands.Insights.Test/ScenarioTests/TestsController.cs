@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Monitor;
-using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public IMonitorClient MonitorClient { get; private set; }
         public IMonitorManagementClient MonitorManagementClient { get; private set; }
 
         public static TestsController NewInstance => new TestsController();
@@ -48,20 +46,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
-        }
-
-        public void RunPsTest(params string[] scripts)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom cleanup 
@@ -129,26 +113,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 // "TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId=<subscription-id>"
                 string subId = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
                 RestTestFramework.TestEnvironment environment = new RestTestFramework.TestEnvironment(connectionString: subId);
-                this.MonitorClient = this.GetMonitorClient(context: context, env: environment);
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: environment);
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                this.MonitorClient = this.GetMonitorClient(context: context, env: null);
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: null);
             }
 
             _helper.SetupManagementClients(
-                this.MonitorClient, 
                 this.MonitorManagementClient);
-        }
-
-        private IMonitorClient GetMonitorClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
-        {
-            // currentEnvironment: RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-            return env != null 
-                ? context.GetServiceClient<MonitorClient>(currentEnvironment: env) 
-                : context.GetServiceClient<MonitorClient>();
         }
 
         private IMonitorManagementClient GetInsightsManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)

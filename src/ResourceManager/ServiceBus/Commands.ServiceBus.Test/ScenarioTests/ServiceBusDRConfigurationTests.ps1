@@ -110,6 +110,7 @@ function ServiceBusDRConfigurationTests
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
 
+
 	# Check DR Configuration Name Availability
 
 	$checkNameResult = Test-AzureRmServiceBusName -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         }
 
-        public ErrorBody(ErrorResponse errorBody)
+        public ErrorBody(ErrorResponseBody errorBody)
             : this()
         {
             if (errorBody == null)

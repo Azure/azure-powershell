@@ -25,14 +25,14 @@ using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientIpsecParameter", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true), 
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientIpsecParameter", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
             HelpMessage = "The virtual network gateway name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
 

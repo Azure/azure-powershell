@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Backup Azue Backup Item
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureRmBackupItem"), OutputType(typeof(AzureRMBackupJob))]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
+    [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupItem"), OutputType(typeof(AzureRMBackupJob))]
     public class BackupAzureRMBackupItem : AzureRMBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothub
@@ -57,7 +57,7 @@ Gets information about the IotHub named "myiothub".
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,9 +72,9 @@ Accept wildcard characters: False
 Name of the IotHub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetIotHubByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 Name of the ResourceGroup
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListIotHubsByResourceGroup
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetIotHubByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,4 +124,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

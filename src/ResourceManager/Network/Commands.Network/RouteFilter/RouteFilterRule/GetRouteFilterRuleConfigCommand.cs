@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmRouteFilterRuleConfig"), OutputType(typeof(PSRouteFilterRule))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilterRuleConfig"), OutputType(typeof(PSRouteFilterRule))]
     public class GetRouteFilterRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

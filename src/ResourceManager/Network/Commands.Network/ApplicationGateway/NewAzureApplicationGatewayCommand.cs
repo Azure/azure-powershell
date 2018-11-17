@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGateway", SupportsShouldProcess = true), 
-        OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -83,6 +82,12 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of authentication certificates")]
         public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of trusted root certificates")]
+        public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificate { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -146,8 +151,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Autoscale Configuration")]
+        public virtual PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = " Whether HTTP2 is enabled.")]
         public SwitchParameter EnableHttp2 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = " Whether FIPS is enabled.")]
+        public SwitchParameter EnableFIPS { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A list of availability zones denoting where the application gateway needs to come from.")]
+        public List<string> Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -163,11 +184,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Customer error of an application gateway")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayCustomError> CustomErrorConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -209,6 +233,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.AuthenticationCertificates != null)
             {
                 applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates;
+            }
+
+            if (this.TrustedRootCertificate != null)
+            {
+                applicationGateway.TrustedRootCertificates = this.TrustedRootCertificate;
             }
 
             if (this.FrontendIPConfigurations != null)
@@ -261,9 +290,29 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
             }
 
+            if (this.AutoscaleConfiguration != null)
+            {
+                applicationGateway.AutoscaleConfiguration = this.AutoscaleConfiguration;
+            }
+
             if (this.EnableHttp2.IsPresent)
             {
                 applicationGateway.EnableHttp2 = true;
+            }
+
+            if (this.EnableFIPS.IsPresent)
+            {
+                applicationGateway.EnableFips = true;
+            }
+
+            if (this.Zone != null)
+            {
+                applicationGateway.Zones = this.Zone;
+            }
+
+            if (this.CustomErrorConfiguration != null)
+            {
+                applicationGateway.CustomErrorConfigurations = this.CustomErrorConfiguration;
             }
 
             // Normalize the IDs

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubcertificateverificationcode
@@ -61,12 +61,12 @@ Generates a verification code for MyCertificate
 Name of the Certificate
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,12 +91,12 @@ Accept wildcard characters: False
 Etag of the Certificate
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet, ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,9 +106,9 @@ Accept wildcard characters: False
 Certificate Object
 
 ```yaml
-Type: PSCertificateDescription
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -121,9 +121,9 @@ Accept wildcard characters: False
 Name of the Iot Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -151,9 +151,9 @@ Accept wildcard characters: False
 Certificate Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -167,6 +167,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
+Parameters: InputObject (ByValue)
+
 ### System.String
 
 ## OUTPUTS
@@ -176,4 +179,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

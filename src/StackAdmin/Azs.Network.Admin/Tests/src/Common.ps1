@@ -12,12 +12,62 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$global:TestName = ""
+# Tests to skip
+$global:SkippedTests = $(
+    'TestGetAllVirtualNetworksOData',
+    'TestGetAllPublicIpAddressesOData'
+)
 
-if(-not $RunRaw) {
-		# Load the script block
-		$scriptBlock = { 
-			Get-MockClient -ClassName 'NetworkAdmin' -TestName $global:TestName
-		}
-		Mock New-ServiceClient $scriptBlock -ModuleName "Azs.Network.Admin"
+# Global variables
+$global:Location = "local"
+
+# Quota variables
+$global:TestQuotaMaxPublicIpsPerSubscription = 32
+$global:TestQuotaMaxVnetsPerSubscription = 32
+$global:TestQuotaMaxVirtualNetworkGatewayConnectionsPerSubscription = 32
+$global:TestQuotaMaxLoadBalancersPerSubscription = 32
+$global:TestQuotaMaxNicsPerSubscription = 4
+$global:TestQuotaMaxSecurityGroupsPerSubscription = 2
+
+$global:PutAndDeleteQuotaName = "TestQuotaForRemoval"
+$global:CreateAndUpdateQuotaName = "TestQuotaForUpdate"
+$global:MaxNicsPerSubscription = 8
+
+$global:Client = $null
+
+if (-not $global:RunRaw) {
+    # Load the script block
+    $scriptBlock = {
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'NetworkAdmin' -TestName $global:TestName
+        }
+        $global:Client
+    }
+    Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
+}
+
+# Common functions
+function ValidateBaseResources {
+    param(
+        [Parameter(Mandatory = $true)]
+        $Resource
+    )
+
+    $Resource          | Should Not Be $null
+    $Resource.Id       | Should Not Be $null
+    $Resource.Name       | Should Not Be $null
+}
+function ValidateBaseResourceTenant {
+    param(
+        [Parameter(Mandatory = $true)]
+        $Tenant
+    )
+
+    $Tenant                  	| Should Not Be $null
+    $Tenant.SubscriptionId   | Should Not Be $null
+    $Tenant.TenantResourceUri   | Should Not Be $null
+}
+
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }

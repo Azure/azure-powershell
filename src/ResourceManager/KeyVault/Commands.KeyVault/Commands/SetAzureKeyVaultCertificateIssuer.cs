@@ -17,6 +17,7 @@ using System;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -24,9 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Set-AzureKeyVaultCertificateIssuer sets the provided parameters on the
     /// issuer object
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureKeyVaultCertificateIssuer,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ExpandedParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateIssuer",SupportsShouldProcess = true,DefaultParameterSetName = ExpandedParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
@@ -45,6 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

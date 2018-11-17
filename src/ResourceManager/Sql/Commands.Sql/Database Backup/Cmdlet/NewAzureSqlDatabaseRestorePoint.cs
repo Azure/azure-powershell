@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseRestorePoint", SupportsShouldProcess = true),
-        OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseRestorePoint", SupportsShouldProcess = true),OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
     public class NewAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>
