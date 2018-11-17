@@ -20,8 +20,8 @@
 ## Current Release
 * Support failover Storage account
     - Invoke-AzureRmStorageAccountFailover
-* Support Get last sync time of Storage account
-    - Get-AzureRmStorageAccountLastSyncTime
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats
+    - Get-AzureRMStorageAccount
 
 ## Version 6.0.0-preview
 * Support enable or disable FilesAadIntegration for SMB when create or update Storage account
