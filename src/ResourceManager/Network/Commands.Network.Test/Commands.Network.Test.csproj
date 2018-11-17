@@ -83,7 +83,7 @@
     <Compile Include="ScenarioTests\ExpressRoutePortsLocationTests.cs" />
     <Compile Include="ScenarioTests\ExpressRoutePortTests.cs" />
     <Compile Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.cs" />
-    <Compile Include="ScenarioTests\Generated\ExpressRouteCircuitTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\ExpressRouteCircuitTestsGenerated.cs"/>
     <Compile Include="ScenarioTests\Generated\LoadBalancerTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\NetworkInterfaceTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\RouteFilterTestsGenerated.cs" />
