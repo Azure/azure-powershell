@@ -18,9 +18,13 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(VirtualMachineInstanceView), ReplacementCmdletOutputTypeName = "VirtualMachineScaleSetVMInstanceView")]
+#endif
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMDataDisk")]
     [OutputType(typeof (PSVirtualMachineScaleSetVM))]
     public class AddAzureRmVmssVMDataDiskCommand : ComputeClientBaseCmdlet

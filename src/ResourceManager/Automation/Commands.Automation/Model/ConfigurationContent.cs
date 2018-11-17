@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = configuration.Name;
             this.Content = content;
 
-            if (configuration.Properties == null) return;
+            if (configuration == null) return;
 
-            this.CreationTime = configuration.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = configuration.Properties.LastModifiedTime.ToLocalTime();
+            this.CreationTime = configuration.CreationTime.ToLocalTime();
+            this.LastModifiedTime = configuration.LastModifiedTime.ToLocalTime();
             this.Slot = slot;
         }
 
@@ -89,12 +89,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the creation time.
         /// </summary>
-        public DateTimeOffset CreationTime { get; set; }
+        public DateTimeOffset? CreationTime { get; set; }
 
         /// <summary>
         /// Gets or sets the last modified time.
         /// </summary>
-        public DateTimeOffset LastModifiedTime { get; set; }
+        public DateTimeOffset? LastModifiedTime { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration script content.
