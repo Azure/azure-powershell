@@ -17,6 +17,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 using System.Management.Automation;
@@ -26,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Selects Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = ProfileFromDiskParameterSet), OutputType(typeof(PSAzureProfile))]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = ProfileFromDiskParameterSet), OutputType(typeof(PSAzureProfile))]
     public class ImportAzureRMContextCommand : AzureContextModificationCmdlet
     {
         internal const string InMemoryProfileParameterSet = "InMemoryProfile";
@@ -51,6 +55,7 @@ namespace Microsoft.Azure.Commands.Profile
             bool executionComplete = false;
             if (MyInvocation.BoundParameters.ContainsKey("Path"))
             {
+                Path = this.ResolveUserPath(Path);
                 ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
                 {
                     if (!AzureSession.Instance.DataStore.FileExists(Path))

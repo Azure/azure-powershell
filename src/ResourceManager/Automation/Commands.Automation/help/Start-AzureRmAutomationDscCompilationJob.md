@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
@@ -32,7 +32,6 @@ PS C:\> Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01" -
 ```
 
 The first command creates a dictionary of parameters, and stores them in the $Params variable.
-
 The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
 
@@ -43,10 +42,8 @@ PS C:\> Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01" -
 ```
 
 Similar to the first example, the first command creates a dictionary of parameters, and stores them in the $Params variable.
-
 The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
-
 It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name Config01[<2>].<NodeName>. 
 The version number is incremented based on the existing version number already present.
 
@@ -56,9 +53,9 @@ The version number is incremented based on the existing version number already p
 Specifies the name of the Automation account that contains the DSC configuration that this cmdlet compiles.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -71,9 +68,9 @@ Accept wildcard characters: False
 Specifies a dictionary of configuration data for DSC configuration.
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +83,7 @@ Accept wildcard characters: False
 Specifies the name of the DSC configuration that this cmdlet compiles.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -101,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,9 +113,9 @@ Accept wildcard characters: False
 Creates a new Node Configuration build version.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,9 +128,9 @@ Accept wildcard characters: False
 Specifies a dictionary of parameters that this cmdlet uses to compile the DSC configuration.
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,9 +143,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet compiles a configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -161,7 +158,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +173,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,8 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

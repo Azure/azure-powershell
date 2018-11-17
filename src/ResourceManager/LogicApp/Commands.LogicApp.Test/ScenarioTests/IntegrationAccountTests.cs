@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using Microsoft.Rest.Azure;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     /// <summary>
@@ -25,6 +26,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class IntegrationAccountTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public IntegrationAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
 
         /// <summary>
         /// Test New-AzureRmIntegrationAccount command to create a new integration account.
@@ -33,7 +41,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccount");
         }
 
         /// <summary>
@@ -43,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateAndGetIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndGetIntegrationAccount");
         }
 
         /// <summary>
@@ -53,7 +61,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccount");
         }
 
         /// <summary>
@@ -63,7 +71,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccount");
         }
 
         /// <summary>
@@ -73,7 +81,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountCallbackUrl()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountCallbackUrl");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountCallbackUrl");
         }
     }
 }

@@ -19,38 +19,10 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class PSResourceGroupDeployment
-    {
-        public string DeploymentName { get; set; }
-
-        public string CorrelationId { get; set; }
-
+    public class PSResourceGroupDeployment: PSDeploymentObject
+    { 
         public string ResourceGroupName { get; set; }
 
-        public string ProvisioningState { get; set; }
-
-        public DateTime Timestamp { get; set; }
-
-        public DeploymentMode Mode { get; set; }
-
-        public TemplateLink TemplateLink { get; set; }
-
-        public string TemplateLinkString { get; set; }
-
-        public string DeploymentDebugLogLevel { get; set; }
-
-        public Dictionary<string, DeploymentVariable> Parameters { get; set; }
-
-        public string ParametersString
-        {
-            get { return ResourcesExtensions.ConstructDeploymentVariableTable(Parameters); }
-        }
-
-        public Dictionary<string, DeploymentVariable> Outputs { get; set; }
-
-        public string OutputsString
-        {
-            get { return ResourcesExtensions.ConstructDeploymentVariableTable(Outputs); }
-        }
+        public OnErrorDeploymentExtended OnErrorDeployment { get; set; }
     }
 }

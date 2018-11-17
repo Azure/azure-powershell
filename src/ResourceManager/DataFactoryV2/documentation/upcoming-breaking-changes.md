@@ -26,3 +26,20 @@
 -->
 
 # Upcoming Breaking Changes
+
+## Release X.0.0 - September 2018
+ The following cmdlets were affected this release:
+
+    **Get-AzureRmDataFactoryV2ActivityRun**
+    - The parameter LinkedServiceName is being deprecated without being replaced. 
+
+    ```powershell
+    # Old
+    Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run `
+	     -RunStartedBefore $endDate -RunStartedAfter $startDate -LinkedServiceName $linkedServiceName
+        
+
+    # New
+    Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run `
+	     -RunStartedBefore $endDate -RunStartedAfter $startDate
+    ```

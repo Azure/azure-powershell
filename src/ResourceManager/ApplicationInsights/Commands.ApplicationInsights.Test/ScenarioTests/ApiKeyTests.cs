@@ -23,30 +23,33 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 {
     public class ApiKeyTests : RMTestBase
     {
-        public ApiKeyTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ApiKeyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetApplicationInsightsApiKey()
+        public void TestGetAppInsightsApiKey()
         {
-            TestController.NewInstance.RunPsTest("Test-GetApplicationInsightsApiKey");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsApiKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewApplicationInsightsApiKey()
+        public void TestNewAppInsightsApiKey()
         {
-            TestController.NewInstance.RunPsTest("Test-NewApplicationInsightsApiKey");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewApplicationInsightsApiKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveApplicationInsightsApiKey()
+        public void TestRemoveAppInsightsApiKey()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveApplicationInsightsApiKey");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveApplicationInsightsApiKey");
         }
     }
 }

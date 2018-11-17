@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/import-azurermmlwebservice
@@ -27,12 +27,12 @@ The Import-AzureRmMlWebService cmdlet imports , specified either directly or in 
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Import from string  --------------------------
+### Example 1: Import from string
 ```
 Import-AzureRmMlWebService -JsonString $jsonDefinition
 ```
 
-### --------------------------  Example 2: Import from file path  --------------------------
+### Example 2: Import from file path
 ```
 Import-AzureRmMlWebService -InputFile "C:\mlservice.json"
 ```
@@ -43,7 +43,7 @@ Import-AzureRmMlWebService -InputFile "C:\mlservice.json"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,9 +58,9 @@ Accept wildcard characters: False
 The path to the file containing the web service definition to import.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportFromJSONFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 The JSON formatted string containing the web service definition to import.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportFromJSONString.
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +90,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
@@ -100,4 +99,3 @@ This cmdlet does not accept any input.
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

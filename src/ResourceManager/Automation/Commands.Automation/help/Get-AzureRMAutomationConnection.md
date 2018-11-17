@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: D12007E8-8693-45B9-8919-CF8A4BA63AAA
@@ -67,9 +67,9 @@ This command gets metadata for the connection named ContosoConnection.
 Specifies the name of the Automation account for which this cmdlet gets connections.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -82,9 +82,9 @@ Accept wildcard characters: False
 Specifies the name of a connection type for which this cmdlet retrieves connections.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByConnectionTypeName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,9 +112,9 @@ Accept wildcard characters: False
 Specifies the name of a connection that this cmdlet retrieves.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByConnectionName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet gets connections.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,8 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

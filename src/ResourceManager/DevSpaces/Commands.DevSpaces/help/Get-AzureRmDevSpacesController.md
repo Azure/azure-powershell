@@ -57,7 +57,7 @@ Get a DevSpaces controllers in a subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 DevSpaces controller name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DevSpacesControllerNameParameterSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListDevSpacesControllerParameterSet
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DevSpacesControllerNameParameterSet
 Aliases:
 
@@ -115,8 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-### Microsoft.Azure.Commands.DevSpaces.Models.PSController
+### None
 
 ## OUTPUTS
 

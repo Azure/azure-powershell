@@ -23,18 +23,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RMTestBase
     {
-        public PolicyTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public PolicyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Backup tests require multiple versions of the same SDKs, not supported in NetStandard")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMPolicy()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMPolicy");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMPolicy");
         }
     }
 }

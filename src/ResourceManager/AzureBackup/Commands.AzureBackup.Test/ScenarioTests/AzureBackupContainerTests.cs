@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,37 +20,40 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public class AzureBackupContainerTests : AzureBackupTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureBackupContainerTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupMarsContainerScenarioTests()
         {
-            this.RunPowerShellTest("Test-AzureBackupMarsContainerScenario");
+            this.RunPowerShellTest(_logger, "Test-AzureBackupMarsContainerScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupRegisterContainerScenarioTests()
         {
-            this.RunPowerShellTest("Test-RegisterAzureBackupContainer");
+            this.RunPowerShellTest(_logger, "Test-RegisterAzureBackupContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupUnregisterContainerScenarioTests()
         {
-            this.RunPowerShellTest("Test-UnregisterAzureBackupContainer");
+            this.RunPowerShellTest(_logger, "Test-UnregisterAzureBackupContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupContainerScenarioTests()
         {
-            this.RunPowerShellTest("Test-AzureBackupContainerScenario");
+            this.RunPowerShellTest(_logger, "Test-AzureBackupContainerScenario");
         }
     }
 }

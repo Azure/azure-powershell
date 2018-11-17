@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Backup
 Module Guid: 0b1d76f5-a928-4b8f-9c83-df26947568d4
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup

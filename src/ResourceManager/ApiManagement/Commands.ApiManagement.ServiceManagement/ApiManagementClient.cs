@@ -150,6 +150,42 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                                 ? src.SubscriptionKeyParameterNames.Query
                                 : null));
 
+                cfg
+                    .CreateMap<PsApiManagementApi, ApiContract>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ApiId))
+                    .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Path, opt => opt.MapFrom(src => src.Path))
+                    .ForMember(dest => dest.ServiceUrl, opt => opt.MapFrom(src => src.ServiceUrl))
+                    .ForMember(dest => dest.ApiRevision, opt => opt.MapFrom(src => src.ApiRevision))
+                    .ForMember(dest => dest.ApiVersion, opt => opt.MapFrom(src => src.ApiVersion ?? string.Empty))
+                    .ForMember(dest => dest.ApiType, opt => opt.MapFrom(src => src.ApiType ?? ApiType.Http))
+                    .ForMember(dest => dest.IsCurrent, opt => opt.MapFrom(src => src.IsCurrent))
+                    .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
+                    .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .AfterMap((src, dest) =>
+                        dest.AuthenticationSettings = ToAuthenticationSettings(src))
+                    .AfterMap((src, dest) =>
+                        dest.SubscriptionKeyParameterNames = ToSubscriptionKeyParameterNamesContract(src));
+
+                cfg
+                    .CreateMap<PsApiManagementApi, ApiCreateOrUpdateParameter>()
+                    .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Path, opt => opt.MapFrom(src => src.Path))
+                    .ForMember(dest => dest.ServiceUrl, opt => opt.MapFrom(src => src.ServiceUrl))
+                    .ForMember(dest => dest.ApiRevision, opt => opt.MapFrom(src => src.ApiRevision))
+                    .ForMember(dest => dest.ApiVersion, opt => opt.MapFrom(src => src.ApiVersion ?? string.Empty))
+                    .ForMember(dest => dest.ApiType, opt => opt.MapFrom(src => src.ApiType ?? ApiType.Http))
+                    .ForMember(dest => dest.IsCurrent, opt => opt.MapFrom(src => src.IsCurrent))
+                    .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
+                    .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .AfterMap((src, dest) =>
+                        dest.AuthenticationSettings = ToAuthenticationSettings(src))
+                    .AfterMap((src, dest) =>
+                        dest.SubscriptionKeyParameterNames = ToSubscriptionKeyParameterNamesContract(src));
+
                 cfg.CreateMap<ApiContract, ApiCreateOrUpdateParameter>();
                 cfg.CreateMap<RequestContract, PsApiManagementRequest>();
                 cfg.CreateMap<ResponseContract, PsApiManagementResponse>();
@@ -493,7 +529,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     context.ServiceName,
                     new Rest.Azure.OData.ODataQuery<ApiContract>
                     {
-                        Filter = string.Format("contains('{0}',properties/displayName)", name)
+                        Filter = string.Format("properties/displayName eq '{0}'", name)
                     }),
                 nextLink => Client.Api.ListByServiceNext(nextLink));
 
@@ -590,13 +626,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string subscriptionKeyQueryParamName,
             PsApiManagementApi apiObject)
         {
-            ApiContract apiContract;
+            ApiCreateOrUpdateParameter api;
             if (apiObject == null)
             {
-                apiContract = Client.Api.Get(
+                var apiContract = Client.Api.Get(
                     resourceGroupName,
                     servicename,
                     id);
+                api = Mapper.Map<ApiCreateOrUpdateParameter>(apiContract);
             }
             else
             {
@@ -605,17 +642,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 {
                     id = apiObject.ApiId.ApiRevisionIdentifier(apiObject.ApiRevision);
                 }
-                apiContract = Mapper.Map<ApiContract>(apiObject);
+                api = Mapper.Map<ApiCreateOrUpdateParameter>(apiObject);
             }
 
-            var api = new ApiCreateOrUpdateParameter
+            if (!string.IsNullOrEmpty(name))
             {
-                DisplayName = name ?? apiContract.Name,
-                Description = description ?? apiContract.Description,
-                ServiceUrl = serviceUrl ?? apiContract.ServiceUrl,
-                Path = urlSuffix ?? apiContract.Path,
-                Protocols = urlSchema != null ? Mapper.Map<IList<Protocol?>>(urlSchema) : apiContract.Protocols
-            };
+                api.DisplayName = name;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                api.Description = description;
+            }
+
+            if (!string.IsNullOrEmpty(serviceUrl))
+            {
+                api.ServiceUrl = serviceUrl;
+            }
+
+            if (!string.IsNullOrEmpty(urlSuffix))
+            {
+                api.Path = urlSuffix;
+            }
+
+            if (urlSchema != null)
+            {
+                api.Protocols = Mapper.Map<IList<Protocol?>>(urlSchema);
+            }            
 
             if (authorizationServerId != null)
             {
@@ -628,10 +681,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     }
                 };
             }
-            else
-            {
-                api.AuthenticationSettings = apiContract.AuthenticationSettings;
-            }
 
             if (!string.IsNullOrWhiteSpace(subscriptionKeyHeaderName) || !string.IsNullOrWhiteSpace(subscriptionKeyQueryParamName))
             {
@@ -640,10 +689,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     Header = subscriptionKeyHeaderName,
                     Query = subscriptionKeyQueryParamName
                 };
-            }
-            else
-            {
-                api.SubscriptionKeyParameterNames = apiContract.SubscriptionKeyParameterNames;
             }
             
             var updatedApiContract = Client.Api.CreateOrUpdate(
@@ -923,7 +968,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 apiId,
                 releaseId);
 
-            apiReleaseContract.Notes = notes;
+            if (!string.IsNullOrEmpty(notes))
+            {
+                apiReleaseContract.Notes = notes;
+            }
 
             Client.ApiRelease.Update(
                 resourceGroupName,
@@ -1221,7 +1269,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             var query = new Rest.Azure.OData.ODataQuery<ProductContract>();
             if (!string.IsNullOrWhiteSpace(title))
             {
-                query.Filter = string.Format("contains('{0}',properties/displayName)", title);
+                query.Filter = string.Format("properties/displayName eq '{0}'", title);
             }
 
             var results = ListPagedAndMap<PsApiManagementProduct, ProductContract>(
@@ -2931,6 +2979,45 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
 
             return parameterList;
+        }
+
+        static AuthenticationSettingsContract ToAuthenticationSettings(PsApiManagementApi psApiManagementApi)
+        {
+            if (psApiManagementApi == null ||
+                string.IsNullOrWhiteSpace(psApiManagementApi.AuthorizationServerId) ||
+                string.IsNullOrEmpty(psApiManagementApi.AuthorizationScope))
+            {
+                return null;
+            }
+
+            var settings = new AuthenticationSettingsContract()
+            {
+                OAuth2 = new OAuth2AuthenticationSettingsContract()
+                {
+                    AuthorizationServerId = psApiManagementApi.AuthorizationServerId,
+                    Scope = psApiManagementApi.AuthorizationScope
+                }
+            };
+
+            return settings;
+        }
+
+        static SubscriptionKeyParameterNamesContract ToSubscriptionKeyParameterNamesContract(PsApiManagementApi psApiManagementApi)
+        {
+            if (psApiManagementApi == null ||
+                (string.IsNullOrWhiteSpace(psApiManagementApi.SubscriptionKeyHeaderName) &&
+                string.IsNullOrEmpty(psApiManagementApi.SubscriptionKeyQueryParamName)))
+            {
+                return null;
+            }
+
+            var subscriptionKeyParameters = new SubscriptionKeyParameterNamesContract()
+            {
+                Header = psApiManagementApi.SubscriptionKeyHeaderName,
+                Query = psApiManagementApi.SubscriptionKeyQueryParamName
+            };
+
+            return subscriptionKeyParameters;
         }
 
         static PsApiManagementParameter[] ToParameterContract(IList<ParameterContract> parameters)

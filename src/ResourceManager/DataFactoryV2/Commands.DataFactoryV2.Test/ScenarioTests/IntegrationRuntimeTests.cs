@@ -21,38 +21,47 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public class IntegrationRuntimeTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public IntegrationRuntimeTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSelfHosedIntegrationRuntime()
+        public void TestSelfHostedIntegrationRuntime()
         {
-            RunPowerShellTest("Test-SelfHosted-IntegrationRuntime");
+            RunPowerShellTest(_logger, "Test-SelfHosted-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIntegrationRuntime()
         {
-            RunPowerShellTest("Test-Azure-IntegrationRuntime");
+            RunPowerShellTest(_logger, "Test-Azure-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIntegrationRuntimePiping()
         {
-            RunPowerShellTest("Test-IntegrationRuntime-Piping");
+            RunPowerShellTest(_logger, "Test-IntegrationRuntime-Piping");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSsisAzureIntegrationRuntime()
         {
-            RunPowerShellTest("Test-SsisAzure-IntegrationRuntime");
+            RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSharedIntegrationRuntime()
+        {
+            RunPowerShellTest(_logger, "Test-Shared-IntegrationRuntime");
         }
     }
 }

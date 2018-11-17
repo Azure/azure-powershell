@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 44C5AF58-ADC1-4BC6-9771-3FD8F0480106
@@ -27,9 +27,7 @@ Stop-AzureRmBackupJob -Job <AzureRMBackupJob> [-DefaultProfile <IAzureContextCon
 ## DESCRIPTION
 The **Stop-AzureRmBackupJob** cmdlet cancels an existing Azure Backup job.
 Use this parameter to stop a job that takes too long and blocks other activities.
-
 You can cancel only the following types of jobs: 
-
 - Backup
 - Restore
 
@@ -44,11 +42,9 @@ PS C:\> Stop-AzureRmBackupJob -Vault $Vault -JobID $Job.InstanceId
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a backup job from the vault in $Vault by using the **Get-AzureRmBackupJob** cmdlet.
 The command stores the job in the $Job variable.
 In this example, there is only one backup operation in the specified vault.
-
 The final command stops the job that has the specified ID.
 
 ### Example 2: Stop all Restore operations
@@ -65,7 +61,7 @@ The current cmdlet stops each job.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,9 +77,9 @@ Specifies a job that this cmdlet cancels.
 To obtain an **AzureRmBackupJob** object, use the Get-AzureRmBackupJob cmdlet.
 
 ```yaml
-Type: AzureRMBackupJob
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 Parameter Sets: JobFiltersSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,9 +93,9 @@ Specifies a job that this cmdlet cancels.
 To obtain an **AzureRmBackupJob** object, use the Get-AzureRmBackupJob cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdFiltersSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,9 +109,9 @@ Specifies the Backup vault in which this cmdlet cancels a job.
 To obtain an **AzureRmBackupVault** object, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: IdFiltersSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,11 +125,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.Void
 
 ## NOTES
 

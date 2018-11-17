@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
     {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 0,
             HelpMessage = "The Resource Group Name")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 1,
             HelpMessage = "The managed instance name")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string ManagedInstanceName { get; set; }
 

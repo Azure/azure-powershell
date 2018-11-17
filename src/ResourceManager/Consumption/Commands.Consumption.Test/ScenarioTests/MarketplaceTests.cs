@@ -13,20 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
     public class MarketplaceTests : RMTestBase
     {
-        public MarketplaceTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public MarketplaceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -34,28 +36,28 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMarketplaces()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListMarketplaces");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListMarketplaces");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMarketplacesWithDateFilter()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListMarketplacesWithDateFilter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListMarketplacesWithDateFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodMarketplaces()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListBillingPeriodMarketplaces");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodMarketplaces");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMarketplacesWithFilterOnInstanceName()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListMarketplacesWithFilterOnInstanceName");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListMarketplacesWithFilterOnInstanceName");
         }
     }
 }

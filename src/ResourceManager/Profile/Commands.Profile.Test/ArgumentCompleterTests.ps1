@@ -18,7 +18,10 @@ Tests location completer
 #>
 function Test-LocationCompleter
 {
-	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.PowerShell.ResourceManager.dll"
+    if (!(Test-Path $filePath)) {
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    }
 	$assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
 	$resourceTypes = @("Microsoft.Batch/operations")
 	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, -1)
@@ -34,7 +37,10 @@ Tests resource group completer
 #>
 function Test-ResourceGroupCompleter
 {
-	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.PowerShell.ResourceManager.dll"
+    if (!(Test-Path $filePath)) {
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    }
 	$assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
 	$resourceGroups = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups(-1)
 	$expectResourceGroups = Get-AzureRmResourceGroup | ForEach-Object {$_.ResourceGroupName}
@@ -47,7 +53,10 @@ Tests resource id completer
 #>
 function Test-ResourceIdCompleter
 {
-    $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.PowerShell.ResourceManager.dll"
+    if (!(Test-Path $filePath)) {
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    }
     [System.Reflection.Assembly]::LoadFrom($filePath)
     $resourceType = "Microsoft.Storage/storageAccounts"
     $expectResourceIds = Get-AzureRmResource -ResourceType  $resourceType | ForEach-Object {$_.Id}

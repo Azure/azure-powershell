@@ -475,6 +475,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string SourceFileNotFound {
+            get {
+                return ResourceManager.GetString("SourceFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Subscription &quot;{0}&quot;..
         /// </summary>
         internal static string SubscriptionRemoveDescription {

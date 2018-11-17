@@ -14,11 +14,12 @@
 
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
 {
-    public class AzureRmSignalRTests
+    public class AzureRmSignalRTests : RMTestBase
     {
         private readonly ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
 
@@ -31,7 +32,12 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRmSignalR()
-            => TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzureRmSignalR");
+        public void TestAzureRmSignalR() =>
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalR");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmSignalRWithDefaultArgs() =>
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRWithDefaultArgs");
     }
 }

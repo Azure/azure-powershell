@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientPackage"), OutputType(typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientPackage"), OutputType(typeof(string))]
     public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "VirtualNetworkGateway name")]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkGatewayName { get; set; }
 
@@ -72,4 +73,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

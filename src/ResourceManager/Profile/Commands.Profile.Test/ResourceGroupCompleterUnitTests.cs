@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 e2 => Assert.Equal("test1", e2), e3 => Assert.Equal("test2", e3), e4 => Assert.Equal("test4", e4));
         }
 
-        [Fact]
+        [Fact(Skip = "Move to common tests, relies on Debug of common code")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsErrorWhenResultNull()
         {

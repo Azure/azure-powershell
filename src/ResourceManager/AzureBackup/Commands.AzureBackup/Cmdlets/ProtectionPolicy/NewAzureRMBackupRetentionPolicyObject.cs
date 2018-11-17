@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.AzureBackup.Helpers;
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Create new retention policy object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmBackupRetentionPolicyObject"), OutputType(typeof(AzureRMBackupRetentionPolicy))]
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupRetentionPolicyObject"), OutputType(typeof(AzureRMBackupRetentionPolicy))]
     public class NewAzureRMBackupRetentionPolicyObject : AzureBackupCmdletBase
     {
         protected const string DailyRetentionParamSet = "DailyRetentionParamSet";

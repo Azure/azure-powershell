@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelaynamespace
 schema: 2.0.0
 ---
@@ -25,6 +25,17 @@ The **Get-AzureRmRelayNamespace** cmdlet gets a description for the specified Re
 ### Example 1
 ```
 PS C:\> Get-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
+
+ProvisioningState  : Succeeded
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
+Location           : West US
+Tags               : {[tag1, Tag1Value]}
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
+Name               : TestNameSpace-Relay1
+Type               : Microsoft.Relay/namespaces
 ```
 
 Returns a description of the specified Relay namespace.
@@ -32,10 +43,10 @@ Returns a description of the specified Relay namespace.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +61,9 @@ Accept wildcard characters: False
 Relay Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -65,9 +76,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -77,27 +88,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
-ProvisioningState  : Succeeded
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
-Location           : West US
-Tags               : {[tag1, Tag1Value]}
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
-Name               : TestNameSpace-Relay1
-Type               : Microsoft.Relay/namespaces
+### Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes
+
 
 ## NOTES
 
 ## RELATED LINKS
-

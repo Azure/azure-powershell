@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
@@ -40,7 +40,6 @@ PS C:\> Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Up
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.
 The command stores it in the $VM variable.
-
 The second command modifies the caching mode for the data disk named DataDisk01 on the virtual machine in $VM.
 The command passes the result to the Update-AzureRmVM cmdlet, which implements your changes.
 A change to the cashing mode causes the virtual machine to restart.
@@ -50,17 +49,14 @@ A change to the cashing mode causes the virtual machine to restart.
 ### -Caching
 Specifies the caching mode of the disk.
 The acceptable values for this parameter are:
-
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 Changing this value causes the virtual machine to restart.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.CachingTypes]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, ReadOnly, ReadWrite
@@ -76,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +87,7 @@ Accept wildcard characters: False
 Specifies the size, in gigabytes, for the data disk.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +102,7 @@ Accept wildcard characters: False
 Specifies the logical unit number (LUN) of the data disk that this cmdlet modifies.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ChangeWithLun
 Aliases:
 
@@ -121,7 +117,7 @@ Accept wildcard characters: False
 Specifies the name of the data disk that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ChangeWithName
 Aliases:
 
@@ -136,7 +132,7 @@ Accept wildcard characters: False
 The virtual machine managed disk's account type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +148,7 @@ Specifies the virtual machine for which this cmdlet modifies a data disk.
 To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -167,7 +163,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on the data disk.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -183,8 +179,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.String
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/remove-azurermmlwebservice
@@ -29,7 +29,7 @@ Deletes a Azure Machine Learning web service referenced by resource group and na
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 Remove-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
@@ -40,7 +40,7 @@ Remove-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebserv
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -55,9 +55,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 The web service to be removed.
 
 ```yaml
-Type: WebService
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 Parameter Sets: RemoveByObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,9 +85,9 @@ Accept wildcard characters: False
 The name of the web service to be removed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 The resource group of the web service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -131,7 +131,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -147,15 +147,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### WebService
-Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
+Parameters: MlWebService (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.Void
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

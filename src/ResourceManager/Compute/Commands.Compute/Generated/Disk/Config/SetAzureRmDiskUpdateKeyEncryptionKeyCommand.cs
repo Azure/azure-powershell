@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmDiskUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDiskUpdate))]
     public partial class SetAzureRmDiskUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.DiskUpdate.EncryptionSettings == null)
                 {
-                    this.DiskUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.DiskUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // KeyEncryptionKey
                 if (this.DiskUpdate.EncryptionSettings.KeyEncryptionKey == null)
                 {
-                    this.DiskUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                    this.DiskUpdate.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 this.DiskUpdate.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
             }
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.DiskUpdate.EncryptionSettings == null)
                 {
-                    this.DiskUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.DiskUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // KeyEncryptionKey
                 if (this.DiskUpdate.EncryptionSettings.KeyEncryptionKey == null)
                 {
-                    this.DiskUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                    this.DiskUpdate.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 // SourceVault
                 if (this.DiskUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
                 {
-                    this.DiskUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                    this.DiskUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new SourceVault();
                 }
                 this.DiskUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
@@ -101,4 +101,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

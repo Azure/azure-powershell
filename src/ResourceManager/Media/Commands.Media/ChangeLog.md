@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 0.10.4
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.10.3
+* Fixed issue with default resource groups not being set.
+
+## Version 0.10.2
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.10.1
+* Updated help files to include full parameter types and correct input/output types.
+
 ## Version 0.10.0
 * Set minimum dependency of module to PowerShell 5.0
 * Remove deprecated `Tags` alias from cmdlets
@@ -38,7 +51,7 @@
 ## Version 0.8.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.7.7
 
 ## Version 0.7.6

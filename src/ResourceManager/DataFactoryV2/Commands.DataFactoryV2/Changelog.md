@@ -20,6 +20,26 @@
 
 ## Current Release
 
+## Version 0.5.11
+* Updated the ADF .Net SDK version to 2.3.0.
+
+## Version 0.5.10
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.5.9
+* Fixed issue with default resource groups not being set.
+
+## Version 0.5.8
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.5.7
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated the ADF .Net SDK version to 2.0.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter ``SharedIntegrationRuntimeResourceId`` to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter ``LinkedDataFactoryName`` to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+
 ## Version 0.5.6
 * Fixed formatting of OutputType in help files
 
@@ -47,14 +67,14 @@
     - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
     - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
     - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
-    - Added support for SecureOutput on all activities 
+    - Added support for SecureOutput on all activities
     - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
     - Added new Filter Activity
     - Added Linked Service Parameters support
 
 ## Version 0.5.1
 * Add parameter 'SetupScriptContainerSasUri' and 'Edition' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd to enable custom setup and edition selection functionality
-* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Fix credential encryption issue that caused no meaningful error for some encryption operations.
 * Enable integration runtime to be shared across data factory
 
 ## Version 0.5.0

@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Network.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetFlowlogByResourceWithoutTA), OutputType(typeof(PSFlowLog))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetFlowlogByResourceWithoutTA), OutputType(typeof(PSFlowLog))]
     public class SetAzureNetworkWatcherConfigFlowLogCommand : NetworkWatcherBaseCmdlet
     {
         private const string SetFlowlogByResourceWithTAByResource = "SetFlowlogByResourceWithTAByResource";
@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = SetFlowlogByNameWithoutTA)]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 

@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkInterfaceIpConfig"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceIpConfig"), OutputType(typeof(PSNetworkInterface))]
     public class RemoveAzureNetworkInterfaceIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

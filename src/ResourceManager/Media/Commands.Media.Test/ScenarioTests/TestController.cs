@@ -14,23 +14,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Subscriptions;
-using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
 {
@@ -39,29 +34,15 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
     /// </summary>
     public class TestController : RMTestBase
     {
-        private CSMTestEnvironmentFactory _csmTestFactory;
-
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public MediaServicesManagementClient MediaServicesManagementClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
 
-        public static TestController NewInstance
-        {
-            get
-            {
-                return new TestController();
-            }
-        }
+        public static TestController NewInstance => new TestController();
 
         protected TestController()
         {
@@ -70,19 +51,13 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = TestBase.GetServiceClient<ResourceManagementClient>(_csmTestFactory);
-            SubscriptionClient = TestBase.GetServiceClient<SubscriptionClient>(_csmTestFactory);
-            GalleryClient = TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
-            AuthorizationManagementClient = TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
-            StorageManagementClient = TestBase.GetServiceClient<StorageManagementClient>(_csmTestFactory);
+            ResourceManagementClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            StorageManagementClient = context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             MediaServicesManagementClient = context.GetServiceClient<MediaServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
-                SubscriptionClient,
                 StorageManagementClient,
-                GalleryClient,
-                AuthorizationManagementClient,
                 MediaServicesManagementClient);
         }
 
@@ -93,15 +68,14 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
         /// <param name="scripts"></param>
         public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -109,69 +83,51 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
 
         private void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
 
-            var d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Compute", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-
-                _csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(_csmTestFactory);
-                }
-
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
-                    _helper.RMStorageDataPlaneModule,
-                    _helper.RMStorageModule,
-                    @"AzureRM.Media.psd1",
+                    _helper.GetRMModulePath("AzureRM.Media.psd1"),
                     "AzureRM.Resources.ps1",
                     "AzureRM.Storage.ps1");
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            _helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }

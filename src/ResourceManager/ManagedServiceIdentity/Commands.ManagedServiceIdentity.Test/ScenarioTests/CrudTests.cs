@@ -8,20 +8,19 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Test.ScenarioTests
 {
     public class CrudTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public CrudTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            var helper = new EnvironmentSetupHelper
-            {
-                TracingInterceptor =new XunitTracingInterceptor(output)
-            };
-            XunitTracingInterceptor.AddToContext(helper.TracingInterceptor);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrud()
         {
-            new TestController().RunPsTest("Test-CrudUserAssignedIdentity");
+            new TestController().RunPsTest(_logger, "Test-CrudUserAssignedIdentity");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 4A6816DB-0E46-44F0-8AE9-180B1C4AAB22
@@ -58,7 +58,7 @@ The final command creates an Action Group including the two receivers.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 Disables the action group.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByPropertyName, ByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,9 +85,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 The action group resourc
 
 ```yaml
-Type: PSActionGroupResource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,9 +115,9 @@ Accept wildcard characters: False
 The name of the action group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPropertyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -132,7 +132,7 @@ The list of receivers of the action group.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]
 Parameter Sets: ByPropertyName, ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -145,9 +145,9 @@ Accept wildcard characters: False
 The resource group nam
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPropertyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -160,9 +160,9 @@ Accept wildcard characters: False
 The resource i
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -175,9 +175,9 @@ Accept wildcard characters: False
 The short name of the action group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPropertyName, ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -187,9 +187,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -204,7 +204,7 @@ The tags of the action group resourc
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: ByPropertyName, ByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -260,8 +260,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Management.Automation.SwitchParameter
+
+### System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

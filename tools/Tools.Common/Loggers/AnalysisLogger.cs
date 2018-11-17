@@ -83,8 +83,14 @@ namespace Tools.Common.Loggers
         {
             _baseDirectory = baseDirectory;
             _exceptionsDirectory = exceptionsDirectory;
-            _defaultLogName = Assembly.GetExecutingAssembly().GetName().Name;
+            var assembly = Assembly.GetExecutingAssembly();
+            var assemblyType = assembly.GetType();
+            _defaultLogName = assembly.GetName().Name;
+#if !NETSTANDARD
             Log4NetLogger = log4net.LogManager.GetLogger(_defaultLogName);
+#else
+            Log4NetLogger = log4net.LogManager.GetLogger(assemblyType);
+#endif
         }
 
         /// <summary>
@@ -184,7 +190,7 @@ namespace Tools.Common.Loggers
             if (hasErrors)
             {
                 throw new InvalidOperationException(string.Format("One or more errors occurred in validation. " +
-                                                                  "See the analysis repots at {0} for details",
+                                                                  "See the analysis reports at {0} for details",
                     _baseDirectory));
             }
         }

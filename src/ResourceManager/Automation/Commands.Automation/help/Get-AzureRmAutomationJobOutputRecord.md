@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 38BB4F4E-B72B-460E-8DF2-2A7A9CACDB41
@@ -20,7 +20,6 @@ Get-AzureRmAutomationJobOutputRecord [-JobId] <Guid> [-Id] <String> [-ResourceGr
 
 ## DESCRIPTION
 The **Get-AzureRmAutomationJobOutputRecord** cmdlet gets the full output of an Automation job output record.
-
 Although the **Get-AzureRmAutomationJobOutput** cmdlet lists one or more job output records, it returns only a summary, as a string, of the value of any output record.
 It does not return the full value of an output record's outputted value in its original type.
 In addition, the summary has a maximum length, which the full value that this cmdlet outputs may exceed.
@@ -41,9 +40,9 @@ This command gets the full output of the job that has the specified job ID.
 Specifies the name of an Automation account for which this cmdlet gets a job output record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -56,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 Specifies the ID of a job output record for this cmdlet to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StreamRecordId
 
@@ -86,9 +85,9 @@ Accept wildcard characters: False
 Specifies the ID of a job for which this cmdlet gets an output record.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -101,9 +100,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet gets a job output record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -117,8 +116,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### System.String
 
 ## OUTPUTS
 

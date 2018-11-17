@@ -14,8 +14,14 @@ This topic displays help topics for the Azure Storage Cmdlets.
 ### [Disable-AzureStorageDeleteRetentionPolicy](Disable-AzureStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
 
+### [Disable-AzureStorageStaticWebsite](Disable-AzureStorageStaticWebsite.md)
+Disable static website for the Azure Storage account.
+
 ### [Enable-AzureStorageDeleteRetentionPolicy](Enable-AzureStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
+
+### [Enable-AzureStorageStaticWebsite](Enable-AzureStorageStaticWebsite.md)
+Enable static website for the Azure Storage account.
 
 ### [Get-AzureStorageBlob](Get-AzureStorageBlob.md)
 Lists blobs in a container.

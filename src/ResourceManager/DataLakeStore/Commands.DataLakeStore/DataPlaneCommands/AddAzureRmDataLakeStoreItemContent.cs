@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreItemContent"), OutputType(typeof(bool))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemContent"), OutputType(typeof(bool))]
     [Alias("Add-AdlStoreItemContent")]
     public class AddAzureDataLakeStoreItemContent : DataLakeStoreFileSystemCmdletBase
     {

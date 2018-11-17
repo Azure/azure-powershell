@@ -19,6 +19,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual 2 $serverCreated.AsAdministrators.Count
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
@@ -33,6 +34,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverGetItem.Name
 		Assert-AreEqual $location $serverGetItem.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-AreEqual $resourceGroupName $serverGetItem.ResourceGroupName
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 
 		# Test to make sure the server does exist
@@ -47,11 +49,13 @@ function Test-AnalysisServicesServer
 		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+		Assert-AreEqual $resourceGroupName $serverUpdated.ResourceGroupName
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+		Assert-AreEqual $resourceGroupName $serverUpdated.ResourceGroupName
 
 		Assert-AreEqual $serverName $serverUpdated.Name
 		Assert-AreEqual $location $serverUpdated.Location
@@ -143,6 +147,7 @@ function Test-AnalysisServicesServerScaleUpDown
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-AreEqual B1 $serverCreated.Sku.Name
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
@@ -201,6 +206,7 @@ function Test-AnalysisServicesServerFirewall
 		Assert-AreEqual 1 $serverCreated.Sku.Capacity
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-AreEqual B1 $serverCreated.Sku.Name
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
@@ -392,6 +398,7 @@ function Test-NegativeAnalysisServicesServer
 
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 

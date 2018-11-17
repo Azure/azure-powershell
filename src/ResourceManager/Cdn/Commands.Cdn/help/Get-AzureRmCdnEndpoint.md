@@ -36,7 +36,7 @@ The **Get-AzureRMCdnEndpoint** cmdlet gets an Azure Content Delivery Network (CD
 Specifies the CDN profile object to which the endpoint belongs.
 
 ```yaml
-Type: PSProfile
+Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Specifies the name of the endpoint.
 The name of the endpoint is not the host name of the endpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Specifies the name of the profile to which the endpoint belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the endpoint belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -114,12 +114,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
-Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
+Parameters: CdnProfile (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
-This cmdlet returns an endpoint object.
 
 ## NOTES
 

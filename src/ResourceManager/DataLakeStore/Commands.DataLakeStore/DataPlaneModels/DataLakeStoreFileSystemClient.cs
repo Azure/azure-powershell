@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private readonly Random _uniqueActivityIdGenerator;
         private const int MaxConnectionLimit = 1000;
         private const long NeverExpireValue = 253402300800000;
-        internal const int ImportExportMaxThreads = 256;
+        internal const int ImportExportMaxThreads = 128;
         private readonly LoggingConfiguration _adlsLoggerConfig;
         private readonly bool _isDebugEnabled;
         private const int DebugMessageFlushThreshold = 500;
@@ -89,7 +89,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             else
             {
-                var debugPreference = cmdlet.GetVariableValue("DebugPreference") as string;
+                // The return type of cmdlet.GetVariableValue("DebugPreference") is string when run from a script
+                // return type is System.Management.Automation.ActionPreference when run from commandline
+                var debugPreference = cmdlet.GetVariableValue("DebugPreference").ToString();
                 if (debugPreference != null)
                 {
                     _isDebugEnabled = !debugPreference.Equals("SilentlyContinue");

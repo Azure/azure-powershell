@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebustopic
@@ -14,7 +14,7 @@ Returns a description for the specified Service Bus topic.
 
 ```
 Get-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,36 +26,50 @@ The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the sp
 ```
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 
-Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
-                                      B-Topic_exampl1
-Type                                : Microsoft.ServiceBus/Topic
-AccessedAt                          : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 3:16:41 AM
+Name                                : SB-Topic_example1
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_example1
+Type                                : Microsoft.ServiceBus/Namespaces/Topics
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 10/11/2018 11:51:24 PM
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
 EnableBatchedOperations             : True
 EnableExpress                       : False
-EnablePartitioning                  : True
-MaxSizeInMegabytes                  : 16384
+EnablePartitioning                  : False
+MaxSizeInMegabytes                  : 81920
 RequiresDuplicateDetection          : False
 SizeInBytes                         : 0
 Status                              : Active
-SubscriptionCount                   : 1
-SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 3:16:43 AM
+SubscriptionCount                   : 0
+SupportOrdering                     : True
+UpdatedAt                           : 10/11/2018 11:51:24 PM
 ```
+
 Returns the description of the specified topic for the given Service Bus namespace.
+
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+```
+
+Returns list of topics for given Service Bus namespace. By default 100 topics will be returned, if more than 100 topics to be returned, please use -MaxCount Parameter.
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 150
+```
+
+Returns list of first 150 topics for given Service Bus namespace.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,26 +80,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Topic Name.
+### -MaxCount
+Determine the maximum number of Topics to return.
 
 ```yaml
-Type: String
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Topic Name
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases: TopicName
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -100,7 +129,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -125,4 +154,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

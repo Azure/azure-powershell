@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -26,9 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <remarks>
     /// The cmdlet returns the path of the newly created backup file.
     /// </remarks>
-    [Cmdlet(VerbsData.Backup, "AzureKeyVaultCertificate",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByCertificateNameParameterSet)]
+    [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ByCertificateNameParameterSet)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -48,6 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Position = 0,
                     ParameterSetName = ByCertificateNameParameterSet,
                     HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

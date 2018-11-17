@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotDiskEncryptionKey", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public partial class SetAzureRmSnapshotDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.Snapshot.EncryptionSettings == null)
                 {
-                    this.Snapshot.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.Snapshot.EncryptionSettings = new EncryptionSettings();
                 }
                 // DiskEncryptionKey
                 if (this.Snapshot.EncryptionSettings.DiskEncryptionKey == null)
                 {
-                    this.Snapshot.EncryptionSettings.DiskEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference();
+                    this.Snapshot.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 this.Snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl = this.SecretUrl;
             }
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.Snapshot.EncryptionSettings == null)
                 {
-                    this.Snapshot.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.Snapshot.EncryptionSettings = new EncryptionSettings();
                 }
                 // DiskEncryptionKey
                 if (this.Snapshot.EncryptionSettings.DiskEncryptionKey == null)
                 {
-                    this.Snapshot.EncryptionSettings.DiskEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference();
+                    this.Snapshot.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 // SourceVault
                 if (this.Snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault == null)
                 {
-                    this.Snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                    this.Snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault = new SourceVault();
                 }
                 this.Snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
@@ -101,4 +101,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

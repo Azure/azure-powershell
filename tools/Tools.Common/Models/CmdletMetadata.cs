@@ -331,5 +331,10 @@ namespace Tools.Common.Models
             cmdletsEqual &= this.ParameterSets.Count == other.ParameterSets.Count;
             return cmdletsEqual;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 3C6DCC81-82F7-4044-AFBC-4EE1BCC306F2
@@ -64,9 +64,9 @@ Specifies an array of arguments for the job.
 The arguments are passed as command-line arguments to each task.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 Specifies the name of the default container in the default Azure Storage account that an HDInsight cluster uses.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,9 +109,9 @@ Accept wildcard characters: False
 Specifies the account key for the default storage account that the HDInsight cluster uses.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,9 +124,9 @@ Accept wildcard characters: False
 Specifies the name of the default storage account that the HDInsight cluster uses.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -139,9 +139,9 @@ Accept wildcard characters: False
 Specifies Hadoop configuration values to set when a job runs.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,9 +155,9 @@ Specifies the path to a file in Azure Storage that contains the query to run.
 You can use this parameter instead of the *Query* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -170,9 +170,9 @@ Accept wildcard characters: False
 Specifies a collection of files that are required for a Hive job.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -186,9 +186,9 @@ Specifies the name of a Hive job.
 If you do not specify this parameter, this cmdlet uses the default value: "Hive: \<first 100 characters of Query\>".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -201,9 +201,9 @@ Accept wildcard characters: False
 Specifies the Hive query.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -215,13 +215,12 @@ Accept wildcard characters: False
 ### -RunAsFileJob
 Indicates that this cmdlet creates a file in the default Azure storage account in which to store a query.
 This cmdlet submits the job that references this file as a script to run.
-
 You can use this functionality to handle special characters such as percent sign (%) that would fail on a job submission through Templeton, because Templeton interprets a query with a percent sign as a URL parameter.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -234,9 +233,9 @@ Accept wildcard characters: False
 Specifies the location of the folder that contains standard outputs and error outputs for a job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -251,7 +250,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

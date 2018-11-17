@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 0225C7CA-74B4-4ACC-870C-9539DF6ECC47
@@ -50,9 +50,9 @@ This command starts a job on the cluster named your-hadoop-001.
 Specifies the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Specifies the cluster login (HTTP) credentials for the cluster.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases: ClusterCredential
 
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 Specifies the job to start on the Azure HDInsight cluster.
 
 ```yaml
-Type: AzureHDInsightJobDefinition
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,8 +126,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightJobDefinition
-Parameter 'JobDefinition' accepts value of type 'AzureHDInsightJobDefinition' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition
+Parameters: JobDefinition (ByValue)
 
 ## OUTPUTS
 

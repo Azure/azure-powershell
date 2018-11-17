@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 1246C3AC-A123-4EA1-B99E-458A85789109
@@ -45,7 +45,6 @@ PS C:\> Get-AzureRmAutomationDscNodeReport -ResourceGroupName "ResourceGroup14" 
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.
 The command stores this object in the $Node variable.
-
 The second command gets metadata for all reports sent from the DSC node named Computer14 to the Automation account named Contoso17.
 The command specifies the node by using the **Id** property of the $Node object.
 
@@ -57,7 +56,6 @@ PS C:\> Get-AzureRmAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" 
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.
 The command stores this object in the $Node variable.
-
 The second command gets metadata for the report identified by the specified ID sent from the DSC node named Computer14 to the Automation account named Contoso17.
 
 ### Example 3: Get the latest report for a DSC node
@@ -68,7 +66,6 @@ PS C:\> Get-AzureRmAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" 
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.
 The command stores this object in the $Node variable.
-
 The second command gets metadata for the latest report sent from the DSC node named Computer14 to the Automation account named Contoso17.
 
 ## PARAMETERS
@@ -78,9 +75,9 @@ Specifies the name of an Automation account.
 This cmdlet exports reports for a DSC node that belongs to the account that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -93,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,9 +106,9 @@ Specifies an end time.
 This cmdlet gets reports that Automation received before this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,7 +121,7 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC node report for this cmdlet to get.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ById
 Aliases: ReportId
 
@@ -139,9 +136,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets the latest DSC report for the specified node only.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByLatest
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -154,9 +151,9 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC node for which this cmdlet gets reports.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,9 +166,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains the DSC node for which this cmdlet gets reports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -185,9 +182,9 @@ Specifies a start time.
 This cmdlet gets reports that Automation received after this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -201,8 +198,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
 
 ## OUTPUTS
 

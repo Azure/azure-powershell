@@ -21,37 +21,40 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
     public class SearchTests : OperationalInsightsScenarioTestBase
     {
-        public SearchTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public SearchTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSchema()
         {
-            RunPowerShellTest("Test-SearchGetSchema");
+            RunPowerShellTest(_logger, "Test-SearchGetSchema");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSearchResultsAndUpdate()
         {
-            RunPowerShellTest("Test-SearchGetSearchResultsAndUpdate");
+            RunPowerShellTest(_logger, "Test-SearchGetSearchResultsAndUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSavedSearchesAndResults()
         {
-            RunPowerShellTest("Test-SearchGetSavedSearchesAndResults");
+            RunPowerShellTest(_logger, "Test-SearchGetSavedSearchesAndResults");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchSetAndRemoveSavedSearches()
         {
-            RunPowerShellTest("Test-SearchSetAndRemoveSavedSearches");
+            RunPowerShellTest(_logger, "Test-SearchSetAndRemoveSavedSearches");
         }
 
     }

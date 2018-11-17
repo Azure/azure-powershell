@@ -19,19 +19,95 @@ using System.Net;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
-using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
+
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
     public class SetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpResourceId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeResourceId,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpResourceId)]
+        [ValidateNotNullOrEmpty]
+        [Alias("Id")]
+        public new string ResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpResourceGroup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeName,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpResourceGroup)]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
+        public new string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeName,
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryName)]
+        [ValidateNotNullOrEmpty]
+        public new string DataFactoryName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = Constants.HelpIntegrationRuntimeObject)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeObject,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = Constants.HelpIntegrationRuntimeObject)]
+        [ValidateNotNull]
+        public new PSIntegrationRuntime InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpIntegrationRuntimeName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeName,
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpIntegrationRuntimeName)]
+        [ValidateNotNullOrEmpty]
+        [Alias(Constants.IntegrationRuntimeName)]
+        public new string Name { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimetype)]
@@ -49,6 +125,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Description { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLocation)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLocation)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeLocation)]
         [LocationCompleter("Microsoft.DataFactory/factories")]
@@ -56,41 +141,104 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Location { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeNodeSize)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeNodeSize)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeNodeSize)]
         [ValidateNotNullOrEmpty]
         public string NodeSize { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeNodeCount)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeNodeCount)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeNodeCount)]
         public int? NodeCount { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeCatalogServerEndpoint)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeCatalogServerEndpoint)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeCatalogServerEndpoint)]
         [ValidateNotNullOrEmpty]
         public string CatalogServerEndpoint { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeCatalogAdminCredential)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeCatalogAdminCredential)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeCatalogAdminCredential)]
         [ValidateNotNull]
         public PSCredential CatalogAdminCredential { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeCatalogPricingTier)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeCatalogPricingTier)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeCatalogPricingTier)]
         [ValidateNotNullOrEmpty]
         public string CatalogPricingTier { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeVNetId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeVNetId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeVNetId)]
         [ValidateNotNull]
         public string VNetId { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnet)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnet)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeSubnet)]
         [Alias(Constants.SubnetName)]
@@ -98,14 +246,32 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Subnet { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
         [ValidateNotNullOrEmpty]
         public string SetupScriptContainerSasUri { get; set; }
 
         [Parameter(
-                Mandatory = false,
-                HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             IntegrationRuntimeEdition.Standard,
@@ -114,11 +280,29 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Edition { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
         public int? MaxParallelExecutionsPerNode { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLicenseType)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLicenseType)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeLicenseType)]
         [ValidateNotNullOrEmpty]
@@ -129,20 +313,81 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string LicenseType { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeAuthKey)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeAuthKey)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeAuthKey)]
         [ValidateNotNull]
         public System.Security.SecureString AuthKey { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeName,
+            Mandatory = true,
+            HelpMessage = Constants.HelpSharedIntegrationRuntimeResourceId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeResourceId,
+            Mandatory = true,
+            HelpMessage = Constants.HelpSharedIntegrationRuntimeResourceId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByLinkedIntegrationRuntimeObject,
+            Mandatory = true,
+            HelpMessage = Constants.HelpSharedIntegrationRuntimeResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string SharedIntegrationRuntimeResourceId { get; set; }
+
+        [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
+
+        protected override void ByResourceId()
+        {
+            if (!string.IsNullOrWhiteSpace(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+
+                var parentResource = parsedResourceId.ParentResource.Split(new[] { '/' });
+                DataFactoryName = parentResource[parentResource.Length - 1];
+
+                Name = parsedResourceId.ResourceName;
+            }
+        }
+
+        protected override void ByIntegrationRuntimeObject()
+        {
+            if (InputObject != null)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                DataFactoryName = InputObject.DataFactoryName;
+                Name = InputObject.Name;
+            }
+        }
+
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
+
+            if (string.Equals(Type, Constants.IntegrationRuntimeTypeManaged, StringComparison.OrdinalIgnoreCase))
+            {
+                if (AuthKey != null || !string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidIntegrationRuntimeSharing),
+                        "AuthKey");
+                }
+            }
 
             IntegrationRuntimeResource resource = null;
             var isUpdate = false;
@@ -151,7 +396,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resource = DataFactoryClient.GetIntegrationRuntimeAsync(
                     ResourceGroupName,
                     DataFactoryName,
-                    base.Name).ConfigureAwait(true).GetAwaiter().GetResult().IntegrationRuntime;
+                    Name).ConfigureAwait(true).GetAwaiter().GetResult().IntegrationRuntime;
 
                 isUpdate = true;
                 if (Type != null && (resource.Properties is ManagedIntegrationRuntime ^
@@ -161,11 +406,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         string.Format(
                             CultureInfo.InvariantCulture,
                             Resources.IntegrationRuntimeWrongType,
-                            base.Name),
+                            Name),
                         "Type");
                 }
+
+                if (AuthKey != null)
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.UpdateAuthKeyNotAllowed,
+                            Name),
+                        "AuthKey");
+                }
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -189,7 +444,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         if (AuthKey != null)
                         {
                             var authKey = ConvertToUnsecureString(AuthKey);
-                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(authKey));
+                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKeyAuthorization(new SecureString(authKey));
                         }
 
                         resource.Properties = selfHosted;
@@ -198,6 +453,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 else
                 {
                     throw;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+            {
+                var selfHostedIr = resource.Properties as SelfHostedIntegrationRuntime;
+                if (selfHostedIr != null)
+                {
+                    selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                }
+                else
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidIntegrationRuntimeSharing),
+                        "SharedIntegrationRuntimeResourceId");
                 }
             }
 
@@ -216,7 +488,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
-                Name = base.Name,
+                Name = Name,
                 IsUpdate = isUpdate,
                 IntegrationRuntimeResource = resource,
                 Force = Force.IsPresent,

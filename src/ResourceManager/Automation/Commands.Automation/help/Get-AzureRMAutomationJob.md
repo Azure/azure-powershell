@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: BD32B909-296B-4E46-A24F-6E2BD4B9764B
@@ -65,9 +65,9 @@ This command gets all running jobs in the Automation account named Contoso17.
 Specifies the name of an Automation account for which this cmdlet gets jobs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,9 +97,9 @@ You can specify a string that can be converted to a valid **DateTimeOffset**.
 This cmdlet gets jobs that have an end time at or before the value that this parameter specifies.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll, ByRunbookName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Specifies the ID of a job that this cmdlet gets.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ByJobId
 Aliases: JobId
 
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet gets jobs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Specifies the name of a runbook for which this cmdlet gets jobs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookName
 Aliases: Name
 
@@ -158,9 +158,9 @@ Specifies the start time of a job as a **DateTimeOffset** object.
 This cmdlet gets jobs that have a start time at or after the value that this parameter specifies.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll, ByRunbookName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -173,7 +173,6 @@ Accept wildcard characters: False
 Specifies the status of a job.
 This cmdlet gets jobs that have a status matching this parameter.
 Valid values are: 
-
 - Activating
 - Completed
 - Failed
@@ -187,9 +186,9 @@ Valid values are:
 - Suspending
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll, ByRunbookName
-Aliases: 
+Aliases:
 Accepted values: Completed, Failed, Queued, Starting, Resuming, Running, Stopped, Stopping, Suspended, Suspending, Activating
 
 Required: False
@@ -204,8 +203,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### System.String
 
 ## OUTPUTS
 

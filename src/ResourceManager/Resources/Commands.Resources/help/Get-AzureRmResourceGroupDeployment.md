@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
@@ -29,13 +29,10 @@ Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
 The **Get-AzureRmResourceGroupDeployment** cmdlet gets the deployments in an Azure resource group.
 Specify the *Name* or *Id* parameter to filter the results.
 By default, **Get-AzureRmResourceGroupDeployment** gets all deployments for a specified resource group.
-
 An Azure resource is a user-managed Azure entity, such as a database server, database, or web site.
 An Azure resource group is a collection of Azure resources that are deployed as a unit.
-
 A deployment is the operation that makes the resources in the resource group available for use.
 For more information about Azure resources and Azure resource groups, see the New-AzureRmResourceGroup cmdlet.
-
 You can use this cmdlet for tracking.
 For debugging, use this cmdlet with the Get-AzureRmLog cmdlet.
 
@@ -74,7 +71,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,7 +101,7 @@ Accept wildcard characters: False
 Specifies the ID of the resource group deployment to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -120,7 +117,7 @@ Specifies the name of the deployment to get.
 Wildcard characters are not permitted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupDeploymentName
 Aliases: DeploymentName
 
@@ -135,7 +132,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +150,7 @@ Wildcard characters are not permitted.
 This parameter is required and you can specify only one resource group in each command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupDeploymentName
 Aliases:
 
@@ -173,8 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManagement.Models.PSResourceGroupDeployment
-The cmdlet returns resource group deployments.
+### Microsoft.Azure.Commands.ResourceManagement.Models. PSResourceGroupDeployment
 
 ## NOTES
 

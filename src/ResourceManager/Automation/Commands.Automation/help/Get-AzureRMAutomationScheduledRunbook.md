@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: EE854F8A-4B6B-4831-992A-6EC318BEE234
@@ -78,9 +78,9 @@ This command gets all scheduled runbooks for the schedule Schedule01 in the Azur
 Specifies an Automation account for the runbook on which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Specifies the ID of a scheduled job that this cmdlet gets.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: ByJobScheduleId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,9 +123,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for scheduled runbooks that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Specifies the name of a runbook for which this cmdlet gets scheduled runbooks.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookName, ByRunbookNameAndScheduleName
 Aliases: Name
 
@@ -153,9 +153,9 @@ Accept wildcard characters: False
 Specifies the name of a schedule for which this cmdlet gets scheduled runbooks.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookNameAndScheduleName, ByScheduleName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,8 +169,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
 
 ## OUTPUTS
 

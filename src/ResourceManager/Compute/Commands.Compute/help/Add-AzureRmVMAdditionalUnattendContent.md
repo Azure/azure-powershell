@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 50B64FFE-8277-4DAA-805A-271123B35355
@@ -35,20 +35,15 @@ PS C:\> $VirtualMachine = Add-AzureRmVMAdditionalUnattendContent -VM $VirtualMac
 ```
 
 The first command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
-
 The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
-
 The third command creates a credential object by using the Get-Credential cmdlet, and then stores the result in the $Credential variable.
 The command prompts you for a user name and password.
 For more information, type `Get-Help Get-Credential`.
-
 The fourth command uses the **Set-AzureRmVMOperatingSystem** cmdlet to configure the virtual machine stored in $VirtualMachine.
-
 The fifth command assigns content to the $AucContent variable.
 The content includes a password.
-
 The final command adds the content stored in $AucContent to the unattend.xml file.
 
 ## PARAMETERS
@@ -59,7 +54,7 @@ This cmdlet adds the content to the unattend.xml file.
 The XML content must be less than 4 KB and must include the root element for the setting or feature that this cmdlet inserts.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,12 +83,11 @@ Accept wildcard characters: False
 ### -SettingName
 Specifies the name of the setting to which the content applies.
 The acceptable values for this parameter are:
-
 - FirstLogonCommands
 - AutoLogon
 
 ```yaml
-Type: SettingNames
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.SettingNames]
 Parameter Sets: (All)
 Aliases:
 Accepted values: AutoLogon, FirstLogonCommands
@@ -111,7 +105,7 @@ To obtain a virtual machine object, use the [Get-AzureRmVM](./Get-AzureRmVM.md) 
 Create a virtual machine object by using the [New-AzureRmVMConfig](./New-AzureRmVMConfig.md) cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -127,8 +121,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.String
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.SettingNames, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

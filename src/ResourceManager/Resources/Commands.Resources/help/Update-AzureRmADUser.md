@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/update-azurermaduser
@@ -76,7 +76,7 @@ Gets the user with object id '155a5c10-93a9-4941-a0df-96d83ab5ab24' and pipes th
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 New display name for the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UPNOrObjectIdParameterSet, UPNParameterSet, ObjectIdParameterSet
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 true for enabling the account; otherwise, false.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: UPNOrObjectIdParameterSet, UPNParameterSet, ObjectIdParameterSet
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -146,7 +146,7 @@ It must be specified if the user should change the password on the next successf
 Only valid if password is updated otherwise it will be ignored.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The object representing the user to be updated.
 
 ```yaml
-Type: PSADUser
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The object id of the user to be updated.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 New password for the user.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: UPNOrObjectIdParameterSet, UPNParameterSet, ObjectIdParameterSet
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 The user principal name or object id of the user to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UPNOrObjectIdParameterSet
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 The user principal name of the user to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UPNParameterSet
 Aliases: UPN
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -264,7 +264,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -280,9 +280,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+### System.String
 
-This cmdlet accepts a PSADUser object from the pipeline. You can pipe the output of Get-AzureRmADUser to this cmdlet to update the provided user.
+### System.Guid
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+Parameters: InputObject (ByValue)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Security.SecureString
 
 ## OUTPUTS
 

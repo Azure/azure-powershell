@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontext
@@ -24,7 +24,6 @@ Get-AzureRmContext [-ListAvailable] [-DefaultProfile <IAzureContextContainer>] [
 
 ## DESCRIPTION
 The Get-AzureRmContext cmdlet gets the current metadata used to authenticate Azure Resource Manager requests.
-
 This cmdlet gets the Active Directory account, Active Directory tenant, Azure subscription, and the targeted Azure environment.
 Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager requests.
 
@@ -35,12 +34,9 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmContext
 
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
+Name                                     Account             SubscriptionName    Environment         TenantId
+----                                     -------             ----------------    -----------         --------
+Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
 ```
 
 In this example we are logging into our account with an Azure subscription using Connect-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
@@ -49,21 +45,11 @@ In this example we are logging into our account with an Azure subscription using
 ```
 PS C:\> Get-AzureRmContext -ListAvailable
 
-Name                  : Test
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
-
-Name                  : Production
-Environment           : AzureCloud
-Account               : prod@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Production Subscription
-CurrentStorageAccount :
+Name                                     Account             SubscriptionName    Environment         TenantId
+----                                     -------             ----------------    -----------         --------
+Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
+Subscription2 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription2       AzureCloud          xxxxxxxx-x...
+Subscription3 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription3       AzureCloud          xxxxxxxx-x...
 ```
 
 In this example, all currently available contexts are displayed.  The user may select one of these contexts using Select-AzureRmContext.
@@ -74,7 +60,7 @@ In this example, all currently available contexts are displayed.  The user may s
 The credentials, account, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +75,9 @@ Accept wildcard characters: False
 List all available contexts in the current session.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListAllContexts
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,9 +90,9 @@ Accept wildcard characters: False
 The name of the context
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetSingleContext
-Aliases: 
+Aliases:
 Accepted values: Default
 
 Required: False
@@ -122,12 +108,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
-This cmdlet returns the account, tenant, and subscription used by Azure Resource Manager cmdlets.
 
 ## NOTES
 

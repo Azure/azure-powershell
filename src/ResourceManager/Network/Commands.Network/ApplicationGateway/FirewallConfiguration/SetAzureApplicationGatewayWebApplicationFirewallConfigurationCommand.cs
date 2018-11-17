@@ -17,8 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),
-        OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         [Parameter(
@@ -42,7 +41,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.RuleSetType = this.RuleSetType;
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.RuleSetVersion = this.RuleSetVersion;
-                this.ApplicationGateway.WebApplicationFirewallConfiguration.DisabledRuleGroups = this.DisabledRuleGroups;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.DisabledRuleGroups = this.DisabledRuleGroup;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.RequestBodyCheck = this.RequestBodyCheck;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.FileUploadLimitInMb = this.FileUploadLimitInMb;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.Exclusions = this.Exclusion;
 
                 WriteObject(this.ApplicationGateway);
             }

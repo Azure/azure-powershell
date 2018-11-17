@@ -14,7 +14,7 @@ Gets the rule configuration for a load balancer.
 ## SYNTAX
 
 ```
-Get-AzureRmLoadBalancerRuleConfig [-Name <String>] -LoadBalancer <PSLoadBalancer>
+Get-AzureRmLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,6 @@ PS C:\> Get-AzureRmLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $sl
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
-
 The second command gets the associated rule configuration named MyLBrulename from the load balancer in $slb.
 
 ## PARAMETERS
@@ -39,7 +38,7 @@ The second command gets the associated rule configuration named MyLBrulename fro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,14 +53,14 @@ Accept wildcard characters: False
 Specifies the load balancer that is associated with the rule configuration to get.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 Specifies the name of the rule configuration to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 

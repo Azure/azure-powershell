@@ -9,9 +9,11 @@ namespace Commands.Aks.Test.ScenarioTests
 {
     public class KubernetesTests : RMTestBase
     {
+        XunitTracingInterceptor _logger;
         public KubernetesTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -19,7 +21,7 @@ namespace Commands.Aks.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureKubernetes()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmKubernetes");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmKubernetes");
         }
     }
 }

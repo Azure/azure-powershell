@@ -35,7 +35,7 @@ The above example shows how to create a new instance of the Azure Database Migra
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +50,24 @@ Accept wildcard characters: False
 The location of the Azure Database Migration Service instance to be created, which corresponds to an Azure region.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Database Migration Service Name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ServiceName
 
 Required: True
 Position: Named
@@ -65,9 +80,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,9 +95,9 @@ Accept wildcard characters: False
 The sku for the Azure Database Migration Service instance. Possible values currently are Basic_1vCore,Basic_2vCores,GeneralPurpose_4vCores
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,9 +110,9 @@ Accept wildcard characters: False
 The name of the subnet under the specified virtual network to use for the Azure Database Migration Service instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,7 +125,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -121,26 +136,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Database Migration Service Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -156,6 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
@@ -163,4 +165,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

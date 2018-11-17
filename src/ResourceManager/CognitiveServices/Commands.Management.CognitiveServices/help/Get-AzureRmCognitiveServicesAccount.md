@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
 ms.assetid: 11D5BFDF-5E5D-46B2-9F9B-A0524EFA1B42
@@ -27,7 +27,6 @@ Get-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <Strin
 
 ## DESCRIPTION
 The **Get-AzureRmCognitiveServicesAccount** cmdlet gets the provisioned Cognitive Services accounts in the resource group specified by the *ResoureGroupName* parameter.
-
 If you do not specify the *ResoureGroupName* parameter, this cmdlet gets all Cognitive Services accounts for the current subscription.
 
 ## EXAMPLES
@@ -57,7 +56,7 @@ Tags              :
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +71,7 @@ Accept wildcard characters: False
 Specifies the name of the Cognitive Services account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases: CognitiveServicesAccountName, AccountName
 
@@ -87,9 +86,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group the Cognitive Services account is assigned to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -99,9 +98,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,8 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

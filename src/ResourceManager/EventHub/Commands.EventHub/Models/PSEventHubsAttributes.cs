@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         {
             if (ehResource != null)
             {
+                Id = ehResource.Id;
                 Name = ehResource.Name;
                 CreatedAt = ehResource.CreatedAt;
                 MessageRetentionInDays = ehResource.MessageRetentionInDays;
@@ -40,6 +41,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                     CaptureDescription = null;
             }
         }
+
+        public string Id { get; set; }
 
         public string Name { get; set; }
          

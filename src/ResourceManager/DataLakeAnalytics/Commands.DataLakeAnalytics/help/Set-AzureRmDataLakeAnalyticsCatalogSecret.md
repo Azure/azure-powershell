@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: CAB32C72-5C16-467E-BC57-749EC49916BB
@@ -43,7 +43,7 @@ This command sets the secret associated with a Data Lake Analytics catalog.
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies the host name for the database the secret is associated with in the format 'mydatabase.contoso.com'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByFullUri
 Aliases: Host
 
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 Specifies the name of the database holding the secret.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 Specifies the port number of the secret.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: SetByFullUri
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 Specifies the name and password of the secret.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -133,9 +133,9 @@ Accept wildcard characters: False
 Specifies the Uniform Resource Identifier (URI) for the secret.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: SetByHostNameAndPort
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -149,12 +149,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.PSCredential
+
+### System.Uri
+
+### System.Int32
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Management.DataLake.Analytics.Models.USqlSecret
 
 ## NOTES
 

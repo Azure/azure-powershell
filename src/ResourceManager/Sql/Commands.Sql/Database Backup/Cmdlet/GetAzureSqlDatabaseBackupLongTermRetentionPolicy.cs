@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,16 +17,20 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseBackupLongTermRetentionPolicy",
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionPolicy")]
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets whether or not to use the Long Term Retention Vaults.
         /// </summary>
+        [CmdletParameterBreakingChange("Current", "Parameter is being deprecated without being replaced. Future default behavior will assume -Current is always true.")]
         [Parameter(Mandatory = false,
             HelpMessage = "If not provided, the command returns the legacy Long Term Retention policy information. Otherwise, the command returns the current version of the Long Term Retention policy.")]
         public SwitchParameter Current { get; set; }

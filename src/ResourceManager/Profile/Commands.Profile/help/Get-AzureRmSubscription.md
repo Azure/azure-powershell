@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription
@@ -35,10 +35,11 @@ access.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Name     : Contoso Subscription 1
-Id       : xxxx-xxxx-xxxx-xxxx
-TenantId : yyyy-yyyy-yyyy-yyyy
-State    : Enabled
+Name                               Id                      TenantId                        State
+----                               --                      --------                        -----
+Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription2                      xxxx-xxxx-xxxx-xxxx     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription3                      zzzz-zzzz-zzzz-zzzz     bbbb-bbbb-bbbb-bbbb             Enabled
 ```
 
 This command gets all subscriptions in all tenants that are authorized for
@@ -48,15 +49,10 @@ the current account.
 ```
 PS C:\>Get-AzureRmSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
 
-Name     : Contoso Subscription 1
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
-
-Name     : Contoso Subscription 2
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
+Name                               Id                      TenantId                        State
+----                               --                      --------                        -----
+Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription2                      xxxx-xxxx-xxxx-xxxx     aaaa-aaaa-aaaa-aaaa             Enabled
 ```
 
 List all subscriptions in the given tenant that are authorized for the
@@ -66,15 +62,10 @@ current account.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Name     : Contoso Subscription 1
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
-
-Name     : Contoso Subscription 2
-Id       : yyyy-yyyy-yyyy-yyyy
-TenantId : xxxx-xxxx-xxxx-xxxx
-State    : Enabled
+Name                               Id                      TenantId                        State
+----                               --                      --------                        -----
+Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
+Subscription2                      xxxx-xxxx-xxxx-xxxx     aaaa-aaaa-aaaa-aaaa             Enabled
 ```
 
 This command gets all subscriptions in the current tenant that are
@@ -84,12 +75,9 @@ authorized for the current user.
 ```
 PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
 
-Environment           : AzureCloud
-Account               : user@example.com
-TenantId              : yyyy-yyyy-yyyy-yyyy
-SubscriptionId        : xxxx-xxxx-xxxx-xxxx
-SubscriptionName      : Contoso Subscription 1
-CurrentStorageAccount :
+Name                                     Account             SubscriptionName    Environment         TenantId
+----                                     -------             ----------------    -----------         --------
+Subscription1 (xxxx-xxxx-xxxx-xxxx)      azureuser@micros... Subscription1       AzureCloud          yyyy-yyyy-yyyy-yyyy
 ```
 
 This command gets the specified subscription, and then sets the current
@@ -102,9 +90,9 @@ subscription (Contoso Subscription 1) by default.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +105,7 @@ Accept wildcard characters: False
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,9 +120,9 @@ Accept wildcard characters: False
 Specifies the ID of the subscription to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByIdInTenant
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,9 +135,9 @@ Accept wildcard characters: False
 Specifies the name of the subscription to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByNameInTenant
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -162,9 +150,9 @@ Accept wildcard characters: False
 Specifies the ID of the tenant that contains subscriptions to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,8 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
@@ -188,4 +175,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

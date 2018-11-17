@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayNamespaceVerb), OutputType(typeof(RelayNamespaceAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayNamespace"), OutputType(typeof(PSRelayNamespaceAttributes))]
     public class GetAzureRmRelayNamespace : AzureRelayCmdletBase
     {
         [Parameter(
@@ -49,19 +49,19 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {
                 // Get Relay namespace
-                RelayNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
+                PSRelayNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
                 WriteObject(attributes);
             }
             else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 // List all Relay namespace in given resource group 
-                IEnumerable<RelayNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
+                IEnumerable<PSRelayNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
                 WriteObject(namespaceList.ToList(), true);
             }
             else
             {
                 // List all Relay namespaces in the given subscription
-                IEnumerable<RelayNamespaceAttributes> namespaceList = Client.ListNamespacesBySubscription();
+                IEnumerable<PSRelayNamespaceAttributes> namespaceList = Client.ListNamespacesBySubscription();
                 WriteObject(namespaceList.ToList(), true);
             }
         }

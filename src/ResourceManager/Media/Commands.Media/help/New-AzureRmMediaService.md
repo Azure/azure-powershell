@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
 Module Name: AzureRM.Media
 ms.assetid: 5CEA7323-4CF7-42B2-BA94-BB3C8F73D2E9
@@ -106,7 +106,7 @@ This script uses several other cmdlets.
 Specifies the name of the media service that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Specifies the region that this cmdlet creates the media service in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the media service is assigned to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Specifies the storage account associated with the media service account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StorageAccountIdParamSet
 Aliases: Id
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Specifies an array of storage accounts to associate with the media service.
 
 ```yaml
-Type: PSStorageAccount[]
+Type: Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]
 Parameter Sets: StorageAccountsParamSet
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 The tags associated with the media service account.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -227,7 +227,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -243,8 +243,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]
 
 ## OUTPUTS
 

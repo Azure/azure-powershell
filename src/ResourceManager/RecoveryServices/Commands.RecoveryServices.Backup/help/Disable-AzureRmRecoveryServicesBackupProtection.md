@@ -22,7 +22,6 @@ Disable-AzureRmRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecov
 The **Disable-AzureRmRecoveryServicesBackupProtection** cmdlet disables protection for an Azure Backup-protected item.
 This cmdlet stops regular scheduled backup of an item.
 This cmdlet can also delete existing recovery points for the backup item.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -35,9 +34,7 @@ PS C:\> Disable-AzureRmRecoveryServicesBackupProtection -Item $PI[0]
 ```
 
 The first command gets an array of backup containers, and then stores it in the $Cont array.
-
 The second command gets the Backup item corresponding to the first container item, and then stores it in the $PI variable.
-
 The last command disables Backup protection for the item in $PI\[0\], but retains the data.
 
 ## PARAMETERS
@@ -46,7 +43,7 @@ The last command disables Backup protection for the item in $PI\[0\], but retain
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,9 +58,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,9 +74,9 @@ Specifies the Backup item for which this cmdlet disables protection.
 To obtain an **AzureRmRecoveryServicesBackupItem**, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.
 
 ```yaml
-Type: ItemBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -93,9 +90,9 @@ Indicates that this cmdlet deletes existing recovery points.
 To delete stored recovery points later, run this cmdlet again and specify this parameter.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -108,9 +105,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +120,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -139,7 +136,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -155,8 +152,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ItemBase
-Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Parameters: Item (ByValue)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

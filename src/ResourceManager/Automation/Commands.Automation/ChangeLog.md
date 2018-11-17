@@ -19,6 +19,42 @@
 -->
 ## Current Release
 
+## Version 6.1.0
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
+
+## Version 6.0.1-preview
+* Fixed the DSC Register Node command
+
+## Version 6.0.0-preview
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup  cmdlet
+
+## Version 5.1.2
+* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
+
+## Version 5.1.1
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 5.1.0
+* Fixed issue with default resource groups not being set.
+
+## Version 5.0.4
+* Updated to the latest version of the Azure ClientRuntime.
+* Corrected description of example for Remove-AzureRmAutomationSchedule.
+
+## Version 5.0.3
+* Updated all help files to include full parameter types and correct input/output types.
+
+## Version 5.0.2
+* Update help and add example for `New-AzureRMAutomationSchedule`
+
 ## Version 5.0.1
 * Documentation update for New-AzureRmAutomationSchedule
 
@@ -51,7 +87,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0
@@ -61,7 +97,7 @@
 	- Stop-AzureRmAutomationDscNodeConfigurationDeployment
 	- Get-AzureRmAutomationDscNodeConfigurationDeployment
 	- Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
-    
+
 ## Version 3.3.1
 
 ## Version 3.3.0
@@ -75,7 +111,7 @@
 ## Version 3.2.0
 * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
     - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
-    
+
 ## Version 3.1.0
 
 ## Version 3.0.1

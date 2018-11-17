@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,13 +20,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseFailoverGroup")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -52,6 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the secondary resource group of the Azure SQL Database Failover Group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
@@ -60,6 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the secondary server of the Azure SQL Database Failover Group.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "PartnerResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 

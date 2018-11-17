@@ -36,11 +36,9 @@ PS C:\> New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -JobSp
 ```
 
 This example creates a job schedule.
-
 The first five commands create and modify **PSSchedule**, **PSJobSpecification**, and **PSPoolInformation** objects.
 The commands use the New-Object cmdlet and standard Azure PowerShell syntax.
 The commands store these objects in the $Schedule and $JobSpecification variables.
-
 The final command creates a job schedule that has the ID JobSchedule17.
 This schedule creates jobs with a recurrence interval of one day.
 The jobs run on the pool that has the ID ContosoPool06, as specified in the fifth command.
@@ -53,7 +51,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +81,7 @@ Accept wildcard characters: False
 Specifies a display name for the job schedule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +96,7 @@ Accept wildcard characters: False
 Specifies the ID of the job schedule that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +111,7 @@ Accept wildcard characters: False
 Specifies the details of the jobs that this cmdlet includes in the job schedule.
 
 ```yaml
-Type: PSJobSpecification
+Type: Microsoft.Azure.Commands.Batch.Models.PSJobSpecification
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +128,7 @@ The key is the metadata name.
 The value is the metadata value.
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +143,7 @@ Accept wildcard characters: False
 Specifies the schedule that determines when to create jobs.
 
 ```yaml
-Type: PSSchedule
+Type: Microsoft.Azure.Commands.Batch.Models.PSSchedule
 Parameter Sets: (All)
 Aliases:
 
@@ -161,10 +159,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

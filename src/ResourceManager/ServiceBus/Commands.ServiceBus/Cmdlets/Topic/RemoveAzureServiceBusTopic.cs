@@ -14,37 +14,80 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServiceBus.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusTopic' Cmdlet removes the specified ServiceBus Topic
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusTopicVerb , SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", DefaultParameterSetName = TopicPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = TopicInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Topic Object")]
+        [ValidateNotNullOrEmpty]
+        public PSTopicAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = TopicResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Service Bus Topic Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // delete a Topic             
+            // delete a Topic
 
+            if (ParameterSetName.Equals(TopicInputObjectParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+            }
+            else if (ParameterSetName.Equals(TopicResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+            }
+            
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveTopic, Name, Namespace)))
             {
-                WriteObject(Client.DeleteQueue(ResourceGroupName, Namespace, Name));
+                try
+                {
+                    var result = Client.DeleteTopic(ResourceGroupName, Namespace, Name);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(result);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
 
         }

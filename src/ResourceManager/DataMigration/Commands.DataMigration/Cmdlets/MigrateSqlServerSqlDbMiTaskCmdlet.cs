@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         private readonly string BackupFileShare = "BackupFileShare";
         private readonly string SelectedAgentJobs = "SelectedAgentJobs";
         private readonly string SelectedLogins = "SelectedLogins";
+        private readonly string BackupMode = "BackupMode";
 
         public MigrateSqlServerSqlDbMiTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
@@ -36,12 +37,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             this.SourceConnectionInfoParam(true);
             this.TargetConnectionInfoParam(true);
 
-            this.SimpleParam(SelectedDatabase, typeof(MigrateSqlServerSqlMIDatabaseInput[]), "Selected database to migrate", false);
+            this.SimpleParam(SelectedDatabase, typeof(MigrateSqlServerSqlMIDatabaseInput[]), "Selected database to migrate", false, true);
             this.SimpleParam(BackupFileShare, typeof(FileShare), "File Share where the source server database files should be backed up. Use fully qualified domain name for the server", false);
             this.SimpleParam(BackupBlobSasUri, typeof(string), "SAS URI that provides DMS access to your storage account container that DMS will upload the backup files to and use for migrating databases to SQL DB Managed instance", false);
 
             this.SimpleParam(SelectedAgentJobs, typeof(string[]), "Selected agents jobs to migrate by name.", false);
             this.SimpleParam(SelectedLogins, typeof(string[]), "Selected logins to migrate by name.", false);
+
+            this.SimpleParam(BackupMode, typeof(string), "Backup Mode to specify whether to use existing backup or create new backup. Possible values include: 'CreateBackup', 'ExistingBackup'", false);
         }
 
         public override ProjectTaskProperties ProcessTaskCmdlet()
@@ -53,6 +56,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             FileShare backupFileShare = null;
             List<string> selectedAgentJobs = null;
             List<string> selectedLogins = null;
+            string backupMode = "CreateBackup";
 
             source = (SqlConnectionInfo)MyInvocation.BoundParameters[SourceConnection];
             PSCredential sourceCred = (PSCredential)MyInvocation.BoundParameters[SourceCred];
@@ -95,6 +99,11 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     = ((string[])MyInvocation.BoundParameters[SelectedLogins]).ToList();
             }
 
+            if (MyInvocation.BoundParameters.ContainsKey(BackupMode))
+            {
+                backupMode = MyInvocation.BoundParameters[BackupMode] as string;
+            }
+
             var properties = new MigrateSqlServerSqlMITaskProperties
             {
                 Input = new MigrateSqlServerSqlMITaskInput
@@ -105,7 +114,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     BackupBlobShare = backupBlobShare,
                     BackupFileShare = backupFileShare,
                     SelectedLogins = selectedLogins,
-                    SelectedAgentJobs = selectedAgentJobs
+                    SelectedAgentJobs = selectedAgentJobs,
+                    BackupMode = backupMode
                 }
             };
 

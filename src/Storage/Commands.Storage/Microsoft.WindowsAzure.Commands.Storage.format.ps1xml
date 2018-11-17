@@ -143,6 +143,7 @@
         <TypeName>Microsoft.WindowsAzure.Storage.Blob.ICloudBlob</TypeName>
         <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob</TypeName>
         <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.Container.Uri</ScriptBlock>
@@ -327,216 +328,7 @@
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer</TypeName>
-      </ViewSelectedBy>
-      <GroupBy>
-        <ScriptBlock>$_.CloudBlobContainer.ServiceClient.BaseUri</ScriptBlock>
-        <Label>Blob End Point</Label>
-      </GroupBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicAccess</Label>
-            <Alignment>Left</Alignment>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModified</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <ScriptBlock>$_.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.PublicAccess</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob</TypeName>
-      </ViewSelectedBy>
-      <GroupBy>
-        <ScriptBlock>$_.ICloudBlob.Container.Uri</ScriptBlock>
-        <Label>Container Uri</Label>
-      </GroupBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>BlobType</Label>
-            <Alignment>Left</Alignment>
-            <Width>9</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Length</Label>
-            <Alignment>Left</Alignment>
-            <Width>15</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ContentType</Label>
-            <Alignment>Left</Alignment>
-            <Width>30</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModified</Label>
-            <Alignment>Left</Alignment>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AccessTier</Label>
-            <Alignment>Left</Alignment>
-            <Width>10</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SnapshotTime</Label>
-            <Alignment>Left</Alignment>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDeleted</Label>
-            <Alignment>Left</Alignment>
-            <width>10</width>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <ScriptBlock>$_.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.BlobType</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Length</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.ContentType</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.ICloudBlob.Properties.StandardBlobTier</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.IsDeleted</ScriptBlock>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue</TypeName>
-      </ViewSelectedBy>
-      <GroupBy>
-        <ScriptBlock>$_.CloudQueue.ServiceClient.BaseUri</ScriptBlock>
-        <Label>Queue End Point</Label>
-      </GroupBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Uri</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ApproximateMessageCount</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EncodeMessage</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <ScriptBlock>$_.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Uri</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.ApproximateMessageCount</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.EncodeMessage</ScriptBlock>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable</TypeName>
-      </ViewSelectedBy>
-      <GroupBy>
-        <ScriptBlock>$_.CloudTable.ServiceClient.BaseUri</ScriptBlock>
-        <Label>Table End Point</Label>
-      </GroupBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Uri</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <ScriptBlock>$_.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Uri</ScriptBlock>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
+    </View>     
     <View>
       <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageContext</Name>
       <ViewSelectedBy>
@@ -621,70 +413,20 @@
                 <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>DefaultServiceVersion</Label>
-                <PropertyName>DefaultServiceVersion</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Logging.Version</Label>
-                <ScriptBlock>$_.Logging.Version</ScriptBlock>
+                <Label>StaticWebsite.Enabled</Label>
+                <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Logging.LoggingOperations</Label>
-                <ScriptBlock>$_.Logging.LoggingOperations</ScriptBlock>
+                <Label>StaticWebsite.IndexDocument</Label>
+                <ScriptBlock>$_.StaticWebsite.IndexDocument</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Logging.RetentionDays</Label>
-                <ScriptBlock>$_.Logging.RetentionDays</ScriptBlock>
+                <Label>StaticWebsite.ErrorDocument404Path</Label>
+                <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>HourMetrics.Version</Label>
-                <ScriptBlock>$_.HourMetrics.Version</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>HourMetrics.MetricsLevel</Label>
-                <ScriptBlock>$_.HourMetrics.MetricsLevel</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>HourMetrics.RetentionDays</Label>
-                <ScriptBlock>$_.HourMetrics.RetentionDays</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>MinuteMetrics.Version</Label>
-                <ScriptBlock>$_.MinuteMetrics.Version</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>MinuteMetrics.MetricsLevel</Label>
-                <ScriptBlock>$_.MinuteMetrics.MetricsLevel</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>MinuteMetrics.RetentionDays</Label>
-                <ScriptBlock>$_.MinuteMetrics.RetentionDays</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>DeleteRetentionPolicy.Enabled</Label>
-                <ScriptBlock>$_.DeleteRetentionPolicy.Enabled</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>DeleteRetentionPolicy.RetentionDays</Label>
-                <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Cors</Label>
                 <ScriptBlock>$_.Cors</ScriptBlock>
+                <Label>Cors</Label>
               </ListItem>
               <ListItem>
                 <Label>DefaultServiceVersion</Label>
@@ -694,7 +436,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>
+    </View>  
     <View>
       <Name>Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties</Name>
       <ViewSelectedBy>

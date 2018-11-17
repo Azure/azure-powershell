@@ -123,8 +123,8 @@
   <data name="CancelResourceGroupDeployment" xml:space="preserve">
     <value>Are you sure you want to cancel the active deployment of resource group '{0}'?</value>
   </data>
-  <data name="CancelResourceGroupDeploymentMessage" xml:space="preserve">
-    <value>Cancelling active resource group deployment ...</value>
+  <data name="CancelDeploymentMessage" xml:space="preserve">
+    <value>Cancelling active deployment ...</value>
   </data>
   <data name="DeploymentWithNameNotFound" xml:space="preserve">
     <value>Cannot find a deployment with name '{0}'.</value>
@@ -321,7 +321,7 @@
   <data name="DeleteResourceGroupDeployment" xml:space="preserve">
     <value>Are you sure you want to delete the deployment '{0}'?</value>
   </data>
-  <data name="DeleteResourceGroupDeploymentMessage" xml:space="preserve">
+  <data name="DeleteDeploymentMessage" xml:space="preserve">
     <value>Deleting the deployment ...</value>
   </data>
   <data name="DeploymentDoesntExist" xml:space="preserve">
@@ -416,5 +416,8 @@
   </data>
   <data name="ApplicationWithDisplayNameDoesntExist" xml:space="preserve">
     <value>Application with display name '{0}' does not exist.</value>
+  </data>
+  <data name="DefaultEndDateUsed" xml:space="preserve">
+    <value>No value specified for -EndDate parameter; setting the value to one year after start date.</value>
   </data>
 </root>

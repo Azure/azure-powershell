@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,11 +21,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetwork", SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualNetwork))]
+    [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new string[] { "EnableVmProtection" })]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetwork))]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -88,11 +89,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Reference to the DDoS protection plan resource associated with the virtual network.")]
         public string DdosProtectionPlanId { get; set; }
 
+#if !NETSTANDARD
+        [CmdletParameterBreakingChange("EnableVmProtection", ChangeDescription = "The EnableVMProtection setting is no longer supported. Setting this parameter has no impact. This parameter will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "A switch parameter which represents if Vm protection is enabled or not.")]
         public SwitchParameter EnableVmProtection { get; set; }
+#endif
 
         [Parameter(
             Mandatory = false,
@@ -105,7 +109,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -137,8 +140,7 @@ namespace Microsoft.Azure.Commands.Network
 
             vnet.Subnets = this.Subnet;
             vnet.EnableDdosProtection = this.EnableDdosProtection;
-            vnet.EnableVmProtection = this.EnableVmProtection;
-
+            
             if (!string.IsNullOrEmpty(this.DdosProtectionPlanId))
             {
                 vnet.DdosProtectionPlan = new PSResourceId();

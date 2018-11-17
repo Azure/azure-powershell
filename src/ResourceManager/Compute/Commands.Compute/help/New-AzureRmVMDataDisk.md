@@ -50,7 +50,7 @@ The final command updates the Vmss VM by adding a new data disk.
 The virtual machine data disk's caching.
 
 ```yaml
-Type: CachingTypes
+Type: Microsoft.Azure.Management.Compute.Models.CachingTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, ReadOnly, ReadWrite
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The virtual machine data disk's create option.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The virtual machine data disk's size in GB.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The virtual machine data disk's Lun.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The virtual machine managed disk's Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagedDiskParameterSetName
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 The virtual machine data disk's name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The virtual machine OS disk's source image Uri.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalDiskParameterSetName
 Aliases: SourceImage
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The virtual machine managed disk's account type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagedDiskParameterSetName
 Aliases:
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 The virtual machine data disk's Vhd Uri.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalDiskParameterSetName
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on a managed data disk.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ManagedDiskParameterSetName
 Aliases:
 
@@ -218,9 +218,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Int32
-System.String
-Microsoft.Azure.Management.Compute.Models.CachingTypes
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+
+### Microsoft.Azure.Management.Compute.Models.CachingTypes
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

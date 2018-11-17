@@ -5,9 +5,14 @@ Tests DataLakeStore Account trusted identity provider Lifecycle (Create, Update,
 function Test-DataLakeStoreTrustedIdProvider
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -87,9 +92,14 @@ Tests DataLakeStore Account firewall rule lifecycle (Create, Update, Get, List, 
 function Test-DataLakeStoreFirewall
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -172,14 +182,114 @@ function Test-DataLakeStoreFirewall
 
 <#
 .SYNOPSIS
+Tests DataLakeStore Account virtual network rule lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-DataLakeStoreVirtualNetwork
+{
+    param
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
+	
+	try
+	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AdlStore -Name $accountName}
+
+		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# Enable the firewall state and azure IPs
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
+
+		$accountSet = Set-AdlStore -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+
+		Assert-AreEqual "Enabled" $accountSet.FirewallState
+
+		$virtualNetworkRuleName = getAssetName
+		
+		$vnetName1 = "vnet1"
+		$virtualNetwork1 = CreateAndGetVirtualNetwork $resourceGroupName $vnetName1 $location
+		$virtualNetworkSubnetId1 = $virtualNetwork1.Subnets[0].Id
+
+		$vnetName2 = "vnet2"
+		$virtualNetwork2 = CreateAndGetVirtualNetwork $resourceGroupName $vnetName2 $location
+		$virtualNetworkSubnetId2 = $virtualNetwork2.Subnets[0].Id
+
+		# Add a virtual network rule
+		Add-AdlStoreVirtualNetworkRule -Account $accountName -Name $vnetName1 -SubnetId $virtualNetworkSubnetId1
+
+		# Get the virtual network rule
+		$result = Get-AdlStoreVirtualNetworkRule -Account $accountName -Name $vnetName1
+		Assert-AreEqual $vnetName1 $result.VirtualNetworkRuleName
+		Assert-AreEqual $virtualNetworkSubnetId1 $result.VirtualNetworkSubnetId
+
+		# remove the virtual network rule
+		Remove-AdlStoreVirtualNetworkRule -Account $accountName -Name $vnetName1
+
+		# Make sure get throws.
+		Assert-Throws {Get-AdlStoreVirtualNetworkRule -Account $accountName -Name $vnetName1}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeStore Account Commitment tiers (in Create and Update).
 #>
 function Test-DataLakeStoreAccountTiers
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -232,9 +342,14 @@ Tests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).
 function Test-DataLakeStoreAccount
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -371,10 +486,15 @@ Tests DataLakeStore filesystem operations (Create, append, read, delete, etc.).
 function Test-DataLakeStoreFileSystem
 {
 	param
-	(
-		$fileToCopy,
-		$location = "West US"
-	)
+    (
+        $fileToCopy,
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 
 	try
 	{
@@ -620,9 +740,14 @@ Tests DataLakeStore filesystem permissions operations (Create, Update, Get, List
 function Test-DataLakeStoreFileSystemPermissions
 {
 	param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 
 	try
 	{
@@ -778,10 +903,15 @@ Tests DataLakeStore Account Lifecycle Failure scenarios (Create, Update, Get, De
 function Test-NegativeDataLakeStoreAccount
 {
     param
-	(
-		$location = "West US",
-		$fakeaccountName = "psfakedataLakeaccounttest"
-	)
+    (
+        $location,
+        $fakeaccountName = "psfakedataLakeaccounttest"
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -840,4 +970,23 @@ function Test-NegativeDataLakeStoreAccount
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
+}
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = "westcentralus")
+{
+	$subnetName = "Public"
+
+	$addressPrefix = "10.0.0.0/24"
+	$serviceEndpoint = "Microsoft.AzureActiveDirectory"
+
+	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
+	$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+
+	return $getVnet
 }

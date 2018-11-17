@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the integration account schema by name 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountSchema")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountSchema")]
     [OutputType(typeof(IntegrationAccountSchema))]
     public class GetAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {

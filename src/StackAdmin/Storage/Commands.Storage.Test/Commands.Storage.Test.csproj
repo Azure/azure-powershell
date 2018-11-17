@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UseStorageManagement>false</UseStorageManagement>
+    <UseWebDeployment>false</UseWebDeployment>
+    <UseNewtonsoftJson>false</UseNewtonsoftJson>
+    <UseWindowsAzureStorage>false</UseWindowsAzureStorage>
+  </PropertyGroup>
+  <Import Project="..\..\..\..\tools\Common.ServiceManagement.Dependencies.Test.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6F470A6-7395-4B8B-9D29-44DF0EC8F624}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.WindowsAzure.Management.Storage.Test</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Storage.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+    <RestorePackages>true</RestorePackages>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <NuGetPackageImportStamp>4d225d1b</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Data.Edm">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Storage.DataMovement.0.2.0\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Blob\Cmdlet\GetAzureStorageContainerTest.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageBlobSasTest.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageContainerSasTest.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageContainerTest.cs" />
+    <Compile Include="Blob\Cmdlet\RemoveAzureStorageBlobTest.cs" />
+    <Compile Include="Blob\Cmdlet\RemoveAzureStorageContainerTest.cs" />
+    <Compile Include="Blob\Cmdlet\SetAzureStorageContainerAclTest.cs" />
+    <Compile Include="Blob\StorageBlobTestBase.cs" />
+    <Compile Include="Blob\StorageCloudBlobCmdletBaseTest.cs" />
+    <Compile Include="Common\Cmdlet\NewAzureStorageContextTest.cs" />
+    <Compile Include="Common\Cmdlet\SetAzureStorageServiceLoggingTest.cs" />
+    <Compile Include="Common\Cmdlet\SetAzureStorageServiceHourMetricsTest.cs" />
+    <Compile Include="Common\CommunicationExceptionUtilTest.cs" />
+    <Compile Include="Common\FileNamingGenerator.cs" />
+    <Compile Include="Common\IStorageManagement.cs" />
+    <Compile Include="Common\MockTransferManager.cs" />
+    <Compile Include="Common\MockupException.cs" />
+    <Compile Include="Common\NameUtilTest.cs" />
+    <Compile Include="Common\CmdletOperationContextTest.cs" />
+    <Compile Include="Common\ResourceAlreadyExistExceptionTest.cs" />
+    <Compile Include="Common\ResourceNotFoundExceptionTest.cs" />
+    <Compile Include="Common\SasTokenHelperTest.cs" />
+    <Compile Include="Common\StorageCloudCmdletBaseTest.cs" />
+    <Compile Include="Common\StorageExceptionUtilTest.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageFileContentTest.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageFileTest.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageShareTest.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageDirectoryTest.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageShareTest.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageShareTest.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageFileTest.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageDirectoryTest.cs" />
+    <Compile Include="File\Cmdlet\SetAzureStorageFileContentTest.cs" />
+    <Compile Include="File\FileAssertUtil.cs" />
+    <Compile Include="File\PSCmdletReflectionHelper.cs" />
+    <Compile Include="File\StorageFileTestBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queue\GetAzureStorageQueueTest.cs" />
+    <Compile Include="Queue\NewAzureStorageQueueSasTest.cs" />
+    <Compile Include="Queue\NewAzureStorageQueueTest.cs" />
+    <Compile Include="Queue\RemoveAzureStorageQueueTest.cs" />
+    <Compile Include="Queue\StorageQueueTestBase.cs" />
+    <Compile Include="Service\MockStorageBlobManagement.cs" />
+    <Compile Include="Service\MockStorageFileManagement.cs" />
+    <Compile Include="Service\MockStorageQueueManagement.cs" />
+    <Compile Include="Service\MockStorageTableManagement.cs" />
+    <Compile Include="StorageTestBase.cs" />
+    <Compile Include="Table\GetAzureStorageTableStoredAccessPolicyTest.cs" />
+    <Compile Include="Table\GetAzureStorageTableTest.cs" />
+    <Compile Include="Table\NewAzureStorageTableSasTest.cs" />
+    <Compile Include="Table\NewAzureStorageTableStoredAccessPolicyTest.cs" />
+    <Compile Include="Table\NewAzureStorageTableTest.cs" />
+    <Compile Include="Table\RemoveAzureStorageTableStoredAccessPolicyTest.cs" />
+    <Compile Include="Table\RemoveAzureStorageTableTest.cs" />
+    <Compile Include="Table\SetAzureStorageTableStoredAccessPolicyTest.cs" />
+    <Compile Include="Table\StorageTableStorageTestBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Storage\Commands.Storage.csproj">
+      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
+      <Name>Commands.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

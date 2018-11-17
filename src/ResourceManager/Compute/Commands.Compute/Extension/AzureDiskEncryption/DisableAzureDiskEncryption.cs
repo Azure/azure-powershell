@@ -26,10 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsLifecycle.Disable,
-        ProfileNouns.AzureDiskEncryption,
-        SupportsShouldProcess =  true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryption",SupportsShouldProcess =  true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -38,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name to which the VM belongs to")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -48,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -68,6 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -125,6 +124,60 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return null;
         }
 
+        private bool IsVmModelEncryptionSet(VirtualMachine vm)
+        {
+            return (vm != null &&
+                vm.StorageProfile != null &&
+                vm.StorageProfile.OsDisk != null &&
+                vm.StorageProfile.OsDisk.EncryptionSettings != null);
+        }
+
+        private string GetVersionForDisable(VirtualMachine vm)
+        {
+            // if there is currently an extension installed, use that version for disable as well 
+            if (vm.Resources != null)
+            {
+                foreach (VirtualMachineExtension vme in vm.Resources)
+                {
+                    if (vme.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher) &&
+                         (vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultType) ||
+                          vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType)))
+                    {
+                        return vme.TypeHandlerVersion;
+                    }
+                }
+            }
+
+            // If we reach this point, no extension is currently installed, even if the VM is encrypted.
+            // To disable encryption, we will select the extension version matching the encryption 
+            // settings present on the VM and then use that version to issue the disable operation. 
+
+            if (IsVmModelEncryptionSet(vm))
+            {
+                // encryption settings present in VM model, use default dual pass version
+                if (currentOSType == OperatingSystemTypes.Linux)
+                {
+                    return AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion;
+                }
+                else
+                {
+                    return AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion;
+                }
+            }
+            else
+            {
+                // encryption settings not present in the VM model, use single pass version
+                if (currentOSType == OperatingSystemTypes.Linux)
+                {
+                    return AzureDiskEncryptionExtensionContext.LinuxExtensionSinglePassVersion;
+                }
+                else
+                {
+                    return AzureDiskEncryptionExtensionContext.ExtensionSinglePassVersion;
+                }
+            }
+        }
+
         private VirtualMachineExtension GetVmExtensionParameters(VirtualMachine vmParameters)
         {
             Hashtable SettingString = GetExtensionPublicSettings();
@@ -153,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultType,
-                    TypeHandlerVersion = this.TypeHandlerVersion ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
+                    TypeHandlerVersion = GetVersionForDisable(vmParameters),
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
@@ -168,7 +221,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType,
-                    TypeHandlerVersion = this.TypeHandlerVersion ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
+                    TypeHandlerVersion = GetVersionForDisable(vmParameters),
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
@@ -229,7 +282,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName));
+                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName, InstanceViewTypes.InstanceView));
 
                 if ((virtualMachineResponse == null) ||
                     (virtualMachineResponse.StorageProfile == null) ||
@@ -286,9 +339,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     // | Linux   | Not Specified | N/A                        |
                     // +---------+---------------+----------------------------+
 
-                    if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
-                        !string.IsNullOrEmpty(VolumeType) &&
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
+                    if ((OperatingSystemTypes.Windows.Equals(currentOSType) && parameters.TypeHandlerVersion.Equals(AzureDiskEncryptionExtensionContext.ExtensionSinglePassVersion)) ||
+                        (OperatingSystemTypes.Linux.Equals(currentOSType) && parameters.TypeHandlerVersion.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionSinglePassVersion)) ||
+                        (OperatingSystemTypes.Windows.Equals(currentOSType) && !string.IsNullOrEmpty(VolumeType) && VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);

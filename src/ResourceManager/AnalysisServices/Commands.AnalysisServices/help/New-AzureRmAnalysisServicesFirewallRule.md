@@ -33,7 +33,9 @@ Creates a firewall rule named rule1 with start range 0.0.0.0 and end range 255.2
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-Type: IAzureContextContainer
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -48,9 +50,9 @@ Accept wildcard characters: False
 Name of firewall rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -63,9 +65,9 @@ Accept wildcard characters: False
 The range end of a firewall rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -78,9 +80,9 @@ Accept wildcard characters: False
 The range start of a firewall rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -94,9 +96,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallRule
+### Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule
 
 ## NOTES
 

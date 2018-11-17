@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
 Module Name: AzureRM.ApplicationInsights
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/get-azurermapplicationinsights
@@ -98,9 +98,8 @@ Get application insights resource and include pricing plan information for resou
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
-
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,7 +114,7 @@ Accept wildcard characters: False
 If specified, it will get back pricing plan/daily cap and status of the application insights component.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ComponentNameParameterSet, ResourceIdParameterSet
 Aliases: IncludeDailyCap, IncludeDailyCapStatus, IncludePricingPlan
 
@@ -130,7 +129,7 @@ Accept wildcard characters: False
 Application Insights Resource Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
@@ -145,9 +144,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -157,9 +156,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -172,9 +171,9 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -197,4 +196,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

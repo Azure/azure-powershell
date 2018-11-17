@@ -23,9 +23,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
 {
     public class ContainerInstanceTests : RMTestBase
     {
-        public ContainerInstanceTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ContainerInstanceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -33,28 +36,38 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroup()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroup");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Command parameter not available in NetStandard")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerInstanceLog()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerInstanceLog");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerInstanceLog");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Command parameter not available in NetStandard")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolume()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithVolumeMount");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeMount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateContainerGroupWithDnsNameLabel()
+        public void TestCreateContainerGroupDnsLabel()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithDnsNameLabel");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithDnsNameLabel");
         }
     }
 }

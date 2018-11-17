@@ -45,7 +45,7 @@ Specifies an array of methods to send an access token.
 psdx_paramvalues AuthorizationHeader and Query.
 
 ```yaml
-Type: PsApiManagementAccessTokenSendingMethod[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAccessTokenSendingMethod[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: AuthorizationHeader, Query
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Specifies the authorization endpoint to authenticate resource owners and obtain authorization grants.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ psdx_paramvalues GET and POST.
 The default value is GET.
 
 ```yaml
-Type: PsApiManagementAuthorizationRequestMethod[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAuthorizationRequestMethod[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Get, Post, Head, Options, Trace, Put, Patch, Delete
@@ -95,7 +95,7 @@ Specifies an array of client authentication methods.
 psdx_paramvalues Basic and Body.
 
 ```yaml
-Type: PsApiManagementClientAuthenticationMethod[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementClientAuthenticationMethod[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Body
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the client ID of the developer console that is the client application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Specifies the client registration endpoint to register clients with the authorization server and obtain client credentials.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Specifies the client secret of the developer console that is the client application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -169,9 +169,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 Specifies the default scope for the authorization server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Specifies a description for an authorization server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -215,14 +215,13 @@ Accept wildcard characters: False
 ### -GrantTypes
 Specifies an array of grant types.
 psdx_paramvalues
-
 - AuthorizationCode
 - ClientCredentials 
 - Implicit 
 - ResourceOwnerPassword
 
 ```yaml
-Type: PsApiManagementGrantType[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGrantType[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: AuthorizationCode, Implicit, ResourceOwnerPassword, ClientCredentials
@@ -238,7 +237,7 @@ Accept wildcard characters: False
 Specifies the name of the authorization server to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +252,7 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +268,7 @@ Specifies the resource owner password.
 You must specify this parameter if ResourceOwnerPassword is specified by the *GrantTypes* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +284,7 @@ Specifies the resource owner user name.
 You must specify this parameter if ResourceOwnerPassword is specified by the *GrantTypes* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -300,7 +299,7 @@ Accept wildcard characters: False
 Specifies the ID of the authorization server to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -315,7 +314,7 @@ Accept wildcard characters: False
 Indicates whether to support the *State* parameter.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -330,7 +329,7 @@ Accept wildcard characters: False
 Specifies additional body parameters using application/x-www-form-urlencoded format.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -345,7 +344,7 @@ Accept wildcard characters: False
 Specifies the token endpoint for clients to obtain access tokens in exchange for presenting authorization grants or refresh tokens.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -361,8 +360,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAuthorizationRequestMethod[]
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGrantType[]
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementClientAuthenticationMethod[]
+
+### System.Collections.Hashtable
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAccessTokenSendingMethod[]
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

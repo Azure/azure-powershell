@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 6493186F-064B-45B7-8DFD-7799B1F2E5C9
@@ -90,9 +90,9 @@ This command gets metadata on all DSC nodes in the Automation account named Cont
 Specifies the name of the Automation account that contains the DSC nodes that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -106,9 +106,9 @@ Specifies the name of a DSC configuration.
 This cmdlet gets DSC nodes that match the node configurations generated from the configuration that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByConfiguration
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC node that this cmdlet gets.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ById
 Aliases: NodeId
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Specifies the name of a DSC node that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: NodeName
 
@@ -166,9 +166,9 @@ Accept wildcard characters: False
 Specifies the name of a node configuration that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNodeConfiguration
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -181,9 +181,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet gets DSC nodes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -195,7 +195,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies the status of the DSC nodes that this cmdlet gets.
 Valid values are: 
-
 - Compliant 
 - NotCompliant
 - Failed
@@ -204,9 +203,9 @@ Valid values are:
 - Unresponsive
 
 ```yaml
-Type: DscNodeStatus
+Type: Microsoft.Azure.Commands.Automation.Common.DscNodeStatus
 Parameter Sets: ByAll, ByName, ByNodeConfiguration
-Aliases: 
+Aliases:
 Accepted values: Compliant, NotCompliant, Failed, Pending, Received, Unresponsive
 
 Required: False
@@ -221,8 +220,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### System.String
 
 ## OUTPUTS
 

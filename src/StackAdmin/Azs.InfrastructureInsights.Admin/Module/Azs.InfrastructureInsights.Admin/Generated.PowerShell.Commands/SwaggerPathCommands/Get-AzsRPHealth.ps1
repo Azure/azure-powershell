@@ -16,8 +16,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Name of the region
 
-.PARAMETER ResourceGroupNameName
-    resourceGroupName.
+.PARAMETER ResourceGroupName
+    Resource group name which the resource resides.
 
 .PARAMETER Skip
     Skip the first N items as specified by the parameter value.
@@ -96,7 +96,12 @@ function Get-AzsRPHealth {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-ServiceHealth\s") {
+                Write-Warning -Message "The parameter alias ServiceHealth will be deprecated in future release. Please use the parameter Name instead"
+            }
+        }
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient'
@@ -128,6 +133,7 @@ function Get-AzsRPHealth {
             $Location = $ArmResourceIdParameterValues['region']
             $Name = $ArmResourceIdParameterValues['serviceHealth']
         } else {
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -171,6 +177,7 @@ function Get-AzsRPHealth {
                         $null
                     }))
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'
             $TaskResult = $InfrastructureInsightsAdminClient.ServiceHealths.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } else {
@@ -201,10 +208,10 @@ function Get-AzsRPHealth {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
-                $PageResult.Result = $null
-                Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-                $TaskResult = $InfrastructureInsightsAdminClient.ServiceHealths.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+                Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
+                $TaskResult = $InfrastructureInsightsAdminClient.ServiceHealths.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
+                $PageResult.Page = $null
                 $GetTaskResult_params['TaskResult'] = $TaskResult
                 $GetTaskResult_params['PageResult'] = $PageResult
                 Get-TaskResult @GetTaskResult_params

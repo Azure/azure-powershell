@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebustopic
@@ -14,7 +14,7 @@ Updates the description of a Service Bus topic in the specified Service Bus name
 
 ```
 Set-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-InputObject] <TopicAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InputObject] <PSTopicAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,33 +25,33 @@ The **Set-AzureRmServiceBusTopic** cmdlet updates a description object for a Ser
 
 ### Example 1
 ```
-PS C:\> $topicObj = Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+PS C:\> $topicObj = Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-ExampleStandard -TopicName SB-Topic_exampl1
 
 PS C:\> $topicObj.EnableExpress = $True
 
-PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj
+PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-ExampleStandard -TopicName SB-Topic_exampl1 -TopicObj $topicObj
 
-Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/{subscription id}d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-
-                                      Topic_exampl1
-Type                                : Microsoft.ServiceBus/Topic
-AccessedAt                          : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 3:16:41 AM
+Name                                : SB-Topic_example1
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-ExampleStandard/topics/SB-Topic_example1
+Type                                : Microsoft.ServiceBus/Namespaces/Topics
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 10/12/2018 12:01:28 AM
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
 EnableBatchedOperations             : True
-EnableExpress                       : True
+EnableExpress                       : False
 EnablePartitioning                  : True
-MaxSizeInMegabytes                  : 16384
+MaxSizeInMegabytes                  : 81920
 RequiresDuplicateDetection          : False
 SizeInBytes                         : 0
 Status                              : Active
-SubscriptionCount                   : 1
+SubscriptionCount                   : 0
 SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 7:12:16 PM
+UpdatedAt                           : 10/12/2018 12:01:29 AM
 ```
+
 Updates the specified topic with a new description in the specified namespace. This example updates the **EnableExpress** property to **true**. 
 
 ## PARAMETERS
@@ -60,7 +60,7 @@ Updates the specified topic with a new description in the specified namespace. T
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,14 +75,14 @@ Accept wildcard characters: False
 ServiceBus Topic definition.
 
 ```yaml
-Type: PSTopicAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 Parameter Sets: (All)
 Aliases: TopicObj
 
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -90,12 +90,12 @@ Accept wildcard characters: False
 Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: TopicName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -151,7 +151,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -167,17 +167,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -TopicObj
- Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
@@ -186,4 +179,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

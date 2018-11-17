@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Constructs an in-memory dns record object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordBase))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordConfig"), OutputType(typeof(DnsRecordBase))]
     public class NewAzureRmDnsRecordConfig : DnsBaseCmdlet
     {
         private const string ParameterSetA = "A";

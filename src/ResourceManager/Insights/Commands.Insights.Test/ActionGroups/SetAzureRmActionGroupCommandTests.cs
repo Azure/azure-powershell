@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsOperationsMock = new Mock<IActionGroupsOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetAzureRmActionGroupCommand
             {

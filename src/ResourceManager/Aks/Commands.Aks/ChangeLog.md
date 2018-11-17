@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 0.0.7
+* Update dependencies for type mapping issue
+
+## Version 0.0.6
+* Update version of YamlDotNet.Signed used
+
+## Version 0.0.5
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.0.4
+* Updated help files to include full parameter types and correct input/output types.
+
 ## Version 0.0.3
 * No version update. Extracted AKS sdk to common for reuse in DevSpaces.
 

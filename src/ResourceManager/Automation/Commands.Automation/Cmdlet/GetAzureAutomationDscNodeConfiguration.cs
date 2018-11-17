@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets Azure automation node configurations
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscNodeConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscNodeConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(CompilationJob))]
     public class GetAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
     {

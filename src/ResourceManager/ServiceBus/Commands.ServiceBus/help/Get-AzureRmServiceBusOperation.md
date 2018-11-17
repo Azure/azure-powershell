@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusoperation
@@ -34,7 +34,7 @@ Lists ServiceBus supported operations
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -52,13 +52,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.OperationAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -52,7 +52,6 @@ Remove-AzureRmKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedSt
 ## DESCRIPTION
 The **Remove-AzureRmKeyVault** cmdlet deletes the specified key vault.
 It also deletes all keys and secrets contained in that instance.
-
 Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
 
 ## EXAMPLES
@@ -82,7 +81,7 @@ If you do not specify the resource group name, the cmdlet searches for the named
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,7 +112,7 @@ Indicates that the cmdlet does not prompt you for confirmation.
 By default, this cmdlet prompts you to confirm that you want to delete the key vault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 Key Vault object to be deleted.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
 Aliases:
 
@@ -143,7 +142,7 @@ Accept wildcard characters: False
 Remove the previously deleted vault permanently.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByDeletedVault, InputObjectByDeletedVault, ResourceIdByDeletedVault
 Aliases:
 
@@ -158,7 +157,7 @@ Accept wildcard characters: False
 The location of the deleted vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableVault, ResourceIdByAvailableVault
 Aliases:
 
@@ -170,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDeletedVault, ResourceIdByDeletedVault
 Aliases:
 
@@ -185,7 +184,7 @@ Accept wildcard characters: False
 This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +199,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableVault
 Aliases:
 
@@ -215,7 +214,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdByAvailableVault, ResourceIdByDeletedVault
 Aliases:
 
@@ -230,7 +229,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableVault, ByDeletedVault
 Aliases:
 
@@ -245,7 +244,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -262,7 +261,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -279,6 +278,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = engine.GetReference(disk, "PremiumLRS"),
+                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
                         },
                         DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },

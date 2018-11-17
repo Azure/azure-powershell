@@ -23,19 +23,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     internal static class ExceptionExtensions
     {
-        public static ErrorResponseException CreateFormattedException(this ErrorResponseException errorResponseException)
-        {
-            return new ErrorResponseException(
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.FormattedCloudExceptionMessageTemplate,
-                    errorResponseException.Response.StatusCode,
-                    errorResponseException.Body != null && errorResponseException.Body.Code != null ? errorResponseException.Body.Code : errorResponseException.Response.StatusCode.ToString(),
-                    errorResponseException.Body != null && errorResponseException.Body.Message != null ? errorResponseException.Body.Message : errorResponseException.Message,
-                    errorResponseException.GetRequestId(),
-                    DateTime.UtcNow));
-        }
-
         public static CloudException CreateFormattedException(this CloudException cloudException)
         {
             return new CloudException(
@@ -47,20 +34,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     cloudException.Body != null && cloudException.Body.Message != null ? cloudException.Body.Message : cloudException.Message,
                     cloudException.GetRequestId(),
                     DateTime.UtcNow));
-        }
-
-        public static string GetRequestId(this ErrorResponseException exception)
-        {
-            IEnumerable<string> strings;
-
-            if (exception.Response != null
-                && exception.Response.Headers != null
-                && exception.Response.Headers.TryGetValue("x-ms-request-id", out strings))
-            {
-                return string.Join(";", strings);
-            }
-
-            return string.Empty;
         }
 
         public static string GetRequestId(this CloudException exception)

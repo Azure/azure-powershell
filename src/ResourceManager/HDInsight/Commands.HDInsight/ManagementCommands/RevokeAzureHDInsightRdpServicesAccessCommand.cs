@@ -19,11 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsSecurity.Revoke,
-        Constants.CommandNames.AzureHDInsightRdpServicesAccess),
-    OutputType(
-        typeof(void))]
+    [Cmdlet("Revoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightRdpServicesAccess"),OutputType(typeof(void))]
     public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

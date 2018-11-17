@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermenvironment
@@ -25,32 +25,16 @@ The Get-AzureRmEnvironment cmdlet gets endpoints and metadata for an instance of
 ```
 PS C:\> Get-AzureRmEnvironment AzureCloud
 
-Name                                              : AzureCloud
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : https://management.core.windows.net/
-AdTenant                                          :
-GalleryUrl                                        : https://gallery.azure.com/
-ManagementPortalUrl                               : http://go.microsoft.com/fwlink/?LinkId=254433
-ServiceManagementUrl                              : https://management.core.windows.net/
-PublishSettingsFileUrl                            : http://go.microsoft.com/fwlink/?LinkID=301775
-ResourceManagerUrl                                : https://management.azure.com/
-SqlDatabaseDnsSuffix                              : .database.windows.net
-StorageEndpointSuffix                             : core.windows.net
-ActiveDirectoryAuthority                          : https://login.microsoftonline.com/
-GraphUrl                                          : https://graph.windows.net/
-GraphEndpointResourceId                           : https://graph.windows.net/
-TrafficManagerDnsSuffix                           : trafficmanager.net
-AzureKeyVaultDnsSuffix                            : vault.azure.net
-AzureDataLakeStoreFileSystemEndpointSuffix        : azuredatalakestore.net
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix : azuredatalakeanalytics.net
-AzureKeyVaultServiceEndpointResourceId            : https://vault.azure.net
+Name       Resource Manager Url          ActiveDirectory Authority
+----       --------------------          -------------------------
+AzureCloud https://management.azure.com/ https://login.microsoftonline.com/
 ```
 
 This example shows how to get the endpoints and metadata for the AzureCloud (default) environment.
 
 ### Example 2: Getting the AzureChinaCloud environment
 ```
-PS C:\> Get-AzureRmEnvironment AzureChinaCloud
+PS C:\> Get-AzureRmEnvironment AzureChinaCloud | Format-List
 
 Name                                              : AzureChinaCloud
 EnableAdfsAuthentication                          : False
@@ -79,25 +63,9 @@ This example shows how to get the endpoints and metadata for the AzureChinaCloud
 ```
 PS C:\> Get-AzureRmEnvironment AzureUSGovernment
 
-Name                                              : AzureUSGovernment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : https://management.core.usgovcloudapi.net/
-AdTenant                                          :
-GalleryUrl                                        : https://gallery.usgovcloudapi.net/
-ManagementPortalUrl                               : https://manage.windowsazure.us
-ServiceManagementUrl                              : https://management.core.usgovcloudapi.net/
-PublishSettingsFileUrl                            : https://manage.windowsazure.us/publishsettings/index
-ResourceManagerUrl                                : https://management.usgovcloudapi.net/
-SqlDatabaseDnsSuffix                              : .database.usgovcloudapi.net
-StorageEndpointSuffix                             : core.usgovcloudapi.net
-ActiveDirectoryAuthority                          : https://login.microsoftonline.us/
-GraphUrl                                          : https://graph.windows.net/
-GraphEndpointResourceId                           : https://graph.windows.net/
-TrafficManagerDnsSuffix                           : usgovtrafficmanager.net
-AzureKeyVaultDnsSuffix                            : vault.usgovcloudapi.net
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            : https://vault.usgovcloudapi.net
+Name              Resource Manager Url                  ActiveDirectory Authority
+----              --------------------                  -------------------------
+AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/
 ```
 
 This example shows how to get the endpoints and metadata for the AzureUSGovernment environment.
@@ -108,7 +76,7 @@ This example shows how to get the endpoints and metadata for the AzureUSGovernme
 The credentials, account, tenant and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,9 +91,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure instance to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -139,8 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

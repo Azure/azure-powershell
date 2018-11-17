@@ -19,6 +19,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Location
     Name of location to backup.
 
+.PARAMETER ResourceId
+    The resource id.
+
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
 
@@ -77,8 +80,6 @@ function Restore-AzsBackup {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
-
         if ( 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Backup.Admin/backupLocations/{location}/backups/{backup}'
@@ -89,11 +90,17 @@ function Restore-AzsBackup {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
             $Location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['backup']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
+
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRMLocation).Location
+            }
         }
 
         # Should process
-        if ($PSCmdlet.ShouldProcess("$Name" , "Restore from backup")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Restore from backup?", "Performing operation restore using backup $Name.")) {
+        if ($PSCmdlet.ShouldProcess("$Name" , "Restore from backup at location $Location")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Restore from backup at location $($Location)?", "Performing operation restore using backup $Name.")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
@@ -109,9 +116,6 @@ function Restore-AzsBackup {
 
                 $BackupAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([System.String]::IsNullOrEmpty($Location)) {
-                    $Location = (Get-AzureRMLocation).Location
-                }
                 if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$($Location)"
                 }

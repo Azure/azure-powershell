@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup",ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

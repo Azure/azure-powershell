@@ -24,6 +24,7 @@ using System.IO;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 #if !NETSTANDARD
 using Microsoft.Azure.Test;
 using TestBase = Microsoft.Azure.Test.TestBase;
@@ -48,11 +49,13 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
+
+            _helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -72,7 +75,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.DataFactories.psd1"),
                     "AzureRM.Resources.ps1");
 

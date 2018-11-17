@@ -24,7 +24,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionReservationDetail")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ConsumptionReservationDetail")]
     [OutputType(typeof(PSReservationDetail))]
     public class GetAzureRmConsumptionReservationDetail : AzureConsumptionCmdletBase
     {

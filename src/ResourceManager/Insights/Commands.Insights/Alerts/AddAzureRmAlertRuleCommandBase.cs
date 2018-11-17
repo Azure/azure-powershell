@@ -14,7 +14,7 @@
 
 using System.Net;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of rule actions")]
         [ValidateNotNullOrEmpty]
-        public List<RuleAction> Action { get; set; }
+        public List<Management.Monitor.Management.Models.RuleAction> Action { get; set; }
 
         #endregion
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 {
                     RequestId = result.RequestId,
                     StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
-                    AlertRule = result.Body
+                    AlertRule = new Management.Monitor.Management.Models.AlertRuleResource(result.Body)
                 };
 
                 WriteObject(response);

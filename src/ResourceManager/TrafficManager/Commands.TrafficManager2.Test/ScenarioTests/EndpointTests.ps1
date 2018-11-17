@@ -655,3 +655,99 @@ function Test-PipeEndpointFromGetProfile
         TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Add and remove custom headers
+#>
+function Test-AddAndRemoveCustomHeadersFromEndpoint
+{
+	$endpointName = getAssetname
+	$profileName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+
+	try
+	{
+	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName "Weighted"
+
+	$endpoint = New-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Disabled" -EndpointLocation "West US"
+
+    $retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+	
+    $retrievedEndpoint = $retrievedProfile.Endpoints[0]
+
+	Assert-True { Add-AzureRmTrafficManagerCustomHeaderToEndpoint -Name "foo" -Value "bar" -TrafficManagerEndpoint $retrievedEndpoint }
+
+    Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $retrievedEndpoint
+
+    $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+
+	Assert-AreEqual "foo" $endpoint.CustomHeaders[0].Name
+	Assert-AreEqual "bar" $endpoint.CustomHeaders[0].Value
+	Assert-AreEqual 1 $endpoint.CustomHeaders.Count
+
+	Assert-True { Remove-AzureRmTrafficManagerCustomHeaderFromEndpoint -Name "foo" -TrafficManagerEndpoint $endpoint }
+
+    Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
+
+    $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+
+    Assert-AreEqual 0 $endpoint.CustomHeaders.Count
+
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Add and remove IP address ranges
+#>
+function Test-AddAndRemoveIpAddressRanges
+{
+	$endpointName = getAssetname
+	$profileName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+
+	try
+	{
+	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName "Weighted"
+
+	$endpoint = New-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Disabled" -EndpointLocation "West US"
+
+    $retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+	
+    $retrievedEndpoint = $retrievedProfile.Endpoints[0]
+
+	Assert-True { Add-AzureRmTrafficManagerIpAddressRange -TrafficManagerEndpoint $retrievedEndpoint -First "2.3.4.0" -Scope 24 }
+	Assert-True { Add-AzureRmTrafficManagerIpAddressRange -TrafficManagerEndpoint $retrievedEndpoint -First "5.6.0.0" -Last "5.6.255.255" }
+
+    Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $retrievedEndpoint
+
+    $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+
+    Assert-AreEqual 2 $endpoint.SubnetMapping.Count
+	Assert-AreEqual "2.3.4.0" $endpoint.SubnetMapping[0].First
+	Assert-AreEqual 24 $endpoint.SubnetMapping[0].Scope
+	Assert-AreEqual "5.6.0.0" $endpoint.SubnetMapping[1].First
+	Assert-AreEqual "5.6.255.255" $endpoint.SubnetMapping[1].Last
+
+	Assert-True { Remove-AzureRmTrafficManagerIpAddressRange -First 2.3.4.0 -TrafficManagerEndpoint $endpoint }
+
+    Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
+
+    $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+
+    Assert-AreEqual 1 $endpoint.SubnetMapping.Count
+	Assert-AreEqual "5.6.0.0" $endpoint.SubnetMapping[0].First
+	Assert-AreEqual "5.6.255.255" $endpoint.SubnetMapping[0].Last
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}

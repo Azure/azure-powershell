@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
@@ -106,7 +106,7 @@ Gets the AD application with object id '39e64ec6-569b-4030-8e1c-c3c519a05d69' an
 The service principal application id.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdParameterSet
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The application object whose service principal is being retrieved.
 
 ```yaml
-Type: PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 The service principal display name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 The service principal search string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SearchStringParameterSet
 Aliases: SearchString
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 The maximum number of objects to return.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 Reports the number of objects in the data set. Currently, this parameter does nothing.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 Object id of the service principal.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 SPN of the service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SPNParameterSet
 Aliases: SPN
 
@@ -241,7 +241,7 @@ Accept wildcard characters: False
 Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -257,9 +257,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.String
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to get the service principal for the provided application.
+### System.Guid
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 

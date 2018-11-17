@@ -36,9 +36,7 @@ Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 
 ## DESCRIPTION
 The **Import-AzureKeyVaultCertificate** cmdlet imports a certificate into a key vault.
-
 You can create the certificate to import by using one of the following methods:
-
 - Use the New-AzureKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
@@ -77,7 +75,6 @@ Updated     : 2/8/2016 11:50:43 PM
 
 The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
 stores it in the $Password variable.
-
 The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
 
 ## PARAMETERS
@@ -86,7 +83,7 @@ The second command imports the certificate named ImportCert01 into the CosotosoK
 Specifies the certificate collection to add to a key vault.
 
 ```yaml
-Type: X509Certificate2Collection
+Type: System.Security.Cryptography.X509Certificates.X509Certificate2Collection
 Parameter Sets: ImportWithPrivateKeyFromCollection
 Aliases:
 
@@ -101,7 +98,7 @@ Accept wildcard characters: False
 Specifies a certificate string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportWithPrivateKeyFromString
 Aliases:
 
@@ -116,7 +113,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,7 +128,7 @@ Accept wildcard characters: False
 Specifies the path of the certificate file that this cmdlet imports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportCertificateFromFile
 Aliases:
 
@@ -147,7 +144,7 @@ Specifies the certificate name. This cmdlet constructs the fully qualified domai
 certificate from key vault name, currently selected environment, and certificate name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CertificateName
 
@@ -162,7 +159,7 @@ Accept wildcard characters: False
 Specifies the password for a certificate file.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromString
 Aliases:
 
@@ -175,11 +172,10 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +191,7 @@ Specifies the key vault name into which this cmdlet imports certificates.
 This cmdlet constructs the fully qualified domain name (FQDN) of a key vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +206,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +222,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -242,7 +238,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ### System.Security.Cryptography.X509Certificates.X509Certificate2Collection
+Parameters: CertificateCollection (ByValue)
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

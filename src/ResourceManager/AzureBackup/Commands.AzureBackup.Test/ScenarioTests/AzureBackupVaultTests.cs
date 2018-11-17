@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,16 +20,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public class AzureBackupVaultTests : AzureBackupTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureBackupVaultTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupVaultScenarioTests()
         {
-            this.RunPowerShellTest("Test-AzureBackupVaultScenario");
+            this.RunPowerShellTest(_logger, "Test-AzureBackupVaultScenario");
         }
     }
 }

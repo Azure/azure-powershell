@@ -14,23 +14,22 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
 {
-    using System.Collections;
     using System.Linq;
 
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.Azure.Management.Monitor.Management;
+    using Microsoft.Azure.Management.Monitor;
     using ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSActionGroupResource))]
     public class SetAzureRmActionGroupCommand : ManagementCmdletBase
     {
@@ -141,10 +140,10 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
                 IList<EmailReceiver> emailReceivers =
                     this.Receiver.OfType<PSEmailReceiver>().
-                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: o.Status)).ToList();
+                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
                 IList<SmsReceiver> smsReceivers =
                     this.Receiver.OfType<PSSmsReceiver>().
-                        Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: o.Status)).ToList();
+                        Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
                 IList<WebhookReceiver> webhookReceivers =
                     this.Receiver.OfType<PSWebhookReceiver>().
                         Select(o => new WebhookReceiver(name: o.Name, serviceUri: o.ServiceUri)).ToList();

@@ -21,10 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Models;
     using Properties;
 
-    [Cmdlet(VerbsCommon.Set,
-        Constants.ApiManagementApiRevision,
-        DefaultParameterSetName = ExpandedParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRevision",DefaultParameterSetName = ExpandedParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApiRevision : SetAzureApiManagementApi
     {   

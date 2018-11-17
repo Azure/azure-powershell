@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             //                   -ScaleActionScaleType <{ChangeSize | ChangeCount | PercentChangeCount}> -ScaleActionValue <String>
             Cmdlet.MetricName = "Requests";
             Cmdlet.MetricResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo";
-            Cmdlet.Operator = ComparisonOperationType.GreaterThan;
-            Cmdlet.MetricStatistic = MetricStatisticType.Average;
+            Cmdlet.Operator = Management.Monitor.Management.Models.ComparisonOperationType.GreaterThan;
+            Cmdlet.MetricStatistic = Management.Monitor.Management.Models.MetricStatisticType.Average;
             Cmdlet.Threshold = 10;
             Cmdlet.ScaleActionCooldown = TimeSpan.FromMinutes(5);
-            Cmdlet.ScaleActionDirection = ScaleDirection.Increase;
+            Cmdlet.ScaleActionDirection = Management.Monitor.Management.Models.ScaleDirection.Increase;
             Cmdlet.ScaleActionValue = "1";
             Assert.Throws<ArgumentOutOfRangeException>(() => Cmdlet.ExecuteCmdlet());
 

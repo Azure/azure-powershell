@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetNetworkWatcher(resourceGroupName, name);
             }
-            catch (Microsoft.Rest.Azure.CloudException exception)
+            catch (MNM.ErrorResponseException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

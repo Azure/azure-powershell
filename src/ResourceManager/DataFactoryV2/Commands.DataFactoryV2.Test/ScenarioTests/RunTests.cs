@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,23 +20,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public class RunTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public RunTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRunV2()
         {
-            RunPowerShellTest("Test-Run");
+            RunPowerShellTest(_logger, "Test-Run");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCancelRunNegativeV2()
         {
-            RunPowerShellTest("Test-CancelRunNegative");
+            RunPowerShellTest(_logger, "Test-CancelRunNegative");
         }
     }
 }

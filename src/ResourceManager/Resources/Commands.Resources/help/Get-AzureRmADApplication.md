@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 66AC5120-80B1-46F2-AA51-132BF361602E
@@ -94,7 +94,7 @@ Gets the application with the object id '39e64ec6-569b-4030-8e1c-c3c519a05d69'.
 The application id of the application to fetch.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdParameterSet
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The display name of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Fetch all applications starting with the display name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SearchStringParameterSet
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 The maximum number of objects to return.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Unique identifier Uri of the application to fetch.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationIdentifierUriParameterSet
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 Reports the number of objects in the data set. Currently, this parameter does nothing.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 The object id of the application to fetch.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -230,9 +230,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.Guid
 
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

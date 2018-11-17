@@ -24,9 +24,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class WorkflowRunTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public WorkflowRunTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRunLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-StartLogicApp");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StartLogicApp");
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogicAppRunHistory()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppRunHistory");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppRunHistory");
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogicAppRunAction()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppRunAction");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppRunAction");
         }
 
         /// <summary>
@@ -66,7 +69,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopAzureRmLogicAppRun()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-StopAzureRmLogicAppRun");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StopAzureRmLogicAppRun");
         }
     }
 }

@@ -27,7 +27,6 @@ Get-AzureRmRecoveryServicesBackupJobDetails [-JobId] <String> [-VaultId <String>
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupJobDetails** cmdlet gets Azure Backup job details for a specified job.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -40,9 +39,7 @@ PS C:\> $JobDetails.ErrorDetails
 ```
 
 The first command gets an array of failed jobs in the vault, and then stores them in the $Jobs array.
-
 The second command gets the job details for the failed jobs in $Jobs, and then stores them in the $JobDetails variable.
-
 The final command displays error details for the failed jobs.
 
 ## PARAMETERS
@@ -51,7 +48,7 @@ The final command displays error details for the failed jobs.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +64,9 @@ Specifies the job to get.
 To obtain a **BackupJob** object, use the Get-AzureRmRecoveryServicesBackupJob cmdlet.
 
 ```yaml
-Type: JobBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
 Parameter Sets: JobFilterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -83,9 +80,9 @@ Specifies the ID of a Backup job.
 The ID is the InstanceId property of a **BackupJob** object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdFilterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -98,9 +95,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,8 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

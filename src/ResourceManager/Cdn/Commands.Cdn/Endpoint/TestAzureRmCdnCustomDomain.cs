@@ -22,8 +22,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSValidateCustomDomainOutput))]
-    [Alias("Validate-AzureRmCdnCustomDomain")]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSValidateCustomDomainOutput))]
+    [Alias("Validate-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomain")]
     public class TestAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]

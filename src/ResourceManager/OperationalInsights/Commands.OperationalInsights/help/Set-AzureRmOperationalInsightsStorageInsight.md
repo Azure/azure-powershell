@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 010328F9-C878-4F16-AFD7-2135465A1968
@@ -47,7 +47,6 @@ PS C:\>Set-AzureRmOperationalInsightsStorageInsight -Workspace $Workspace -Name 
 ```
 
 The first command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then stores it in the $Workspace variable.
-
 The second command modifies the containers from which the Storage Insight named MyStorageInsight reads.
 
 ## PARAMETERS
@@ -56,9 +55,9 @@ The second command modifies the containers from which the Storage Insight named 
 Specifies the list of containers that provide the data.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,9 +85,9 @@ Accept wildcard characters: False
 Specifies the name of a Storage Insight.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -101,9 +100,9 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group that contains a workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -116,9 +115,9 @@ Accept wildcard characters: False
 Specifies the access key for the storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -131,9 +130,9 @@ Accept wildcard characters: False
 Specifies the list of tables that contain the data.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -146,9 +145,9 @@ Accept wildcard characters: False
 Specifies the workspace that contains the Storage Insight.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -161,9 +160,9 @@ Accept wildcard characters: False
 Specifies the name of a workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -177,8 +176,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+
+### System.String[]
 
 ## OUTPUTS
 

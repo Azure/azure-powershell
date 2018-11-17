@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/remove-azurermenvironment
@@ -31,47 +31,15 @@ PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
 
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 
 PS C:\> Remove-AzureRmEnvironment -Name TestEnvironment
 
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
 
 This example shows how to create an environment using Add-AzureRmEnvironment, and then how to delete the environment using Remove-AzureRmEnvironment.
@@ -82,7 +50,7 @@ This example shows how to create an environment using Add-AzureRmEnvironment, an
 The credentials, tenant and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,9 +65,9 @@ Accept wildcard characters: False
 Specifies the name of the environment to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -112,9 +80,9 @@ Accept wildcard characters: False
 Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
-Type: ContextModificationScope
+Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -128,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -143,7 +111,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -159,12 +127,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### PSAzureEnvironment
+### Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment
 
 ## NOTES
 

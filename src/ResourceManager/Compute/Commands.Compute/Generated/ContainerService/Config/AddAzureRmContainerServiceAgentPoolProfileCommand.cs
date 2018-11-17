@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class AddAzureRmContainerServiceAgentPoolProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // AgentPoolProfiles
             if (this.ContainerService.AgentPoolProfiles == null)
             {
-                this.ContainerService.AgentPoolProfiles = new List<Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile>();
+                this.ContainerService.AgentPoolProfiles = new List<ContainerServiceAgentPoolProfile>();
             }
 
-            var vAgentPoolProfiles = new Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile();
+            var vAgentPoolProfiles = new ContainerServiceAgentPoolProfile();
 
             vAgentPoolProfiles.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vAgentPoolProfiles.Count = this.Count;
@@ -91,4 +91,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

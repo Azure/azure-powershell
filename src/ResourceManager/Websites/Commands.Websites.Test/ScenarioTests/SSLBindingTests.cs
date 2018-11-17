@@ -23,44 +23,47 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class SSLBindingTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public SSLBindingTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSSLBinding");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSSLBinding");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetNewWebAppSSLBinding");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetNewWebAppSSLBinding");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-RemoveNewWebAppSSLBinding");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveNewWebAppSSLBinding");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSSLBindingPipeSupport()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppSSLBindingPipeSupport");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppSSLBindingPipeSupport");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppCertificate");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppCertificate");
         }
     }
 }

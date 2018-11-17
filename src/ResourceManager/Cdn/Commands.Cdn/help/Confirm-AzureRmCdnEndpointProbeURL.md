@@ -27,7 +27,7 @@ The **Confirm-AzureRmCdnEndpointProbeURL** cmdlet confirms if the probe URL prov
 PS C:\> Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl "http://www.bing.com/images"
 IsValid: true
 ErrorCode: None
-Message: 
+Message:
 ```
 
 Validates the probe url "http://www.bing.com/images"
@@ -38,7 +38,7 @@ Validates the probe url "http://www.bing.com/images"
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 Proposed probe URL name to validate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

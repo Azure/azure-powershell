@@ -60,7 +60,16 @@ PS C:\> Get-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceG
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdletand stores it in the $ResourceGroup variable.
-The second command get the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+The second command gets the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+
+### Example 3: Get all policy assignments assigned to a management group
+```
+PS C:\> $mgId = 'myManagementGroup'
+PS C:\> Get-AzureRmPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
+```
+
+The first command specifies the ID of the management group to query.
+The second command gets all of the policy assignments that are assigned to the management group with ID 'myManagementGroup'.
 
 ## PARAMETERS
 
@@ -69,7 +78,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,7 +108,7 @@ Accept wildcard characters: False
 Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -114,7 +123,7 @@ Accept wildcard characters: False
 Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: IncludeDescendentParameterSet
 Aliases:
 
@@ -127,9 +136,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -138,7 +145,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -153,7 +160,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -168,7 +175,7 @@ Accept wildcard characters: False
 Specifies the name of the policy assignment that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -183,7 +190,7 @@ Accept wildcard characters: False
 Specifies the ID of the policy definition of the policy assignments that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet, IdParameterSet
 Aliases:
 
@@ -198,7 +205,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +220,7 @@ Accept wildcard characters: False
 Specifies the scope at which the policy is applied for the assignment that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet, IncludeDescendentParameterSet
 Aliases:
 
@@ -229,12 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true,
-         DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemAclEntry", SupportsShouldProcess = true,DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -112,8 +110,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                     if (Recurse)
                     {
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
+
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
-                            Account, aclSpec, RequestedAclType.RemoveAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
+                            Account, aclSpec, RequestedAclType.RemoveAcl, threadCount, this, ShowProgress, CmdletCancellationToken);
                     }
                     else
                     {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: A0A956E9-6C4F-4432-A39F-A180CD519C04
@@ -50,9 +50,9 @@ This command gets all webhooks for a runbook named Runbook03 in the Automation a
 Specifies the name of an Automation account in which this cmdlet gets a webhook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Specifies the name of the webhook that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: WebhookName
 
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for which this cmdlet gets webhooks.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 Specifies the name of a runbook for which this cmdlet gets webhooks.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -126,8 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

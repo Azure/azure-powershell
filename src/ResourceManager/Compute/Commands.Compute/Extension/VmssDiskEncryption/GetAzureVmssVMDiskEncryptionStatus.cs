@@ -26,11 +26,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.AzureVmssVMDiskEncryption),
-        Alias(ProfileNouns.GetAzureRmVmssVMDiskEncryptionAlias),
-        OutputType(typeof(PSVmssVMDiskEncryptionStatusContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMDiskEncryption"), OutputType(typeof(PSVmssVMDiskEncryptionStatusContext))]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMDiskEncryptionStatus")]
     public class GetAzureVmssVMDiskEncryptionStatusCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
         [Parameter(
@@ -38,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource group name of the virtual machine scale set.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -48,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine scale set name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMScaleSetName { get; set; }
 

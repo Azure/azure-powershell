@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Tags
 ms.assetid: 66B25541-0FA5-46CF-90D8-FE9527BE11C6
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/remove-azurermtag
 schema: 2.0.0
@@ -22,14 +22,10 @@ Remove-AzureRmTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultPr
 The **Remove-AzureRmTag** cmdlet deletes predefined Azure tags and values from your subscription.
 To delete particular values from a predefined tag, use the *Value* parameter.
 By default, **Remove-AzureRmTag** deletes the specified tag and all of its values.You cannot delete a tag or value that is currently applied to a resource or resource group.
-
 Before using **Remove-AzureRmTag**, use the *Tag* parameter of the Set-AzureRMResourceGroup cmdlet to delete the tag or values from the resource or resource group.
-
 The Azure Tags module that **Remove-AzureRmTag** is part of can help you manage your predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
-
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
-If the subscription includes any predefined tags, you cannot apply undefined tags or values to any resource or resource group in the subscription.
 
 ## EXAMPLES
 
@@ -65,7 +61,7 @@ If the value has been applied to any resources or resource groups, the command f
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,9 +78,9 @@ By default, **Remove-AzureRmTag** removes the specified tag and all of its value
 To delete selected values, but not delete the tag, use the *Value* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -97,9 +93,9 @@ Accept wildcard characters: False
 Returns an object that represents the deleted tag or the resulting tag with deleted valued.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,9 +108,9 @@ Accept wildcard characters: False
 Deletes the specified values from the predefined tag, but does not delete the tag.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -127,7 +123,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -143,7 +139,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -159,11 +155,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### System.String[]
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### None or Microsoft.Azure.Commands.Tags.Model.PSTag
+### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag
 
 ## NOTES
 

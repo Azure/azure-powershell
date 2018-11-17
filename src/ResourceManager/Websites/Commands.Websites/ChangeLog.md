@@ -19,6 +19,34 @@
 -->
 ## Current Release
 
+## Version 5.2.0
+* New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUrl - Gets the Container Continuous Deployment Webhook URL
+* New Cmdlets New-AzureRMWebAppContainerPSSession and Enter-WebAppContainerPSSession  - Initiates a PowerShell remote session into a windows container app
+
+## Version 5.1.0
+* Updating to use the latest .NET SDK version (2.0.0)
+* Added two new cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
+* New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
+
+## Version 5.0.9
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 5.0.8
+* Fixed issue with default resource group being set incorrectly.
+
+## Version 5.0.7
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 5.0.6
+* Updated all help files to include full parameter types and correct input/output types.
+
+## Version 5.0.5
+* `Set-AzureRmWebApp -AssignIdentity` and  `Set-AzureRmWebAppSlot -AssignIdentity` when set to false will now remove the Identity property from the site object.Removing preview tag as well.
+* `Get-AzureRmWebAppMetrics`,`Get-AzureRmAppServicePlanMetrics` example updated
+* `Set-AzureRmWebApp -PhpVersion` supports off as a valid php version
+
 ## Version 5.0.4
 * Fixed formatting of OutputType in help files
 
@@ -60,7 +88,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0

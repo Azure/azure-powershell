@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to delete a sync member
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlSyncMember", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncMember", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
     public class RemoveAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
     {
         /// <summary>

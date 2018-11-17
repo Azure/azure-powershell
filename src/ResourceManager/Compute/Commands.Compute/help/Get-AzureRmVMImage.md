@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: D5254218-8B3B-4DE2-9480-D65EE5483018
@@ -43,7 +43,7 @@ This command gets all the versions of VMImage that match the specified values.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies a filter expression.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListVMImage
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Specifies the location of a VMImage.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Specifies the type of VMImage offer.
 To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Specifies the publisher of a VMImage.
 To obtain an image publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +121,7 @@ Specifies a VMImage SKU.
 To obtain an SKU, use the Get-AzureRmVMImageSku cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Specifies the version of the VMImage.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVMImageDetail
 Aliases:
 
@@ -152,8 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

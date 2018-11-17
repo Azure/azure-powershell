@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using Microsoft.Rest.Azure;
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Collections.Generic;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "TrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint Ttl { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The traffic routing method of the profile.")]
-        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, Constants.Geographic, IgnoreCase = false)]
+        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, Constants.Geographic, Constants.Subnet, Constants.MultiValue, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string TrafficRoutingMethod { get; set; }
 
@@ -87,9 +88,20 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public int? MonitorToleratedNumberOfFailures { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number of answers returned for profiles with a MultiValue routing method.")]
+        public long? MaxReturn { get; set; }
+
         [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
+        [ValidateCount(1, 8)]
+        public List<TrafficManagerCustomHeader> CustomHeader { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "List of expected HTTP status code ranges for probe requests.")]
+        [ValidateCount(1, 8)]
+        public List<TrafficManagerExpectedStatusCodeRange> ExpectedStatusCodeRange { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -119,7 +131,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MonitorIntervalInSeconds,
                     this.MonitorTimeoutInSeconds,
                     this.MonitorToleratedNumberOfFailures,
-                    this.Tag);
+                    this.MaxReturn,
+                    this.Tag,
+                    this.CustomHeader,
+                    this.ExpectedStatusCodeRange);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);

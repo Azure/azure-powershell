@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssExtension", SupportsShouldProcess = true)]
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSUpgradePolicy),
+        DeprecatedOutputProperties = new string[] { "AutomaticOSUpgrade", "AutoOSUpgradePolicy" })]
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetIdentity),
+        DeprecatedOutputProperties = new string[] { "IdentityIds" })]
+#endif
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -100,29 +107,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
             }
 
             // ExtensionProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
             }
 
             // Extensions
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension>();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
             }
 
-            var vExtensions = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
+            var vExtensions = new VirtualMachineScaleSetExtension();
 
             vExtensions.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vExtensions.ForceUpdateTag = this.MyInvocation.BoundParameters.ContainsKey("ForceUpdateTag") ? this.ForceUpdateTag : null;
             vExtensions.Publisher = this.MyInvocation.BoundParameters.ContainsKey("Publisher") ? this.Publisher : null;
             vExtensions.Type = this.MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : null;
             vExtensions.TypeHandlerVersion = this.MyInvocation.BoundParameters.ContainsKey("TypeHandlerVersion") ? this.TypeHandlerVersion : null;
-            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?) null;
+            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?)null;
             vExtensions.Settings = this.MyInvocation.BoundParameters.ContainsKey("Setting") ? this.Setting : null;
             vExtensions.ProtectedSettings = this.MyInvocation.BoundParameters.ContainsKey("ProtectedSetting") ? this.ProtectedSetting : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
@@ -130,4 +137,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

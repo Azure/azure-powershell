@@ -19,8 +19,83 @@
 -->
 ## Current Release
 
-## Version 5.0.1
+## Version 5.1.5
+* Fixed issue #7267 (Autoscale area)
+    - Issues with creating a new autoscale rule not properly setting enumerated parameters (would always set them to the default value).
+
+* Fixed issue #7513 [Insights] Set-AzureRMDiagnosticSetting requires explicit specification of categories during creation of setting
+    - Now the cmdlet does not require explicit indication of the categories to enable during creation, i.e. it works as it is documented
+
+## Version 5.1.4
+* Fixed issues #6833 and #7102 (Diagnostic Settings area)
+    - Issues with the default name, i.e. "service", during creation and listing/getting of diagnostic settings
+    - Issues creating diagnostic settings with categories
+
+* Added deprecation message for metrics time grains parameters
+    - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
+
+## Version 5.1.3
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 5.1.2
+* Fixed issue with default resource groups not being set.
+
+## Version 5.1.1
+* Updated to the latest version of the Azure ClientRuntime.
+
+* Using Microsoft.Azure.Management.Monitor SDK 0.20.1-preview
+    - Fixing incidents #3585 [Monitor] Breaking change found in AutoScale spec (Swagger spec) and #3293 [Monitor] Add serviceBusRuleId to the DiagnosticSettings resource (Swagger spec)
+      Check this https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/Monitor/changelog.md for more details on the changes for this SDK
+
+* **Set-AzureRmDiagnosticSetting**
+    - If no name is given the cmdlet defaults to "service" as before, but it does not fail when "service" does not exist. If there is only one setting, but it is not called service its name is the new default. If there are two or more settings and none is called service, the cmdlet fails.
+    - Time grains are mostly ignored in this version since only 1 minute is supported. They are only used to enable/disable the metrics in the setting. A deprecation message is included.
+    
+* **Remove-AzureRmDiagnosticSetting**
+    - If no name is given the cmdlet deletes either the setting called service or the only existing setting. If there are more than one setting is none is called service, the cmdlet fails.
+
+* **Get-AzureRmDiagnosticSetting**
+    - If no name is given, the cmdlet lists all the settings for the given resource Id
+    
+## Version 5.1.0
 * Fixed formatting of OutputType in help files
+* Updated help files to include full parameter types and correct input/output types.
+
+* Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
+    - The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models. This breaking change is just announced in this release. It is temporarily hidden from the customers.
+    - The SDK includes support for multi-named diagnostic settings.
+    - The SDK also supports the most recent Metrics API: multi-dimension metrics.
+
+* **Set-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to "service" for backward compatibility.
+    - The argument ServiceBusRuleId has been added an alias "EventHubName" which will replace it in the future.
+    - The response also includes a new field: EventHubName, but keeps the previous one "ServiceBusRuleId."
+    - The arguments Categories and Timegrains now have aliases Category and Timegrain respectively.
+    - One more argument has been added: MetricCategory to operate the same way the current Categories operates, but on Metrics Categories
+    - This cmdlet now supports pipelining and the InputObject argument.  When the InputObject is used, no other parameter is accepted.
+
+* **Remove-AzureRmDiagnosticSetting**
+    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible. For this a new parameter was added (Name) that defaults to 'service'. If the cmdlet is called using 'service' as name the cmdlet will only disable metrics and logs instead of removing the diagnostic setting.
+
+* **Get-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to "service" for backward compatibility.
+    - The response also includes a new field: EventHubName, but keeps the previous one "ServiceBusRuleId."
+
+* **Get-AzureRmMetric**
+    - Added new optional parameter 'Top'. It is the maximum number of records to retrieve and defaults to "10", to be specified with $filter.
+    - Added new optional parameter 'OrderBy'. It is the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metrics for.
+    - Added new optional parameter 'ResultType'. It is the result type to be returned (metadata or data).
+    - Added new optional parameter 'MetricFilter'. It is the metric dimension filter to query metrics for.
+
+* **Get-AzureRmMetricDefinition**
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metric definitions for.
+
+* **New-AzureRmMetricFilter**
+    - This cmdlet is used to create a new metric dimension filter, which can then be used to query metrics.
+
+## Version 5.0.1
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
@@ -106,7 +181,7 @@
     - Warning message about the future deprecation of the plural parameter names added.
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
     * Add-AzureRmLogAlertRule
         - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
@@ -155,7 +230,7 @@
     - Issue #2: The documentation contained incorrect data about this cmdlet, e.g.: the default timewindow was 1 hour.
     - Fix #1: The cmdlet now follows the continuation token returned by the backend until it reaches MaxEvents or the end of the set.<br>The default value for MaxEvents is 1000 and its maximum is 100000. Any value for MaxEvents that is less than 1 is ignored and the default is used instead. These values and behavior did not change, now they are correctly documented.<br>An alias for MaxEvents has been added -MaxRecords- since the name of the cmdlet does not speak about events anymore, but only about Logs.
     - Fix #2: The documentation contains correct and more detailed information: new alias, correct time window, correct default, minimum, and maximum values.
- 
+
 ## Version 3.1.0
 
 ## Version 3.0.1
@@ -173,7 +248,7 @@
 * New-AzureRmAutoscaleRule
     - The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount, PercentChangeCount, ExactCount.
 * Remove-AzureRmAutoscaleSetting
-    - The statusCode in the output follows the statusCode returned by the request. Before it was always Ok. 
+    - The statusCode in the output follows the statusCode returned by the request. Before it was always Ok.
 * Get-AzureRMLogProfile
     - The output is now enumerated. Before it was considered a single object. The type of the output remains a list as before.
 * Remove-AzureRmLogProfile

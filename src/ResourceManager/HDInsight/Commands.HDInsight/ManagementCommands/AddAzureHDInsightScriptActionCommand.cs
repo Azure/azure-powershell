@@ -22,10 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightScriptAction),
-    OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightScriptAction"),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightScriptActionCommand : HDInsightCmdletBase
     {
         private AzureHDInsightScriptAction _action;

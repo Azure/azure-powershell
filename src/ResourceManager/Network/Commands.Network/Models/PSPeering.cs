@@ -18,31 +18,40 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Microsoft.Azure.Management.Network.Models;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSPeering : PSChildResource
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PeeringType { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int AzureASN { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public uint PeerASN { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrimaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string SecondaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrimaryAzurePort { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string SecondaryAzurePort { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -55,6 +64,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSPeeringConfig MicrosoftPeeringConfig { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
          [JsonProperty(Order = 1)]  

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: A837077C-0A79-431C-93D2-799B2134EE69
@@ -15,17 +15,20 @@ Gets alert rules.
 
 ### GetByResourceGroup
 ```
-Get-AzureRmAlertRule -ResourceGroupName <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceUri
 ```
-Get-AzureRmAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +46,7 @@ The output does not contain details about the rules because the *DetailedOutput*
 
 ### Example 2: Get an alert rule by name
 ```
-PS C:\>Get-AzureRmAlertRule -ResourcGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+PS C:\>Get-AzureRmAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 ```
 
 This command gets the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8.
@@ -63,7 +66,7 @@ The *DetailedOutput* parameter is specified, so the output is detailed.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,9 +81,9 @@ Accept wildcard characters: False
 Displays full details in the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,9 +96,9 @@ Accept wildcard characters: False
 Specifies the name of the alert rule to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -108,7 +111,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -123,9 +126,9 @@ Accept wildcard characters: False
 Specifies the ID of the target resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceUri
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -139,8 +142,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

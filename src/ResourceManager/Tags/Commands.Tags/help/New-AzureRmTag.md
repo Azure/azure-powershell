@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Tags
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/new-azurermtag
 schema: 2.0.0
@@ -23,18 +23,12 @@ The **New-AzureRmTag** cmdlet creates a predefined Azure tag with an optional pr
 You can also use it to add additional values to existing predefined tags.
 To create a predefined tag, enter a unique tag name.
 To add a value to an existing predefined tag, specify the name of the existing tag and the new value.
-
 This cmdlet returns an object that represents the new or modified tag with its values and the number of resources to which it has been applied.
-
 The Azure Tags module that **New-AzureRmTag** is part of can help you manage predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
-
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
-If the subscription includes any predefined tags, you cannot apply undefined tags or values to any resource or resource group in the subscription.
-
 To apply a predefined tag to a resource or resource group, use the *Tag* parameter of the New-AzureRmTag cmdlet.
 To search for resource groups with a specified tag name or name and value, use the *Tag* parameter of the Get-AzureRMResourceGroup cmdlet.
-
 Every tag has a name.
 The values are optional.
 A predefined Azure tag can have multiple values, but when you apply the tag to a resource or resource group, you apply the tag name and only one of its values.
@@ -151,7 +145,7 @@ The commands in this example create and use a predefined tag.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -165,14 +159,13 @@ Accept wildcard characters: False
 ### -Name
 Specifies the tag name.
 To create a new predefined tag, enter a unique name.
-
 To add a value to an existing tag, enter the name of the existing tag.
 If an existing predefined tag has the specified name, **New-AzureRmTag** adds the specified value, if any, to the tag with that name instead of creating a new tag.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -187,9 +180,9 @@ Predefined tags can have multiple values, but you can enter only one value in ea
 This parameter is optional, because tags can have names without values.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -203,11 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Tags.Model.PSTag
+### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag
 
 ## NOTES
 

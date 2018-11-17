@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletSuffix, SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlOpCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(void))]
     public class RemoveAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {

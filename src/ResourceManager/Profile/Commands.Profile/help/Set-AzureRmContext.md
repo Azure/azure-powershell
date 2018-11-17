@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/set-azurermcontext
@@ -62,10 +62,9 @@ The context includes tenant, subscription, and environment information.
 ```
 PS C:\>Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
 
-Account      : PFuller@contoso.com
-Environment  : AzureCloud
-Subscription : xxxx-xxxx-xxxx-xxxx
-Tenant       : yyyy-yyyy-yyyy-yyyy
+Name    Account             SubscriptionName    Environment         TenantId
+----    -------             ----------------    -----------         --------
+Work    test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
 ```
 
 This command sets the context to use the specified subscription.
@@ -76,9 +75,9 @@ This command sets the context to use the specified subscription.
 Specifies the context for the current session.
 
 ```yaml
-Type: PSAzureContext
+Type: Microsoft.Azure.Commands.Profile.Models.PSAzureContext
 Parameter Sets: Context
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 The credentials, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,7 +107,7 @@ Additional context properties
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -121,9 +120,9 @@ Accept wildcard characters: False
 Overwrite the existing context with the same name, if any.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,9 +135,9 @@ Accept wildcard characters: False
 Name of the context
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,9 +150,9 @@ Accept wildcard characters: False
 Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
-Type: ContextModificationScope
+Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -164,10 +163,10 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name or Id
+The name or id of the subscription that the context should be set to. This parameter has aliases to -SubscriptionName and -SubscriptionId, so, for clarity, either of these can be used instead of -Subscription when specifying name and id, respectively.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Subscription
 Aliases: SubscriptionId, SubscriptionName
 
@@ -182,9 +181,9 @@ Accept wildcard characters: False
 A subscription object
 
 ```yaml
-Type: PSAzureSubscription
+Type: Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
 Parameter Sets: SubscriptionObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -197,7 +196,7 @@ Accept wildcard characters: False
 Tenant name or ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Subscription
 Aliases: Domain, TenantId
 
@@ -209,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TenantNameOnly
 Aliases: Domain, TenantId
 
@@ -224,9 +223,9 @@ Accept wildcard characters: False
 A Tenant Object
 
 ```yaml
-Type: PSAzureTenant
+Type: Microsoft.Azure.Commands.Profile.Models.PSAzureTenant
 Parameter Sets: TenantObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -239,7 +238,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -254,7 +253,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -270,12 +269,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSAzureContext
-Parameter 'Context' accepts value of type 'PSAzureContext' from the pipeline
+### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Parameters: Context (ByValue)
+
+### Microsoft.Azure.Commands.Profile.Models.PSAzureTenant
+Parameters: TenantObject (ByValue)
+
+### Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
+Parameters: SubscriptionObject (ByValue)
 
 ## OUTPUTS
 
-### PSAzureContext
+### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
 
 ## NOTES
 

@@ -23,30 +23,33 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 {
     public class ApplicationInsightsTests : RMTestBase
     {
-        public ApplicationInsightsTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ApplicationInsightsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewApplicationInsights()
+        public void TestNewAppInsights()
         {
-            TestController.NewInstance.RunPsTest("Test-NewApplicationInsights");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewApplicationInsights");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetApplicationInsights()
+        public void TestGetAppInsights()
         {
-            TestController.NewInstance.RunPsTest("Test-GetApplicationInsights");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsights");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveApplicationInsights()
+        public void TestRemoveAppInsights()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveApplicationInsights");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveApplicationInsights");
         }
     }
 }

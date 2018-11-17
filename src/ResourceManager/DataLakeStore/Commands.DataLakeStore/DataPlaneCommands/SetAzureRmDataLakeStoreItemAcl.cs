@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
-        OutputType(typeof(DataLakeStoreItemAce))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemAcl", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAcl")]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
@@ -81,9 +80,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                         if (Recurse)
                         {
-                            DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
+
+                        DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                                 Account,
-                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
+                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, threadCount, this, ShowProgress, CmdletCancellationToken);
                         }
                         else
                         {

@@ -17,6 +17,10 @@ using System.Security;
 using System.Text;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.ServiceBus.Management;
@@ -511,7 +515,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
@@ -555,7 +559,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             AzureSession.Instance.DataStore = new MemoryDataStore();
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
@@ -600,7 +604,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             AzureSession.Instance.DataStore = new MemoryDataStore();
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var oldProfile = new AzureSMProfile();
             AzureSMCmdlet.CurrentProfile = oldProfile;
             var profile = new AzureSMProfile();
