@@ -125,9 +125,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\ComputeTestCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+                    "AzureRM.Storage.ps1",
+                    "ScenarioTests\\ComputeTestCommon.ps1",
 #if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
 #else
@@ -136,7 +137,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
                 try

@@ -101,7 +101,7 @@
     <Compile Include="Blob\UpdateAzureStorageContainer.cs" />
     <Compile Include="Blob\GetAzureStorageContainer.cs" />
     <Compile Include="Blob\StorageBlobBaseCmdlet.cs" />
-    <Compile Include="Models\PSLastSyncTime.cs" />
+    <Compile Include="Models\PSGeoReplicationStats.cs" />
     <Compile Include="Models\PSNetworkRule.cs" />
     <Compile Include="Models\PSContainer.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
@@ -113,7 +113,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="StorageAccount\GetAzureStorageAccountLastSyncTime.cs" />
     <Compile Include="StorageAccount\RemoveAzureStorageAccountManagementPolicy.cs" />
     <Compile Include="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
     <Compile Include="StorageAccount\SetAzureStorageAccountManagementPolicy.cs" />

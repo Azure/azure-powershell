@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageAccountRuleSetNounStr = StorageAccountRuleNounStr + "Set";
         protected const string StorageAccountManagementPolicyNounStr = StorageAccountNounStr + "ManagementPolicy";
         protected const string StorageAccountFailoverNounStr = StorageAccountNounStr + "Failover";
-        protected const string StorageAccountLastSyncTimeNounStr = StorageAccountNounStr + "LastSyncTime";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";

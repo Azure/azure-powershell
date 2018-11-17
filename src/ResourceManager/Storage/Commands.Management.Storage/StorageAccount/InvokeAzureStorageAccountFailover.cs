@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 StringBuilder shouldContinuePrompt = new StringBuilder();
                 shouldContinuePrompt.AppendLine("Failover the storage account, the secondary cluster will become primary after failover. Please understand the following impact to your storage account before you initiate the failover:");
-                shouldContinuePrompt.AppendLine("  1. Please check the Last Sync Time using Get-"+ ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLastSyncTime cmdlet for your account. This is the data you may lose if you initiate the failover.");
+                shouldContinuePrompt.AppendLine("  1. Please check the Last Sync Time using Get-"+ ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount cmdlet with -IncludeGeoReplicationStats parameter, and check GeoReplicationStats property of your account. This is the data you may lose if you initiate the failover.");
                 shouldContinuePrompt.AppendLine("  2. After the failover, your storage account type will be converted to locally redundant storage (LRS). You can convert your account to use geo-redundant storage (GRS).");
                 shouldContinuePrompt.AppendLine("  3. Once you re-enable GRS for your storage account, Microsoft will replicate data to your new secondary region. Replication time is dependent on the amount of data to replicate. Please note that there are bandwidth charges for the bootstrap. Please refer to doc: https://azure.microsoft.com/en-us/pricing/details/bandwidth/");
 

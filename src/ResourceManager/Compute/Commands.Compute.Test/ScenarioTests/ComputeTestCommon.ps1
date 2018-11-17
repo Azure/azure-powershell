@@ -753,3 +753,43 @@ function Verify-PSOperationStatusResponse
     Assert-Null $result.Error;
 }
 
+function Get-AzureRmStorageAccount
+{
+
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
+  BEGIN { 
+    $context = Get-Context
+    $client = Get-StorageClient $context
+    $version = $client.GetType().Assembly.GetName().Version
+  }
+  PROCESS {
+    if ($version.Major -gt 3)
+    {
+        try
+		{
+			$getTask = $client.StorageAccounts.GetPropertiesWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
+		}
+		catch
+		{
+			$getTask = $client.StorageAccounts.GetPropertiesWithHttpMessagesAsync($ResourceGroupName, $name, $null)
+		}
+    }
+    else
+    {
+        $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
+    }
+    $sa = $getTask.Result
+
+    if($sa -ne $null)
+    {
+        $id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
+        $account = Get-StorageAccount $ResourceGroupName $Name $id
+        Write-Output $account
+    }
+  }
+  END {}
+
+}
