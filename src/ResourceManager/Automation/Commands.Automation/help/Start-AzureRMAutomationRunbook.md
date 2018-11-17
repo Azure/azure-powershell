@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.IDictionary
 Parameter Sets: (All)
-Aliases:
+Aliases: JobParameters
 
 Required: False
 Position: Named

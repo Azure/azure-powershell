@@ -40,14 +40,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.Name = certificate.Name;
 
-            if (certificate.Properties == null) return;
+            if (certificate == null) return;
 
-            this.Description = certificate.Properties.Description;
-            this.CreationTime = certificate.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = certificate.Properties.LastModifiedTime.ToLocalTime();
-            this.ExpiryTime = certificate.Properties.ExpiryTime.ToLocalTime();
-            this.Thumbprint = certificate.Properties.Thumbprint;
-            this.Exportable = certificate.Properties.IsExportable;
+            this.Description = certificate.Description;
+            this.CreationTime = certificate.CreationTime.ToLocalTime();
+            this.LastModifiedTime = certificate.LastModifiedTime.ToLocalTime();
+            this.ExpiryTime = certificate.ExpiryTime.ToLocalTime();
+            this.Thumbprint = certificate.Thumbprint;
+            this.Exportable = certificate.IsExportable;
         }
 
         /// <summary>
