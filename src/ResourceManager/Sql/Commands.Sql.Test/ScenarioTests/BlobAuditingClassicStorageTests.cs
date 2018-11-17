@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public BlobAuditingClassicStorageTests(ITestOutputHelper output) : base(output)
         {
         }
-     
-        [Fact]
+
+        [Fact(Skip = "Skipping the test until a fix will be added by yaiyun: https://github.com/Azure/azure-powershell/issues/6601")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingUpdatePolicyWithClassicStorage()
         {

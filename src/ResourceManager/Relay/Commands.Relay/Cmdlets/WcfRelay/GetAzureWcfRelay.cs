@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// <para> If WcfRelay name provided, a single WcfRelay detials will be returned</para>
     /// <para> If WcfRelay name not provided, list of WcfRelay will be returned</para>
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WcfRelay"), OutputType(typeof(WcfRelayAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WcfRelay"), OutputType(typeof(PSWcfRelayAttributes))]
     public class GetAzureRmRelayWcfRelay : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -55,13 +55,13 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a WcfRelay
-                WcfRelayAttributes wcfRelay = Client.GetWcfRelay(ResourceGroupName, Namespace, Name);
+                PSWcfRelayAttributes wcfRelay = Client.GetWcfRelay(ResourceGroupName, Namespace, Name);
                 WriteObject(wcfRelay);
             }
             else
             {
                 // Get all WcfRelay
-                IEnumerable<WcfRelayAttributes> wcfRelayList = Client.ListAllWcfRelay(ResourceGroupName, Namespace);
+                IEnumerable<PSWcfRelayAttributes> wcfRelayList = Client.ListAllWcfRelay(ResourceGroupName, Namespace);
                 WriteObject(wcfRelayList.ToList(), true);
             }
         }

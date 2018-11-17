@@ -26,6 +26,7 @@ $folderPath = "pstestfolder1bca8f8e"
 $filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
+$newPolicyName = "NewAFSBackupPolicy"
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -171,7 +172,7 @@ function Test-AzureFSProtection
 		
 		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
-			-WorkloadType AzureFiles
+			-Name $policyName
 
 		$enableJob = Enable-AzureRmRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
@@ -191,6 +192,26 @@ function Test-AzureFSProtection
 			-WorkloadType AzureFiles
 		Assert-True { $item.Name -contains $fileShareName }
 		Assert-True { $item.LastBackupStatus -eq "IRPending" }
+		Assert-True { $item.ProtectionPolicyName -eq $policyName }
+		
+		# Modify Policy
+		$newPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-Name $newPolicyName
+
+		$enableJob =  Enable-AzureRmRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $newPolicy `
+			-Item $item
+		
+		$item = Get-AzureRmRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureFiles
+
+		Assert-True { $item.Name -contains $fileShareName }
+		Assert-True { $item.LastBackupStatus -eq "IRPending" }
+		Assert-True { $item.ProtectionPolicyName -eq $newPolicyName }
 	}
 	finally
 	{
