@@ -15,7 +15,7 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADSpCredential -ObjectId <Guid> -Password <SecureString> [-StartDate <DateTime>]
+New-AzureRmADSpCredential -ObjectId <Guid> [-Password <SecureString>] [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzureRmADSpCredential -ServicePrincipalName <String> -CertValue <String> [-S
 
 ### SPNWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalName <String> -Password <SecureString> [-StartDate <DateTime>]
+New-AzureRmADSpCredential -ServicePrincipalName <String> [-Password <SecureString>] [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertVa
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -Password <SecureString>
+New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Password <SecureString>]
  [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -57,11 +57,16 @@ The service principal is identified by supplying either the object id or service
 
 ## EXAMPLES
 
-### Example 1 - Create a new service principal credential using a password
+### Example 1 - Create a new service principal credential using a generated password
 
 ```
-PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $SecureStringPassword
+PS C:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
+
+Secret    : System.Security.SecureString
+StartDate : 11/12/2018 9:36:05 PM
+EndDate   : 11/12/2019 9:36:05 PM
+KeyId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type      : Password
 ```
 
 A new password credential is added to the existing service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476'.
@@ -81,11 +86,16 @@ The supplied base64 encoded public X509 certificate ("myapp.cer") is added to th
 ### Example 3 - Create a new service principal credential using piping
 
 ```
-PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> Get-AzureRmADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzureRmADSpCredential -Password $SecureStringPassword
+PS C:\> Get-AzureRmADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzureRmADSpCredential
+
+Secret    : System.Security.SecureString
+StartDate : 11/12/2018 9:36:05 PM
+EndDate   : 11/12/2019 9:36:05 PM
+KeyId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type      : Password
 ```
 
-Gets the service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and pipes that to the New-AzureRmADSpCredential to create a new service principal credential for that service principal with the given password.
+Gets the service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and pipes that to the New-AzureRmADSpCredential to create a new service principal credential for that service principal with a generated password.
 
 ## PARAMETERS
 
@@ -172,7 +182,7 @@ Type: System.Security.SecureString
 Parameter Sets: SpObjectIdWithPasswordParameterSet, SPNWithPasswordParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -184,7 +194,7 @@ Type: System.Security.SecureString
 Parameter Sets: ServicePrincipalObjectWithPasswordParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -288,6 +298,8 @@ Parameters: ServicePrincipalObject (ByValue)
 ## OUTPUTS
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
+
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper
 
 ## NOTES
 
