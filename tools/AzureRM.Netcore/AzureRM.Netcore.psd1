@@ -9,10 +9,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'AzureRM.Netcore.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.13.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = '[PowerShell .Net Core] Azure Resource Manager Module'
+Description = '[DEPRECATED] Use Az (https://www.powershellgallery.com/packages/Az/) Instead of AzureRM.Netcore'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -51,52 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'Azure.Storage.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Aks.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.AnalysisServices.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'Azure.AnalysisServices.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.ApiManagement.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.ApplicationInsights.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Automation.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Batch.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Billing.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Cdn.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.CognitiveServices.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Compute.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Consumption.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.ContainerInstance.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.ContainerRegistry.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.DataLakeAnalytics.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.DataLakeStore.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.DevTestLabs.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Dns.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.EventGrid.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.EventHub.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Insights.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.IotHub.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.KeyVault.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.LogicApp.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.MachineLearning.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.MachineLearningCompute.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.MarketplaceOrdering.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Media.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Network.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.NotificationHubs.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.PolicyInsights.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.OperationalInsights.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.PowerBIEmbedded.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Relay.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Resources.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.ServiceBus.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.ServiceFabric.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Sql.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Storage.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.StreamAnalytics.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Tags.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.TrafficManager.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.UsageAggregates.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'AzureRM.Websites.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -117,7 +72,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 # FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @()
+CmdletsToExport = 'Uninstall-AzureRMNetcore'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -152,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release with all preview AzureRM modules.'
+        ReleaseNotes = '[DEPRECATED]: AzureRM.NetCore should be replace with Az everywhere, see [https://www.powershellgallery.com/packages/Az/], [https://docs.microsoft.com/en-us/powershell/azure/new-azureps-module-az]'
 
         # Prerelease string of this module
         # Prerelease = ''
