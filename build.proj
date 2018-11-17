@@ -445,6 +445,7 @@
 
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
           DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= " '$(Scope)' == 'Netcore' "/>
+    
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
@@ -500,7 +501,8 @@
           DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psm1"
           DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
-
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psm1"
+          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= " '$(Scope)' == 'Netcore' "/>
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
@@ -539,6 +541,8 @@
 
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.Netcore.psd1"
+          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'Latest' "/>
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.Netcore.psm1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'Latest' "/>
   </Target>
 

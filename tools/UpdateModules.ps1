@@ -403,7 +403,7 @@ function Update-Netcore {
 
     $modulePath = "$PSScriptRoot\AzureRM.Netcore"
     Write-Host "Updating Netcore module from $modulePath"
-    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
+    # New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
     Write-Host "Updated Netcore module"
 }
 
