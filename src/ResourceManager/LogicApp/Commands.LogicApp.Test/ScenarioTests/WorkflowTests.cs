@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         ///Test New-AzureLogicApp with only definition
         ///Test Get-AzureLogicApp 
         ///Test Get-AzureLogicApp for a non-existing logic app
+        ///Test Get-AzureLogicApp without a specific name
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

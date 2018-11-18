@@ -182,6 +182,7 @@ Test New-AzureRmLogicApp with only definition
 Test Get-AzureRmLogicApp
 Test Get-AzureRmLogicApp for a given version
 Test Get-AzureRmLogicApp for a non-existing logic app
+Test Get-AzureRmLogicApp without a specific name
 #>
 function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 {
@@ -212,7 +213,11 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	catch
 	{
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/InvalidWorkflow' under resource group '$resourceGroupName' was not found."		
-	} 
+	}
+
+	# Test 5: Get logic apps without a specific name
+	$workflows = Get-AzureRmLogicApp $resourceGroupName
+	Assert-NotNull $workflows
 
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force		
 }

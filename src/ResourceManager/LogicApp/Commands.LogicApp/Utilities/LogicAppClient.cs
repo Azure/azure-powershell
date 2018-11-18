@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -122,6 +123,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public WorkflowVersion GetWorkflowVersion(string resourceGroupName, string workflowName, string versionId)
         {
             return this.LogicManagementClient.WorkflowVersions.Get(resourceGroupName, workflowName, versionId);
+        }
+
+        public ICollection<Workflow> ListWorkflows(string resourceGroupName)
+        {
+            var result = new List<Workflow>();
+            foreach(var workflow in this.LogicManagementClient.Workflows.ListByResourceGroup(resourceGroupName))
+            {
+                result.Add(workflow);
+            }
+            return result;
         }
 
         /// <summary>

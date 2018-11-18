@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Management.Logic.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Collections.Generic;
     using System.Management.Automation;
 
     /// <summary>
@@ -34,12 +35,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = true, ParameterSetName = "Item", HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = false, ParameterSetName = "List", HelpMessage = "The name of the workflow.")]
         [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The version of the workflow.")]
+        [Parameter(Mandatory = true, ParameterSetName = "Item", HelpMessage = "The version of the workflow.")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
@@ -51,13 +53,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (string.IsNullOrWhiteSpace(this.Version))
+            if (string.IsNullOrWhiteSpace(this.Name))
             {
-                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
-            }
-            else
-            {
-                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+                if (string.IsNullOrWhiteSpace(this.Version))
+                {
+                    foreach (var workflow in LogicAppClient.ListWorkflows(this.ResourceGroupName))
+                    { 
+                        this.WriteObject(workflow, true);
+                    }
+                }
+                else
+                {
+                    throw new PSNotImplementedException("The version parameter cannot be used without the name parameter.");
+                }
+            } else { 
+                if (string.IsNullOrWhiteSpace(this.Version))
+                {
+                    this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+                }
+                else
+                {
+                    this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+                }
             }
         }
     }
