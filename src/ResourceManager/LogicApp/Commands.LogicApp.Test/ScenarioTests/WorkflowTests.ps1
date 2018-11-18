@@ -216,7 +216,7 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	}
 
 	# Test 5: Get logic apps without a specific name
-	$workflows = Get-AzureRmLogicApp $resourceGroupName
+	$workflows = Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName
 	Assert-NotNull $workflows
 
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force		
