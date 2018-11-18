@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Get-AzureRmLogicApp lists all without specified Name
 
 ## Version 4.1.4
 * Fixed issue with default resource groups not being set.
