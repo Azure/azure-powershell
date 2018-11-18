@@ -29,7 +29,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         #region Input Paramters
 
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
+        [Parameter(Mandatory = true, ParameterSetName = "Item", HelpMessage = "The targeted resource group for the workflow.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ParameterSetName = "List", HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
