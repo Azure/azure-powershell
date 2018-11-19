@@ -29,21 +29,22 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of rewrite rules")]
+            HelpMessage = "ActionSet of the rewrite rule")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.ActionSet = this.ActionSet;
         }
 
         public PSApplicationGatewayRewriteRule NewObject()
         {
-            var rewriteRule = new PSApplicationGatewayRewriteRule();
-            rewriteRule.Name = this.Name;
-            rewriteRule.ActionSet = this.ActionSet;
+            var rewriteRule = new PSApplicationGatewayRewriteRule
+            {
+                Name = this.Name,
+                ActionSet = this.ActionSet
+            };
             return rewriteRule;
         }
     }
