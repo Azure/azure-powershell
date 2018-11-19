@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
@@ -31,8 +32,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
+        private const string AssignIdentityParameterSet = "AssignIdentityParameterSet";
+        private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
         protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
         protected const string CreateContainerGroupWithAzureFileVolumeParamSet = "CreateContainerGroupWithAzureFileMountParamSet";
+        protected const string CreateContainerGroupWithAzureFileVolumeAndIdentityParamSet = "CreateContainerGroupWithAzureFileMountAndIdentityParamSet";
+        protected const string CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet = "CreateContainerGroupWithAzureFileMountAndExplicitIdentityParamSet";
 
         [Parameter(
             Mandatory = true,
@@ -68,6 +73,14 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = true,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The name of the Azure File share to mount.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndIdentityParamSet,
+            HelpMessage = "The name of the Azure File share to mount.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            HelpMessage = "The name of the Azure File share to mount.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeShareName { get; set; }
 
@@ -75,12 +88,28 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = true,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndIdentityParamSet,
+            HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
         [ValidateNotNullOrEmpty]
         public PSCredential AzureFileVolumeAccountCredential { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
+            HelpMessage = "The mount path for the Azure File volume.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndIdentityParamSet,
+            HelpMessage = "The mount path for the Azure File volume.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
             HelpMessage = "The mount path for the Azure File volume.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeMountPath { get; set; }
@@ -91,6 +120,44 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [LocationCompleter("Microsoft.ContainerInstance/containerGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The managed identity type")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The managed identity type")]
+        [ValidateNotNullOrEmpty]
+        public ResourceIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The user assigned identity IDs")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The user assigned identity IDs")]
+        [ValidateNotNullOrEmpty]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AssignIdentityParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Enable system assigned identity")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndIdentityParamSet,
+            HelpMessage = "Enable system assigned identity")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -200,7 +267,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     AzureFileVolumeShareName = this.AzureFileVolumeShareName,
                     AzureFileVolumeAccountName = this.AzureFileVolumeAccountCredential?.UserName,
                     AzureFileVolumeAccountKey = ContainerGroupCreationParameters.ConvertToString(this.AzureFileVolumeAccountCredential?.Password),
-                    AzureFileVolumeMountPath = this.AzureFileVolumeMountPath
+                    AzureFileVolumeMountPath = this.AzureFileVolumeMountPath,
+                    Identity = this.ParseIdentity()
                 };
 #if !NETSTANDARD
 
@@ -222,6 +290,35 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
                 this.WriteObject(psContainerGroup);
             }
+        }
+
+        /// <summary>
+        /// Parse the identity
+        /// </summary>
+        private ContainerGroupIdentity ParseIdentity()
+        {
+            if (this.AssignIdentity.IsPresent)
+            {
+                return new ContainerGroupIdentity { Type = ResourceIdentityType.SystemAssigned };
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+            {
+                var identity = new ContainerGroupIdentity { Type = this.IdentityType };
+
+                if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+                {
+                    identity.UserAssignedIdentities = new Dictionary<string, ContainerGroupIdentityUserAssignedIdentitiesValue>();
+                    foreach (var id in this.IdentityId)
+                    {
+                        identity.UserAssignedIdentities.Add(id, new ContainerGroupIdentityUserAssignedIdentitiesValue());
+                    }
+                }
+
+                return identity;
+            }
+
+            return null;
         }
     }
 }

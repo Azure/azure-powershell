@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added managed identity support
 
 ## Version 0.2.10
 * Fixed issue with default resource groups not being set.
