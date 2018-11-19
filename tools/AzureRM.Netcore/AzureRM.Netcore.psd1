@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '[DEPRECATED]: AzureRM.NetCore should be replace with Az everywhere, see [https://www.powershellgallery.com/packages/Az/], [https://docs.microsoft.com/en-us/powershell/azure/new-azureps-module-az]'
+        ReleaseNotes = '[DEPRECATED]: The Az module replaces AzureRM.NetCore, see [https://www.powershellgallery.com/packages/Az/], [https://docs.microsoft.com/en-us/powershell/azure/new-azureps-module-az]'
 
         # Prerelease string of this module
         # Prerelease = ''
