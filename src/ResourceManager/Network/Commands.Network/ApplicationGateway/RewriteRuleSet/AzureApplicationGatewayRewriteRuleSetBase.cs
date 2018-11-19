@@ -36,19 +36,19 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.RewriteRules = this.RewriteRules;
         }
 
         public PSApplicationGatewayRewriteRuleSet NewObject()
         {
-            var rewriteRuleSet = new PSApplicationGatewayRewriteRuleSet();
-            rewriteRuleSet.Name = this.Name;
-            rewriteRuleSet.RewriteRules = this.RewriteRules;
-
-            rewriteRuleSet.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+            var rewriteRuleSet = new PSApplicationGatewayRewriteRuleSet
+            {
+                Name = this.Name,
+                RewriteRules = this.RewriteRules,
+                Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRewriteRuleSetName,
-                                this.Name);
+                                this.Name)
+            };
 
             return rewriteRuleSet;
         }

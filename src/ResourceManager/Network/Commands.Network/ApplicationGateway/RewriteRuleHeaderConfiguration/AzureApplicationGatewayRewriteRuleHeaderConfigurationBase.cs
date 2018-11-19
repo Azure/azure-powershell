@@ -14,35 +14,38 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleSet"), OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayRewriteRuleSetCommand : AzureApplicationGatewayRewriteRuleSetBase
+    public class AzureApplicationGatewayRewriteRuleHeaderConfigurationBase : NetworkBaseCmdlet
     {
         [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The applicationGateway")]
-        public PSApplicationGateway ApplicationGateway { get; set; }
+            Mandatory = true,
+            HelpMessage = "Name of the Header to rewrite")]
+        [ValidateNotNullOrEmpty]
+        public string HeaderName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Header value to the set for the given header name. Header will be deleted if this is omitted")]
+        public string HeaderValue { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
 
-            var rewriteRuleSet = this.ApplicationGateway.RewriteRuleSets.SingleOrDefault
-                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (rewriteRuleSet != null)
+        public PSApplicationGatewayHeaderConfiguration NewObject()
+        {
+            var headerConfiguration = new PSApplicationGatewayHeaderConfiguration
             {
-                throw new ArgumentException("RewriteRuleSet with the specified name already exists");
-            }
+                HeaderName = this.HeaderName,
+                HeaderValue = this.HeaderValue
+            };
 
-            rewriteRuleSet = base.NewObject();
-            this.ApplicationGateway.RewriteRuleSets.Add(rewriteRuleSet);
-            WriteObject(this.ApplicationGateway);
+            return headerConfiguration;
         }
     }
 }
