@@ -16,6 +16,7 @@ using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 0,
                    ParameterSetName = ByVaultNameAndNameParameterSet,
                    HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

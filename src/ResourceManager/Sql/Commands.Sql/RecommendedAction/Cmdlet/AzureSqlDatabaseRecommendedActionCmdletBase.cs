@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Model;
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Service;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
 {
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure SQL Server name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure SQL Database name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

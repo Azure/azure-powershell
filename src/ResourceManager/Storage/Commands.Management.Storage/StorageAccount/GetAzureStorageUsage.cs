@@ -16,11 +16,13 @@ using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
+    [GenericBreakingChange("Parameter 'Location' will change from optional to mandatory in a future release.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageUsage"), OutputType(typeof(PSUsage))]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {

@@ -24,7 +24,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Tasks
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSecurityTask", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityTask))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityTask", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityTask))]
     public class GetTasks : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

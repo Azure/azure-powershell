@@ -49,28 +49,34 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = runbook.Name;
             this.Location = runbook.Location;
 
-            if (runbook.Properties == null) return;
+            if (runbook == null) return;
 
-            this.CreationTime = runbook.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = runbook.Properties.LastModifiedTime.ToLocalTime();
-            this.Description = runbook.Properties.Description;
+            this.CreationTime = runbook.CreationTime.ToLocalTime();
+            this.LastModifiedTime = runbook.LastModifiedTime.ToLocalTime();
+            this.Description = runbook.Description;
 
-            this.LogVerbose = runbook.Properties.LogVerbose;
-            this.LogProgress = runbook.Properties.LogProgress;
-            this.State = runbook.Properties.State;
-            this.JobCount = runbook.Properties.JobCount;
-            this.RunbookType = runbook.Properties.RunbookType;
-            this.LastModifiedBy = runbook.Properties.LastModifiedBy;
+            this.LogVerbose = runbook.LogVerbose ?? false;
+            this.LogProgress = runbook.LogProgress ?? false;
+            this.State = runbook.State;
+            this.JobCount = runbook.JobCount ?? 0;
+            this.RunbookType = runbook.RunbookType;
+            this.LastModifiedBy = runbook.LastModifiedBy;
             this.Tags = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in runbook.Tags)
+            if (runbook.Tags != null)
             {
-                this.Tags.Add(kvp.Key, kvp.Value);
+                foreach (var kvp in runbook.Tags)
+                {
+                    this.Tags.Add(kvp.Key, kvp.Value);
+                }
             }
 
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in runbook.Properties.Parameters)
+            if (runbook.Parameters != null)
             {
-                this.Parameters.Add(kvp.Key, (object)kvp.Value);
+                foreach (var kvp in runbook.Parameters)
+                {
+                    this.Parameters.Add(kvp.Key, (object)kvp.Value);
+                }
             }
         }
 
