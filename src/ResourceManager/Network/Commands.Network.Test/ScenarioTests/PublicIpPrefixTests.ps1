@@ -24,14 +24,20 @@ function Test-PublicIpPrefixCRUD
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
     $location = Get-ProviderLocation $resourceTypeParent
+    $ipTagType = "NetworkDomain"
+    $ipTagTag = "test"
 
     try
     {
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
+        $ipTag = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefixTag
+        $ipTag.IpTagType = $ipTagType
+        $ipTag.Tag = $ipTagTag
+
         # Create publicIpPrefix
-        $job = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -IpAddressVersion IPv4 -AsJob
+        $job = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -IpAddressVersion IPv4 -IpTag $ipTag -AsJob
         $job | Wait-Job
         $actual = $job | Receive-Job
         $expected = Get-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname
@@ -41,6 +47,8 @@ function Test-PublicIpPrefixCRUD
         Assert-AreEqual 30 $expected.PrefixLength
         Assert-NotNull $expected.ResourceGuid
         Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-AreEqual $ipTagType $expected.IpTags[0].IpTagType
+        Assert-AreEqual $ipTagTag $expected.IpTags[0].Tag
 
         # list
         $list = Get-AzureRmPublicIpPrefix -ResourceGroupName $rgname
