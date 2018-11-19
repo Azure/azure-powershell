@@ -15,20 +15,20 @@ An initiative is a policy of definition type "Initiative".
 
 ### VmScope (Default)
 ```
-Get-AzureRmVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String> [-ShowOnlyChanges]
+Get-AzureRmVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String> [-ShowOnlyChange]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InitiativeIdScope
 ```
 Get-AzureRmVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String> [-InitiativeId] <String>
- [-ShowOnlyChanges] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ShowOnlyChange] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InitiativeNameScope
 ```
 Get-AzureRmVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String>
- [-InitiativeName] <String> [-ShowOnlyChanges] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InitiativeName] <String> [-ShowOnlyChange] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +100,7 @@ Gets compliance status history for all guest configuration policies assigned to 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Definition Id of a policy where definition type is Initiative and category is Guest Configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InitiativeIdScope
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Name of a policy where definition type is Initiative and category is Guest Configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InitiativeNameScope
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,27 +156,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMName
-VM name.
+### -ShowOnlyChange
+Shows historical status changes only for guest configuration policies. Skips statuses that have not changed between two compliance status audit runs.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ShowOnlyChanges
-Shows historical status changes only for guest configuration policies.
-Skips statuses that have not changed between two compliance status audit runs.
-
-```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -187,9 +171,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VMName
+VM name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
