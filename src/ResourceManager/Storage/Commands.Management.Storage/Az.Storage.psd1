@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.5.0'
+ModuleVersion = '0.5.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -182,10 +182,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Update release with latest service features and serialization fixes'
+        ReleaseNotes = '* Support failover Storage account
+    - Invoke-AzureRmStorageAccountFailover
+* Support Get last sync time of Storage account
+    - Get-AzureRmStorageAccountLastSyncTime'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
