@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
+        public List<PSApplicationGatewayRewriteRuleSet> RewriteRuleSets { get; set; }
+
         public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
 
         public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
