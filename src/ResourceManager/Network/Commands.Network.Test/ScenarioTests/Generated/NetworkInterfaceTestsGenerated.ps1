@@ -461,10 +461,10 @@ function Test-NetworkInterfaceGetEffectiveRouteTable
 {
     param
     (
-        $basedir = ".\"
+        $basedir = "./"
     )
 
-    . ($basedir + "\ScenarioTests\Utils\Import-GeneratedTestUtils.ps1")
+    . ($basedir + "/ScenarioTests/Utils/Import-GeneratedTestUtils.ps1")
 
     # Setup
     $rglocation = Get-ProviderLocation ResourceManagement;
