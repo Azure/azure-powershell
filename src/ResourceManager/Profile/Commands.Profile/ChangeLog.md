@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.8.1
+* Update common code to use latest version of ClientRuntime
+
 ## Version 5.8.0
 * Update common code to use latest version of ClientRuntime
 * Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId

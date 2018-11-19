@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 6.1.6
+* Update dependencies for type mapping issue
+
 ## Version 6.1.5
 * Fixed issue with default resource groups not being set.
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6603
