@@ -100,6 +100,10 @@
     <Compile Include="ApplicationGateway\FirewallConfiguration\SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableSslOptions.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewaySslPredefinedPolicy.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleHeaderConfiguration\AzureApplicationGatewayRewriteRuleHeaderConfigurationBase.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleHeaderConfiguration\NewAzureApplicationGatewayRewriteRuleHeaderConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleActionSet\AzureApplicationGatewayRewriteRuleActionSetBase.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleActionSet\NewAzureApplicationGatewayRewriteRuleActionSetCommand.cs" />
     <Compile Include="ApplicationGateway\RewriteRule\AzureApplicationGatewayRewriteRuleBase.cs" />
     <Compile Include="ApplicationGateway\RewriteRule\NewAzureApplicationGatewayRewriteRuleCommand.cs" />
     <Compile Include="ApplicationGateway\RewriteRuleSet\AddAzureApplicationGatewayRewriteRuleSetCommand.cs" />

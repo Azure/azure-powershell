@@ -14,35 +14,40 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleSet"), OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayRewriteRuleSetCommand : AzureApplicationGatewayRewriteRuleSetBase
+    public class AzureApplicationGatewayRewriteRuleActionSetBase : NetworkBaseCmdlet
     {
         [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The applicationGateway")]
-        public PSApplicationGateway ApplicationGateway { get; set; }
+            Mandatory = false,
+            HelpMessage = "List of request header configurations")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayHeaderConfiguration> RequestHeaderConfigurations { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of response header configurations")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayHeaderConfiguration> ResponseHeaderConfigurations { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
 
-            var rewriteRuleSet = this.ApplicationGateway.RewriteRuleSets.SingleOrDefault
-                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+        public PSApplicationGatewayRewriteRuleActionSet NewObject()
+        {
 
-            if (rewriteRuleSet != null)
+            var rewriteRuleActionSet = new PSApplicationGatewayRewriteRuleActionSet
             {
-                throw new ArgumentException("RewriteRuleSet with the specified name already exists");
-            }
+                RequestHeaderConfigurations = this.RequestHeaderConfigurations,
+                ResponseHeaderConfigurations = this.ResponseHeaderConfigurations
+            };
 
-            rewriteRuleSet = base.NewObject();
-            this.ApplicationGateway.RewriteRuleSets.Add(rewriteRuleSet);
-            WriteObject(this.ApplicationGateway);
+            return rewriteRuleActionSet;
         }
     }
 }
