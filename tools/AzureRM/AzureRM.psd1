@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.13.0'
+ModuleVersion = '6.13.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.1'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.2'; }, 
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.6.1'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.14'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.4'; }, 
