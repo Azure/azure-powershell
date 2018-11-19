@@ -11,8 +11,8 @@ function New-TestDeployment
         $virtualNetworkName
     )
 
-    $templateFile = "..\..\TestData\Deployment.json";
-    $paramFile = "..\..\TestData\NrpGenerateTestDeploymentParameters.json";
+    $templateFile = "${PsScriptRoot}/../../TestData/Deployment.json";
+    $paramFile = "${PsScriptRoot}/../../TestData/NrpGenerateTestDeploymentParameters.json";
     $diagnosticsStorageAccountName = (Get-ResourceName "psnrp") + "teststorage";
 
     $paramContent =
