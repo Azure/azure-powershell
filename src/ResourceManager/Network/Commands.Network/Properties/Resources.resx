@@ -345,4 +345,10 @@
   <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
     <value>trustedRootCertificates</value>
   </data>
+  <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
+    <value>rewriteRuleSets</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
 </root>

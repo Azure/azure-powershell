@@ -313,6 +313,15 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
 
+                // Normalize RewriteRuleSets
+                if (applicationGateway.RewriteRuleSets != null)
+                {
+                    foreach (var rewriteRuleSet in applicationGateway.RewriteRuleSets)
+                    {
+                        rewriteRuleSet.Id = string.Empty;
+                    }
+                }
+
                 // Normalize RedirectConfiguration
                 if (applicationGateway.RedirectConfigurations != null)
                 {
