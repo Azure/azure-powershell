@@ -17,8 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRule"), OutputType(typeof(PSApplicationGatewayRewriteRule))]
-    public class NewAzureApplicationGatewayRewriteRuleCommand : AzureApplicationGatewayRewriteRuleBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleHeaderConfiguration"), OutputType(typeof(PSApplicationGatewayRewriteRuleActionSet))]
+    public class NewAzureApplicationGatewayRewriteRuleHeaderConfigurationCommand : AzureApplicationGatewayRewriteRuleHeaderConfigurationBase
     {
         public override void ExecuteCmdlet()
         {
