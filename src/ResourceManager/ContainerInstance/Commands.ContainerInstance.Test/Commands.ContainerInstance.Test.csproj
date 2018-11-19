@@ -35,9 +35,8 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.3-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.2.0.0\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +73,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupDnsLabel.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupWithIdentities.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupWithIdentity.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupWithVolume.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupWithVolumeAndIdentities.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupWithVolumeAndIdentity.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
