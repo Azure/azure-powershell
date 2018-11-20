@@ -13,7 +13,7 @@ function Test-DotNet
 {
     try
     {
-        if (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Foreach-Object { $_ -lt 461808 })
+        if ((Get-PSDrive 'HKLM' -ErrorAction Ignore) -and (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Foreach-Object { $_ -lt 461808 }))
         {
             throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
         }
@@ -24,7 +24,7 @@ function Test-DotNet
     }
 }
 
-if (%ISAZMODULE%)
+if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
 {
     if ($PSVersionTable.PSVersion -lt [Version]'5.1')
     {
