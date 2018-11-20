@@ -27,8 +27,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="ecsManagementInteropClient"></param>
         public SyncServerRegistrationClientBase(IEcsManagement ecsManagementInteropClient)
         {
-            //Check.NotNull(ecsManagementInteropClient);
-            this.EcsManagementInteropClient = ecsManagementInteropClient;
+            EcsManagementInteropClient = ecsManagementInteropClient;
         }
 
         /// <summary>
@@ -121,59 +120,30 @@ namespace Commands.StorageSync.Interop.Clients
             string agentVersion,
             Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback)
         {
-            //Check.NotNull(nameof(managementEndpointUri), managementEndpointUri);
-            //Check.NotNullOrEmpty(nameof(managementEndpointUri), managementEndpointUri.OriginalString);
-            //Check.True(nameof(managementEndpointUri), managementEndpointUri.IsWellFormedOriginalString());
-            //Check.False(nameof(subscriptionId), Guid.Empty.Equals(subscriptionId));
-            //Check.NotNullOrEmpty(nameof(storageSyncServiceName), storageSyncServiceName);
-            //Check.NotNullOrEmpty(nameof(resourceGroupName), resourceGroupName);
-            //Check.NotNullOrEmpty(nameof(certificateProviderName), certificateProviderName);
-            //Check.NotNullOrEmpty(nameof(certificateHashAlgorithm), certificateHashAlgorithm);
-            //Check.GreaterThan<uint>(nameof(certificateKeyLength), certificateKeyLength, 0, "Certificate Key Length must be greater than 0.");
-            //Check.NotNullOrEmpty(nameof(monitoringDataPath), monitoringDataPath);
-            //Check.NotNullOrEmpty(nameof(agentVersion), agentVersion);
-            //Check.NotNull(nameof(registerOnlineCallback), registerOnlineCallback);
-
-            //cmdletConsoleWriterAction("Validating sync server registration started", LogLevel.Verbose);
-            //HfsTracer.TraceInfo("SyncServerRegistration : Register : Validating sync server registration");
-            if (!this.Validate(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
+            if (!Validate(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ValidateSyncServerFailed);
             }
-            //cmdletConsoleWriterAction("Validating sync server registration completed", LogLevel.Verbose);
 
-            //cmdletConsoleWriterAction("Setting up sync server registration started", LogLevel.Verbose);
-            //HfsTracer.TraceInfo("SyncServerRegistration : Register : Setup sync server registration");
-            var serverRegistrationData = this.Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, monitoringDataPath, agentVersion);
+            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, monitoringDataPath, agentVersion);
             if (null == serverRegistrationData)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ProcessSyncRegistrationFailed);
             }
-            //cmdletConsoleWriterAction("Setting up sync server registration completed", LogLevel.Verbose);
 
-            //cmdletConsoleWriterAction("Registering sync server registration online started", LogLevel.Verbose);
-            //HfsTracer.TraceInfo("SyncServerRegistration : Register : Registering online sync server registration to the cloud");
             RegisteredServer resultantRegisteredServerResource = registerOnlineCallback(resourceGroupName, storageSyncServiceName, serverRegistrationData);
             if (null == resultantRegisteredServerResource)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterOnlineSyncRegistrationFailed);
             }
-            //cmdletConsoleWriterAction("Registering sync server registration online completed", LogLevel.Verbose);
-
-            //cmdletConsoleWriterAction("Registering sync server registration to the local server started", LogLevel.Verbose);
-            //Check.True(Enum.TryParse(resultantRegisteredServerResource.ServerRole, out ServerRoleType serverRole));
 
             // Setting ServerCertificate from request resource to response resource so that it can be used by Monitoring pipeline
             resultantRegisteredServerResource.ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate);
 
-            //HfsTracer.TraceInfo("SyncServerRegistration : Register : Persisting sync server registration to the local service");
             if (!Persist(resultantRegisteredServerResource, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.PersistSyncServerRegistrationFailed);
             }
-            //cmdletConsoleWriterAction("Registering sync server registration to the local server completed", LogLevel.Verbose);
-
-            //HfsTracer.TraceInfo($"SyncServerRegistration : Register : Registration completed with success");
 
             return resultantRegisteredServerResource;
         }

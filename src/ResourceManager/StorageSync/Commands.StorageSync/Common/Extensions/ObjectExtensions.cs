@@ -9,7 +9,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
 {
     /// <summary>
-    /// Exception extensions class
+    /// Object extensions class
     /// </summary>
     public static class ObjectExtensions
     {
@@ -20,11 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
         /// <returns>Json formatted string</returns>
         public static string ToJson(this object currentObject)
         {
-            //Check.NotNull(nameof(currentObject), currentObject);
             using (var stream = new System.IO.MemoryStream())
             {
-                var formatter = new JsonFormatter();
-                formatter.WriteToStreamAsync(currentObject.GetType(), currentObject, stream, null, null).Wait();
+                new JsonFormatter().WriteToStreamAsync(currentObject.GetType(), currentObject, stream, null, null).Wait();
                 return Encoding.UTF8.GetString(stream.GetBuffer());
             }
         }

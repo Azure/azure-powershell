@@ -3,7 +3,7 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Kailani.Hfs.V1.Data.Contracts.ResourceEntity
+namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
 {
     public enum ServerRoleType
     {

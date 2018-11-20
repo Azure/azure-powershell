@@ -1,7 +1,6 @@
-﻿namespace Kailani.Hfs.V1.Data.Contracts.Registration
+﻿namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
 {
     using Newtonsoft.Json;
-    using ResourceEntity;
     using System;
     using System.Diagnostics.CodeAnalysis;
 

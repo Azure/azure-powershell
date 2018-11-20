@@ -18,11 +18,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             string resourceGroupName,
             IList<KeyValuePair<string, string>> resources = null)
         {
-            //Check.NotEquals(Guid.Empty, subscriptionId, $"{subscriptionId} should not be empty Guid");
             //resources is allowed to be null
             if (resources != null && resources.Count > 0)
             {
-                //Check.NotNullOrEmpty(nameof(resourceGroupName), resourceGroupName);
+                if(string.IsNullOrEmpty(resourceGroupName))
+                {
+                    throw new ArgumentException(nameof(resourceGroupName));
+                }
             }
 
             StringBuilder sb = new StringBuilder();

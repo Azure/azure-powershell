@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                 if (!IsRunningInTest)
                 {
-                    PSADServicePrincipal servicePrincipal = this.StorageSyncClientWrapper.EnsureServicePrincipal();
+                    PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
 
                     if (servicePrincipal == null)
                     {

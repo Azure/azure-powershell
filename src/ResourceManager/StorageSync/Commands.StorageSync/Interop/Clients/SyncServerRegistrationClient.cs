@@ -2,10 +2,9 @@
 using Commands.StorageSync.Interop.Enums;
 using Commands.StorageSync.Interop.Exceptions;
 using Commands.StorageSync.Interop.Interfaces;
-using Kailani.Hfs.V1.Data.Contracts.Registration;
-using Kailani.Hfs.V1.Data.Contracts.ResourceEntity;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
+using Microsoft.Azure.Commands.StorageSync.InternalObjects;
 using Microsoft.Azure.Management.StorageSync.Models;
 using System;
 using System.Collections.Generic;
@@ -42,29 +41,17 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>success status</returns>
         public override bool Validate(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
-            //Check.NotNull(nameof(managementEndpointUri), managementEndpointUri);
-            //Check.NotNullOrEmpty(nameof(managementEndpointUri), managementEndpointUri.OriginalString);
-            //Check.True(nameof(managementEndpointUri), managementEndpointUri.IsWellFormedOriginalString());
-            //Check.False(nameof(subscriptionId), Guid.Empty.Equals(subscriptionId));
-            //Check.NotNullOrEmpty(nameof(storageSyncServiceName), storageSyncServiceName);
-            //Check.NotNullOrEmpty(nameof(resourceGroupName), resourceGroupName);
-            //Check.NotNullOrEmpty(nameof(monitoringDataPath), monitoringDataPath);
-
-            //HfsTracer.TraceInfo($"MonitoringDataPath was provided by the user: {monitoringDataPath}");
-
             DirectoryInfo directoryInfo;
             if (!Directory.Exists(monitoringDataPath) && !TryCreateDirectory(monitoringDataPath,out directoryInfo))
             {
-                //HfsTracer.TraceInfo($"MonitoringDataPath provided by the user: {monitoringDataPath} is invalid or path does not exist");
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.MonitoringDataPathIsInvalid);
             }
 
-            int hr = this.EcsManagementInteropClient.ValidateSyncServer(
+            int hr = EcsManagementInteropClient.ValidateSyncServer(
                                        managementEndpointUri.OriginalString,
                                        subscriptionId.ToString(),
                                        storageSyncServiceName,
                                        resourceGroupName);
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Validate HRESULT: {hr}");
             bool success = hr == 0;
 
             if (!success)
@@ -95,26 +82,14 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>Registered Server Resource</returns>
         public override ServerRegistrationData Setup(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string certificateProviderName, string certificateHashAlgorithm, uint certificateKeyLength, string monitoringDataPath, string agentVersion)
         {
-            //Check.NotNull(nameof(managementEndpointUri), managementEndpointUri);
-            //Check.NotNullOrEmpty(nameof(managementEndpointUri), managementEndpointUri.OriginalString);
-            //Check.True(nameof(managementEndpointUri),managementEndpointUri.IsWellFormedOriginalString());
-            //Check.False(nameof(subscriptionId), Guid.Empty.Equals(subscriptionId));
-            //Check.NotNullOrEmpty(nameof(storageSyncServiceName), storageSyncServiceName);
-            //Check.NotNullOrEmpty(nameof(resourceGroupName), resourceGroupName);
-            //Check.NotNullOrEmpty(nameof(certificateProviderName), certificateProviderName);
-            //Check.NotNullOrEmpty(nameof(certificateHashAlgorithm), certificateHashAlgorithm);
-            //Check.NotNullOrEmpty(nameof(monitoringDataPath), monitoringDataPath);
-            //Check.NotNullOrEmpty(nameof(agentVersion), agentVersion);
-            //Check.GreaterThan<uint>(nameof(certificateKeyLength), certificateKeyLength, 0,"Certificate key length must be greater than 0");
-
-            int hr = this.EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
+            int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                 subscriptionId.ToString(),
                 storageSyncServiceName,
                 resourceGroupName,
                 certificateProviderName, 
                 certificateHashAlgorithm,
                 certificateKeyLength);
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:EnsureSyncServerCertificate HRESULT: {hr}");
+
             bool success = hr == 0;
 
             if (!success)
@@ -123,9 +98,8 @@ namespace Commands.StorageSync.Interop.Clients
             }
 
             string syncServerCertificate;
-            hr = this.EcsManagementInteropClient.GetSyncServerCertificate(isPrimary:true, serverCertificate:out syncServerCertificate);
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:GetSyncServerCertificate HRESULT: {hr}");
-            //Check.NotNullOrEmpty(nameof(syncServerCertificate), syncServerCertificate);
+            hr = EcsManagementInteropClient.GetSyncServerCertificate(isPrimary:true, serverCertificate:out syncServerCertificate);
+
             success = hr == 0;
 
             if (!success)
@@ -134,15 +108,14 @@ namespace Commands.StorageSync.Interop.Clients
             }
 
             string syncServerId;
-            hr = this.EcsManagementInteropClient.GetSyncServerId(out syncServerId);
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:GetSyncServerId HRESULT: {hr}");
+            hr = EcsManagementInteropClient.GetSyncServerId(out syncServerId);
+
             Guid serverGuid = Guid.Empty;
             bool hasServerGuid = Guid.TryParse(syncServerId, out serverGuid);
             if (!hasServerGuid)
             {
                 throw new ArgumentException(nameof(serverGuid));
             }
-            //Check.True(nameof(syncServerId), Guid.TryParse(syncServerId, out serverGuid));
 
             success = hr == 0;
 
@@ -153,17 +126,14 @@ namespace Commands.StorageSync.Interop.Clients
             }
 
             bool isInCluster;
-            isInCluster = this.EcsManagementInteropClient.IsInCluster();
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:IsInCluster returned : {isInCluster}");
+            isInCluster = EcsManagementInteropClient.IsInCluster();
 
-            
             string clusterId = default(string);
             string clusterName = default(string);
 
             if (isInCluster)
             {
-                hr = this.EcsManagementInteropClient.GetClusterInfo(out clusterId, out clusterName);
-                //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Process:GetClusterInfo HRESULT: {hr} with Cluster Id = {clusterId} and Cluster name = {clusterName}");
+                hr = EcsManagementInteropClient.GetClusterInfo(out clusterId, out clusterName);
                 success = hr == 0;
 
                 if (!success)
@@ -192,17 +162,13 @@ namespace Commands.StorageSync.Interop.Clients
                 var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
                 ManagementObject info = searcher.Get().Cast<ManagementObject>().FirstOrDefault();
 
-                //Check.NotNull(nameof(info), info);
-                //Check.NotNull(nameof(info.Properties), info.Properties);
+                PropertyData versionProperty = info.Properties["Version"];
+                PropertyData servicePackMajorVersionProperty = info.Properties["ServicePackMajorVersion"];
 
-                PropertyData versionProperty = info.Properties["Version"];//Check.NotNull(nameof(versionProperty), info.Properties["Version"]);
-                PropertyData servicePackMajorVersionProperty = info.Properties["ServicePackMajorVersion"];//Check.NotNull(nameof(servicePackMajorVersionProperty), info.Properties["ServicePackMajorVersion"]);
-
-                string version = versionProperty.Value.ToString();//Check.NotNullOrEmpty(nameof(version), versionProperty.Value.ToString());
+                string version = versionProperty.Value.ToString();
                 var versionRegex = new Regex(@"^\d*\.\d*\.\d*$");
-                //Check.True(versionRegex.IsMatch(version), "version must be in the format #.#.#!");
 
-                string servicePackMajorVersion = servicePackMajorVersionProperty.Value.ToString();//Check.NotNullOrEmpty(nameof(servicePackMajorVersion), servicePackMajorVersionProperty.Value.ToString());
+                string servicePackMajorVersion = servicePackMajorVersionProperty.Value.ToString();
 
                 // we expect the version format to be something like 10.0.14943.0
                 // In order to construct this, we need to combine the version output with the service pack major version.
@@ -210,8 +176,6 @@ namespace Commands.StorageSync.Interop.Clients
             }
             catch (Exception)
             {
-                //HfsTracer.TraceException(ex, System.Diagnostics.Tracing.EventLevel.Warning, "Failed to obtain OS version from Win32_OperatingSystem");
-                
                 // Fall back to the old way
                 osVersion = Environment.OSVersion.Version.ToString();
             }
@@ -280,7 +244,7 @@ namespace Commands.StorageSync.Interop.Clients
                 }
             }
 
-            int hr = this.EcsManagementInteropClient.PersistSyncServerRegistration(
+            int hr = EcsManagementInteropClient.PersistSyncServerRegistration(
                 registeredServerResource.ManagementEndpointUri,
                 subscriptionId.ToString(),
                 storageSyncServiceName,
@@ -292,7 +256,6 @@ namespace Commands.StorageSync.Interop.Clients
                 registeredServerResource.ServiceLocation,
                 registeredServerResource.ResourceLocation);
 
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Register:PersistSyncServerRegistration HRESULT: {hr}");
             bool success = hr == 0;
 
             if (!success)
@@ -318,13 +281,11 @@ namespace Commands.StorageSync.Interop.Clients
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(
                 registrationInfo.ToJson(), 
                 monitoringDataPath);
-            //HfsTracer.TraceInfo($"SyncServerRegistrationClient:Register:RegisterMonitoringAgent HRESULT: {hr}");
             success = hr == 0;
 
             if (!success)
             {
-                //throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterMonitoringAgentFailed, hr, ErrorCategory.InvalidResult);
-                //HfsTracer.TraceWarning($"SyncServerRegistrationClient:Register:RegisterMonitoringAgent failed with HRESULT: {hr}. Error Code : {ServerRegistrationErrorCode.RegisterMonitoringAgentFailed}");
+                throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterMonitoringAgentFailed, hr, ErrorCategory.InvalidResult);
             }
 
             return success;
@@ -340,8 +301,6 @@ namespace Commands.StorageSync.Interop.Clients
             }
             catch (Exception)
             {
-                // log as warning and continue.
-                //HfsTracer.TraceWarning($"TryCreateDirectory: Cannot create directory {monitoringDataPath} with exception {ex.Message}");
             }
             return false;
         }

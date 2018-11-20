@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
                 if (!checkNameAvailabilityResult.NameAvailable.Value)
                 {
-                    throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(this.Name));
+                    throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
                 }
 
                 StorageSyncServiceCreateParameters createParameters = new StorageSyncServiceCreateParameters()
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
                 };
 
-                StorageSyncModels.StorageSyncService storageSyncService = this.StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);
+                StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);
 
                 WriteObject(storageSyncService);
             });

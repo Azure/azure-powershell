@@ -84,25 +84,6 @@
         {
             return input != null ? new Dictionary<string, string>(input) : new Dictionary<string, string>();
         }
-
-        //public static TEnum? ConvertToNullableEnumValueOrThrow<TEnum>(string inputValue, string propertyName) where TEnum : struct
-        //{
-        //    if (inputValue == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    if (!EnumUtility.TryParseEnumString(inputValue, out TEnum enumValue))
-        //    {
-        //        HfsTracer.TraceAndThrow(new HfsBackendException(
-        //            HfsErrorCodes.MgmtBadArgument,
-        //            string.Format(ErrorMessages.Error_InvalidResourceProperty, propertyName),
-        //            ErrorTargets.Validation,
-        //            null));
-        //    }
-
-        //    return enumValue;
-        //}
         #endregion
     }
 }

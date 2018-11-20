@@ -1,4 +1,4 @@
-﻿using Kailani.Hfs.V1.Data.Contracts.ResourceEntity;
+﻿using Microsoft.Azure.Commands.StorageSync.InternalObjects;
 using System;
 
 namespace Commands.StorageSync.Interop.DataObjects

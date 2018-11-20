@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
         {
             try
             {
-                //Check.NotNullOrEmpty(nameof(uriString), uriString);
                 return new Uri(uriString, uriKind);
             }
             catch (Exception)

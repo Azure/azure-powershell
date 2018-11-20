@@ -175,9 +175,9 @@
     <Compile Include="Interop\ISyncServerCertificateRollover.cs" />
     <Compile Include="Interop\SyncServerCertificateRolloverClient.cs" />
     <Compile Include="Common\HttpHeaderConstants.cs" />
-    <Compile Include="Kailani.Hfs.Data.Contracts\HybridMonitoringConfigurationResource.cs" />
-    <Compile Include="Kailani.Hfs.Data.Contracts\ServerRegistrationInformation.cs" />
-    <Compile Include="Kailani.Hfs.Data.Contracts\ServerRoleType.cs" />
+    <Compile Include="InternalObjects\HybridMonitoringConfigurationResource.cs" />
+    <Compile Include="InternalObjects\ServerRegistrationInformation.cs" />
+    <Compile Include="InternalObjects\ServerRoleType.cs" />
     <Compile Include="Common\JsonFormatter.cs" />
     <Compile Include="ListFiles.cs" />
     <Compile Include="Models\PSResourceBase.cs" />
@@ -249,7 +249,24 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="help\AzureRm.StorageSync.md" />
+    <None Include="help\Get-AzureRmStorageSyncCloudEndpoint.md" />
+    <None Include="help\Get-AzureRmStorageSyncGroup.md" />
+    <None Include="help\Get-AzureRmStorageSyncServer.md" />
+    <None Include="help\Get-AzureRmStorageSyncServerEndpoint.md" />
+    <None Include="help\Get-AzureRmStorageSyncService.md" />
     <None Include="help\Invoke-AzureRmStorageSyncCompatibilityCheck.md" />
+    <None Include="help\New-AzureRmStorageSyncCloudEndpoint.md" />
+    <None Include="help\New-AzureRmStorageSyncGroup.md" />
+    <None Include="help\New-AzureRmStorageSyncServerEndpoint.md" />
+    <None Include="help\New-AzureRmStorageSyncService.md" />
+    <None Include="help\Register-AzureRmStorageSyncServer.md" />
+    <None Include="help\Remove-AzureRmStorageSyncCloudEndpoint.md" />
+    <None Include="help\Remove-AzureRmStorageSyncGroup.md" />
+    <None Include="help\Remove-AzureRmStorageSyncServerEndpoint.md" />
+    <None Include="help\Remove-AzureRmStorageSyncService.md" />
+    <None Include="help\Reset-AzureRmStorageSyncServerCertificate.md" />
+    <None Include="help\Set-AzureRmStorageSyncServerEndpoint.md" />
+    <None Include="help\Unregister-AzureRmStorageSyncServer.md" />
     <None Include="Microsoft.Azure.Commands.StorageSync.Types.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

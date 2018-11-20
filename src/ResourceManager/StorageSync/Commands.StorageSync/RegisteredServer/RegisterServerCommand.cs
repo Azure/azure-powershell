@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     ManagementInteropConstants.CertificateProviderName,
                     ManagementInteropConstants.CertificateHashAlgorithm,
                     ManagementInteropConstants.CertificateKeyLength,
-                    Path.Combine(this.StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
+                    Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
                     (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData));
             }
