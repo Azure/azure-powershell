@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.Kusto.psd1"),
-                    "AzureRM.Kusto.ps1");
+                    "AzureRM.Resources.ps1");
                 try
                 {
                     if (scriptBuilder != null)

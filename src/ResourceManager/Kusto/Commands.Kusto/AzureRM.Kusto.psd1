@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Kusto.dll'
+RequiredAssemblies = '.\ArmManagementClient.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -66,26 +66,13 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Kusto.dll'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Management.Kusto.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Kusto.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmKustoCluster',
-               'Remove-AzureRmKustoWorkspaceCollection', 
-               'Get-AzureRmKustoWorkspaceCollection', 
-               'Get-AzureRmKustoWorkspaceCollectionAccessKeys', 
-               'Get-AzureRmKustoWorkspace', 
-               'New-AzureRmKustoWorkspaceCollection', 
-               'Reset-AzureRmKustoWorkspaceCollectionAccessKeys', 
-               'Resume-AzureRmKustoEmbeddedCapacity', 
-               'Suspend-AzureRmKustoEmbeddedCapacity', 
-               'Get-AzureRmKustoEmbeddedCapacity', 
-               'Remove-AzureRmKustoEmbeddedCapacity', 
-               'Update-AzureRmKustoEmbeddedCapacity', 
-               'Test-AzureRmKustoEmbeddedCapacity'
-               
+CmdletsToExport = 'New-AzureRmKustoCluster', 'Get-AzureRmKustoCluster', 'Remove-AzureRmKustoCluster' 
 
 # Variables to export from this module
 # VariablesToExport = @()
