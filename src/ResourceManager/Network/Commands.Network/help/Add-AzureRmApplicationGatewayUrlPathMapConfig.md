@@ -18,7 +18,8 @@ Adds an array of URL path mappings to a backend server pool.
 Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
  [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultRewriteRuleSetId <String>] [-DefaultRedirectConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -27,6 +28,7 @@ Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplication
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -145,6 +147,36 @@ Accept wildcard characters: False
 
 ### -DefaultRedirectConfigurationId
 ID of the application gateway default RedirectConfiguration
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRewriteRuleSet
+Application gateway default rewrite rule set
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRewriteRuleSetId
+ID of the application gateway default rewrite rule set
 
 ```yaml
 Type: System.String
