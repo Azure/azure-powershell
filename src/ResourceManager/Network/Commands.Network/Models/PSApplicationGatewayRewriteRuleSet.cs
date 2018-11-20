@@ -25,8 +25,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public List<PSApplicationGatewayRewriteRule> RewriteRules { get; set; }
+
+        public string Type { get; set; }
 
         [JsonIgnore]
         public string RewriteRulesText
