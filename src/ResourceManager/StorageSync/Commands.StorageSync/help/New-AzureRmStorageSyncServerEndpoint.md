@@ -15,7 +15,7 @@ This command will use to create server endpoint.
 ### ObjectParameterSet (Default)
 ```
 New-AzureRmStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -ServerResourceId <String>
- -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-CloudSeedData]
+ -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData]
  [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ New-AzureRmStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> -Name <String
 ```
 New-AzureRmStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -ServerResourceId <String> -ServerLocalPath <String> [-CloudTiering]
- [-VolumeFreeSpacePercent <Int32>] [-CloudSeedData] [-TierFilesOlderThanDays <Int32>]
+ [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData] [-TierFilesOlderThanDays <Int32>]
  [-CloudSeededDataFileShareUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ New-AzureRmStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSync
 ### ParentStringParameterSet
 ```
 New-AzureRmStorageSyncServerEndpoint [-ParentResourceId] <String> -Name <String> -ServerResourceId <String>
- -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-CloudSeedData]
+ -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData]
  [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ This command adds a serverendpoint provided all the name of the dependent resour
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -67,11 +67,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudSeedData
+### -CloudSeededData
 Cloud Seeded Data Parameter
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Cloud Seeded Data File Share Uri Parameter
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Cloud Tiering Parameter
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Name of the ServerEndpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ServerEndpointName
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 SyncGroup Object, normally passed through the parameter.
 
 ```yaml
-Type: PSSyncGroup
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
 Parameter Sets: ObjectParameterSet
 Aliases: SyncGroup
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 SyncGroup Parent Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ParentStringParameterSet
 Aliases: SyncGroupId
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Server Local Path Parameter
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 RegisteredServer Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -251,7 +251,7 @@ Accept wildcard characters: False
 Tier Files Older Than Days Parameter
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -266,7 +266,7 @@ Accept wildcard characters: False
 Volume Free Space Percent Parameter
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -278,8 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
