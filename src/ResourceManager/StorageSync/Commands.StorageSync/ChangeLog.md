@@ -20,6 +20,9 @@
 
 ## Current Release
 
+## Version 0.1.2
+* Update all cmdlets required to manager StorageSync ARM resources.
+
 ## Version 0.1.1
 * Updated to the latest version of the Azure ClientRuntime.
 

@@ -135,7 +135,7 @@
     <Compile Include="Common\StorageSyncClient.cs" />
     <Compile Include="Common\SystemUtility.cs" />
     <Compile Include="Interfaces\IValidationDescription.cs" />
-    <Compile Include="Interop\Clients\MockEcsManagementInteropClient.cs" />
+    <Compile Include="Interop\Clients\EcsManagementInteropClientPlayback.cs" />
     <Compile Include="Interop\Clients\EcsManagementInteropClient.cs" />
     <Compile Include="Interop\Clients\SyncServerRegistrationClient.cs" />
     <Compile Include="Interop\Clients\SyncServerRegistrationClientBase.cs" />

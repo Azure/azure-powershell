@@ -29,7 +29,7 @@
 * Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
 
 ## Version 5.1.1
-* Removed AzureRemoteApp Cmdles. Following is the list of removed Cmdlets
+* Removed AzureRemoteApp Cmdlets. Following is the list of removed Cmdlets
         - Add-AzureRemoteAppUser
         - Clear-AzureRemoteAppVmStaleAdObject
         - Copy-AzureRemoteAppUserDisk
