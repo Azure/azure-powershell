@@ -1,4 +1,4 @@
-## Milestone 2019-01-15
+## Milestone 2018-12-18
 
 ### General
 * Add all cmdlets related to Microsoft.StorageSync Resource Provider.
