@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -208,7 +208,15 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline', 
                'Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 
                'Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord', 
-               'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan'
+               'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 
+               'Get-AzureRmSqlInstance', 
+               'New-AzureRmSqlInstance', 
+               'Remove-AzureRmSqlInstance', 
+               'Set-AzureRmSqlInstance', 
+               'Get-AzureRmSqlInstanceDatabase', 
+               'New-AzureRmSqlInstanceDatabase', 
+               'Remove-AzureRmSqlInstanceDatabase', 
+               'Restore-AzureRmSqlInstanceDatabase' 
 
 # Variables to export from this module
 # VariablesToExport = @()

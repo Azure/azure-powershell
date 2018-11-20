@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Commands.Relay
         }
 
         #region Operations
-        public IEnumerable<OperationAttributes> GetOperations()
+        public IEnumerable<PSOperationAttributes> GetOperations()
         {
             var response = Client.Operations.List();
-            var resourceList = response.Select(resource => new OperationAttributes(resource));
+            var resourceList = response.Select(resource => new PSOperationAttributes(resource));
             return resourceList;
         }
 
@@ -57,33 +57,33 @@ namespace Microsoft.Azure.Commands.Relay
 
         #region Namespace
 
-        public CheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
+        public PSCheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
         {
             var response = Client.Namespaces.CheckNameAvailabilityMethod(new CheckNameAvailability(namespaceName));
-            return new CheckNameAvailabilityResultAttributes(response);
+            return new PSCheckNameAvailabilityResultAttributes(response);
         }
 
-        public RelayNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
+        public PSRelayNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
             var response = Client.Namespaces.Get(resourceGroupName, namespaceName);
-            return new RelayNamespaceAttributes(response);
+            return new PSRelayNamespaceAttributes(response);
         }
 
-        public IEnumerable<RelayNamespaceAttributes> ListNamespacesByResourceGroup(string resourceGroupName)
+        public IEnumerable<PSRelayNamespaceAttributes> ListNamespacesByResourceGroup(string resourceGroupName)
         {
             var response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            var resourceList = response.Select(resource => new RelayNamespaceAttributes(resource));
+            var resourceList = response.Select(resource => new PSRelayNamespaceAttributes(resource));
             return resourceList;
         }
 
-        public IEnumerable<RelayNamespaceAttributes> ListNamespacesBySubscription()
+        public IEnumerable<PSRelayNamespaceAttributes> ListNamespacesBySubscription()
         {
             var response = Client.Namespaces.List();
-            var resourceList = response.Select(resource => new RelayNamespaceAttributes(resource));
+            var resourceList = response.Select(resource => new PSRelayNamespaceAttributes(resource));
             return resourceList;
         }
 
-        public RelayNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags)
+        public PSRelayNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags)
         {
             RelayNamespace parameter = new RelayNamespace();
             parameter.Location = location;
@@ -94,10 +94,10 @@ namespace Microsoft.Azure.Commands.Relay
             }
             
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new RelayNamespaceAttributes(response);
+            return new PSRelayNamespaceAttributes(response);
         }
 
-        public RelayNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, RelayNamespaceAttirbutesUpdateParameter relaynamespace)
+        public PSRelayNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, RelayNamespaceAttirbutesUpdateParameter relaynamespace)
         {
 
             var parameter = new RelayUpdateParameters();
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Relay
             }
 
             var response = Client.Namespaces.Update(resourceGroupName, namespaceName, parameter);
-            return new RelayNamespaceAttributes(response);
+            return new PSRelayNamespaceAttributes(response);
         }
 
         public void BeginDeleteNamespace(string resourceGroupName, string namespaceName)
@@ -117,20 +117,20 @@ namespace Microsoft.Azure.Commands.Relay
             Client.Namespaces.Delete(resourceGroupName, namespaceName);
         }
 
-        public AuthorizationRuleAttributes GetNamespaceAuthorizationRule(string resourceGroupName, string namespaceName, string authRuleName)
+        public PSAuthorizationRuleAttributes GetNamespaceAuthorizationRule(string resourceGroupName, string namespaceName, string authRuleName)
         {
             var response = Client.Namespaces.GetAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
-            return new AuthorizationRuleAttributes(response);
+            return new PSAuthorizationRuleAttributes(response);
         }
 
-        public IEnumerable<AuthorizationRuleAttributes> ListNamespaceAuthorizationRules(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSAuthorizationRuleAttributes> ListNamespaceAuthorizationRules(string resourceGroupName, string namespaceName)
         {
             var response = Client.Namespaces.ListAuthorizationRules(resourceGroupName, namespaceName);
-            var resourceList = response.Select(resource => new AuthorizationRuleAttributes(resource));
+            var resourceList = response.Select(resource => new PSAuthorizationRuleAttributes(resource));
             return resourceList;
         }
 
-        public AuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authorizationRuleName, AuthorizationRuleAttributes parameter)
+        public PSAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authorizationRuleName, PSAuthorizationRuleAttributes parameter)
         {
             var parameter1 = new AuthorizationRule()
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Relay
             };
 
             var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authorizationRuleName, parameter1);
-            return new AuthorizationRuleAttributes(response);
+            return new PSAuthorizationRuleAttributes(response);
         }
 
         public void DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
@@ -148,40 +148,40 @@ namespace Microsoft.Azure.Commands.Relay
             Client.Namespaces.DeleteAuthorizationRule(resourceGroupName, namespaceName, authRuleName);            
         }
 
-        public AuthorizationRuleKeysAttributes GetNamespaceListKeys(string resourceGroupName, string namespaceName, string authRuleName)
+        public PSAuthorizationRuleKeysAttributes GetNamespaceListKeys(string resourceGroupName, string namespaceName, string authRuleName)
         {
             var listKeys = Client.Namespaces.ListKeys(resourceGroupName, namespaceName, authRuleName);
-            return new AuthorizationRuleKeysAttributes(listKeys);
+            return new PSAuthorizationRuleKeysAttributes(listKeys);
         }
 
-        public AuthorizationRuleKeysAttributes NamespaceRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
+        public PSAuthorizationRuleKeysAttributes NamespaceRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey, keyValue));
             else
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey, keyValue));
 
-            return new AuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
+            return new PSAuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
         }
 
         #endregion
 
         #region WcfRelay
-        public WcfRelayAttributes GetWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName)
+        public PSWcfRelayAttributes GetWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName)
         {
             var response = Client.WCFRelays.Get(resourceGroupName, namespaceName, wcfRelayName);
-            return new WcfRelayAttributes(response);
+            return new PSWcfRelayAttributes(response);
         }
 
-        public IEnumerable<WcfRelayAttributes> ListAllWcfRelay(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSWcfRelayAttributes> ListAllWcfRelay(string resourceGroupName, string namespaceName)
         {
             var response = Client.WCFRelays.ListByNamespace(resourceGroupName, namespaceName);
-            var resourceList = response.Select(resource => new WcfRelayAttributes(resource));
+            var resourceList = response.Select(resource => new PSWcfRelayAttributes(resource));
             return resourceList;
         }
 
-        public WcfRelayAttributes CreateOrUpdateWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName, WcfRelayAttributes parameter)
+        public PSWcfRelayAttributes CreateOrUpdateWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName, PSWcfRelayAttributes parameter)
         {
             
             var Parameter1 = new WcfRelay();
@@ -199,10 +199,10 @@ namespace Microsoft.Azure.Commands.Relay
                 Parameter1.UserMetadata = parameter.UserMetadata;
 
             var response = Client.WCFRelays.CreateOrUpdate(resourceGroupName, namespaceName, wcfRelayName, Parameter1);
-            return new WcfRelayAttributes(response);
+            return new PSWcfRelayAttributes(response);
         }
 
-        public WcfRelayAttributes UpdateWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName, WcfRelayAttributes parameter)
+        public PSWcfRelayAttributes UpdateWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName, PSWcfRelayAttributes parameter)
         {
 
             var Parameter1 = Client.WCFRelays.Get(resourceGroupName, namespaceName, wcfRelayName);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Relay
                 Parameter1.UserMetadata = parameter.UserMetadata;
 
             var response = Client.WCFRelays.CreateOrUpdate(resourceGroupName, namespaceName, wcfRelayName, Parameter1);
-            return new WcfRelayAttributes(response);
+            return new PSWcfRelayAttributes(response);
         }
 
 
@@ -220,20 +220,20 @@ namespace Microsoft.Azure.Commands.Relay
             Client.WCFRelays.Delete(resourceGroupName, namespaceName, wcfRelayName);
         }
 
-        public AuthorizationRuleAttributes GetWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
+        public PSAuthorizationRuleAttributes GetWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
         {
             var response = Client.WCFRelays.GetAuthorizationRule(resourceGroupName, namespaceName, wcfRelayName, authRuleName);
-            return new AuthorizationRuleAttributes(response);
+            return new PSAuthorizationRuleAttributes(response);
         }
 
-        public IEnumerable<AuthorizationRuleAttributes> ListWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName)
+        public IEnumerable<PSAuthorizationRuleAttributes> ListWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName)
         {
             var response = Client.WCFRelays.ListAuthorizationRules(resourceGroupName, namespaceName, wcfRelayName);
-            var resourceList = response.Select(resource => new AuthorizationRuleAttributes(resource));
+            var resourceList = response.Select(resource => new PSAuthorizationRuleAttributes(resource));
             return resourceList;
         }
 
-        public AuthorizationRuleAttributes CreateOrUpdateWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authorizationRuleName, AuthorizationRuleAttributes parameters)
+        public PSAuthorizationRuleAttributes CreateOrUpdateWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authorizationRuleName, PSAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new AuthorizationRule()
             {                
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Relay
             };
 
             var response = Client.WCFRelays.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, wcfRelayName, authorizationRuleName, parameter1);
-            return new AuthorizationRuleAttributes(response);
+            return new PSAuthorizationRuleAttributes(response);
         }
 
         public void DeleteWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
@@ -251,41 +251,41 @@ namespace Microsoft.Azure.Commands.Relay
             Client.WCFRelays.DeleteAuthorizationRule(resourceGroupName, namespaceName, wcfRelayName, authRuleName);            
         }
 
-        public AuthorizationRuleKeysAttributes GetWcfRelayListKeys(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
+        public PSAuthorizationRuleKeysAttributes GetWcfRelayListKeys(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
         {
             var listKeys = Client.WCFRelays.ListKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName);
-            return new AuthorizationRuleKeysAttributes(listKeys);
+            return new PSAuthorizationRuleKeysAttributes(listKeys);
         }
 
-        public AuthorizationRuleKeysAttributes WcfRelayRegenerateKeys(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName, string regenerateKeys)
+        public PSAuthorizationRuleKeysAttributes WcfRelayRegenerateKeys(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey, keyValue));
             else
-                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey, keyValue));
 
-            return new AuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
+            return new PSAuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
 
         }
 
         #endregion
 
         #region HybridConnections
-        public HybridConnectionAttibutes GetHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
+        public PSHybridConnectionAttibutes GetHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
         {
             var response = Client.HybridConnections.Get(resourceGroupName, namespaceName, hybridConnectionsName);
-            return new HybridConnectionAttibutes(response);
+            return new PSHybridConnectionAttibutes(response);
         }
 
-        public IEnumerable<HybridConnectionAttibutes> ListAllHybridConnections(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSHybridConnectionAttibutes> ListAllHybridConnections(string resourceGroupName, string namespaceName)
         {
             var response = Client.HybridConnections.ListByNamespace(resourceGroupName, namespaceName);
-            var resourceList = response.Select(resource => new HybridConnectionAttibutes(resource));
+            var resourceList = response.Select(resource => new PSHybridConnectionAttibutes(resource));
             return resourceList;
         }
 
-        public HybridConnectionAttibutes CreateOrUpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, HybridConnectionAttibutes parameter)
+        public PSHybridConnectionAttibutes CreateOrUpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, PSHybridConnectionAttibutes parameter)
         {
             var Parameter1 = new HybridConnection();
             
@@ -298,10 +298,10 @@ namespace Microsoft.Azure.Commands.Relay
                 Parameter1.UserMetadata = parameter.UserMetadata;
 
             var response = Client.HybridConnections.CreateOrUpdate(resourceGroupName, namespaceName, hybridConnectionsName, Parameter1);
-            return new HybridConnectionAttibutes(response);
+            return new PSHybridConnectionAttibutes(response);
         }
 
-        public HybridConnectionAttibutes UpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, HybridConnectionAttibutes parameter)
+        public PSHybridConnectionAttibutes UpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, PSHybridConnectionAttibutes parameter)
         {
             //var Parameter1 = Client.HybridConnections.Get(resourceGroupName, namespaceName, hybridConnectionsName);
             var Parameter1 = new HybridConnection();
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Relay
                 Parameter1.UserMetadata = parameter.UserMetadata;
 
             var response = Client.HybridConnections.CreateOrUpdate(resourceGroupName, namespaceName, hybridConnectionsName, Parameter1);
-            return new HybridConnectionAttibutes(response);
+            return new PSHybridConnectionAttibutes(response);
         }
 
         public void DeleteHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
@@ -317,20 +317,20 @@ namespace Microsoft.Azure.Commands.Relay
             Client.HybridConnections.Delete(resourceGroupName, namespaceName, hybridConnectionsName);
         }
 
-        public AuthorizationRuleAttributes GetHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
+        public PSAuthorizationRuleAttributes GetHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
         {
             var response = Client.HybridConnections.GetAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName);
-            return new AuthorizationRuleAttributes(response);
+            return new PSAuthorizationRuleAttributes(response);
         }
 
-        public IEnumerable<AuthorizationRuleAttributes> ListHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName)
+        public IEnumerable<PSAuthorizationRuleAttributes> ListHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName)
         {
             var response = Client.HybridConnections.ListAuthorizationRules(resourceGroupName, namespaceName, hybridConnectionsName);
-            var resourceList = response.Select(resource => new AuthorizationRuleAttributes(resource));
+            var resourceList = response.Select(resource => new PSAuthorizationRuleAttributes(resource));
             return resourceList;
         }
 
-        public AuthorizationRuleAttributes CreateOrUpdateHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authorizationRuleName, AuthorizationRuleAttributes parameters)
+        public PSAuthorizationRuleAttributes CreateOrUpdateHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authorizationRuleName, PSAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new AuthorizationRule()
             {                
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.Relay
 
 
             var response = Client.HybridConnections.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionsName, authorizationRuleName, parameter1);
-            return new AuthorizationRuleAttributes(response);
+            return new PSAuthorizationRuleAttributes(response);
         }
 
         public void DeleteHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
@@ -349,21 +349,21 @@ namespace Microsoft.Azure.Commands.Relay
             Client.HybridConnections.DeleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName);            
         }
 
-        public AuthorizationRuleKeysAttributes GethybridConnectionsListKeys(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
+        public PSAuthorizationRuleKeysAttributes GethybridConnectionsListKeys(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
         {
             var listKeys = Client.WCFRelays.ListKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName);
-            return new AuthorizationRuleKeysAttributes(listKeys);
+            return new PSAuthorizationRuleKeysAttributes(listKeys);
         }
 
-        public AuthorizationRuleKeysAttributes HybridConnectionsRegenerateKeys(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName, string regenerateKeys)
+        public PSAuthorizationRuleKeysAttributes HybridConnectionsRegenerateKeys(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey, keyValue));
             else
-                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey,keyValue));
 
-            return new AuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
+            return new PSAuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
 
         }
 

@@ -43,20 +43,20 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.Name = variable.Name;
-            this.CreationTime = variable.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = variable.Properties.LastModifiedTime.ToLocalTime();
+            this.CreationTime = variable.CreationTime.ToLocalTime();
+            this.LastModifiedTime = variable.LastModifiedTime.ToLocalTime();
 
-            if (variable.Properties.Value == null || variable.Properties.IsEncrypted)
+            if (variable.Value == null || (variable.IsEncrypted.HasValue && variable.IsEncrypted.Value))
             {
                 this.Value = null;
             }
             else
             {
-                this.Value = PowerShellJsonConverter.Deserialize(variable.Properties.Value);
+                this.Value = PowerShellJsonConverter.Deserialize(variable.Value);
             }
 
-            this.Description = variable.Properties.Description;
-            this.Encrypted = variable.Properties.IsEncrypted;
+            this.Description = variable.Description;
+            this.Encrypted = variable.IsEncrypted ?? false;
             this.AutomationAccountName = automationAccoutName;
         }
 

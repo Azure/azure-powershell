@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = ForVault,
             HelpMessage = "Specifies the name of a key vault. This cmdlet modifies the access policy for the key vault that this parameter specifies.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

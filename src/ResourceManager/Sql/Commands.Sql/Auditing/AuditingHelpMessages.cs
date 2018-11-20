@@ -16,6 +16,8 @@ If this is the first time an auditing policy is defined and you do not specify t
 
         public const string RetentionInDaysHelpMessage = "The number of retention days for the audit logs.";
 
+        public const string PredicateExpressionHelpMessage = "The statement of the Where Clause used to filter audit logs.";
+
         public const string AuditActionHelpMessage =
 @"The set of audit actions.  
 The supported actions to audit are:  

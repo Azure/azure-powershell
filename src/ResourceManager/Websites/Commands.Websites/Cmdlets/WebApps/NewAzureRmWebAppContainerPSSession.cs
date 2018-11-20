@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -23,11 +24,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     public class NewAzureRmWebAppContainerPSSession : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "Name")]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Create the PowerShell session without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParameterSet2Name)
