@@ -41,15 +41,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = module.Name;
 
-            if (module.Properties == null) return;
+            if (module == null) return;
 
-            this.CreationTime = module.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = module.Properties.LastModifiedTime.ToLocalTime();
-            this.IsGlobal = module.Properties.IsGlobal;
-            this.Version = module.Properties.Version;
-            this.ProvisioningState = module.Properties.ProvisioningState.ToString();
-            this.ActivityCount = module.Properties.ActivityCount;
-            this.SizeInBytes = module.Properties.SizeInBytes;
+            this.CreationTime = module.CreationTime.ToLocalTime();
+            this.LastModifiedTime = module.LastModifiedTime.ToLocalTime();
+            this.IsGlobal = module.IsGlobal.HasValue ? module.IsGlobal.Value : false;
+            this.Version = module.Version;
+            this.ProvisioningState = module.ProvisioningState.ToString();
+            this.ActivityCount = module.ActivityCount.HasValue ? module.ActivityCount.Value : 0;
+            this.SizeInBytes = module.SizeInBytes.HasValue ? module.SizeInBytes.Value : 0;
         }
 
         /// <summary>

@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No value specified for -EndDate parameter; setting the value to one year after start date..
+        /// </summary>
+        internal static string DefaultEndDateUsed {
+            get {
+                return ResourceManager.GetString("DefaultEndDateUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting the deployment ....
         /// </summary>
         internal static string DeleteDeploymentMessage {
