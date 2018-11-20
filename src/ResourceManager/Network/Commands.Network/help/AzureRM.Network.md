@@ -970,7 +970,7 @@ Sets the redirect configuration on an existing Application Gateway.
 Modifies a request routing rule for an application gateway.
 
 ### [Set-AzureRmApplicationGatewayRewriteRuleSet](Set-AzureRmApplicationGatewayRewriteRuleSet.md)
-Modifies a rewrite rule set for an application gateway.
+Modifies a rewrite rule set in an application gateway.
 
 ### [Set-AzureRmApplicationGatewaySku](Set-AzureRmApplicationGatewaySku.md)
 Modifies the SKU of an application gateway.
@@ -1148,4 +1148,3 @@ Update-AzureRmVpnGateway updates a scalable VPN Gateway to the appropriate goal 
 
 ### [Update-AzureRmVpnSite](Update-AzureRmVpnSite.md)
 Updates a VpnSite representing a customer branch to an intended goal state.
-
