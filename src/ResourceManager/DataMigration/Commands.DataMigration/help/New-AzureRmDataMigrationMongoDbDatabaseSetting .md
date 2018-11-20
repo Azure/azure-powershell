@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datam
 schema: 2.0.0
 ---
 
-# New-AzureRmDmsMongoDbDatabaseSetting
+# New-AzureRmDataMigrationMongoDbDatabaseSetting 
 
 ## SYNOPSIS
 Creates database setting for migration for the mongoDb migration
@@ -13,18 +13,18 @@ Creates database setting for migration for the mongoDb migration
 ## SYNTAX
 
 ```
-New-AzureRmDmsMongoDbDatabaseSetting -Name <Name> [-RU <RU>] -Collections <Collections>
+New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name <Name> [-RU <RU>] -Collections <Collections>
 ```
 
 ## DESCRIPTION
-The New-AzureRmDmsMongoDbDatabaseSetting cmdlet creates the migration setting object that specifies the throughput and delete behavior. 
+The New-AzureRmDataMigrationMongoDbDatabaseSetting  cmdlet creates the migration setting object that specifies the throughput and delete behavior. 
 The output is a key value pair with name of collection and value of the setting, which can be used in invoking the migration task.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDmsMongoDbDatabaseSetting -Name mycollection -RU 1000 -Collections @(coll1, coll2)
+PS C:\> New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -Collections @(coll1, coll2)
 
 ```
 

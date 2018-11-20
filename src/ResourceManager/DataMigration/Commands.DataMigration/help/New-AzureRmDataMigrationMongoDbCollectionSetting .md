@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datam
 schema: 2.0.0
 ---
 
-# New-AzureRmDmsMongoDbCollectionSetting
+# New-AzureRmDataMigrationMongoDbCollectionSetting
 
 ## SYNOPSIS
 Creates collection setting for migration according for the mongoDb migration
@@ -13,11 +13,11 @@ Creates collection setting for migration according for the mongoDb migration
 ## SYNTAX
 
 ```
-New-AzureRmDmsMongoDbCollectionSetting -Name <Name> [-TargetRU <TargetRU>] [-CanDelete] [-ShardKeyFields <ShardKeyFields>]
+New-AzureRmDataMigrationMongoDbCollectionSetting -Name <Name> [-TargetRU <TargetRU>] [-CanDelete] [-ShardKeyFields <ShardKeyFields>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDmsMongoDbCollectionSetting cmdlet creates the migration setting object that specifies the throughput and delete behavior.
+The New-AzureRmDataMigrationMongoDbCollectionSetting cmdlet creates the migration setting object that specifies the throughput and delete behavior.
 The output the cmdlet is key value pair with name of the collection, and value of the setting. The output is used in assembling
 the database level settings for migration.
 
@@ -25,7 +25,7 @@ the database level settings for migration.
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDmsMongoDbCollectionSetting -Name myCollection -TargetRU 1000 -CanDelete -ShardKeyFields "_id:-1,age:1,name"
+PS C:\> New-AzureRmDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRU 1000 -CanDelete -ShardKeyFields "_id:-1,age:1,name"
 
 ```
 

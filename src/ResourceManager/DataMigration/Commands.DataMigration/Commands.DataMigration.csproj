@@ -122,8 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="help\Invoke-AzureRmDataMigrationCommand.md" />
-    <None Include="help\New-AzureRmDmsMongoDbDatabaseSetting.md" />
-    <None Include="help\New-AzureRmDmsMongoDbConnectionSetting.md" />
+    <None Include="help\New-AzureRmDataMigrationMongoDbDatabaseSetting .md" />
+    <None Include="help\New-AzureRmDataMigrationMongoDbCollectionSetting .md" />
     <None Include="help\New-AzureRmDataMigrationSelectedDBObject.md" />
     <None Include="help\New-AzureRmDataMigrationSyncSelectedDBObject.md" />
     <None Include="MSSharedLibKey.snk" />
