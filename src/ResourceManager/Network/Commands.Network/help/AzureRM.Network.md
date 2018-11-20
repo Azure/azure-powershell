@@ -41,6 +41,9 @@ Adds a redirect configuration to an Application Gateway.
 ### [Add-AzureRmApplicationGatewayRequestRoutingRule](Add-AzureRmApplicationGatewayRequestRoutingRule.md)
 Adds a request routing rule to an application gateway.
 
+### [Add-AzureRmApplicationGatewayRewriteRuleSet](Add-AzureRmApplicationGatewayRewriteRuleSet.md)
+Adds a rewrite rule set to an application gateway.
+
 ### [Add-AzureRmApplicationGatewaySslCertificate](Add-AzureRmApplicationGatewaySslCertificate.md)
 Adds an SSL certificate to an application gateway.
 
@@ -49,6 +52,9 @@ Adds a trusted root certificate to an application gateway.
 
 ### [Add-AzureRmApplicationGatewayUrlPathMapConfig](Add-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Adds an array of URL path mappings to a backend server pool.
+
+### [Add-AzureRmDelegation](Add-AzureRmDelegation.md)
+Adds a delegation to a subnet.
 
 ### [Add-AzureRmExpressRouteCircuitAuthorization](Add-AzureRmExpressRouteCircuitAuthorization.md)
 Adds an ExpressRoute circuit authorization.
@@ -84,7 +90,7 @@ Adds a rule configuration to a load balancer.
 Adds a network interface IP configuration to a network interface.
 
 ### [Add-AzureRmNetworkInterfaceTapConfig](Add-AzureRmNetworkInterfaceTapConfig.md)
-{{Fill in the Synopsis}}
+Creates a TapConfiguration resource associated to a NetworkInterface. This will reference to an existing VirtualNetworkTap resource.
 
 ### [Add-AzureRmNetworkSecurityRuleConfig](Add-AzureRmNetworkSecurityRuleConfig.md)
 Adds a network security rule configuration to a network security group.
@@ -120,7 +126,7 @@ Gets an application gateway.
 Gets an authentication certificate for an application gateway.
 
 ### [Get-AzureRmApplicationGatewayAutoscaleConfiguration](Get-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Gets the autoscale configuration for an application gateway.
+Gets the Autoscale Configuration of the Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayAvailableSslOptions](Get-AzureRmApplicationGatewayAvailableSslOptions.md)
 Gets all available ssl options for ssl policy for Application Gateway.
@@ -161,6 +167,9 @@ Gets an existing redirect configuration from an Application Gateway.
 ### [Get-AzureRmApplicationGatewayRequestRoutingRule](Get-AzureRmApplicationGatewayRequestRoutingRule.md)
 Gets the request routing rule of an application gateway.
 
+### [Get-AzureRmApplicationGatewayRewriteRuleSet](Get-AzureRmApplicationGatewayRewriteRuleSet.md)
+Gets the rewrite rule set of an application gateway.
+
 ### [Get-AzureRmApplicationGatewaySku](Get-AzureRmApplicationGatewaySku.md)
 Gets the SKU of an application gateway.
 
@@ -174,7 +183,7 @@ Gets the SSL policy of an application gateway.
 Gets Predefined SSL Policies provided by Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayTrustedRootCertificate](Get-AzureRmApplicationGatewayTrustedRootCertificate.md)
-Gets Trusted Root Certificates of an application gateway.
+Gets the Trusted Root Certificate with a specific name from the Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
@@ -185,11 +194,17 @@ Gets the WAF configuration of an application gateway.
 ### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
 Gets an application security group.
 
+### [Get-AzureRmAvailableServiceDelegation](Get-AzureRmAvailableServiceDelegation.md)
+Get available service delegations in the region.
+
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 Provides a list of all services / regions, BGP communities, and associated prefixes.
 
 ### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
 Gets a DDoS protection plan.
+
+### [Get-AzureRmDelegation](Get-AzureRmDelegation.md)
+Get a delegation (or all of the delegations) on a given subnet.
 
 ### [Get-AzureRmEffectiveNetworkSecurityGroup](Get-AzureRmEffectiveNetworkSecurityGroup.md)
 Gets the effective network security group of a network interface.
@@ -227,6 +242,9 @@ Gets a list ExpressRoute service providers and their attributes.
 ### [Get-AzureRmFirewall](Get-AzureRmFirewall.md)
 Gets a Azure Firewall.
 
+### [Get-AzureRmInterfaceEndpoint](Get-AzureRmInterfaceEndpoint.md)
+The Get-AzureRmInterfaceEndpoint cmdlet gets a Interface Endpoint.
+
 ### [Get-AzureRmLoadBalancer](Get-AzureRmLoadBalancer.md)
 Gets a load balancer.
 
@@ -260,11 +278,11 @@ Gets a network interface.
 ### [Get-AzureRmNetworkInterfaceIpConfig](Get-AzureRmNetworkInterfaceIpConfig.md)
 Gets a network interface IP configuration for a network interface.
 
+### [Get-AzureRmNetworkInterfaceTapConfig](Get-AzureRmNetworkInterfaceTapConfig.md)
+Gets a Tap configuration resource.
+
 ### [Get-AzureRmNetworkProfile](Get-AzureRmNetworkProfile.md)
 Gets an existing network profile top level resource
-
-### [Get-AzureRmNetworkInterfaceTapConfig](Get-AzureRmNetworkInterfaceTapConfig.md)
-{{Fill in the Synopsis}}
 
 ### [Get-AzureRmNetworkSecurityGroup](Get-AzureRmNetworkSecurityGroup.md)
 Gets a network security group.
@@ -375,7 +393,7 @@ Gets the virtual network peering.
 Gets a subnet in a virtual network.
 
 ### [Get-AzureRmVirtualNetworkTap](Get-AzureRmVirtualNetworkTap.md)
-{{Fill in the Synopsis}}
+Gets a virtual network tap
 
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
@@ -423,7 +441,7 @@ Creates an application gateway.
 Creates an authentication certificate for an application gateway.
 
 ### [New-AzureRmApplicationGatewayAutoscaleConfiguration](New-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Creates the autoscale configuration for an application gateway.
+Creates a Autoscale Configuration for the Application Gateway.
 
 ### [New-AzureRmApplicationGatewayBackendAddressPool](New-AzureRmApplicationGatewayBackendAddressPool.md)
 Creates a back-end address pool for an application gateway.
@@ -464,6 +482,18 @@ Creates a redirect configuration for an application gateway.
 ### [New-AzureRmApplicationGatewayRequestRoutingRule](New-AzureRmApplicationGatewayRequestRoutingRule.md)
 Creates a request routing rule for an application gateway.
 
+### [New-AzureRmApplicationGatewayRewriteRule](New-AzureRmApplicationGatewayRewriteRule.md)
+Creates a rewrite rule for an application gateway.
+
+### [New-AzureRmApplicationGatewayRewriteRuleActionSet](New-AzureRmApplicationGatewayRewriteRuleActionSet.md)
+Creates a rewrite rule action set for an application gateway.
+
+### [New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration](New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration.md)
+Creates a rewrite rule header configuration for an application gateway.
+
+### [New-AzureRmApplicationGatewayRewriteRuleSet](New-AzureRmApplicationGatewayRewriteRuleSet.md)
+Creates a rewrite rule set for an application gateway.
+
 ### [New-AzureRmApplicationGatewaySku](New-AzureRmApplicationGatewaySku.md)
 Creates a SKU for an application gateway.
 
@@ -485,14 +515,11 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
-### [New-AzureRmContainerNicConfig](New-AzureRmContainerNicConfig.md)
-Creates a new container network interface configuration object.
-
-### [New-AzureRmContainerNicConfigIpConfig](New-AzureRmContainerNicConfigIpConfig.md)
-Creates a container nic configuration ip configuration object.
-
 ### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
 Creates a DDoS protection plan.
+
+### [New-AzureRmDelegation](New-AzureRmDelegation.md)
+Creates a service delegation.
 
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
@@ -511,6 +538,12 @@ Creates a Firewall Application Rule.
 
 ### [New-AzureRmFirewallApplicationRuleCollection](New-AzureRmFirewallApplicationRuleCollection.md)
 Creates a collection of Firewall application rules.
+
+### [New-AzureRmFirewallNatRule](New-AzureRmFirewallNatRule.md)
+Creates a Firewall NAT Rule.
+
+### [New-AzureRmFirewallNatRuleCollection](New-AzureRmFirewallNatRuleCollection.md)
+Creates a collection of Firewall NAT rules.
 
 ### [New-AzureRmFirewallNetworkRule](New-AzureRmFirewallNetworkRule.md)
 Creates a Firewall Network Rule.
@@ -633,7 +666,7 @@ Creates an IP Configuration for a Virtual Network Gateway
 Creates a virtual network subnet configuration.
 
 ### [New-AzureRmVirtualNetworkTap](New-AzureRmVirtualNetworkTap.md)
-{{Fill in the Synopsis}}
+Creates a VirtualNetworkTap resource.
 
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
 Creates an Azure Virtual WAN.
@@ -670,7 +703,7 @@ Removes an application gateway.
 Removes an authentication certificate from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayAutoscaleConfiguration](Remove-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Removes the autoscale configuration from an application gateway.
+Removes Autoscale Configuration from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayBackendAddressPool](Remove-AzureRmApplicationGatewayBackendAddressPool.md)
 Removes a back-end address pool from an application gateway.
@@ -702,6 +735,9 @@ Removes a redirect configuration from an existing Application Gateway.
 ### [Remove-AzureRmApplicationGatewayRequestRoutingRule](Remove-AzureRmApplicationGatewayRequestRoutingRule.md)
 Removes a request routing rule from an application gateway.
 
+### [Remove-AzureRmApplicationGatewayRewriteRuleSet](Remove-AzureRmApplicationGatewayRewriteRuleSet.md)
+Removes a rewrite rule set from an application gateway.
+
 ### [Remove-AzureRmApplicationGatewaySslCertificate](Remove-AzureRmApplicationGatewaySslCertificate.md)
 Removes an SSL certificate from an Azure application gateway.
 
@@ -719,6 +755,9 @@ Removes an application security group.
 
 ### [Remove-AzureRmDdosProtectionPlan](Remove-AzureRmDdosProtectionPlan.md)
 Removes a DDoS protection plan.
+
+### [Remove-AzureRmDelegation](Remove-AzureRmDelegation.md)
+Removes a service delegation from the provided subnet.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
@@ -768,11 +807,11 @@ Removes a network interface.
 ### [Remove-AzureRmNetworkInterfaceIpConfig](Remove-AzureRmNetworkInterfaceIpConfig.md)
 Removes a network interface IP configuration from a network interface.
 
+### [Remove-AzureRmNetworkInterfaceTapConfig](Remove-AzureRmNetworkInterfaceTapConfig.md)
+Removes a tap configuration from given network interface
+
 ### [Remove-AzureRmNetworkProfile](Remove-AzureRmNetworkProfile.md)
 Removes a network profile.
-
-### [Remove-AzureRmNetworkInterfaceTapConfig](Remove-AzureRmNetworkInterfaceTapConfig.md)
-{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmNetworkSecurityGroup](Remove-AzureRmNetworkSecurityGroup.md)
 Removes a network security group.
@@ -841,7 +880,7 @@ Removes a virtual network peering.
 Removes a subnet configuration from a virtual network.
 
 ### [Remove-AzureRmVirtualNetworkTap](Remove-AzureRmVirtualNetworkTap.md)
-{{Fill in the Synopsis}}
+Removes a virtual network tap.
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
 Removes an Azure Virtual WAN.
@@ -880,7 +919,7 @@ Updates an application gateway.
 Updates an authentication certificate for an application gateway.
 
 ### [Set-AzureRmApplicationGatewayAutoscaleConfiguration](Set-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Updates the autoscale configuration for an application gateway.
+Updates Autoscale Configuration of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayBackendAddressPool](Set-AzureRmApplicationGatewayBackendAddressPool.md)
 Updates a back-end address pool for an application gateway.
@@ -912,6 +951,9 @@ Sets the redirect configuration on an existing Application Gateway.
 ### [Set-AzureRmApplicationGatewayRequestRoutingRule](Set-AzureRmApplicationGatewayRequestRoutingRule.md)
 Modifies a request routing rule for an application gateway.
 
+### [Set-AzureRmApplicationGatewayRewriteRuleSet](Set-AzureRmApplicationGatewayRewriteRuleSet.md)
+Modifies a rewrite rule set for an application gateway.
+
 ### [Set-AzureRmApplicationGatewaySku](Set-AzureRmApplicationGatewaySku.md)
 Modifies the SKU of an application gateway.
 
@@ -922,7 +964,7 @@ Sets the goal state of an SSL certificate.
 Modifies the SSL policy of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayTrustedRootCertificate](Set-AzureRmApplicationGatewayTrustedRootCertificate.md)
-Updates a Trusted Root Certificate for an application gateway.
+Updates a Trusted Root Certificate of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayUrlPathMapConfig](Set-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Sets configuration for an array of URL path mappings to a backend server pool.
@@ -969,11 +1011,11 @@ Sets the goal state for a network interface.
 ### [Set-AzureRmNetworkInterfaceIpConfig](Set-AzureRmNetworkInterfaceIpConfig.md)
 Sets the goal state for an Azure network interface IP configuration.
 
+### [Set-AzureRmNetworkInterfaceTapConfig](Set-AzureRmNetworkInterfaceTapConfig.md)
+Sets the goal state of a Tap Configuration
+
 ### [Set-AzureRmNetworkProfile](Set-AzureRmNetworkProfile.md)
 Sets the goal state for an existing network profile
-
-### [Set-AzureRmNetworkInterfaceTapConfig](Set-AzureRmNetworkInterfaceTapConfig.md)
-{{Fill in the Synopsis}}
 
 ### [Set-AzureRmNetworkSecurityGroup](Set-AzureRmNetworkSecurityGroup.md)
 Sets the goal state for a network security group.
@@ -1036,7 +1078,7 @@ Configures a virtual network peering.
 Configures the goal state for a subnet configuration in a virtual network.
 
 ### [Set-AzureRmVirtualNetworkTap](Set-AzureRmVirtualNetworkTap.md)
-{{Fill in the Synopsis}}
+Sets the goal state for a virtual network tap.
 
 ### [Set-AzureRmVpnClientIpsecParameter](Set-AzureRmVpnClientIpsecParameter.md)
 Sets the vpn ipsec parameters for existing virtual network gateway.
