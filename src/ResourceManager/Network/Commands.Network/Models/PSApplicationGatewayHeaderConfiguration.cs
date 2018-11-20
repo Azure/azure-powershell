@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayHeaderConfiguration
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string HeaderName { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string HeaderValue { get; set; }
     }
 }
