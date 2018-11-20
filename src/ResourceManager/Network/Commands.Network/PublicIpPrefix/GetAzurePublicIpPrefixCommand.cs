@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix"), OutputType(typeof(PSPublicIpPrefix))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", DefaultParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List), OutputType(typeof(PSPublicIpPrefix))]
     public class GetAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
