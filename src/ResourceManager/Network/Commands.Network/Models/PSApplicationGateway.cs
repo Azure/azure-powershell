@@ -122,6 +122,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string RewriteRuleSetsText
+        {
+            get { return JsonConvert.SerializeObject(RewriteRuleSets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string RequestRoutingRulesText
         {
             get { return JsonConvert.SerializeObject(RequestRoutingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
