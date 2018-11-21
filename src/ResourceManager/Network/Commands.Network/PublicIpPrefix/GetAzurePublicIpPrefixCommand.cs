@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", DefaultParameterSetName = GetAzurePublicIpPrefixParameterSetNames.Default), OutputType(typeof(PSPublicIpPrefix))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", DefaultParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List), OutputType(typeof(PSPublicIpPrefix))]
     public class GetAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.",
+            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -109,6 +114,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         public const string GetByName = "GetByNameParameterSet";
         public const string GetByResourceId = "GetByResourceIdParameterSet";
+        public const string List = "ListParameterSet";
 
         // The Default
         public const string Default = GetByName;
