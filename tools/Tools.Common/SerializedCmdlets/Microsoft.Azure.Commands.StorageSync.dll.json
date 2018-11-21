@@ -2,8 +2,8 @@
   "Cmdlets": [
     {
       "VerbName": "Invoke",
-      "NounName": "AzureRmStorageSyncCompatibilityCheck",
-      "Name": "Invoke-AzureRmStorageSyncCompatibilityCheck",
+      "NounName": "AzStorageSyncCompatibilityCheck",
+      "Name": "Invoke-AzStorageSyncCompatibilityCheck",
       "ClassName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.InvokeCompatibilityCheckCmdlet",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,

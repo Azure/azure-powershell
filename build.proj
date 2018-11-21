@@ -88,6 +88,7 @@
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
     <StackSolution    Include="$(LibrarySourceFolder)\StackAdmin\Stack.sln" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
+    <StaticAnalysisNetcore   Include=".\tools\StaticAnalysis\StaticAnalysisNetcore.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
   </ItemGroup>
@@ -358,6 +359,9 @@
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
+    <CallTarget targets="DependencyAnalysisNetcore" ContinueOnError="ErrorAndContinue" Condition="'$(RunStaticAnalysis)' == 'true'" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" Condition="'$(RunStaticAnalysis)' == 'true'" />
+
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
     
@@ -544,6 +548,26 @@
     <Exec Command="$(PackageDirectory)\StaticAnalysis.exe -p $(StackPackageFolder)\$(Configuration) -r $(StackPackageFolder)"
           Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="True"/>
+
+    <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
+  </Target>
+
+  <!-- Run Validation -->
+  <Target Name="DependencyAnalysisNetcore"
+          Condition="'$(SkipDependencyAnalysis)' == 'false'">
+
+    <MSBuild  Projects="@(StaticAnalysisNetcore)"
+              Targets="Build"
+              Properties="Configuration=Debug;Platform=Any CPU"
+              ContinueOnError="false" />
+
+    <Message Importance="high" Text="Running dependency analysis..." />
+
+    <PropertyGroup>
+        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
+    </PropertyGroup>
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -m @(ModulesChanged)"
+          Condition="'$(Scope)' != 'Stack'"/>
 
     <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
   </Target>

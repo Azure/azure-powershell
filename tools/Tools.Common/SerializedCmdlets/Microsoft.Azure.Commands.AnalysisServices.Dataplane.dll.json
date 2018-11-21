@@ -2,8 +2,8 @@
   "Cmdlets": [
     {
       "VerbName": "Add",
-      "NounName": "AzureAnalysisServicesAccount",
-      "Name": "Add-AzureAnalysisServicesAccount",
+      "NounName": "AzAnalysisServicesAccount",
+      "Name": "Add-AzAnalysisServicesAccount",
       "ClassName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AddAzureASAccountCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -463,13 +463,13 @@
         }
       ],
       "AliasList": [
-        "Login-AzureAsAccount"
+        "Login-AzAsAccount"
       ]
     },
     {
       "VerbName": "Export",
-      "NounName": "AzureAnalysisServicesInstanceLog",
-      "Name": "Export-AzureAnalysisServicesInstanceLog",
+      "NounName": "AzAnalysisServicesInstanceLog",
+      "Name": "Export-AzAnalysisServicesInstanceLog",
       "ClassName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.ExportAzureAnalysisServerLog",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -628,13 +628,13 @@
         }
       ],
       "AliasList": [
-        "Export-AzureAsInstanceLog"
+        "Export-AzAsInstanceLog"
       ]
     },
     {
       "VerbName": "Sync",
-      "NounName": "AzureAnalysisServicesInstance",
-      "Name": "Sync-AzureAnalysisServicesInstance",
+      "NounName": "AzAnalysisServicesInstance",
+      "Name": "Sync-AzAnalysisServicesInstance",
       "ClassName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.SynchronizeAzureAzureAnalysisServer",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -833,13 +833,13 @@
         }
       ],
       "AliasList": [
-        "Sync-AzureAsInstance"
+        "Sync-AzAsInstance"
       ]
     },
     {
       "VerbName": "Restart",
-      "NounName": "AzureAnalysisServicesInstance",
-      "Name": "Restart-AzureAnalysisServicesInstance",
+      "NounName": "AzAnalysisServicesInstance",
+      "Name": "Restart-AzAnalysisServicesInstance",
       "ClassName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.RestartAzureAnalysisServer",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -956,7 +956,7 @@
         }
       ],
       "AliasList": [
-        "Restart-AzureAsInstance"
+        "Restart-AzAsInstance"
       ]
     }
   ],
