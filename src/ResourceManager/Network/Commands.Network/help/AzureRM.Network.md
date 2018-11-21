@@ -20,6 +20,9 @@ Adds a back-end address pool to an application gateway.
 ### [Add-AzureRmApplicationGatewayBackendHttpSettings](Add-AzureRmApplicationGatewayBackendHttpSettings.md)
 Adds back-end HTTP settings to an application gateway.
 
+### [Add-AzureRmApplicationGatewayCustomError](Add-AzureRmApplicationGatewayCustomError.md)
+Adds a custom error to an application gateway.
+
 ### [Add-AzureRmApplicationGatewayFrontendIPConfig](Add-AzureRmApplicationGatewayFrontendIPConfig.md)
 Adds a front-end IP configuration to an application gateway.
 
@@ -28,6 +31,9 @@ Adds a front-end port to an application gateway.
 
 ### [Add-AzureRmApplicationGatewayHttpListener](Add-AzureRmApplicationGatewayHttpListener.md)
 Adds an HTTP listener to an application gateway.
+
+### [Add-AzureRmApplicationGatewayHttpListenerCustomError](Add-AzureRmApplicationGatewayHttpListenerCustomError.md)
+Adds a custom error to a http listener of an application gateway.
 
 ### [Add-AzureRmApplicationGatewayIPConfiguration](Add-AzureRmApplicationGatewayIPConfiguration.md)
 Adds an IP configuration to an application gateway.
@@ -143,6 +149,9 @@ Gets the back-end HTTP settings of an application gateway.
 ### [Get-AzureRmApplicationGatewayConnectionDraining](Get-AzureRmApplicationGatewayConnectionDraining.md)
 Gets the connection draining configuration of a back-end HTTP settings object.
 
+### [Get-AzureRmApplicationGatewayCustomError](Get-AzureRmApplicationGatewayCustomError.md)
+Gets custom error(s) from an application gateway.
+
 ### [Get-AzureRmApplicationGatewayFrontendIPConfig](Get-AzureRmApplicationGatewayFrontendIPConfig.md)
 Gets the front-end IP configuration of an application gateway.
 
@@ -151,6 +160,9 @@ Gets the front-end port of an application gateway.
 
 ### [Get-AzureRmApplicationGatewayHttpListener](Get-AzureRmApplicationGatewayHttpListener.md)
 Gets the HTTP listener of an application gateway.
+
+### [Get-AzureRmApplicationGatewayHttpListenerCustomError](Get-AzureRmApplicationGatewayHttpListenerCustomError.md)
+Gets custom error(s) from a http listener of an application gateway.
 
 ### [Get-AzureRmApplicationGatewayIPConfiguration](Get-AzureRmApplicationGatewayIPConfiguration.md)
 Gets the IP configuration of an application gateway.
@@ -230,11 +242,23 @@ Gets a route table summary of an ExpressRoute circuit.
 ### [Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)
 Gets usage statistics of an ExpressRoute circuit.
 
+### [Get-AzureRmExpressRoutePort](Get-AzureRmExpressRoutePort.md)
+Gets an Azure ExpressRoutePort resource.
+
+### [Get-AzureRmExpressRoutePortLinkConfig](Get-AzureRmExpressRoutePortLinkConfig.md)
+Gets an ExpressRoutePort link configuration.
+
+### [Get-AzureRmExpressRoutePortsLocation](Get-AzureRmExpressRoutePortsLocation.md)
+Gets the locations at which ExpressRoutePort resources are available.
+
 ### [Get-AzureRmExpressRouteServiceProvider](Get-AzureRmExpressRouteServiceProvider.md)
 Gets a list ExpressRoute service providers and their attributes.
 
 ### [Get-AzureRmFirewall](Get-AzureRmFirewall.md)
 Gets a Azure Firewall.
+
+### [Get-AzureRmFirewallFqdnTag](Get-AzureRmFirewallFqdnTag.md)
+Gets the available Azure Firewall Fqdn Tags.
 
 ### [Get-AzureRmInterfaceEndpoint](Get-AzureRmInterfaceEndpoint.md)
 The Get-AzureRmInterfaceEndpoint cmdlet gets a Interface Endpoint.
@@ -446,8 +470,14 @@ Creates back-end HTTP settings for an application gateway.
 ### [New-AzureRmApplicationGatewayConnectionDraining](New-AzureRmApplicationGatewayConnectionDraining.md)
 Creates a new connection draining configuration for back-end HTTP settings.
 
+### [New-AzureRmApplicationGatewayCustomError](New-AzureRmApplicationGatewayCustomError.md)
+Creates a custom error with http status code and custom error page url 
+
 ### [New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
+
+### [New-AzureRmApplicationGatewayFirewallExclusionConfig](New-AzureRmApplicationGatewayFirewallExclusionConfig.md)
+Creates a new exclusion rule list for application gateway waf
 
 ### [New-AzureRmApplicationGatewayFrontendIPConfig](New-AzureRmApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
@@ -511,6 +541,9 @@ Creates an ExpressRoute circuit authorization.
 
 ### [New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
+
+### [New-AzureRmExpressRoutePort](New-AzureRmExpressRoutePort.md)
+Creates an Azure ExpressRoutePort.
 
 ### [New-AzureRmFirewall](New-AzureRmFirewall.md)
 Creates a new Firewall in a resource group.
@@ -696,6 +729,9 @@ Removes back-end HTTP settings from an application gateway.
 ### [Remove-AzureRmApplicationGatewayConnectionDraining](Remove-AzureRmApplicationGatewayConnectionDraining.md)
 Removes the connection draining configuration of a back-end HTTP settings object.
 
+### [Remove-AzureRmApplicationGatewayCustomError](Remove-AzureRmApplicationGatewayCustomError.md)
+Removes a custom error from an application gateway.
+
 ### [Remove-AzureRmApplicationGatewayFrontendIPConfig](Remove-AzureRmApplicationGatewayFrontendIPConfig.md)
 Removes a front-end IP configuration from an application gateway.
 
@@ -704,6 +740,9 @@ Removes a front-end port from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayHttpListener](Remove-AzureRmApplicationGatewayHttpListener.md)
 Removes an HTTP listener from an application gateway.
+
+### [Remove-AzureRmApplicationGatewayHttpListenerCustomError](Remove-AzureRmApplicationGatewayHttpListenerCustomError.md)
+Removes a custom error from a http listener of an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayIPConfiguration](Remove-AzureRmApplicationGatewayIPConfiguration.md)
 Removes an IP configuration from an application gateway.
@@ -749,6 +788,9 @@ Removes an ExpressRoute circuit connection configuration.
 
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
+
+### [Remove-AzureRmExpressRoutePort](Remove-AzureRmExpressRoutePort.md)
+Removes an ExpressRoutePort.
 
 ### [Remove-AzureRmFirewall](Remove-AzureRmFirewall.md)
 Remove a Firewall.
@@ -909,6 +951,9 @@ Updates back-end HTTP settings for an application gateway.
 ### [Set-AzureRmApplicationGatewayConnectionDraining](Set-AzureRmApplicationGatewayConnectionDraining.md)
 Modifies the connection draining configuration of a back-end HTTP settings object.
 
+### [Set-AzureRmApplicationGatewayCustomError](Set-AzureRmApplicationGatewayCustomError.md)
+Updates a custom error in an application gateway.
+
 ### [Set-AzureRmApplicationGatewayFrontendIPConfig](Set-AzureRmApplicationGatewayFrontendIPConfig.md)
 Modifies a front-end IP address configuration.
 
@@ -917,6 +962,9 @@ Modifies a front-end port for an application gateway.
 
 ### [Set-AzureRmApplicationGatewayHttpListener](Set-AzureRmApplicationGatewayHttpListener.md)
 Modifies an HTTP listener for an application gateway.
+
+### [Set-AzureRmApplicationGatewayHttpListenerCustomError](Set-AzureRmApplicationGatewayHttpListenerCustomError.md)
+Updates a custom error in a http listener of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayIPConfiguration](Set-AzureRmApplicationGatewayIPConfiguration.md)
 Modifies an IP configuration for an application gateway.
@@ -953,6 +1001,9 @@ Modifies an ExpressRoute circuit.
 
 ### [Set-AzureRmExpressRouteCircuitPeeringConfig](Set-AzureRmExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
+
+### [Set-AzureRmExpressRoutePort](Set-AzureRmExpressRoutePort.md)
+Modifies an ExpressRoutePort.
 
 ### [Set-AzureRmFirewall](Set-AzureRmFirewall.md)
 Saves a modified Firewall.

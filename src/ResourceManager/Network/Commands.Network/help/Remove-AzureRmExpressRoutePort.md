@@ -46,6 +46,7 @@ Removes $PortName ExpressRoutePort resource in $rg resource group in your subscr
 ```powershell
 PS C:\> Remove-AzureRmExpressRoutePort -InputObject $erPort
 ```
+
 Removes the ExpressRoutePort resource in InputObject.
 
 ### Example 3

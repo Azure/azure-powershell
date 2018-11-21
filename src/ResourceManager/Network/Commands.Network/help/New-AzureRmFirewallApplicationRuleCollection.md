@@ -15,8 +15,8 @@ Creates a collection of Firewall application rules.
 
 ```
 New-AzureRmFirewallApplicationRuleCollection -Name <String> -Priority <UInt32>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule]>
- -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Rule <PSAzureFirewallApplicationRule[]> -ActionType <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Specifies the list of rules to be grouped under this collection.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule[]
 Parameter Sets: (All)
 Aliases:
 

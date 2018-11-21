@@ -13,9 +13,8 @@ Creates a health probe response match used by Health Probe for an application ga
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayProbeHealthResponseMatch [-Body <String>]
- [-StatusCode <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzureRmApplicationGatewayProbeHealthResponseMatch [-Body <String>] [-StatusCode <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 Allowed ranges of healthy status codes.Default range of healthy status codes is 200 - 399
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

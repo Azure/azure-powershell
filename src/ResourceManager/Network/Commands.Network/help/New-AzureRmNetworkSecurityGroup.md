@@ -15,9 +15,8 @@ Creates a network security group.
 
 ```
 New-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
- [-SecurityRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SecurityRules <PSSecurityRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +146,7 @@ Accept wildcard characters: False
 Specifies a list of network security rule objects to create in a network security group.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSSecurityRule[]
 Parameter Sets: (All)
 Aliases:
 

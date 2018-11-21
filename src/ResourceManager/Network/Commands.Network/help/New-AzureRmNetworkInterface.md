@@ -16,18 +16,16 @@ Creates a network interface.
 ### SetByIpConfigurationResource (Default)
 ```
 New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
- -IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]>
- [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
+ [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
 ```
 New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
- -IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]>
- [-NetworkSecurityGroupId <String>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
- [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
+ -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-NetworkSecurityGroupId <String>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -36,11 +34,9 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
 ```
 New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
  [-PublicIpAddressId <String>] [-NetworkSecurityGroupId <String>]
- [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
- [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-ApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-PrivateIpAddress <String>]
- [-IpConfigurationName <String>] [-DnsServer <System.Collections.Generic.List`1[System.String]>]
+ [-LoadBalancerBackendAddressPoolId <String[]>] [-LoadBalancerInboundNatRuleId <String[]>]
+ [-ApplicationGatewayBackendAddressPoolId <String[]>] [-ApplicationSecurityGroupId <String[]>]
+ [-PrivateIpAddress <String>] [-IpConfigurationName <String>] [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -49,14 +45,12 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
 ```
 New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
  [-PublicIpAddress <PSPublicIpAddress>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
- [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
- [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
- [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
- [-ApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
- [-PrivateIpAddress <String>] [-IpConfigurationName <String>]
- [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
+ [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
+ [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-PrivateIpAddress <String>]
+ [-IpConfigurationName <String>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>] [-EnableIPForwarding]
+ [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +87,7 @@ interface IP configuration stored in the variable named $IPconfig.
 Specifies an **ApplicationGatewayBackendAddressPool** object.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -108,7 +102,7 @@ Accept wildcard characters: False
 Specifies the ID of a **ApplicationGatewayBackendAddressPool** object.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -123,7 +117,7 @@ Accept wildcard characters: False
 Specifies a collection of application security group references to which the network interface IP configuration should belong to.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -138,7 +132,7 @@ Accept wildcard characters: False
 Specifies a collection of application security group references to which the network interface IP configuration should belong to.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -183,7 +177,7 @@ Accept wildcard characters: False
 Specifies the DNS server for the network interface.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +253,7 @@ Accept wildcard characters: False
 Specifies the IP configuration that this cmdlet uses for the network interface.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration[]
 Parameter Sets: SetByIpConfigurationResource, SetByIpConfigurationResourceId
 Aliases:
 
@@ -289,7 +283,7 @@ Accept wildcard characters: False
 Specifies a **BackendAddressPool** object.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -304,7 +298,7 @@ Accept wildcard characters: False
 Specifies the ID of a **BackendAddressPool** object.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -319,7 +313,7 @@ Accept wildcard characters: False
 Specifies an inbound NAT rule configuration for a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSInboundNatRule[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -334,7 +328,7 @@ Accept wildcard characters: False
 Specifies the ID of an inbound NAT rule configuration for a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 

@@ -14,12 +14,9 @@ Creates a Firewall Network Rule.
 ## SYNTAX
 
 ```
-New-AzureRmFirewallNetworkRule -Name <String> [-Description <String>]
- -SourceAddress <System.Collections.Generic.List`1[System.String]>
- -DestinationAddress <System.Collections.Generic.List`1[System.String]>
- -DestinationPort <System.Collections.Generic.List`1[System.String]>
- -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +81,7 @@ Accept wildcard characters: False
 The destination addresses of the rule
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +96,7 @@ Accept wildcard characters: False
 The destination ports of the rule
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -129,9 +126,10 @@ Accept wildcard characters: False
 Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, ICMP and Any.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -144,7 +142,7 @@ Accept wildcard characters: False
 The source addresses of the rule
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
