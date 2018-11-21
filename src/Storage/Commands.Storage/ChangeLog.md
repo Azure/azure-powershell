@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support Static Website configuration
+    - Enable-AzureStorageStaticWebsite
+    - Disable-AzureStorageStaticWebsite
 
 ## Version 4.6.1
 * Fix Copy Blob/File won't copy metadata when destination has metadata issue
