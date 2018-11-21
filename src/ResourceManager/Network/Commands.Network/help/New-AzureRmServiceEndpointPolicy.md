@@ -14,9 +14,9 @@ schema: 2.0.0
 
 ```
 New-AzureRmServiceEndpointPolicy -Name <String>
- [-ServiceEndpointPolicyDefinition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition]>]
- -ResourceGroupName <String> -Location <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServiceEndpointPolicyDefinition <PSServiceEndpointPolicyDefinition[]>] -ResourceGroupName <String>
+ -Location <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 List of service endpoint definitions
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition]
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition[]
 Parameter Sets: (All)
 Aliases:
 

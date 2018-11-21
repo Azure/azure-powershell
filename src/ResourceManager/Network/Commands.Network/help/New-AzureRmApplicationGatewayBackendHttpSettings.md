@@ -17,9 +17,9 @@ New-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -Port <Int32> -P
  -CookieBasedAffinity <String> [-RequestTimeout <Int32>]
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
- [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
- [-TrustedRootCertificate <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate]>]
- [-PickHostNameFromBackendAddress] [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>]
+ [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
+ [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
+ [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies authentication certificates for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 Application gateway Trusted Root Certificates
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 

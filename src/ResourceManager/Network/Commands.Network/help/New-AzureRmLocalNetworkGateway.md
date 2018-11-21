@@ -15,9 +15,9 @@ Creates a Local Network Gateway
 
 ```
 New-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-GatewayIpAddress <String>] [-AddressPrefix <System.Collections.Generic.List`1[System.String]>]
- [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GatewayIpAddress <String>] [-AddressPrefix <String[]>] [-Asn <UInt32>] [-BgpPeeringAddress <String>]
+ [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Creates the object of the Local Network Gateway with the name "myLocalGW" within
 
 ### -AddressPrefix
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

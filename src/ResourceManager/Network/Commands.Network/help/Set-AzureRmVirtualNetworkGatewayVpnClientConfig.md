@@ -16,16 +16,15 @@ Sets the VPN client address pool for a virtual network gateway.
 ### Default (Default)
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VpnClientAddressPool <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RadiusServerConfiguration
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> -RadiusServerAddress <String>
- -RadiusServerSecret <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -VpnClientAddressPool <String[]> -RadiusServerAddress <String> -RadiusServerSecret <SecureString>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +121,7 @@ Accept wildcard characters: False
 Specifies the IP addresses to be assigned to clients connecting to this gateway
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

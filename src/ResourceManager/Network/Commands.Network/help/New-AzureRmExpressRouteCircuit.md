@@ -13,12 +13,20 @@ Creates an Azure express route circuit.
 
 ## SYNTAX
 
+### ServiceProvider (Default)
 ```
 New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
  [-SkuTier <String>] [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String>
- -BandwidthInMbps <Int32>
- [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
- [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ -BandwidthInMbps <Int32> [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
+ [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExpressRoutePort
+```
+New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SkuTier <String>] [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
+ [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -94,11 +102,26 @@ Accept wildcard characters: False
 A list of circuit authorizations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BandwidthInGbps
+{{Fill BandwidthInGbps Description}}
+
+```yaml
+Type: System.Double
+Parameter Sets: ExpressRoutePort
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -110,7 +133,7 @@ The bandwidth of the circuit. This must be a value that is supported by the serv
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
 Required: True
@@ -132,6 +155,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpressRoutePort
+{{Fill ExpressRoutePort Description}}
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
+Parameter Sets: ExpressRoutePort
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -184,7 +222,7 @@ Accept wildcard characters: False
 A list peer configurations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]
+Type: Microsoft.Azure.Commands.Network.Models.PSPeering[]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +238,7 @@ The name of the peering location supported by the service provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
 Required: True
@@ -231,7 +269,7 @@ Get-AzureRmExpressRouteServiceProvider cmdlet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
 Required: True

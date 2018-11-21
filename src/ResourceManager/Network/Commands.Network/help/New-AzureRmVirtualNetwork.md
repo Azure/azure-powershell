@@ -15,11 +15,9 @@ Creates a virtual network.
 
 ```
 New-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String>
- -AddressPrefix <System.Collections.Generic.List`1[System.String]>
- [-DnsServer <System.Collections.Generic.List`1[System.String]>]
- [-Subnet <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]>]
- [-Tag <Hashtable>] [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-EnableVmProtection] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AddressPrefix <String[]> [-DnsServer <String[]>] [-Subnet <PSSubnet[]>] [-Tag <Hashtable>]
+ [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-EnableVmProtection] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +77,7 @@ created. The New-AzureRmVirtualNetwork command then creates the virtual network.
 Specifies a range of IP addresses for a virtual network.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +137,7 @@ Accept wildcard characters: False
 Specifies the DNS server for a subnet.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +242,7 @@ Accept wildcard characters: False
 Specifies a list of subnets to associate with the virtual network.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet[]
 Parameter Sets: (All)
 Aliases:
 

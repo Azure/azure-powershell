@@ -15,22 +15,17 @@ Creates a virtual network subnet configuration.
 
 ### SetByResource (Default)
 ```
-New-AzureRmVirtualNetworkSubnetConfig -Name <String>
- -AddressPrefix <System.Collections.Generic.List`1[System.String]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
- [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
- [-Delegation <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]>]
+New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-ServiceEndpoint <String[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-New-AzureRmVirtualNetworkSubnetConfig -Name <String>
- -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-NetworkSecurityGroupId <String>]
- [-RouteTableId <String>] [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
- [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
- [-Delegation <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]>]
+New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
+ [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ServiceEndpoint <String[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -74,7 +69,7 @@ This example creates two new subnet configurations using the
 Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +99,7 @@ Accept wildcard characters: False
 List of services that have permission to perform operations on this subnet.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]
+Type: Microsoft.Azure.Commands.Network.Models.PSDelegation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +189,7 @@ Accept wildcard characters: False
 Service Endpoint Value
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +204,7 @@ Accept wildcard characters: False
 Service Endpoint Policies
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy[]
 Parameter Sets: (All)
 Aliases:
 
