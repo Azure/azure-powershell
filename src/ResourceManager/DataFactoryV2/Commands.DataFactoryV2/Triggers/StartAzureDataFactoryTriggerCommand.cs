@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNull]
         public PSTrigger InputObject { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByInputObject(InputObject);
