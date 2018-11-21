@@ -151,6 +151,10 @@ namespace Commands.Network.Test
                         }
                     }
                 }
+                catch (Exception exception)
+                {
+                    throw;
+                }
                 finally
                 {
                     cleanup?.Invoke();

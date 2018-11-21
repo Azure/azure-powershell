@@ -621,9 +621,9 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 		#Rewrite Rule Set
 		$headerConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "abc" -HeaderValue "def"
-		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfigurations $headerConfiguration
+		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
 		$rewriteRule = New-AzureRmApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
-		$rewriteRuleSet = New-AzureRmApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRules $rewriteRule
+		$rewriteRuleSet = New-AzureRmApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
 		
 		#rule
 		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool -RewriteRuleSet $rewriteRuleSet

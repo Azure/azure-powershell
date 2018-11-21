@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of rewrite rules")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayRewriteRule> RewriteRules { get; set; }
+        public List<PSApplicationGatewayRewriteRule> RewriteRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             var rewriteRuleSet = new PSApplicationGatewayRewriteRuleSet
             {
                 Name = this.Name,
-                RewriteRules = this.RewriteRules,
+                RewriteRules = this.RewriteRule,
                 Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRewriteRuleSetName,
