@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.11
+* Update dependencies for type mapping issue
+
 ## Version 0.2.10
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
