@@ -14,7 +14,7 @@ Adds a rewrite rule set to an application gateway.
 
 ```
 Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway <PSApplicationGateway> -Name <String>
- -RewriteRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
+ -RewriteRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Add-AzureRmApplicationGatewayRewriteRuleSet** cmdlet adds a rewrite rule s
 ### Example 1
 ```
 PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Appgw = Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRules $rule
+PS C:\> $Appgw = Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
 ```
 
 The first command gets the application gateway and stores it in the $AppGw variable.
@@ -79,7 +79,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RewriteRules
+### -RewriteRule
 List of rewrite rules
 
 ```yaml

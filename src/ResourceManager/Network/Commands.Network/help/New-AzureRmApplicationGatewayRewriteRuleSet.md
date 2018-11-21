@@ -14,7 +14,7 @@ Creates a request routing rule for an application gateway.
 
 ```
 New-AzureRmApplicationGatewayRewriteRuleSet -Name <String>
- -RewriteRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
+ -RewriteRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzureRmApplicationGatewayRewriteRuleSet -Name <String>
 
 ### Example 1
 ```powershell
-PS C:\> $ruleset = New-AzureRmApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRules $rule
+PS C:\> $ruleset = New-AzureRmApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
 ```
 
 This command creates a rewrite rule set named ruleset1 and stores the result in the variable named $ruleset.
@@ -62,7 +62,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RewriteRules
+### -RewriteRule
 List of rewrite rules
 
 ```yaml

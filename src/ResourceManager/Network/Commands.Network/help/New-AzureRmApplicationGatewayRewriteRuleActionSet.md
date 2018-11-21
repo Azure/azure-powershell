@@ -14,8 +14,8 @@ Creates a rewrite rule actionset for an application gateway.
 
 ```
 New-AzureRmApplicationGatewayRewriteRuleActionSet
- [-RequestHeaderConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
- [-ResponseHeaderConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
+ [-RequestHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
+ [-ResponseHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ New-AzureRmApplicationGatewayRewriteRuleActionSet
 
 ### Example 1
 ```powershell
-PS C:\> $action = New-AzureRmApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfigurations $hc
+PS C:\> $action = New-AzureRmApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc
 ```
 
 This command creates a rewrite rule actionset and stores the result in the variable named $action.
@@ -48,7 +48,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestHeaderConfigurations
+### -RequestHeaderConfiguration
 List of request header configurations
 
 ```yaml
@@ -63,7 +63,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseHeaderConfigurations
+### -ResponseHeaderConfiguration
 List of response header configurations
 
 ```yaml
