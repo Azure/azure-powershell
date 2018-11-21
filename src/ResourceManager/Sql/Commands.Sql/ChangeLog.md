@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fixed issue with using Get-AzureRmSqlDatabaseVulnerabilityAssessment with DotNet core
+* Modified documentation of help messages related to SQL Auditing cmdlets.
 
 ## Version 4.12.0
 * Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
