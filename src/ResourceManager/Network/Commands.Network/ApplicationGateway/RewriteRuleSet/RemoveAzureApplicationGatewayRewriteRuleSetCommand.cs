@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleSet"), OutputType(typeof(PSApplicationGatewayRewriteRuleSet))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleSet"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayRewriteRuleSetCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             WriteObject(this.ApplicationGateway);
-            //TODO: check return type
         }
     }
 }
