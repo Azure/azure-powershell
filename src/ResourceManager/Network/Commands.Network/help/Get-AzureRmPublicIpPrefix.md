@@ -12,10 +12,16 @@ Gets a public IP prefix
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ListParameterSet (Default)
 ```
-Get-AzureRmPublicIpPrefix [-Name <String>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmPublicIpPrefix [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByNameParameterSet
+```
+Get-AzureRmPublicIpPrefix -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
@@ -60,7 +66,7 @@ Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -72,10 +78,22 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: GetByNameParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
