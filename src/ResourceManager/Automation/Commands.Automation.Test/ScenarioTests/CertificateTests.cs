@@ -12,37 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Automation.Test;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
 namespace Commands.Automation.Test
 {
-    public class AccountTests : AutomationScenarioTestsBase
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.Automation.Test;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+    public class CertificateTests : AutomationScenarioTestsBase
     {
-        public XunitTracingInterceptor _logger;
+        public XunitTracingInterceptor logger;
 
-        public AccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CertificateTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+            logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
-        public void TestGetAutomationAccts()
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestE2ECertificates()
         {
-            RunPowerShellTest(_logger, "Test-GetAutomationAccounts");
+            RunPowerShellTest(logger, "Test-E2ECertificates");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Service, Category.Automation)]
-        public void TestAutomationAcctTags()
-        {
-            RunPowerShellTest(_logger, "Test-AutomationAccountTags");
-        }
     }
 }
