@@ -63,12 +63,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Position = 10, Mandatory = false, HelpMessage = "Web app settings")]
         [ValidateNotNullOrEmpty]
-        [ValidateStringDictionary]
         public Hashtable AppSettings { get; set; }
 
         [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
         [ValidateNotNullOrEmpty]
-        [ValidateConnectionStrings]
         public Hashtable ConnectionStrings { get; set; }
 
         [Parameter(Position = 12, Mandatory = false, HelpMessage = "Web app handler mappings")]
