@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Header value to the set for the given header name. Header will be deleted if this is omitted")]
+            HelpMessage = "Header value to set for the given header name. Header will be deleted if this is omitted")]
         public string HeaderValue { get; set; }
 
         public override void ExecuteCmdlet()

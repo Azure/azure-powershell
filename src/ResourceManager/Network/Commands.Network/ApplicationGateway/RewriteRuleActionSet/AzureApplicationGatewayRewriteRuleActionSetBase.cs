@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "List of request header configurations")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayHeaderConfiguration> RequestHeaderConfigurations { get; set; }
+        public List<PSApplicationGatewayHeaderConfiguration> RequestHeaderConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of response header configurations")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayHeaderConfiguration> ResponseHeaderConfigurations { get; set; }
+        public List<PSApplicationGatewayHeaderConfiguration> ResponseHeaderConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.Network
 
             var rewriteRuleActionSet = new PSApplicationGatewayRewriteRuleActionSet
             {
-                RequestHeaderConfigurations = this.RequestHeaderConfigurations,
-                ResponseHeaderConfigurations = this.ResponseHeaderConfigurations
+                RequestHeaderConfigurations = this.RequestHeaderConfiguration,
+                ResponseHeaderConfigurations = this.ResponseHeaderConfiguration
             };
 
             return rewriteRuleActionSet;
