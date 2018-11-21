@@ -122,5 +122,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppSwapWithPreviewCompleteSlotSwap");
         }
+
+        [Fact(Skip = "Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureStorageWebAppHyperVSlot()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetAzureStorageWebAppHyperVSlot");
+        }
     }
 }
