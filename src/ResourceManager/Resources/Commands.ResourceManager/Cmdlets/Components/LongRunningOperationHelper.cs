@@ -204,6 +204,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 }
                 else
                 {
+                    if (operationResult.HttpStatusCode == HttpStatusCode.OK)
+                    {
+                        return this.SuccessfulResult(operationResult);
+                    }
+
                     return this.WaitResult(operationResult);
                 }
             }
