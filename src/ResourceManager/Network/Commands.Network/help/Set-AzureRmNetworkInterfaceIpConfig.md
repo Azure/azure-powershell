@@ -374,7 +374,6 @@ Parameters: NetworkInterface (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
