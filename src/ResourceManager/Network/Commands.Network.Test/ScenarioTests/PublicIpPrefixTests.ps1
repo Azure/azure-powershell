@@ -23,7 +23,7 @@ function Test-PublicIpPrefixCRUD
     $rname = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "West Europe"
     $ipTagType = "NetworkDomain"
     $ipTagTag = "test"
 
@@ -118,7 +118,7 @@ function Test-PublicIpPrefixAllocatePublicIpAddress
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "West Europe"
    
     try 
     {
