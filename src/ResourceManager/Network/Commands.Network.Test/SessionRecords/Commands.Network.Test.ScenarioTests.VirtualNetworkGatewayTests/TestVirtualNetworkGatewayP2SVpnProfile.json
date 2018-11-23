@@ -8088,6 +8088,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "\"https://nfvprodsuppcy.blob.core.windows.net/cmakexe/7804346c-2051-4085-9f16-d14691a8f911/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=gtEV3A5i%2BN8yx73sAuHDDFJIPVa%2Fym4oItl7%2FV7sHgQ%3D&st=2018-11-22T10%3A42%3A03Z&se=2018-11-22T11%3A42%3A03Z&sp=r&fileExtension=.zip\"",
       "StatusCode": 200
     },
