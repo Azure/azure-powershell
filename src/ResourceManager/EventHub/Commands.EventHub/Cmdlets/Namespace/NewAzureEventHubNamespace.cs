@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public int? MaximumThroughputUnits { get; set; }
 
         /// <summary>
+        /// Indicates whether Kafka is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
+        public SwitchParameter EnableKafka { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
@@ -99,10 +106,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 try
                 {
-                    if (EnableAutoInflate.IsPresent)
-                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, true, MaximumThroughputUnits));
-                    else
-                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, false, MaximumThroughputUnits));
+                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

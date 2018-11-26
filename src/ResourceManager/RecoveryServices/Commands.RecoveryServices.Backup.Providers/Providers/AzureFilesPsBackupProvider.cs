@@ -169,6 +169,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetFolder = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetFolder) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
 
+            //validate file recovery request
+            ValidateFileRestoreRequest(sourceFilePath, sourceFileType);
+
+            //validate alternate location restore request
+            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName);
+
+            if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
+            {
+                targetFolder = "/";
+            }
+
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName);
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
@@ -336,7 +347,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
-                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString();
+                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
 
@@ -374,7 +385,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                     (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
-                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString();
+                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
@@ -929,10 +940,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureFileShareItem).ToString()));
             }
+        }
 
-            if (string.IsNullOrEmpty(((AzureFileShareItem)itemBase).ParentContainerFabricId))
+        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType)
+        {
+            if (sourceFilePath == null && sourceFileType != null)
             {
-                throw new ArgumentException(Resources.ParentContainerFabricIdIsEmptyOrNull);
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathMissingException));
+            }
+            else if (sourceFilePath != null && sourceFileType == null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFileTypeMissingException));
+            }
+        }
+
+        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName)
+        {
+            if (targetFileShareName == null && targetStorageAccountName != null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileTargetFSNameMissingException));
+            }
+            else if (targetFileShareName != null && targetStorageAccountName == null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }
         }
     }

@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByFactoryObject();

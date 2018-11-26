@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Specifies the name of a key vault whose network rule is being modified.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

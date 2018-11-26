@@ -21,7 +21,7 @@
 ## Current Release
 * Fixed a typo in the progress message.
 
-## Version 0.1.1
+## Version 0.1.2
 * Updated list of unsupported file name characters.
 
 ## Version 0.1.1
