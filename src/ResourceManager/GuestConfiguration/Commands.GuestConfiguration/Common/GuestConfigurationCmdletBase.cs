@@ -155,7 +155,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             ).ToList();
 
             // Get all policy definitions in subscription
-            // var policyDefinitions = PolicyClient.PolicyDefinitions.List().ToList();
             var policyDefinitionsForTheInitiative = new List<PolicyDefinition>();
 
             foreach(var policyDefinitionIdInInitiative in policyDefinitionIdsInInitiative)

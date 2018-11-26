@@ -10,7 +10,7 @@
                 <TableHeaders>
                     <TableColumnHeader><Label>PolicyDisplayName</Label></TableColumnHeader>
                     <TableColumnHeader><Label>ComplianceStatus</Label></TableColumnHeader>
-                    <TableColumnHeader><Label>ComplianceReasons</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>ComplianceReasons</Label><Width>60</Width></TableColumnHeader>
                     <TableColumnHeader><Label>StartTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>EndTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>VMName</Label><Width>10</Width></TableColumnHeader>
@@ -21,7 +21,7 @@
                         <TableColumnItems>
                             <TableColumnItem><PropertyName>PolicyDisplayName</PropertyName></TableColumnItem>
                             <TableColumnItem><PropertyName>ComplianceStatus</PropertyName></TableColumnItem>
-                            <TableColumnItem><PropertyName>ComplianceReasons</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>$_.ComplianceReasons.Reasons</PropertyName></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.VM.ResourceId.Substring($_.VM.ResourceId.LastIndexOf("/")+1)</ScriptBlock></TableColumnItem>
