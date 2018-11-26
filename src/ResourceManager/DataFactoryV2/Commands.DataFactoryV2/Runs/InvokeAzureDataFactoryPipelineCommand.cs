@@ -72,7 +72,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string ParameterFile { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByPipelineObjectByParameterFile, StringComparison.OrdinalIgnoreCase)
