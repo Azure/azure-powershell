@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Storage;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
-    using WindowsAzure.Commands.Storage.Adapters;
 
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
@@ -70,8 +70,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            var account = StorageContext.GetCloudStorageAccount();
-            var apimanagementResource = Client.RestoreApiManagement(
+            if (CloudStorageAccount.TryParse(StorageContext.ConnectionString, out CloudStorageAccount account))
+            {
+                var apimanagementResource = Client.RestoreApiManagement(
                     ResourceGroupName,
                     Name,
                     account.Credentials.AccountName,
@@ -79,9 +80,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     SourceContainerName,
                     SourceBlobName);
 
-            if (PassThru.IsPresent)
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(apimanagementResource);
+                }
+            }
+            else
             {
-                this.WriteObject(apimanagementResource);
+                throw new PSArgumentException("Failed to parse the storage connection string.", nameof(StorageContext));
             }
         }
     }

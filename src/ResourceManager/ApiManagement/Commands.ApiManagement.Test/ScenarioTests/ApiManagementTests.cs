@@ -89,20 +89,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateApiManagementDeployment()
-        {
-            RunPowerShellTest("Test-UpdateApiManagementDeployment");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementHostnames()
-        {
-            RunPowerShellTest("Test-SetApiManagementHostnames");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApiManagementHostnamesCrud()
         {
             RunPowerShellTest("Test-ApiManagementHostnamesCRUD");
