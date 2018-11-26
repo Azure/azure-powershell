@@ -42,9 +42,6 @@ The first command uses the Get-AzureRmOperationalInsightsLinkTargets cmdlet to g
 The second command passes the first account link target in $OILinkTargets to the **New-AzureRmOperationalInsightsWorkspace** cmdlet by using the pipeline operator.
 The command creates a standard SKU workspace named MyWorkspace that is linked to the first Operational Insights account in $OILinkTargets.
 
-> [!NOTE]
-> A new [https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model][pricing model] has been released. If you are a CSP that means that you have to use standalone for the sku. Behind the scene the sku will be changed to pergb2018.
-
 ## PARAMETERS
 
 ### -CustomerId
@@ -239,6 +236,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 
 ## NOTES
+
+A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
 
 ## RELATED LINKS
 
