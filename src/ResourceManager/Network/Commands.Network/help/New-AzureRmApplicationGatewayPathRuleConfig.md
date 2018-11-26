@@ -15,16 +15,14 @@ Creates an application gateway path rule.
 
 ### SetByResourceId
 ```
-New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
- -Paths <System.Collections.Generic.List`1[System.String]> [-BackendAddressPoolId <String>]
+New-AzureRmApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]> [-BackendAddressPoolId <String>]
  [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
- -Paths <System.Collections.Generic.List`1[System.String]>
+New-AzureRmApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
@@ -176,7 +174,7 @@ Accept wildcard characters: False
 Specifies one or more application gateway path rules.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

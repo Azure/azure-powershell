@@ -16,12 +16,9 @@ Updates a virtual network gateway.
 ### Default (Default)
 ```
 Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>]
- [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
- [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
- [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
- [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
- [-VpnClientIpsecPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
+ [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
+ [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -29,12 +26,9 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway
 ### RadiusServerConfiguration
 ```
 Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>]
- [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
- [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
- [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
- [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
- [-VpnClientIpsecPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
+ [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
+ [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
  -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -255,7 +249,7 @@ Specifies the address space that this cmdlet uses to allocate VPN client IP addr
 This should not overlap with virtual network or on-premise ranges.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +264,7 @@ Accept wildcard characters: False
 A list of IPSec policies for P2S VPN client tunneling protocols.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +279,7 @@ Accept wildcard characters: False
 A list of P2S VPN client tunneling protocols
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: SSTP, IkeV2, OpenVPN
@@ -302,7 +296,7 @@ Specifies a list of revoked VPN client certificates.
 A VPN client presenting a certificate that matches one of these is removed.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +312,7 @@ Specifies a list of VPN client root certificates to use for VPN client authentic
 Connecting VPN clients must present certificates generated from one of these root certificates.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -371,13 +365,13 @@ Parameters: VirtualNetworkGateway (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 
-### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
 ### System.UInt32
 
