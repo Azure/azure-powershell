@@ -70,7 +70,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (CloudStorageAccount.TryParse(StorageContext.ConnectionString, out CloudStorageAccount account))
+            CloudStorageAccount account = null;
+            if (CloudStorageAccount.TryParse(StorageContext.ConnectionString, out account))
             {
                 var apimanagementResource = Client.RestoreApiManagement(
                     ResourceGroupName,
