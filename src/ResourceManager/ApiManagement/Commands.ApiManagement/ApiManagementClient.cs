@@ -273,66 +273,6 @@ namespace Microsoft.Azure.Commands.ApiManagement
             return new PsApiManagement(apiManagementServiceResource);
         }
 
-        public PsApiManagement UpdateDeployment(
-            string resourceGroupName,
-            string serviceName,
-            string location,
-            PsApiManagementSku sku,
-            int capacity,
-            PsApiManagementVirtualNetwork vnetConfiguration,
-            PsApiManagementVpnType vpnType,
-            IList<PsApiManagementRegion> additionalRegions,
-            PsApiManagement apiManagement)
-        {
-            ApiManagementServiceResource apiManagementParameters;
-            if (apiManagement != null)
-            {
-                apiManagementParameters = Mappers.MapPsApiManagement(apiManagement);
-            }
-            else
-            {
-                apiManagementParameters = Client.ApiManagementService.Get(resourceGroupName, serviceName);
-                apiManagementParameters.Sku = new ApiManagementServiceSkuProperties()
-                {
-                    Name = Mappers.MapSku(sku),
-                    Capacity = capacity
-                };
-
-                if (vnetConfiguration != null)
-                {
-                    apiManagementParameters.VirtualNetworkConfiguration = new VirtualNetworkConfiguration()
-                    {
-                        SubnetResourceId = vnetConfiguration.SubnetResourceId
-                    };
-                }
-
-                apiManagementParameters.VirtualNetworkType = Mappers.MapVirtualNetworkType(vpnType);
-                if (additionalRegions != null && additionalRegions.Any())
-                {
-                    apiManagementParameters.AdditionalLocations = new List<AdditionalLocation>();
-                    foreach(var additionalRegion in additionalRegions)
-                    {
-                        apiManagementParameters.AdditionalLocations.Add(new AdditionalLocation()
-                        {
-                            Location = additionalRegion.Location,
-                            Sku = new ApiManagementServiceSkuProperties()
-                            {
-                                Name = Mappers.MapSku(additionalRegion.Sku),
-                                Capacity = additionalRegion.Capacity
-                            },
-                            VirtualNetworkConfiguration = additionalRegion.VirtualNetwork == null ? null :
-                            new VirtualNetworkConfiguration()
-                            {
-                                SubnetResourceId = additionalRegion.VirtualNetwork.SubnetResourceId
-                            }
-                        });
-                    }
-                }
-            }
-            var apiManagementService = Client.ApiManagementService.CreateOrUpdate(resourceGroupName, serviceName, apiManagementParameters);
-            return new PsApiManagement(apiManagementService);
-        }
-
         public PsApiManagement SetApiManagementService(
             PsApiManagement apiManagement,
             bool createResourceIdentity)
@@ -351,102 +291,9 @@ namespace Microsoft.Azure.Commands.ApiManagement
             return new PsApiManagement(apiManagementService);
         }
 
-        public PsApiManagementHostnameCertificate UploadCertificate(
-            string resourceGroupName,
-            string serviceName,
-            PsApiManagementHostnameType hostnameType,
-            string pfxPath,
-            string pfxPassword)
-        {
-            byte[] certificate;
-            using (var certStream = File.OpenRead(pfxPath))
-            {
-                certificate = new byte[certStream.Length];
-                certStream.Read(certificate, 0, certificate.Length);
-            }
-            var encodedCertificate = Convert.ToBase64String(certificate);
-
-            var parameters = new ApiManagementServiceUploadCertificateParameters(Mappers.MapHostnameType(hostnameType), encodedCertificate, pfxPassword);
-            var result = Client.ApiManagementService.UploadCertificate(resourceGroupName, serviceName, parameters);
-
-            return new PsApiManagementHostnameCertificate(result);
-        }
-
-        public PsApiManagement SetHostnames(
-            string resourceGroupName,
-            string serviceName,
-            PsApiManagementHostnameConfiguration portalHostnameConfiguration,
-            PsApiManagementHostnameConfiguration proxyHostnameConfiguration)
-        {
-            var currentStateResource = Client.ApiManagementService.Get(resourceGroupName, serviceName);
-            var currentState = new PsApiManagement(currentStateResource);
-
-            var parameters = new ApiManagementServiceUpdateHostnameParameters
-            {
-                Delete = GetHostnamesToDelete(portalHostnameConfiguration, proxyHostnameConfiguration, currentState),
-                Update = GetHostnamesToCreateOrUpdate(portalHostnameConfiguration, proxyHostnameConfiguration, currentState).ToList()
-            };
-
-            var apiManagementServiceResource = Client.ApiManagementService.UpdateHostname(resourceGroupName, serviceName, parameters);
-            return new PsApiManagement(apiManagementServiceResource);
-        }
-
         public string GetSsoToken(string resourceGroupName, string serviceName)
         {
             return Client.ApiManagementService.GetSsoToken(resourceGroupName, serviceName).RedirectUri;
-        }
-
-        private static IEnumerable<HostnameConfigurationOld> GetHostnamesToCreateOrUpdate(
-            PsApiManagementHostnameConfiguration portalHostnameConfiguration,
-            PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
-            PsApiManagement currentState)
-        {
-            if (portalHostnameConfiguration != null)
-            {
-                yield return new HostnameConfigurationOld(
-                    HostnameType.Portal,
-                    portalHostnameConfiguration.Hostname,
-                    new CertificateInformation
-                    {
-                        Thumbprint = portalHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        Subject = string.IsNullOrWhiteSpace(portalHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : portalHostnameConfiguration.HostnameCertificate.Subject
-                    });
-            }
-
-            if (proxyHostnameConfiguration != null)
-            {
-                yield return new HostnameConfigurationOld(
-                    HostnameType.Proxy,
-                    proxyHostnameConfiguration.Hostname,
-                    new CertificateInformation
-                    {
-                        Thumbprint = proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        Subject = string.IsNullOrWhiteSpace(proxyHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : proxyHostnameConfiguration.HostnameCertificate.Subject
-                    });
-            }
-        }
-
-        private static IList<HostnameType?> GetHostnamesToDelete(
-            PsApiManagementHostnameConfiguration portalHostnameConfiguration,
-            PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
-            PsApiManagement currentState)
-        {
-            var hostnameToDelete = new List<HostnameType?>();
-#pragma warning disable CS0618
-            if (portalHostnameConfiguration == null && currentState.PortalHostnameConfiguration != null)
-#pragma warning restore CS0618
-            {
-                hostnameToDelete.Add(HostnameType.Portal);
-            }
-
-#pragma warning disable CS0618
-            if (proxyHostnameConfiguration == null && currentState.ProxyHostnameConfiguration != null)
-#pragma warning restore CS0618
-            {
-                hostnameToDelete.Add(HostnameType.Proxy);
-            }
-
-            return hostnameToDelete;
         }
     }
 }
