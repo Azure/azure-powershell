@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.DataFactories
             HelpMessage = "The hub name.")]
         public string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             // ValidationNotNullOrEmpty doesn't handle whitespaces well

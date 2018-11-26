@@ -253,5 +253,29 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-DeprecatedDatabaseAuditingCmdletToBlobAuditingNewCmdlet");
         }
+
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExtendedAuditingOnDatabase()
+        {
+            RunPowerShellTest("Test-ExtendedAuditingOnDatabase");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExtendedAuditingOnServer()
+        {
+            RunPowerShellTest("Test-ExtendedAuditingOnServer");
+        }
     }
 }

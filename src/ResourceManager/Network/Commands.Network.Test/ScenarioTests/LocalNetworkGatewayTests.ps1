@@ -72,6 +72,9 @@ function Test-LocalNetworkGatewayCRUD
       $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual $asn $expected.BgpSettings.Asn
 
+        # Test error handling
+        Assert-ThrowsContains { Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -PeerWeight -1 } "PeerWeight cannot be negative"
+
       # Delete LocalNetworkGateway
       $job = Remove-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
 	  $job | Wait-Job
@@ -80,6 +83,12 @@ function Test-LocalNetworkGatewayCRUD
       
       $list = Get-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
+
+        # Test error handling
+        Assert-ThrowsContains { Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $actual } "not found"
+        Assert-Throws { New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -PeerWeight -1 } "PeerWeight cannot be negative"
+        Assert-ThrowsContains { New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -Asn 64 } "ASN and BgpPeeringAddress must both be specified"
+        Assert-ThrowsContains { New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -BgpPeeringAddress "1.2.3.4" } "ASN and BgpPeeringAddress must both be specified"
      }
      finally
      {
