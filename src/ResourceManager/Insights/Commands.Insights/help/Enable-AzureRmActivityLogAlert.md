@@ -37,7 +37,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 
 ## EXAMPLES
 
-### Example 1: Disable an activity log alert
+### Example 1: Enable an activity log alert
 ```
 PS C:\>Enable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
 ```
