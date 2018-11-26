@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "238ee8ab-d4d7-4071-b6b3-08250f1e01c7"
+          "663ca20c-9e94-4d3c-a36c-f5146beb6850"
         ],
         "accept-language": [
           "en-US"
@@ -27,7 +27,7 @@
           "1"
         ],
         "x-ms-request-id": [
-          "30483d06-4e34-4f6f-ba05-6bab93834b69"
+          "c664a449-e1f7-493a-81d8-eb555d4ab11c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -36,19 +36,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "00fd7daf-54ef-48e1-b89c-534a657b9ac3"
+          "a448d285-7048-476a-92f5-736be2339a0b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181120T032450Z:00fd7daf-54ef-48e1-b89c-534a657b9ac3"
+          "WESTUS2:20181126T235021Z:a448d285-7048-476a-92f5-736be2339a0b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Nov 2018 03:24:49 GMT"
+          "Mon, 26 Nov 2018 23:50:20 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
@@ -79,7 +79,7 @@
       "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"f9e08843d2b74dbca5845e88a7e229a6\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d4a7377a-cd02-46fd-9f0f-0c99bcdbc1c1"
+          "68f50cd6-48c1-4489-b96c-b84f1d9d1a28"
         ],
         "accept-language": [
           "en-US"
@@ -102,19 +102,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "MH0R8mLEKNJg37JupYky5a6a5nCUFLw87urdg3u3YYE="
+          "3tNvVkm/Zj7QKWAs1YPTXA5TJ87jXEFFrif+RYkOm5g="
         ],
         "request-id": [
-          "7a015cb9-ab4f-4e26-b32f-e0c277b82311"
+          "f957caf4-d88e-4901-ac8a-3cc195f248c6"
         ],
         "client-request-id": [
-          "d4a7377a-cd02-46fd-9f0f-0c99bcdbc1c1"
+          "68f50cd6-48c1-4489-b96c-b84f1d9d1a28"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "NXZiXzpE8uUC1rn2Dg6u0zwmEA-elmsI9u5Qoho11T60QhGbntHGHMnkRO79_euyNy8d31ALTBiKhtkOh0zZ1ufi2dlT2l1j1ZfYXdEoPmm5Edh8Z-58n7oHLLjIsET4.nUP09VCK-sc3hSgfmKLBvqIDVKRO_7cUK0peceJRFz0"
+          "Y5sfhJtxzSFcGpzpT8aJ-4smt_5zacxp0f6R2T17k5v2sXOqdPFkDpBl6LLM3QngYXCeMheskr6CBJRjI02WzqiEY94Hn0asMhZsg52H_PVT9uoDV_6tDsw3NP_bpohl.zpVlBIGsm8vsTVbk-HoCz4_gzaMqcrOwMQuEwgItksE"
         ],
         "DataServiceVersion": [
           "3.0;"
@@ -126,13 +126,13 @@
           "*"
         ],
         "Duration": [
-          "490489"
+          "362943"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Nov 2018 03:24:49 GMT"
+          "Mon, 26 Nov 2018 23:50:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
