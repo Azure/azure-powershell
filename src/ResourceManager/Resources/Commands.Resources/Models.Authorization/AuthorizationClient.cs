@@ -433,10 +433,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     .ToPSDenyAssignment(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)
                 };
             }
+
             if (!string.IsNullOrEmpty(options.DenyAssignmentName))
             {
                 odataQuery = new Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>(item => item.DenyAssignmentName == options.DenyAssignmentName);
-                result.AddRange(this.FilterDenyAssignmentsByScope(options, odataQuery, currentSubscription));
             }
             else if (options.ADObjectFilter.HasFilter)
             {
@@ -466,21 +466,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
                     odataQuery = new Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>(f => f.PrincipalId == principalId);
                 }
-
-                result.AddRange(this.FilterDenyAssignmentsByScope(options, odataQuery, currentSubscription));
-            }
-            else if (!string.IsNullOrEmpty(options.Scope))
-            {
-                // Filter by scope and above directly
-                var tempResult = AuthorizationManagementClient.DenyAssignments.ListForScope(options.Scope, odataQuery);
-                result.AddRange(tempResult.ToPSDenyAssignments(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
-            }
-            else
-            {
-                var tempResult = AuthorizationManagementClient.DenyAssignments.List(odataQuery);
-                result.AddRange(tempResult.ToPSDenyAssignments(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
             }
 
+            result.AddRange(this.FilterDenyAssignmentsByScope(options, odataQuery, currentSubscription));
             return result;
         }
 

@@ -120,10 +120,12 @@ It defaults to the selected subscription.
 The scope of the deny assignment can be specified using one of the following parameter combinations
         a.
 Scope - This is the fully qualified scope starting with /subscriptions/\<subscriptionId\>.
-This will filter deny assignments that are at, above and below that particular scope.
+This will filter deny assignments that are effective at that particular scope i.e.
+all deny assignments at that scope and above.
         b.
 ResourceGroupName - Name of any resource group under the subscription.
-This will filter deny assignments at, above and below the specified resource group
+This will filter assignments effective at the specified resource group i.e.
+all deny assignments at that scope and above.
         c.
 ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - Identifies a particular resource under the subscription and will filter deny assignments effective at that resource scope.
 To determine what access is denied for a particular user in the subscription, use the ExpandPrincipalGroups switch.
@@ -132,32 +134,192 @@ This will list all deny assignments assigned to the user, and to the groups that
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzureRmDenyAssignment
-```
 
 List all deny assignments in the subscription
 
+```
+PS C:\> Get-AzureRmDenyAssignment
+Id                      : 22704996-fbd0-4ab1-8625-722d897825d2
+DenyAssignmentName      : Test deny assignment 1
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  All Principals
+                          ObjectType:   SystemDefined
+                          ObjectId:     00000000-0000-0000-0000-000000000000
+                          }
+ExcludePrincipals       : {
+                          DisplayName:  testuser
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          }
+IsSystemProtected       : True
+
+Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+DenyAssignmentName      : Test deny assignment 2
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  testuser
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          ,
+                          DisplayName:  PowershellTestingApp
+                          ObjectType:   ServicePrincipal
+                          ObjectId:     f2dc21ac-702a-4bde-a4ce-146edf751d81
+                          }
+ExcludePrincipals       : {}
+IsSystemProtected       : True
+```
+
 ### Example 2
+
+Gets all deny assignments made to user john.doe@contoso.com at the scope testRG and above.
+
 ```
 PS C:\> Get-AzureRmDenyAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
-```
 
-Gets all deny assignments made to user john.doe@contoso.com, and the groups of which he is member, at above and below the testRG scope.
+Id                      : 22704996-fbd0-4ab1-8625-722d897825d2
+DenyAssignmentName      : Test deny assignment 1
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  john.doe
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          }
+ExcludePrincipals       : {}                          
+IsSystemProtected       : True
+
+Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+DenyAssignmentName      : Test deny assignment
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  john.doe
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          ,
+                          DisplayName:  PowershellTestingApp
+                          ObjectType:   ServicePrincipal
+                          ObjectId:     f2dc21ac-702a-4bde-a4ce-146edf751d81
+                          }
+ExcludePrincipals       : {}
+IsSystemProtected       : True
+```
 
 ### Example 3
-```
-PS C:\> Get-AzureRmDenyAssignment -ServicePrincipalName "http://testapp1.com"
-```
 
 Gets all deny assignments of the specified service principal
 
-### Example 4
 ```
-PS C:\> Get-AzureRmDenyAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
+PS C:\> Get-AzureRmDenyAssignment -ServicePrincipalName 'http://testapp1.com'
+
+Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+DenyAssignmentName      : Test deny assignment 1
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  TestApp
+                          ObjectType:   ServicePrincipal
+                          ObjectId:     f2dc21ac-702a-4bde-a4ce-146edf751d81
+                          }
+ExcludePrincipals       : {}
+IsSystemProtected       : True
+
+Id                      : 94e3d9da-3700-4113-aab4-15f6c173d794
+DenyAssignmentName      : Test deny assignment 2
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testRG/providers/Microsoft.Web/sites/site1
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  testuser
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          ,
+                          DisplayName:  TestApp
+                          ObjectType:   ServicePrincipal
+                          ObjectId:     f2dc21ac-702a-4bde-a4ce-146edf751d81
+                          }
+ExcludePrincipals       : {}
+IsSystemProtected       : True
 ```
 
+### Example 4
+
 Gets deny assignments at the 'site1' website scope.
+
+```
+PS C:\> Get-AzureRmDenyAssignment -Scope '/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/testRG/providers/Microsoft.Web/sites/site1'
+
+Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+DenyAssignmentName      : Test deny assignment 1
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  testuser
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          }
+ExcludePrincipals       : {}
+IsSystemProtected       : True
+
+Id                      : 94e3d9da-3700-4113-aab4-15f6c173d794
+DenyAssignmentName      : Test deny assignment 2
+Description             : Test deny assignment for PS cmdlets
+Actions                 : {foo/*}
+NotActions              : {foo/*/read}
+DataActions             : {foo/*}
+NotDataActions          : {}
+Scope                   : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testRG/providers/Microsoft.Web/sites/site1
+DoNotApplyToChildScopes : False
+Principals              : {
+                          DisplayName:  testuser
+                          ObjectType:   User
+                          ObjectId:     f8d526a0-54eb-4941-ae69-ebf4a334d0f0
+                          ,
+                          DisplayName:  TestApp
+                          ObjectType:   ServicePrincipal
+                          ObjectId:     f2dc21ac-702a-4bde-a4ce-146edf751d81
+                          }
+ExcludePrincipals       : {}
+IsSystemProtected       : True
+
+```
 
 ## PARAMETERS
 
