@@ -18,3 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removing cmdlets which have been marked Obsolete in May 2018
+    - New-AzureRmApiManagementCustomHostnameConfiguration
+    - Set-AzureRmApiManagementHostnames
+    - Update-AzureRmApiManagementDeployment
+    - Import-AzureRmApiManagementHostnameCertificate
+    Please use **Set-AzureRmApiManagement** instead.
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/7002
