@@ -37,7 +37,9 @@ namespace Microsoft.Azure.Commands.TestFx
         private readonly string _callingClassName;
         private string _projectSubfolderForTestsName = null;
         private string _newPsScriptFilename = null;
-        private Dictionary<string, string> _userAgentsToIgnore;
+        private Dictionary<string, string> _matcherExtraUserAgentsToIgnore;
+        private Dictionary<string, string> _matcherNewUserAgentsToIgnore;
+        private Dictionary<string, string> _matcherResourceProviders;
         protected EnvironmentSetupHelper Helper;
         protected readonly List<string> RmModules;
         protected readonly List<string> CommonPsScripts = new List<string>();
@@ -141,6 +143,19 @@ namespace Microsoft.Azure.Commands.TestFx
         }
 
         /// <summary>
+        /// Set new argumets for the mock server record matcher 
+        /// </summary>
+        /// <param name="userAgentsToIgnore">Dictionary [userAgent:apiVersion] to ignore</param>
+        /// <param name="resourceProviders">Dictionary [resouceProvider:apiVersion] to match</param>
+        /// <returns></returns>
+        public ITestRunnerFactory WithNewRecordMatcherArguments(Dictionary<string, string> userAgentsToIgnore, Dictionary<string, string> resourceProviders)
+        {
+            _matcherNewUserAgentsToIgnore = userAgentsToIgnore;
+            _matcherResourceProviders = resourceProviders;
+            return this;
+        }
+
+        /// <summary>
         /// Sets a new HttpMockServer.Matcher implementation. By defauls it's PermissiveRecordMatcherWithApiExclusion
         /// </summary>
         /// <param name="recordMatcher">delegate</param>
@@ -161,7 +176,7 @@ namespace Microsoft.Azure.Commands.TestFx
         /// <returns>self</returns>
         public ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore)
         {
-            _userAgentsToIgnore = userAgentsToIgnore;
+            _matcherExtraUserAgentsToIgnore = userAgentsToIgnore;
             return this;
         }
 
@@ -195,6 +210,13 @@ namespace Microsoft.Azure.Commands.TestFx
                 SetupAzureContext();
                 Helper.RunPowerShellTest(scripts);
             }
+        }
+
+        public void RunTestScript(Action setUp, Action tearDown, params string[] scripts)
+        {
+            setUp?.Invoke();
+            RunTestScript(scripts);
+            tearDown?.Invoke();
         }
 
         #endregion
@@ -237,33 +259,39 @@ namespace Microsoft.Azure.Commands.TestFx
             const string domainKey = "Domain";
             const string subscriptionIdKey = "SubscriptionId";
             const string undefined = "Undefined";
-            var zeroGuild = Guid.Empty.ToString();
+            var zeroGuid = Guid.Empty.ToString();
+            const string dummyGuid = "395544B0-BF41-429D-921F-E1CA2252FCF4";
 
             string tenantId =  null;
             string userDomain = null;
             string subscriptionId = null;
 
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            switch (HttpMockServer.Mode)
             {
-                var environment = TestEnvironmentFactory.GetTestEnvironment();
-                tenantId = environment.Tenant;
-                userDomain = string.IsNullOrEmpty(environment.UserName) 
-                    ? string.Empty 
-                    : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
+                case HttpRecorderMode.Record:
+                    var environment = TestEnvironmentFactory.GetTestEnvironment();
+                    tenantId = environment.Tenant;
+                    userDomain = string.IsNullOrEmpty(environment.UserName) 
+                        ? string.Empty 
+                        : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
-                subscriptionId = environment.SubscriptionId;
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                tenantId = HttpMockServer.Variables.ContainsKey(tenantIdKey)
-                    ? HttpMockServer.Variables[tenantIdKey]
-                    : zeroGuild;
-                userDomain = HttpMockServer.Variables.ContainsKey(domainKey)
-                    ? HttpMockServer.Variables[domainKey]
-                    : "testdomain.onmicrosoft.com";
-                subscriptionId = HttpMockServer.Variables.ContainsKey(subscriptionIdKey)
-                    ? HttpMockServer.Variables[subscriptionIdKey]
-                    : zeroGuild;
+                    subscriptionId = environment.SubscriptionId;
+                    break;
+                case HttpRecorderMode.Playback:
+                    tenantId = HttpMockServer.Variables.ContainsKey(tenantIdKey)
+                        ? HttpMockServer.Variables[tenantIdKey]
+                        : dummyGuid;
+                    userDomain = HttpMockServer.Variables.ContainsKey(domainKey)
+                        ? HttpMockServer.Variables[domainKey]
+                        : "testdomain.onmicrosoft.com";
+                    subscriptionId = HttpMockServer.Variables.ContainsKey(subscriptionIdKey)
+                        ? HttpMockServer.Variables[subscriptionIdKey]
+                        : zeroGuid;
+                    break;
+                case HttpRecorderMode.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId ?? undefined;
@@ -273,20 +301,26 @@ namespace Microsoft.Azure.Commands.TestFx
 
         protected void SetupMockServerMatcher()
         {
-            var resourceProviders = new Dictionary<string, string>
-            {
-                {"Microsoft.Resources", null},
-                {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null},
-                {"Providers.Test", null},
-            };
+            var resourceProviders = _matcherResourceProviders?.Count > 0 
+                ? _matcherResourceProviders 
+                : new Dictionary<string, string> // default 
+                    {
+                        {"Microsoft.Resources", null},
+                        {"Microsoft.Features", null},
+                        {"Microsoft.Authorization", null},
+                        {"Providers.Test", null},
+                    };
 
-            var userAgentsToIgnore = new Dictionary<string, string>
+            var extraUserAgentsToIgnore = new Dictionary<string, string> // default
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
             };
 
-            _userAgentsToIgnore?.Keys.ForEach(k=> userAgentsToIgnore.Add(k, _userAgentsToIgnore[k]));
+            _matcherExtraUserAgentsToIgnore?.Keys.ForEach(k => extraUserAgentsToIgnore.Add(k, _matcherExtraUserAgentsToIgnore[k])); //extra
+
+            var userAgentsToIgnore = _matcherNewUserAgentsToIgnore?.Count > 0
+                ? _matcherNewUserAgentsToIgnore 
+                : extraUserAgentsToIgnore;
 
             HttpMockServer.Matcher = RecordMatcher(true, resourceProviders, userAgentsToIgnore);
         }
