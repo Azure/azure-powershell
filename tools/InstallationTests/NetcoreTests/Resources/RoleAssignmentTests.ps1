@@ -20,10 +20,10 @@ function Test-RaClassicAdmins
 {
     # Setup
     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
 
     # Test
-    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}
+    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName -ieq 'ServiceAdministrator;AccountAdministrator' }
 	
     # Assert
     Assert-NotNull $classic
@@ -37,38 +37,22 @@ Tests retrieval of classic administrators with subscription scope
 function Test-RaClassicAdminsWithScope
 {
     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-    $signInName = 'test2@rbacCliTest.onmicrosoft.com'
-    $adminSubscription = '4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
-    $nonAdminSubscription = '1de8ed49-d13d-4a32-a8cf-2aa8e944c392'
-
     # Setup
-    Select-AzureRmSubscription -SubscriptionId $nonAdminSubscription
+    $subscription = Get-AzureRmSubscription
 
     # Test
-    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$adminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+    $classic = Get-AzureRmRoleAssignment -Scope ("/subscriptions/" + $subscription[0].Id) -IncludeClassicAdministrators | Where-Object { $_.Scope.ToLower().Contains("/subscriptions/" + $subscription[0].Id) -and $_.RoleDefinitionName -ieq 'ServiceAdministrator;AccountAdministrator' }
 
     # Assert
     Assert-NotNull $classic
     Assert-True { $classic.Length -ge 1 }
 
-    # Setup
-    Select-AzureRmSubscription -SubscriptionId $adminSubscription
-
     # Test
-    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$adminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+    $classic = Get-AzureRmRoleAssignment -Scope ("/subscriptions/" + $subscription[1].Id) -IncludeClassicAdministrators | Where-Object { $_.Scope.ToLower().Contains("/subscriptions/" + $subscription[1].Id) -and $_.RoleDefinitionName -ieq 'ServiceAdministrator;AccountAdministrator' }
 
     # Assert
     Assert-NotNull $classic
     Assert-True { $classic.Length -ge 1 }
-
-    # Setup
-    Select-AzureRmSubscription -SubscriptionId $adminSubscription
-
-    # Test
-    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$nonAdminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
-
-    # Assert
-    Assert-Null $classic
 }
 
 <#
@@ -80,7 +64,7 @@ function Test-RaNegativeScenarios
     # Setup
      Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
 
     # Bad OID returns zero role assignments
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
@@ -116,7 +100,7 @@ function Test-RaByScope
 
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -221,7 +205,7 @@ function Test-RaByServicePrincipal
 
     $definitionName = 'Reader'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
