@@ -153,7 +153,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultLocation = (string)ProviderData[VaultParams.VaultLocation];
             CmdletModel.AzureFileShareRecoveryPoint recoveryPoint = ProviderData[RestoreBackupItemParams.RecoveryPoint]
                 as CmdletModel.AzureFileShareRecoveryPoint;
-            string storageAccountName = ProviderData[RestoreBackupItemParams.StorageAccountName].ToString();
+            string storageAccountName = ProviderData.ContainsKey(RestoreBackupItemParams.StorageAccountName) ?
+                ProviderData[RestoreBackupItemParams.StorageAccountName].ToString() : null;
             string storageAccountResourceGroupName = ProviderData.ContainsKey(RestoreBackupItemParams.StorageAccountResourceGroupName) ?
                 ProviderData[RestoreBackupItemParams.StorageAccountResourceGroupName].ToString() : null;
             string copyOptions = (string)ProviderData[RestoreFSBackupItemParams.ResolveConflict];
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 targetFolder = "/";
             }
 
-            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName);
+            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(recoveryPoint.ContainerName.Split(';')[2]);
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
             if (targetStorageAccountName != null)
