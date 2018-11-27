@@ -21,6 +21,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountManagementPolicyNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSManagementPolicy))]
+#if NETSTANDARD
+    [Alias("Get-" + "AzureRm" + StorageAccountManagementPolicyNounStr)]
+#endif
     public class GetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>

@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountManagementPolicyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountManagementPolicyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet)]    
+#if NETSTANDARD
+    [Alias("Remove-" + "AzureRm" + StorageAccountManagementPolicyNounStr)]
+#endif
     public class RemoveAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
