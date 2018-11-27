@@ -25,6 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// </summary>
     [Cmdlet("Disable", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageStaticWebsite", SupportsShouldProcess = true),
         OutputType(typeof(PSStaticWebsiteProperties))]
+#if NETSTANDARD
+    [Alias("Disable-" + "AzureStorageStaticWebsite")]
+#endif
     public class DisableAzureStorageServiceStaticWebsiteCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = false)]
