@@ -19,10 +19,10 @@ Tests retrieval of classic administrators
 function Test-RaClassicAdmins
 {
     # Setup
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
 
     # Test
-    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}
+    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName -ieq 'ServiceAdministrator;AccountAdministrator' }
 
     # Assert
     Assert-NotNull $classic
@@ -35,38 +35,22 @@ Tests retrieval of classic administrators with subscription scope
 #>
 function Test-RaClassicAdminsWithScope
 {
-    $signInName = 'test2@rbacCliTest.onmicrosoft.com'
-    $adminSubscription = '4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
-    $nonAdminSubscription = '1de8ed49-d13d-4a32-a8cf-2aa8e944c392'
-
     # Setup
-    Select-AzureRmSubscription -SubscriptionId $nonAdminSubscription
+    $subscription = Get-AzureRmSubscription
 
     # Test
-    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$adminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+    $classic = Get-AzureRmRoleAssignment -Scope ("/subscriptions/" + $subscription[0].Id) -IncludeClassicAdministrators | Where-Object { $_.Scope.ToLower().Contains("/subscriptions/" + $subscription[0].Id) -and $_.RoleDefinitionName -ieq 'ServiceAdministrator;AccountAdministrator' }
 
     # Assert
     Assert-NotNull $classic
     Assert-True { $classic.Length -ge 1 }
 
-    # Setup
-    Select-AzureRmSubscription -SubscriptionId $adminSubscription
-
     # Test
-    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$adminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
+    $classic = Get-AzureRmRoleAssignment -Scope ("/subscriptions/" + $subscription[1].Id) -IncludeClassicAdministrators | Where-Object { $_.Scope.ToLower().Contains("/subscriptions/" + $subscription[1].Id) -and $_.RoleDefinitionName -ieq 'ServiceAdministrator;AccountAdministrator' }
 
     # Assert
     Assert-NotNull $classic
     Assert-True { $classic.Length -ge 1 }
-
-    # Setup
-    Select-AzureRmSubscription -SubscriptionId $adminSubscription
-
-    # Test
-    $classic = Get-AzureRmRoleAssignment -SignInName $signInName -Scope "/subscriptions/$nonAdminSubscription" -IncludeClassicAdministrators | Where-Object { $_.RoleDefinitionName.ToLower().Contains('administrator') }
-
-    # Assert
-    Assert-Null $classic
 }
 
 <#
@@ -92,7 +76,7 @@ Tests verifies negative scenarios for RoleAssignments
 function Test-RaNegativeScenarios
 {
     # Setup
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
 
     # Bad OID returns zero role assignments
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
@@ -121,7 +105,7 @@ function Test-RaDeleteByPSRoleAssignment
     # Setup
     $definitionName = 'Backup Contributor'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -148,7 +132,7 @@ function Test-RaByScope
     # Setup
     $definitionName = 'Automation Job Operator'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     $assignmentScope = $scope +"/"
@@ -182,7 +166,7 @@ function Test-RaById
     # Setup
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -First 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     $assignmentScope = $scope +"/"
@@ -316,7 +300,7 @@ function Test-RaValidateInputParameters ($cmdName)
 
     # Check if ResourceType is valid
     Assert-AreEqual $resource.ResourceType "Microsoft.Web/sites"
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     # Below invalid resource type should not return 'Not supported api version'.
     $resource.ResourceType = "Microsoft.KeyVault/"
     $invalidResourceType = "Scope '/subscriptions/"+$subscription.Id+"/resourceGroups/"+$resource.ResourceGroupName+"/providers/Microsoft.KeyVault/"+$resource.Name+"' should have even number of parts."
@@ -337,7 +321,7 @@ function Test-RaByServicePrincipal
     # Setup
     $definitionName = 'Web Plan Contributor'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
@@ -464,7 +448,7 @@ function Test-RaDeletionByScope
     # Setup
     $definitionName = 'Backup Operator'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -498,7 +482,7 @@ function Test-RaDeletionByScopeAtRootScope
     # Setup
     $definitionName = 'Billing Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/'
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -531,7 +515,7 @@ function Test-RaPropertiesValidation
 {
     # Setup
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $scope = '/subscriptions/'+$subscription[0].Id
     $roleDef = Get-AzureRmRoleDefinition -Name "User Access Administrator"
     $roleDef.Id = $null
@@ -578,7 +562,7 @@ function Test-RaDelegation
     # Setup
     $definitionName = 'Automation Runbook Operator'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     $assignmentScope = $scope +"/"
@@ -614,7 +598,7 @@ function Test-RaGetByScope
     # Setup
     $definitionName = 'Automation Operator'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription | Where-Object { $_.Id -ieq "4004a9fd-d58e-48dc-aeb2-4a4aec58606f" }
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 2 -Wait
     $scope1 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[1].ResourceGroupName
