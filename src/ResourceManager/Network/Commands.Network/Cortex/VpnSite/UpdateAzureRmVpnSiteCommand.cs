@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The address prefixes of the virtual network. Use this or AddressSpaceObject but not both.")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressSpace { get; set; }
+        public string[] AddressSpace { get; set; }
 
         [Parameter(
             Mandatory = false,

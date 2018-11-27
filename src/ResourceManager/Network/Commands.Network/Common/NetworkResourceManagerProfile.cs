@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         if (src.AddressPrefixes != null && src.AddressPrefixes.Any())
                         {
-                            dest.AddressPrefix = src.AddressPrefixes.ToList();
+                            dest.AddressPrefix = src.AddressPrefixes?.ToList();
                         }
                         else if(!string.IsNullOrEmpty(src.AddressPrefix))
                         {

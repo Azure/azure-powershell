@@ -15,7 +15,7 @@ Gets a route table summary of an ExpressRoute circuit.
 
 ```
 Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+ -PeeringType <String> -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
