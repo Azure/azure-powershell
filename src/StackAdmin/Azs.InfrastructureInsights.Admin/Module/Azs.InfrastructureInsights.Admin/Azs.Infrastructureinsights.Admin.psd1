@@ -115,21 +115,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
-            * Module dependencies updated
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * Support handling names of nested resources
-                * Get-AzsAlert
-                * Close-AzsAlert
-                * Get-AzsRegistrationHealth
-                * Get-AzsRPHealth
-            * Deprecations
-                * Get-AzsRegistrationHealth, the parameter ResourceHealthId is now an alias for Name
-                * Get-AzsRegistrationHealth, the parameter ServiceRegistrationId is now an alias for ServiceRegistrationName
-                * Get-AzsRPHealth, the parameter ServiceHealth is now an alias for Name
-            * Bug fixes
-                * Handle ErrrorAction correctly now
+            ReleaseNotes = '## 2018.12
+            * Added a new cmdlet Repair-AzsAlert, supported with azurestack 1811 update
             '
 
         } # End of PSData hashtable
