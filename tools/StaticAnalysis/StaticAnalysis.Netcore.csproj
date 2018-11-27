@@ -8,7 +8,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(ProjectDir)..\..\src\Package\StaticAnalysis\</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\src\Package</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,8 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-rc.1" IncludeAssets="All" />
-    <PackageReference Include="System.Runtime.Loader" Version="4.0.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>

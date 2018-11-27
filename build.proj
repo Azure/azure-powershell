@@ -566,8 +566,7 @@
     <PropertyGroup>
         <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
-    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -m @(ModulesChanged)"
-          Condition="'$(Scope)' != 'Stack'"/>
+    <Exec Command="dotnet $(MSBuildProjectDirectory)\src\Package\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -u -m @(ModulesChanged)" />
 
     <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
   </Target>
