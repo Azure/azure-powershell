@@ -36,7 +36,27 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
             this.StartTime = sucr.StartTime;
             this.Status = (SoftwareUpdateRunStatus)Enum.Parse(typeof(SoftwareUpdateRunStatus), sucr.Status, true);
-            this.Tasks = sucr.Tasks;
+            this.Tasks = sucr.Tasks==null 
+                ? null 
+                : new SoftareUpdateConfigurationRunTasks
+                {
+                    PreTask = sucr.Tasks.PreTask == null 
+                    ? null 
+                    : new SoftareUpdateConfigurationRunTaskProperties
+                    {
+                        JobId = sucr.Tasks.PreTask.JobId,
+                        Source = sucr.Tasks.PreTask.Source,
+                        Status = sucr.Tasks.PreTask.Status
+                    },
+                    PostTask = sucr.Tasks.PostTask == null
+                    ? null
+                    : new SoftareUpdateConfigurationRunTaskProperties
+                    {
+                        JobId = sucr.Tasks.PostTask.JobId,
+                        Source = sucr.Tasks.PostTask.Source,
+                        Status = sucr.Tasks.PostTask.Status
+                    },
+                };
         }
 
         public Guid RunId { get; set; }

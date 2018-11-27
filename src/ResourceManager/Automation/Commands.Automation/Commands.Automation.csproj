@@ -206,6 +206,8 @@
     <Compile Include="Model\UpdateManagement\LinuxPackageClasses.cs" />
     <Compile Include="Model\UpdateManagement\OperatingSystemType.cs" />
     <Compile Include="Model\UpdateManagement\RebootSetting.cs" />
+    <Compile Include="Model\UpdateManagement\SoftareUpdateConfigurationRunTaskProperties.cs" />
+    <Compile Include="Model\UpdateManagement\SoftareUpdateConfigurationRunTasks.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateMachineRun.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateConfiguration.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateMachineRunStatus.cs" />
