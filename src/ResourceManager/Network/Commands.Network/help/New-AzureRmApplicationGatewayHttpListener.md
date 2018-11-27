@@ -17,7 +17,8 @@ Creates an HTTP listener for an application gateway.
 ```
 New-AzureRmApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId <String>]
  [-FrontendPortId <String>] [-SslCertificateId <String>] [-HostName <String>]
- [-RequireServerNameIndication <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>]
+ [-RequireServerNameIndication <String>] -Protocol <String>
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +28,8 @@ New-AzureRmApplicationGatewayHttpListener -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +53,21 @@ This command creates an HTTP listener that uses SSL offload and provides the SSL
 The command stores the result in the variable named $Listener.
 
 ## PARAMETERS
+
+### -CustomErrorConfiguration
+Customer error of an application gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

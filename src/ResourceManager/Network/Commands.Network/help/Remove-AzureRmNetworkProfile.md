@@ -12,15 +12,9 @@ Removes a network profile.
 
 ## SYNTAX
 
-### RemoveByName
+### RemoveByNameParameterSet (Default)
 ```
-Remove-AzureRmNetworkProfile -ResourceGroupName <String> [-Force] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveByNameParameterSet
-```
-Remove-AzureRmNetworkProfile -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

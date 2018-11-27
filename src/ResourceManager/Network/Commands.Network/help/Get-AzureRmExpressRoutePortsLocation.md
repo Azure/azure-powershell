@@ -22,7 +22,6 @@ The **Get-AzureRmExpressRoutePortsLocation** cmdlet is used to retrieve the loca
 ExpressRoutePort resources are available. Given a specific location as input, the cmdlet displays
 the details of that location i.e., list of available bandwidths at that location.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -45,7 +44,7 @@ Lists the ExpressRoutePort bandwidths available at location $loc.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +59,7 @@ Accept wildcard characters: False
 The name of the location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

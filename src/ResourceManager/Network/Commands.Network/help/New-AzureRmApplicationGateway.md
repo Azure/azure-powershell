@@ -16,24 +16,23 @@ Creates an application gateway.
 ```
 New-AzureRmApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
  -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
- -GatewayIPConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration]>
- [-SslCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate]>]
- [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
- [-TrustedRootCertificate <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate]>]
- [-FrontendIPConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration]>]
- -FrontendPorts <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort]>
- [-Probes <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe]>]
- -BackendAddressPools <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>
- -BackendHttpSettingsCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings]>
- -HttpListeners <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener]>
- [-UrlPathMaps <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap]>]
- -RequestRoutingRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule]>
- [-RewriteRuleSets <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet]>]
- [-RedirectConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration]>]
+ -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
+ [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
+ [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
+ [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>]
+ [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
+ -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
+ -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
+ -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
+ -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
+ [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
+ [-RewriteRuleSets <PSApplicationGatewayRewriteRuleSet[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
- [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 Specifies authentication certificates for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +148,7 @@ Accept wildcard characters: False
 Specifies the list of back-end address pools for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +163,7 @@ Accept wildcard characters: False
 Specifies the list of back-end HTTP settings for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings[]
 Parameter Sets: (All)
 Aliases:
 
@@ -172,6 +171,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CustomErrorConfiguration
+Customer error of an application gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -239,7 +253,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP configurations for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +268,7 @@ Accept wildcard characters: False
 Specifies a list of front-end ports for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +283,7 @@ Accept wildcard characters: False
 Specifies a list of IP configurations for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -284,7 +298,7 @@ Accept wildcard characters: False
 Specifies a list of HTTP listeners for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener[]
 Parameter Sets: (All)
 Aliases:
 
@@ -329,7 +343,7 @@ Accept wildcard characters: False
 Specifies probes for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe[]
 Parameter Sets: (All)
 Aliases:
 
@@ -344,7 +358,7 @@ Accept wildcard characters: False
 The list of redirect configuration
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -359,7 +373,7 @@ Accept wildcard characters: False
 Specifies a list of request routing rules for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -419,7 +433,7 @@ Accept wildcard characters: False
 Specifies the list of Secure Sockets Layer (SSL) certificates for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -465,7 +479,7 @@ Accept wildcard characters: False
 The list of trusted root certificates
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -480,7 +494,7 @@ Accept wildcard characters: False
 Specifies URL path maps for the application gateway.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap[]
 Parameter Sets: (All)
 Aliases:
 
@@ -511,7 +525,7 @@ Accept wildcard characters: False
 A list of availability zones denoting where the application gateway needs to come from.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -564,29 +578,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPolicy
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration
 

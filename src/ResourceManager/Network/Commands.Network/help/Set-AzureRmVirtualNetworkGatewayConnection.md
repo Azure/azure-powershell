@@ -15,9 +15,8 @@ Configures a virtual network gateway connection.
 
 ```
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
- [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 A list of IPSec policies.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +206,7 @@ Parameters: VirtualNetworkGatewayConnection (ByValue)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
 ## OUTPUTS
 

@@ -15,12 +15,10 @@ Creates a public IP address.
 
 ```
 New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
- -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>]
- [-IpTag <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]>]
- [-PublicIpPrefix <Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix>]
- [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
- [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>] [-IpTag <PSPublicIpTag[]>]
+ [-PublicIpPrefix <PSPublicIpPrefix>] [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,7 +187,7 @@ Accept wildcard characters: False
 IpTag List.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpTag[]
 Parameter Sets: (All)
 Aliases:
 
@@ -215,13 +213,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PublicIpPrefix
-Specifies the PSPublicIpPrefix from which to allocate the public IP address.
+### -Name
+Specifies the name of the public IP address that this cmdlet creates.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceName
 
 Required: False
 Position: Named
@@ -230,13 +228,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the public IP address that this cmdlet creates.
+### -PublicIpPrefix
+Specifies the PSPublicIpPrefix from which to allocate the public IP address.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases:
 
 Required: False
 Position: Named
@@ -311,7 +309,7 @@ Accept wildcard characters: False
 A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -360,11 +358,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpTag[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
 ### System.Int32
 
-### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 
 ### System.Collections.Hashtable
 
