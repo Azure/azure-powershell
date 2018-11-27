@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.DataFactories
     [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SuspendAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)

@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 $" AllowModuleOverwrite: {this.AllowModuleOverwrite}, AzureVMResourceGroup: {this.AzureVMResourceGroup}, AzureVMLocation: {this.AzureVMLocation}";
             WriteDebug(parametersPassed);
 
-            this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName, this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite, this.AzureVMResourceGroup, this.AzureVMLocation);
+            this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName, this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite, this.AzureVMResourceGroup, this.AzureVMLocation,this.DefaultContext);
         }
     }
 }

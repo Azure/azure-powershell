@@ -1,4 +1,136 @@
-﻿## 6.11.0 - October 2018
+﻿## 6.13.0 - November 2018
+#### AzureRM.Profile
+* Update common code to use latest version of ClientRuntime
+
+#### AzureRM.ApiManagement
+* Update dependencies for type mapping issue
+
+#### AzureRM.Automation
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
+
+#### AzureRM.Compute
+* Fixed identity issue for SystemAssigned identity
+* Update dependencies for type mapping issue
+
+#### AzureRM.ContainerInstance
+* Update dependencies for type mapping issue
+
+#### AzureRM.MarketplaceOrdering
+* update the examples description for marketplace cmdlets
+
+#### AzureRM.Network
+* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
+* Added ICMP back to supported AzureFirewall Network Protocols
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
+* Fix issues with memory usage in VirtualNetwork map
+
+#### AzureRM.RecoveryServices.Backup
+* Fix for modifying policy for a protected file share.
+* Converted policy timezone to uppercase.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Corrected example in New-AzureRmRecoveryServicesAsrProtectableItem
+* Update dependencies for type mapping issue
+
+#### AzureRM.Relay
+* Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
+
+#### AzureRM.Resources
+* Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
+
+#### AzureRM.ServiceFabric
+* Add deprecation messages for upcoming breaking changes
+
+#### AzureRM.Sql
+* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
+	- Get-AzureRmSqlInstance
+	- New-AzureRmSqlInstance
+	- Set-AzureRmSqlInstance
+	- Remove-AzureRmSqlInstance
+	- Get-AzureRmSqlInstanceDatabase
+	- New-AzureRmSqlInstanceDatabase
+	- Restore-AzureRmSqlInstanceDatabase
+	- Remove-AzureRmSqlInstanceDatabase
+* Enabled Extended Auditing Policy management on a server or a database.
+	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
+	- Cmdlets were modified to use SQL clients instead of Legacy clients.
+	- Set-AzureRmSqlServerAuditing.
+	- Get-AzureRmSqlServerAuditing.
+	- Set-AzureRmSqlDatabaseAuditing.
+	- Get-AzureRmSqlDatabaseAuditing.
+* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
+
+## 6.12.0 - November 2018
+#### AzureRM.Profile
+* Update common code to use latest version of ClientRuntime
+* Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
+* Updated TenantId description for Connect-AzureRmAccount
+* Fix error message for failed login when providing tenant domain
+    - https://github.com/Azure/azure-powershell/issues/6936
+* Fix issue with context name clashing for accounts with no subscriptions in tenant
+    - https://github.com/Azure/azure-powershell/issues/7453
+* Fix issue with DataLake endpoints when using MSI
+    - https://github.com/Azure/azure-powershell/issues/7462
+* Fix issue where 'Disconnect-AzureRmAccount' would throw if not connected
+    - https://github.com/Azure/azure-powershell/issues/7167
+
+#### AzureRM.Automation
+* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
+
+#### AzureRM.CognitiveServices
+* Add Get-AzureRmCognitiveServicesAccountSkus operation.
+
+#### AzureRM.Compute
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+
+#### AzureRM.DataLakeStore
+* Update the DataLake package to 1.1.10.
+* Add default Concurrency to multithreaded operations.
+
+#### AzureRM.Insights
+* Fixed issue #7267 (Autoscale area)
+    - Issues with creating a new autoscale rule not properly setting enumerated parameters (would always set them to the default value).
+* Fixed issue #7513 [Insights] Set-AzureRMDiagnosticSetting requires explicit specification of categories during creation of setting
+    - Now the cmdlet does not require explicit indication of the categories to enable during creation, i.e. it works as it is documented
+
+#### AzureRM.Network
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
+#### AzureRM.PolicyInsights
+* Added policy remediation cmdlets
+
+#### AzureRM.RecoveryServices.Backup
+* Added support for azure file shares in recovery services.
+
+#### AzureRM.Resources
+* Fix for https://github.com/Azure/azure-powershell/issues/7402
+    - Allow listing resources using the '-ResourceId' parameter for 'Get-AzureRmResource'
+
+#### AzureRM.ServiceBus
+* Added MigrationState read-only property to PSServiceBusMigrationConfigurationAttributes which will help to know the Migration state.
+
+#### AzureRM.ServiceFabric
+* Fix add certificate to Linux Vmss.
+* Fix 'Add-AzureRmServiceFabricClusterCertificate'
+    - Using correct thumbprint from new certificate (Azure/service-fabric-issues#932).
+    - Display exception correctly (Azure/service-fabric-issues#1054).
+* Fix 'Update-AzureRmServiceFabricDurability' to update cluster configuration before starting Vmss CreateOrUpdate operation.
+
+## 6.11.0 - October 2018
 #### AzureRM.Profile
 * Fix issue with Get-AzureRmSubscription in CloudShell
 * Update common code to use latest version of ClientRuntime

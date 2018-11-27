@@ -317,27 +317,29 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 storageAccountSubscriptionId,
                 storageAccountName);
             var nextLink = uriBuilder.ToString();
-            JToken response = null;
-
-            while (!string.IsNullOrEmpty(nextLink))
+            string id = null;
+            while (!string.IsNullOrEmpty(nextLink) && string.IsNullOrEmpty(id))
             {
-                response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
-                nextLink = (string)response["nextLink"];
-            }
-
+                JToken response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
             var valuesArray = (JArray)response["value"];
-            if (!valuesArray.HasValues)
+                if (valuesArray.HasValues)
             {
-                throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
-            }
-
-            var idValueToken = valuesArray[0];
-            var id = (string)idValueToken["id"];
+                    JToken idValueToken = valuesArray[0];
+                    id = (string)idValueToken["id"];
             if (string.IsNullOrEmpty(id))
             {
                 throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
             }
+                }
 
+                nextLink = (string)response["nextLink"];
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
+            }
+            
             return id;
         }
 

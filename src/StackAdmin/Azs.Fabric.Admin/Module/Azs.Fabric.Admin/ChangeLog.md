@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 0.3.0
+* New cmdlet (The features are supported by Azure Stack 1811+)
+	* Get-AzsDrive
+	* Get-AzsVolume
+	* Get-AzsStorageSubSystem
+* Deprecation
+	* Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
+
+## Version 0.2.1
+* Bug fixes
+	* Fixed a bug in Add-AzsScaleUnitNode
+
 ## Version 0.2.0
 * New Module dependencies
 	* AzureRM.Profile
@@ -52,5 +64,3 @@
 	* Start-AzsScaleUnitNode
 	* Stop-AzsInfrastructureRoleInstance
 	* Stop-AzsScaleUnitNode
-* Bug fixes
-	* Handle ErrrorAction correctly now
