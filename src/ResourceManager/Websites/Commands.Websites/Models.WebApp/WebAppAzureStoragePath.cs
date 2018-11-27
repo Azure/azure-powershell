@@ -1,5 +1,3 @@
-﻿using Microsoft.Azure.Management.WebSites.Models;
-using System;
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -13,6 +11,9 @@ using System;
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.WebSites.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
