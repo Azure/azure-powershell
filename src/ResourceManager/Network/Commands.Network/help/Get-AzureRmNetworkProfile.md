@@ -12,20 +12,15 @@ Gets an existing network profile top level resource
 
 ## SYNTAX
 
-### NoExpand (Default)
+### GetByResourceNameNoExpandParameterSet (Default)
 ```
-Get-AzureRmNetworkProfile [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmNetworkProfile [-ResourceGroupName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceNameExpandParameterSet
 ```
 Get-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByResourceNameNoExpandParameterSet
-```
-Get-AzureRmNetworkProfile [-ResourceGroupName <String>] [-Name <String>] -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,8 +32,7 @@ Get-AzureRmNetworkProfile -ResourceId <String> -ExpandResource <String>
 
 ### GetByResourceIdNoExpandParameterSet
 ```
-Get-AzureRmNetworkProfile -ResourceId <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmNetworkProfile -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +69,7 @@ The resource reference to be expanded.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameExpandParameterSet, GetByResourceNameNoExpandParameterSet, GetByResourceIdExpandParameterSet, GetByResourceIdNoExpandParameterSet
+Parameter Sets: GetByResourceNameExpandParameterSet, GetByResourceIdExpandParameterSet
 Aliases:
 
 Required: True
@@ -90,10 +84,10 @@ The name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameExpandParameterSet
+Parameter Sets: GetByResourceNameNoExpandParameterSet
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,10 +96,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameNoExpandParameterSet
+Parameter Sets: GetByResourceNameExpandParameterSet
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -117,10 +111,10 @@ The resource group name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameExpandParameterSet
+Parameter Sets: GetByResourceNameNoExpandParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -129,10 +123,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameNoExpandParameterSet
+Parameter Sets: GetByResourceNameExpandParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              HelpMessage = "Filters for packet capture session.")]
         [ValidateNotNull]
-        public List<PSPacketCaptureFilter> Filter { get; set; }
+        public PSPacketCaptureFilter[] Filter { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

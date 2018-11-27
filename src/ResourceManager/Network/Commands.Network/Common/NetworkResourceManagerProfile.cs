@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         if (src.AddressPrefixes != null && src.AddressPrefixes.Any())
                         {
-                            dest.AddressPrefix = src.AddressPrefixes.ToList();
+                            dest.AddressPrefix = src.AddressPrefixes?.ToList();
                         }
                         else if(!string.IsNullOrEmpty(src.AddressPrefix))
                         {
@@ -840,7 +840,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
                 cfg.CreateMap<CNM.PSVpnConnection, MNM.VpnConnection>();
-                cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>();
+                cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>().AfterMap((src, dest) =>
+                {
+                    if (src.BgpSettings != null)
+                    {
+                        dest.BgpProperties = new MNM.BgpSettings(src.BgpSettings.Asn, src.BgpSettings.BgpPeeringAddress, src.BgpSettings.PeerWeight);
+                    }
+                });
+
                 cfg.CreateMap<CNM.PSVpnSiteDeviceProperties, MNM.DeviceProperties>();
 
                 cfg.CreateMap<MNM.VirtualWAN, CNM.PSVirtualWan>();
@@ -850,7 +857,19 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>();
                 cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();
                 cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
-                cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>();
+                cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>().AfterMap((src, dest) =>
+                {
+                    if (src.BgpProperties != null)
+                    {
+                        dest.BgpSettings = new CNM.PSBgpSettings()
+                        {
+                            Asn = src.BgpProperties.Asn,
+                            BgpPeeringAddress = src.BgpProperties.BgpPeeringAddress,
+                            PeerWeight = src.BgpProperties.PeerWeight
+                        };
+                    }
+                });
+
                 cfg.CreateMap<MNM.DeviceProperties, CNM.PSVpnSiteDeviceProperties>();
 
                 // Azure Firewalls

@@ -15,16 +15,14 @@ Creates an array of URL path mappings to a backend server pool.
 
 ### SetByResourceId
 ```
-New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
  [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
@@ -170,7 +168,7 @@ Specifies a list of path rules.
 Note that the path rules are order sensitive, they are applied in order they are specified.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule[]
 Parameter Sets: (All)
 Aliases:
 

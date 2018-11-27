@@ -15,19 +15,15 @@ Creates a Firewall Application Rule.
 
 ### TargetFqdn (Default)
 ```
-New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
- [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
- -TargetFqdn <System.Collections.Generic.List`1[System.String]>
- -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FqdnTag
 ```
-New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
- [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
- -FqdnTag <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +81,7 @@ Accept wildcard characters: False
 Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzureRmFirewallFqdnTag](./Get-AzureRmFirewallFqdnTag.md) cmdlet.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: FqdnTag
 Aliases:
 
@@ -117,7 +113,7 @@ For example, "http:80" or "https:443".
 Protocol is mandatory when TargetFqdn is used, but it cannot be used with FqdnTag. The supported protocols are HTTP and HTTPS.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: TargetFqdn
 Aliases:
 
@@ -132,7 +128,7 @@ Accept wildcard characters: False
 The source addresses of the rule
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +144,7 @@ Specifies a list of domain names filtered by this rule.
 The asterik character, '*', is accepted only as the first character of an FQDN in the list. When used, the asterik matches any number of characters. (e.g. '*msn.com' will match msn.com and all its subdomains)
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: TargetFqdn
 Aliases:
 

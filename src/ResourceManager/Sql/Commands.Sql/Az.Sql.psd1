@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.5.0'
+ModuleVersion = '0.6.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -197,7 +197,15 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
     'Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline', 'Get-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline', 
     'Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline',
     'Convert-AzSqlDatabaseVulnerabilityAssessmentScan', 'Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord',
-    'Start-AzSqlDatabaseVulnerabilityAssessmentScan'
+    'Start-AzSqlDatabaseVulnerabilityAssessmentScan',
+    'Get-AzSqlInstance', 
+    'New-AzSqlInstance', 
+    'Remove-AzSqlInstance', 
+    'Set-AzSqlInstance', 
+    'Get-AzSqlInstanceDatabase', 
+    'New-AzSqlInstanceDatabase', 
+    'Remove-AzSqlInstanceDatabase', 
+    'Restore-AzSqlInstanceDatabase' 
 
 # Variables to export from this module
 # VariablesToExport = @()

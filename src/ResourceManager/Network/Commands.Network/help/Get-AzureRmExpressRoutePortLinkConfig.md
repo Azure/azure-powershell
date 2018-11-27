@@ -20,7 +20,7 @@ Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> [-N
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> -ResourceId <String> 
+Get-AzureRmExpressRoutePortLinkConfig -ResourceId <String> -ExpressRoutePort <PSExpressRoutePort>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

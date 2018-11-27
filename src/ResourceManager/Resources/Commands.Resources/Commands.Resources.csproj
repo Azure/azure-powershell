@@ -117,6 +117,8 @@
     <Compile Include="ManagementGroups\Common\Utility.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
+    <Compile Include="Models.Authorization\PSADCredentialWrapper.cs" />
+    <Compile Include="Models.Authorization\PSADServicePrincipalWrapper.cs" />
     <Compile Include="Models.ManagementGroups\PSManagementGroup.cs" />
     <Compile Include="Models.ManagementGroups\PSManagementGroupChildInfo.cs" />
     <Compile Include="Models.ManagementGroups\PSManagementGroupInfo.cs" />
