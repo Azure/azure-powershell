@@ -17,7 +17,8 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Current Releas
+* Support for custom collation on managed instance
 
 ## Version 4.11.5
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription
