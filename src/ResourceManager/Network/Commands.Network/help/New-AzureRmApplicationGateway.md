@@ -27,7 +27,7 @@ New-AzureRmApplicationGateway -Name <String> -ResourceGroupName <String> -Locati
  -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
  -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
- [-RewriteRuleSets <PSApplicationGatewayRewriteRuleSet[]>]
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
@@ -71,7 +71,7 @@ PS C:\> $rule = New-AzureRmApplicationGatewayRewriteRule -Name rule1 -ActionSet 
 PS C:\> $ruleset = New-AzureRmApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
 PS C:\> $Rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule01" -RuleType basic -BackendHttpSettings $PoolSetting -HttpListener $Listener -BackendAddressPool $Pool -RewriteRuleSet $ruleset
 PS C:\> $Sku = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier Standard -Capacity 2
-PS C:\> $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" -Location "West US" -BackendAddressPools $Pool -BackendHttpSettingsCollection $PoolSetting -FrontendIpConfigurations $FrontEndIpConfig  -GatewayIpConfigurations $GatewayIpConfig -FrontendPorts $FrontEndPort -HttpListeners $Listener -RequestRoutingRules $Rule -RewriteRuleSets $ruleset -Sku $Sku
+PS C:\> $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" -Location "West US" -BackendAddressPools $Pool -BackendHttpSettingsCollection $PoolSetting -FrontendIpConfigurations $FrontEndIpConfig  -GatewayIpConfigurations $GatewayIpConfig -FrontendPorts $FrontEndPort -HttpListeners $Listener -RequestRoutingRules $Rule -RewriteRuleSet $ruleset -Sku $Sku
 ```
 
 The following example creates an application gateway by first creating a resource group and a
@@ -399,7 +399,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RewriteRuleSets
+### -RewriteRuleSet
 The list of RewriteRuleSets
 
 ```yaml

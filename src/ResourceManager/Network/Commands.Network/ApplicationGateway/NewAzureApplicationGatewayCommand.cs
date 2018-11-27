@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of RewriteRuleSets")]
-        public List<PSApplicationGatewayRewriteRuleSet> RewriteRuleSets { get; set; }
+             HelpMessage = "The list of RewriteRuleSet")]
+        public List<PSApplicationGatewayRewriteRuleSet> RewriteRuleSet { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -287,9 +287,9 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules?.ToList();
             }
 
-            if (this.RewriteRuleSets != null)
+            if (this.RewriteRuleSet != null)
             {
-                applicationGateway.RewriteRuleSets = this.RewriteRuleSets;
+                applicationGateway.RewriteRuleSets = this.RewriteRuleSet;
             }
 
             if (this.RedirectConfigurations != null)
