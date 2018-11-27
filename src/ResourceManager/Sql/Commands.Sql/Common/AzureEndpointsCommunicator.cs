@@ -60,11 +60,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public AzureEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
-            if (context.Subscription == Subscription) return;
-
-            Subscription = context.Subscription;
-            ResourcesClient = null;
-            StorageV2Client = null;
+            if (context.Subscription != Subscription)
+            {
+                Subscription = context.Subscription;
+                ResourcesClient = null;
+                StorageV2Client = null;
+            }
         }
 
         private static class StorageAccountType

@@ -164,13 +164,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceType = KeyVaultManagementClient.VaultsResourceType
             });
 
-            if (resourcesByName == null || resourcesByName.Count <= 0) return null;
-
-            var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
             string rg = null;
-            if (vault != null)
+            if (resourcesByName != null && resourcesByName.Count > 0)
             {
-                rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
+                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
+                if (vault != null)
+                {
+                    rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
+                }
             }
 
             return rg;

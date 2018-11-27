@@ -68,15 +68,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static void Init()
         {
-            if (_inited) return;
-
-            lock (SyncRoot)
+            if (!_inited)
             {
-                if (_inited) return;
-
-                StartTime = DateTime.Now;
-                ClientRequestId = GenClientRequestID();
-                _inited = true;
+                lock (SyncRoot)
+                {
+                    if (!_inited)
+                    {
+                        StartTime = DateTime.Now;
+                        ClientRequestId = GenClientRequestID();
+                        _inited = true;
+                    }
+                }
             }
         }
 

@@ -166,22 +166,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static string ConstructPermissionsTable(List<PSPermission> permissions)
         {
-            if (permissions == null || permissions.Count <= 0) return string.Empty;
-
-            var maxActionsLength = Math.Max("Actions".Length, permissions.Where(p => p.Actions != null).DefaultIfEmpty(EmptyPermission).Max(p => p.ActionsString.Length));
-            var maxNotActionsLength = Math.Max("NotActions".Length, permissions.Where(p => p.NotActions != null).DefaultIfEmpty(EmptyPermission).Max(p => p.NotActionsString.Length));
-
-            var rowFormat = "{0, -" + maxActionsLength + "}  {1, -" + maxNotActionsLength + "}\r\n";
             var permissionsTable = new StringBuilder();
-            permissionsTable.AppendLine();
-            permissionsTable.AppendFormat(rowFormat, "Actions", "NotActions");
-            permissionsTable.AppendFormat(rowFormat,
+            if (permissions != null && permissions.Count > 0)
+            {
+                var maxActionsLength = Math.Max("Actions".Length, permissions.Where(p => p.Actions != null).DefaultIfEmpty(EmptyPermission).Max(p => p.ActionsString.Length));
+                var maxNotActionsLength = Math.Max("NotActions".Length, permissions.Where(p => p.NotActions != null).DefaultIfEmpty(EmptyPermission).Max(p => p.NotActionsString.Length));
+
+                var rowFormat = "{0, -" + maxActionsLength + "}  {1, -" + maxNotActionsLength + "}\r\n";
+                permissionsTable.AppendLine();
+                permissionsTable.AppendFormat(rowFormat, "Actions", "NotActions");
+                permissionsTable.AppendFormat(rowFormat,
                 GeneralUtilities.GenerateSeparator(maxActionsLength, "="),
                 GeneralUtilities.GenerateSeparator(maxNotActionsLength, "="));
 
-            foreach (var permission in permissions)
-            {
-                permissionsTable.AppendFormat(rowFormat, permission.ActionsString, permission.NotActionsString);
+                foreach (var permission in permissions)
+                {
+                    permissionsTable.AppendFormat(rowFormat, permission.ActionsString, permission.NotActionsString);
+                }
             }
 
             return permissionsTable.ToString();
