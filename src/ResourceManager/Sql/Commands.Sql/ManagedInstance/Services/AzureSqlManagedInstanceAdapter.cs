@@ -107,7 +107,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 Identity = model.Identity,
-                DnsZonePartner = model.DnsZonePartner
+                DnsZonePartner = model.DnsZonePartner,
+                Collation = model.Collation
             });
 
             return CreateManagedInstanceModelFromResponse(resp);

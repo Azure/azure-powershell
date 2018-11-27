@@ -12,21 +12,22 @@ Creates a SQL Database Managed instance.
 
 ## SYNTAX
 
-### NewBySkuNameParameterSetParameter
+### NewManagedInstancedBySkuNameSet (Default)
 ```
 New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  -AdministratorCredential <PSCredential> -Location <String> -SubnetId <String> -LicenseType <String>
- -StorageSizeInGB <Int32> -VCore <Int32> -SkuName <String> -DnsZonePartner <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageSizeInGB <Int32> -VCore <Int32> -SkuName <String> [-DnsZonePartner <String>] [-Collation <String>]
+ [-Tag <Hashtable>] [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### NewByEditionAndComputeGenerationParameterSet
+### NewManagedInstanceByEditionAndComputeGenerationSet
 ```
 New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  -AdministratorCredential <PSCredential> -Location <String> -SubnetId <String> -LicenseType <String>
- -StorageSizeInGB <Int32> -VCore <Int32> -Edition <String> -ComputeGeneration <String> -DnsZonePartner <String> [-Tag <Hashtable>]
- [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -StorageSizeInGB <Int32> -VCore <Int32> -Edition <String> -ComputeGeneration <String>
+ [-DnsZonePartner <String>] [-Collation <String>] [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,12 +126,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Collation
+The collation of the Azure SQL Managed Instance to use.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeGeneration
 The compute generation for the Sql Azure Managed Instance.
 
 ```yaml
 Type: String
-Parameter Sets: NewByEditionAndComputeGenerationParameterSet
+Parameter Sets: NewManagedInstanceByEditionAndComputeGenerationSet
 Aliases:
 
 Required: True
@@ -155,12 +169,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsZonePartner
+The resource id of the partner Managed Server to inherit DnsZone property from for Managed instance creation
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Edition
 The edition for the Sql Azure Managed Instance.
 
 ```yaml
 Type: String
-Parameter Sets: NewByEditionAndComputeGenerationParameterSet
+Parameter Sets: NewManagedInstanceByEditionAndComputeGenerationSet
 Aliases:
 
 Required: True
@@ -236,7 +265,7 @@ The SKU name for the Sql Azure Managed Instance e.g.
 
 ```yaml
 Type: String
-Parameter Sets: NewBySkuNameParameterSetParameter
+Parameter Sets: NewManagedInstancedBySkuNameSet
 Aliases:
 
 Required: True
@@ -300,20 +329,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-### -DnsZonePartner
-The resource id of the partner Managed Server to inherit DnsZone property from for Managed instance creation
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: false
 Position: Named
 Default value: None
 Accept pipeline input: False
