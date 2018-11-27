@@ -330,27 +330,29 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 storageAccountSubscriptionId,
                 storageAccountName);
             string nextLink = uriBuilder.ToString();
-            JToken response = null;
-
-            while (!string.IsNullOrEmpty(nextLink))
+            string id = null;
+            while (!string.IsNullOrEmpty(nextLink) && string.IsNullOrEmpty(id))
             {
-                response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
+                JToken response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
+                JArray valuesArray = (JArray)response["value"];
+                if (valuesArray.HasValues)
+                {
+                    JToken idValueToken = valuesArray[0];
+                    id = (string)idValueToken["id"];
+                    if (string.IsNullOrEmpty(id))
+                    {
+                        throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
+                    }
+                }
+
                 nextLink = (string)response["nextLink"];
             }
 
-            JArray valuesArray = (JArray)response["value"];
-            if (!valuesArray.HasValues)
+            if (string.IsNullOrEmpty(id))
             {
                 throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
             }
-
-            JToken idValueToken = valuesArray[0];
-            string id = (string)idValueToken["id"];
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
-            }
-
+            
             return id;
         }
 

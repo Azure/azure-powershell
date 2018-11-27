@@ -31,47 +31,15 @@ PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
 
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 
 PS C:\> Remove-AzureRmEnvironment -Name TestEnvironment
 
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
 
 This example shows how to create an environment using Add-AzureRmEnvironment, and then how to delete the environment using Remove-AzureRmEnvironment.

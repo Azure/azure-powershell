@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -58,19 +59,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+        public string[] DnsServer { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
-        public List<PSSubnet> Subnet { get; set; }
+        public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -130,15 +131,15 @@ namespace Microsoft.Azure.Commands.Network
             vnet.ResourceGroupName = this.ResourceGroupName;
             vnet.Location = this.Location;
             vnet.AddressSpace = new PSAddressSpace();
-            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
+            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix?.ToList();
 
             if (this.DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions();
-                vnet.DhcpOptions.DnsServers = this.DnsServer;
+                vnet.DhcpOptions.DnsServers = this.DnsServer?.ToList();
             }
 
-            vnet.Subnets = this.Subnet;
+            vnet.Subnets = this.Subnet?.ToList();
             vnet.EnableDdosProtection = this.EnableDdosProtection;
             
             if (!string.IsNullOrEmpty(this.DdosProtectionPlanId))

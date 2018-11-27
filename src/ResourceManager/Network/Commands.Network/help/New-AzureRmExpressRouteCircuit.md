@@ -13,13 +13,11 @@ Creates an Azure express route circuit.
 
 ## SYNTAX
 
-### ServiceProvider
+### ServiceProvider (Default)
 ```
 New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- [-SkuTier <String>] [-SkuFamily <String>] [-ServiceProviderName <String>] [-PeeringLocation <String>]
- [-BandwidthInMbps <Int32>]
- [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
- [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ [-SkuTier <String>] [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String>
+ -BandwidthInMbps <Int32> [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,9 +25,8 @@ New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Locat
 ### ExpressRoutePort
 ```
 New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- [-SkuTier <String>] [-SkuFamily <String>] [-ExpressRoutePort <PSExpressRoutePort>] [-BandwidthInGbps <Double>]
- [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
- [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ [-SkuTier <String>] [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
+ [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -105,7 +102,7 @@ Accept wildcard characters: False
 A list of circuit authorizations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,14 +114,14 @@ Accept wildcard characters: False
 ```
 
 ### -BandwidthInGbps
-The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
+{{Fill BandwidthInGbps Description}}
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: ExpressRoutePort
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -139,7 +136,7 @@ Type: System.Int32
 Parameter Sets: ServiceProvider
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -162,14 +159,14 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRoutePort
-The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
+{{Fill ExpressRoutePort Description}}
 
 ```yaml
-Type: PSExpressRoutePort
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
 Parameter Sets: ExpressRoutePort
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -225,7 +222,7 @@ Accept wildcard characters: False
 A list peer configurations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]
+Type: Microsoft.Azure.Commands.Network.Models.PSPeering[]
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +241,7 @@ Type: System.String
 Parameter Sets: ServiceProvider
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -275,7 +272,7 @@ Type: System.String
 Parameter Sets: ServiceProvider
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -372,9 +369,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Int32
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSPeering, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSPeering[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization[], Microsoft.Azure.Commands.Network, Version=6.11.0.0, Culture=neutral, PublicKeyToken=null
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
