@@ -16,21 +16,16 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 {
     using System;
     using System.Collections.Generic;
-
-    public class UpdateConfiguration
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    public class AzureQueryProperties
     {
-        public OperatingSystemType OperatingSystem { get; set; }
+        public string[] Scope { get; set; }
 
-        public WindowsConfiguration Windows { get; set; }
+        public string[] Locations { get; set; }
 
-        public LinuxConfiguration Linux { get; set; }
+        public TagSettings TagSettings { get; set; }
 
-        public TimeSpan? Duration { get; set; }
-
-        public IList<string> AzureVirtualMachines { get; set; }
-
-        public IList<string> NonAzureComputers { get; set; }
-
-        public UpdateTargets Targets { get; set; }
     }
 }

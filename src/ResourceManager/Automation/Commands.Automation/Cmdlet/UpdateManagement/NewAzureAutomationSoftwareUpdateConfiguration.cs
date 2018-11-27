@@ -43,11 +43,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
         public string[] AzureVMResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Pre task.")]
+        public Task PreTask { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Post task.")]
+        public Task PostTask { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Non-Azure computer names.")]
         public string[] NonAzureComputer { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dynamic update target groups.")]
+        public AzureQueryProperties[] AzureQueries { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
+        public RebootSetting RebootSetting { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Windows Update classifications.")]
         public WindowsUpdateClasses[] IncludedUpdateClassification { get; set; }
@@ -80,6 +92,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                 throw new PSArgumentException(Resources.SoftwareUpdateConfigurationHasNoTargetComputers);
             }
 
+            var target = this.AzureQueries == null ? null : new UpdateTargets
+            {
+                AzureQueries = this.AzureQueries.ToList()
+            };
+
             var resource = string.Format(CultureInfo.CurrentCulture, Resources.SoftwareUpdateConfigurationCreateOperation);
             if (ShouldProcess(this.Schedule.Name, resource))
             {
@@ -97,7 +114,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                             {
                                 ExcludedKbNumbers = this.ExcludedKbNumber,
                                 IncludedKbNumbers = this.IncludedKbNumber,
-                                IncludedUpdateClassifications = this.IncludedUpdateClassification
+                                IncludedUpdateClassifications = this.IncludedUpdateClassification,
+                                rebootSetting = this.RebootSetting
                             },
                         Linux = this.IsWindows
                             ? null
@@ -105,12 +123,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                             {
                                 ExcludedPackageNameMasks = this.ExcludedPackageNameMask,
                                 IncludedPackageClassifications = this.IncludedPackageClassification,
-                                IncludedPackageNameMasks = this.IncludedPackageNameMask
+                                IncludedPackageNameMasks = this.IncludedPackageNameMask,
+                                rebootSetting = this.RebootSetting
                             },
                         Duration = this.Duration,
                         AzureVirtualMachines = this.AzureVMResourceId,
-                        NonAzureComputers = this.NonAzureComputer
+                        NonAzureComputers = this.NonAzureComputer,
+                        Targets = target
+                    },
+                    Tasks = new Tasks
+                    {
+                        PreTask = this.PreTask,
+                        PostTask = this.PostTask
                     }
+
                 };
                 suc = this.AutomationClient.CreateSoftwareUpdateConfiguration(this.ResourceGroupName,
                     this.AutomationAccountName, suc);

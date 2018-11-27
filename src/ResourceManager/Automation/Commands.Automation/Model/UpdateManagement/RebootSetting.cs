@@ -16,21 +16,14 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 {
     using System;
     using System.Collections.Generic;
-
-    public class UpdateConfiguration
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    public enum RebootSetting
     {
-        public OperatingSystemType OperatingSystem { get; set; }
-
-        public WindowsConfiguration Windows { get; set; }
-
-        public LinuxConfiguration Linux { get; set; }
-
-        public TimeSpan? Duration { get; set; }
-
-        public IList<string> AzureVirtualMachines { get; set; }
-
-        public IList<string> NonAzureComputers { get; set; }
-
-        public UpdateTargets Targets { get; set; }
+        IfRequired,
+        Never,
+        Always,
+        RebootOnly
     }
 }

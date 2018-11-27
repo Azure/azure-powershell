@@ -30,6 +30,34 @@ namespace Microsoft.Azure.Commands.Automation.Common
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var updateConfig = configuration.UpdateConfiguration;
+                IList<Sdk.AzureQueryProperties> azureQueries = null;
+                if (updateConfig.Targets != null && updateConfig.Targets.AzureQueries != null && updateConfig.Targets.AzureQueries.Count > 0)
+                {
+                    azureQueries = new List<Sdk.AzureQueryProperties>();
+
+                    foreach (var query in updateConfig.Targets.AzureQueries)
+                    {
+
+                        var tags = new Dictionary<string, IList<string>>();
+                        foreach (var tag in query.TagSettings.Tags)
+                        {
+                            tags.Add(tag.Key, tag.Value);
+                        }
+
+                        var azureQueryProperty = new Sdk.AzureQueryProperties
+                        {
+                            Locations = query.Locations,
+                            Scope = query.Scope,
+                            TagSettings = new Sdk.TagSettingsProperties
+                            {
+                                Tags = tags,
+                                FilterOperator = (Sdk.TagOperators)query.TagSettings.FilterOperator
+                            }
+                        };
+                        azureQueries.Add(azureQueryProperty);
+                    }
+
+                }
 
                 var sucParameters = new Sdk.SoftwareUpdateConfiguration()
                 {
@@ -52,18 +80,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
                             IncludedUpdateClassifications = updateConfig.Windows != null && updateConfig.Windows.IncludedUpdateClassifications != null 
                                 ? string.Join(",", updateConfig.Windows.IncludedUpdateClassifications.Select(c => c.ToString())) 
                                 : null,
-                            ExcludedKbNumbers = updateConfig.Windows != null ? updateConfig.Windows.ExcludedKbNumbers : null
+                            ExcludedKbNumbers = updateConfig.Windows != null ? updateConfig.Windows.ExcludedKbNumbers : null,
+                            RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString()
                         },
                         Linux = updateConfig.OperatingSystem == OperatingSystemType.Windows ? null : new Sdk.LinuxProperties()
                         {
                             IncludedPackageClassifications = updateConfig.Linux != null && updateConfig.Linux.IncludedPackageClassifications != null 
                                 ? string.Join(",", updateConfig.Linux.IncludedPackageClassifications.Select(c=>c.ToString()))
                                 : null,
-                            ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null
+                            ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null,
+                            RebootSetting = updateConfig.Linux != null ? updateConfig.Linux.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
                         },
                         Duration = updateConfig.Duration,
                         AzureVirtualMachines = updateConfig.AzureVirtualMachines,
-                        NonAzureComputerNames = updateConfig.NonAzureComputers
+                        NonAzureComputerNames = updateConfig.NonAzureComputers,
+                        Targets = updateConfig.Targets == null
+                        ? null
+                        : new Sdk.TargetProperties
+                        {
+                            AzureQueries = azureQueries
+                        }
+                    },
+                    Tasks = configuration.Tasks == null ? null : new Sdk.SoftwareUpdateConfigurationTasks
+                    {
+                        PreTask = configuration.Tasks.PreTask == null ? null : new Sdk.TaskProperties { Source = configuration.Tasks.PreTask.source, Parameters = configuration.Tasks.PreTask.parameters },
+                        PostTask = configuration.Tasks.PostTask == null ? null : new Sdk.TaskProperties { Source = configuration.Tasks.PostTask.source, Parameters = configuration.Tasks.PostTask.parameters }
                     }
                 };
 

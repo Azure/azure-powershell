@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns/c7040393-1451-4be7-9ed1-999aa747a155?api-version=2017-05-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zL2M3MDQwMzkzLTE0NTEtNGJlNy05ZWQxLTk5OWFhNzQ3YTE1NT9hcGktdmVyc2lvbj0yMDE3LTA1LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "db12867e-ea73-4a13-ad31-10a1875527b1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+        ],
+        "x-ms-activity-id": [
+          "51801329-e9c4-4083-964f-9036e080d57b"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "51801329-e9c4-4083-964f-9036e080d57b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "73a93b31-5008-4bec-9b71-6769d55dd2de"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181109T023339Z:73a93b31-5008-4bec-9b71-6769d55dd2de"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 09 Nov 2018 02:33:39 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "888"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns/c7040393-1451-4be7-9ed1-999aa747a155\",\r\n  \"name\": \"c7040393-1451-4be7-9ed1-999aa747a155\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"softwareUpdateConfiguration\": {\r\n      \"name\": \"prePostTest\"\r\n    },\r\n    \"status\": \"Succeeded\",\r\n    \"configuredDuration\": \"PT2H\",\r\n    \"osType\": \"Windows\",\r\n    \"startTime\": \"2018-11-07T15:22:03.0188406-08:00\",\r\n    \"endTime\": \"2018-11-07T15:27:04.123-08:00\",\r\n    \"computerCount\": 1,\r\n    \"failedCount\": 0,\r\n    \"error\": null,\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\",\r\n        \"status\": \"Completed\",\r\n        \"jobId\": \"cec5d0fe-eb72-4aa4-912a-947f7b6bade6\"\r\n      },\r\n      \"postTask\": {\r\n        \"source\": \"postTask\",\r\n        \"status\": \"Completed\",\r\n        \"jobId\": \"c7917a2e-e4a1-446f-b37c-aae5eb4ae59b\"\r\n      }\r\n    },\r\n    \"creationTime\": \"2018-11-07T15:22:03.0188406-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-07T15:28:19.313-08:00\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}

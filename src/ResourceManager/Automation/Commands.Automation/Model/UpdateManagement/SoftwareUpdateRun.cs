@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
             this.StartTime = sucr.StartTime;
             this.Status = (SoftwareUpdateRunStatus)Enum.Parse(typeof(SoftwareUpdateRunStatus), sucr.Status, true);
+            this.Tasks = sucr.Tasks;
         }
 
         public Guid RunId { get; set; }
@@ -55,5 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         public int FailedCount { get; set; }
 
         public SoftwareUpdateRunStatus Status { get; set; }
+
+        public SoftareUpdateConfigurationRunTasks Tasks { get; set; }
     }
 }

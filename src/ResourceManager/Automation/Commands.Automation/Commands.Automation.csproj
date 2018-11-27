@@ -198,18 +198,24 @@
     <Compile Include="Model\ScheduleFrequency.cs" />
     <Compile Include="Model\SourceControlSyncJobStream.cs" />
     <Compile Include="Model\SourceControlSyncJobStreamRecord.cs" />
+    <Compile Include="Model\UpdateManagement\AzureQueryProperties.cs" />
     <Compile Include="Model\UpdateManagement\BaseArmProperties.cs" />
     <Compile Include="Model\UpdateManagement\ComputerType.cs" />
     <Compile Include="Model\UpdateManagement\ErrorInfo.cs" />
     <Compile Include="Model\UpdateManagement\LinuxConfiguration.cs" />
     <Compile Include="Model\UpdateManagement\LinuxPackageClasses.cs" />
     <Compile Include="Model\UpdateManagement\OperatingSystemType.cs" />
+    <Compile Include="Model\UpdateManagement\RebootSetting.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateMachineRun.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateConfiguration.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateMachineRunStatus.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateRun.cs" />
     <Compile Include="Model\UpdateManagement\SoftwareUpdateRunStatus.cs" />
+    <Compile Include="Model\UpdateManagement\TagOperators.cs" />
+    <Compile Include="Model\UpdateManagement\TagSettings.cs" />
+    <Compile Include="Model\UpdateManagement\Tasks.cs" />
     <Compile Include="Model\UpdateManagement\UpdateConfiguration.cs" />
+    <Compile Include="Model\UpdateManagement\UpdateTargets.cs" />
     <Compile Include="Model\UpdateManagement\WindowsConfiguration.cs" />
     <Compile Include="Model\UpdateManagement\WindowsUpdateClasses.cs" />
     <Compile Include="Model\SourceControl.cs" />
@@ -233,7 +239,9 @@
     </None>
     <None Include="AzureRM.Automation.format.ps1xml" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="StartupScripts\*.ps1">
     </None>
   </ItemGroup>
@@ -251,9 +259,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Automation">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.4.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.8.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.17\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
