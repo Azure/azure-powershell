@@ -18,7 +18,9 @@ Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    return getAssetName
+    param([string] $prefix = [string]::Empty)
+
+	return getAssetName $prefix
 }
 
 <#
@@ -27,7 +29,9 @@ Gets valid resource name
 #>
 function Get-ResourceName
 {
-    return getAssetName
+    param([string] $prefix = [string]::Empty)
+
+    return getAssetName $prefix
 }
 
 <#
@@ -53,36 +57,33 @@ function Get-NetworkTestMode {
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider)
+function Get-ProviderLocation($provider, $preferredLocation = "West Central US")
 {
-    return "westcentralus";
-	if ((Get-NetworkTestMode) -ne 'Playback')
-	{
-		$namespace = $provider.Split("/")[0]  
-		if($provider.Contains("/"))  
-		{  
-			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-
-			if ($location -eq $null) 
-			{  
-				return "WestUS2"  
-			} 
-            else 
-			{
-				if($location.Locations[0] -eq "West US")
-				{ 
-					return $location.Locations[1]
-				}
-				else
-				{
-					return $location.Locations[0]
-				} 
-			}
-		}	
-		return "West US"
-	}
-	return "WestUS"
+    if((Get-NetworkTestMode) -ne 'Playback')
+    {
+        if($env:AZURE_NRP_TEST_LOCATION)
+        {
+            return $env:AZURE_NRP_TEST_LOCATION;
+        }
+        if(-not $preferredLocation.Contains(" "))
+        {
+            # TODO: implement UseCanonical switch after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
+            return $preferredLocation;
+        }
+        if($provider.Contains("/"))
+        {
+            $providerNamespace, $resourceType = $provider.Split("/");
+            return Get-Location $providerNamespace $resourceType $preferredLocation;
+        }
+        else
+        {
+            return $preferredLocation;
+        }
+    }
+    else
+    {
+        return $preferredLocation;
+    }
 }
 
 <#

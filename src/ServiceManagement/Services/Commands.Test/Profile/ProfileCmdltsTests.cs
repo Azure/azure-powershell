@@ -17,6 +17,10 @@ using System.Security;
 using System.Text;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.ServiceBus.Management;

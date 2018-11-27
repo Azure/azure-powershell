@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataFactory" Version="2.3.1" />
-    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.4.6604.1" />
+    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.11.6886.9" />
   </ItemGroup>
 
   <ItemGroup>

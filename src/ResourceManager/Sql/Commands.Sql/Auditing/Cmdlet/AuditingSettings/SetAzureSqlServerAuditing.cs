@@ -78,6 +78,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public uint? RetentionInDays { get; internal set; }
 
         /// <summary>
+        /// Gets or sets the predicate expression.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
+        [ValidateNotNull]
+        public string PredicateExpression { get; internal set; }
+
+        /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
         /// </summary>
         /// <returns>True if the model object should be written out, False otherwise</returns>
@@ -118,6 +125,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             else if (StorageAccountName != null)
             {
                 model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
+            }
+
+            if (PredicateExpression != null)
+            {
+                model.PredicateExpression = PredicateExpression = PredicateExpression;
             }
 
             return model;

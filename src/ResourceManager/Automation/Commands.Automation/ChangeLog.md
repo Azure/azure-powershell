@@ -18,6 +18,24 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command
+
+## Version 6.0.1-preview
+* Fixed the DSC Register Node command
+
+## Version 6.0.0-preview
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup  cmdlet
+
+## Version 5.1.2
 * Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
 * Minor changes for upcoming AzureRM to Az transition
 

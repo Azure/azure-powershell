@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "Directory to download the log. Default is current directory.")]
         public string Output { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)

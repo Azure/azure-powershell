@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.11
+* Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
+
 ## Version 0.3.10
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

@@ -76,13 +76,7 @@ foreach($RMPath in $resourceManagerPaths)
         $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
         Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
-        if (Test-Path -Path "$($RMFolder.FullName)\StartupScripts")
-        {
-            $scriptName = "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)StartupScripts$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name.replace('.', ''))Startup.ps1"
-            Write-Verbose $scriptName
-            $removedScripts = Get-ChildItem -Path "$($RMFolder.FullName)\StartupScripts" -Filter "*.ps1" | where { $_.FullName -ne $scriptName }
-            $removedScripts | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
-        }
+
         $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude "PsSwaggerUtility*.psd1" -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
         $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }

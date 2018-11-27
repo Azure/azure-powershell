@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies.
+Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies. Location is required when assigning an identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the policy assignment. This is only required when the policy assignment has a resource identity.
+The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.
 
 ```yaml
 Type: System.String

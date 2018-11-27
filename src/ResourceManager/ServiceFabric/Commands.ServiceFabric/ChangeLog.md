@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.14
+* Add deprecation messages for upcoming breaking changes
+
+## Version 0.3.13
 * Fix add certificate to Linux Vmss.
 
 * Fix `Add-AzureRmServiceFabricClusterCertificate`
