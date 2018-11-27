@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
 
+        public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableHttp2 { get; set; }
 

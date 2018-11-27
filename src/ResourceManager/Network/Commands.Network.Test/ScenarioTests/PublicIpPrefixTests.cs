@@ -32,7 +32,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpPrefixCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpPrefixCRUD");
@@ -40,7 +40,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpPrefixAllocatePublicIpAddress()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpPrefixAllocatePublicIpAddress");

@@ -29,8 +29,10 @@ PS C:\> Get-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS 
 
 Name               : SB-Example1
 Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+ResourceGroup      : Default-ServiceBus-WestUS
 Location           : West US
-Sku                : Name : Standard , Capacity : 1 , Tier : Standard
+Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
+Sku                : Name : Premium , Tier : Premium
 ProvisioningState  : Succeeded
 CreatedAt          : 1/20/2017 1:40:01 AM
 UpdatedAt          : 1/20/2017 1:40:24 AM
