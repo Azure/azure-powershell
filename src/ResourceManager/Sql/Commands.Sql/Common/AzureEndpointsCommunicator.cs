@@ -316,22 +316,22 @@ namespace Microsoft.Azure.Commands.Sql.Common
             uriBuilder.AppendFormat("/resources?api-version=2018-05-01&$filter=(subscriptionId%20eq%20'{0}')%20and%20((resourceType%20eq%20'microsoft.storage/storageaccounts')%20or%20(resourceType%20eq%20'microsoft.classicstorage/storageaccounts'))%20and%20(name%20eq%20'{1}')",
                 storageAccountSubscriptionId,
                 storageAccountName);
+
             var nextLink = uriBuilder.ToString();
             string id = null;
-            while (!string.IsNullOrEmpty(nextLink) && string.IsNullOrEmpty(id))
+            while (!string.IsNullOrEmpty(nextLink))
             {
                 JToken response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
-            var valuesArray = (JArray)response["value"];
+                var valuesArray = (JArray)response["value"];
                 if (valuesArray.HasValues)
             {
-                    JToken idValueToken = valuesArray[0];
+                    var idValueToken = valuesArray[0];
                     id = (string)idValueToken["id"];
             if (string.IsNullOrEmpty(id))
             {
                 throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
             }
                 }
-
                 nextLink = (string)response["nextLink"];
             }
 
