@@ -25,7 +25,7 @@
                               <ScriptBlock>
                                 If($_.ComplianceReasons -ne $null -and $_.ComplianceReasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons -ne $null -and 
                                    $_.ComplianceReasons[0].Reasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons[0].Reason -ne $null  -and 
-                                   $_.ComplianceReasons[0].Reasons[0].Reason -and )
+                                   $_.ComplianceReasons[0].Reasons[0].Reason -ne $null)
                                   {
                                     if(99 -lt $_.ComplianceReasons[0].Reasons[0].Reason.Length)
                                       { $_.ComplianceReasons[0].Reasons[0].Reason.Substring(0, 100) }
