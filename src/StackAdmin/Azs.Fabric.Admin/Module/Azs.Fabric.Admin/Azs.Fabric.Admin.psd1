@@ -129,7 +129,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.11.5
+            ReleaseNotes = '## 2018.12
             * New cmdlet (The features are supported by Azure Stack 1811+)
 	            * Get-AzsDrive
 	            * Get-AzsVolume
