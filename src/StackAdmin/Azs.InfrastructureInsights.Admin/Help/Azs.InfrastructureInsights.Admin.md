@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.InfrastructureInsights.Admin Module
 ## Description
-Preview release of the InfrastructureInsights operator module which allows oeprators to view the health of their infrastructure.
+{{Manually Enter Description Here}}
 
 ## Azs.InfrastructureInsights.Admin Cmdlets
 ### [Close-AzsAlert](Close-AzsAlert.md)
@@ -25,4 +25,7 @@ Returns a list of each resource's health under a service.
 
 ### [Get-AzsRPHealth](Get-AzsRPHealth.md)
 Returns a list of each service's health.
+
+### [Repair-AzsAlert](Repair-AzsAlert.md)
+Repairs the given alert.
 
