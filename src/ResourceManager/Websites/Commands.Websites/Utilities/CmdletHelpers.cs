@@ -82,6 +82,75 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     });
         }
 
+        public static AzureStoragePropertyDictionaryResource ConvertToAzureStorageAccountPathPropertyDictionary(this Hashtable hashtable)
+        {
+            if (hashtable == null)
+                return null;
+            AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
+            result.Properties = hashtable.Cast<DictionaryEntry>()
+                .ToDictionary(
+                kvp => kvp.Key.ToString(), kvp =>
+                {
+                    var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
+                    return new AzureStorageInfoValue
+                    {
+                        AccessKey = typeValuePair["AccessKey"].ToString(),
+                        AccountName = typeValuePair["AccountName"].ToString(),
+                        MountPath = typeValuePair["MountPath"].ToString(),
+                        ShareName = typeValuePair["ShareName"].ToString(),
+                        Type = (AzureStorageType)Enum.Parse(typeof(AzureStorageType), typeValuePair["Type"].ToString(), true)
+                    };
+                });
+
+            return result;
+        }
+
+        public static AzureStoragePropertyDictionaryResource ConvertToAzureStorageAccountPathPropertyDictionary(this WebAppAzureStoragePath[] webAppAzureStorageProperties)
+        {
+            if (webAppAzureStorageProperties == null)
+                return null;
+            AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
+            result.Properties = new Dictionary<string, AzureStorageInfoValue>();
+            foreach (var item in webAppAzureStorageProperties)
+            {
+                result.Properties.Add(
+                    new KeyValuePair<string, AzureStorageInfoValue>(
+                        item.Name, 
+                        new AzureStorageInfoValue(
+                            item.Type,
+                            item.AccountName,
+                            item.ShareName,
+                            item.AccessKey,
+                            item.MountPath)));
+            }
+
+            return result;
+        }
+
+        public static WebAppAzureStoragePath[] ConvertToWebAppAzureStorageArray(this IDictionary<string, AzureStorageInfoValue> webAppAzureStorageDictionary)
+        {
+            if (webAppAzureStorageDictionary == null)
+                return null;
+            List<WebAppAzureStoragePath> result = new List<WebAppAzureStoragePath>();
+            foreach (var item in webAppAzureStorageDictionary)
+            {
+                var azureStoragePath = new WebAppAzureStoragePath()
+                {
+                    Name = item.Key,
+                    AccessKey = item.Value.AccessKey,
+                    AccountName = item.Value.AccountName,
+                    ShareName = item.Value.ShareName,
+                    MountPath = item.Value.MountPath,
+                    Type = item.Value.Type
+                };
+
+                result.Add(azureStoragePath);
+            }
+
+            return result.ToArray();
+        }
+
+
         internal static bool ShouldUseDeploymentSlot(string webSiteName, string slotName, out string qualifiedSiteName)
         {
             var result = false;
