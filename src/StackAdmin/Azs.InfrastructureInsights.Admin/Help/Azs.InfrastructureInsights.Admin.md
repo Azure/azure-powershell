@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.InfrastructureInsights.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the InfrastructureInsights operator module which allows oeprators to view the health of their infrastructure.
 
 ## Azs.InfrastructureInsights.Admin Cmdlets
 ### [Close-AzsAlert](Close-AzsAlert.md)
