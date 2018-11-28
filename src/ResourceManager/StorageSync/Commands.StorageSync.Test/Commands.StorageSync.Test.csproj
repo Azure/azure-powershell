@@ -99,6 +99,117 @@
     <None Include="ScenarioTests\StorageSyncTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestCloudEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestGetCloudEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestGetCloudEndpointParentObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestGetCloudEndpointParentResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestGetCloudEndpoints.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestNewCloudEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestRemoveCloudEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestRemoveCloudEndpointInputObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.CloudEndpointTests\TestRemoveCloudEndpointResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestGetRegisteredServer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestGetRegisteredServerParentObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestGetRegisteredServerParentResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestGetRegisteredServers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestNewRegisteredServer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestNewRegisteredServerParentObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestNewRegisteredServerParentResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestRegisteredServer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestRemoveRegisteredServer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestRemoveRegisteredServerInputObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.RegisteredServerTests\TestRemoveRegisteredServerResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.ServerEndpointTests\TestServerEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestGetStorageSyncService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestGetStorageSyncServices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestNewStorageSyncService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestRemoveStorageSyncService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestRemoveStorageSyncServiceInputObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestRemoveStorageSyncServiceResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.StorageSyncServiceTests\TestStorageSyncService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestGetSyncGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestGetSyncGroupParentObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestGetSyncGroupParentResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestGetSyncGroups.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestNewSyncGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestRemoveSyncGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestRemoveSyncGroupInputObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestRemoveSyncGroupResourceId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests.SyncGroupTests\TestSyncGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests.StorageSyncTests\TestStorageSync.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
