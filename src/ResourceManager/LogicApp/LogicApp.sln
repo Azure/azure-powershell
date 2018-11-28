@@ -4,15 +4,15 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp", "Commands.LogicApp\Commands.LogicApp.csproj", "{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp", "Commands.LogicApp\Commands.LogicApp.Netcore.csproj", "{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp.Test", "Commands.LogicApp.Test\Commands.LogicApp.Test.csproj", "{F1F11BB1-592B-45A3-844C-7F8A585AD107}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp.Test", "Commands.LogicApp.Test\Commands.LogicApp.Test.Netcore.csproj", "{F1F11BB1-592B-45A3-844C-7F8A585AD107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj", "{E8FFEA7F-A9CB-4FE6-A4D3-9334125B57B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.Netcore.csproj", "{E8FFEA7F-A9CB-4FE6-A4D3-9334125B57B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "..\Resources\Commands.Resources\Commands.Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "..\Resources\Commands.Resources\Commands.Resources.Netcore.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

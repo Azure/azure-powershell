@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Aks", "Commands.Aks\Commands.Aks.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Aks", "Commands.Aks\Commands.Aks.Netcore.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2FCD151C-4DC7-41A1-AF45-EF66C47EC6B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Aks.Test", "Commands.Aks.Test\Commands.Aks.Test.csproj", "{D61726C4-A130-4CA1-A119-40BAC87ED761}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Aks.Test", "Commands.Aks.Test\Commands.Aks.Test.Netcore.csproj", "{D61726C4-A130-4CA1-A119-40BAC87ED761}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj", "{E8FFEA7F-A9CB-4FE6-A4D3-9334125B57B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.Netcore.csproj", "{E8FFEA7F-A9CB-4FE6-A4D3-9334125B57B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "..\Resources\Commands.Resources\Commands.Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "..\Resources\Commands.Resources\Commands.Resources.Netcore.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
