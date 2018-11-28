@@ -24,7 +24,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9]+$"))
             {
-                return $"{accnt}.{context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix)}";
+                string domain = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
+                if (domain.EndsWith("/"))
+                {
+                    domain = domain.Substring(0, domain.Length - 1);
+                }
+
+                return $"{accnt}.{domain}";
             }
             return accnt;
         }

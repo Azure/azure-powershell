@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Deprecated Set-AzureRmRecoveryServicesVaultContext cmdlet.
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 4.1.8
 * Fixed issue with default resource groups not being set.

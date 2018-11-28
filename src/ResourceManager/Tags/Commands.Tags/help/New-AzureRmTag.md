@@ -40,14 +40,10 @@ When you apply the Department tag to a resource, you apply only one predefined v
 ### Example 1: Create a predefined tag
 ```
 PS C:\>New-AzureRmTag -Name "FY2015"
-Name:   FY2015
-Count:  0
-Values: 
-
-        Name        Count
-        =========   =====
-
-        Finance     0
+                                
+Name   ValuesTable Count Values 
+----   ----------- ----- ------
+FY2015             0     {}
 ```
 
 This command creates a predefined tag named FY2015.
