@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 6.7.2
 * Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`

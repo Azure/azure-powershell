@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
                     throw new ArgumentNullException("parameters.SkuFamilyName");
-                if (parameters.TenantId == null || parameters.TenantId == Guid.Empty)
+                if (parameters.TenantId == Guid.Empty)
                     throw new ArgumentException("parameters.TenantId");
 
                 properties.Sku = new Sku
@@ -94,11 +95,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 properties.CreateMode = CreateMode.Recover;
             }
-            var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
+            var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
                 vaultName: parameters.VaultName,
 
-                parameters: new VaultCreateOrUpdateParameters()
+                parameters: new VaultCreateOrUpdateParameters
                 {
                     Location = parameters.Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
@@ -124,16 +125,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                var response = this.KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
+                var response = KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
 
                 return new PSKeyVault(response, adClient);
             }
             catch (CloudException ce)
             {
                 if (ce.Response.StatusCode == HttpStatusCode.NotFound)
+                {
                     return null;
-                else
-                    throw;
+                }
+                throw;
             }
         }
 
@@ -166,7 +168,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             //Update the vault properties in the object received from server
             //Only access policies and EnabledForDeployment can be changed
-            VaultProperties properties = existingVault.OriginalVault.Properties;
+            var properties = existingVault.OriginalVault.Properties;
             properties.EnabledForDeployment = updatedEnabledForDeployment;
             properties.EnabledForTemplateDeployment = updatedEnabledForTemplateDeployment;
             properties.EnabledForDiskEncryption = updatedEnabledForDiskEncryption;
@@ -185,8 +187,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             properties.AccessPolicies = (updatedPolicies == null) ?
                 new List<AccessPolicyEntry>() :
-                updatedPolicies.Select(a => new AccessPolicyEntry()
-                        {
+                updatedPolicies.Select(a => new AccessPolicyEntry
+                {
                             TenantId = a.TenantId,
                             ObjectId = a.ObjectId,
                             ApplicationId = a.ApplicationId,
@@ -201,10 +203,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             UpdateVaultNetworkRuleSetProperties(properties, updatedNetworkAcls);
 
-            var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
+            var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: existingVault.ResourceGroupName,
                 vaultName: existingVault.VaultName,
-                parameters: new VaultCreateOrUpdateParameters()
+                parameters: new VaultCreateOrUpdateParameters
                 {
                     Location = existingVault.Location,
                     Properties = properties,
@@ -228,7 +230,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                this.KeyVaultManagementClient.Vaults.Delete(resourceGroupName, vaultName);
+                KeyVaultManagementClient.Vaults.Delete(resourceGroupName, vaultName);
             }
             catch (CloudException ce)
             {
@@ -252,7 +254,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                this.KeyVaultManagementClient.Vaults.PurgeDeleted(vaultName, location);
+                KeyVaultManagementClient.Vaults.PurgeDeleted(vaultName, location);
             }
             catch (CloudException ce)
             {
@@ -277,16 +279,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                var response = this.KeyVaultManagementClient.Vaults.GetDeleted(vaultName, location);
+                var response = KeyVaultManagementClient.Vaults.GetDeleted(vaultName, location);
 
                 return new PSDeletedKeyVault(response);
             }
             catch (CloudException ce)
             {
                 if (ce.Response.StatusCode == HttpStatusCode.NotFound)
+                {
                     return null;
-                else
-                    throw;
+                }
+                throw;
             }
         }
 
@@ -296,9 +299,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <returns>the retrieved deleted vault</returns>
         public List<PSDeletedKeyVault> ListDeletedVaults()
         {
-            List<PSDeletedKeyVault> deletedVaults = new List<PSDeletedKeyVault>();
+            var deletedVaults = new List<PSDeletedKeyVault>();
 
-            var response = this.KeyVaultManagementClient.Vaults.ListDeleted();
+            var response = KeyVaultManagementClient.Vaults.ListDeleted();
 
             foreach (var deletedVault in response)
             {
@@ -307,7 +310,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             while (response?.NextPageLink != null)
             {
-                response = this.KeyVaultManagementClient.Vaults.ListDeletedNext(response.NextPageLink);
+                response = KeyVaultManagementClient.Vaults.ListDeletedNext(response.NextPageLink);
 
                 foreach (var deletedVault in response)
                 {
@@ -327,12 +330,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="vaultProperties">Vault property</param>
         /// <param name="psRuleSet">Network rule set input</param>
-        static private void UpdateVaultNetworkRuleSetProperties(VaultProperties vaultProperties, PSKeyVaultNetworkRuleSet psRuleSet)
+        private static void UpdateVaultNetworkRuleSetProperties(VaultProperties vaultProperties, PSKeyVaultNetworkRuleSet psRuleSet)
         {
             if (vaultProperties == null)
                 return;
 
-            NetworkRuleSet updatedRuleSet = new NetworkRuleSet();       // It contains default settings
+            var updatedRuleSet = new NetworkRuleSet();       // It contains default settings
             if (psRuleSet != null)
             {
                 updatedRuleSet.DefaultAction = psRuleSet.DefaultAction.ToString();
@@ -340,10 +343,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (psRuleSet.IpAddressRanges != null && psRuleSet.IpAddressRanges.Count > 0)
                 {
-                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress =>
-                    {
-                        return new IPRule() { Value = ipAddress };
-                    }).ToList<IPRule>();
+                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress => new IPRule { Value = ipAddress }).ToList();
                 }
                 else
                 {   // Send empty array [] to server to override default
@@ -352,10 +352,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (psRuleSet.VirtualNetworkResourceIds != null && psRuleSet.VirtualNetworkResourceIds.Count > 0)
                 {
-                    updatedRuleSet.VirtualNetworkRules = psRuleSet.VirtualNetworkResourceIds.Select(resourceId =>
-                    {
-                        return new VirtualNetworkRule() { Id = resourceId };
-                    }).ToList<VirtualNetworkRule>();
+                    updatedRuleSet.VirtualNetworkRules = psRuleSet.VirtualNetworkResourceIds.Select(resourceId => new VirtualNetworkRule { Id = resourceId }).ToList();
                 }
                 else
                 {   // Send empty array [] to server to override default
