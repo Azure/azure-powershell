@@ -24,7 +24,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.1-preview" />
   </ItemGroup>

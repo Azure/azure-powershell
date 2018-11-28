@@ -25,7 +25,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.0-preview" />
   </ItemGroup>
   

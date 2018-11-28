@@ -23,7 +23,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.IotCentral" Version="1.0.0" />
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>

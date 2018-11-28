@@ -23,7 +23,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.10.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.0.0" />
   </ItemGroup>
