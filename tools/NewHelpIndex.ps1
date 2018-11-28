@@ -48,7 +48,7 @@ if ([string]::isNullOrEmpty($SourceBaseUri))
 
 if ([string]::isNullOrEmpty($EditBaseUri))
 {
-    $EditBaseUri = "https://github.com/Azure/azure-powershell/blob/preview"
+    $EditBaseUri = "https://github.com/Azure/azure-powershell/blob/dev"
     Write-Host "Using default EditBaseUri: $EditBaseUri." -ForegroundColor Green;
 }
 
