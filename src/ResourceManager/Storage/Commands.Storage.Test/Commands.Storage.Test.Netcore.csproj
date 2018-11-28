@@ -6,7 +6,7 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Microsoft.WindowsAzure.Commands.Storage.Test</AssemblyName>
     <RootNamespace>Microsoft.WindowsAzure.Management.Storage.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
