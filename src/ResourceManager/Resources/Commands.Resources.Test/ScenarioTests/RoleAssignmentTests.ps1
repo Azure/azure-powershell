@@ -60,7 +60,7 @@ This test will fail if the objectId is changed or the role assignment deleted
 #>
 function Test-RaDeletedPrincipals
 {
-    $objectId = "012968d8-c7a3-49b4-a00e-f3e24fec95cb"
+    $objectId = "6f58a770-c06e-4012-b9f9-e5479c03d43f"
     $assignment = Get-AzureRmRoleAssignment -ObjectId $objectId
     Assert-NotNull $assignment
     Assert-NotNull $assignment.ObjectType
