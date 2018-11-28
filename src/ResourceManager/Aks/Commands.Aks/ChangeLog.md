@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
+
+## Version 0.0.7
+* Update dependencies for type mapping issue
 
 ## Version 0.0.6
 * Update version of YamlDotNet.Signed used

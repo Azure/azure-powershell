@@ -19,19 +19,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using Commands.Common.Authentication.Abstractions;
     using Entities.Providers;
     using Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Common;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-#if !NETSTANDARD    
-    using System.Runtime.Caching;
-#else
+// TODO: Remove IfDef
+#if NETSTANDARD
     using Microsoft.Extensions.Caching.Memory;
-#endif  
-    
+#else
+    using System.Runtime.Caching;
+#endif
+
     /// <summary>
     /// Helper class for determining the API version
     /// </summary>
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             var resourceType = ResourceIdUtility.GetExtensionResourceType(resourceId: resourceId, includeProviderNamespace: false)
                 ?? ResourceIdUtility.GetResourceType(resourceId: resourceId, includeProviderNamespace: false);
 
-            return ApiVersionHelper.DetermineApiVersion(context: context, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre, cmdletHeaderValues: cmdletHeaderValues);
+            return DetermineApiVersion(context: context, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre, cmdletHeaderValues: cmdletHeaderValues);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         {
             var cacheKey = ApiVersionCache.GetCacheKey(context.Environment.Name, providerNamespace: providerNamespace, resourceType: resourceType);
             var apiVersions = ApiVersionCache.Instance
-                .AddOrGetExisting(cacheKey: cacheKey, getFreshData: () => ApiVersionHelper.GetApiVersionsForResourceType(
+                .AddOrGetExisting(cacheKey: cacheKey, getFreshData: () => GetApiVersionsForResourceType(
                     context,
                     providerNamespace: providerNamespace,
                     resourceType: resourceType,
@@ -141,14 +142,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Justification = "Instances of this type are meant to be singletons.")]
         private class ApiVersionCache
         {
-            private static MemoryCache _cache;
+            private static readonly MemoryCache Cache;
 
             static ApiVersionCache()
             {
-#if !NETSTANDARD
-                _cache = MemoryCache.Default;
+// TODO: Remove IfDef
+#if NETSTANDARD
+                Cache = new MemoryCache(new MemoryCacheOptions());
 #else
-                _cache = new MemoryCache(new MemoryCacheOptions());
+                Cache = MemoryCache.Default;
 #endif
             }
             /// <summary>
@@ -167,7 +169,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="cacheDataExpirationTime">The polling interval.</param>
             private ApiVersionCache(TimeSpan cacheDataExpirationTime)
             {
-                this.CacheDataExpirationTime = cacheDataExpirationTime;
+                CacheDataExpirationTime = cacheDataExpirationTime;
             }
 
             /// <summary>
@@ -179,21 +181,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 cacheKey = cacheKey.ToUpperInvariant();
 
-                var cacheItem = this.GetCacheItem(cacheKey: cacheKey);
+                var cacheItem = GetCacheItem(cacheKey: cacheKey);
+                if (cacheItem != null) return cacheItem;
 
-                if (cacheItem == null)
+                var expirationTime = DateTime.UtcNow.Add(CacheDataExpirationTime);
+
+                cacheItem = getFreshData();
+
+                if (cacheItem != null)
                 {
-                    var expirationTime = DateTime.UtcNow.Add(this.CacheDataExpirationTime);
-
-                    cacheItem = getFreshData();
-
-                    if (cacheItem != null)
-                    {
-                        this.SetCacheItem(
+                    SetCacheItem(
                         cacheKey: cacheKey,
                         data: cacheItem,
                         absoluteExpirationTime: expirationTime);
-                    }
                 }
 
                 return cacheItem;
@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// Gets the cache entry.
             /// </summary>
             /// <param name="cacheKey">The cache key.</param>
-            private string[] GetCacheItem(string cacheKey)
+            private static string[] GetCacheItem(string cacheKey)
             {
-                return _cache.Get(cacheKey).Cast<string[]>();
+                return Cache.Get(cacheKey).Cast<string[]>();
             }
 
             /// <summary>
@@ -214,9 +214,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="cacheKey">The cache key.</param>
             /// <param name="data">The data to add.</param>
             /// <param name="absoluteExpirationTime">The absolute expiration time.</param>
-            private void SetCacheItem(string cacheKey, string[] data, DateTimeOffset absoluteExpirationTime)
+            private static void SetCacheItem(string cacheKey, string[] data, DateTimeOffset absoluteExpirationTime)
             {
-                _cache.Set(key: cacheKey, value: data, absoluteExpiration: absoluteExpirationTime);
+                Cache.Set(key: cacheKey, value: data, absoluteExpiration: absoluteExpirationTime);
             }
 
             /// <summary>

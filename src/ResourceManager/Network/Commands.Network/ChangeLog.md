@@ -18,9 +18,22 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
+
+## Version 6.11.0
 * Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
 * Added ICMP back to supported AzureFirewall Network Protocols
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
+* Fix issues with memory usage in VirtualNetwork map
+
+## Version 6.10.0
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
 
 ## Version 6.9.1
 * Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
@@ -32,7 +45,6 @@
 * Fixed issue with RouteFilter not being set if it was passed to ExpressRouteCircuit Peering as resource
 
 ## Version 6.9.0
-
 * Added NetworkProfile functionality. new cmdlets added
     - Get-AzureRMNetworkProfile
     - New-AzureRMNetworkProfile

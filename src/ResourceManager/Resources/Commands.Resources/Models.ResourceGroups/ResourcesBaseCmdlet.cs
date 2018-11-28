@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
-    using Microsoft.Azure.Commands.Resources.Models.Authorization;
+    using Authorization;
     using ResourceManager.Common;
 
     /// <summary> 
@@ -26,24 +26,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Field that holds the resource client instance
         /// </summary>
-        private ResourcesClient resourcesClient;
+        private ResourcesClient _resourcesClient;
 
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         /// <summary>
         /// Field that holds the gallery templates client instance
         /// </summary>
-        private GalleryTemplatesClient galleryTemplatesClient;
+        private GalleryTemplatesClient _galleryTemplatesClient;
 #endif
 
         /// <summary>
         /// Field that holds the policies client instance
         /// </summary>
-        private AuthorizationClient policiesClient;
+        private AuthorizationClient _policiesClient;
 
         /// <summary>
-        /// Field that holds the subscripotions client instance
+        /// Field that holds the subscriptions client instance
         /// </summary>
-        private SubscriptionsClient subscriptionsClient;
+        private SubscriptionsClient _subscriptionsClient;
 
         /// <summary>
         /// Gets or sets the resources client
@@ -52,21 +53,18 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             get
             {
-                if (this.resourcesClient == null)
+                return _resourcesClient ?? (_resourcesClient = new ResourcesClient(DefaultContext)
                 {
-                    this.resourcesClient = new ResourcesClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return this.resourcesClient;
+                    VerboseLogger = WriteVerboseWithTimestamp,
+                    ErrorLogger = WriteErrorWithTimestamp,
+                    WarningLogger = WriteWarningWithTimestamp
+                });
             }
 
-            set { this.resourcesClient = value; }
+            set { _resourcesClient = value; }
         }
 
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         /// <summary>
         /// Gets or sets the gallery templates client
@@ -75,17 +73,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             get
             {
-                if (this.galleryTemplatesClient == null)
+                if (_galleryTemplatesClient == null)
                 {
                     // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
                     // profile is passed in
-                    this.galleryTemplatesClient = new GalleryTemplatesClient(DefaultContext);
+                    _galleryTemplatesClient = new GalleryTemplatesClient(DefaultContext);
                 }
 
-                return this.galleryTemplatesClient;
+                return _galleryTemplatesClient;
             }
 
-            set { this.galleryTemplatesClient = value; }
+            set { _galleryTemplatesClient = value; }
         }
 #endif
 
@@ -94,16 +92,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         public AuthorizationClient PoliciesClient
         {
-            get
-            {
-                if (this.policiesClient == null)
-                {
-                    this.policiesClient = new AuthorizationClient(DefaultContext);
-                }
-                return this.policiesClient;
-            }
+            get { return _policiesClient ?? (_policiesClient = new AuthorizationClient(DefaultContext)); }
 
-            set { this.policiesClient = value; }
+            set { _policiesClient = value; }
         }
 
         /// <summary>
@@ -111,16 +102,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         public SubscriptionsClient SubscriptionsClient
         {
-            get
-            {
-                if (this.subscriptionsClient == null)
-                {
-                    this.subscriptionsClient = new SubscriptionsClient(DefaultContext);
-                }
-                return this.subscriptionsClient;
-            }
+            get { return _subscriptionsClient ?? (_subscriptionsClient = new SubscriptionsClient(DefaultContext)); }
 
-            set { this.subscriptionsClient = value; }
+            set { _subscriptionsClient = value; }
         }
 
         /// <summary>
@@ -128,7 +112,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         public virtual string DetermineParameterSetName()
         {
-            return this.ParameterSetName;
+            return ParameterSetName;
         }
     }
 }

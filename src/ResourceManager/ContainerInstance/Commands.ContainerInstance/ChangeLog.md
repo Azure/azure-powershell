@@ -19,6 +19,10 @@
 -->
 ## Current Release
 * Added managed identity support
+* Minor changes for upcoming AzureRM to Az transition
+
+## Version 0.2.11
+* Update dependencies for type mapping issue
 
 ## Version 0.2.10
 * Fixed issue with default resource groups not being set.
