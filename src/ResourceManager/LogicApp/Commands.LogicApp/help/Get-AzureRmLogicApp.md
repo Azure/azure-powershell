@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 7BFCD982-EC80-418B-BB52-C9941D028F76
@@ -13,9 +13,16 @@ Gets a logic app from a resource group.
 
 ## SYNTAX
 
+### Item
 ```
-Get-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-Version <String>]
+Get-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Version <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzureRmLogicApp -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +67,7 @@ This command gets a logic app from the resource group named ResourceGroup11.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,11 +82,23 @@ Accept wildcard characters: False
 Specifies the name of the logic app that this cmdlet gets.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: Item
 Aliases: ResourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: List
+Aliases: ResourceName
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +109,7 @@ Accept wildcard characters: False
 Specifies the name for a resource group in which this cmdlet gets a logic app.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,11 +124,11 @@ Accept wildcard characters: False
 Specifies the version of a logic app.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: Item
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
