@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub", "Commands.IotHub\Commands.IotHub.csproj", "{78770A60-B18A-4442-A982-0CEE0356F8DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub", "Commands.IotHub\Commands.IotHub.Netcore.csproj", "{78770A60-B18A-4442-A982-0CEE0356F8DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4BE4416A-2983-45DA-B332-7E8424FBE8DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub.Test", "Commands.IotHub.Test\Commands.IotHub.Test.csproj", "{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub.Test", "Commands.IotHub.Test\Commands.IotHub.Test.Netcore.csproj", "{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHub", "..\EventHub\Commands.EventHub\Commands.EventHub.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHub", "..\EventHub\Commands.EventHub\Commands.EventHub.Netcore.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

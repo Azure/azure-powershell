@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MachineLearningCompute", "Commands.MachineLearningCompute\Commands.MachineLearningCompute.csproj", "{A9558AF1-827B-482A-98AF-9AC5F0A866DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MachineLearningCompute", "Commands.MachineLearningCompute\Commands.MachineLearningCompute.Netcore.csproj", "{A9558AF1-827B-482A-98AF-9AC5F0A866DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MachineLearningCompute.Test", "Commands.MachineLearningCompute.Test\Commands.MachineLearningCompute.Test.csproj", "{1C4B42F4-439E-4C5B-AA02-4C8DF1033B77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MachineLearningCompute.Test", "Commands.MachineLearningCompute.Test\Commands.MachineLearningCompute.Test.Netcore.csproj", "{1C4B42F4-439E-4C5B-AA02-4C8DF1033B77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

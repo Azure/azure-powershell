@@ -4,11 +4,11 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHubs.Test", "Commands.EventHub.Test\Commands.EventHubs.Test.csproj", "{2DA1C063-AA27-4BBC-BE25-E3C7D008B6CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHubs.Test", "Commands.EventHub.Test\Commands.EventHubs.Test.Netcore.csproj", "{2DA1C063-AA27-4BBC-BE25-E3C7D008B6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHub", "Commands.EventHub\Commands.EventHub.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHub", "Commands.EventHub\Commands.EventHub.Netcore.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
